@@ -1,1 +1,5 @@
 theme: jekyll-theme-minimal
+title: cvc5
+description: >-
+  An efficient open-source automatic theorem prover for satisfiability modulo
+  theories (SMT) problems.
