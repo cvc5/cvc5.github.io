@@ -1,0 +1,83 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+<h2>
+{%- for author in page.authors -%}
+  {%- if author.url -%}
+    {%- assign author_str = author_str
+          |append: '<a href="'
+          |append: author.url
+          |append: '">'
+          |append: author.name
+          |append: '</a>'
+          |append: '+'
+    -%}
+  {%- else -%}
+    {%- assign author_str = author_str
+          |append: author.name
+          |append: '+'
+    -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign author_str = author_str | split: "+" -%}
+{{ author_str |join: ", " }}
+</h2>
+
+<p>
+This site provides our paper {% if page.pdf %}<a href="{{ page.pdf }}">{{ page.title }}</a>{% else %}<i>{{ page.title }}</i>{% endif %}
+and related material {% if page.submission %}submitted to {{ page.conference }}{% else %}at {{ page.conference }}{% endif %}.
+</p>
+{%- if page.pdf_extended -%}
+<p>
+An extended version of our paper at {{ page.conference }} can be found below.
+</p>
+{%- endif -%}
+{%- if page.artifact.archive -%}
+<p>
+All materials to reproduce the experimental evaluation in our paper can be
+found below.
+</p>
+{%- endif -%}
+
+<h3>Downloads</h3>
+<ul>
+  {% if page.pdf %}<li><a href="{{ page.pdf }}">Paper</a> at {{ page.conference }}</li>{% endif %}
+
+{%- if page.pdf_extended -%}
+  <li><a href="{{ page.pdf_extended }}">Extended version</a> of our paper at {{ page.conference }}</li>
+{%- endif -%}
+
+{%- if page.artifact.readme -%}
+  <li><a href="{{ page.artifact.readme }}">README</a> for the artifact</li>
+{%- endif -%}
+
+{%- if page.artifact.archive -%}
+  <li><a href="{{ page.artifact.archive }}">Artifact</a> [{{ page.artifact.ext }}] {{ page.artifact.text}}</li>
+{%- endif -%}
+
+{%- if page.benchmarks.size > 1 -%}
+<li> <b>Benchmarks:</b>
+  <ul>
+{%- endif -%}
+{%- for benchmarks in page.benchmarks -%}
+<li><a href="{{ benchmarks.archive}}">{{ benchmarks.name }}</a>  [{{ benchmarks.ext }}] {{ benchmarks.text}}</li>
+{%- endfor -%}
+{%- if page.benchmarks.size > 1 -%}
+  </ul>
+{%- endif -%}
+
+{%- if page.binaries.size > 1 -%}
+<li> <b>Binaries:</b>
+  <ul>
+{%- endif -%}
+{%- for binary in page.binaries -%}
+<li><a href="{{ binary.archive}}">{{ binary.name }} Binary</a>  [{{ binary.ext }}] {{ binary.text}}</li>
+{%- endfor -%}
+{%- if page.binaries.size > 1 -%}
+  </ul>
+{%- endif -%}
+</ul>
+
+{{ content }}

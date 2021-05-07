@@ -3,3 +3,7 @@ title: cvc5
 description: >-
   An efficient open-source automatic theorem prover for satisfiability modulo
   theories (SMT) problems.
+collections:
+  artifacts:
+    output: true
+    permalink: /artifacts/:name
