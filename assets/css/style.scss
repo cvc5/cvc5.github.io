@@ -1,0 +1,27 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+body {
+  //background-color: #f9fffa; //1
+  //background-color: #e6f2ff; //2
+  //background-color: #f9ffe6; //3
+  //background-color: #e6f7ff; //4
+  //background-color: #e6f7ff; //5
+  background-color: #f9fffa; //6
+}
+
+a {
+  //color: #739900; //1
+  //color: #3399ff; //2
+  //color: #739900; //3
+  //color: #739900; //4
+  //color: #00aaff; //5
+  color: #0099e6; //6
+}
+
+a:hover, a:focus {
+  color: #739900;
+  font-weight: inherit;
+}
