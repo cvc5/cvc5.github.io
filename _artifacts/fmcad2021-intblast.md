@@ -35,6 +35,6 @@ artifact:
 ---
 A branch of cvc5 that contains the source code for the implementation is
 available [here](https://github.com/yoni206/CVC5/tree/bv_to_int_module).
-The most relevant source files are:
-[int_blaster.cpp](https://github.com/yoni206/CVC5/blob/bv_to_int_module/src/theory/bv/int_blaster.cpp) and
-[iand_solver.cpp](https://github.com/yoni206/CVC5/blob/bv_to_int_module/src/theory/arith/nl/iand_solver.cpp).
+The most relevant source files are
+- [int_blaster.cpp](https://github.com/yoni206/CVC5/blob/bv_to_int_module/src/theory/bv/int_blaster.cpp)
+- [iand_solver.cpp](https://github.com/yoni206/CVC5/blob/bv_to_int_module/src/theory/arith/nl/iand_solver.cpp)
