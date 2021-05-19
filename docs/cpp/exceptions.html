@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../static/custom.css" type="text/css" />
 
   
   
@@ -32,6 +34,7 @@
         <script src="../static/jquery.js"></script>
         <script src="../static/underscore.js"></script>
         <script src="../static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../static/js/theme.js"></script>
 
@@ -85,27 +88,29 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../cpp.html#class-hierarchy">Class Hierarchy</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../cpp.html#full-api-documentation">Full API Documentation</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="datatype.html">Datatype</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeconstructor.html">DatatypeConstructor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeconstructordecl.html">DatatypeConstructorDecl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypedecl.html">DatatypeDecl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeselector.html">DatatypeSelector</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Exceptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="grammar.html">Grammar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="kind.html">Kind</a></li>
-<li class="toctree-l3"><a class="reference internal" href="op.html">Op</a></li>
-<li class="toctree-l3"><a class="reference internal" href="result.html">Result</a></li>
-<li class="toctree-l3"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="solver.html">Solver</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sort.html">Sort</a></li>
-<li class="toctree-l3"><a class="reference internal" href="term.html">Term</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="cpp.html">C++ API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="datatype.html">Datatype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypeconstructor.html">DatatypeConstructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypeconstructordecl.html">DatatypeConstructorDecl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypedecl.html">DatatypeDecl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypeselector.html">DatatypeSelector</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html">Grammar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kind.html">Kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="op.html">Op</a></li>
+<li class="toctree-l2"><a class="reference internal" href="result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solver.html">Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sort.html">Sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="term.html">Term</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp.html#class-hierarchy">Class Hierarchy</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Python API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../options.html">Commandline Options</a></li>
 </ul>
 
             
@@ -154,7 +159,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../cpp.html">C++ API Documentation</a> &raquo;</li>
+          <li><a href="cpp.html">C++ API Documentation</a> &raquo;</li>
         
       <li>Exceptions</li>
     
@@ -177,23 +182,23 @@
             
   <div class="section" id="exceptions">
 <h1>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h1>
-<p>The CVC5 API communicates certain errors using exceptions. We broadly
-distinguish two types of exceptions: <a class="reference internal" href="#_CPPv4N4cvc53api16CVC4ApiExceptionE" title="cvc5::api::CVC4ApiException"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">CVC4ApiException</span></code></a> and <a class="reference internal" href="#_CPPv4N4cvc53api27CVC4ApiRecoverableExceptionE" title="cvc5::api::CVC4ApiRecoverableException"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">CVC4ApiRecoverableException</span></code></a> (which is derived from
-<a class="reference internal" href="#_CPPv4N4cvc53api16CVC4ApiExceptionE" title="cvc5::api::CVC4ApiException"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">CVC4ApiException</span></code></a>).</p>
-<p>If any method fails with a <a class="reference internal" href="#_CPPv4N4cvc53api27CVC4ApiRecoverableExceptionE" title="cvc5::api::CVC4ApiRecoverableException"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">CVC4ApiRecoverableException</span></code></a>, the solver behaves as if the failing
+<p>The cvc5 API communicates certain errors using exceptions. We broadly
+distinguish two types of exceptions: <a class="reference internal" href="#_CPPv4N4cvc53api16CVC5ApiExceptionE" title="cvc5::api::CVC5ApiException"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">CVC5ApiException</span></code></a> and <a class="reference internal" href="#_CPPv4N4cvc53api27CVC5ApiRecoverableExceptionE" title="cvc5::api::CVC5ApiRecoverableException"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">CVC5ApiRecoverableException</span></code></a> (which is derived from
+<a class="reference internal" href="#_CPPv4N4cvc53api16CVC5ApiExceptionE" title="cvc5::api::CVC5ApiException"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">CVC5ApiException</span></code></a>).</p>
+<p>If any method fails with a <a class="reference internal" href="#_CPPv4N4cvc53api27CVC5ApiRecoverableExceptionE" title="cvc5::api::CVC5ApiRecoverableException"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">CVC5ApiRecoverableException</span></code></a>, the solver behaves as if the failing
 method was not called. The solver can still be used safely.</p>
-<p>If, however, a method fails with a <a class="reference internal" href="#_CPPv4N4cvc53api16CVC4ApiExceptionE" title="cvc5::api::CVC4ApiException"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">CVC4ApiException</span></code></a>, the associated object may be in an unsafe state
+<p>If, however, a method fails with a <a class="reference internal" href="#_CPPv4N4cvc53api16CVC5ApiExceptionE" title="cvc5::api::CVC5ApiException"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">CVC5ApiException</span></code></a>, the associated object may be in an unsafe state
 and it should no longer be used.</p>
 <dl class="cpp class">
-<dt id="_CPPv4N4cvc53api16CVC4ApiExceptionE">
-<span id="_CPPv3N4cvc53api16CVC4ApiExceptionE"></span><span id="_CPPv2N4cvc53api16CVC4ApiExceptionE"></span><span id="cvc5::api::CVC4ApiException"></span><span class="target" id="classcvc5_1_1api_1_1CVC4ApiException"></span><em class="property">class </em><code class="sig-prename descclassname">cvc5::api<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">CVC4ApiException</code> : <em class="property">public</em> std::exception<a class="headerlink" href="#_CPPv4N4cvc53api16CVC4ApiExceptionE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N4cvc53api16CVC5ApiExceptionE">
+<span id="_CPPv3N4cvc53api16CVC5ApiExceptionE"></span><span id="_CPPv2N4cvc53api16CVC5ApiExceptionE"></span><span id="cvc5::api::CVC5ApiException"></span><span class="target" id="classcvc5_1_1api_1_1CVC5ApiException"></span><em class="property">class </em><code class="sig-prename descclassname">cvc5::api<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">CVC5ApiException</code> : <em class="property">public</em> std::exception<a class="headerlink" href="#_CPPv4N4cvc53api16CVC5ApiExceptionE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Base class for all API exceptions. If thrown, all API objects may be in an unsafe state. </p>
-<p>Subclassed by <a class="reference internal" href="#classcvc5_1_1api_1_1CVC4ApiRecoverableException"><span class="std std-ref">cvc5::api::CVC4ApiRecoverableException</span></a></p>
+<p>Subclassed by <a class="reference internal" href="#classcvc5_1_1api_1_1CVC5ApiRecoverableException"><span class="std std-ref">cvc5::api::CVC5ApiRecoverableException</span></a></p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt id="_CPPv4N4cvc53api16CVC4ApiException16CVC4ApiExceptionERKNSt6stringE">
-<span id="_CPPv3N4cvc53api16CVC4ApiException16CVC4ApiExceptionERKNSt6stringE"></span><span id="_CPPv2N4cvc53api16CVC4ApiException16CVC4ApiExceptionERKNSt6stringE"></span><span id="cvc5::api::CVC4ApiException::CVC4ApiException__ssCR"></span><span class="target" id="classcvc5_1_1api_1_1CVC4ApiException_1ad58dc87e93236ea770a08181147179ad"></span><em class="property">inline</em> <code class="sig-name descname">CVC4ApiException</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api16CVC4ApiException16CVC4ApiExceptionERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N4cvc53api16CVC5ApiException16CVC5ApiExceptionERKNSt6stringE">
+<span id="_CPPv3N4cvc53api16CVC5ApiException16CVC5ApiExceptionERKNSt6stringE"></span><span id="_CPPv2N4cvc53api16CVC5ApiException16CVC5ApiExceptionERKNSt6stringE"></span><span id="cvc5::api::CVC5ApiException::CVC5ApiException__ssCR"></span><span class="target" id="classcvc5_1_1api_1_1CVC5ApiException_1adfa1117b00b33443ea1c5dbdfa0e26e9"></span><em class="property">inline</em> <code class="sig-name descname">CVC5ApiException</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api16CVC5ApiException16CVC5ApiExceptionERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Construct with message from a string. <dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: The error message. </p></li>
@@ -204,8 +209,8 @@ and it should no longer be used.</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N4cvc53api16CVC4ApiException16CVC4ApiExceptionERKNSt12stringstreamE">
-<span id="_CPPv3N4cvc53api16CVC4ApiException16CVC4ApiExceptionERKNSt12stringstreamE"></span><span id="_CPPv2N4cvc53api16CVC4ApiException16CVC4ApiExceptionERKNSt12stringstreamE"></span><span id="cvc5::api::CVC4ApiException::CVC4ApiException__std::stringstreamCR"></span><span class="target" id="classcvc5_1_1api_1_1CVC4ApiException_1ad30ef9091fd952912fdca2189d0c6b17"></span><em class="property">inline</em> <code class="sig-name descname">CVC4ApiException</code><span class="sig-paren">(</span><em class="property">const</em> std::stringstream &amp;<em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api16CVC4ApiException16CVC4ApiExceptionERKNSt12stringstreamE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N4cvc53api16CVC5ApiException16CVC5ApiExceptionERKNSt12stringstreamE">
+<span id="_CPPv3N4cvc53api16CVC5ApiException16CVC5ApiExceptionERKNSt12stringstreamE"></span><span id="_CPPv2N4cvc53api16CVC5ApiException16CVC5ApiExceptionERKNSt12stringstreamE"></span><span id="cvc5::api::CVC5ApiException::CVC5ApiException__std::stringstreamCR"></span><span class="target" id="classcvc5_1_1api_1_1CVC5ApiException_1acd6d8542c8ee0cbc6989d1f77a6511ce"></span><em class="property">inline</em> <code class="sig-name descname">CVC5ApiException</code><span class="sig-paren">(</span><em class="property">const</em> std::stringstream &amp;<em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api16CVC5ApiException16CVC5ApiExceptionERKNSt12stringstreamE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Construct with message from a string stream. <dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">stream</span></code>: The error message. </p></li>
@@ -216,8 +221,8 @@ and it should no longer be used.</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api16CVC4ApiException10getMessageEv">
-<span id="_CPPv3NK4cvc53api16CVC4ApiException10getMessageEv"></span><span id="_CPPv2NK4cvc53api16CVC4ApiException10getMessageEv"></span><span id="cvc5::api::CVC4ApiException::getMessageC"></span><span class="target" id="classcvc5_1_1api_1_1CVC4ApiException_1a76d29eb6aa5973fac0c617428c7a2f44"></span><em class="property">inline</em> <em class="property">const</em> std::string &amp;<code class="sig-name descname">getMessage</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api16CVC4ApiException10getMessageEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4NK4cvc53api16CVC5ApiException10getMessageEv">
+<span id="_CPPv3NK4cvc53api16CVC5ApiException10getMessageEv"></span><span id="_CPPv2NK4cvc53api16CVC5ApiException10getMessageEv"></span><span id="cvc5::api::CVC5ApiException::getMessageC"></span><span class="target" id="classcvc5_1_1api_1_1CVC5ApiException_1a446e8dd9a1dc8d7bb5ed7f43400281d9"></span><em class="property">inline</em> <em class="property">const</em> std::string &amp;<code class="sig-name descname">getMessage</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api16CVC5ApiException10getMessageEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Retrieve the message from this exception. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>The error message. </p>
 </dd>
@@ -226,8 +231,8 @@ and it should no longer be used.</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api16CVC4ApiException4whatEv">
-<span id="_CPPv3NK4cvc53api16CVC4ApiException4whatEv"></span><span id="_CPPv2NK4cvc53api16CVC4ApiException4whatEv"></span><span id="cvc5::api::CVC4ApiException::whatC"></span><span class="target" id="classcvc5_1_1api_1_1CVC4ApiException_1a6c05fbbe76afabbb470c3dad06b4e757"></span><em class="property">inline</em> <em class="property">const</em> char *<code class="sig-name descname">what</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">noexcept</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK4cvc53api16CVC4ApiException4whatEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4NK4cvc53api16CVC5ApiException4whatEv">
+<span id="_CPPv3NK4cvc53api16CVC5ApiException4whatEv"></span><span id="_CPPv2NK4cvc53api16CVC5ApiException4whatEv"></span><span id="cvc5::api::CVC5ApiException::whatC"></span><span class="target" id="classcvc5_1_1api_1_1CVC5ApiException_1ae96be7a547fbd64bf4fa51ce5abce422"></span><em class="property">inline</em> <em class="property">const</em> char *<code class="sig-name descname">what</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">noexcept</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK4cvc53api16CVC5ApiException4whatEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Retrieve the message as a C-style array. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>The error message. </p>
 </dd>
@@ -239,14 +244,14 @@ and it should no longer be used.</p>
 </dd></dl>
 
 <dl class="cpp class">
-<dt id="_CPPv4N4cvc53api27CVC4ApiRecoverableExceptionE">
-<span id="_CPPv3N4cvc53api27CVC4ApiRecoverableExceptionE"></span><span id="_CPPv2N4cvc53api27CVC4ApiRecoverableExceptionE"></span><span id="cvc5::api::CVC4ApiRecoverableException"></span><span class="target" id="classcvc5_1_1api_1_1CVC4ApiRecoverableException"></span><em class="property">class </em><code class="sig-prename descclassname">cvc5::api<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">CVC4ApiRecoverableException</code> : <em class="property">public</em> cvc5::api::<a class="reference internal" href="#_CPPv4N4cvc53api16CVC4ApiExceptionE" title="cvc5::api::CVC4ApiException">CVC4ApiException</a><a class="headerlink" href="#_CPPv4N4cvc53api27CVC4ApiRecoverableExceptionE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N4cvc53api27CVC5ApiRecoverableExceptionE">
+<span id="_CPPv3N4cvc53api27CVC5ApiRecoverableExceptionE"></span><span id="_CPPv2N4cvc53api27CVC5ApiRecoverableExceptionE"></span><span id="cvc5::api::CVC5ApiRecoverableException"></span><span class="target" id="classcvc5_1_1api_1_1CVC5ApiRecoverableException"></span><em class="property">class </em><code class="sig-prename descclassname">cvc5::api<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">CVC5ApiRecoverableException</code> : <em class="property">public</em> cvc5::api::<a class="reference internal" href="#_CPPv4N4cvc53api16CVC5ApiExceptionE" title="cvc5::api::CVC5ApiException">CVC5ApiException</a><a class="headerlink" href="#_CPPv4N4cvc53api27CVC5ApiRecoverableExceptionE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A recoverable API exception. If thrown, API objects can still be used. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt id="_CPPv4N4cvc53api27CVC4ApiRecoverableException27CVC4ApiRecoverableExceptionERKNSt6stringE">
-<span id="_CPPv3N4cvc53api27CVC4ApiRecoverableException27CVC4ApiRecoverableExceptionERKNSt6stringE"></span><span id="_CPPv2N4cvc53api27CVC4ApiRecoverableException27CVC4ApiRecoverableExceptionERKNSt6stringE"></span><span id="cvc5::api::CVC4ApiRecoverableException::CVC4ApiRecoverableException__ssCR"></span><span class="target" id="classcvc5_1_1api_1_1CVC4ApiRecoverableException_1a3cf92743ce0f3dffd6e39b76485fb1d0"></span><em class="property">inline</em> <code class="sig-name descname">CVC4ApiRecoverableException</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api27CVC4ApiRecoverableException27CVC4ApiRecoverableExceptionERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N4cvc53api27CVC5ApiRecoverableException27CVC5ApiRecoverableExceptionERKNSt6stringE">
+<span id="_CPPv3N4cvc53api27CVC5ApiRecoverableException27CVC5ApiRecoverableExceptionERKNSt6stringE"></span><span id="_CPPv2N4cvc53api27CVC5ApiRecoverableException27CVC5ApiRecoverableExceptionERKNSt6stringE"></span><span id="cvc5::api::CVC5ApiRecoverableException::CVC5ApiRecoverableException__ssCR"></span><span class="target" id="classcvc5_1_1api_1_1CVC5ApiRecoverableException_1a9d67ccd9b15389e078e068f2cfeb7ae3"></span><em class="property">inline</em> <code class="sig-name descname">CVC5ApiRecoverableException</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api27CVC5ApiRecoverableException27CVC5ApiRecoverableExceptionERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Construct with message from a string. <dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: The error message. </p></li>
@@ -257,8 +262,8 @@ and it should no longer be used.</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N4cvc53api27CVC4ApiRecoverableException27CVC4ApiRecoverableExceptionERKNSt12stringstreamE">
-<span id="_CPPv3N4cvc53api27CVC4ApiRecoverableException27CVC4ApiRecoverableExceptionERKNSt12stringstreamE"></span><span id="_CPPv2N4cvc53api27CVC4ApiRecoverableException27CVC4ApiRecoverableExceptionERKNSt12stringstreamE"></span><span id="cvc5::api::CVC4ApiRecoverableException::CVC4ApiRecoverableException__std::stringstreamCR"></span><span class="target" id="classcvc5_1_1api_1_1CVC4ApiRecoverableException_1ab0b2f4bf40d3ffa8573ef952e3af733d"></span><em class="property">inline</em> <code class="sig-name descname">CVC4ApiRecoverableException</code><span class="sig-paren">(</span><em class="property">const</em> std::stringstream &amp;<em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api27CVC4ApiRecoverableException27CVC4ApiRecoverableExceptionERKNSt12stringstreamE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N4cvc53api27CVC5ApiRecoverableException27CVC5ApiRecoverableExceptionERKNSt12stringstreamE">
+<span id="_CPPv3N4cvc53api27CVC5ApiRecoverableException27CVC5ApiRecoverableExceptionERKNSt12stringstreamE"></span><span id="_CPPv2N4cvc53api27CVC5ApiRecoverableException27CVC5ApiRecoverableExceptionERKNSt12stringstreamE"></span><span id="cvc5::api::CVC5ApiRecoverableException::CVC5ApiRecoverableException__std::stringstreamCR"></span><span class="target" id="classcvc5_1_1api_1_1CVC5ApiRecoverableException_1aaff23e5a5544d1b86ec3fb635f7de7c9"></span><em class="property">inline</em> <code class="sig-name descname">CVC5ApiRecoverableException</code><span class="sig-paren">(</span><em class="property">const</em> std::stringstream &amp;<em>stream</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api27CVC5ApiRecoverableException27CVC5ApiRecoverableExceptionERKNSt12stringstreamE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Construct with message from a string stream. <dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">stream</span></code>: The error message. </p></li>

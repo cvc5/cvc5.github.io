@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../static/custom.css" type="text/css" />
 
   
   
@@ -32,13 +34,15 @@
         <script src="../static/jquery.js"></script>
         <script src="../static/underscore.js"></script>
         <script src="../static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Sort" href="sort.html" /> 
+    <link rel="next" title="Python API Documentation" href="../python/python.html" />
+    <link rel="prev" title="Statistics" href="statistics.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,27 +88,29 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../cpp.html#class-hierarchy">Class Hierarchy</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../cpp.html#full-api-documentation">Full API Documentation</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="datatype.html">Datatype</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeconstructor.html">DatatypeConstructor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeconstructordecl.html">DatatypeConstructorDecl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypedecl.html">DatatypeDecl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeselector.html">DatatypeSelector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="grammar.html">Grammar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="kind.html">Kind</a></li>
-<li class="toctree-l3"><a class="reference internal" href="op.html">Op</a></li>
-<li class="toctree-l3"><a class="reference internal" href="result.html">Result</a></li>
-<li class="toctree-l3"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="solver.html">Solver</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sort.html">Sort</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Term</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="cpp.html">C++ API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="datatype.html">Datatype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypeconstructor.html">DatatypeConstructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypeconstructordecl.html">DatatypeConstructorDecl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypedecl.html">DatatypeDecl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypeselector.html">DatatypeSelector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html">Grammar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kind.html">Kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="op.html">Op</a></li>
+<li class="toctree-l2"><a class="reference internal" href="result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solver.html">Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sort.html">Sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Term</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp.html#class-hierarchy">Class Hierarchy</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Python API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../options.html">Commandline Options</a></li>
 </ul>
 
             
@@ -153,7 +159,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../cpp.html">C++ API Documentation</a> &raquo;</li>
+          <li><a href="cpp.html">C++ API Documentation</a> &raquo;</li>
         
       <li>Term</li>
     
@@ -176,24 +182,10 @@
             
   <div class="section" id="term">
 <h1>Term<a class="headerlink" href="#term" title="Permalink to this headline">¶</a></h1>
-<dl class="cpp struct">
-<dt id="_CPPv4N4cvc53api16TermHashFunctionE">
-<span id="_CPPv3N4cvc53api16TermHashFunctionE"></span><span id="_CPPv2N4cvc53api16TermHashFunctionE"></span><span id="cvc5::api::TermHashFunction"></span><span class="target" id="structcvc5_1_1api_1_1TermHashFunction"></span><em class="property">struct </em><code class="sig-prename descclassname">cvc5::api<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">TermHashFunction</code><a class="headerlink" href="#_CPPv4N4cvc53api16TermHashFunctionE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Hash function for Terms. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
-<dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api16TermHashFunctionclERK4Term">
-<span id="_CPPv3NK4cvc53api16TermHashFunctionclERK4Term"></span><span id="_CPPv2NK4cvc53api16TermHashFunctionclERK4Term"></span><span id="cvc5::api::TermHashFunction::call-operator__TermCRC"></span><span class="target" id="structcvc5_1_1api_1_1TermHashFunction_1a044960095874596a1f8e23d8f014c6ff"></span>size_t <code class="sig-name descname">operator()</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> &amp;<em>t</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api16TermHashFunctionclERK4Term" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</div>
-</dd></dl>
-
 <dl class="cpp class">
 <dt id="_CPPv4N4cvc53api4TermE">
 <span id="_CPPv3N4cvc53api4TermE"></span><span id="_CPPv2N4cvc53api4TermE"></span><span id="cvc5::api::Term"></span><span class="target" id="classcvc5_1_1api_1_1Term"></span><em class="property">class </em><code class="sig-prename descclassname">cvc5::api<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Term</code><a class="headerlink" href="#_CPPv4N4cvc53api4TermE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A CVC4 <a class="reference internal" href="#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a>. </p>
+<dd><p>A cvc5 <a class="reference internal" href="#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a>. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -670,6 +662,11 @@
 <em class="property">friend class</em> cvc5::Command</dt>
 </dl>
 
+<dl class="friendclass">
+<dt>
+<em class="property">friend struct</em> std::hash&lt; Term &gt;</dt>
+</dl>
+
 </div>
 <dl class="cpp class">
 <dt id="_CPPv4N4cvc53api4Term14const_iteratorE">
@@ -780,6 +777,20 @@
 
 </dd></dl>
 
+<dl class="cpp struct">
+<dt id="_CPPv4IENSt4hashIN4cvc53api4TermEEE">
+<span id="_CPPv3IENSt4hashIN4cvc53api4TermEEE"></span><span id="_CPPv2IENSt4hashIN4cvc53api4TermEEE"></span>template&lt;&gt;<br /><span class="target" id="structstd_1_1hash_3_01cvc5_1_1api_1_1Term_01_4"></span><em class="property">struct </em><code class="sig-prename descclassname">std<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">hash</code>&lt;cvc5::api::<a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a>&gt;<a class="headerlink" href="#_CPPv4IENSt4hashIN4cvc53api4TermEEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Hash function for Terms. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4NKSt4hashIN4cvc53api4TermEEclERKN4cvc53api4TermE">
+<span id="_CPPv3NKSt4hashIN4cvc53api4TermEEclERKN4cvc53api4TermE"></span><span id="_CPPv2NKSt4hashIN4cvc53api4TermEEclERKN4cvc53api4TermE"></span><span id="std::hash:cvc5::api::Term:::call-operator__cvc5::api::TermCRC"></span><span class="target" id="structstd_1_1hash_3_01cvc5_1_1api_1_1Term_01_4_1a393c9ae75a089860027d7660e38e6184"></span>size_t <code class="sig-name descname">operator()</code><span class="sig-paren">(</span><em class="property">const</em> cvc5::api::<a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> &amp;<em>t</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NKSt4hashIN4cvc53api4TermEEclERKN4cvc53api4TermE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
 </div>
 
 
@@ -788,7 +799,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="sort.html" class="btn btn-neutral float-left" title="Sort" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../python/python.html" class="btn btn-neutral float-right" title="Python API Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="statistics.html" class="btn btn-neutral float-left" title="Statistics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

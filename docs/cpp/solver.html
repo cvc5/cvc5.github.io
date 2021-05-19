@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../static/custom.css" type="text/css" />
 
   
   
@@ -32,6 +34,7 @@
         <script src="../static/jquery.js"></script>
         <script src="../static/underscore.js"></script>
         <script src="../static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../static/js/theme.js"></script>
 
@@ -85,27 +88,29 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../cpp.html#class-hierarchy">Class Hierarchy</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../cpp.html#full-api-documentation">Full API Documentation</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="datatype.html">Datatype</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeconstructor.html">DatatypeConstructor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeconstructordecl.html">DatatypeConstructorDecl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypedecl.html">DatatypeDecl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeselector.html">DatatypeSelector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="grammar.html">Grammar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="kind.html">Kind</a></li>
-<li class="toctree-l3"><a class="reference internal" href="op.html">Op</a></li>
-<li class="toctree-l3"><a class="reference internal" href="result.html">Result</a></li>
-<li class="toctree-l3"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Solver</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sort.html">Sort</a></li>
-<li class="toctree-l3"><a class="reference internal" href="term.html">Term</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="cpp.html">C++ API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="datatype.html">Datatype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypeconstructor.html">DatatypeConstructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypeconstructordecl.html">DatatypeConstructorDecl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypedecl.html">DatatypeDecl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypeselector.html">DatatypeSelector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html">Grammar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kind.html">Kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="op.html">Op</a></li>
+<li class="toctree-l2"><a class="reference internal" href="result.html">Result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sort.html">Sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="term.html">Term</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp.html#class-hierarchy">Class Hierarchy</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Python API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../options.html">Commandline Options</a></li>
 </ul>
 
             
@@ -154,7 +159,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../cpp.html">C++ API Documentation</a> &raquo;</li>
+          <li><a href="cpp.html">C++ API Documentation</a> &raquo;</li>
         
       <li>Solver</li>
     
@@ -180,7 +185,7 @@
 <dl class="cpp class">
 <dt id="_CPPv4N4cvc53api6SolverE">
 <span id="_CPPv3N4cvc53api6SolverE"></span><span id="_CPPv2N4cvc53api6SolverE"></span><span id="cvc5::api::Solver"></span><span class="target" id="classcvc5_1_1api_1_1Solver"></span><em class="property">class </em><code class="sig-prename descclassname">cvc5::api<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Solver</code><a class="headerlink" href="#_CPPv4N4cvc53api6SolverE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A CVC4 solver. </p>
+<dd><p>A cvc5 solver. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -243,7 +248,7 @@
 <dt id="_CPPv4NK4cvc53api6Solver14getIntegerSortEv">
 <span id="_CPPv3NK4cvc53api6Solver14getIntegerSortEv"></span><span id="_CPPv2NK4cvc53api6Solver14getIntegerSortEv"></span><span id="cvc5::api::Solver::getIntegerSortC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1ab70cc893004dbc4f636805b3c42b1119"></span><a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort">Sort</a> <code class="sig-name descname">getIntegerSort</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver14getIntegerSortEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>sort Integer (in CVC4, Integer is a subtype of Real) </p>
+<dt><strong>Return</strong></dt><dd><p>sort Integer (in cvc5, Integer is a subtype of Real) </p>
 </dd>
 </dl>
 </p>
@@ -721,7 +726,6 @@
 <dt id="_CPPv4NK4cvc53api6Solver4mkOpE4KindRKNSt6stringE">
 <span id="_CPPv3NK4cvc53api6Solver4mkOpE4KindRKNSt6stringE"></span><span id="_CPPv2NK4cvc53api6Solver4mkOpE4KindRKNSt6stringE"></span><span id="cvc5::api::Solver::mkOp__Kind.ssCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1aeb796c5f4dfb012aaaeac259eeb29690"></span><a class="reference internal" href="op.html#_CPPv4N4cvc53api2OpE" title="cvc5::api::Op">Op</a> <code class="sig-name descname">mkOp</code><span class="sig-paren">(</span><a class="reference internal" href="kind.html#_CPPv4N4cvc53api4KindE" title="cvc5::api::Kind">Kind</a> <em>kind</em>, <em class="property">const</em> std::string &amp;<em>arg</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver4mkOpE4KindRKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create operator of kind:<ul class="simple">
-<li><p>RECORD_UPDATE</p></li>
 <li><p>DIVISIBLE (to support arbitrary precision integers) See enum Kind for a description of the parameters. <dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist">
 <li><p><code class="docutils literal notranslate"><span class="pre">kind</span></code>: the kind of the operator </p></li>
@@ -1133,7 +1137,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api6Solver8mkPosInfE8uint32_t8uint32_t">
 <span id="_CPPv3NK4cvc53api6Solver8mkPosInfE8uint32_t8uint32_t"></span><span id="_CPPv2NK4cvc53api6Solver8mkPosInfE8uint32_t8uint32_t"></span><span id="cvc5::api::Solver::mkPosInf__uint32_t.uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a46fa9b1b062c8a21bd0bf291f1a58fc3"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">mkPosInf</code><span class="sig-paren">(</span>uint32_t <em>exp</em>, uint32_t <em>sig</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver8mkPosInfE8uint32_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a positive infinity floating-point constant. Requires CVC4 to be compiled with SymFPU support. <dl class="simple">
+<dd><p>Create a positive infinity floating-point constant. Requires cvc5 to be compiled with SymFPU support. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>the floating-point constant </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -1148,7 +1152,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api6Solver8mkNegInfE8uint32_t8uint32_t">
 <span id="_CPPv3NK4cvc53api6Solver8mkNegInfE8uint32_t8uint32_t"></span><span id="_CPPv2NK4cvc53api6Solver8mkNegInfE8uint32_t8uint32_t"></span><span id="cvc5::api::Solver::mkNegInf__uint32_t.uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a62d76e319a1b75aad6c4ada55cb04b66"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">mkNegInf</code><span class="sig-paren">(</span>uint32_t <em>exp</em>, uint32_t <em>sig</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver8mkNegInfE8uint32_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a negative infinity floating-point constant. Requires CVC4 to be compiled with SymFPU support. <dl class="simple">
+<dd><p>Create a negative infinity floating-point constant. Requires cvc5 to be compiled with SymFPU support. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>the floating-point constant </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -1163,7 +1167,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api6Solver5mkNaNE8uint32_t8uint32_t">
 <span id="_CPPv3NK4cvc53api6Solver5mkNaNE8uint32_t8uint32_t"></span><span id="_CPPv2NK4cvc53api6Solver5mkNaNE8uint32_t8uint32_t"></span><span id="cvc5::api::Solver::mkNaN__uint32_t.uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a8ec80b2ebd1f7ad2346e7310982c437c"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">mkNaN</code><span class="sig-paren">(</span>uint32_t <em>exp</em>, uint32_t <em>sig</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver5mkNaNE8uint32_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a not-a-number (NaN) floating-point constant. Requires CVC4 to be compiled with SymFPU support. <dl class="simple">
+<dd><p>Create a not-a-number (NaN) floating-point constant. Requires cvc5 to be compiled with SymFPU support. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>the floating-point constant </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -1178,7 +1182,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api6Solver9mkPosZeroE8uint32_t8uint32_t">
 <span id="_CPPv3NK4cvc53api6Solver9mkPosZeroE8uint32_t8uint32_t"></span><span id="_CPPv2NK4cvc53api6Solver9mkPosZeroE8uint32_t8uint32_t"></span><span id="cvc5::api::Solver::mkPosZero__uint32_t.uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a5a25615eebfe5d3c661452c725af748a"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">mkPosZero</code><span class="sig-paren">(</span>uint32_t <em>exp</em>, uint32_t <em>sig</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver9mkPosZeroE8uint32_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a positive zero (+0.0) floating-point constant. Requires CVC4 to be compiled with SymFPU support. <dl class="simple">
+<dd><p>Create a positive zero (+0.0) floating-point constant. Requires cvc5 to be compiled with SymFPU support. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>the floating-point constant </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -1193,7 +1197,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api6Solver9mkNegZeroE8uint32_t8uint32_t">
 <span id="_CPPv3NK4cvc53api6Solver9mkNegZeroE8uint32_t8uint32_t"></span><span id="_CPPv2NK4cvc53api6Solver9mkNegZeroE8uint32_t8uint32_t"></span><span id="cvc5::api::Solver::mkNegZero__uint32_t.uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a8afa8693ad7cf37f1c7347c3d43d1ba7"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">mkNegZero</code><span class="sig-paren">(</span>uint32_t <em>exp</em>, uint32_t <em>sig</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver9mkNegZeroE8uint32_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a negative zero (-0.0) floating-point constant. Requires CVC4 to be compiled with SymFPU support. <dl class="simple">
+<dd><p>Create a negative zero (-0.0) floating-point constant. Requires cvc5 to be compiled with SymFPU support. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>the floating-point constant </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -1257,7 +1261,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api6Solver15mkFloatingPointE8uint32_t8uint32_t4Term">
 <span id="_CPPv3NK4cvc53api6Solver15mkFloatingPointE8uint32_t8uint32_t4Term"></span><span id="_CPPv2NK4cvc53api6Solver15mkFloatingPointE8uint32_t8uint32_t4Term"></span><span id="cvc5::api::Solver::mkFloatingPoint__uint32_t.uint32_t.TermC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a7d849e26964d18f59b9675924e07f71b"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">mkFloatingPoint</code><span class="sig-paren">(</span>uint32_t <em>exp</em>, uint32_t <em>sig</em>, <a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <em>val</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver15mkFloatingPointE8uint32_t8uint32_t4Term" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a floating-point constant (requires CVC4 to be compiled with symFPU support). <dl class="simple">
+<dd><p>Create a floating-point constant (requires cvc5 to be compiled with symFPU support). <dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">exp</span></code>: Size of the exponent </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sig</span></code>: Size of the significand </p></li>
@@ -1845,6 +1849,24 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api6Solver11declarePoolERKNSt6stringERK4SortRKNSt6vectorI4TermEE">
+<span id="_CPPv3NK4cvc53api6Solver11declarePoolERKNSt6stringERK4SortRKNSt6vectorI4TermEE"></span><span id="_CPPv2NK4cvc53api6Solver11declarePoolERKNSt6stringERK4SortRKNSt6vectorI4TermEE"></span><span id="cvc5::api::Solver::declarePool__ssCR.SortCR.std::vector:Term:CRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1ae3a37a4629d843963f0dcb0410de8e6c"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">declarePool</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>symbol</em>, <em class="property">const</em> <a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort">Sort</a> &amp;<em>sort</em>, <em class="property">const</em> std::vector&lt;<a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a>&gt; &amp;<em>initValue</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver11declarePoolERKNSt6stringERK4SortRKNSt6vectorI4TermEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Declare a symbolic pool of terms with the given initial value. SMT-LIB: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span> <span class="n">declare</span><span class="o">-</span><span class="n">pool</span> <span class="o">&lt;</span><span class="n">symbol</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">sort</span><span class="o">&gt;</span> <span class="p">(</span> <span class="o">&lt;</span><span class="n">term</span><span class="o">&gt;*</span> <span class="p">)</span> <span class="p">)</span>
+<span class="o">*</span>
+</pre></div>
+</div>
+ <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">symbol</span></code>: The name of the pool </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sort</span></code>: The sort of the elements of the pool. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">initValue</span></code>: The initial value of the pool </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api6Solver3popE8uint32_t">
 <span id="_CPPv3NK4cvc53api6Solver3popE8uint32_t"></span><span id="_CPPv2NK4cvc53api6Solver3popE8uint32_t"></span><span id="cvc5::api::Solver::pop__uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1ae9af7321bcde40d9c46a2f9e59772a32"></span>void <code class="sig-name descname">pop</code><span class="sig-paren">(</span>uint32_t <em>nscopes</em> = 1<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver3popE8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Pop (a) level(s) from the assertion stack. SMT-LIB: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span> <span class="n">pop</span> <span class="o">&lt;</span><span class="n">numeral</span><span class="o">&gt;</span> <span class="p">)</span>
@@ -2277,7 +2299,7 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api6Solver13getStatisticsEv">
-<span id="_CPPv3NK4cvc53api6Solver13getStatisticsEv"></span><span id="_CPPv2NK4cvc53api6Solver13getStatisticsEv"></span><span id="cvc5::api::Solver::getStatisticsC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a1a26c751dce47d17fabe91a7cd3a0275"></span>Statistics <code class="sig-name descname">getStatistics</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver13getStatisticsEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK4cvc53api6Solver13getStatisticsEv"></span><span id="_CPPv2NK4cvc53api6Solver13getStatisticsEv"></span><span id="cvc5::api::Solver::getStatisticsC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a1a26c751dce47d17fabe91a7cd3a0275"></span><a class="reference internal" href="statistics.html#_CPPv4N4cvc53api10StatisticsE" title="cvc5::api::Statistics">Statistics</a> <code class="sig-name descname">getStatistics</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver13getStatisticsEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns a snapshot of the current state of the statistic values of this solver. The returned object is completely decoupled from the solver and will not change when the solver is used again. </p>
 </dd></dl>
 

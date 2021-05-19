@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../static/custom.css" type="text/css" />
 
   
   
@@ -32,6 +34,7 @@
         <script src="../static/jquery.js"></script>
         <script src="../static/underscore.js"></script>
         <script src="../static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../static/js/theme.js"></script>
 
@@ -85,27 +88,29 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../cpp.html">C++ API Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../cpp.html#class-hierarchy">Class Hierarchy</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../cpp.html#full-api-documentation">Full API Documentation</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="datatype.html">Datatype</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeconstructor.html">DatatypeConstructor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeconstructordecl.html">DatatypeConstructorDecl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypedecl.html">DatatypeDecl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeselector.html">DatatypeSelector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="grammar.html">Grammar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="kind.html">Kind</a></li>
-<li class="toctree-l3"><a class="reference internal" href="op.html">Op</a></li>
-<li class="toctree-l3"><a class="reference internal" href="result.html">Result</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">RoundingMode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="solver.html">Solver</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sort.html">Sort</a></li>
-<li class="toctree-l3"><a class="reference internal" href="term.html">Term</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="cpp.html">C++ API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="datatype.html">Datatype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypeconstructor.html">DatatypeConstructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypeconstructordecl.html">DatatypeConstructorDecl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypedecl.html">DatatypeDecl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypeselector.html">DatatypeSelector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grammar.html">Grammar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kind.html">Kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="op.html">Op</a></li>
+<li class="toctree-l2"><a class="reference internal" href="result.html">Result</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RoundingMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solver.html">Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sort.html">Sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="term.html">Term</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp.html#class-hierarchy">Class Hierarchy</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Python API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../options.html">Commandline Options</a></li>
 </ul>
 
             
@@ -154,7 +159,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../cpp.html">C++ API Documentation</a> &raquo;</li>
+          <li><a href="cpp.html">C++ API Documentation</a> &raquo;</li>
         
       <li>RoundingMode</li>
     
@@ -177,50 +182,62 @@
             
   <div class="section" id="roundingmode">
 <h1>RoundingMode<a class="headerlink" href="#roundingmode" title="Permalink to this headline">¶</a></h1>
-<dl class="cpp struct">
-<dt id="_CPPv4N4cvc53api24RoundingModeHashFunctionE">
-<span id="_CPPv3N4cvc53api24RoundingModeHashFunctionE"></span><span id="_CPPv2N4cvc53api24RoundingModeHashFunctionE"></span><span id="cvc5::api::RoundingModeHashFunction"></span><span class="target" id="structcvc5_1_1api_1_1RoundingModeHashFunction"></span><em class="property">struct </em><code class="sig-prename descclassname">cvc5::api<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">RoundingModeHashFunction</code><a class="headerlink" href="#_CPPv4N4cvc53api24RoundingModeHashFunctionE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Hash function for RoundingModes. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
-<dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api24RoundingModeHashFunctionclERK12RoundingMode">
-<span id="_CPPv3NK4cvc53api24RoundingModeHashFunctionclERK12RoundingMode"></span><span id="_CPPv2NK4cvc53api24RoundingModeHashFunctionclERK12RoundingMode"></span><span id="cvc5::api::RoundingModeHashFunction::call-operator__RoundingModeCRC"></span><span class="target" id="structcvc5_1_1api_1_1RoundingModeHashFunction_1aa12fefecf2da491c2629778d642351da"></span><em class="property">inline</em> size_t <code class="sig-name descname">operator()</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4cvc53api12RoundingModeE" title="cvc5::api::RoundingMode">RoundingMode</a> &amp;<em>rm</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api24RoundingModeHashFunctionclERK12RoundingMode" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</div>
-</dd></dl>
-
 <dl class="cpp enum">
 <dt id="_CPPv4N4cvc53api12RoundingModeE">
 <span id="_CPPv3N4cvc53api12RoundingModeE"></span><span id="_CPPv2N4cvc53api12RoundingModeE"></span><span class="target" id="namespacecvc5_1_1api_1a0563b0b6512e9a863780025825bd6137"></span><em class="property">enum </em><code class="sig-prename descclassname">cvc5::api<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">RoundingMode</code><a class="headerlink" href="#_CPPv4N4cvc53api12RoundingModeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A CVC4 floating point rounding mode. </p>
+<dd><p>Rounding modes for floating-point numbers.</p>
+<p>For many floating-point operations, infinitely precise results may not be representable with the number of available bits. Thus, the results are rounded in a certain way to one of the representable floating-point numbers.</p>
+<p><p><p>These rounding modes directly follow the SMT-LIB theory for floating-point
+arithmetic, which in turn is based on IEEE Standard 754 <span id="id1">[<a class="reference internal" href="../references.html#id2">IEE19</a>]</span>.
+The rounding modes are specified in Sections 4.3.1 and 4.3.2 of the IEEE
+Standard 754.</p>
+</p>
+ </p>
 <p><em>Values:</em></p>
 <dl class="cpp enumerator">
 <dt id="_CPPv4N4cvc53api12RoundingMode26ROUND_NEAREST_TIES_TO_EVENE">
 <span id="_CPPv3N4cvc53api12RoundingMode26ROUND_NEAREST_TIES_TO_EVENE"></span><span id="_CPPv2N4cvc53api12RoundingMode26ROUND_NEAREST_TIES_TO_EVENE"></span><span class="target" id="namespacecvc5_1_1api_1a0563b0b6512e9a863780025825bd6137a87c9c842c95fdae4b37f4d0ef063fa9a"></span><em class="property">enumerator </em><code class="sig-name descname">ROUND_NEAREST_TIES_TO_EVEN</code><a class="headerlink" href="#_CPPv4N4cvc53api12RoundingMode26ROUND_NEAREST_TIES_TO_EVENE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Round to the nearest even number. If the two nearest floating-point numbers bracketing an unrepresentable infinitely precise result are equally near, the one with an even least significant digit will be delivered. </p>
+</dd></dl>
 
 <dl class="cpp enumerator">
 <dt id="_CPPv4N4cvc53api12RoundingMode21ROUND_TOWARD_POSITIVEE">
 <span id="_CPPv3N4cvc53api12RoundingMode21ROUND_TOWARD_POSITIVEE"></span><span id="_CPPv2N4cvc53api12RoundingMode21ROUND_TOWARD_POSITIVEE"></span><span class="target" id="namespacecvc5_1_1api_1a0563b0b6512e9a863780025825bd6137aac6f63d791fc64548af01158088db326"></span><em class="property">enumerator </em><code class="sig-name descname">ROUND_TOWARD_POSITIVE</code><a class="headerlink" href="#_CPPv4N4cvc53api12RoundingMode21ROUND_TOWARD_POSITIVEE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Round towards positive infinity (+oo). The result shall be the format’s floating-point number (possibly +oo) closest to and no less than the infinitely precise result. </p>
+</dd></dl>
 
 <dl class="cpp enumerator">
 <dt id="_CPPv4N4cvc53api12RoundingMode21ROUND_TOWARD_NEGATIVEE">
 <span id="_CPPv3N4cvc53api12RoundingMode21ROUND_TOWARD_NEGATIVEE"></span><span id="_CPPv2N4cvc53api12RoundingMode21ROUND_TOWARD_NEGATIVEE"></span><span class="target" id="namespacecvc5_1_1api_1a0563b0b6512e9a863780025825bd6137aff9668d87615c94b8fec48c805233f3c"></span><em class="property">enumerator </em><code class="sig-name descname">ROUND_TOWARD_NEGATIVE</code><a class="headerlink" href="#_CPPv4N4cvc53api12RoundingMode21ROUND_TOWARD_NEGATIVEE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Round towards negative infinity (-oo). The result shall be the format’s floating-point number (possibly -oo) closest to and no less than the infinitely precise result. </p>
+</dd></dl>
 
 <dl class="cpp enumerator">
 <dt id="_CPPv4N4cvc53api12RoundingMode17ROUND_TOWARD_ZEROE">
 <span id="_CPPv3N4cvc53api12RoundingMode17ROUND_TOWARD_ZEROE"></span><span id="_CPPv2N4cvc53api12RoundingMode17ROUND_TOWARD_ZEROE"></span><span class="target" id="namespacecvc5_1_1api_1a0563b0b6512e9a863780025825bd6137a44237a2bbaea25c45b38f136cebe5bce"></span><em class="property">enumerator </em><code class="sig-name descname">ROUND_TOWARD_ZERO</code><a class="headerlink" href="#_CPPv4N4cvc53api12RoundingMode17ROUND_TOWARD_ZEROE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Round towards zero. The result shall be the format’s floating-point number closest to and no greater in magnitude than the infinitely precise result. </p>
+</dd></dl>
 
 <dl class="cpp enumerator">
 <dt id="_CPPv4N4cvc53api12RoundingMode26ROUND_NEAREST_TIES_TO_AWAYE">
 <span id="_CPPv3N4cvc53api12RoundingMode26ROUND_NEAREST_TIES_TO_AWAYE"></span><span id="_CPPv2N4cvc53api12RoundingMode26ROUND_NEAREST_TIES_TO_AWAYE"></span><span class="target" id="namespacecvc5_1_1api_1a0563b0b6512e9a863780025825bd6137a7c37fd313e34d98dc3de1e21224351ec"></span><em class="property">enumerator </em><code class="sig-name descname">ROUND_NEAREST_TIES_TO_AWAY</code><a class="headerlink" href="#_CPPv4N4cvc53api12RoundingMode26ROUND_NEAREST_TIES_TO_AWAYE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Round to the nearest number away from zero. If the two nearest floating-point numbers bracketing an unrepresentable infinitely precise result are equally near, the one with larger magnitude will be selected. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp struct">
+<dt id="_CPPv4IENSt4hashIN4cvc53api12RoundingModeEEE">
+<span id="_CPPv3IENSt4hashIN4cvc53api12RoundingModeEEE"></span><span id="_CPPv2IENSt4hashIN4cvc53api12RoundingModeEEE"></span>template&lt;&gt;<br /><span class="target" id="structstd_1_1hash_3_01cvc5_1_1api_1_1RoundingMode_01_4"></span><em class="property">struct </em><code class="sig-prename descclassname">std<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">hash</code>&lt;cvc5::api::<a class="reference internal" href="#_CPPv4N4cvc53api12RoundingModeE" title="cvc5::api::RoundingMode">RoundingMode</a>&gt;<a class="headerlink" href="#_CPPv4IENSt4hashIN4cvc53api12RoundingModeEEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Hash function for RoundingModes. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4NKSt4hashIN4cvc53api12RoundingModeEEclEN4cvc53api12RoundingModeE">
+<span id="_CPPv3NKSt4hashIN4cvc53api12RoundingModeEEclEN4cvc53api12RoundingModeE"></span><span id="_CPPv2NKSt4hashIN4cvc53api12RoundingModeEEclEN4cvc53api12RoundingModeE"></span><span id="std::hash:cvc5::api::RoundingMode:::call-operator__cvc5::api::RoundingModeC"></span><span class="target" id="structstd_1_1hash_3_01cvc5_1_1api_1_1RoundingMode_01_4_1a29a0185356c6844472635dac7a0a0408"></span>size_t <code class="sig-name descname">operator()</code><span class="sig-paren">(</span>cvc5::api::<a class="reference internal" href="#_CPPv4N4cvc53api12RoundingModeE" title="cvc5::api::RoundingMode">RoundingMode</a> <em>rm</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NKSt4hashIN4cvc53api12RoundingModeEEclEN4cvc53api12RoundingModeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
+</div>
 </dd></dl>
 
 </div>
