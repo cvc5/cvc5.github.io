@@ -29,8 +29,8 @@ authors:
 
 artifact:
   readme: https://cvc4.cs.stanford.edu/papers/FMCAD2021-intblast/README
-  archive: https://cvc4.cs.stanford.edu/papers/FMCAD2021-intblast/artifact.tar.gz
-  ext: tar.gz
+  archive: https://cvc4.cs.stanford.edu/papers/FMCAD2021-intblast/artifact.tar.xz
+  ext: tar.xz
   text: all materials
 ---
 A branch of cvc5 that contains the source code for the implementation is
