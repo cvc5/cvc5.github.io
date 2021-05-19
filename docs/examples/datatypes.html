@@ -1,0 +1,1052 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Datatypes &mdash; cvc5  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+        <script src="../static/jquery.js"></script>
+        <script src="../static/underscore.js"></script>
+        <script src="../static/doctools.js"></script>
+        <script src="../static/tabs.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Linear Arithmetic" href="lineararith.html" />
+    <link rel="prev" title="Hello World" href="helloworld.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> cvc5
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cpp/cpp.html">C++ API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Python API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="helloworld.html">Hello World</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Datatypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lineararith.html">Linear Arithmetic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../options.html">Commandline Options</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cvc5</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="examples.html">Examples</a> &raquo;</li>
+        
+      <li>Datatypes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/examples/datatypes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="datatypes">
+<h1>Datatypes<a class="headerlink" href="#datatypes" title="Permalink to this headline">¶</a></h1>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Java</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cm">/******************************************************************************</span>
+<span class="cm"> * Top contributors (to current version):</span>
+<span class="cm"> *   Aina Niemetz, Morgan Deters, Andrew Reynolds</span>
+<span class="cm"> *</span>
+<span class="cm"> * This file is part of the cvc5 project.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Copyright (c) 2009-2021 by the authors listed in the file AUTHORS</span>
+<span class="cm"> * in the top-level source directory and their institutional affiliations.</span>
+<span class="cm"> * All rights reserved.  See the file COPYING in the top-level source</span>
+<span class="cm"> * directory for licensing information.</span>
+<span class="cm"> * ****************************************************************************</span>
+<span class="cm"> *</span>
+<span class="cm"> * An example of using inductive datatypes in CVC4.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;cvc5/cvc5.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">cvc5</span><span class="o">::</span><span class="n">api</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">test</span><span class="p">(</span><span class="n">Solver</span><span class="o">&amp;</span> <span class="n">slv</span><span class="p">,</span> <span class="n">Sort</span><span class="o">&amp;</span> <span class="n">consListSort</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Now our old &quot;consListSpec&quot; is useless--the relevant information</span>
+  <span class="c1">// has been copied out, so we can throw that spec away.  We can get</span>
+  <span class="c1">// the complete spec for the datatype from the DatatypeSort, and</span>
+  <span class="c1">// this Datatype object has constructor symbols (and others) filled in.</span>
+
+  <span class="k">const</span> <span class="n">Datatype</span><span class="o">&amp;</span> <span class="n">consList</span> <span class="o">=</span> <span class="n">consListSort</span><span class="p">.</span><span class="n">getDatatype</span><span class="p">();</span>
+
+  <span class="c1">// t = cons 0 nil</span>
+  <span class="c1">//</span>
+  <span class="c1">// Here, consList[&quot;cons&quot;] gives you the DatatypeConstructor.  To get</span>
+  <span class="c1">// the constructor symbol for application, use .getConstructor(&quot;cons&quot;),</span>
+  <span class="c1">// which is equivalent to consList[&quot;cons&quot;].getConstructor().  Note that</span>
+  <span class="c1">// &quot;nil&quot; is a constructor too, so it needs to be applied with</span>
+  <span class="c1">// APPLY_CONSTRUCTOR, even though it has no arguments.</span>
+  <span class="n">Term</span> <span class="n">t</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span>
+      <span class="n">APPLY_CONSTRUCTOR</span><span class="p">,</span>
+      <span class="n">consList</span><span class="p">.</span><span class="n">getConstructorTerm</span><span class="p">(</span><span class="s">&quot;cons&quot;</span><span class="p">),</span>
+      <span class="n">slv</span><span class="p">.</span><span class="n">mkInteger</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+      <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">APPLY_CONSTRUCTOR</span><span class="p">,</span> <span class="n">consList</span><span class="p">.</span><span class="n">getConstructorTerm</span><span class="p">(</span><span class="s">&quot;nil&quot;</span><span class="p">)));</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;t is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot;sort of cons is &quot;</span>
+            <span class="o">&lt;&lt;</span> <span class="n">consList</span><span class="p">.</span><span class="n">getConstructorTerm</span><span class="p">(</span><span class="s">&quot;cons&quot;</span><span class="p">).</span><span class="n">getSort</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot;sort of nil is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">consList</span><span class="p">.</span><span class="n">getConstructorTerm</span><span class="p">(</span><span class="s">&quot;nil&quot;</span><span class="p">).</span><span class="n">getSort</span><span class="p">()</span>
+            <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="c1">// t2 = head(cons 0 nil), and of course this can be evaluated</span>
+  <span class="c1">//</span>
+  <span class="c1">// Here we first get the DatatypeConstructor for cons (with</span>
+  <span class="c1">// consList[&quot;cons&quot;]) in order to get the &quot;head&quot; selector symbol</span>
+  <span class="c1">// to apply.</span>
+  <span class="n">Term</span> <span class="n">t2</span> <span class="o">=</span>
+      <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">APPLY_SELECTOR</span><span class="p">,</span> <span class="n">consList</span><span class="p">[</span><span class="s">&quot;cons&quot;</span><span class="p">].</span><span class="n">getSelectorTerm</span><span class="p">(</span><span class="s">&quot;head&quot;</span><span class="p">),</span> <span class="n">t</span><span class="p">);</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;t2 is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">t2</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot;simplify(t2) is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">slv</span><span class="p">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+            <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="c1">// You can also iterate over a Datatype to get all its constructors,</span>
+  <span class="c1">// and over a DatatypeConstructor to get all its &quot;args&quot; (selectors)</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">Datatype</span><span class="o">::</span><span class="n">const_iterator</span> <span class="n">i</span> <span class="o">=</span> <span class="n">consList</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">consList</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;ctor: &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">DatatypeConstructor</span><span class="o">::</span><span class="n">const_iterator</span> <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">).</span><span class="n">begin</span><span class="p">();</span> <span class="n">j</span> <span class="o">!=</span> <span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">).</span><span class="n">end</span><span class="p">();</span>
+         <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; + arg: &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">j</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="c1">// Alternatively, you can use for each loops.</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">consList</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;ctor: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="nl">s</span> <span class="p">:</span> <span class="n">c</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; + arg: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="c1">// You can also define parameterized datatypes.</span>
+  <span class="c1">// This example builds a simple parameterized list of sort T, with one</span>
+  <span class="c1">// constructor &quot;cons&quot;.</span>
+  <span class="n">Sort</span> <span class="n">sort</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkParamSort</span><span class="p">(</span><span class="s">&quot;T&quot;</span><span class="p">);</span>
+  <span class="n">DatatypeDecl</span> <span class="n">paramConsListSpec</span> <span class="o">=</span>
+      <span class="n">slv</span><span class="p">.</span><span class="n">mkDatatypeDecl</span><span class="p">(</span><span class="s">&quot;paramlist&quot;</span><span class="p">,</span>
+                         <span class="n">sort</span><span class="p">);</span>  <span class="c1">// give the datatype a name</span>
+  <span class="n">DatatypeConstructorDecl</span> <span class="n">paramCons</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkDatatypeConstructorDecl</span><span class="p">(</span><span class="s">&quot;cons&quot;</span><span class="p">);</span>
+  <span class="n">DatatypeConstructorDecl</span> <span class="n">paramNil</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkDatatypeConstructorDecl</span><span class="p">(</span><span class="s">&quot;nil&quot;</span><span class="p">);</span>
+  <span class="n">paramCons</span><span class="p">.</span><span class="n">addSelector</span><span class="p">(</span><span class="s">&quot;head&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="p">);</span>
+  <span class="n">paramCons</span><span class="p">.</span><span class="n">addSelectorSelf</span><span class="p">(</span><span class="s">&quot;tail&quot;</span><span class="p">);</span>
+  <span class="n">paramConsListSpec</span><span class="p">.</span><span class="n">addConstructor</span><span class="p">(</span><span class="n">paramCons</span><span class="p">);</span>
+  <span class="n">paramConsListSpec</span><span class="p">.</span><span class="n">addConstructor</span><span class="p">(</span><span class="n">paramNil</span><span class="p">);</span>
+
+  <span class="n">Sort</span> <span class="n">paramConsListSort</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkDatatypeSort</span><span class="p">(</span><span class="n">paramConsListSpec</span><span class="p">);</span>
+  <span class="n">Sort</span> <span class="n">paramConsIntListSort</span> <span class="o">=</span>
+      <span class="n">paramConsListSort</span><span class="p">.</span><span class="n">instantiate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Sort</span><span class="o">&gt;</span><span class="p">{</span><span class="n">slv</span><span class="p">.</span><span class="n">getIntegerSort</span><span class="p">()});</span>
+
+  <span class="k">const</span> <span class="n">Datatype</span><span class="o">&amp;</span> <span class="n">paramConsList</span> <span class="o">=</span> <span class="n">paramConsListSort</span><span class="p">.</span><span class="n">getDatatype</span><span class="p">();</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;parameterized datatype sort is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="n">DatatypeConstructor</span><span class="o">&amp;</span> <span class="nl">ctor</span> <span class="p">:</span> <span class="n">paramConsList</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;ctor: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">ctor</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="n">DatatypeSelector</span><span class="o">&amp;</span> <span class="nl">stor</span> <span class="p">:</span> <span class="n">ctor</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; + arg: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">stor</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">Term</span> <span class="n">a</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkConst</span><span class="p">(</span><span class="n">paramConsIntListSort</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;term &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; is of sort &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">a</span><span class="p">.</span><span class="n">getSort</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="n">Term</span> <span class="n">head_a</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span>
+      <span class="n">APPLY_SELECTOR</span><span class="p">,</span> <span class="n">paramConsList</span><span class="p">[</span><span class="s">&quot;cons&quot;</span><span class="p">].</span><span class="n">getSelectorTerm</span><span class="p">(</span><span class="s">&quot;head&quot;</span><span class="p">),</span> <span class="n">a</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;head_a is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">head_a</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; of sort &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">head_a</span><span class="p">.</span><span class="n">getSort</span><span class="p">()</span>
+            <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot;sort of cons is &quot;</span>
+            <span class="o">&lt;&lt;</span> <span class="n">paramConsList</span><span class="p">.</span><span class="n">getConstructorTerm</span><span class="p">(</span><span class="s">&quot;cons&quot;</span><span class="p">).</span><span class="n">getSort</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+            <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">Term</span> <span class="n">assertion</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">GT</span><span class="p">,</span> <span class="n">head_a</span><span class="p">,</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkInteger</span><span class="p">(</span><span class="mi">50</span><span class="p">));</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Assert &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">assertion</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">slv</span><span class="p">.</span><span class="n">assertFormula</span><span class="p">(</span><span class="n">assertion</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Expect sat.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;CVC4: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkSat</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">Solver</span> <span class="n">slv</span><span class="p">;</span>
+  <span class="c1">// This example builds a simple &quot;cons list&quot; of integers, with</span>
+  <span class="c1">// two constructors, &quot;cons&quot; and &quot;nil.&quot;</span>
+
+  <span class="c1">// Building a datatype consists of two steps.</span>
+  <span class="c1">// First, the datatype is specified.</span>
+  <span class="c1">// Second, it is &quot;resolved&quot; to an actual sort, at which point function</span>
+  <span class="c1">// symbols are assigned to its constructors, selectors, and testers.</span>
+
+  <span class="n">DatatypeDecl</span> <span class="n">consListSpec</span> <span class="o">=</span>
+      <span class="n">slv</span><span class="p">.</span><span class="n">mkDatatypeDecl</span><span class="p">(</span><span class="s">&quot;list&quot;</span><span class="p">);</span>  <span class="c1">// give the datatype a name</span>
+  <span class="n">DatatypeConstructorDecl</span> <span class="n">cons</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkDatatypeConstructorDecl</span><span class="p">(</span><span class="s">&quot;cons&quot;</span><span class="p">);</span>
+  <span class="n">cons</span><span class="p">.</span><span class="n">addSelector</span><span class="p">(</span><span class="s">&quot;head&quot;</span><span class="p">,</span> <span class="n">slv</span><span class="p">.</span><span class="n">getIntegerSort</span><span class="p">());</span>
+  <span class="n">cons</span><span class="p">.</span><span class="n">addSelectorSelf</span><span class="p">(</span><span class="s">&quot;tail&quot;</span><span class="p">);</span>
+  <span class="n">consListSpec</span><span class="p">.</span><span class="n">addConstructor</span><span class="p">(</span><span class="n">cons</span><span class="p">);</span>
+  <span class="n">DatatypeConstructorDecl</span> <span class="n">nil</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkDatatypeConstructorDecl</span><span class="p">(</span><span class="s">&quot;nil&quot;</span><span class="p">);</span>
+  <span class="n">consListSpec</span><span class="p">.</span><span class="n">addConstructor</span><span class="p">(</span><span class="n">nil</span><span class="p">);</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;spec is:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">consListSpec</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="c1">// Keep in mind that &quot;DatatypeDecl&quot; is the specification class for</span>
+  <span class="c1">// datatypes---&quot;DatatypeDecl&quot; is not itself a CVC4 Sort.</span>
+  <span class="c1">// Now that our Datatype is fully specified, we can get a Sort for it.</span>
+  <span class="c1">// This step resolves the &quot;SelfSort&quot; reference and creates</span>
+  <span class="c1">// symbols for all the constructors, etc.</span>
+
+  <span class="n">Sort</span> <span class="n">consListSort</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkDatatypeSort</span><span class="p">(</span><span class="n">consListSpec</span><span class="p">);</span>
+
+  <span class="n">test</span><span class="p">(</span><span class="n">slv</span><span class="p">,</span> <span class="n">consListSort</span><span class="p">);</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot;&gt;&gt;&gt; Alternatively, use declareDatatype&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="n">DatatypeConstructorDecl</span> <span class="n">cons2</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkDatatypeConstructorDecl</span><span class="p">(</span><span class="s">&quot;cons&quot;</span><span class="p">);</span>
+  <span class="n">cons2</span><span class="p">.</span><span class="n">addSelector</span><span class="p">(</span><span class="s">&quot;head&quot;</span><span class="p">,</span> <span class="n">slv</span><span class="p">.</span><span class="n">getIntegerSort</span><span class="p">());</span>
+  <span class="n">cons2</span><span class="p">.</span><span class="n">addSelectorSelf</span><span class="p">(</span><span class="s">&quot;tail&quot;</span><span class="p">);</span>
+  <span class="n">DatatypeConstructorDecl</span> <span class="n">nil2</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkDatatypeConstructorDecl</span><span class="p">(</span><span class="s">&quot;nil&quot;</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DatatypeConstructorDecl</span><span class="o">&gt;</span> <span class="n">ctors</span> <span class="o">=</span> <span class="p">{</span><span class="n">cons2</span><span class="p">,</span> <span class="n">nil2</span><span class="p">};</span>
+  <span class="n">Sort</span> <span class="n">consListSort2</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">declareDatatype</span><span class="p">(</span><span class="s">&quot;list2&quot;</span><span class="p">,</span> <span class="n">ctors</span><span class="p">);</span>
+  <span class="n">test</span><span class="p">(</span><span class="n">slv</span><span class="p">,</span> <span class="n">consListSort2</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cm">/******************************************************************************</span>
+<span class="cm"> * Top contributors (to current version):</span>
+<span class="cm"> *   Morgan Deters, Andres Noetzli, Andrew Reynolds</span>
+<span class="cm"> *</span>
+<span class="cm"> * This file is part of the cvc5 project.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Copyright (c) 2009-2021 by the authors listed in the file AUTHORS</span>
+<span class="cm"> * in the top-level source directory and their institutional affiliations.</span>
+<span class="cm"> * All rights reserved.  See the file COPYING in the top-level source</span>
+<span class="cm"> * directory for licensing information.</span>
+<span class="cm"> * ****************************************************************************</span>
+<span class="cm"> *</span>
+<span class="cm"> * An example of using inductive datatypes in CVC4 (Java version).</span>
+<span class="cm"> */</span>
+
+<span class="kn">import</span> <span class="nn">edu.stanford.CVC4.*</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Datatypes</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">loadLibrary</span><span class="p">(</span><span class="s">&quot;cvc4jni&quot;</span><span class="p">);</span>
+
+    <span class="n">ExprManager</span> <span class="n">em</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ExprManager</span><span class="p">();</span>
+    <span class="n">SmtEngine</span> <span class="n">smt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SmtEngine</span><span class="p">(</span><span class="n">em</span><span class="p">);</span>
+
+    <span class="c1">// This example builds a simple &quot;cons list&quot; of integers, with</span>
+    <span class="c1">// two constructors, &quot;cons&quot; and &quot;nil.&quot;</span>
+
+    <span class="c1">// Building a datatype consists of two steps.  First, the datatype</span>
+    <span class="c1">// is specified.  Second, it is &quot;resolved&quot;---at which point function</span>
+    <span class="c1">// symbols are assigned to its constructors, selectors, and testers.</span>
+
+    <span class="n">Datatype</span> <span class="n">consListSpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Datatype</span><span class="p">(</span><span class="n">em</span><span class="p">,</span> <span class="s">&quot;list&quot;</span><span class="p">);</span> <span class="c1">// give a name</span>
+    <span class="n">DatatypeConstructor</span> <span class="n">cons</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DatatypeConstructor</span><span class="p">(</span><span class="n">em</span><span class="p">,</span> <span class="s">&quot;cons&quot;</span><span class="p">);</span>
+    <span class="n">cons</span><span class="p">.</span><span class="na">addArg</span><span class="p">(</span><span class="s">&quot;head&quot;</span><span class="p">,</span> <span class="n">em</span><span class="p">.</span><span class="na">integerType</span><span class="p">());</span>
+    <span class="n">cons</span><span class="p">.</span><span class="na">addArg</span><span class="p">(</span><span class="s">&quot;tail&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">DatatypeSelfType</span><span class="p">());</span> <span class="c1">// a list</span>
+    <span class="n">consListSpec</span><span class="p">.</span><span class="na">addConstructor</span><span class="p">(</span><span class="n">cons</span><span class="p">);</span>
+    <span class="n">DatatypeConstructor</span> <span class="n">nil</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DatatypeConstructor</span><span class="p">(</span><span class="n">em</span><span class="p">,</span> <span class="s">&quot;nil&quot;</span><span class="p">);</span>
+    <span class="n">consListSpec</span><span class="p">.</span><span class="na">addConstructor</span><span class="p">(</span><span class="n">nil</span><span class="p">);</span>
+
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;spec is:&quot;</span><span class="p">);</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">consListSpec</span><span class="p">);</span>
+
+    <span class="c1">// Keep in mind that &quot;Datatype&quot; is the specification class for</span>
+    <span class="c1">// datatypes---&quot;Datatype&quot; is not itself a CVC4 Type.  Now that</span>
+    <span class="c1">// our Datatype is fully specified, we can get a Type for it.</span>
+    <span class="c1">// This step resolves the &quot;SelfType&quot; reference and creates</span>
+    <span class="c1">// symbols for all the constructors, etc.</span>
+
+    <span class="n">DatatypeType</span> <span class="n">consListType</span> <span class="o">=</span> <span class="n">em</span><span class="p">.</span><span class="na">mkDatatypeType</span><span class="p">(</span><span class="n">consListSpec</span><span class="p">);</span>
+
+    <span class="c1">// Now our old &quot;consListSpec&quot; is useless--the relevant information</span>
+    <span class="c1">// has been copied out, so we can throw that spec away.  We can get</span>
+    <span class="c1">// the complete spec for the datatype from the DatatypeType, and</span>
+    <span class="c1">// this Datatype object has constructor symbols (and others) filled in.</span>
+
+    <span class="n">Datatype</span> <span class="n">consList</span> <span class="o">=</span> <span class="n">consListType</span><span class="p">.</span><span class="na">getDatatype</span><span class="p">();</span>
+
+    <span class="c1">// e = cons 0 nil</span>
+    <span class="c1">//</span>
+    <span class="c1">// Here, consList.get(&quot;cons&quot;) gives you the DatatypeConstructor</span>
+    <span class="c1">// (just as consList[&quot;cons&quot;] does in C++).  To get the constructor</span>
+    <span class="c1">// symbol for application, use .getConstructor(&quot;cons&quot;), which is</span>
+    <span class="c1">// equivalent to consList.get(&quot;cons&quot;).getConstructor().  Note that</span>
+    <span class="c1">// &quot;nil&quot; is a constructor too, so it needs to be applied with</span>
+    <span class="c1">// APPLY_CONSTRUCTOR, even though it has no arguments.</span>
+    <span class="n">Expr</span> <span class="n">e</span> <span class="o">=</span> <span class="n">em</span><span class="p">.</span><span class="na">mkExpr</span><span class="p">(</span><span class="n">Kind</span><span class="p">.</span><span class="na">APPLY_CONSTRUCTOR</span><span class="p">,</span>
+                       <span class="n">consList</span><span class="p">.</span><span class="na">getConstructor</span><span class="p">(</span><span class="s">&quot;cons&quot;</span><span class="p">),</span>
+                       <span class="n">em</span><span class="p">.</span><span class="na">mkConst</span><span class="p">(</span><span class="k">new</span> <span class="n">Rational</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
+                       <span class="n">em</span><span class="p">.</span><span class="na">mkExpr</span><span class="p">(</span><span class="n">Kind</span><span class="p">.</span><span class="na">APPLY_CONSTRUCTOR</span><span class="p">,</span>
+                                 <span class="n">consList</span><span class="p">.</span><span class="na">getConstructor</span><span class="p">(</span><span class="s">&quot;nil&quot;</span><span class="p">)));</span>
+
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;e is &quot;</span> <span class="o">+</span> <span class="n">e</span><span class="p">);</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;type of cons is &quot;</span> <span class="o">+</span>
+                       <span class="n">consList</span><span class="p">.</span><span class="na">getConstructor</span><span class="p">(</span><span class="s">&quot;cons&quot;</span><span class="p">).</span><span class="na">getType</span><span class="p">());</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;type of nil is &quot;</span> <span class="o">+</span>
+                       <span class="n">consList</span><span class="p">.</span><span class="na">getConstructor</span><span class="p">(</span><span class="s">&quot;nil&quot;</span><span class="p">).</span><span class="na">getType</span><span class="p">());</span>
+
+    <span class="c1">// e2 = head(cons 0 nil), and of course this can be evaluated</span>
+    <span class="c1">//</span>
+    <span class="c1">// Here we first get the DatatypeConstructor for cons (with</span>
+    <span class="c1">// consList.get(&quot;cons&quot;) in order to get the &quot;head&quot; selector</span>
+    <span class="c1">// symbol to apply.</span>
+    <span class="n">Expr</span> <span class="n">e2</span> <span class="o">=</span> <span class="n">em</span><span class="p">.</span><span class="na">mkExpr</span><span class="p">(</span><span class="n">Kind</span><span class="p">.</span><span class="na">APPLY_SELECTOR</span><span class="p">,</span>
+                        <span class="n">consList</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;cons&quot;</span><span class="p">).</span><span class="na">getSelector</span><span class="p">(</span><span class="s">&quot;head&quot;</span><span class="p">),</span>
+                        <span class="n">e</span><span class="p">);</span>
+
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;e2 is &quot;</span> <span class="o">+</span> <span class="n">e2</span><span class="p">);</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;simplify(e2) is &quot;</span> <span class="o">+</span> <span class="n">smt</span><span class="p">.</span><span class="na">simplify</span><span class="p">(</span><span class="n">e2</span><span class="p">));</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+    <span class="c1">// You can also iterate over a Datatype to get all its constructors,</span>
+    <span class="c1">// and over a DatatypeConstructor to get all its &quot;args&quot; (selectors)</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">DatatypeConstructor</span><span class="o">&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">consList</span><span class="p">.</span><span class="na">iterator</span><span class="p">();</span> <span class="n">i</span><span class="p">.</span><span class="na">hasNext</span><span class="p">();)</span> <span class="p">{</span>
+      <span class="n">DatatypeConstructor</span> <span class="n">ctor</span> <span class="o">=</span> <span class="n">i</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;ctor: &quot;</span> <span class="o">+</span> <span class="n">ctor</span><span class="p">);</span>
+      <span class="k">for</span><span class="p">(</span><span class="n">Iterator</span> <span class="n">j</span> <span class="o">=</span> <span class="n">ctor</span><span class="p">.</span><span class="na">iterator</span><span class="p">();</span> <span class="n">j</span><span class="p">.</span><span class="na">hasNext</span><span class="p">();)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot; + arg: &quot;</span> <span class="o">+</span> <span class="n">j</span><span class="p">.</span><span class="na">next</span><span class="p">());</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">###############################################################################</span>
+<span class="c1"># Top contributors (to current version):</span>
+<span class="c1">#   Makai Mann, Andrew Reynolds, Aina Niemetz</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of the cvc5 project.</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright (c) 2009-2021 by the authors listed in the file AUTHORS</span>
+<span class="c1"># in the top-level source directory and their institutional affiliations.</span>
+<span class="c1"># All rights reserved.  See the file COPYING in the top-level source</span>
+<span class="c1"># directory for licensing information.</span>
+<span class="c1"># #############################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># A simple demonstration of the solving capabilities of the cvc5 datatypes</span>
+<span class="c1"># solver through the Python API. This is a direct translation of</span>
+<span class="c1"># datatypes-new.cpp.</span>
+<span class="c1">##</span>
+
+<span class="kn">import</span> <span class="nn">pycvc5</span>
+<span class="kn">from</span> <span class="nn">pycvc5</span> <span class="kn">import</span> <span class="n">kinds</span>
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">slv</span><span class="p">,</span> <span class="n">consListSort</span><span class="p">):</span>
+    <span class="c1"># Now our old &quot;consListSpec&quot; is useless--the relevant information</span>
+    <span class="c1"># has been copied out, so we can throw that spec away.  We can get</span>
+    <span class="c1"># the complete spec for the datatype from the DatatypeSort, and</span>
+    <span class="c1"># this Datatype object has constructor symbols (and others) filled in.</span>
+
+    <span class="n">consList</span> <span class="o">=</span> <span class="n">consListSort</span><span class="o">.</span><span class="n">getDatatype</span><span class="p">()</span>
+
+    <span class="c1"># t = cons 0 nil</span>
+    <span class="c1">#</span>
+    <span class="c1"># Here, consList[&quot;cons&quot;] gives you the DatatypeConstructor.  To get</span>
+    <span class="c1"># the constructor symbol for application, use .getConstructor(&quot;cons&quot;),</span>
+    <span class="c1"># which is equivalent to consList[&quot;cons&quot;].getConstructor().  Note that</span>
+    <span class="c1"># &quot;nil&quot; is a constructor too</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">ApplyConstructor</span><span class="p">,</span> <span class="n">consList</span><span class="o">.</span><span class="n">getConstructorTerm</span><span class="p">(</span><span class="s2">&quot;cons&quot;</span><span class="p">),</span>
+                   <span class="n">slv</span><span class="o">.</span><span class="n">mkInteger</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                   <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">ApplyConstructor</span><span class="p">,</span> <span class="n">consList</span><span class="o">.</span><span class="n">getConstructorTerm</span><span class="p">(</span><span class="s2">&quot;nil&quot;</span><span class="p">)))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t is </span><span class="si">{}</span><span class="se">\n</span><span class="s2">sort of cons is </span><span class="si">{}</span><span class="se">\n</span><span class="s2"> sort of nil is </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">t</span><span class="p">,</span>
+        <span class="n">consList</span><span class="o">.</span><span class="n">getConstructorTerm</span><span class="p">(</span><span class="s2">&quot;cons&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getSort</span><span class="p">(),</span>
+        <span class="n">consList</span><span class="o">.</span><span class="n">getConstructorTerm</span><span class="p">(</span><span class="s2">&quot;nil&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getSort</span><span class="p">()))</span>
+
+    <span class="c1"># t2 = head(cons 0 nil), and of course this can be evaluated</span>
+    <span class="c1">#</span>
+    <span class="c1"># Here we first get the DatatypeConstructor for cons (with</span>
+    <span class="c1"># consList[&quot;cons&quot;]) in order to get the &quot;head&quot; selector symbol</span>
+    <span class="c1"># to apply.</span>
+
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">ApplySelector</span><span class="p">,</span> <span class="n">consList</span><span class="p">[</span><span class="s2">&quot;cons&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">getSelectorTerm</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">),</span> <span class="n">t</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t2 is </span><span class="si">{}</span><span class="se">\n</span><span class="s2">simplify(t2) is </span><span class="si">{}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">slv</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">t2</span><span class="p">)))</span>
+
+    <span class="c1"># You can also iterate over a Datatype to get all its constructors,</span>
+    <span class="c1"># and over a DatatypeConstructor to get all its &quot;args&quot; (selectors)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">consList</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ctor:&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; + args:&quot;</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+
+    <span class="c1"># You can also define parameterized datatypes.</span>
+    <span class="c1"># This example builds a simple parameterized list of sort T, with one</span>
+    <span class="c1"># constructor &quot;cons&quot;.</span>
+    <span class="n">sort</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkParamSort</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+    <span class="n">paramConsListSpec</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkDatatypeDecl</span><span class="p">(</span><span class="s2">&quot;paramlist&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="p">)</span>
+    <span class="n">paramCons</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkDatatypeConstructorDecl</span><span class="p">(</span><span class="s2">&quot;cons&quot;</span><span class="p">)</span>
+    <span class="n">paramNil</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkDatatypeConstructorDecl</span><span class="p">(</span><span class="s2">&quot;nil&quot;</span><span class="p">)</span>
+    <span class="n">paramCons</span><span class="o">.</span><span class="n">addSelector</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="p">)</span>
+    <span class="n">paramCons</span><span class="o">.</span><span class="n">addSelectorSelf</span><span class="p">(</span><span class="s2">&quot;tail&quot;</span><span class="p">)</span>
+    <span class="n">paramConsListSpec</span><span class="o">.</span><span class="n">addConstructor</span><span class="p">(</span><span class="n">paramCons</span><span class="p">)</span>
+    <span class="n">paramConsListSpec</span><span class="o">.</span><span class="n">addConstructor</span><span class="p">(</span><span class="n">paramNil</span><span class="p">)</span>
+
+    <span class="n">paramConsListSort</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkDatatypeSort</span><span class="p">(</span><span class="n">paramConsListSpec</span><span class="p">)</span>
+    <span class="n">paramConsIntListSort</span> <span class="o">=</span> <span class="n">paramConsListSort</span><span class="o">.</span><span class="n">instantiate</span><span class="p">([</span><span class="n">slv</span><span class="o">.</span><span class="n">getIntegerSort</span><span class="p">()])</span>
+    <span class="n">paramConsList</span> <span class="o">=</span> <span class="n">paramConsListSort</span><span class="o">.</span><span class="n">getDatatype</span><span class="p">()</span>
+
+    <span class="n">a</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkConst</span><span class="p">(</span><span class="n">paramConsIntListSort</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;term </span><span class="si">{}</span><span class="s2"> is of sort </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">getSort</span><span class="p">()))</span>
+
+    <span class="n">head_a</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">ApplySelector</span><span class="p">,</span> <span class="n">paramConsList</span><span class="p">[</span><span class="s2">&quot;cons&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">getSelectorTerm</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">),</span> <span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;head_a is </span><span class="si">{}</span><span class="s2"> of sort </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">head_a</span><span class="p">,</span> <span class="n">head_a</span><span class="o">.</span><span class="n">getSort</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sort of cons is&quot;</span><span class="p">,</span> <span class="n">paramConsList</span><span class="o">.</span><span class="n">getConstructorTerm</span><span class="p">(</span><span class="s2">&quot;cons&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getSort</span><span class="p">())</span>
+
+    <span class="n">assertion</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Gt</span><span class="p">,</span> <span class="n">head_a</span><span class="p">,</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkInteger</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Assert&quot;</span><span class="p">,</span> <span class="n">assertion</span><span class="p">)</span>
+    <span class="n">slv</span><span class="o">.</span><span class="n">assertFormula</span><span class="p">(</span><span class="n">assertion</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expect sat.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cvc5:&quot;</span><span class="p">,</span> <span class="n">slv</span><span class="o">.</span><span class="n">checkSat</span><span class="p">())</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">slv</span> <span class="o">=</span> <span class="n">pycvc5</span><span class="o">.</span><span class="n">Solver</span><span class="p">()</span>
+
+    <span class="c1"># This example builds a simple &quot;cons list&quot; of integers, with</span>
+    <span class="c1"># two constructors, &quot;cons&quot; and &quot;nil.&quot;</span>
+
+    <span class="c1"># Building a datatype consists of two steps.</span>
+    <span class="c1"># First, the datatype is specified.</span>
+    <span class="c1"># Second, it is &quot;resolved&quot; to an actual sort, at which point function</span>
+    <span class="c1"># symbols are assigned to its constructors, selectors, and testers.</span>
+
+    <span class="n">consListSpec</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkDatatypeDecl</span><span class="p">(</span><span class="s2">&quot;list&quot;</span><span class="p">)</span> <span class="c1"># give the datatype a name</span>
+    <span class="n">cons</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkDatatypeConstructorDecl</span><span class="p">(</span><span class="s2">&quot;cons&quot;</span><span class="p">)</span>
+    <span class="n">cons</span><span class="o">.</span><span class="n">addSelector</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">,</span> <span class="n">slv</span><span class="o">.</span><span class="n">getIntegerSort</span><span class="p">())</span>
+    <span class="n">cons</span><span class="o">.</span><span class="n">addSelectorSelf</span><span class="p">(</span><span class="s2">&quot;tail&quot;</span><span class="p">)</span>
+    <span class="n">consListSpec</span><span class="o">.</span><span class="n">addConstructor</span><span class="p">(</span><span class="n">cons</span><span class="p">)</span>
+    <span class="n">nil</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkDatatypeConstructorDecl</span><span class="p">(</span><span class="s2">&quot;nil&quot;</span><span class="p">)</span>
+    <span class="n">consListSpec</span><span class="o">.</span><span class="n">addConstructor</span><span class="p">(</span><span class="n">nil</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;spec is </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">consListSpec</span><span class="p">))</span>
+
+    <span class="c1"># Keep in mind that &quot;DatatypeDecl&quot; is the specification class for</span>
+    <span class="c1"># datatypes---&quot;DatatypeDecl&quot; is not itself a cvc5 Sort.</span>
+    <span class="c1"># Now that our Datatype is fully specified, we can get a Sort for it.</span>
+    <span class="c1"># This step resolves the &quot;SelfSort&quot; reference and creates</span>
+    <span class="c1"># symbols for all the constructors, etc.</span>
+
+    <span class="n">consListSort</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkDatatypeSort</span><span class="p">(</span><span class="n">consListSpec</span><span class="p">)</span>
+    <span class="n">test</span><span class="p">(</span><span class="n">slv</span><span class="p">,</span> <span class="n">consListSort</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;### Alternatively, use declareDatatype&quot;</span><span class="p">)</span>
+
+    <span class="n">cons2</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkDatatypeConstructorDecl</span><span class="p">(</span><span class="s2">&quot;cons&quot;</span><span class="p">)</span>
+    <span class="n">cons2</span><span class="o">.</span><span class="n">addSelector</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">,</span> <span class="n">slv</span><span class="o">.</span><span class="n">getIntegerSort</span><span class="p">())</span>
+    <span class="n">cons2</span><span class="o">.</span><span class="n">addSelectorSelf</span><span class="p">(</span><span class="s2">&quot;tail&quot;</span><span class="p">)</span>
+    <span class="n">nil2</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkDatatypeConstructorDecl</span><span class="p">(</span><span class="s2">&quot;nil&quot;</span><span class="p">)</span>
+    <span class="n">ctors</span> <span class="o">=</span> <span class="p">[</span><span class="n">cons2</span><span class="p">,</span> <span class="n">nil2</span><span class="p">]</span>
+    <span class="n">consListSort2</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">declareDatatype</span><span class="p">(</span><span class="s2">&quot;list2&quot;</span><span class="p">,</span> <span class="n">ctors</span><span class="p">)</span>
+    <span class="n">test</span><span class="p">(</span><span class="n">slv</span><span class="p">,</span> <span class="n">consListSort2</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="lineararith.html" class="btn btn-neutral float-right" title="Linear Arithmetic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="helloworld.html" class="btn btn-neutral float-left" title="Hello World" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, The Authors of cvc5.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
