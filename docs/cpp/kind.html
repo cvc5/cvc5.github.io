@@ -184,7 +184,7 @@
 <h1>Kind<a class="headerlink" href="#kind" title="Permalink to this headline">¶</a></h1>
 <p>Every <a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Term</span></code></a> has a kind which represents its type,
 for example whether it is an equality (<a class="reference internal" href="#_CPPv4N4cvc53api4Kind5EQUALE" title="cvc5::api::Kind::EQUAL"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">EQUAL</span></code></a>), a conjunction (<a class="reference internal" href="#_CPPv4N4cvc53api4Kind3ANDE" title="cvc5::api::Kind::AND"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">AND</span></code></a>), or a bitvector addition
-(<a class="reference internal" href="#_CPPv4N4cvc53api4Kind14BITVECTOR_PLUSE" title="cvc5::api::Kind::BITVECTOR_PLUS"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">BITVECTOR_PLUS</span></code></a>).
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">BITVECTOR_PLUS</span></code>).
 #ifndef DOXYGEN_SKIP
 Note that the API type <a class="reference internal" href="#_CPPv4N4cvc53api4KindE" title="cvc5::api::Kind"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">cvc5::api::Kind</span></code></a> roughly corresponds to
 <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">cvc5::Kind</span></code>, but is a different type. It hides internal kinds that
@@ -1229,8 +1229,8 @@ to its corresponding internal kinds.
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt id="_CPPv4N4cvc53api4Kind14BITVECTOR_PLUSE">
-<span id="_CPPv3N4cvc53api4Kind14BITVECTOR_PLUSE"></span><span id="_CPPv2N4cvc53api4Kind14BITVECTOR_PLUSE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2badef28fa7da65380ed3e4edaabf692e74"></span><em class="property">enumerator </em><code class="sig-name descname">BITVECTOR_PLUS</code><a class="headerlink" href="#_CPPv4N4cvc53api4Kind14BITVECTOR_PLUSE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N4cvc53api4Kind13BITVECTOR_ADDE">
+<span id="_CPPv3N4cvc53api4Kind13BITVECTOR_ADDE"></span><span id="_CPPv2N4cvc53api4Kind13BITVECTOR_ADDE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba617fe95a6757c7c0722e2f8bf764b526"></span><em class="property">enumerator </em><code class="sig-name descname">BITVECTOR_ADD</code><a class="headerlink" href="#_CPPv4N4cvc53api4Kind13BITVECTOR_ADDE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Addition of two or more bit-vectors.</p>
 <p>Parameters: n &gt; 1<ul class="simple">
 <li><p>1..n: Terms of bit-vector sort (sorts must match)</p></li>
@@ -3599,7 +3599,7 @@ to its corresponding internal kinds.
 </p>
 <p>Create with:<ul class="simple">
 <li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a3ba10e9c583a0a38c231c35e6276c31b"><span class="std std-ref"><span class="pre">Solver::mkString(const</span> <span class="pre">std::string&amp;</span> <span class="pre">s,</span> <span class="pre">bool</span> <span class="pre">useEscSequences)</span> <span class="pre">const</span></span></a></code></p></li>
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a5d3c980dcc14d92ece44eb445af2044f"><span class="std std-ref"><span class="pre">Solver::mkString(const</span> <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">c)</span> <span class="pre">const</span></span></a></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Solver::mkString(const</span> <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">c)</span> <span class="pre">const</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a3ba10e9c583a0a38c231c35e6276c31b"><span class="std std-ref"><span class="pre">Solver::mkString</span></span></a><span class="pre">(const</span> <span class="pre">std::vector&lt;uint32_t&gt;&amp;</span> <span class="pre">s)</span> <span class="pre">const</span></code> </p></li>
 </ul>
 </p>
@@ -4034,7 +4034,7 @@ to its corresponding internal kinds.
 <p>Note that a constant sequence is a term that is equivalent to: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">seq</span><span class="o">.++</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="n">c1</span><span class="p">)</span> <span class="o">...</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="n">cn</span><span class="p">))</span>
 </pre></div>
 </div>
- where n&gt;=0 and c1, …, cn are constants of some sort. The elements can be extracted by <code class="docutils literal notranslate"><a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term_1a7817d5fd057b749e5568f4a8890a1fca"><span class="std std-ref"><span class="pre">Term::getConstSequenceElements()</span></span></a></code>. </p>
+ where n&gt;=0 and c1, …, cn are constants of some sort. The elements can be extracted by <code class="docutils literal notranslate"><a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term_1a75a5bf528af2ede779f0a59f38b2765c"><span class="std std-ref"><span class="pre">Term::getSequenceValue()</span></span></a></code>. </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
@@ -4234,7 +4234,7 @@ to its corresponding internal kinds.
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, The Authors of cvc5.
+        &#169; Copyright 2021, the authors of cvc5.
 
     </p>
   </div>

@@ -182,6 +182,10 @@
             
   <div class="section" id="term">
 <h1>Term<a class="headerlink" href="#term" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Term</span></code></a> class represents arbitrary expressions that are Boolean or from some of the supported theories. The list of all supported types (or kinds) is given by the <a class="reference internal" href="kind.html#_CPPv4N4cvc53api4KindE" title="cvc5::api::Kind"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">Kind</span></code></a> enum.
+The <a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Term</span></code></a> class provides methods for general inspection (e.g., comparison, retrieve the kind and sort, access sub-terms), but also methods to retrieving constant values for the supported theories (i.e., <code class="code docutils literal notranslate"><span class="pre">is&lt;Type&gt;Value()</span></code> and <code class="code docutils literal notranslate"><span class="pre">get&lt;Type&gt;Value()</span></code>, which returns the constant values in the best type standard C++ offers).</p>
+<p>Additionally, a <a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Term</span></code></a> can be hashed (using <a class="reference internal" href="#_CPPv4IENSt4hashIN4cvc53api4TermEEE" title="std::hash&lt;cvc5::api::Term&gt;"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">std::hash&lt;cvc5::api::Term&gt;</span></code></a>) and given to output streams, including terms within standard containers like <code class="code docutils literal notranslate"><span class="pre">std::map</span></code>, <code class="code docutils literal notranslate"><span class="pre">std::set</span></code>, or <code class="code docutils literal notranslate"><span class="pre">std::vector</span></code>.</p>
+<p>The <a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Term</span></code></a> only offers the default constructor to create a null term. Instead, the <a class="reference internal" href="solver.html#_CPPv4N4cvc53api6SolverE" title="cvc5::api::Solver"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Solver</span></code></a> class provides factory functions for all other terms, e.g., <code class="code docutils literal notranslate"><span class="pre">Solver::mkTerm()</span></code> for generic terms and <code class="code docutils literal notranslate"><span class="pre">Solver::mk&lt;Type&gt;()</span></code> for constant values of a given type.</p>
 <dl class="cpp class">
 <dt id="_CPPv4N4cvc53api4TermE">
 <span id="_CPPv3N4cvc53api4TermE"></span><span id="_CPPv2N4cvc53api4TermE"></span><span id="cvc5::api::Term"></span><span class="target" id="classcvc5_1_1api_1_1Term"></span><em class="property">class </em><code class="sig-prename descclassname">cvc5::api<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Term</code><a class="headerlink" href="#_CPPv4N4cvc53api4TermE" title="Permalink to this definition">¶</a><br /></dt>
@@ -191,7 +195,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4N4cvc53api4Term4TermEv">
 <span id="_CPPv3N4cvc53api4Term4TermEv"></span><span id="_CPPv2N4cvc53api4Term4TermEv"></span><span id="cvc5::api::Term::Term"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a8dccb9ae2ac7cbb2f72c42ad3f8d45df"></span><code class="sig-name descname">Term</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api4Term4TermEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Constructor. </p>
+<dd><p>Constructor for a null term. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -231,7 +235,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api4TermltERK4Term">
 <span id="_CPPv3NK4cvc53api4TermltERK4Term"></span><span id="_CPPv2NK4cvc53api4TermltERK4Term"></span><span id="cvc5::api::Term::lt-operator__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a3eb7dd8c93de4a9d61b35e9e2bb45ee2"></span>bool <code class="sig-name descname">operator&lt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> &amp;<em>t</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4TermltERK4Term" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Comparison for ordering on terms. <dl class="simple">
+<dd><p>Comparison for ordering on terms by their id. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>true if this term is less than t </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -245,7 +249,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api4TermgtERK4Term">
 <span id="_CPPv3NK4cvc53api4TermgtERK4Term"></span><span id="_CPPv2NK4cvc53api4TermgtERK4Term"></span><span id="cvc5::api::Term::gt-operator__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a0f477ee35414266582e821e77367b865"></span>bool <code class="sig-name descname">operator&gt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> &amp;<em>t</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4TermgtERK4Term" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Comparison for ordering on terms. <dl class="simple">
+<dd><p>Comparison for ordering on terms by their id. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>true if this term is greater than t </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -259,7 +263,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api4TermleERK4Term">
 <span id="_CPPv3NK4cvc53api4TermleERK4Term"></span><span id="_CPPv2NK4cvc53api4TermleERK4Term"></span><span id="cvc5::api::Term::lte-operator__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a7d1ab21a50d256089547c6fadc70d8a8"></span>bool <code class="sig-name descname">operator&lt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> &amp;<em>t</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4TermleERK4Term" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Comparison for ordering on terms. <dl class="simple">
+<dd><p>Comparison for ordering on terms by their id. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>true if this term is less than or equal to t </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -273,7 +277,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api4TermgeERK4Term">
 <span id="_CPPv3NK4cvc53api4TermgeERK4Term"></span><span id="_CPPv2NK4cvc53api4TermgeERK4Term"></span><span id="cvc5::api::Term::gte-operator__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a9965eadbcc7c0952a366220e0c3fc703"></span>bool <code class="sig-name descname">operator&gt;=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> &amp;<em>t</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4TermgeERK4Term" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Comparison for ordering on terms. <dl class="simple">
+<dd><p>Comparison for ordering on terms by their id. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>true if this term is greater than or equal to t </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -383,26 +387,6 @@
 <span id="_CPPv3NK4cvc53api4Term6isNullEv"></span><span id="_CPPv2NK4cvc53api4Term6isNullEv"></span><span id="cvc5::api::Term::isNullC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aed5fe946ba172b24c7cec015635b5df7"></span>bool <code class="sig-name descname">isNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term6isNullEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>true if this <a class="reference internal" href="#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> is a null term </p>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api4Term17getConstArrayBaseEv">
-<span id="_CPPv3NK4cvc53api4Term17getConstArrayBaseEv"></span><span id="_CPPv2NK4cvc53api4Term17getConstArrayBaseEv"></span><span id="cvc5::api::Term::getConstArrayBaseC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a897dc31b033ba8cedea7f633f73ed0bb"></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">getConstArrayBase</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term17getConstArrayBaseEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the base (element stored at all indices) of a constant array throws an exception if the kind is not CONST_ARRAY <dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>the base value </p>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api4Term24getConstSequenceElementsEv">
-<span id="_CPPv3NK4cvc53api4Term24getConstSequenceElementsEv"></span><span id="_CPPv2NK4cvc53api4Term24getConstSequenceElementsEv"></span><span id="cvc5::api::Term::getConstSequenceElementsC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a7817d5fd057b749e5568f4a8890a1fca"></span>std::vector&lt;<a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a>&gt; <code class="sig-name descname">getConstSequenceElements</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term24getConstSequenceElementsEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Return the elements of a constant sequence throws an exception if the kind is not CONST_SEQUENCE <dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>the elements of the constant sequence. </p>
 </dd>
 </dl>
 </p>
@@ -534,121 +518,412 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api4Term7isInt32Ev">
-<span id="_CPPv3NK4cvc53api4Term7isInt32Ev"></span><span id="_CPPv2NK4cvc53api4Term7isInt32Ev"></span><span id="cvc5::api::Term::isInt32C"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a68b5dad399ee8eff67d224cfbbf91de4"></span>bool <code class="sig-name descname">isInt32</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term7isInt32Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4NK4cvc53api4Term12isInt32ValueEv">
+<span id="_CPPv3NK4cvc53api4Term12isInt32ValueEv"></span><span id="_CPPv2NK4cvc53api4Term12isInt32ValueEv"></span><span id="cvc5::api::Term::isInt32ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aced2feec3895ad5a8a6439c3ac379c06"></span>bool <code class="sig-name descname">isInt32Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term12isInt32ValueEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>true if the term is an integer that fits within std::int32_t. </p>
+<dt><strong>Return</strong></dt><dd><p>true if the term is an integer value that fits within int32_t. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api4Term8getInt32Ev">
-<span id="_CPPv3NK4cvc53api4Term8getInt32Ev"></span><span id="_CPPv2NK4cvc53api4Term8getInt32Ev"></span><span id="cvc5::api::Term::getInt32C"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a3dde716886c6485168301ab48765ad09"></span>std::int32_t <code class="sig-name descname">getInt32</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term8getInt32Ev" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>the stored integer as a std::int32_t. Note: Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a68b5dad399ee8eff67d224cfbbf91de4"><span class="std std-ref">isInt32()</span></a>. </p>
+<dt id="_CPPv4NK4cvc53api4Term13getInt32ValueEv">
+<span id="_CPPv3NK4cvc53api4Term13getInt32ValueEv"></span><span id="_CPPv2NK4cvc53api4Term13getInt32ValueEv"></span><span id="cvc5::api::Term::getInt32ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1acccb687aa9c283c42f5fb46c48ea3320"></span>int32_t <code class="sig-name descname">getInt32Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13getInt32ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1aced2feec3895ad5a8a6439c3ac379c06"><span class="std std-ref">isInt32Value()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the integer term as a int32_t. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api4Term8isUInt32Ev">
-<span id="_CPPv3NK4cvc53api4Term8isUInt32Ev"></span><span id="_CPPv2NK4cvc53api4Term8isUInt32Ev"></span><span id="cvc5::api::Term::isUInt32C"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a0b8bb2c3eacdef5130172cf499ae1fff"></span>bool <code class="sig-name descname">isUInt32</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term8isUInt32Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4NK4cvc53api4Term13isUInt32ValueEv">
+<span id="_CPPv3NK4cvc53api4Term13isUInt32ValueEv"></span><span id="_CPPv2NK4cvc53api4Term13isUInt32ValueEv"></span><span id="cvc5::api::Term::isUInt32ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1afba450fb5731ec1c10f286db3adb9ad2"></span>bool <code class="sig-name descname">isUInt32Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13isUInt32ValueEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>true if the term is an integer that fits within std::uint32_t. </p>
+<dt><strong>Return</strong></dt><dd><p>true if the term is an integer value that fits within uint32_t. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api4Term9getUInt32Ev">
-<span id="_CPPv3NK4cvc53api4Term9getUInt32Ev"></span><span id="_CPPv2NK4cvc53api4Term9getUInt32Ev"></span><span id="cvc5::api::Term::getUInt32C"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ac946252edc609abcbce7a9a3f1e2b6dc"></span>std::uint32_t <code class="sig-name descname">getUInt32</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term9getUInt32Ev" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>the stored integer as a std::uint32_t. Note: Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a0b8bb2c3eacdef5130172cf499ae1fff"><span class="std std-ref">isUInt32()</span></a>. </p>
+<dt id="_CPPv4NK4cvc53api4Term14getUInt32ValueEv">
+<span id="_CPPv3NK4cvc53api4Term14getUInt32ValueEv"></span><span id="_CPPv2NK4cvc53api4Term14getUInt32ValueEv"></span><span id="cvc5::api::Term::getUInt32ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ae6e031ae77c2ab5ea30fe49b326c5920"></span>uint32_t <code class="sig-name descname">getUInt32Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14getUInt32ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1afba450fb5731ec1c10f286db3adb9ad2"><span class="std std-ref">isUInt32Value()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the integer term as a uint32_t. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api4Term7isInt64Ev">
-<span id="_CPPv3NK4cvc53api4Term7isInt64Ev"></span><span id="_CPPv2NK4cvc53api4Term7isInt64Ev"></span><span id="cvc5::api::Term::isInt64C"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a044955413ea5b9631836039740c62908"></span>bool <code class="sig-name descname">isInt64</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term7isInt64Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4NK4cvc53api4Term12isInt64ValueEv">
+<span id="_CPPv3NK4cvc53api4Term12isInt64ValueEv"></span><span id="_CPPv2NK4cvc53api4Term12isInt64ValueEv"></span><span id="cvc5::api::Term::isInt64ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a9562d54684d2c78c72c0b4bf8e03d532"></span>bool <code class="sig-name descname">isInt64Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term12isInt64ValueEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>true if the term is an integer that fits within std::int64_t. </p>
+<dt><strong>Return</strong></dt><dd><p>true if the term is an integer value that fits within int64_t. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api4Term8getInt64Ev">
-<span id="_CPPv3NK4cvc53api4Term8getInt64Ev"></span><span id="_CPPv2NK4cvc53api4Term8getInt64Ev"></span><span id="cvc5::api::Term::getInt64C"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a55b504a9e00000f73c3db467223dcb20"></span>std::int64_t <code class="sig-name descname">getInt64</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term8getInt64Ev" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>the stored integer as a std::int64_t. Note: Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a044955413ea5b9631836039740c62908"><span class="std std-ref">isInt64()</span></a>. </p>
+<dt id="_CPPv4NK4cvc53api4Term13getInt64ValueEv">
+<span id="_CPPv3NK4cvc53api4Term13getInt64ValueEv"></span><span id="_CPPv2NK4cvc53api4Term13getInt64ValueEv"></span><span id="cvc5::api::Term::getInt64ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a5aeea0c7af38a001cb582055c8a73147"></span>int64_t <code class="sig-name descname">getInt64Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13getInt64ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a9562d54684d2c78c72c0b4bf8e03d532"><span class="std std-ref">isInt64Value()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the integer term as a int64_t. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api4Term8isUInt64Ev">
-<span id="_CPPv3NK4cvc53api4Term8isUInt64Ev"></span><span id="_CPPv2NK4cvc53api4Term8isUInt64Ev"></span><span id="cvc5::api::Term::isUInt64C"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a3a64b3b1f90997cdd26922292440c3c6"></span>bool <code class="sig-name descname">isUInt64</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term8isUInt64Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4NK4cvc53api4Term13isUInt64ValueEv">
+<span id="_CPPv3NK4cvc53api4Term13isUInt64ValueEv"></span><span id="_CPPv2NK4cvc53api4Term13isUInt64ValueEv"></span><span id="cvc5::api::Term::isUInt64ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a38cfd2669f88b351d6a7d06cfa61325a"></span>bool <code class="sig-name descname">isUInt64Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13isUInt64ValueEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>true if the term is an integer that fits within std::uint64_t. </p>
+<dt><strong>Return</strong></dt><dd><p>true if the term is an integer value that fits within uint64_t. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api4Term9getUInt64Ev">
-<span id="_CPPv3NK4cvc53api4Term9getUInt64Ev"></span><span id="_CPPv2NK4cvc53api4Term9getUInt64Ev"></span><span id="cvc5::api::Term::getUInt64C"></span><span class="target" id="classcvc5_1_1api_1_1Term_1accb05073b52bf027b5747add961baf60"></span>std::uint64_t <code class="sig-name descname">getUInt64</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term9getUInt64Ev" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>the stored integer as a std::uint64_t. Note: Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a3a64b3b1f90997cdd26922292440c3c6"><span class="std std-ref">isUInt64()</span></a>. </p>
+<dt id="_CPPv4NK4cvc53api4Term14getUInt64ValueEv">
+<span id="_CPPv3NK4cvc53api4Term14getUInt64ValueEv"></span><span id="_CPPv2NK4cvc53api4Term14getUInt64ValueEv"></span><span id="cvc5::api::Term::getUInt64ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a8c5727b95a465ef8be262b36dbd04e38"></span>uint64_t <code class="sig-name descname">getUInt64Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14getUInt64ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a38cfd2669f88b351d6a7d06cfa61325a"><span class="std std-ref">isUInt64Value()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the integer term as a uint64_t. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api4Term9isIntegerEv">
-<span id="_CPPv3NK4cvc53api4Term9isIntegerEv"></span><span id="_CPPv2NK4cvc53api4Term9isIntegerEv"></span><span id="cvc5::api::Term::isIntegerC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a7003bfd5f2fdb756674a264743b7265b"></span>bool <code class="sig-name descname">isInteger</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term9isIntegerEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4NK4cvc53api4Term14isIntegerValueEv">
+<span id="_CPPv3NK4cvc53api4Term14isIntegerValueEv"></span><span id="_CPPv2NK4cvc53api4Term14isIntegerValueEv"></span><span id="cvc5::api::Term::isIntegerValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a3f6c32bd89bdd197e6ef40cc1b6d7017"></span>bool <code class="sig-name descname">isIntegerValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14isIntegerValueEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>true if the term is an integer. </p>
+<dt><strong>Return</strong></dt><dd><p>true if the term is an integer value. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api4Term10getIntegerEv">
-<span id="_CPPv3NK4cvc53api4Term10getIntegerEv"></span><span id="_CPPv2NK4cvc53api4Term10getIntegerEv"></span><span id="cvc5::api::Term::getIntegerC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a6515e62d73d138b97c6bf7e70b4bc66d"></span>std::string <code class="sig-name descname">getInteger</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term10getIntegerEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>the stored integer in (decimal) string representation. Note: Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a7003bfd5f2fdb756674a264743b7265b"><span class="std std-ref">isInteger()</span></a>. </p>
+<dt id="_CPPv4NK4cvc53api4Term15getIntegerValueEv">
+<span id="_CPPv3NK4cvc53api4Term15getIntegerValueEv"></span><span id="_CPPv2NK4cvc53api4Term15getIntegerValueEv"></span><span id="cvc5::api::Term::getIntegerValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ae6b1a099757a0772cd2a8fb8cd6ce40d"></span>std::string <code class="sig-name descname">getIntegerValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term15getIntegerValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a3f6c32bd89bdd197e6ef40cc1b6d7017"><span class="std std-ref">isIntegerValue()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the integer term in (decimal) string representation. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api4Term8isStringEv">
-<span id="_CPPv3NK4cvc53api4Term8isStringEv"></span><span id="_CPPv2NK4cvc53api4Term8isStringEv"></span><span id="cvc5::api::Term::isStringC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a38bbf163293a941e70d45b2114475ef3"></span>bool <code class="sig-name descname">isString</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term8isStringEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4NK4cvc53api4Term13isStringValueEv">
+<span id="_CPPv3NK4cvc53api4Term13isStringValueEv"></span><span id="_CPPv2NK4cvc53api4Term13isStringValueEv"></span><span id="cvc5::api::Term::isStringValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a20cc2f469c0656e4f20f671898c9cf83"></span>bool <code class="sig-name descname">isStringValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13isStringValueEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>true if the term is a string constant. </p>
+<dt><strong>Return</strong></dt><dd><p>true if the term is a string value. </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api4Term9getStringEv">
-<span id="_CPPv3NK4cvc53api4Term9getStringEv"></span><span id="_CPPv2NK4cvc53api4Term9getStringEv"></span><span id="cvc5::api::Term::getStringC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a0060240e59dff6a937867656ae4e9285"></span>std::wstring <code class="sig-name descname">getString</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term9getStringEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><p>Note: This method is not to be confused with </p>
-<a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a1cfc366de798310380132358add8b0f0"><span class="std std-ref">toString()</span></a> which returns the term in some string representation, whatever data it may hold. Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a38bbf163293a941e70d45b2114475ef3"><span class="std std-ref">isString()</span></a>. <dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>the stored string constant.</p>
+<dt id="_CPPv4NK4cvc53api4Term14getStringValueEv">
+<span id="_CPPv3NK4cvc53api4Term14getStringValueEv"></span><span id="_CPPv2NK4cvc53api4Term14getStringValueEv"></span><span id="cvc5::api::Term::getStringValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a4ca124c29c29e5d701d68eb7e8bef77d"></span>std::wstring <code class="sig-name descname">getStringValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14getStringValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Note: This method is not to be confused with <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a1cfc366de798310380132358add8b0f0"><span class="std std-ref">toString()</span></a> which returns the term in some string representation, whatever data it may hold. Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a20cc2f469c0656e4f20f671898c9cf83"><span class="std std-ref">isStringValue()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the string term as a native string value. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term13isReal32ValueEv">
+<span id="_CPPv3NK4cvc53api4Term13isReal32ValueEv"></span><span id="_CPPv2NK4cvc53api4Term13isReal32ValueEv"></span><span id="cvc5::api::Term::isReal32ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aeea0ca8a773d52236a3924bee06d8046"></span>bool <code class="sig-name descname">isReal32Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13isReal32ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is a rational value whose numerator and denominator fit within int32_t and uint32_t, respectively. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term14getReal32ValueEv">
+<span id="_CPPv3NK4cvc53api4Term14getReal32ValueEv"></span><span id="_CPPv2NK4cvc53api4Term14getReal32ValueEv"></span><span id="cvc5::api::Term::getReal32ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ae63e4f69ff2943059d9c139405fc5b8f"></span>std::pair&lt;int32_t, uint32_t&gt; <code class="sig-name descname">getReal32Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14getReal32ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1aeea0ca8a773d52236a3924bee06d8046"><span class="std std-ref">isReal32Value()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the representation of a rational value as a pair of its numerator and denominator. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term13isReal64ValueEv">
+<span id="_CPPv3NK4cvc53api4Term13isReal64ValueEv"></span><span id="_CPPv2NK4cvc53api4Term13isReal64ValueEv"></span><span id="cvc5::api::Term::isReal64ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a699734b3762851b0436675705ab210b9"></span>bool <code class="sig-name descname">isReal64Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13isReal64ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is a rational value whose numerator and denominator fit within int64_t and uint64_t, respectively. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term14getReal64ValueEv">
+<span id="_CPPv3NK4cvc53api4Term14getReal64ValueEv"></span><span id="_CPPv2NK4cvc53api4Term14getReal64ValueEv"></span><span id="cvc5::api::Term::getReal64ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ab44c4b86f0042ba0509603b9ffc2d9e7"></span>std::pair&lt;int64_t, uint64_t&gt; <code class="sig-name descname">getReal64Value</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14getReal64ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a699734b3762851b0436675705ab210b9"><span class="std std-ref">isReal64Value()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the representation of a rational value as a pair of its numerator and denominator. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term11isRealValueEv">
+<span id="_CPPv3NK4cvc53api4Term11isRealValueEv"></span><span id="_CPPv2NK4cvc53api4Term11isRealValueEv"></span><span id="cvc5::api::Term::isRealValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a91ed765d104580b9c8bc0d8f0dc8df19"></span>bool <code class="sig-name descname">isRealValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term11isRealValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is a rational value. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term12getRealValueEv">
+<span id="_CPPv3NK4cvc53api4Term12getRealValueEv"></span><span id="_CPPv2NK4cvc53api4Term12getRealValueEv"></span><span id="cvc5::api::Term::getRealValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aadfd0fe9b95abc33656f63c95ac37100"></span>std::string <code class="sig-name descname">getRealValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term12getRealValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a91ed765d104580b9c8bc0d8f0dc8df19"><span class="std std-ref">isRealValue()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the representation of a rational value as a (decimal) string. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term12isConstArrayEv">
+<span id="_CPPv3NK4cvc53api4Term12isConstArrayEv"></span><span id="_CPPv2NK4cvc53api4Term12isConstArrayEv"></span><span id="cvc5::api::Term::isConstArrayC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a8bc33094cd12f558d9b201d4449aaa10"></span>bool <code class="sig-name descname">isConstArray</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term12isConstArrayEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is a constant array. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term17getConstArrayBaseEv">
+<span id="_CPPv3NK4cvc53api4Term17getConstArrayBaseEv"></span><span id="_CPPv2NK4cvc53api4Term17getConstArrayBaseEv"></span><span id="cvc5::api::Term::getConstArrayBaseC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a897dc31b033ba8cedea7f633f73ed0bb"></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">getConstArrayBase</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term17getConstArrayBaseEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a8bc33094cd12f558d9b201d4449aaa10"><span class="std std-ref">isConstArray()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the base (element stored at all indices) of a constant array </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term14isBooleanValueEv">
+<span id="_CPPv3NK4cvc53api4Term14isBooleanValueEv"></span><span id="_CPPv2NK4cvc53api4Term14isBooleanValueEv"></span><span id="cvc5::api::Term::isBooleanValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ab91a2687c3125b1f09a1e8aafb909a0e"></span>bool <code class="sig-name descname">isBooleanValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14isBooleanValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is a Boolean value. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term15getBooleanValueEv">
+<span id="_CPPv3NK4cvc53api4Term15getBooleanValueEv"></span><span id="_CPPv2NK4cvc53api4Term15getBooleanValueEv"></span><span id="cvc5::api::Term::getBooleanValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a35ed5682dada5ba7be2d10ecd89299b5"></span>bool <code class="sig-name descname">getBooleanValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term15getBooleanValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1ab91a2687c3125b1f09a1e8aafb909a0e"><span class="std std-ref">isBooleanValue()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the representation of a Boolean value as a native Boolean value. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term16isBitVectorValueEv">
+<span id="_CPPv3NK4cvc53api4Term16isBitVectorValueEv"></span><span id="_CPPv2NK4cvc53api4Term16isBitVectorValueEv"></span><span id="cvc5::api::Term::isBitVectorValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ad056d789865a260e13ea3350b85ec3f3"></span>bool <code class="sig-name descname">isBitVectorValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term16isBitVectorValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is a bit-vector value. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term17getBitVectorValueE8uint32_t">
+<span id="_CPPv3NK4cvc53api4Term17getBitVectorValueE8uint32_t"></span><span id="_CPPv2NK4cvc53api4Term17getBitVectorValueE8uint32_t"></span><span id="cvc5::api::Term::getBitVectorValue__uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1acdb189febd206bfbdf9c1491399b9c36"></span>std::string <code class="sig-name descname">getBitVectorValue</code><span class="sig-paren">(</span>uint32_t <em>base</em> = 2<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term17getBitVectorValueE8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1ad056d789865a260e13ea3350b85ec3f3"><span class="std std-ref">isBitVectorValue()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the representation of a bit-vector value in string representation. Supported bases are 2 (bit string), 10 (decimal string) or 16 (hexadecimal string). </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term15isAbstractValueEv">
+<span id="_CPPv3NK4cvc53api4Term15isAbstractValueEv"></span><span id="_CPPv2NK4cvc53api4Term15isAbstractValueEv"></span><span id="cvc5::api::Term::isAbstractValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a01f55778f175b403654be58e6ee50f0f"></span>bool <code class="sig-name descname">isAbstractValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term15isAbstractValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is an abstract value. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term16getAbstractValueEv">
+<span id="_CPPv3NK4cvc53api4Term16getAbstractValueEv"></span><span id="_CPPv2NK4cvc53api4Term16getAbstractValueEv"></span><span id="cvc5::api::Term::getAbstractValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aa805c81aa83e09d90169d11f674d7b11"></span>std::string <code class="sig-name descname">getAbstractValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term16getAbstractValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a01f55778f175b403654be58e6ee50f0f"><span class="std std-ref">isAbstractValue()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the representation of an abstract value as a string. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term12isTupleValueEv">
+<span id="_CPPv3NK4cvc53api4Term12isTupleValueEv"></span><span id="_CPPv2NK4cvc53api4Term12isTupleValueEv"></span><span id="cvc5::api::Term::isTupleValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a29e329630a2632377bba7209900389af"></span>bool <code class="sig-name descname">isTupleValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term12isTupleValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is a tuple value. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term13getTupleValueEv">
+<span id="_CPPv3NK4cvc53api4Term13getTupleValueEv"></span><span id="_CPPv2NK4cvc53api4Term13getTupleValueEv"></span><span id="cvc5::api::Term::getTupleValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ae38a834a4634426b7eb36e870b59f51c"></span>std::vector&lt;<a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a>&gt; <code class="sig-name descname">getTupleValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13getTupleValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a29e329630a2632377bba7209900389af"><span class="std std-ref">isTupleValue()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the representation of a tuple value as a vector of terms. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term22isFloatingPointPosZeroEv">
+<span id="_CPPv3NK4cvc53api4Term22isFloatingPointPosZeroEv"></span><span id="_CPPv2NK4cvc53api4Term22isFloatingPointPosZeroEv"></span><span id="cvc5::api::Term::isFloatingPointPosZeroC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aa87cb771acddea26ff2c02ffe155206e"></span>bool <code class="sig-name descname">isFloatingPointPosZero</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term22isFloatingPointPosZeroEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is the floating-point value for positive zero. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term22isFloatingPointNegZeroEv">
+<span id="_CPPv3NK4cvc53api4Term22isFloatingPointNegZeroEv"></span><span id="_CPPv2NK4cvc53api4Term22isFloatingPointNegZeroEv"></span><span id="cvc5::api::Term::isFloatingPointNegZeroC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aed5550c87a8b485d6411918e89c7f027"></span>bool <code class="sig-name descname">isFloatingPointNegZero</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term22isFloatingPointNegZeroEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is the floating-point value for negative zero. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term21isFloatingPointPosInfEv">
+<span id="_CPPv3NK4cvc53api4Term21isFloatingPointPosInfEv"></span><span id="_CPPv2NK4cvc53api4Term21isFloatingPointPosInfEv"></span><span id="cvc5::api::Term::isFloatingPointPosInfC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a10f7db45836ac3173c865f2f8f3464d8"></span>bool <code class="sig-name descname">isFloatingPointPosInf</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term21isFloatingPointPosInfEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is the floating-point value for positive infinity. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term21isFloatingPointNegInfEv">
+<span id="_CPPv3NK4cvc53api4Term21isFloatingPointNegInfEv"></span><span id="_CPPv2NK4cvc53api4Term21isFloatingPointNegInfEv"></span><span id="cvc5::api::Term::isFloatingPointNegInfC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a1e2a18995cb413efb35339f3664c95cb"></span>bool <code class="sig-name descname">isFloatingPointNegInf</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term21isFloatingPointNegInfEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is the floating-point value for negative infinity. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term18isFloatingPointNaNEv">
+<span id="_CPPv3NK4cvc53api4Term18isFloatingPointNaNEv"></span><span id="_CPPv2NK4cvc53api4Term18isFloatingPointNaNEv"></span><span id="cvc5::api::Term::isFloatingPointNaNC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1abf25ecef38bb2bdafc54505bc6e85c12"></span>bool <code class="sig-name descname">isFloatingPointNaN</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term18isFloatingPointNaNEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is the floating-point value for not a number. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term20isFloatingPointValueEv">
+<span id="_CPPv3NK4cvc53api4Term20isFloatingPointValueEv"></span><span id="_CPPv2NK4cvc53api4Term20isFloatingPointValueEv"></span><span id="cvc5::api::Term::isFloatingPointValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ab8f982b57c6f90b6cebaaba83495951b"></span>bool <code class="sig-name descname">isFloatingPointValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term20isFloatingPointValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is a floating-point value. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term21getFloatingPointValueEv">
+<span id="_CPPv3NK4cvc53api4Term21getFloatingPointValueEv"></span><span id="_CPPv2NK4cvc53api4Term21getFloatingPointValueEv"></span><span id="cvc5::api::Term::getFloatingPointValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ab670bbbac6d5fcdc15abc0edf4681ab1"></span>std::tuple&lt;uint32_t, uint32_t, <a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a>&gt; <code class="sig-name descname">getFloatingPointValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term21getFloatingPointValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1ab8f982b57c6f90b6cebaaba83495951b"><span class="std std-ref">isFloatingPointValue()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the representation of a floating-point value as a tuple of the exponent width, the significand width and a bit-vector value. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term10isSetValueEv">
+<span id="_CPPv3NK4cvc53api4Term10isSetValueEv"></span><span id="_CPPv2NK4cvc53api4Term10isSetValueEv"></span><span id="cvc5::api::Term::isSetValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aa9a79b2d6fce5c7433c0aba4f611b232"></span>bool <code class="sig-name descname">isSetValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term10isSetValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is a set value. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term11getSetValueEv">
+<span id="_CPPv3NK4cvc53api4Term11getSetValueEv"></span><span id="_CPPv2NK4cvc53api4Term11getSetValueEv"></span><span id="cvc5::api::Term::getSetValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1af50d8e7300c8c7085d62df2d45250d83"></span>std::set&lt;<a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a>&gt; <code class="sig-name descname">getSetValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term11getSetValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1aa9a79b2d6fce5c7433c0aba4f611b232"><span class="std std-ref">isSetValue()</span></a>. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the representation of a set value as a set of terms. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term15isSequenceValueEv">
+<span id="_CPPv3NK4cvc53api4Term15isSequenceValueEv"></span><span id="_CPPv2NK4cvc53api4Term15isSequenceValueEv"></span><span id="cvc5::api::Term::isSequenceValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a400aec46400804d9c3e81812ffb3924a"></span>bool <code class="sig-name descname">isSequenceValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term15isSequenceValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is a sequence value. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term16getSequenceValueEv">
+<span id="_CPPv3NK4cvc53api4Term16getSequenceValueEv"></span><span id="_CPPv2NK4cvc53api4Term16getSequenceValueEv"></span><span id="cvc5::api::Term::getSequenceValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a75a5bf528af2ede779f0a59f38b2765c"></span>std::vector&lt;<a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a>&gt; <code class="sig-name descname">getSequenceValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term16getSequenceValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a400aec46400804d9c3e81812ffb3924a"><span class="std std-ref">isSequenceValue()</span></a>. Note that it is usually necessary for sequences to call <code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a5085ec4bbae8a56b63aca9ed1f14befd"><span class="std std-ref"><span class="pre">Solver::simplify()</span></span></a></code> to turn a sequence that is constructed by, e.g., concatenation of unit sequences, into a sequence value. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the representation of a sequence value as a vector of terms. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term20isUninterpretedValueEv">
+<span id="_CPPv3NK4cvc53api4Term20isUninterpretedValueEv"></span><span id="_CPPv2NK4cvc53api4Term20isUninterpretedValueEv"></span><span id="cvc5::api::Term::isUninterpretedValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a966489f27eb98b85596dc65baa2ddb36"></span>bool <code class="sig-name descname">isUninterpretedValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term20isUninterpretedValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>true if the term is a value from an uninterpreted sort. </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK4cvc53api4Term21getUninterpretedValueEv">
+<span id="_CPPv3NK4cvc53api4Term21getUninterpretedValueEv"></span><span id="_CPPv2NK4cvc53api4Term21getUninterpretedValueEv"></span><span id="cvc5::api::Term::getUninterpretedValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a4a6a5fc23103fc7c3af5cf7f666494eb"></span>std::pair&lt;<a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort">Sort</a>, int32_t&gt; <code class="sig-name descname">getUninterpretedValue</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api4Term21getUninterpretedValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>bool <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>() const; Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a966489f27eb98b85596dc65baa2ddb36"><span class="std std-ref">isUninterpretedValue()</span></a>. </p>
+</dd>
+<dt><strong>Return</strong></dt><dd><p>the representation of an uninterpreted value as a pair of its sort and its index. </p>
 </dd>
 </dl>
 </p>
@@ -807,7 +1082,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, The Authors of cvc5.
+        &#169; Copyright 2021, the authors of cvc5.
 
     </p>
   </div>

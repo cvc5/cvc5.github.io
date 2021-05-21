@@ -984,12 +984,12 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api6Solver8mkStringERKNSt6stringEb">
 <span id="_CPPv3NK4cvc53api6Solver8mkStringERKNSt6stringEb"></span><span id="_CPPv2NK4cvc53api6Solver8mkStringERKNSt6stringEb"></span><span id="cvc5::api::Solver::mkString__ssCR.bC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a3ba10e9c583a0a38c231c35e6276c31b"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">mkString</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>s</em>, bool <em>useEscSequences</em> = false<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver8mkStringERKNSt6stringEb" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a String constant. <dl class="simple">
+<dd><p>Create a String constant from a <code class="docutils literal notranslate"><span class="pre">std::string</span></code> which may contain SMT-LIB compatible escape sequences like <code class="docutils literal notranslate"><span class="pre">\u1234</span></code> to encode unicode characters. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>the String constant </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>: the string this constant represents </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">useEscSequences</span></code>: determines whether escape sequences in <code class="docutils literal notranslate"><span class="pre">s</span></code> should be converted to the corresponding character </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">useEscSequences</span></code>: determines whether escape sequences in <code class="docutils literal notranslate"><span class="pre">s</span></code> should be converted to the corresponding unicode character </p></li>
 </ul>
 </dd>
 </dl>
@@ -997,41 +997,13 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api6Solver8mkStringEKh">
-<span id="_CPPv3NK4cvc53api6Solver8mkStringEKh"></span><span id="_CPPv2NK4cvc53api6Solver8mkStringEKh"></span><span id="cvc5::api::Solver::mkString__unsigned-cCC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a5d3c980dcc14d92ece44eb445af2044f"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">mkString</code><span class="sig-paren">(</span><em class="property">const</em> unsigned char <em>c</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver8mkStringEKh" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a String constant. <dl class="simple">
+<dt id="_CPPv4NK4cvc53api6Solver8mkStringERKNSt7wstringE">
+<span id="_CPPv3NK4cvc53api6Solver8mkStringERKNSt7wstringE"></span><span id="_CPPv2NK4cvc53api6Solver8mkStringERKNSt7wstringE"></span><span id="cvc5::api::Solver::mkString__std::wstringCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a6f8d46bfdbad544c0ff9067b09498ed4"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">mkString</code><span class="sig-paren">(</span><em class="property">const</em> std::wstring &amp;<em>s</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver8mkStringERKNSt7wstringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a String constant from a <code class="docutils literal notranslate"><span class="pre">std::wstring</span></code>. This method does not support escape sequences as <code class="docutils literal notranslate"><span class="pre">std::wstring</span></code> already supports unicode characters. <dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>the String constant </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">c</span></code>: the character this constant represents </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api6Solver8mkStringERKNSt6vectorI8uint32_tEE">
-<span id="_CPPv3NK4cvc53api6Solver8mkStringERKNSt6vectorI8uint32_tEE"></span><span id="_CPPv2NK4cvc53api6Solver8mkStringERKNSt6vectorI8uint32_tEE"></span><span id="cvc5::api::Solver::mkString__std::vector:uint32_t:CRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1afbdacaec78de7ef9a137e48fb3377fa6"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">mkString</code><span class="sig-paren">(</span><em class="property">const</em> std::vector&lt;uint32_t&gt; &amp;<em>s</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver8mkStringERKNSt6vectorI8uint32_tEE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a String constant. <dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>the String constant </p>
-</dd>
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>: a list of unsigned (unicode) values this constant represents as string </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api6Solver6mkCharERKNSt6stringE">
-<span id="_CPPv3NK4cvc53api6Solver6mkCharERKNSt6stringE"></span><span id="_CPPv2NK4cvc53api6Solver6mkCharERKNSt6stringE"></span><span id="cvc5::api::Solver::mkChar__ssCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1ab8d81950b05588b66acb8f3240bcc7ae"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">mkChar</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>s</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver6mkCharERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a character constant from a given string. <dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>the character constant </p>
-</dd>
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>: the string denoting the code point of the character (in base 16) </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>: the string this constant represents </p></li>
 </ul>
 </dd>
 </dl>
@@ -1237,7 +1209,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api6Solver15mkAbstractValueERKNSt6stringE">
 <span id="_CPPv3NK4cvc53api6Solver15mkAbstractValueERKNSt6stringE"></span><span id="_CPPv2NK4cvc53api6Solver15mkAbstractValueERKNSt6stringE"></span><span id="cvc5::api::Solver::mkAbstractValue__ssCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a290a7b00eadd3926280679ecfb772e12"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">mkAbstractValue</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>index</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver15mkAbstractValueERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create an abstract value constant. <dl class="simple">
+<dd><p>Create an abstract value constant. The given index needs to be a positive integer in base 10. <dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">index</span></code>: Index of the abstract value </p></li>
 </ul>
@@ -1249,7 +1221,7 @@
 <dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api6Solver15mkAbstractValueE8uint64_t">
 <span id="_CPPv3NK4cvc53api6Solver15mkAbstractValueE8uint64_t"></span><span id="_CPPv2NK4cvc53api6Solver15mkAbstractValueE8uint64_t"></span><span id="cvc5::api::Solver::mkAbstractValue__uint64_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a4cea989fddf74129493d44a3fa1396df"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> <code class="sig-name descname">mkAbstractValue</code><span class="sig-paren">(</span>uint64_t <em>index</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver15mkAbstractValueE8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create an abstract value constant. <dl class="simple">
+<dd><p>Create an abstract value constant. The given index needs to be positive. <dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">index</span></code>: Index of the abstract value </p></li>
 </ul>
@@ -2276,18 +2248,6 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api6Solver18printSynthSolutionERNSt7ostreamE">
-<span id="_CPPv3NK4cvc53api6Solver18printSynthSolutionERNSt7ostreamE"></span><span id="_CPPv2NK4cvc53api6Solver18printSynthSolutionERNSt7ostreamE"></span><span id="cvc5::api::Solver::printSynthSolution__osRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1ac4ddcfbd49cd0ff38c6fc263d4fc3ee5"></span>void <code class="sig-name descname">printSynthSolution</code><span class="sig-paren">(</span>std::ostream &amp;<em>out</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver18printSynthSolutionERNSt7ostreamE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Print solution for synthesis conjecture to the given output stream. <dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">out</span></code>: the output stream </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp function">
 <dt id="_CPPv4NK4cvc53api6Solver12getSmtEngineEv">
 <span id="_CPPv3NK4cvc53api6Solver12getSmtEngineEv"></span><span id="_CPPv2NK4cvc53api6Solver12getSmtEngineEv"></span><span id="cvc5::api::Solver::getSmtEngine__voidC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a4187b0aaac4b7d0608f15ee89b2aa855"></span>SmtEngine *<code class="sig-name descname">getSmtEngine</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver12getSmtEngineEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
@@ -2330,7 +2290,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, The Authors of cvc5.
+        &#169; Copyright 2021, the authors of cvc5.
 
     </p>
   </div>
