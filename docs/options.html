@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="static/tabs.css" type="text/css" />
   <link rel="stylesheet" href="static/custom.css" type="text/css" />
 
@@ -31,10 +33,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
         <script src="static/jquery.js"></script>
         <script src="static/underscore.js"></script>
         <script src="static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="static/js/theme.js"></script>
 
@@ -774,6 +776,45 @@
 </dl>
 </dd>
 </dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--jh-rlv-order</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>maintain activity-based ordering for decision justification heuristic</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--jh-skolem-rlv=MODE</span></code></dt><dd><p>policy for when to consider skolem definitions relevant in justification heuristic</p>
+<p>Policy for when to consider skolem definitions relevant in justification heuristic</p>
+<dl class="field-list simple">
+<dt class="field-odd">assert</dt>
+<dd class="field-odd"><p>skolems are relevant when they occur in an asserted literal</p>
+</dd>
+<dt class="field-even">always</dt>
+<dd class="field-even"><p>skolems are always relevant</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--jh-skolem=MODE</span></code></dt><dd><p>policy for when to satisfy skolem definitions in justification heuristic</p>
+<p>Policy for when to satisfy skolem definitions in justification heuristic</p>
+<dl class="field-list simple">
+<dt class="field-odd">first</dt>
+<dd class="field-odd"><p>satisfy pending relevant skolem definitions before input assertions</p>
+</dd>
+<dt class="field-even">last</dt>
+<dd class="field-even"><p>satisfy pending relevant skolem definitions after input assertions</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="expression-module">
 <h3>Expression Module<a class="headerlink" href="#expression-module" title="Permalink to this headline">¶</a></h3>

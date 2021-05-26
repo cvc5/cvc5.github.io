@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../static/tabs.css" type="text/css" />
   <link rel="stylesheet" href="../static/custom.css" type="text/css" />
 
@@ -31,10 +33,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../static/documentation_options.js"></script>
         <script src="../static/jquery.js"></script>
         <script src="../static/underscore.js"></script>
         <script src="../static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../static/js/theme.js"></script>
 
@@ -183,83 +185,83 @@
   <div class="section" id="grammar">
 <h1>Grammar<a class="headerlink" href="#grammar" title="Permalink to this headline">¶</a></h1>
 <dl class="cpp class">
-<dt id="_CPPv4N4cvc53api7GrammarE">
-<span id="_CPPv3N4cvc53api7GrammarE"></span><span id="_CPPv2N4cvc53api7GrammarE"></span><span id="cvc5::api::Grammar"></span><span class="target" id="classcvc5_1_1api_1_1Grammar"></span><em class="property">class </em><code class="sig-prename descclassname">cvc5::api<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">Grammar</code><a class="headerlink" href="#_CPPv4N4cvc53api7GrammarE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api7GrammarE">
+<span id="_CPPv3N4cvc53api7GrammarE"></span><span id="_CPPv2N4cvc53api7GrammarE"></span><span id="cvc5::api::Grammar"></span><span class="target" id="classcvc5_1_1api_1_1Grammar"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">cvc5</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">api</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Grammar</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api7GrammarE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A Sygus <a class="reference internal" href="#classcvc5_1_1api_1_1Grammar"><span class="std std-ref">Grammar</span></a>. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt id="_CPPv4N4cvc53api7Grammar7addRuleERK4TermRK4Term">
-<span id="_CPPv3N4cvc53api7Grammar7addRuleERK4TermRK4Term"></span><span id="_CPPv2N4cvc53api7Grammar7addRuleERK4TermRK4Term"></span><span id="cvc5::api::Grammar::addRule__TermCR.TermCR"></span><span class="target" id="classcvc5_1_1api_1_1Grammar_1a47ce2c3d46c4eed7b5217b727dd69a2b"></span>void <code class="sig-name descname">addRule</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> &amp;<em>ntSymbol</em>, <em class="property">const</em> <a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> &amp;<em>rule</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api7Grammar7addRuleERK4TermRK4Term" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Add <code class="docutils literal notranslate"><span class="pre">rule</span></code> to the set of rules corresponding to <code class="docutils literal notranslate"><span class="pre">ntSymbol</span></code>. <dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ntSymbol</span></code>: the non-terminal to which the rule is added </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rule</span></code>: the rule to add </p></li>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api7Grammar7addRuleERK4TermRK4Term">
+<span id="_CPPv3N4cvc53api7Grammar7addRuleERK4TermRK4Term"></span><span id="_CPPv2N4cvc53api7Grammar7addRuleERK4TermRK4Term"></span><span id="cvc5::api::Grammar::addRule__TermCR.TermCR"></span><span class="target" id="classcvc5_1_1api_1_1Grammar_1a47ce2c3d46c4eed7b5217b727dd69a2b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addRule</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ntSymbol</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rule</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api7Grammar7addRuleERK4TermRK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Add <code class="docutils literal notranslate"><span class="pre">rule</span></code> to the set of rules corresponding to <code class="docutils literal notranslate"><span class="pre">ntSymbol</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ntSymbol</strong> – the non-terminal to which the rule is added </p></li>
+<li><p><strong>rule</strong> – the rule to add </p></li>
 </ul>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N4cvc53api7Grammar8addRulesERK4TermRKNSt6vectorI4TermEE">
-<span id="_CPPv3N4cvc53api7Grammar8addRulesERK4TermRKNSt6vectorI4TermEE"></span><span id="_CPPv2N4cvc53api7Grammar8addRulesERK4TermRKNSt6vectorI4TermEE"></span><span id="cvc5::api::Grammar::addRules__TermCR.std::vector:Term:CR"></span><span class="target" id="classcvc5_1_1api_1_1Grammar_1ac86208bdf4b2013da5be293fef3f0b65"></span>void <code class="sig-name descname">addRules</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> &amp;<em>ntSymbol</em>, <em class="property">const</em> std::vector&lt;<a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a>&gt; &amp;<em>rules</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api7Grammar8addRulesERK4TermRKNSt6vectorI4TermEE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Add <code class="docutils literal notranslate"><span class="pre">rules</span></code> to the set of rules corresponding to <code class="docutils literal notranslate"><span class="pre">ntSymbol</span></code>. <dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ntSymbol</span></code>: the non-terminal to which the rules are added </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rules</span></code>: the rules to add </p></li>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api7Grammar8addRulesERK4TermRKNSt6vectorI4TermEE">
+<span id="_CPPv3N4cvc53api7Grammar8addRulesERK4TermRKNSt6vectorI4TermEE"></span><span id="_CPPv2N4cvc53api7Grammar8addRulesERK4TermRKNSt6vectorI4TermEE"></span><span id="cvc5::api::Grammar::addRules__TermCR.std::vector:Term:CR"></span><span class="target" id="classcvc5_1_1api_1_1Grammar_1ac86208bdf4b2013da5be293fef3f0b65"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addRules</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ntSymbol</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rules</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api7Grammar8addRulesERK4TermRKNSt6vectorI4TermEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Add <code class="docutils literal notranslate"><span class="pre">rules</span></code> to the set of rules corresponding to <code class="docutils literal notranslate"><span class="pre">ntSymbol</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ntSymbol</strong> – the non-terminal to which the rules are added </p></li>
+<li><p><strong>rules</strong> – the rules to add </p></li>
 </ul>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N4cvc53api7Grammar14addAnyConstantERK4Term">
-<span id="_CPPv3N4cvc53api7Grammar14addAnyConstantERK4Term"></span><span id="_CPPv2N4cvc53api7Grammar14addAnyConstantERK4Term"></span><span id="cvc5::api::Grammar::addAnyConstant__TermCR"></span><span class="target" id="classcvc5_1_1api_1_1Grammar_1afa18fb2b7154fe8d705782e848f017cf"></span>void <code class="sig-name descname">addAnyConstant</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> &amp;<em>ntSymbol</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api7Grammar14addAnyConstantERK4Term" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Allow <code class="docutils literal notranslate"><span class="pre">ntSymbol</span></code> to be an arbitrary constant. <dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ntSymbol</span></code>: the non-terminal allowed to be any constant </p></li>
-</ul>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api7Grammar14addAnyConstantERK4Term">
+<span id="_CPPv3N4cvc53api7Grammar14addAnyConstantERK4Term"></span><span id="_CPPv2N4cvc53api7Grammar14addAnyConstantERK4Term"></span><span id="cvc5::api::Grammar::addAnyConstant__TermCR"></span><span class="target" id="classcvc5_1_1api_1_1Grammar_1afa18fb2b7154fe8d705782e848f017cf"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addAnyConstant</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ntSymbol</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api7Grammar14addAnyConstantERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allow <code class="docutils literal notranslate"><span class="pre">ntSymbol</span></code> to be an arbitrary constant. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ntSymbol</strong> – the non-terminal allowed to be any constant </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N4cvc53api7Grammar14addAnyVariableERK4Term">
-<span id="_CPPv3N4cvc53api7Grammar14addAnyVariableERK4Term"></span><span id="_CPPv2N4cvc53api7Grammar14addAnyVariableERK4Term"></span><span id="cvc5::api::Grammar::addAnyVariable__TermCR"></span><span class="target" id="classcvc5_1_1api_1_1Grammar_1ab1994e6f618b9f5453bda94828150760"></span>void <code class="sig-name descname">addAnyVariable</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term">Term</a> &amp;<em>ntSymbol</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api7Grammar14addAnyVariableERK4Term" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Allow <code class="docutils literal notranslate"><span class="pre">ntSymbol</span></code> to be any input variable to corresponding synth-fun/synth-inv with the same sort as <code class="docutils literal notranslate"><span class="pre">ntSymbol</span></code>. <dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ntSymbol</span></code>: the non-terminal allowed to be any input constant </p></li>
-</ul>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api7Grammar14addAnyVariableERK4Term">
+<span id="_CPPv3N4cvc53api7Grammar14addAnyVariableERK4Term"></span><span id="_CPPv2N4cvc53api7Grammar14addAnyVariableERK4Term"></span><span id="cvc5::api::Grammar::addAnyVariable__TermCR"></span><span class="target" id="classcvc5_1_1api_1_1Grammar_1ab1994e6f618b9f5453bda94828150760"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addAnyVariable</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ntSymbol</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api7Grammar14addAnyVariableERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allow <code class="docutils literal notranslate"><span class="pre">ntSymbol</span></code> to be any input variable to corresponding synth-fun/synth-inv with the same sort as <code class="docutils literal notranslate"><span class="pre">ntSymbol</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ntSymbol</strong> – the non-terminal allowed to be any input constant </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK4cvc53api7Grammar8toStringEv">
-<span id="_CPPv3NK4cvc53api7Grammar8toStringEv"></span><span id="_CPPv2NK4cvc53api7Grammar8toStringEv"></span><span id="cvc5::api::Grammar::toStringC"></span><span class="target" id="classcvc5_1_1api_1_1Grammar_1a38f56d896235fac50fa7a95a561f7b28"></span>std::string <code class="sig-name descname">toString</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK4cvc53api7Grammar8toStringEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>a string representation of this grammar. </p>
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api7Grammar8toStringEv">
+<span id="_CPPv3NK4cvc53api7Grammar8toStringEv"></span><span id="_CPPv2NK4cvc53api7Grammar8toStringEv"></span><span id="cvc5::api::Grammar::toStringC"></span><span class="target" id="classcvc5_1_1api_1_1Grammar_1a38f56d896235fac50fa7a95a561f7b28"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toString</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api7Grammar8toStringEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a string representation of this grammar. </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N4cvc53api7Grammar7GrammarEv">
-<span id="_CPPv3N4cvc53api7Grammar7GrammarEv"></span><span id="_CPPv2N4cvc53api7Grammar7GrammarEv"></span><span id="cvc5::api::Grammar::Grammar"></span><span class="target" id="classcvc5_1_1api_1_1Grammar_1a87663d3ffec4d5321b57f0bc4b152e54"></span><code class="sig-name descname">Grammar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api7Grammar7GrammarEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api7Grammar7GrammarEv">
+<span id="_CPPv3N4cvc53api7Grammar7GrammarEv"></span><span id="_CPPv2N4cvc53api7Grammar7GrammarEv"></span><span id="cvc5::api::Grammar::Grammar"></span><span class="target" id="classcvc5_1_1api_1_1Grammar_1a87663d3ffec4d5321b57f0bc4b152e54"></span><span class="sig-name descname"><span class="n"><span class="pre">Grammar</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api7Grammar7GrammarEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Nullary constructor. Needed for the Cython API. </p>
 </dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-friends">Friends</p>
-<dl class="friendclass">
-<dt>
-<em class="property">friend class</em> cvc5::Command</dt>
+<dl>
+<dt class="sig sig-object cpp">
+<em class="property"><span class="pre">friend</span> <span class="pre">class</span></em> <span class="pre">cvc5::Command</span></dt>
 </dl>
 
 </div>

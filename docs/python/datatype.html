@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../static/tabs.css" type="text/css" />
   <link rel="stylesheet" href="../static/custom.css" type="text/css" />
 
@@ -31,10 +33,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../static/documentation_options.js"></script>
         <script src="../static/jquery.js"></script>
         <script src="../static/underscore.js"></script>
         <script src="../static/doctools.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../static/js/theme.js"></script>
 
@@ -168,24 +170,24 @@
   <div class="section" id="datatype">
 <h1>Datatype<a class="headerlink" href="#datatype" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="pycvc5.Datatype">
-<em class="property">class </em><code class="sig-prename descclassname">pycvc5.</code><code class="sig-name descname">Datatype</code><a class="headerlink" href="#pycvc5.Datatype" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pycvc5.Datatype">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pycvc5.</span></span><span class="sig-name descname"><span class="pre">Datatype</span></span><a class="headerlink" href="#pycvc5.Datatype" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrapper class for <a class="reference internal" href="../cpp/datatype.html#_CPPv4N4cvc53api8DatatypeE" title="cvc5::api::Datatype"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">cvc5::api::Datatype</span></code></a>.</p>
 <dl class="py method">
-<dt id="pycvc5.Datatype.__getitem__">
-<code class="sig-name descname">__getitem__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pycvc5.Datatype.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.__getitem__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a constructor by index or by name.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pycvc5.Datatype.getConstructor">
-<code class="sig-name descname">getConstructor</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">unicode name</em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.getConstructor" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pycvc5.Datatype.getConstructor">
+<span class="sig-name descname"><span class="pre">getConstructor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self</span></em>, <em class="sig-param"><span class="pre">unicode</span> <span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.getConstructor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a constructor by name.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pycvc5.Datatype.getConstructorTerm">
-<code class="sig-name descname">getConstructorTerm</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">unicode name</em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.getConstructorTerm" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pycvc5.Datatype.getConstructorTerm">
+<span class="sig-name descname"><span class="pre">getConstructorTerm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self</span></em>, <em class="sig-param"><span class="pre">unicode</span> <span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.getConstructorTerm" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>the term representing the datatype constructor with the given name (see <a class="reference internal" href="../cpp/datatype.html#_CPPv4NK4cvc53api8Datatype18getConstructorTermERKNSt6stringE" title="cvc5::api::Datatype::getConstructorTerm"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Datatype::getConstructorTerm()</span></code></a>).</p>
@@ -194,8 +196,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="pycvc5.Datatype.getNumConstructors">
-<code class="sig-name descname">getNumConstructors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.getNumConstructors" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pycvc5.Datatype.getNumConstructors">
+<span class="sig-name descname"><span class="pre">getNumConstructors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.getNumConstructors" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>number of constructors.</p>
@@ -204,14 +206,14 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="pycvc5.Datatype.getSelector">
-<code class="sig-name descname">getSelector</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">unicode name</em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.getSelector" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pycvc5.Datatype.getSelector">
+<span class="sig-name descname"><span class="pre">getSelector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self</span></em>, <em class="sig-param"><span class="pre">unicode</span> <span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.getSelector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a selector by name.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pycvc5.Datatype.hasNestedRecursion">
-<code class="sig-name descname">hasNestedRecursion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.hasNestedRecursion" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pycvc5.Datatype.hasNestedRecursion">
+<span class="sig-name descname"><span class="pre">hasNestedRecursion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.hasNestedRecursion" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>whether this datatype has nested recursion (see <a class="reference internal" href="../cpp/datatype.html#_CPPv4NK4cvc53api8Datatype18hasNestedRecursionEv" title="cvc5::api::Datatype::hasNestedRecursion"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Datatype::hasNestedRecursion()</span></code></a>).</p>
@@ -220,8 +222,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="pycvc5.Datatype.isCodatatype">
-<code class="sig-name descname">isCodatatype</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isCodatatype" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pycvc5.Datatype.isCodatatype">
+<span class="sig-name descname"><span class="pre">isCodatatype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isCodatatype" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>whether this datatype corresponds to a co-datatype.</p>
@@ -230,8 +232,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="pycvc5.Datatype.isFinite">
-<code class="sig-name descname">isFinite</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isFinite" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pycvc5.Datatype.isFinite">
+<span class="sig-name descname"><span class="pre">isFinite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isFinite" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>whether this datatype is finite.</p>
@@ -240,8 +242,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="pycvc5.Datatype.isParametric">
-<code class="sig-name descname">isParametric</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isParametric" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pycvc5.Datatype.isParametric">
+<span class="sig-name descname"><span class="pre">isParametric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isParametric" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>whether this datatype is parametric.</p>
@@ -250,8 +252,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="pycvc5.Datatype.isRecord">
-<code class="sig-name descname">isRecord</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isRecord" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pycvc5.Datatype.isRecord">
+<span class="sig-name descname"><span class="pre">isRecord</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isRecord" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>whether this datatype corresponds to a record.</p>
@@ -260,8 +262,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="pycvc5.Datatype.isTuple">
-<code class="sig-name descname">isTuple</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isTuple" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pycvc5.Datatype.isTuple">
+<span class="sig-name descname"><span class="pre">isTuple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isTuple" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>whether this datatype corresponds to a tuple.</p>
@@ -270,8 +272,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="pycvc5.Datatype.isWellFounded">
-<code class="sig-name descname">isWellFounded</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isWellFounded" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pycvc5.Datatype.isWellFounded">
+<span class="sig-name descname"><span class="pre">isWellFounded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isWellFounded" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>whether this datatype is well-founded (see <a class="reference internal" href="../cpp/datatype.html#_CPPv4NK4cvc53api8Datatype13isWellFoundedEv" title="cvc5::api::Datatype::isWellFounded"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Datatype::isWellFounded()</span></code></a>).</p>
