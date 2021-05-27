@@ -1,0 +1,67 @@
+project:
+- fname: Clark
+  lname: Barrett
+  website: https://cs.stanford.edu/~barrett/
+  affiliation: Stanford University
+  bio:
+- fname: Cesare
+  lname: Tinelli
+  website: http://homepage.cs.uiowa.edu/~tinelli/
+  affiliation: University of Iowa
+  bio:
+
+technical:
+- fname: Haniel
+  lname: Barbosa
+  website: https://homepages.dcc.ufmg.br/~hbarbosa/
+  affiliation: Universidade Federal de Minas Gerais
+  bio:
+- fname: Aina
+  lname: Niemetz
+  website: https://cs.stanford.edu/~niemetz/
+  affiliation: Stanford University
+  bio:
+- fname: Mathias
+  lname: Preiner
+  website: https://cs.stanford.edu/~preiner/
+  affiliation: Stanford University
+  bio:
+- fname: Andrew
+  lname: Reynolds
+  website: http://cs.uiowa.edu/~ajreynol
+  affiliation: University of Iowa
+  bio:
+
+devs:
+- fname: Martin
+  lname: Brain
+  website: https://www.cs.ox.ac.uk/people/martin.brain/
+  affiliation: University of Oxford and City University of London
+- fname: Gereon
+  lname: Kremer
+  website:
+  affiliation: Stanford University
+- fname: Makai
+  lname: Mann
+  website: https://makaimann.github.io/
+  affiliation: Stanford University
+- fname: Abdalrhman
+  lname: Mohamed
+  website:
+  affiliation: University of Iowa
+- fname: Mudathir
+  lname: Mohamed
+  website: https://homepage.cs.uiowa.edu/~mahgoubyahia/
+  affiliation: University of Iowa
+- fname: Andres
+  lname: Nötzli
+  website: https://cs.stanford.edu/people/noetzli/
+  affiliation: Stanford University, Amazon
+- fname: Alex
+  lname: Ozdemir
+  website: https://cs.stanford.edu/~aozdemir/
+  affiliation: Stanford University
+- fname: Yoni
+  lname: Zohar
+  website: https://cs.stanford.edu/~yoniz/
+  affiliation: Stanford University
