@@ -29,7 +29,7 @@ cvc5 is a joint project lead by Stanford University and the University of Iowa.
 # Guidelines For Fuzzing cvc5
 
 The development team of cvc5 is committed to ensure that its core
-usage model (without enabling experimental options) is extremely robust.
+usage model (without experimental options) is extremely robust.
 At the same time, our team is small and we have to set priorities,
 including prioritizing user bugs over fuzzer bugs.
 
