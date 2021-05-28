@@ -22,7 +22,7 @@ on its use for research or commercial purposes (see
 To contribute to cvc5, please refer to our [contribution
 guidelines](https://github.com/cvc5/cvc5/blob/master/CONTRIBUTING.md).
 
-cvc5 is a joint project lead by Stanford University and the University of Iowa.
+cvc5 is a joint project led by Stanford University and the University of Iowa.
 
 
 
