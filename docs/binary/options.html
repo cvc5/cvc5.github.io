@@ -1,0 +1,2179 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Commandline Options &mdash; cvc5  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../static/documentation_options.js"></script>
+        <script src="../static/jquery.js"></script>
+        <script src="../static/underscore.js"></script>
+        <script src="../static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API Documentation" href="../api/api.html" />
+    <link rel="prev" title="Binary Documentation" href="binary.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> cvc5
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation/installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="binary.html">Binary Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Commandline Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#most-commonly-used-cvc5-options">Most Commonly-Used cvc5 Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-cvc5-options">Additional cvc5 Options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#arithmetic-theory-module">Arithmetic Theory Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arrays-theory-module">Arrays Theory Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#base-module">Base Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bitvector-theory-module">Bitvector Theory Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datatypes-theory-module">Datatypes Theory Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#decision-heuristics-module">Decision Heuristics Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#expression-module">Expression Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#floating-point-module">Floating-Point Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#driver-module">Driver Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parser-module">Parser Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#printing-module">Printing Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#proof-module">Proof Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sat-layer-module">SAT Layer Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantifiers-module">Quantifiers Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resource-manager-module">Resource Manager Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#separation-logic-theory-module">Separation Logic Theory Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sets-theory-module">Sets Theory Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smt-layer-module">SMT Layer Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#strings-theory-module">Strings Theory Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theory-layer-module">Theory Layer Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uninterpreted-functions-theory-module">Uninterpreted Functions Theory Module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../languages.html">Input Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory.html">Theory References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cvc5</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="binary.html">Binary Documentation</a> &raquo;</li>
+        
+      <li>Commandline Options</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/binary/options.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="commandline-options">
+<h1>Commandline Options<a class="headerlink" href="#commandline-options" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="most-commonly-used-cvc5-options">
+<h2>Most Commonly-Used cvc5 Options<a class="headerlink" href="#most-commonly-used-cvc5-options" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--lang=LANG</span> <span class="pre">|</span> <span class="pre">--input-language=LANG</span> <span class="pre">|</span> <span class="pre">-L</span> <span class="pre">LANG</span></code></dt><dd><p>force input language (default is “auto”; see –lang help)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--output-lang=LANG</span> <span class="pre">|</span> <span class="pre">--output-language=LANG</span></code></dt><dd><p>force output language (default is “auto”; see –output-lang help)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--quiet</span> <span class="pre">|</span> <span class="pre">-q</span></code></dt><dd><p>decrease verbosity (may be repeated)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--stats</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>give statistics on exit</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--verbose</span> <span class="pre">|</span> <span class="pre">-v</span></code></dt><dd><p>increase verbosity (may be repeated)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--copyright</span></code></dt><dd><p>show cvc5 copyright information</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--help</span> <span class="pre">|</span> <span class="pre">-h</span></code></dt><dd><p>full command line reference</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--seed=N</span> <span class="pre">|</span> <span class="pre">-s</span> <span class="pre">N</span></code></dt><dd><p>seed for random number generator</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--show-config</span></code></dt><dd><p>show cvc5 static configuration</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--version</span> <span class="pre">|</span> <span class="pre">-V</span></code></dt><dd><p>identify this cvc5 binary</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strict-parsing</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>be less tolerant of non-conforming inputs</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--rlimit-per=N</span> <span class="pre">|</span> <span class="pre">--reproducible-resource-limit=N</span></code></dt><dd><p>set resource limit per query</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--rlimit=N</span></code></dt><dd><p>set resource limit</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--tlimit-per=MS</span></code></dt><dd><p>set time limit per query in milliseconds</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--tlimit=MS</span></code></dt><dd><p>set time limit in milliseconds of wall clock time</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dump-to=FILE</span></code></dt><dd><p>all dumping goes to FILE (instead of stdout)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dump=MODE</span></code></dt><dd><p>dump preprocessed assertions, etc., see –dump=help</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--incremental</span> <span class="pre">|</span> <span class="pre">-i</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable incremental solving</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--produce-assertions</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>keep an assertions list (enables get-assertions command)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--produce-models</span> <span class="pre">|</span> <span class="pre">-m</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>support the get-value and get-model commands</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="additional-cvc5-options">
+<h2>Additional cvc5 Options<a class="headerlink" href="#additional-cvc5-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arithmetic-theory-module">
+<h3>Arithmetic Theory Module<a class="headerlink" href="#arithmetic-theory-module" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--approx-branch-depth=N</span></code></dt><dd><p>maximum branch depth the approximate solver is allowed to take</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arith-brab</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>whether to use simple rounding, similar to a unit-cube test, for integers</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arith-no-partial-fun</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do not use partial function semantics for arithmetic (not SMT LIB compliant)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arith-prop-clauses=N</span></code></dt><dd><p>rows shorter than this are propagated as clauses</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arith-prop=MODE</span></code></dt><dd><p>turns on arithmetic propagation (default is ‘old’, see –arith-prop=help)</p>
+<p>This decides on kind of propagation arithmetic attempts to do during the search.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">unate</dt>
+<dd class="field-even"><p>Use constraints to do unate propagation.</p>
+</dd>
+<dt class="field-odd">bi</dt>
+<dd class="field-odd"><p>(Bounds Inference) infers bounds on basic variables using the upper and lower bounds of the non-basic variables in the tableau.</p>
+</dd>
+<dt class="field-even">both</dt>
+<dd class="field-even"><p>Use bounds inference and unate.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arith-rewrite-equalities</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turns on the preprocessing rewrite turning equalities into a conjunction of inequalities</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--collect-pivot-stats</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>collect the pivot history</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cut-all-bounded</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turns on the integer solving step of periodically cutting all integer variables that have both upper and lower bounds</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dio-decomps</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>let skolem variables for integer divisibility constraints leak from the dio solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dio-repeat</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>handle dio solver constraints in mass or one at a time</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dio-solver</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turns on Linear Diophantine Equation solver (Griggio, JSAT 2012)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dio-turns=N</span></code></dt><dd><p>turns in a row dio solver cutting gets</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--error-selection-rule=RULE</span></code></dt><dd><p>change the pivot rule for the basic variable (default is ‘min’, see –pivot-rule help)</p>
+<p>This decides on the rule used by simplex during heuristic rounds for deciding the next basic variable to select.</p>
+<dl class="field-list simple">
+<dt class="field-odd">min</dt>
+<dd class="field-odd"><p>The minimum abs() value of the variable’s violation of its bound.</p>
+</dd>
+<dt class="field-even">varord</dt>
+<dd class="field-even"><p>The variable order.</p>
+</dd>
+<dt class="field-odd">max</dt>
+<dd class="field-odd"><p>The maximum violation the bound.</p>
+</dd>
+<dt class="field-even">sum</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--fc-penalties</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turns on degenerate pivot penalties</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--heuristic-pivots=N</span></code></dt><dd><p>the number of times to apply the heuristic pivot rule; if N &lt; 0, this defaults to the number of variables; if this is unset, this is tuned by the logic selection</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--lemmas-on-replay-failure</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>attempt to use external lemmas if approximate solve integer failed</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--maxCutsInContext=N</span></code></dt><dd><p>maximum cuts in a given context before signalling a restart</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--miplib-trick</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turns on the preprocessing step of attempting to infer bounds on miplib problems</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--miplib-trick-subs=N</span></code></dt><dd><p>do substitution for miplib ‘tmp’ vars if defined in &lt;= N eliminated vars</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--new-prop</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use the new row propagation system</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-cad</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>whether to use the cylindrical algebraic decomposition solver for non-linear arithmetic</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-cad-initial</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>whether to use the linear model as initial guess for the cylindrical algebraic decomposition solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-ext-ent-conf</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>check for entailed conflicts in non-linear solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-ext-factor</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use factoring inference in non-linear incremental linearization solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-ext-inc-prec</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>whether to increment the precision for irrational function constraints</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-ext-purify</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>purify non-linear terms at preprocess</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-ext-rbound</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use resolution-style inference for inferring new bounds in non-linear incremental linearization solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-ext-rewrite</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do context-dependent simplification based on rewrites in non-linear solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-ext-split-zero</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>initial splits on zero for all variables</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-ext-tf-taylor-deg=N</span></code></dt><dd><p>initial degree of polynomials for Taylor approximation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-ext-tf-tplanes</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use non-terminating tangent plane strategy for transcendental functions for non-linear incremental linearization solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-ext-tplanes</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use non-terminating tangent plane strategy for non-linear incremental linearization solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-ext-tplanes-interleave</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>interleave tangent plane strategy for non-linear incremental linearization solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-ext=MODE</span></code></dt><dd><p>incremental linearization approach to non-linear</p>
+<p>Modes for the non-linear linearization</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Disable linearization approach</p>
+</dd>
+<dt class="field-even">light</dt>
+<dd class="field-even"><p>Only use a few light-weight lemma schemes</p>
+</dd>
+<dt class="field-odd">full</dt>
+<dd class="field-odd"><p>Use all lemma schemes</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-icp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>whether to use ICP-style propagations for non-linear arithmetic</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-rlv=MODE</span></code></dt><dd><p>choose mode for using relevance of assertoins in non-linear arithmetic</p>
+<p>Modes for using relevance of assertoins in non-linear arithmetic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not use relevance.</p>
+</dd>
+<dt class="field-even">interleave</dt>
+<dd class="field-even"><p>Alternate rounds using relevance.</p>
+</dd>
+<dt class="field-odd">always</dt>
+<dd class="field-odd"><p>Always use relevance.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--pb-rewrites</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>apply pseudo boolean rewrites</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--pivot-threshold=N</span></code></dt><dd><p>sets the number of pivots using –pivot-rule per basic variable per simplex instance before using variable order</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--pp-assert-max-sub-size=N</span></code></dt><dd><p>threshold for substituting an equality in ppAssert</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--prop-row-length=N</span></code></dt><dd><p>sets the maximum row length to be used in propagation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--replay-early-close-depth=N</span></code></dt><dd><p>multiples of the depths to try to close the approx log eagerly</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--replay-failure-penalty=N</span></code></dt><dd><p>number of solve integer attempts to skips after a numeric failure</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--replay-lemma-reject-cut=N</span></code></dt><dd><p>maximum complexity of any coefficient while outputting replaying cut lemmas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--replay-num-err-penalty=N</span></code></dt><dd><p>number of solve integer attempts to skips after a numeric failure</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--replay-reject-cut=N</span></code></dt><dd><p>maximum complexity of any coefficient while replaying cuts</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--replay-soi-major-threshold-pen=N</span></code></dt><dd><p>threshold for a major tolerance failure by the approximate solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--replay-soi-major-threshold=T</span></code></dt><dd><p>threshold for a major tolerance failure by the approximate solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--replay-soi-minor-threshold-pen=N</span></code></dt><dd><p>threshold for a minor tolerance failure by the approximate solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--replay-soi-minor-threshold=T</span></code></dt><dd><p>threshold for a minor tolerance failure by the approximate solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--restrict-pivots</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>have a pivot cap for simplex at effort levels below fullEffort</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--revert-arith-models-on-unsat</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>revert the arithmetic model to a known safe model on unsat if one is cached</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--rr-turns=N</span></code></dt><dd><p>round robin turn</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--se-solve-int</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>attempt to use the approximate solve integer method on standard effort</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--simplex-check-period=N</span></code></dt><dd><p>the number of pivots to do in simplex before rechecking for a conflict on all variables</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--soi-qe</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use quick explain to minimize the sum of infeasibility conflicts</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--standard-effort-variable-order-pivots=N</span></code></dt><dd><p>limits the number of pivots in a single invocation of check() at a non-full effort level using Bland’s pivot rule</p>
+</dd>
+</dl>
+</div>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--unate-lemmas=MODE</span></code></dt><dd><p>determines which lemmas to add before solving (default is ‘all’, see –unate-lemmas=help)</p>
+<p>Unate lemmas are generated before SAT search begins using the relationship of constant terms and polynomials.</p>
+<dl class="field-list simple">
+<dt class="field-odd">all</dt>
+<dd class="field-odd"><p>A combination of inequalities and equalities.</p>
+</dd>
+<dt class="field-even">eqs</dt>
+<dd class="field-even"><p>Outputs lemmas of the general forms (= p c) implies (&lt;= p d) for c &lt; d, or (= p c) implies (not (= p d)) for c != d.</p>
+</dd>
+<dt class="field-odd">ineqs</dt>
+<dd class="field-odd"><p>Outputs lemmas of the general form (&lt;= p c) implies (&lt;= p d) for c &lt; d.</p>
+</dd>
+<dt class="field-even">none</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--use-approx</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>attempt to use an approximate solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--use-fcsimplex</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use focusing and converging simplex (FMCAD 2013 submission)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--use-soi</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use sum of infeasibility simplex (FMCAD 2013 submission)</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="arrays-theory-module">
+<h3>Arrays Theory Module<a class="headerlink" href="#arrays-theory-module" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--arrays-config=N</span></code></dt><dd><p>set different array option configurations - for developers only</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arrays-eager-index</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on eager index splitting for generated array lemmas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arrays-eager-lemmas</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on eager lemma generation for arrays</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arrays-exp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable experimental features in the theory of arrays</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arrays-model-based</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on model-based array solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arrays-optimize-linear</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on optimization for linear array terms (see de Moura FMCAD 09 arrays paper)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arrays-prop=N</span></code></dt><dd><p>propagation effort for arrays: 0 is none, 1 is some, 2 is full</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arrays-reduce-sharing</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use model information to reduce size of care graph for arrays</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arrays-weak-equiv</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use algorithm from Christ/Hoenicke (SMT 2014)</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="base-module">
+<h3>Base Module<a class="headerlink" href="#base-module" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--debug=TAG</span> <span class="pre">|</span> <span class="pre">-d</span> <span class="pre">TAG</span></code></dt><dd><p>debug something (e.g. -d arith), can repeat</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--parse-only</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>exit after parsing input</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--preprocess-only</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>exit after preprocessing input</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--print-success</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>print the “success” output required of SMT-LIBv2</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--stats-all</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>print unchanged (defaulted) statistics as well</p>
+</dd>
+</dl>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--stats-every-query</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>in incremental mode, print stats after every satisfiability or validity query</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--stats-expert</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>print expert (non-public) statistics as well</p>
+</dd>
+</dl>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--trace=TAG</span> <span class="pre">|</span> <span class="pre">-t</span> <span class="pre">TAG</span></code></dt><dd><p>trace something (e.g. -t pushpop), can repeat</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--verbosity=N</span></code></dt><dd><p>the verbosity level of cvc5</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="bitvector-theory-module">
+<h3>Bitvector Theory Module<a class="headerlink" href="#bitvector-theory-module" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--bitblast-aig</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>bitblast by first converting to AIG (implies –bitblast=eager)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--bitblast=MODE</span></code></dt><dd><p>choose bitblasting mode, see –bitblast=help</p>
+<p>Bit-blasting modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">lazy</dt>
+<dd class="field-odd"><p>Separate boolean structure and term reasoning between the core SAT solver and the bit-vector SAT solver.</p>
+</dd>
+<dt class="field-even">eager</dt>
+<dd class="field-even"><p>Bitblast eagerly to bit-vector SAT solver.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--bitwise-eq</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>lift equivalence with one-bit bit-vectors to be boolean operations</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--bool-to-bv=MODE</span></code></dt><dd><p>convert booleans to bit-vectors of size 1 at various levels of aggressiveness, see –bool-to-bv=help</p>
+<p>BoolToBV preprocessing pass modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">off</dt>
+<dd class="field-odd"><p>Don’t push any booleans to width one bit-vectors.</p>
+</dd>
+<dt class="field-even">ite</dt>
+<dd class="field-even"><p>Try to turn ITEs into BITVECTOR_ITE when possible. It can fail per-formula if not all sub-formulas can be turned to bit-vectors.</p>
+</dd>
+<dt class="field-odd">all</dt>
+<dd class="field-odd"><p>Force all booleans to be bit-vectors of width one except at the top level. Most aggressive mode.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-aig-simp=COMMAND</span></code></dt><dd><p>abc command to run AIG simplifications (implies –bitblast-aig, default is “balance;drw”)</p>
+</dd>
+</dl>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-alg-extf</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>algebraic inferences for extended functions</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-algebraic-budget=N</span></code></dt><dd><p>the budget allowed for the algebraic solver in number of SAT conflicts</p>
+</dd>
+</dl>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-algebraic-solver</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on experimental algebraic solver for the bit-vector theory (only if –bitblast=lazy)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-assert-input</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>assert input assertions on user-level 0 instead of assuming them in the bit-vector SAT solver</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-eager-explanations</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>compute bit-blasting propagation explanations eagerly</p>
+</dd>
+</dl>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-eq-solver</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use the equality engine for the bit-vector theory (only if –bitblast=lazy)</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-extract-arith</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable rewrite pushing extract [i:0] over arithmetic operations (can blow up)</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-gauss-elim</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>simplify formula via Gaussian Elimination if applicable</p>
+</dd>
+</dl>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-inequality-solver</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on the inequality solver for the bit-vector theory (only if –bitblast=lazy)</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-intro-pow2</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>introduce bitvector powers of two as a preprocessing pass</p>
+</dd>
+</dl>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-lazy-reduce-extf</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>reduce extended functions like bv2nat and int2bv at last call instead of full effort</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-lazy-rewrite-extf</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>lazily rewrite extended functions like bv2nat and int2bv</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-num-func=N</span></code></dt><dd><p>number of function symbols in conflicts that are generalized</p>
+</dd>
+</dl>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-print-consts-as-indexed-symbols</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>print bit-vector constants in decimal (e.g. (_ bv1 4)) instead of binary (e.g. #b0001), applies to SMT-LIB 2.x</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-propagate</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use bit-vector propagation in the bit-blaster</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-quick-xplain</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>minimize bv conflicts using the QuickXplain algorithm</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-sat-solver=MODE</span></code></dt><dd><p>choose which sat solver to use, see –bv-sat-solver=help</p>
+<p>SAT solver for bit-blasting backend.</p>
+<dl class="field-list simple">
+<dt class="field-odd">minisat</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">cryptominisat</dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">cadical</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">kissat</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</dd>
+</dl>
+</div>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-solver=MODE</span></code></dt><dd><p>choose bit-vector solver, see –bv-solver=help</p>
+<p>Bit-vector solvers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">bitblast</dt>
+<dd class="field-odd"><p>Enables bitblasting solver.</p>
+</dd>
+<dt class="field-even">lazy</dt>
+<dd class="field-even"><p>Enables the lazy BV solver infrastructure.</p>
+</dd>
+<dt class="field-odd">simple</dt>
+<dd class="field-odd"><p>Enables simple bitblasting solver with proof support.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-to-bool</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>lift bit-vectors of size 1 to booleans when possible</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="datatypes-theory-module">
+<h3>Datatypes Theory Module<a class="headerlink" href="#datatypes-theory-module" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--cdt-bisimilar</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do bisimilarity check for co-datatypes</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dt-binary-split</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do binary splits for datatype constructor types</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dt-blast-splits</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>when applicable, blast splitting lemmas for all variables at once</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dt-cyclic</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do cyclicity check for datatypes</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dt-force-assignment</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>force the datatypes solver to give specific values to all datatypes terms before answering sat</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dt-infer-as-lemmas</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>always send lemmas out instead of making internal inferences</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dt-nested-rec</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>allow nested recursion in datatype definitions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dt-polite-optimize</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on optimization for polite combination</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--dt-rewrite-error-sel</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>rewrite incorrectly applied selectors to arbitrary ground term</p>
+</dd>
+</dl>
+</div>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--dt-share-sel</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>internally use shared selectors across multiple constructors</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-abort-size=N</span></code></dt><dd><p>tells enumerative sygus to only consider solutions up to term size N (-1 == no limit, default)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-fair-max</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use max instead of sum for multi-function sygus conjectures</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-fair=MODE</span></code></dt><dd><p>if and how to apply fairness for sygus</p>
+<p>Modes for enforcing fairness for counterexample guided quantifier instantion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">direct</dt>
+<dd class="field-odd"><p>Enforce fairness using direct conflict lemmas.</p>
+</dd>
+<dt class="field-even">dt-size</dt>
+<dd class="field-even"><p>Enforce fairness using size operator.</p>
+</dd>
+<dt class="field-odd">dt-height-bound</dt>
+<dd class="field-odd"><p>Enforce fairness by height bound predicate.</p>
+</dd>
+<dt class="field-even">dt-size-bound</dt>
+<dd class="field-even"><p>Enforce fairness by size bound predicate.</p>
+</dd>
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not enforce fairness.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-sym-break</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>simple sygus symmetry breaking lemmas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-sym-break-agg</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use aggressive checks for simple sygus symmetry breaking lemmas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-sym-break-dynamic</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>dynamic sygus symmetry breaking lemmas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-sym-break-lazy</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>lazily add symmetry breaking lemmas for terms</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-sym-break-pbe</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>sygus symmetry breaking lemmas based on pbe conjectures</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-sym-break-rlv</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>add relevancy conditions to symmetry breaking lemmas</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="decision-heuristics-module">
+<h3>Decision Heuristics Module<a class="headerlink" href="#decision-heuristics-module" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--decision-random-weight=N</span></code></dt><dd><p>assign random weights to nodes between 0 and N-1 (0: disable)</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--decision-threshold=N</span></code></dt><dd><p>ignore all nodes greater than threshold in first attempt to pick decision</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--decision-use-weight</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use the weight nodes (locally, by looking at children) to direct recursive search</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--decision-weight-internal=HOW</span></code></dt><dd><p>compute weights of internal nodes using children: off, max, sum, usr1</p>
+<p>Decision weight internal mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">off</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">max</dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">sum</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">usr1</dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+</dd>
+</dl>
+</div>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--decision=MODE</span> <span class="pre">|</span> <span class="pre">--decision-mode=MODE</span></code></dt><dd><p>choose decision mode, see –decision=help</p>
+<p>Decision modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">internal</dt>
+<dd class="field-odd"><p>Use the internal decision heuristics of the SAT solver.</p>
+</dd>
+<dt class="field-even">justification</dt>
+<dd class="field-even"><p>An ATGP-inspired justification heuristic.</p>
+</dd>
+<dt class="field-odd">justification-old</dt>
+<dd class="field-odd"><p>Older implementation of an ATGP-inspired justification heuristic.</p>
+</dd>
+<dt class="field-even">justification-stoponly</dt>
+<dd class="field-even"><p>Use the justification heuristic only to stop early, not for decisions.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--jh-rlv-order</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>maintain activity-based ordering for decision justification heuristic</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--jh-skolem-rlv=MODE</span></code></dt><dd><p>policy for when to consider skolem definitions relevant in justification heuristic</p>
+<p>Policy for when to consider skolem definitions relevant in justification heuristic</p>
+<dl class="field-list simple">
+<dt class="field-odd">assert</dt>
+<dd class="field-odd"><p>skolems are relevant when they occur in an asserted literal</p>
+</dd>
+<dt class="field-even">always</dt>
+<dd class="field-even"><p>skolems are always relevant</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--jh-skolem=MODE</span></code></dt><dd><p>policy for when to satisfy skolem definitions in justification heuristic</p>
+<p>Policy for when to satisfy skolem definitions in justification heuristic</p>
+<dl class="field-list simple">
+<dt class="field-odd">first</dt>
+<dd class="field-odd"><p>satisfy pending relevant skolem definitions before input assertions</p>
+</dd>
+<dt class="field-even">last</dt>
+<dd class="field-even"><p>satisfy pending relevant skolem definitions after input assertions</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="expression-module">
+<h3>Expression Module<a class="headerlink" href="#expression-module" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--dag-thresh=N</span></code></dt><dd><p>dagify common subexprs appearing &gt; N times (1 == default, 0 == don’t dagify)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--expr-depth=N</span></code></dt><dd><p>print exprs to depth N (0 == default, -1 == no limit)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--type-checking</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>type check expressions</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="floating-point-module">
+<h3>Floating-Point Module<a class="headerlink" href="#floating-point-module" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--fp-exp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Allow floating-point sorts of all sizes, rather than only Float32 (8/24) or Float64 (11/53) (experimental)</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="driver-module">
+<h3>Driver Module<a class="headerlink" href="#driver-module" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--early-exit</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do not run destructors at exit; default on except in debug builds</p>
+</dd>
+</dl>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--interactive</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>force interactive/non-interactive mode</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--segv-spin</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>spin on segfault/other crash waiting for gdb</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--show-debug-tags</span></code></dt><dd><p>show all available tags for debugging</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--show-trace-tags</span></code></dt><dd><p>show all available tags for tracing</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--tear-down-incremental=N</span></code></dt><dd><p>implement PUSH/POP/multi-query by destroying and recreating SmtEngine every N queries</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="parser-module">
+<h3>Parser Module<a class="headerlink" href="#parser-module" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--force-logic=LOGIC</span></code></dt><dd><p>set the logic, and override all further user attempts to change it</p>
+</dd>
+</dl>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--global-declarations</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>force all declarations and definitions to be global</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--mmap</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>memory map file input</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--semantic-checks</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable semantic checks, including type checks</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="printing-module">
+<h3>Printing Module<a class="headerlink" href="#printing-module" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--flatten-ho-chains</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>print (binary) application chains in a flattened way, e.g. (a b c) rather than ((a b) c)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--inst-format=MODE</span></code></dt><dd><p>print format mode for instantiations, see –inst-format=help</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--model-format=MODE</span></code></dt><dd><p>print format mode for models, see –model-format=help</p>
+<p>Model format modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">default</dt>
+<dd class="field-odd"><p>Print model as expressions in the output language format.</p>
+</dd>
+<dt class="field-even">table</dt>
+<dd class="field-even"><p>Print functional expressions over finite domains in a table format.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--print-inst-full</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>print instantiations for formulas that do not have given identifiers</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--print-inst=MODE</span></code></dt><dd><p>print format for printing instantiations</p>
+<p>Print format for printing instantiations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">list</dt>
+<dd class="field-odd"><p>Print the list of instantiations per quantified formula, when non-empty.</p>
+</dd>
+<dt class="field-even">num</dt>
+<dd class="field-even"><p>Print the total number of instantiations per quantified formula, when non-zero.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="proof-module">
+<h3>Proof Module<a class="headerlink" href="#proof-module" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--proof-eager-checking</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>check proofs eagerly with proof for local debugging</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--proof-format-mode=MODE</span></code></dt><dd><p>select language of proof output</p>
+<p>Proof format modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not translate proof output</p>
+</dd>
+<dt class="field-even">dot</dt>
+<dd class="field-even"><p>Output DOT proof</p>
+</dd>
+<dt class="field-odd">verit</dt>
+<dd class="field-odd"><p>Output veriT proof</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--proof-granularity=MODE</span></code></dt><dd><p>modes for proof granularity</p>
+<p>Modes for proof granularity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">off</dt>
+<dd class="field-odd"><p>Do not improve the granularity of proofs.</p>
+</dd>
+<dt class="field-even">rewrite</dt>
+<dd class="field-even"><p>Allow rewrite or substitution steps, expand macros.</p>
+</dd>
+<dt class="field-odd">theory-rewrite</dt>
+<dd class="field-odd"><p>Allow theory rewrite steps, expand macros, rewrite and substitution steps.</p>
+</dd>
+<dt class="field-even">dsl-rewrite</dt>
+<dd class="field-even"><p>Allow DSL rewrites and evaluation steps, expand macros, rewrite, substitution, and theory rewrite steps.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--proof-pedantic=N</span></code></dt><dd><p>assertion failure for any incorrect rule application or untrusted lemma having pedantic level &lt;=N with proof</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--proof-print-conclusion</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Print conclusion of proof steps when printing AST</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="sat-layer-module">
+<h3>SAT Layer Module<a class="headerlink" href="#sat-layer-module" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--minisat-dump-dimacs</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>instead of solving minisat dumps the asserted clauses in Dimacs format</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--minisat-elimination</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use Minisat elimination</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--random-freq=P</span> <span class="pre">|</span> <span class="pre">--random-frequency=P</span></code></dt><dd><p>sets the frequency of random decisions in the sat solver (P=0.0 by default)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--random-seed=S</span></code></dt><dd><p>sets the random seed for the sat solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--refine-conflicts</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>refine theory conflict clauses (default false)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--restart-int-base=N</span></code></dt><dd><p>sets the base restart interval for the sat solver (N=25 by default)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--restart-int-inc=F</span></code></dt><dd><p>sets the restart interval increase factor for the sat solver (F=3.0 by default)</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="quantifiers-module">
+<h3>Quantifiers Module<a class="headerlink" href="#quantifiers-module" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--ag-miniscope-quant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>perform aggressive miniscoping for quantifiers</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegis-sample=MODE</span></code></dt><dd><p>mode for using samples in the counterexample-guided inductive synthesis loop</p>
+<p>Modes for sampling with counterexample-guided inductive synthesis (CEGIS).</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not use sampling with CEGIS.</p>
+</dd>
+<dt class="field-even">use</dt>
+<dd class="field-even"><p>Use sampling to accelerate CEGIS. This will rule out solutions for a conjecture when they are not satisfied by a sample point.</p>
+</dd>
+<dt class="field-odd">trust</dt>
+<dd class="field-odd"><p>Trust that when a solution for a conjecture is always true under sampling, then it is indeed a solution. Note this option may print out spurious solutions for synthesis conjectures.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turns on counterexample-based quantifier instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-all</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>apply counterexample-based instantiation to all quantified formulas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-bv</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use word-level inversion approach for counterexample-guided quantifier instantiation for bit-vectors</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-bv-concat-inv</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>compute inverse for concat over equalities rather than producing an invertibility condition</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-bv-ineq=MODE</span></code></dt><dd><p>choose mode for handling bit-vector inequalities with counterexample-guided instantiation</p>
+<p>Modes for handling bit-vector inequalities in counterexample-guided instantiation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">eq-slack</dt>
+<dd class="field-odd"><p>Solve for the inequality using the slack value in the model, e.g., t &gt; s becomes t = s + ( t-s )^M.</p>
+</dd>
+<dt class="field-even">eq-boundary</dt>
+<dd class="field-even"><p>Solve for the boundary point of the inequality, e.g., t &gt; s becomes t = s+1.</p>
+</dd>
+<dt class="field-odd">keep</dt>
+<dd class="field-odd"><p>Solve for the inequality directly using side conditions for invertibility.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-bv-interleave-value</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>interleave model value instantiation with word-level inversion approach</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-bv-linear</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>linearize adder chains for variables</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-bv-rm-extract</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>replaces extract terms with variables for counterexample-guided instantiation for bit-vectors</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-bv-solve-nl</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>try to solve non-linear bv literals using model value projections</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-full</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turns on full effort counterexample-based quantifier instantiation, which may resort to model-value instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-innermost</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>only process innermost quantified formulas in counterexample-based quantifier instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-midpoint</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>choose substitutions based on midpoints of lower and upper bounds for counterexample-based quantifier instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-min-bounds</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use minimally constrained lower/upper bound for counterexample-based quantifier instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-model</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>guide instantiations by model values for counterexample-based quantifier instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-multi-inst</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>when applicable, do multi instantiations per quantifier per round in counterexample-based quantifier instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-nested-qe</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>process nested quantified formulas with quantifier elimination in counterexample-based quantifier instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-nopt</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>non-optimal bounds for counterexample-based quantifier instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-repeat-lit</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>solve literals more than once in counterexample-based quantifier instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-round-up-lia</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>round up integer lower bounds in substitutions for counterexample-based quantifier instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-sat</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>answer sat when quantifiers are asserted with counterexample-based quantifier instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-use-inf-int</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use integer infinity for vts in counterexample-based quantifier instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cegqi-use-inf-real</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use real infinity for vts in counterexample-based quantifier instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cond-var-split-agg-quant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>aggressive split quantified formulas that lead to variable eliminations</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--cond-var-split-quant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>split quantified formulas that lead to variable eliminations</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--conjecture-filter-active-terms</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>filter based on active terms</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--conjecture-filter-canonical</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>filter based on canonicity</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--conjecture-filter-model</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>filter based on model</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--conjecture-gen</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>generate candidate conjectures for inductive proofs</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--conjecture-gen-gt-enum=N</span></code></dt><dd><p>number of ground terms to generate for model filtering</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--conjecture-gen-max-depth=N</span></code></dt><dd><p>maximum depth of terms to consider for conjectures</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--conjecture-gen-per-round=N</span></code></dt><dd><p>number of conjectures to generate per instantiation round</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--conjecture-gen-uee-intro</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>more aggressive merging for universal equality engine, introduces terms</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--conjecture-no-filter</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do not filter conjectures</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--debug-inst</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>print instantiations during solving (for debugging)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--debug-sygus</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>print enumerated terms and candidates generated by the sygus solver (for debugging)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dt-stc-ind</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>apply strengthening for existential quantification over datatypes based on structural induction</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dt-var-exp-quant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>expand datatype variables bound to one constructor in quantifiers</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--e-matching</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>whether to do heuristic E-matching</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--elim-taut-quant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>eliminate tautological disjuncts of quantified formulas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--ext-rewrite-quant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>apply extended rewriting to bodies of quantified formulas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--finite-model-find</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use finite model finding heuristic for quantifier instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--fmf-bound</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>finite model finding on bounded quantification</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--fmf-bound-int</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>finite model finding on bounded integer quantification</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--fmf-bound-lazy</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enforce bounds for bounded quantification lazily via use of proxy variables</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--fmf-fmc-simple</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>simple models in full model check for finite model finding</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--fmf-fresh-dc</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use fresh distinguished representative when applying Inst-Gen techniques</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--fmf-fun</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>find models for recursively defined functions, assumes functions are admissible</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--fmf-fun-rlv</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>find models for recursively defined functions, assumes functions are admissible, allows empty type when function is irrelevant</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--fmf-inst-engine</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use instantiation engine in conjunction with finite model finding</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--fmf-type-completion-thresh=N</span></code></dt><dd><p>the maximum cardinality of an interpreted type for which exhaustive enumeration in finite model finding is attempted</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--fs-interleave</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>interleave enumerative instantiation with other techniques</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--fs-stratify</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>stratify effort levels in enumerative instantiation, which favors speed over fairness</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--fs-sum</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enumerating tuples of quantifiers by increasing the sum of indices, rather than the maximum</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--full-saturate-quant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enumerative instantiation: instantiate with ground terms from relevant domain, then arbitrary ground terms before answering unknown</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--full-saturate-quant-limit=N</span></code></dt><dd><p>maximum number of rounds of enumerative instantiation to apply (-1 means no limit)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--full-saturate-quant-rd</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>whether to use relevant domain first for enumerative instantiation strategy</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--global-negate</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do global negation of input formula</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--ho-elim</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>eagerly eliminate higher-order constraints</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--ho-elim-store-ax</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use store axiom during ho-elim</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--ho-matching</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do higher-order matching algorithm for triggers with variable operators</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--ho-matching-var-priority</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>give priority to variable arguments over constant arguments</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--ho-merge-term-db</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>merge term indices modulo equality</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--increment-triggers</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>generate additional triggers as needed during search</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--inst-level-input-only</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>only input terms are assigned instantiation level zero</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--inst-max-level=N</span></code></dt><dd><p>maximum inst level of terms used to instantiate quantified formulas with (-1 == no limit, default)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--inst-no-entail</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do not consider instances of quantified formulas that are currently entailed</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--inst-when-phase=N</span></code></dt><dd><p>instantiation rounds quantifiers takes (&gt;=1) before allowing theory combination to happen</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--inst-when-strict-interleave</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>ensure theory combination and standard quantifier effort strategies take turns</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--inst-when-tc-first</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>allow theory combination to happen once initially, before quantifier strategies are run</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--inst-when=MODE</span></code></dt><dd><p>when to apply instantiation</p>
+<p>Instantiation modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">pre-full</dt>
+<dd class="field-odd"><p>Run instantiation round before full effort (possibly at standard effort).</p>
+</dd>
+<dt class="field-even">full</dt>
+<dd class="field-even"><p>Run instantiation round at full effort, before theory combination.</p>
+</dd>
+<dt class="field-odd">full-delay</dt>
+<dd class="field-odd"><p>Run instantiation round at full effort, before theory combination, after all other theories have finished.</p>
+</dd>
+<dt class="field-even">full-last-call</dt>
+<dd class="field-even"><p>Alternate running instantiation rounds at full effort and last call.  In other words, interleave instantiation and theory combination.</p>
+</dd>
+<dt class="field-odd">full-delay-last-call</dt>
+<dd class="field-odd"><p>Alternate running instantiation rounds at full effort after all other theories have finished, and last call.</p>
+</dd>
+<dt class="field-even">last-call</dt>
+<dd class="field-even"><p>Run instantiation at last call effort, after theory combination and and theories report sat.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--int-wf-ind</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>apply strengthening for integers based on well-founded induction</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--ite-dtt-split-quant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>split ites with dt testers as conditions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--ite-lift-quant=MODE</span></code></dt><dd><p>ite lifting mode for quantified formulas</p>
+<p>ITE lifting modes for quantified formulas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not lift if-then-else in quantified formulas.</p>
+</dd>
+<dt class="field-even">simple</dt>
+<dd class="field-even"><p>Lift if-then-else in quantified formulas if results in smaller term size.</p>
+</dd>
+<dt class="field-odd">all</dt>
+<dd class="field-odd"><p>Lift if-then-else in quantified formulas.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--literal-matching=MODE</span></code></dt><dd><p>choose literal matching mode</p>
+<p>Literal match modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not use literal matching.</p>
+</dd>
+<dt class="field-even">use</dt>
+<dd class="field-even"><p>Consider phase requirements of triggers conservatively. For example, the trigger P( x ) in forall( x ). ( P( x ) V ~Q( x ) ) will not be matched with terms in the equivalence class of true, and likewise Q( x ) will not be matched terms in the equivalence class of false. Extends to equality.</p>
+</dd>
+<dt class="field-odd">agg-predicate</dt>
+<dd class="field-odd"><p>Consider phase requirements aggressively for predicates. In the above example, only match P( x ) with terms that are in the equivalence class of false.</p>
+</dd>
+<dt class="field-even">agg</dt>
+<dd class="field-even"><p>Consider the phase requirements aggressively for all triggers.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--macros-quant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>perform quantifiers macro expansion</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--macros-quant-mode=MODE</span></code></dt><dd><p>mode for quantifiers macro expansion</p>
+<p>Modes for quantifiers macro expansion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">all</dt>
+<dd class="field-odd"><p>Infer definitions for functions, including those containing quantified formulas.</p>
+</dd>
+<dt class="field-even">ground</dt>
+<dd class="field-even"><p>Only infer ground definitions for functions.</p>
+</dd>
+<dt class="field-odd">ground-uf</dt>
+<dd class="field-odd"><p>Only infer ground definitions for functions that result in triggers for all free variables.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--mbqi-interleave</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>interleave model-based quantifier instantiation with other techniques</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--mbqi-one-inst-per-round</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>only add one instantiation per quantifier per round for mbqi</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--mbqi=MODE</span></code></dt><dd><p>choose mode for model-based quantifier instantiation</p>
+<p>Model-based quantifier instantiation modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Disable model-based quantifier instantiation.</p>
+</dd>
+<dt class="field-even">fmc</dt>
+<dd class="field-even"><p>Use algorithm from Section 5.4.2 of thesis Finite Model Finding in Satisfiability Modulo Theories.</p>
+</dd>
+<dt class="field-odd">trust</dt>
+<dd class="field-odd"><p>Do not instantiate quantified formulas (incomplete technique).</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--miniscope-quant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>miniscope quantifiers</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--miniscope-quant-fv</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>miniscope quantifiers for ground subformulas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--multi-trigger-cache</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>caching version of multi triggers</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--multi-trigger-linear</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>implementation of multi triggers where maximum number of instantiations is linear wrt number of ground terms</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--multi-trigger-priority</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>only try multi triggers if single triggers give no instantiations</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--multi-trigger-when-single</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>select multi triggers when single triggers exist</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--partial-triggers</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use triggers that do not contain all free variables</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--pool-inst</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>pool-based instantiation: instantiate with ground terms occurring in user-specified pools</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--pre-skolem-quant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>apply skolemization eagerly to bodies of quantified formulas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--pre-skolem-quant-agg</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>apply skolemization to quantified formulas aggressively</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--pre-skolem-quant-nested</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>apply skolemization to nested quantified formulas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--prenex-quant-user</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>prenex quantified formulas with user patterns</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--prenex-quant=MODE</span></code></dt><dd><p>prenex mode for quantified formulas</p>
+<p>Prenex quantifiers modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do no prenex nested quantifiers.</p>
+</dd>
+<dt class="field-even">simple</dt>
+<dd class="field-even"><p>Do simple prenexing of same sign quantifiers.</p>
+</dd>
+<dt class="field-odd">norm</dt>
+<dd class="field-odd"><p>Prenex to prenex normal form.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--purify-triggers</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>purify triggers, e.g. f( x+1 ) becomes f( y ), x mapsto y-1</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--qcf-all-conflict</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>add all available conflicting instances during conflict-based instantiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--qcf-eager-check-rd</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>optimization, eagerly check relevant domain of matched position</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--qcf-eager-test</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>optimization, test qcf instances eagerly</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--qcf-nested-conflict</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>consider conflicts for nested quantifiers</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--qcf-skip-rd</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>optimization, skip instances based on possibly irrelevant portions of quantified formulas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--qcf-tconstraint</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable entailment checks for t-constraints in qcf algorithm</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--qcf-vo-exp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>qcf experimental variable ordering</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--quant-alpha-equiv</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>infer alpha equivalence between quantified formulas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--quant-cf</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable conflict find mechanism for quantifiers</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--quant-cf-mode=MODE</span></code></dt><dd><p>what effort to apply conflict find mechanism</p>
+<p>Quantifier conflict find modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">conflict</dt>
+<dd class="field-odd"><p>Apply QCF algorithm to find conflicts only.</p>
+</dd>
+<dt class="field-even">prop-eq</dt>
+<dd class="field-even"><p>Apply QCF algorithm to propagate equalities as well as conflicts.</p>
+</dd>
+<dt class="field-odd">partial</dt>
+<dd class="field-odd"><p>Use QCF for conflicts, propagations and heuristic instantiations.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--quant-cf-when=MODE</span></code></dt><dd><p>when to invoke conflict find mechanism for quantifiers</p>
+<p>Quantifier conflict find modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">default</dt>
+<dd class="field-odd"><p>Default, apply conflict finding at full effort.</p>
+</dd>
+<dt class="field-even">last-call</dt>
+<dd class="field-even"><p>Apply conflict finding at last call, after theory combination and and all theories report sat.</p>
+</dd>
+<dt class="field-odd">std</dt>
+<dd class="field-odd"><p>Apply conflict finding at standard effort.</p>
+</dd>
+<dt class="field-even">std-h</dt>
+<dd class="field-even"><p>Apply conflict finding at standard effort when heuristic says to.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--quant-dsplit-mode=MODE</span></code></dt><dd><p>mode for dynamic quantifiers splitting</p>
+<p>Modes for quantifiers splitting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Never split quantified formulas.</p>
+</dd>
+<dt class="field-even">default</dt>
+<dd class="field-even"><p>Split quantified formulas over some finite datatypes when finite model finding is enabled.</p>
+</dd>
+<dt class="field-odd">agg</dt>
+<dd class="field-odd"><p>Aggressively split quantified formulas.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--quant-fun-wd</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>assume that function defined by quantifiers are well defined</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--quant-ind</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use all available techniques for inductive reasoning</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--quant-rep-mode=MODE</span></code></dt><dd><p>selection mode for representatives in quantifiers engine</p>
+<p>Modes for quantifiers representative selection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">ee</dt>
+<dd class="field-odd"><p>Let equality engine choose representatives.</p>
+</dd>
+<dt class="field-even">first</dt>
+<dd class="field-even"><p>Choose terms that appear first.</p>
+</dd>
+<dt class="field-odd">depth</dt>
+<dd class="field-odd"><p>Choose terms that are of minimal depth.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--quant-split</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>apply splitting to quantified formulas based on variable disjoint disjuncts</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--register-quant-body-terms</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>consider ground terms within bodies of quantified formulas for matching</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--relational-triggers</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>choose relational triggers such as x = f(y), x &gt;= f(y)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--relevant-triggers</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>prefer triggers that are more relevant based on SInE style analysis</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strict-triggers</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>only instantiate quantifiers with user patterns based on triggers</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use sygus solver (default is true for sygus inputs)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-active-gen-cfactor=N</span></code></dt><dd><p>the branching factor for the number of interpreted constants to consider for each size when using –sygus-active-gen=enum</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-active-gen=MODE</span></code></dt><dd><p>mode for actively-generated sygus enumerators</p>
+<p>Modes for actively-generated sygus enumerators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not use actively-generated sygus enumerators.</p>
+</dd>
+<dt class="field-even">basic</dt>
+<dd class="field-even"><p>Use basic type enumerator for actively-generated sygus enumerators.</p>
+</dd>
+<dt class="field-odd">enum</dt>
+<dd class="field-odd"><p>Use optimized enumerator for actively-generated sygus enumerators.</p>
+</dd>
+<dt class="field-even">var-agnostic</dt>
+<dd class="field-even"><p>Use sygus solver to enumerate terms that are agnostic to variables.</p>
+</dd>
+<dt class="field-odd">auto</dt>
+<dd class="field-odd"><p>Internally decide the best policy for each enumerator.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-add-const-grammar</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>statically add constants appearing in conjecture to grammars</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-arg-relevant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>static inference techniques for computing whether arguments of functions-to-synthesize are relevant</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-auto-unfold</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable approach which automatically unfolds transition systems for directly solving invariant synthesis problems</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-bool-ite-return-const</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Only use Boolean constants for return values in unification-based function synthesis</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-core-connective</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use unsat core analysis to construct Boolean connective to sygus conjectures</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-crepair-abort</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>abort if constant repair techniques are not applicable</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-eval-opt</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use optimized approach for evaluation in sygus</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-eval-unfold</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do unfolding of sygus evaluation functions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-eval-unfold-bool</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do unfolding of Boolean evaluation functions that appear in refinement lemmas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-expr-miner-check-timeout=N</span></code></dt><dd><p>timeout (in milliseconds) for satisfiability checks in expression miners</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-ext-rew</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use extended rewriter for sygus</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-filter-sol-rev</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>compute backwards filtering to compute whether previous solutions are filtered based on later ones</p>
+</dd>
+</dl>
+</div>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-filter-sol=MODE</span></code></dt><dd><p>mode for filtering sygus solutions</p>
+<p>Modes for filtering sygus solutions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not filter sygus solutions.</p>
+</dd>
+<dt class="field-even">strong</dt>
+<dd class="field-even"><p>Filter solutions that are logically stronger than others.</p>
+</dd>
+<dt class="field-odd">weak</dt>
+<dd class="field-odd"><p>Filter solutions that are logically weaker than others.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-grammar-cons=MODE</span></code></dt><dd><p>mode for SyGuS grammar construction</p>
+<p>Modes for default SyGuS grammars.</p>
+<dl class="field-list simple">
+<dt class="field-odd">simple</dt>
+<dd class="field-odd"><p>Use simple grammar construction (no symbolic terms or constants).</p>
+</dd>
+<dt class="field-even">any-const</dt>
+<dd class="field-even"><p>Use symoblic constant constructors.</p>
+</dd>
+<dt class="field-odd">any-term</dt>
+<dd class="field-odd"><p>When applicable, use constructors corresponding to any symbolic term. This option enables a sum-of-monomials grammar for arithmetic. For all other types, it enables symbolic constant constructors.</p>
+</dd>
+<dt class="field-even">any-term-concise</dt>
+<dd class="field-even"><p>When applicable, use constructors corresponding to any symbolic term, favoring conciseness over generality. This option is equivalent to any-term but enables a polynomial grammar for arithmetic when not in a combined theory.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-grammar-norm</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>statically normalize sygus grammars based on flattening (linearization)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-inference</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>attempt to preprocess arbitrary inputs to sygus conjectures</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-inst</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Enable SyGuS instantiation quantifiers module</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-inst-mode=MODE</span></code></dt><dd><p>select instantiation lemma mode</p>
+<p>SyGuS instantiation lemma modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">priority-inst</dt>
+<dd class="field-odd"><p>add instantiation lemmas first, add evaluation unfolding if instantiation fails.</p>
+</dd>
+<dt class="field-even">priority-eval</dt>
+<dd class="field-even"><p>add evaluation unfolding lemma first, add instantiation lemma if unfolding lemmas already added.</p>
+</dd>
+<dt class="field-odd">interleave</dt>
+<dd class="field-odd"><p>add instantiation and evaluation unfolding lemmas in the same step.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-inst-scope=MODE</span></code></dt><dd><p>select scope of ground terms</p>
+<p>scope for collecting ground terms for the grammar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">in</dt>
+<dd class="field-odd"><p>use ground terms inside given quantified formula only.</p>
+</dd>
+<dt class="field-even">out</dt>
+<dd class="field-even"><p>use ground terms outside of quantified formulas only.</p>
+</dd>
+<dt class="field-odd">both</dt>
+<dd class="field-odd"><p>combines inside and outside.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-inst-term-sel=MODE</span></code></dt><dd><p>granularity for ground terms</p>
+<p>Ground term selection modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">min</dt>
+<dd class="field-odd"><p>collect minimal ground terms only.</p>
+</dd>
+<dt class="field-even">max</dt>
+<dd class="field-even"><p>collect maximal ground terms only.</p>
+</dd>
+<dt class="field-odd">both</dt>
+<dd class="field-odd"><p>combines minimal and maximal .</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-inv-templ-when-sg</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use invariant templates (with solution reconstruction) for syntax guided problems</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-inv-templ=MODE</span></code></dt><dd><p>template mode for sygus invariant synthesis (weaken pre-condition, strengthen post-condition, or none)</p>
+<p>Template modes for sygus invariant synthesis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Synthesize invariant directly.</p>
+</dd>
+<dt class="field-even">pre</dt>
+<dd class="field-even"><p>Synthesize invariant based on weakening of precondition.</p>
+</dd>
+<dt class="field-odd">post</dt>
+<dd class="field-odd"><p>Synthesize invariant based on strengthening of postcondition.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-min-grammar</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>statically minimize sygus grammars</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-pbe</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable approach which unifies conditional solutions, specialized for programming-by-examples (pbe) conjectures</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-pbe-multi-fair</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>when using multiple enumerators, ensure that we only register value of minimial term size</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-pbe-multi-fair-diff=N</span></code></dt><dd><p>when using multiple enumerators, ensure that we only register values of minimial term size plus this value (default 0)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-qe-preproc</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use quantifier elimination as a preprocessing step for sygus</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-query-gen</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use sygus to enumerate interesting satisfiability queries</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-query-gen-check</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use interesting satisfiability queries to check soundness of cvc5</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-query-gen-dump-files=MODE</span></code></dt><dd><p>mode for dumping external files corresponding to interesting satisfiability queries with sygus-query-gen</p>
+<p>Query file options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not dump query files when using –sygus-query-gen.</p>
+</dd>
+<dt class="field-even">all</dt>
+<dd class="field-even"><p>Dump all query files.</p>
+</dd>
+<dt class="field-odd">unsolved</dt>
+<dd class="field-odd"><p>Dump query files that the subsolver did not solve.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-query-gen-thresh=N</span></code></dt><dd><p>number of points that we allow to be equal for enumerating satisfiable queries with sygus-query-gen</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rec-fun</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable efficient support for recursive functions in sygus grammars</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rec-fun-eval-limit=N</span></code></dt><dd><p>use a hard limit for how many times in a given evaluator call a recursive function can be evaluated (so infinite loops can be avoided)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-repair-const</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use approach to repair constants in sygus candidate solutions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-repair-const-timeout=N</span></code></dt><dd><p>timeout (in milliseconds) for the satisfiability check to repair constants in sygus candidate solutions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rr</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use sygus to enumerate and verify correctness of rewrite rules</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rr-synth</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use sygus to enumerate candidate rewrite rules</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rr-synth-accel</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>add dynamic symmetry breaking clauses based on candidate rewrites</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rr-synth-check</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use satisfiability check to verify correctness of candidate rewrites</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rr-synth-filter-cong</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>filter candidate rewrites based on congruence</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rr-synth-filter-match</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>filter candidate rewrites based on matching</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rr-synth-filter-nl</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>filter non-linear candidate rewrites</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rr-synth-filter-order</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>filter candidate rewrites based on variable ordering</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rr-synth-input</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>synthesize rewrite rules based on the input formula</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rr-synth-input-nvars=N</span></code></dt><dd><p>the maximum number of variables per type that appear in rewrites from sygus-rr-synth-input</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rr-synth-input-use-bool</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>synthesize Boolean rewrite rules based on the input formula</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rr-synth-rec</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>synthesize rewrite rules over all sygus grammar types recursively</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rr-verify</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use sygus to verify the correctness of rewrite rules via sampling</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-rr-verify-abort</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>abort when sygus-rr-verify finds an instance of unsoundness</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-sample-fp-uniform</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>sample floating-point values uniformly instead of in a biased fashion</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-sample-grammar</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>when applicable, use grammar for choosing sample points</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-samples=N</span></code></dt><dd><p>number of points to consider when doing sygus rewriter sample testing</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-si-abort</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>abort if synthesis conjecture is not single invocation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-si-partial</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>combined techniques for synthesis conjectures that are partially single invocation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-si-rcons-limit=N</span></code></dt><dd><p>number of rounds of enumeration to use during solution reconstruction (negative means unlimited)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-si-rcons=MODE</span></code></dt><dd><p>policy for reconstructing solutions for single invocation conjectures</p>
+<p>Modes for reconstruction solutions while using single invocation techniques.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not try to reconstruct solutions in the original (user-provided) grammar when using single invocation techniques. In this mode, solutions produced by cvc5 may violate grammar restrictions.</p>
+</dd>
+<dt class="field-even">try</dt>
+<dd class="field-even"><p>Try to reconstruct solutions in the original grammar when using single invocation techniques in an incomplete (fail-fast) manner.</p>
+</dd>
+<dt class="field-odd">all-limit</dt>
+<dd class="field-odd"><p>Try to reconstruct solutions in the original grammar, but termintate if a maximum number of rounds for reconstruction is exceeded.</p>
+</dd>
+<dt class="field-even">all</dt>
+<dd class="field-even"><p>Try to reconstruct solutions in the original grammar. In this mode, we do not terminate until a solution is successfully reconstructed.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-si-reconstruct-const</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>include constants when reconstruct solutions for single invocation conjectures in original grammar</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-si=MODE</span></code></dt><dd><p>mode for processing single invocation synthesis conjectures</p>
+<p>Modes for single invocation techniques.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not use single invocation techniques.</p>
+</dd>
+<dt class="field-even">use</dt>
+<dd class="field-even"><p>Use single invocation techniques only if grammar is not restrictive.</p>
+</dd>
+<dt class="field-odd">all</dt>
+<dd class="field-odd"><p>Always use single invocation techniques.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-stream</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enumerate a stream of solutions instead of terminating after the first one</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-templ-embed-grammar</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>embed sygus templates into grammars</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-unif-cond-independent-no-repeat-sol</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Do not try repeated solutions when using independent synthesis of conditions in unification-based function synthesis</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-unif-pi=MODE</span></code></dt><dd><p>mode for synthesis via piecewise-indepedent unification</p>
+<p>Modes for piecewise-independent unification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not use piecewise-independent unification.</p>
+</dd>
+<dt class="field-even">complete</dt>
+<dd class="field-even"><p>Use complete approach for piecewise-independent unification (see Section 3 of Barbosa et al FMCAD 2019)</p>
+</dd>
+<dt class="field-odd">cond-enum</dt>
+<dd class="field-odd"><p>Use unconstrained condition enumeration for piecewise-independent unification (see Section 4 of Barbosa et al FMCAD 2019).</p>
+</dd>
+<dt class="field-even">cond-enum-igain</dt>
+<dd class="field-even"><p>Same as cond-enum, but additionally uses an information gain heuristic when doing decision tree learning.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-unif-shuffle-cond</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Shuffle condition pool when building solutions (may change solutions sizes)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--term-db-cd</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>register terms in term database based on the SAT context</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--term-db-mode=MODE</span></code></dt><dd><p>which ground terms to consider for instantiation</p>
+<p>Modes for terms included in the quantifiers term database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">all</dt>
+<dd class="field-odd"><p>Quantifiers module considers all ground terms.</p>
+</dd>
+<dt class="field-even">relevant</dt>
+<dd class="field-even"><p>Quantifiers module considers only ground terms connected to current assertions.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--trigger-active-sel=MODE</span></code></dt><dd><p>selection mode to activate triggers</p>
+<p>Trigger active selection modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">all</dt>
+<dd class="field-odd"><p>Make all triggers active.</p>
+</dd>
+<dt class="field-even">min</dt>
+<dd class="field-even"><p>Activate triggers with minimal ground terms.</p>
+</dd>
+<dt class="field-odd">max</dt>
+<dd class="field-odd"><p>Activate triggers with maximal ground terms.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--trigger-sel=MODE</span></code></dt><dd><p>selection mode for triggers</p>
+<p>Trigger selection modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">min</dt>
+<dd class="field-odd"><p>Consider only minimal subterms that meet criteria for triggers.</p>
+</dd>
+<dt class="field-even">max</dt>
+<dd class="field-even"><p>Consider only maximal subterms that meet criteria for triggers.</p>
+</dd>
+<dt class="field-odd">min-s-max</dt>
+<dd class="field-odd"><p>Consider only minimal subterms that meet criteria for single triggers, maximal otherwise.</p>
+</dd>
+<dt class="field-even">min-s-all</dt>
+<dd class="field-even"><p>Consider only minimal subterms that meet criteria for single triggers, all otherwise.</p>
+</dd>
+<dt class="field-odd">all</dt>
+<dd class="field-odd"><p>Consider all subterms that meet criteria for triggers.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--user-pat=MODE</span></code></dt><dd><p>policy for handling user-provided patterns for quantifier instantiation</p>
+<p>These modes determine how user provided patterns (triggers) are used during E-matching. The modes vary on when instantiation based on user-provided triggers is combined with instantiation based on automatically selected triggers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">use</dt>
+<dd class="field-odd"><p>Use both user-provided and auto-generated patterns when patterns are provided for a quantified formula.</p>
+</dd>
+<dt class="field-even">trust</dt>
+<dd class="field-even"><p>When provided, use only user-provided patterns for a quantified formula.</p>
+</dd>
+<dt class="field-odd">resort</dt>
+<dd class="field-odd"><p>Use user-provided patterns only after auto-generated patterns saturate.</p>
+</dd>
+<dt class="field-even">ignore</dt>
+<dd class="field-even"><p>Ignore user-provided patterns.</p>
+</dd>
+<dt class="field-odd">interleave</dt>
+<dd class="field-odd"><p>Alternate between use/resort.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--var-elim-quant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable simple variable elimination for quantified formulas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--var-ineq-elim-quant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable variable elimination based on infinite projection of unbound arithmetic variables</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="resource-manager-module">
+<h3>Resource Manager Module<a class="headerlink" href="#resource-manager-module" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--rweight=VAL=N</span></code></dt><dd><p>set a single resource weight</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="separation-logic-theory-module">
+<h3>Separation Logic Theory Module<a class="headerlink" href="#separation-logic-theory-module" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--sep-check-neg</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>check negated spatial assertions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sep-child-refine</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>child-specific refinements of negated star, positive wand</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sep-deq-c</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>assume cardinality elements are distinct</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sep-exp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>experimental flag for sep</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sep-min-refine</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>only add refinement lemmas for minimal (innermost) assertions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sep-pre-skolem-emp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>eliminate emp constraint at preprocess time</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="sets-theory-module">
+<h3>Sets Theory Module<a class="headerlink" href="#sets-theory-module" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--sets-ext</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable extended symbols such as complement and universe in theory of sets</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sets-infer-as-lemmas</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>send inferences as lemmas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sets-proxy-lemmas</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>introduce proxy variables eagerly to shorten lemmas</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="smt-layer-module">
+<h3>SMT Layer Module<a class="headerlink" href="#smt-layer-module" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--abstract-values</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>in models, output arrays (and in future, maybe others) using abstract values, as required by the SMT-LIB standard</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--ackermann</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>eliminate functions by ackermannization</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--block-models=MODE</span></code></dt><dd><p>mode for producing several models</p>
+<p>Blocking models modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not block models.</p>
+</dd>
+<dt class="field-even">literals</dt>
+<dd class="field-even"><p>Block models based on the SAT skeleton.</p>
+</dd>
+<dt class="field-odd">values</dt>
+<dd class="field-odd"><p>Block models based on the concrete model values for the free variables.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--check-abducts</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>checks whether produced solutions to get-abduct are correct</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--check-interpols</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>checks whether produced solutions to get-interpol are correct</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--check-models</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>after SAT/INVALID/UNKNOWN, check that the generated model satisfies user assertions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--check-proofs</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>after UNSAT/VALID, check the generated proof (with proof)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--check-synth-sol</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>checks whether produced solutions to functions-to-synthesize satisfy the conjecture</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--check-unsat-cores</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>after UNSAT/VALID, produce and check an unsat core (expensive)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--debug-check-models</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>after SAT/INVALID/UNKNOWN, check that the generated model satisfies user and internal assertions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--diagnostic-output-channel=CHANNEL</span></code></dt><dd><p>set the diagnostic output channel of the solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dump-instantiations</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output instantiations of quantified formulas after every UNSAT/VALID response</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dump-models</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output models after every SAT/INVALID/UNKNOWN response</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dump-proofs</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output proofs after every UNSAT/VALID response</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dump-unsat-cores</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output unsat cores after every UNSAT/VALID response</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dump-unsat-cores-full</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>dump the full unsat core, including unlabeled assertions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--early-ite-removal</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>remove ITEs early in preprocessing</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--expand-definitions</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>always expand symbol definitions in output</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--ext-rew-prep</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use extended rewriter as a preprocessing pass</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--ext-rew-prep-agg</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use aggressive extended rewriter as a preprocessing pass</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--force-no-limit-cpu-while-dump</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Force no CPU limit when dumping models and proofs</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--foreign-theory-rewrite</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Cross-theory rewrites</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--ite-simp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on ite simplification (Kim (and Somenzi) et al., SAT 2009)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--model-cores=MODE</span></code></dt><dd><p>mode for producing model cores</p>
+<p>Model cores modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not compute model cores.</p>
+</dd>
+<dt class="field-even">simple</dt>
+<dd class="field-even"><p>Only include a subset of variables whose values are sufficient to show the input formula is satisfied by the given model.</p>
+</dd>
+<dt class="field-odd">non-implied</dt>
+<dd class="field-odd"><p>Only include a subset of variables whose values, in addition to the values of variables whose values are implied, are sufficient to show the input formula is satisfied by the given model.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--model-u-print=MODE</span> <span class="pre">|</span> <span class="pre">--model-uninterp-print=MODE</span></code></dt><dd><p>determines how to print uninterpreted elements in models</p>
+<p>uninterpreted elements in models printing  modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">dtenum</dt>
+<dd class="field-odd"><p>print uninterpreted elements as datatype enumerations, where the sort is the datatype</p>
+</dd>
+<dt class="field-even">decl-sort-and-fun</dt>
+<dd class="field-even"><p>print uninterpreted elements declare-fun, and also include a declare-sort for the sort</p>
+</dd>
+<dt class="field-odd">decl-fun</dt>
+<dd class="field-odd"><p>print uninterpreted elements declare-fun, but don’t include a declare-sort for the sort</p>
+</dd>
+<dt class="field-even">none</dt>
+<dd class="field-even"><p>(default) do not print declarations of uninterpreted elements in models.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--model-witness-value</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>in models, use a witness constant for choice functions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--on-repeat-ite-simp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do the ite simplification pass again if repeating simplification</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--produce-assignments</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>support the get-assignment command</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--produce-proofs</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>produce proofs, support check-proofs and get-proof</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--produce-unsat-assumptions</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on unsat assumptions generation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--produce-unsat-cores</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on unsat core generation. Unless otherwise specified, cores will be produced using SAT soving under assumptions and preprocessing proofs.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--regular-output-channel=CHANNEL</span></code></dt><dd><p>set the regular output channel of the solver</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--repeat-simp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>make multiple passes with nonclausal simplifier</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--simp-ite-compress</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enables compressing ites after ite simplification</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--simp-ite-hunt-zombies=N</span></code></dt><dd><p>post ite compression enables zombie removal while the number of nodes is above this threshold</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--simp-with-care</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enables simplifyWithCare in ite simplificiation</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--simplification=MODE</span> <span class="pre">|</span> <span class="pre">--simplification-mode=MODE</span></code></dt><dd><p>choose simplification mode, see –simplification=help</p>
+<p>Simplification modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not perform nonclausal simplification.</p>
+</dd>
+<dt class="field-even">batch</dt>
+<dd class="field-even"><p>Save up all ASSERTions; run nonclausal simplification and clausal (MiniSat) propagation for all of them only after reaching a querying command (CHECKSAT or QUERY or predicate SUBTYPE declaration).</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sort-inference</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>calculate sort inference of input problem, convert the input based on monotonic sorts</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--static-learning</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use static learning (on by default)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-out=MODE</span></code></dt><dd><p>output mode for sygus</p>
+<p>Modes for sygus solution output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">status</dt>
+<dd class="field-odd"><p>Print only status for check-synth calls.</p>
+</dd>
+<dt class="field-even">status-and-def</dt>
+<dd class="field-even"><p>Print status followed by definition corresponding to solution.</p>
+</dd>
+<dt class="field-odd">status-or-def</dt>
+<dd class="field-odd"><p>Print status if infeasible, or definition corresponding to solution if feasible.</p>
+</dd>
+<dt class="field-even">sygus-standard</dt>
+<dd class="field-even"><p>Print based on SyGuS standard.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-print-callbacks</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use sygus print callbacks to print sygus terms in the user-provided form (disable for debugging)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--unconstrained-simp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on unconstrained simplification (see Bruttomesso/Brummayer PhD thesis). Fully supported only in (subsets of) the logic QF_ABV.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--unsat-cores-mode=MODE</span></code></dt><dd><p>choose unsat core mode, see –unsat-cores-mode=help</p>
+<p>unsat cores modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">off</dt>
+<dd class="field-odd"><p>Do not produce unsat cores.</p>
+</dd>
+<dt class="field-even">sat-proof</dt>
+<dd class="field-even"><p>Produce unsat cores from SAT and preprocessing proofs.</p>
+</dd>
+<dt class="field-odd">full-proof</dt>
+<dd class="field-odd"><p>Produce unsat cores from full proofs.</p>
+</dd>
+<dt class="field-even">assumptions</dt>
+<dd class="field-even"><p>Produce unsat cores using solving under assumptions and preprocessing proofs.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="strings-theory-module">
+<h3>Strings Theory Module<a class="headerlink" href="#strings-theory-module" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--re-elim</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>elimination techniques for regular expressions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--re-elim-agg</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>aggressive elimination techniques for regular expressions</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--re-inter-mode=MODE</span></code></dt><dd><p>determines which regular expressions intersections to compute</p>
+<p>Regular expression intersection modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">all</dt>
+<dd class="field-odd"><p>Compute intersections for all regular expressions.</p>
+</dd>
+<dt class="field-even">constant</dt>
+<dd class="field-even"><p>Compute intersections only between regular expressions that do not contain re.allchar or re.range.</p>
+</dd>
+<dt class="field-odd">one-constant</dt>
+<dd class="field-odd"><p>Compute intersections only between regular expressions such that at least one side does not contain re.allchar or re.range.</p>
+</dd>
+<dt class="field-even">none</dt>
+<dd class="field-even"><p>Do not compute intersections for regular expressions.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-check-entail-len</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>check entailment between length terms to reduce splitting</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-eager</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>strings eager check</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-eager-eval</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>perform eager context-dependent evaluation for applications of string kinds</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-eager-len</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>strings eager length lemmas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-exp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>experimental features in the theory of strings</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-ff</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do flat form inferences</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-fmf</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>the finite model finding used by the theory of strings</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-guess-model</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use model guessing to avoid string extended function reductions</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-infer-as-lemmas</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>always send lemmas out instead of making internal inferences</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-infer-sym</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>strings split on empty string</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-lazy-pp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>perform string preprocessing lazily</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-len-norm</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>strings length normalization lemma</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-lprop-csp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do length propagation based on constant splits</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-min-prefix-explain</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>minimize explanations for prefix of normal forms in strings</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-process-loop-mode=MODE</span></code></dt><dd><p>determines how to process looping string equations</p>
+<p>Loop processing modes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">full</dt>
+<dd class="field-odd"><p>Perform full processing of looping word equations.</p>
+</dd>
+<dt class="field-even">simple</dt>
+<dd class="field-even"><p>Omit normal loop breaking (default with –strings-fmf).</p>
+</dd>
+<dt class="field-odd">simple-abort</dt>
+<dd class="field-odd"><p>Abort when normal loop breaking is required.</p>
+</dd>
+<dt class="field-even">none</dt>
+<dd class="field-even"><p>Omit loop processing.</p>
+</dd>
+<dt class="field-odd">abort</dt>
+<dd class="field-odd"><p>Abort if looping word equations are encountered.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-rexplain-lemmas</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>regression explanations for string lemmas</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--strings-unified-vspt</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use a single skolem for the variable splitting rule</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="theory-layer-module">
+<h3>Theory Layer Module<a class="headerlink" href="#theory-layer-module" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--assign-function-values</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>assign values for uninterpreted functions in models</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--condense-function-values</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>condense values for functions in models rather than explicitly representing them</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--ee-mode=MODE</span></code></dt><dd><p>mode for managing equalities across theory solvers</p>
+<p>Defines mode for managing equalities across theory solvers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">distributed</dt>
+<dd class="field-odd"><p>Each theory maintains its own equality engine.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--relevance-filter</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable analysis of relevance of asserted literals with respect to the input formula</p>
+</dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--tc-mode=MODE</span></code></dt><dd><p>mode for theory combination</p>
+<p>Defines mode for theory combination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">care-graph</dt>
+<dd class="field-odd"><p>Use care graphs for theory combination.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--theoryof-mode=MODE</span></code></dt><dd><p>mode for Theory::theoryof()</p>
+<p>Defines how we associate theories with terms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">type</dt>
+<dd class="field-odd"><p>Type variables, constants and equalities by type.</p>
+</dd>
+<dt class="field-even">term</dt>
+<dd class="field-even"><p>Type variables as uninterpreted, type constants by theory, equalities by the parametric theory.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="uninterpreted-functions-theory-module">
+<h3>Uninterpreted Functions Theory Module<a class="headerlink" href="#uninterpreted-functions-theory-module" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--symmetry-breaker</span> <span class="pre">|</span> <span class="pre">--uf-symmetry-breaker</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use UF symmetry breaker (Deharbe et al., CADE 2011)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--uf-ho</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable support for higher-order reasoning</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--uf-ho-ext</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>apply extensionality on function symbols</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--uf-ss-abort-card=N</span></code></dt><dd><p>tells the uf with cardinality to only consider models that interpret uninterpreted sorts of cardinality at most N (-1 == no limit, default)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--uf-ss-fair</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use fair strategy for finite model finding multiple sorts</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--uf-ss-fair-monotone</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>group monotone sorts when enforcing fairness for finite model finding</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--uf-ss-totality-limited=N</span></code></dt><dd><p>apply totality axioms, but only up to cardinality N (-1 == do not apply totality axioms, default)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--uf-ss-totality-sym-break</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>apply symmetry breaking for totality axioms</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--uf-ss=MODE</span></code></dt><dd><p>mode of operation for uf with cardinality solver.</p>
+<p>UF with cardinality options currently supported by the –uf-ss option when combined with finite model finding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">full</dt>
+<dd class="field-odd"><p>Default, use UF with cardinality to find minimal models for uninterpreted sorts.</p>
+</dd>
+<dt class="field-even">no-minimal</dt>
+<dd class="field-even"><p>Use UF with cardinality to shrink models, but do no enforce minimality.</p>
+</dd>
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>Do not use UF with cardinality to shrink model sizes.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../api/api.html" class="btn btn-neutral float-right" title="API Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="binary.html" class="btn btn-neutral float-left" title="Binary Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, the authors of cvc5.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

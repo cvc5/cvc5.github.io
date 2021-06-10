@@ -44,7 +44,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Datatypes" href="datatypes.html" />
+    <link rel="next" title="Exception Handling" href="exceptions.html" />
     <link rel="prev" title="Examples" href="examples.html" /> 
 </head>
 
@@ -91,16 +91,31 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../cpp/cpp.html">C++ API Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Python API Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/binary.html">Binary Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">API Documentation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Hello World</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Datatypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lineararith.html">Linear Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exception Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bitvectors.html">Theory of Bit-Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bitvectors_and_arrays.html">Theory of Bit-Vectors and Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extract.html">Theory of Bit-Vectors: <code class="code docutils literal notranslate"><span class="pre">extract</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Theory of Datatypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="floatingpoint.html">Theory of Floating-Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lineararith.html">Theory of Linear Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sequences.html">Theory of Sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sets.html">Theory of Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strings.html">Theory of Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="combination.html">Theory Combination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sygus-fun.html">SyGuS: Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sygus-grammar.html">SyGuS: Grammars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sygus-inv.html">SyGuS: Invariants</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../options.html">Commandline Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../languages.html">Input Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory.html">Theory References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 </ul>
 
             
@@ -175,7 +190,7 @@
 <p>This example shows the very basic usage of the API.
 We create a solver, declare a Boolean variable and check whether it is entailed (by <code class="docutils literal notranslate"><span class="pre">true</span></code>, as nothing has been asserted to the solver).</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Java</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/******************************************************************************</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Java</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Python</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">SMT-LIBv2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/******************************************************************************</span>
 <span class="linenos"> 2</span><span class="cm"> * Top contributors (to current version):</span>
 <span class="linenos"> 3</span><span class="cm"> *   Aina Niemetz, Tim King</span>
 <span class="linenos"> 4</span><span class="cm"> *</span>
@@ -261,6 +276,12 @@ We create a solver, declare a Boolean variable and check whether it is entailed 
 <span class="linenos">23</span>    <span class="nb">print</span><span class="p">(</span><span class="n">helloworld</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="n">slv</span><span class="o">.</span><span class="n">checkEntailed</span><span class="p">(</span><span class="n">helloworld</span><span class="p">))</span>
 </pre></div>
 </div>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">(</span><span class="nv">set-logic</span> <span class="nv">QF_UF</span><span class="p">)</span>
+<span class="linenos">2</span><span class="p">(</span><span class="nv">declare-const</span> <span class="nv">|Hello World!|</span> <span class="nv">Bool</span><span class="p">)</span>
+<span class="linenos">3</span><span class="p">(</span><span class="nb">assert</span> <span class="p">(</span><span class="nb">not</span> <span class="nv">|Hello World!|</span><span class="p">))</span>
+<span class="linenos">4</span><span class="p">(</span><span class="nv">check-sat</span><span class="p">)</span>
+</pre></div>
+</div>
 </div></div>
 </div>
 
@@ -270,7 +291,7 @@ We create a solver, declare a Boolean variable and check whether it is entailed 
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="datatypes.html" class="btn btn-neutral float-right" title="Datatypes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="exceptions.html" class="btn btn-neutral float-right" title="Exception Handling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

@@ -1,0 +1,1156 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Term &mdash; cvc5  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Python API Documentation" href="../python/python.html" />
+    <link rel="prev" title="Statistics" href="statistics.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> cvc5
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../binary/binary.html">Binary Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="cpp.html">C++ API Documentation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="datatype.html">Datatype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypeconstructor.html">DatatypeConstructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypeconstructordecl.html">DatatypeConstructorDecl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypedecl.html">DatatypeDecl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypeselector.html">DatatypeSelector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="grammar.html">Grammar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kind.html">Kind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="op.html">Op</a></li>
+<li class="toctree-l3"><a class="reference internal" href="result.html">Result</a></li>
+<li class="toctree-l3"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solver.html">Solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sort.html">Sort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Term</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpp.html#class-hierarchy">Class Hierarchy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python/python.html">Python API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../languages.html">Input Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory.html">Theory References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cvc5</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="cpp.html">C++ API Documentation</a> &raquo;</li>
+        
+      <li>Term</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/api/cpp/term.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="term">
+<h1>Term<a class="headerlink" href="#term" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Term</span></code></a> class represents arbitrary expressions that are Boolean or from some of the supported theories. The list of all supported types (or kinds) is given by the <a class="reference internal" href="kind.html#_CPPv4N4cvc53api4KindE" title="cvc5::api::Kind"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">Kind</span></code></a> enum.
+The <a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Term</span></code></a> class provides methods for general inspection (e.g., comparison, retrieve the kind and sort, access sub-terms), but also methods to retrieving constant values for the supported theories (i.e., <code class="code docutils literal notranslate"><span class="pre">is&lt;Type&gt;Value()</span></code> and <code class="code docutils literal notranslate"><span class="pre">get&lt;Type&gt;Value()</span></code>, which returns the constant values in the best type standard C++ offers).</p>
+<p>Additionally, a <a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Term</span></code></a> can be hashed (using <a class="reference internal" href="#_CPPv4IENSt4hashIN4cvc53api4TermEEE" title="std::hash&lt;cvc5::api::Term&gt;"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">std::hash&lt;cvc5::api::Term&gt;</span></code></a>) and given to output streams, including terms within standard containers like <code class="code docutils literal notranslate"><span class="pre">std::map</span></code>, <code class="code docutils literal notranslate"><span class="pre">std::set</span></code>, or <code class="code docutils literal notranslate"><span class="pre">std::vector</span></code>.</p>
+<p>The <a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Term</span></code></a> only offers the default constructor to create a null term. Instead, the <a class="reference internal" href="solver.html#_CPPv4N4cvc53api6SolverE" title="cvc5::api::Solver"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Solver</span></code></a> class provides factory functions for all other terms, e.g., <code class="code docutils literal notranslate"><span class="pre">Solver::mkTerm()</span></code> for generic terms and <code class="code docutils literal notranslate"><span class="pre">Solver::mk&lt;Type&gt;()</span></code> for constant values of a given type.</p>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4TermE">
+<span id="_CPPv3N4cvc53api4TermE"></span><span id="_CPPv2N4cvc53api4TermE"></span><span id="cvc5::api::Term"></span><span class="target" id="classcvc5_1_1api_1_1Term"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">cvc5</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">api</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Term</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4TermE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A cvc5 <a class="reference internal" href="#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Term4TermEv">
+<span id="_CPPv3N4cvc53api4Term4TermEv"></span><span id="_CPPv2N4cvc53api4Term4TermEv"></span><span id="cvc5::api::Term::Term"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a8dccb9ae2ac7cbb2f72c42ad3f8d45df"></span><span class="sig-name descname"><span class="n"><span class="pre">Term</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api4Term4TermEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructor for a null term. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4TermD0Ev">
+<span id="_CPPv3N4cvc53api4TermD0Ev"></span><span id="_CPPv2N4cvc53api4TermD0Ev"></span><span id="cvc5::api::Term::~Term"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ae8f3fbe78931eae6bd73ea49b2b5c941"></span><span class="sig-name descname"><span class="n"><span class="pre">~Term</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api4TermD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Destructor. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4TermeqERK4Term">
+<span id="_CPPv3NK4cvc53api4TermeqERK4Term"></span><span id="_CPPv2NK4cvc53api4TermeqERK4Term"></span><span id="cvc5::api::Term::eq-operator__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a3c1932f127f10b920484cbe3b6584b2e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">==</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4TermeqERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Syntactic equality operator. Return true if both terms are syntactically identical. Both terms must belong to the same solver object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> – the term to compare to for equality </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if the terms are equal </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4TermneERK4Term">
+<span id="_CPPv3NK4cvc53api4TermneERK4Term"></span><span id="_CPPv2NK4cvc53api4TermneERK4Term"></span><span id="cvc5::api::Term::neq-operator__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aa6d32d13258b6e915964d457ad51860c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">!=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4TermneERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Syntactic disequality operator. Return true if both terms differ syntactically. Both terms must belong to the same solver object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> – the term to compare to for disequality </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if terms are disequal </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4TermltERK4Term">
+<span id="_CPPv3NK4cvc53api4TermltERK4Term"></span><span id="_CPPv2NK4cvc53api4TermltERK4Term"></span><span id="cvc5::api::Term::lt-operator__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a3eb7dd8c93de4a9d61b35e9e2bb45ee2"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">&lt;</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4TermltERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Comparison for ordering on terms by their id. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> – the term to compare to </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if this term is less than t </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4TermgtERK4Term">
+<span id="_CPPv3NK4cvc53api4TermgtERK4Term"></span><span id="_CPPv2NK4cvc53api4TermgtERK4Term"></span><span id="cvc5::api::Term::gt-operator__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a0f477ee35414266582e821e77367b865"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">&gt;</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4TermgtERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Comparison for ordering on terms by their id. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> – the term to compare to </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if this term is greater than t </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4TermleERK4Term">
+<span id="_CPPv3NK4cvc53api4TermleERK4Term"></span><span id="_CPPv2NK4cvc53api4TermleERK4Term"></span><span id="cvc5::api::Term::lte-operator__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a7d1ab21a50d256089547c6fadc70d8a8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">&lt;=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4TermleERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Comparison for ordering on terms by their id. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> – the term to compare to </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if this term is less than or equal to t </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4TermgeERK4Term">
+<span id="_CPPv3NK4cvc53api4TermgeERK4Term"></span><span id="_CPPv2NK4cvc53api4TermgeERK4Term"></span><span id="cvc5::api::Term::gte-operator__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a9965eadbcc7c0952a366220e0c3fc703"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">&gt;=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4TermgeERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Comparison for ordering on terms by their id. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> – the term to compare to </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if this term is greater than or equal to t </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term14getNumChildrenEv">
+<span id="_CPPv3NK4cvc53api4Term14getNumChildrenEv"></span><span id="_CPPv2NK4cvc53api4Term14getNumChildrenEv"></span><span id="cvc5::api::Term::getNumChildrenC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a3136ce549b6c159f5f3a69951a9c7a8c"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getNumChildren</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14getNumChildrenEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the number of children of this term </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4TermixE6size_t">
+<span id="_CPPv3NK4cvc53api4TermixE6size_t"></span><span id="_CPPv2NK4cvc53api4TermixE6size_t"></span><span id="cvc5::api::Term::subscript-operator__sC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1abc52a8ede184fdde2779f2a4710ef872"></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">[]</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4TermixE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the child term at a given index. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> – the index of the child term to return </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the child term with the given index </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term5getIdEv">
+<span id="_CPPv3NK4cvc53api4Term5getIdEv"></span><span id="_CPPv2NK4cvc53api4Term5getIdEv"></span><span id="cvc5::api::Term::getIdC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a06153cf94ccd1b9ef572d2accffd4d3e"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getId</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term5getIdEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the id of this term </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term7getKindEv">
+<span id="_CPPv3NK4cvc53api4Term7getKindEv"></span><span id="_CPPv2NK4cvc53api4Term7getKindEv"></span><span id="cvc5::api::Term::getKindC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a2952d99f93dbd12bfeef43314bd0e033"></span><a class="reference internal" href="kind.html#_CPPv4N4cvc53api4KindE" title="cvc5::api::Kind"><span class="n"><span class="pre">Kind</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getKind</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term7getKindEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the kind of this term </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term7getSortEv">
+<span id="_CPPv3NK4cvc53api4Term7getSortEv"></span><span id="_CPPv2NK4cvc53api4Term7getSortEv"></span><span id="cvc5::api::Term::getSortC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a77bb30a50ac6c0616c0a9ada980d5ce8"></span><a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort"><span class="n"><span class="pre">Sort</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSort</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term7getSortEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the sort of this term </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term10substituteERK4TermRK4Term">
+<span id="_CPPv3NK4cvc53api4Term10substituteERK4TermRK4Term"></span><span id="_CPPv2NK4cvc53api4Term10substituteERK4TermRK4Term"></span><span id="cvc5::api::Term::substitute__TermCR.TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a3ddbd414ceee0d352bc84b17c7d241f4"></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">substitute</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">term</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">replacement</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term10substituteERK4TermRK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the result of replacing ‘term’ by ‘replacement’ in this term </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term10substituteERKNSt6vectorI4TermEERKNSt6vectorI4TermEE">
+<span id="_CPPv3NK4cvc53api4Term10substituteERKNSt6vectorI4TermEERKNSt6vectorI4TermEE"></span><span id="_CPPv2NK4cvc53api4Term10substituteERKNSt6vectorI4TermEERKNSt6vectorI4TermEE"></span><span id="cvc5::api::Term::substitute__std::vector:Term:CR.std::vector:Term:CRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ad52fd4531110ff6671b139f2695fac50"></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">substitute</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">terms</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">replacements</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term10substituteERKNSt6vectorI4TermEERKNSt6vectorI4TermEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the result of simulatenously replacing ‘terms’ by ‘replacements’ in this term </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term5hasOpEv">
+<span id="_CPPv3NK4cvc53api4Term5hasOpEv"></span><span id="_CPPv2NK4cvc53api4Term5hasOpEv"></span><span id="cvc5::api::Term::hasOpC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aa770a8c43959c8191a091988b30b5d3c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hasOp</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term5hasOpEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true iff this term has an operator </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term5getOpEv">
+<span id="_CPPv3NK4cvc53api4Term5getOpEv"></span><span id="_CPPv2NK4cvc53api4Term5getOpEv"></span><span id="cvc5::api::Term::getOpC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a2ffec7ad2b4d670a7139b9bab649d2ca"></span><a class="reference internal" href="op.html#_CPPv4N4cvc53api2OpE" title="cvc5::api::Op"><span class="n"><span class="pre">Op</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOp</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term5getOpEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the <a class="reference internal" href="op.html#classcvc5_1_1api_1_1Op"><span class="std std-ref">Op</span></a> used to create this term Note: This is safe to call when <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1aa770a8c43959c8191a091988b30b5d3c"><span class="std std-ref">hasOp()</span></a> returns true. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term6isNullEv">
+<span id="_CPPv3NK4cvc53api4Term6isNullEv"></span><span id="_CPPv2NK4cvc53api4Term6isNullEv"></span><span id="cvc5::api::Term::isNullC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aed5fe946ba172b24c7cec015635b5df7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isNull</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term6isNullEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if this <a class="reference internal" href="#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> is a null term </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term7notTermEv">
+<span id="_CPPv3NK4cvc53api4Term7notTermEv"></span><span id="_CPPv2NK4cvc53api4Term7notTermEv"></span><span id="cvc5::api::Term::notTermC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a3f360e8e3d7b67391f5f18630ed0d7e1"></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">notTerm</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term7notTermEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Boolean negation. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the Boolean negation of this term </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term7andTermERK4Term">
+<span id="_CPPv3NK4cvc53api4Term7andTermERK4Term"></span><span id="_CPPv2NK4cvc53api4Term7andTermERK4Term"></span><span id="cvc5::api::Term::andTerm__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a00aa96ad685151f60bf48448e437bddf"></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">andTerm</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term7andTermERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Boolean and. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> – a Boolean term </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the conjunction of this term and the given term </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term6orTermERK4Term">
+<span id="_CPPv3NK4cvc53api4Term6orTermERK4Term"></span><span id="_CPPv2NK4cvc53api4Term6orTermERK4Term"></span><span id="cvc5::api::Term::orTerm__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a6f59ed04f2b626d27624711cbbb5d018"></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">orTerm</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term6orTermERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Boolean or. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> – a Boolean term </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the disjunction of this term and the given term </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term7xorTermERK4Term">
+<span id="_CPPv3NK4cvc53api4Term7xorTermERK4Term"></span><span id="_CPPv2NK4cvc53api4Term7xorTermERK4Term"></span><span id="cvc5::api::Term::xorTerm__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1af474986f882da17d896ce8d42d3b3626"></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">xorTerm</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term7xorTermERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Boolean exclusive or. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> – a Boolean term </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the exclusive disjunction of this term and the given term </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term6eqTermERK4Term">
+<span id="_CPPv3NK4cvc53api4Term6eqTermERK4Term"></span><span id="_CPPv2NK4cvc53api4Term6eqTermERK4Term"></span><span id="cvc5::api::Term::eqTerm__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1af159485b34b297f734e7624207ea7e02"></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">eqTerm</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term6eqTermERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Equality. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> – a Boolean term </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the Boolean equivalence of this term and the given term </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term7impTermERK4Term">
+<span id="_CPPv3NK4cvc53api4Term7impTermERK4Term"></span><span id="_CPPv2NK4cvc53api4Term7impTermERK4Term"></span><span id="cvc5::api::Term::impTerm__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1abd7a2db28800f4c88d8f0f29b785340e"></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">impTerm</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term7impTermERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Boolean implication. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> – a Boolean term </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the implication of this term and the given term </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term7iteTermERK4TermRK4Term">
+<span id="_CPPv3NK4cvc53api4Term7iteTermERK4TermRK4Term"></span><span id="_CPPv2NK4cvc53api4Term7iteTermERK4TermRK4Term"></span><span id="cvc5::api::Term::iteTerm__TermCR.TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a17777db92e12f157d33552e3a67fc19e"></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">iteTerm</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">then_t</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">else_t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term7iteTermERK4TermRK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If-then-else with this term as the Boolean condition. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>then_t</strong> – the ‘then’ term </p></li>
+<li><p><strong>else_t</strong> – the ‘else’ term </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the if-then-else term with this term as the Boolean condition </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term8toStringEv">
+<span id="_CPPv3NK4cvc53api4Term8toStringEv"></span><span id="_CPPv2NK4cvc53api4Term8toStringEv"></span><span id="cvc5::api::Term::toStringC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a1cfc366de798310380132358add8b0f0"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">toString</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term8toStringEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a string representation of this term </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term5beginEv">
+<span id="_CPPv3NK4cvc53api4Term5beginEv"></span><span id="_CPPv2NK4cvc53api4Term5beginEv"></span><span id="cvc5::api::Term::beginC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a6948950c81f455611366ace2a715ead9"></span><a class="reference internal" href="#_CPPv4N4cvc53api4Term14const_iteratorE" title="cvc5::api::Term::const_iterator"><span class="n"><span class="pre">const_iterator</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">begin</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term5beginEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>an iterator to the first child of this <a class="reference internal" href="#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term3endEv">
+<span id="_CPPv3NK4cvc53api4Term3endEv"></span><span id="_CPPv2NK4cvc53api4Term3endEv"></span><span id="cvc5::api::Term::endC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ad1d1d72b0054d4c183e5f58bfe622bf6"></span><a class="reference internal" href="#_CPPv4N4cvc53api4Term14const_iteratorE" title="cvc5::api::Term::const_iterator"><span class="n"><span class="pre">const_iterator</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">end</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term3endEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>an iterator to one-off-the-last child of this <a class="reference internal" href="#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term12isInt32ValueEv">
+<span id="_CPPv3NK4cvc53api4Term12isInt32ValueEv"></span><span id="_CPPv2NK4cvc53api4Term12isInt32ValueEv"></span><span id="cvc5::api::Term::isInt32ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aced2feec3895ad5a8a6439c3ac379c06"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isInt32Value</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term12isInt32ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is an integer value that fits within int32_t. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term13getInt32ValueEv">
+<span id="_CPPv3NK4cvc53api4Term13getInt32ValueEv"></span><span id="_CPPv2NK4cvc53api4Term13getInt32ValueEv"></span><span id="cvc5::api::Term::getInt32ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1acccb687aa9c283c42f5fb46c48ea3320"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInt32Value</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13getInt32ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1aced2feec3895ad5a8a6439c3ac379c06"><span class="std std-ref">isInt32Value()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the integer term as a int32_t. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term13isUInt32ValueEv">
+<span id="_CPPv3NK4cvc53api4Term13isUInt32ValueEv"></span><span id="_CPPv2NK4cvc53api4Term13isUInt32ValueEv"></span><span id="cvc5::api::Term::isUInt32ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1afba450fb5731ec1c10f286db3adb9ad2"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isUInt32Value</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13isUInt32ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is an integer value that fits within uint32_t. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term14getUInt32ValueEv">
+<span id="_CPPv3NK4cvc53api4Term14getUInt32ValueEv"></span><span id="_CPPv2NK4cvc53api4Term14getUInt32ValueEv"></span><span id="cvc5::api::Term::getUInt32ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ae6e031ae77c2ab5ea30fe49b326c5920"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getUInt32Value</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14getUInt32ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1afba450fb5731ec1c10f286db3adb9ad2"><span class="std std-ref">isUInt32Value()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the integer term as a uint32_t. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term12isInt64ValueEv">
+<span id="_CPPv3NK4cvc53api4Term12isInt64ValueEv"></span><span id="_CPPv2NK4cvc53api4Term12isInt64ValueEv"></span><span id="cvc5::api::Term::isInt64ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a9562d54684d2c78c72c0b4bf8e03d532"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isInt64Value</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term12isInt64ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is an integer value that fits within int64_t. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term13getInt64ValueEv">
+<span id="_CPPv3NK4cvc53api4Term13getInt64ValueEv"></span><span id="_CPPv2NK4cvc53api4Term13getInt64ValueEv"></span><span id="cvc5::api::Term::getInt64ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a5aeea0c7af38a001cb582055c8a73147"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInt64Value</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13getInt64ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a9562d54684d2c78c72c0b4bf8e03d532"><span class="std std-ref">isInt64Value()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the integer term as a int64_t. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term13isUInt64ValueEv">
+<span id="_CPPv3NK4cvc53api4Term13isUInt64ValueEv"></span><span id="_CPPv2NK4cvc53api4Term13isUInt64ValueEv"></span><span id="cvc5::api::Term::isUInt64ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a38cfd2669f88b351d6a7d06cfa61325a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isUInt64Value</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13isUInt64ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is an integer value that fits within uint64_t. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term14getUInt64ValueEv">
+<span id="_CPPv3NK4cvc53api4Term14getUInt64ValueEv"></span><span id="_CPPv2NK4cvc53api4Term14getUInt64ValueEv"></span><span id="cvc5::api::Term::getUInt64ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a8c5727b95a465ef8be262b36dbd04e38"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getUInt64Value</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14getUInt64ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a38cfd2669f88b351d6a7d06cfa61325a"><span class="std std-ref">isUInt64Value()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the integer term as a uint64_t. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term14isIntegerValueEv">
+<span id="_CPPv3NK4cvc53api4Term14isIntegerValueEv"></span><span id="_CPPv2NK4cvc53api4Term14isIntegerValueEv"></span><span id="cvc5::api::Term::isIntegerValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a3f6c32bd89bdd197e6ef40cc1b6d7017"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isIntegerValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14isIntegerValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is an integer value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term15getIntegerValueEv">
+<span id="_CPPv3NK4cvc53api4Term15getIntegerValueEv"></span><span id="_CPPv2NK4cvc53api4Term15getIntegerValueEv"></span><span id="cvc5::api::Term::getIntegerValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ae6b1a099757a0772cd2a8fb8cd6ce40d"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getIntegerValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term15getIntegerValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a3f6c32bd89bdd197e6ef40cc1b6d7017"><span class="std std-ref">isIntegerValue()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the integer term in (decimal) string representation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term13isStringValueEv">
+<span id="_CPPv3NK4cvc53api4Term13isStringValueEv"></span><span id="_CPPv2NK4cvc53api4Term13isStringValueEv"></span><span id="cvc5::api::Term::isStringValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a20cc2f469c0656e4f20f671898c9cf83"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isStringValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13isStringValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is a string value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term14getStringValueEv">
+<span id="_CPPv3NK4cvc53api4Term14getStringValueEv"></span><span id="_CPPv2NK4cvc53api4Term14getStringValueEv"></span><span id="cvc5::api::Term::getStringValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a4ca124c29c29e5d701d68eb7e8bef77d"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">wstring</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getStringValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14getStringValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Note: This method is not to be confused with <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a1cfc366de798310380132358add8b0f0"><span class="std std-ref">toString()</span></a> which returns the term in some string representation, whatever data it may hold. Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a20cc2f469c0656e4f20f671898c9cf83"><span class="std std-ref">isStringValue()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the string term as a native string value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term13isReal32ValueEv">
+<span id="_CPPv3NK4cvc53api4Term13isReal32ValueEv"></span><span id="_CPPv2NK4cvc53api4Term13isReal32ValueEv"></span><span id="cvc5::api::Term::isReal32ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aeea0ca8a773d52236a3924bee06d8046"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isReal32Value</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13isReal32ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is a rational value whose numerator and denominator fit within int32_t and uint32_t, respectively. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term14getReal32ValueEv">
+<span id="_CPPv3NK4cvc53api4Term14getReal32ValueEv"></span><span id="_CPPv2NK4cvc53api4Term14getReal32ValueEv"></span><span id="cvc5::api::Term::getReal32ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ae63e4f69ff2943059d9c139405fc5b8f"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">int32_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getReal32Value</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14getReal32ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1aeea0ca8a773d52236a3924bee06d8046"><span class="std std-ref">isReal32Value()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the representation of a rational value as a pair of its numerator and denominator. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term13isReal64ValueEv">
+<span id="_CPPv3NK4cvc53api4Term13isReal64ValueEv"></span><span id="_CPPv2NK4cvc53api4Term13isReal64ValueEv"></span><span id="cvc5::api::Term::isReal64ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a699734b3762851b0436675705ab210b9"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isReal64Value</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13isReal64ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is a rational value whose numerator and denominator fit within int64_t and uint64_t, respectively. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term14getReal64ValueEv">
+<span id="_CPPv3NK4cvc53api4Term14getReal64ValueEv"></span><span id="_CPPv2NK4cvc53api4Term14getReal64ValueEv"></span><span id="cvc5::api::Term::getReal64ValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ab44c4b86f0042ba0509603b9ffc2d9e7"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">int64_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint64_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getReal64Value</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14getReal64ValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a699734b3762851b0436675705ab210b9"><span class="std std-ref">isReal64Value()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the representation of a rational value as a pair of its numerator and denominator. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term11isRealValueEv">
+<span id="_CPPv3NK4cvc53api4Term11isRealValueEv"></span><span id="_CPPv2NK4cvc53api4Term11isRealValueEv"></span><span id="cvc5::api::Term::isRealValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a91ed765d104580b9c8bc0d8f0dc8df19"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isRealValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term11isRealValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is a rational value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term12getRealValueEv">
+<span id="_CPPv3NK4cvc53api4Term12getRealValueEv"></span><span id="_CPPv2NK4cvc53api4Term12getRealValueEv"></span><span id="cvc5::api::Term::getRealValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aadfd0fe9b95abc33656f63c95ac37100"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getRealValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term12getRealValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a91ed765d104580b9c8bc0d8f0dc8df19"><span class="std std-ref">isRealValue()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the representation of a rational value as a (decimal) string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term12isConstArrayEv">
+<span id="_CPPv3NK4cvc53api4Term12isConstArrayEv"></span><span id="_CPPv2NK4cvc53api4Term12isConstArrayEv"></span><span id="cvc5::api::Term::isConstArrayC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a8bc33094cd12f558d9b201d4449aaa10"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isConstArray</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term12isConstArrayEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is a constant array. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term17getConstArrayBaseEv">
+<span id="_CPPv3NK4cvc53api4Term17getConstArrayBaseEv"></span><span id="_CPPv2NK4cvc53api4Term17getConstArrayBaseEv"></span><span id="cvc5::api::Term::getConstArrayBaseC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a897dc31b033ba8cedea7f633f73ed0bb"></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getConstArrayBase</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term17getConstArrayBaseEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a8bc33094cd12f558d9b201d4449aaa10"><span class="std std-ref">isConstArray()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the base (element stored at all indices) of a constant array </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term14isBooleanValueEv">
+<span id="_CPPv3NK4cvc53api4Term14isBooleanValueEv"></span><span id="_CPPv2NK4cvc53api4Term14isBooleanValueEv"></span><span id="cvc5::api::Term::isBooleanValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ab91a2687c3125b1f09a1e8aafb909a0e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isBooleanValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14isBooleanValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is a Boolean value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term15getBooleanValueEv">
+<span id="_CPPv3NK4cvc53api4Term15getBooleanValueEv"></span><span id="_CPPv2NK4cvc53api4Term15getBooleanValueEv"></span><span id="cvc5::api::Term::getBooleanValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a35ed5682dada5ba7be2d10ecd89299b5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getBooleanValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term15getBooleanValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1ab91a2687c3125b1f09a1e8aafb909a0e"><span class="std std-ref">isBooleanValue()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the representation of a Boolean value as a native Boolean value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term16isBitVectorValueEv">
+<span id="_CPPv3NK4cvc53api4Term16isBitVectorValueEv"></span><span id="_CPPv2NK4cvc53api4Term16isBitVectorValueEv"></span><span id="cvc5::api::Term::isBitVectorValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ad056d789865a260e13ea3350b85ec3f3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isBitVectorValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term16isBitVectorValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is a bit-vector value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term17getBitVectorValueE8uint32_t">
+<span id="_CPPv3NK4cvc53api4Term17getBitVectorValueE8uint32_t"></span><span id="_CPPv2NK4cvc53api4Term17getBitVectorValueE8uint32_t"></span><span id="cvc5::api::Term::getBitVectorValue__uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1acdb189febd206bfbdf9c1491399b9c36"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getBitVectorValue</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">base</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term17getBitVectorValueE8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1ad056d789865a260e13ea3350b85ec3f3"><span class="std std-ref">isBitVectorValue()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the representation of a bit-vector value in string representation. Supported bases are 2 (bit string), 10 (decimal string) or 16 (hexadecimal string). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term15isAbstractValueEv">
+<span id="_CPPv3NK4cvc53api4Term15isAbstractValueEv"></span><span id="_CPPv2NK4cvc53api4Term15isAbstractValueEv"></span><span id="cvc5::api::Term::isAbstractValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a01f55778f175b403654be58e6ee50f0f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isAbstractValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term15isAbstractValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is an abstract value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term16getAbstractValueEv">
+<span id="_CPPv3NK4cvc53api4Term16getAbstractValueEv"></span><span id="_CPPv2NK4cvc53api4Term16getAbstractValueEv"></span><span id="cvc5::api::Term::getAbstractValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aa805c81aa83e09d90169d11f674d7b11"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getAbstractValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term16getAbstractValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a01f55778f175b403654be58e6ee50f0f"><span class="std std-ref">isAbstractValue()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the representation of an abstract value as a string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term12isTupleValueEv">
+<span id="_CPPv3NK4cvc53api4Term12isTupleValueEv"></span><span id="_CPPv2NK4cvc53api4Term12isTupleValueEv"></span><span id="cvc5::api::Term::isTupleValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a29e329630a2632377bba7209900389af"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isTupleValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term12isTupleValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is a tuple value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term13getTupleValueEv">
+<span id="_CPPv3NK4cvc53api4Term13getTupleValueEv"></span><span id="_CPPv2NK4cvc53api4Term13getTupleValueEv"></span><span id="cvc5::api::Term::getTupleValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ae38a834a4634426b7eb36e870b59f51c"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getTupleValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term13getTupleValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a29e329630a2632377bba7209900389af"><span class="std std-ref">isTupleValue()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the representation of a tuple value as a vector of terms. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term22isFloatingPointPosZeroEv">
+<span id="_CPPv3NK4cvc53api4Term22isFloatingPointPosZeroEv"></span><span id="_CPPv2NK4cvc53api4Term22isFloatingPointPosZeroEv"></span><span id="cvc5::api::Term::isFloatingPointPosZeroC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aa87cb771acddea26ff2c02ffe155206e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isFloatingPointPosZero</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term22isFloatingPointPosZeroEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is the floating-point value for positive zero. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term22isFloatingPointNegZeroEv">
+<span id="_CPPv3NK4cvc53api4Term22isFloatingPointNegZeroEv"></span><span id="_CPPv2NK4cvc53api4Term22isFloatingPointNegZeroEv"></span><span id="cvc5::api::Term::isFloatingPointNegZeroC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aed5550c87a8b485d6411918e89c7f027"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isFloatingPointNegZero</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term22isFloatingPointNegZeroEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is the floating-point value for negative zero. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term21isFloatingPointPosInfEv">
+<span id="_CPPv3NK4cvc53api4Term21isFloatingPointPosInfEv"></span><span id="_CPPv2NK4cvc53api4Term21isFloatingPointPosInfEv"></span><span id="cvc5::api::Term::isFloatingPointPosInfC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a10f7db45836ac3173c865f2f8f3464d8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isFloatingPointPosInf</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term21isFloatingPointPosInfEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is the floating-point value for positive infinity. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term21isFloatingPointNegInfEv">
+<span id="_CPPv3NK4cvc53api4Term21isFloatingPointNegInfEv"></span><span id="_CPPv2NK4cvc53api4Term21isFloatingPointNegInfEv"></span><span id="cvc5::api::Term::isFloatingPointNegInfC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a1e2a18995cb413efb35339f3664c95cb"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isFloatingPointNegInf</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term21isFloatingPointNegInfEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is the floating-point value for negative infinity. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term18isFloatingPointNaNEv">
+<span id="_CPPv3NK4cvc53api4Term18isFloatingPointNaNEv"></span><span id="_CPPv2NK4cvc53api4Term18isFloatingPointNaNEv"></span><span id="cvc5::api::Term::isFloatingPointNaNC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1abf25ecef38bb2bdafc54505bc6e85c12"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isFloatingPointNaN</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term18isFloatingPointNaNEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is the floating-point value for not a number. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term20isFloatingPointValueEv">
+<span id="_CPPv3NK4cvc53api4Term20isFloatingPointValueEv"></span><span id="_CPPv2NK4cvc53api4Term20isFloatingPointValueEv"></span><span id="cvc5::api::Term::isFloatingPointValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ab8f982b57c6f90b6cebaaba83495951b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isFloatingPointValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term20isFloatingPointValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is a floating-point value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term21getFloatingPointValueEv">
+<span id="_CPPv3NK4cvc53api4Term21getFloatingPointValueEv"></span><span id="_CPPv2NK4cvc53api4Term21getFloatingPointValueEv"></span><span id="cvc5::api::Term::getFloatingPointValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1ab670bbbac6d5fcdc15abc0edf4681ab1"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">tuple</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getFloatingPointValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term21getFloatingPointValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1ab8f982b57c6f90b6cebaaba83495951b"><span class="std std-ref">isFloatingPointValue()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the representation of a floating-point value as a tuple of the exponent width, the significand width and a bit-vector value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term10isSetValueEv">
+<span id="_CPPv3NK4cvc53api4Term10isSetValueEv"></span><span id="_CPPv2NK4cvc53api4Term10isSetValueEv"></span><span id="cvc5::api::Term::isSetValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1aa9a79b2d6fce5c7433c0aba4f611b232"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isSetValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term10isSetValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is a set value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term11getSetValueEv">
+<span id="_CPPv3NK4cvc53api4Term11getSetValueEv"></span><span id="_CPPv2NK4cvc53api4Term11getSetValueEv"></span><span id="cvc5::api::Term::getSetValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1af50d8e7300c8c7085d62df2d45250d83"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSetValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term11getSetValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1aa9a79b2d6fce5c7433c0aba4f611b232"><span class="std std-ref">isSetValue()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the representation of a set value as a set of terms. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term15isSequenceValueEv">
+<span id="_CPPv3NK4cvc53api4Term15isSequenceValueEv"></span><span id="_CPPv2NK4cvc53api4Term15isSequenceValueEv"></span><span id="cvc5::api::Term::isSequenceValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a400aec46400804d9c3e81812ffb3924a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isSequenceValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term15isSequenceValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is a sequence value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term16getSequenceValueEv">
+<span id="_CPPv3NK4cvc53api4Term16getSequenceValueEv"></span><span id="_CPPv2NK4cvc53api4Term16getSequenceValueEv"></span><span id="cvc5::api::Term::getSequenceValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a75a5bf528af2ede779f0a59f38b2765c"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSequenceValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term16getSequenceValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a400aec46400804d9c3e81812ffb3924a"><span class="std std-ref">isSequenceValue()</span></a>. Note that it is usually necessary for sequences to call <code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a5085ec4bbae8a56b63aca9ed1f14befd"><span class="std std-ref"><span class="pre">Solver::simplify()</span></span></a></code> to turn a sequence that is constructed by, e.g., concatenation of unit sequences, into a sequence value. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the representation of a sequence value as a vector of terms. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term20isUninterpretedValueEv">
+<span id="_CPPv3NK4cvc53api4Term20isUninterpretedValueEv"></span><span id="_CPPv2NK4cvc53api4Term20isUninterpretedValueEv"></span><span id="cvc5::api::Term::isUninterpretedValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a966489f27eb98b85596dc65baa2ddb36"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isUninterpretedValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term20isUninterpretedValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true if the term is a value from an uninterpreted sort. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term21getUninterpretedValueEv">
+<span id="_CPPv3NK4cvc53api4Term21getUninterpretedValueEv"></span><span id="_CPPv2NK4cvc53api4Term21getUninterpretedValueEv"></span><span id="cvc5::api::Term::getUninterpretedValueC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1a4a6a5fc23103fc7c3af5cf7f666494eb"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort"><span class="n"><span class="pre">Sort</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">int32_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getUninterpretedValue</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term21getUninterpretedValueEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>bool </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>() const; Asserts <a class="reference internal" href="#classcvc5_1_1api_1_1Term_1a966489f27eb98b85596dc65baa2ddb36"><span class="std std-ref">isUninterpretedValue()</span></a>. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the representation of an uninterpreted value as a pair of its sort and its index. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-friends">Friends</p>
+<dl>
+<dt class="sig sig-object cpp">
+<em class="property"><span class="pre">friend</span> <span class="pre">class</span></em> <span class="pre">cvc5::Command</span></dt>
+</dl>
+
+<dl>
+<dt class="sig sig-object cpp">
+<em class="property"><span class="pre">friend</span> <span class="pre">struct</span></em> <span class="pre">std::hash&lt;</span> <span class="pre">Term</span> <span class="pre">&gt;</span></dt>
+</dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Term14const_iteratorE">
+<span id="_CPPv3N4cvc53api4Term14const_iteratorE"></span><span id="_CPPv2N4cvc53api4Term14const_iteratorE"></span><span id="cvc5::api::Term::const_iterator"></span><span class="target" id="classcvc5_1_1api_1_1Term_1_1const__iterator"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">const_iterator</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">iterator</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">input_iterator_tag</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Term14const_iteratorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Iterator for the children of a <a class="reference internal" href="#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a>. Note: This treats uninterpreted functions as <a class="reference internal" href="#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> just like any other term for example, the term f(x, y) will have Kind APPLY_UF and three children: f, x, and y </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Term14const_iterator14const_iteratorEv">
+<span id="_CPPv3N4cvc53api4Term14const_iterator14const_iteratorEv"></span><span id="_CPPv2N4cvc53api4Term14const_iterator14const_iteratorEv"></span><span id="cvc5::api::Term::const_iterator::const_iterator"></span><span class="target" id="classcvc5_1_1api_1_1Term_1_1const__iterator_1aca79b06c5149595beb372c6875eb1bab"></span><span class="sig-name descname"><span class="n"><span class="pre">const_iterator</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api4Term14const_iterator14const_iteratorEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Null Constructor. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Term14const_iterator14const_iteratorEPK6SolverRKNSt10shared_ptrIN4cvc54NodeEEE8uint32_t">
+<span id="_CPPv3N4cvc53api4Term14const_iterator14const_iteratorEPK6SolverRKNSt10shared_ptrIN4cvc54NodeEEE8uint32_t"></span><span id="_CPPv2N4cvc53api4Term14const_iterator14const_iteratorEPK6SolverRKNSt10shared_ptrIN4cvc54NodeEEE8uint32_t"></span><span id="cvc5::api::Term::const_iterator::const_iterator__SolverCP.std::shared_ptr:cvc5::Node:CR.uint32_t"></span><span class="target" id="classcvc5_1_1api_1_1Term_1_1const__iterator_1a74677f9b3bf0e5236490846222bf11cd"></span><span class="sig-name descname"><span class="n"><span class="pre">const_iterator</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="solver.html#_CPPv4N4cvc53api6SolverE" title="cvc5::api::Solver"><span class="n"><span class="pre">Solver</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">slv</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">cvc5</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Node</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">e</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">p</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api4Term14const_iterator14const_iteratorEPK6SolverRKNSt10shared_ptrIN4cvc54NodeEEE8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructor </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slv</strong> – the associated solver object </p></li>
+<li><p><strong>e</strong> – a shared pointer to the node that we’re iterating over </p></li>
+<li><p><strong>p</strong> – the position of the iterator (e.g. which child it’s on) </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Term14const_iterator14const_iteratorERK14const_iterator">
+<span id="_CPPv3N4cvc53api4Term14const_iterator14const_iteratorERK14const_iterator"></span><span id="_CPPv2N4cvc53api4Term14const_iterator14const_iteratorERK14const_iterator"></span><span id="cvc5::api::Term::const_iterator::const_iterator__const_iteratorCR"></span><span class="target" id="classcvc5_1_1api_1_1Term_1_1const__iterator_1a587576eb3eaa6e19f9e66bb52a5c721e"></span><span class="sig-name descname"><span class="n"><span class="pre">const_iterator</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4Term14const_iterator14const_iteratorERK14const_iterator" title="cvc5::api::Term::const_iterator::const_iterator"><span class="n"><span class="pre">const_iterator</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">it</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api4Term14const_iterator14const_iteratorERK14const_iterator" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy constructor. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Term14const_iteratoraSERK14const_iterator">
+<span id="_CPPv3N4cvc53api4Term14const_iteratoraSERK14const_iterator"></span><span id="_CPPv2N4cvc53api4Term14const_iteratoraSERK14const_iterator"></span><span id="cvc5::api::Term::const_iterator::assign-operator__const_iteratorCR"></span><span class="target" id="classcvc5_1_1api_1_1Term_1_1const__iterator_1abfefaf0316056cce21190789daf3bed7"></span><a class="reference internal" href="#_CPPv4N4cvc53api4Term14const_iteratorE" title="cvc5::api::Term::const_iterator"><span class="n"><span class="pre">const_iterator</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4Term14const_iteratorE" title="cvc5::api::Term::const_iterator"><span class="n"><span class="pre">const_iterator</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">it</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api4Term14const_iteratoraSERK14const_iterator" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Assignment operator. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>it</strong> – the iterator to assign to </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the reference to the iterator after assignment </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term14const_iteratoreqERK14const_iterator">
+<span id="_CPPv3NK4cvc53api4Term14const_iteratoreqERK14const_iterator"></span><span id="_CPPv2NK4cvc53api4Term14const_iteratoreqERK14const_iterator"></span><span id="cvc5::api::Term::const_iterator::eq-operator__const_iteratorCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1_1const__iterator_1acbe458753a9d460f7fe5252b07e88045"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">==</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4Term14const_iteratorE" title="cvc5::api::Term::const_iterator"><span class="n"><span class="pre">const_iterator</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">it</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14const_iteratoreqERK14const_iterator" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Equality operator. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>it</strong> – the iterator to compare to for equality </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if the iterators are equal </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term14const_iteratorneERK14const_iterator">
+<span id="_CPPv3NK4cvc53api4Term14const_iteratorneERK14const_iterator"></span><span id="_CPPv2NK4cvc53api4Term14const_iteratorneERK14const_iterator"></span><span id="cvc5::api::Term::const_iterator::neq-operator__const_iteratorCRC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1_1const__iterator_1a23a94c7047d2a5f4cbf0e0f2f7141186"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">!=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4Term14const_iteratorE" title="cvc5::api::Term::const_iterator"><span class="n"><span class="pre">const_iterator</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">it</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14const_iteratorneERK14const_iterator" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Disequality operator. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>it</strong> – the iterator to compare to for disequality </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if the iterators are disequal </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Term14const_iteratorppEv">
+<span id="_CPPv3N4cvc53api4Term14const_iteratorppEv"></span><span id="_CPPv2N4cvc53api4Term14const_iteratorppEv"></span><span id="cvc5::api::Term::const_iterator::inc-operator"></span><span class="target" id="classcvc5_1_1api_1_1Term_1_1const__iterator_1a504c2d403b3b9083a0ef7ef8b901fe97"></span><a class="reference internal" href="#_CPPv4N4cvc53api4Term14const_iteratorE" title="cvc5::api::Term::const_iterator"><span class="n"><span class="pre">const_iterator</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">++</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api4Term14const_iteratorppEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Increment operator (prefix). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a reference to the iterator after incrementing by one </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Term14const_iteratorppEi">
+<span id="_CPPv3N4cvc53api4Term14const_iteratorppEi"></span><span id="_CPPv2N4cvc53api4Term14const_iteratorppEi"></span><span id="cvc5::api::Term::const_iterator::inc-operator__i"></span><span class="target" id="classcvc5_1_1api_1_1Term_1_1const__iterator_1afa43567777bdacf5045a3eca308bcb18"></span><a class="reference internal" href="#_CPPv4N4cvc53api4Term14const_iteratorE" title="cvc5::api::Term::const_iterator"><span class="n"><span class="pre">const_iterator</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">++</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api4Term14const_iteratorppEi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Increment operator (postfix). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a reference to the iterator after incrementing by one </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Term14const_iteratormlEv">
+<span id="_CPPv3NK4cvc53api4Term14const_iteratormlEv"></span><span id="_CPPv2NK4cvc53api4Term14const_iteratormlEv"></span><span id="cvc5::api::Term::const_iterator::mul-operatorC"></span><span class="target" id="classcvc5_1_1api_1_1Term_1_1const__iterator_1aec15557cdfa549f2f187a9d70d3ddc59"></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">*</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Term14const_iteratormlEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Dereference operator. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the term this iterator points to </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4IENSt4hashIN4cvc53api4TermEEE">
+<span id="_CPPv3IENSt4hashIN4cvc53api4TermEEE"></span><span id="_CPPv2IENSt4hashIN4cvc53api4TermEEE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="structstd_1_1hash_3_01cvc5_1_1api_1_1Term_01_4"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">hash</span></span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">cvc5</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">api</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4IENSt4hashIN4cvc53api4TermEEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Hash function for Terms. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NKSt4hashIN4cvc53api4TermEEclERKN4cvc53api4TermE">
+<span id="_CPPv3NKSt4hashIN4cvc53api4TermEEclERKN4cvc53api4TermE"></span><span id="_CPPv2NKSt4hashIN4cvc53api4TermEEclERKN4cvc53api4TermE"></span><span id="std::hash:cvc5::api::Term:::call-operator__cvc5::api::TermCRC"></span><span class="target" id="structstd_1_1hash_3_01cvc5_1_1api_1_1Term_01_4_1a393c9ae75a089860027d7660e38e6184"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">()</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">cvc5</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">api</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NKSt4hashIN4cvc53api4TermEEclERKN4cvc53api4TermE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../python/python.html" class="btn btn-neutral float-right" title="Python API Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="statistics.html" class="btn btn-neutral float-left" title="Statistics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, the authors of cvc5.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

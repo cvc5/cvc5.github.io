@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Linear Arithmetic &mdash; cvc5  documentation</title>
+  <title>Theory of Linear Arithmetic &mdash; cvc5  documentation</title>
   
 
   
@@ -44,8 +44,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Commandline Options" href="../options.html" />
-    <link rel="prev" title="Datatypes" href="datatypes.html" /> 
+    <link rel="next" title="Theory of Sequences" href="sequences.html" />
+    <link rel="prev" title="Theory of Floating-Points" href="floatingpoint.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,16 +91,31 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../cpp/cpp.html">C++ API Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Python API Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/binary.html">Binary Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">API Documentation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="helloworld.html">Hello World</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Datatypes</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Linear Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exception Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bitvectors.html">Theory of Bit-Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bitvectors_and_arrays.html">Theory of Bit-Vectors and Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extract.html">Theory of Bit-Vectors: <code class="code docutils literal notranslate"><span class="pre">extract</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Theory of Datatypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="floatingpoint.html">Theory of Floating-Points</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Theory of Linear Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sequences.html">Theory of Sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sets.html">Theory of Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strings.html">Theory of Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="combination.html">Theory Combination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sygus-fun.html">SyGuS: Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sygus-grammar.html">SyGuS: Grammars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sygus-inv.html">SyGuS: Invariants</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../options.html">Commandline Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../languages.html">Input Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory.html">Theory References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 </ul>
 
             
@@ -151,7 +166,7 @@
         
           <li><a href="examples.html">Examples</a> &raquo;</li>
         
-      <li>Linear Arithmetic</li>
+      <li>Theory of Linear Arithmetic</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,10 +185,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="linear-arithmetic">
-<h1>Linear Arithmetic<a class="headerlink" href="#linear-arithmetic" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="theory-of-linear-arithmetic">
+<h1>Theory of Linear Arithmetic<a class="headerlink" href="#theory-of-linear-arithmetic" title="Permalink to this headline">¶</a></h1>
+<p>This example asserts three constraints over an integer variable <code class="code docutils literal notranslate"><span class="pre">x</span></code> and a real variable <code class="code docutils literal notranslate"><span class="pre">y</span></code>.
+Firstly, it checks that these constraints entail an upper bound on the difference <code class="code docutils literal notranslate"><span class="pre">y</span> <span class="pre">-</span> <span class="pre">x</span> <span class="pre">&lt;=</span> <span class="pre">2/3</span></code>.
+Secondly, it checks that this bound is tight by asserting <code class="code docutils literal notranslate"><span class="pre">y</span> <span class="pre">-</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">2/3</span></code> and checking for satisfiability.
+The two checks are separated by using <code class="code docutils literal notranslate"><span class="pre">push</span></code> and <code class="code docutils literal notranslate"><span class="pre">pop</span></code>.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Java</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/******************************************************************************</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Java</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Python</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">SMT-LIBv2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/******************************************************************************</span>
 <span class="linenos"> 2</span><span class="cm"> * Top contributors (to current version):</span>
 <span class="linenos"> 3</span><span class="cm"> *   Aina Niemetz, Tim King, Mudathir Mohamed</span>
 <span class="linenos"> 4</span><span class="cm"> *</span>
@@ -415,6 +434,29 @@
 <span class="linenos">72</span>    <span class="n">slv</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
 </pre></div>
 </div>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">(</span><span class="nv">set-logic</span> <span class="nv">QF_LIRA</span><span class="p">)</span>
+<span class="linenos"> 2</span><span class="p">(</span><span class="nv">declare-const</span> <span class="nv">x</span> <span class="nv">Int</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="p">(</span><span class="nv">declare-const</span> <span class="nv">y</span> <span class="nv">Real</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="p">(</span><span class="nb">assert</span>
+<span class="linenos"> 5</span>    <span class="p">(</span><span class="nb">and</span>
+<span class="linenos"> 6</span>        <span class="p">(</span><span class="nb">&gt;=</span> <span class="nv">x</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">3</span> <span class="nv">y</span><span class="p">))</span>
+<span class="linenos"> 7</span>        <span class="p">(</span><span class="nb">&lt;=</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
+<span class="linenos"> 8</span>        <span class="p">(</span><span class="nb">&lt;</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">2</span><span class="p">)</span> <span class="nv">x</span><span class="p">)</span>
+<span class="linenos"> 9</span>    <span class="p">)</span>
+<span class="linenos">10</span><span class="p">)</span>
+<span class="linenos">11</span><span class="p">(</span><span class="nb">push</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos">12</span><span class="p">(</span><span class="nv">echo</span> <span class="s">&quot;Checking entailement by asserting the negation&quot;</span><span class="p">)</span>
+<span class="linenos">13</span><span class="p">(</span><span class="nv">echo</span> <span class="s">&quot;Unsat == ENTAILED&quot;</span><span class="p">)</span>
+<span class="linenos">14</span><span class="p">(</span><span class="nb">assert</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nb">&lt;=</span> <span class="p">(</span><span class="nb">-</span> <span class="nv">y</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))))</span>
+<span class="linenos">15</span><span class="p">(</span><span class="nv">check-sat</span><span class="p">)</span>
+<span class="linenos">16</span><span class="p">(</span><span class="nb">pop</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos">17</span><span class="p">(</span><span class="nb">push</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos">18</span><span class="p">(</span><span class="nv">echo</span> <span class="s">&quot;Checking that the assertions are consistent&quot;</span><span class="p">)</span>
+<span class="linenos">19</span><span class="p">(</span><span class="nb">assert</span> <span class="p">(</span><span class="nb">=</span> <span class="p">(</span><span class="nb">-</span> <span class="nv">y</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)))</span>
+<span class="linenos">20</span><span class="p">(</span><span class="nv">check-sat</span><span class="p">)</span>
+<span class="linenos">21</span><span class="p">(</span><span class="nb">pop</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
 </div></div>
 </div>
 
@@ -424,8 +466,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../options.html" class="btn btn-neutral float-right" title="Commandline Options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="datatypes.html" class="btn btn-neutral float-left" title="Datatypes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sequences.html" class="btn btn-neutral float-right" title="Theory of Sequences" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="floatingpoint.html" class="btn btn-neutral float-left" title="Theory of Floating-Points" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

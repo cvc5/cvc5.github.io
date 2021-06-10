@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Statistics &mdash; cvc5  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Term" href="term.html" />
+    <link rel="prev" title="Sort" href="sort.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> cvc5
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../binary/binary.html">Binary Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="cpp.html">C++ API Documentation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="datatype.html">Datatype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypeconstructor.html">DatatypeConstructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypeconstructordecl.html">DatatypeConstructorDecl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypedecl.html">DatatypeDecl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypeselector.html">DatatypeSelector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="grammar.html">Grammar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kind.html">Kind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="op.html">Op</a></li>
+<li class="toctree-l3"><a class="reference internal" href="result.html">Result</a></li>
+<li class="toctree-l3"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solver.html">Solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sort.html">Sort</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="term.html">Term</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cpp.html#class-hierarchy">Class Hierarchy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python/python.html">Python API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../languages.html">Input Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory.html">Theory References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cvc5</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="cpp.html">C++ API Documentation</a> &raquo;</li>
+        
+      <li>Statistics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/api/cpp/statistics.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="statistics">
+<h1>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">¶</a></h1>
+<p>The solver collects a variety of statistics that can be helpful in understanding
+what the solver is doing internally. The entirety of collected statistics are
+represented by a <a class="reference internal" href="#_CPPv4N4cvc53api10StatisticsE" title="cvc5::api::Statistics"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Statistics</span></code></a> object that can
+be obtained from <a class="reference internal" href="solver.html#_CPPv4NK4cvc53api6Solver13getStatisticsEv" title="cvc5::api::Solver::getStatistics"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Solver::getStatistics()</span></code></a>. It is a copy of the internal solver
+statistics at this point in time.</p>
+<p>The <a class="reference internal" href="#_CPPv4N4cvc53api10StatisticsE" title="cvc5::api::Statistics"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Statistics</span></code></a> object is essentially a
+mapping from names (as <code class="docutils literal notranslate"><span class="pre">std::string</span></code>) to statistic values, represented by the
+<a class="reference internal" href="#_CPPv4N4cvc53api4StatE" title="cvc5::api::Stat"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Stat</span></code></a> class. A <a class="reference internal" href="#_CPPv4N4cvc53api4StatE" title="cvc5::api::Stat"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Stat</span></code></a>
+can hold values of different types (<code class="docutils literal notranslate"><span class="pre">int64_t</span></code>, <code class="docutils literal notranslate"><span class="pre">double</span></code>, <code class="docutils literal notranslate"><span class="pre">std::string</span></code> and
+histograms) and can be inspected by identifying the type
+(<a class="reference internal" href="#_CPPv4NK4cvc53api4Stat5isIntEv" title="cvc5::api::Stat::isInt"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Stat::isInt()</span></code></a>,
+<a class="reference internal" href="#_CPPv4NK4cvc53api4Stat8isDoubleEv" title="cvc5::api::Stat::isDouble"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Stat::isDouble()</span></code></a>, etc) and obtaining
+the actual value (<a class="reference internal" href="#_CPPv4NK4cvc53api4Stat6getIntEv" title="cvc5::api::Stat::getInt"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Stat::getInt()</span></code></a>,
+<a class="reference internal" href="#_CPPv4NK4cvc53api4Stat9getDoubleEv" title="cvc5::api::Stat::getDouble"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Stat::getDouble()</span></code></a>, etc). Histograms
+conceptually count the frequency of different values of an arbitrary type,
+usually an enumeration type. They are represented as <code class="docutils literal notranslate"><span class="pre">std::map&lt;std::string,</span>
+<span class="pre">uint64_t&gt;</span></code> where the key is the strings representation of one enumeration value
+and the value is the frequency of this particular value.</p>
+<p>Statistics are generally categorized into public and expert statistics, and
+furthermore into changed and defaulted statistics. By default, iterating a
+<a class="reference internal" href="#_CPPv4N4cvc53api10StatisticsE" title="cvc5::api::Statistics"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Statistics</span></code></a> object only shows statistics
+that are both public and changed. The <a class="reference internal" href="#_CPPv4NK4cvc53api10Statistics5beginEbb" title="cvc5::api::Statistics::begin"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Statistics::begin()</span></code></a> method has Boolean flags <code class="docutils literal notranslate"><span class="pre">expert</span></code> and
+<code class="docutils literal notranslate"><span class="pre">def</span></code> to also show expert statistics and defaulted statistics, respectively.</p>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api10StatisticsE">
+<span id="_CPPv3N4cvc53api10StatisticsE"></span><span id="_CPPv2N4cvc53api10StatisticsE"></span><span id="cvc5::api::Statistics"></span><span class="target" id="classcvc5_1_1api_1_1Statistics"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">cvc5</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">api</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Statistics</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api10StatisticsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Represents a snapshot of the solver statistics. Once obtained, an instance of this class is independent of the <code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver"><span class="std std-ref"><span class="pre">Solver</span></span></a></code> object: it will not change when the solvers internal statistics do, it will not be invalidated if the solver is destroyed. Iterating on this class (via <code class="docutils literal notranslate"><a class="reference internal" href="#classcvc5_1_1api_1_1Statistics_1a1ad2352faaf934e3b2e26b430af5c462"><span class="std std-ref"><span class="pre">begin()</span></span></a></code> and <code class="docutils literal notranslate"><a class="reference internal" href="#classcvc5_1_1api_1_1Statistics_1a87c0c3062651c1fc73648672463aaf91"><span class="std std-ref"><span class="pre">end()</span></span></a></code>) shows only public statistics that have been changed. By passing appropriate flags to <code class="docutils literal notranslate"><a class="reference internal" href="#classcvc5_1_1api_1_1Statistics_1a1ad2352faaf934e3b2e26b430af5c462"><span class="std std-ref"><span class="pre">begin()</span></span></a></code>, statistics that are expert, defaulted, or both, can be included as well. A single statistic value is represented as <code class="docutils literal notranslate"><a class="reference internal" href="#classcvc5_1_1api_1_1Stat"><span class="std std-ref"><span class="pre">Stat</span></span></a></code>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api10Statistics3getERKNSt6stringE">
+<span id="_CPPv3N4cvc53api10Statistics3getERKNSt6stringE"></span><span id="_CPPv2N4cvc53api10Statistics3getERKNSt6stringE"></span><span id="cvc5::api::Statistics::get__ssCR"></span><span class="target" id="classcvc5_1_1api_1_1Statistics_1a4328860f2cdab5c1cc42337481718626"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4StatE" title="cvc5::api::Stat"><span class="n"><span class="pre">Stat</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">get</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api10Statistics3getERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Retrieve the statistic with the given name. Asserts that a statistic with the given name actually exists and throws a <code class="docutils literal notranslate"><a class="reference internal" href="exceptions.html#classcvc5_1_1api_1_1CVC5ApiRecoverableException"><span class="std std-ref"><span class="pre">CVC5ApiRecoverableException</span></span></a></code> if it does not. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Name of the statistic. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The statistic with the given name. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api10Statistics5beginEbb">
+<span id="_CPPv3NK4cvc53api10Statistics5beginEbb"></span><span id="_CPPv2NK4cvc53api10Statistics5beginEbb"></span><span id="cvc5::api::Statistics::begin__b.bC"></span><span class="target" id="classcvc5_1_1api_1_1Statistics_1a1ad2352faaf934e3b2e26b430af5c462"></span><span class="n"><span class="pre">iterator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">begin</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">expert</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">defaulted</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api10Statistics5beginEbb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Begin iteration over the statistics values. By default, only entries that are public (non-expert) and have been set are visible while the others are skipped. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expert</strong> – If set to true, expert statistics are shown as well. </p></li>
+<li><p><strong>defaulted</strong> – If set to true, defaulted statistics are shown as well. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api10Statistics3endEv">
+<span id="_CPPv3NK4cvc53api10Statistics3endEv"></span><span id="_CPPv2NK4cvc53api10Statistics3endEv"></span><span id="cvc5::api::Statistics::endC"></span><span class="target" id="classcvc5_1_1api_1_1Statistics_1a87c0c3062651c1fc73648672463aaf91"></span><span class="n"><span class="pre">iterator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">end</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api10Statistics3endEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>End iteration </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4StatE">
+<span id="_CPPv3N4cvc53api4StatE"></span><span id="_CPPv2N4cvc53api4StatE"></span><span id="cvc5::api::Stat"></span><span class="target" id="classcvc5_1_1api_1_1Stat"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">cvc5</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">api</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Stat</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4StatE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Represents a snapshot of a single statistic value. A value can be of type <code class="docutils literal notranslate"><span class="pre">int64_t</span></code>, <code class="docutils literal notranslate"><span class="pre">double</span></code>, <code class="docutils literal notranslate"><span class="pre">std::string</span></code> or a histogram (<code class="docutils literal notranslate"><span class="pre">std::map&lt;std::string,</span> <span class="pre">uint64_t&gt;</span></code>). The value type can be queried (using <code class="docutils literal notranslate"><a class="reference internal" href="#classcvc5_1_1api_1_1Stat_1a11e4c4de297cdd6eb3d52f2d0c06c0bd"><span class="std std-ref"><span class="pre">isInt()</span></span></a></code>, <code class="docutils literal notranslate"><a class="reference internal" href="#classcvc5_1_1api_1_1Stat_1a99dce42b97a3b5f83eac91efa4670d1b"><span class="std std-ref"><span class="pre">isDouble()</span></span></a></code>, etc.) and the stored value can be accessed (using <code class="docutils literal notranslate"><a class="reference internal" href="#classcvc5_1_1api_1_1Stat_1a91e1d993922b829e0962d02de80d6a5d"><span class="std std-ref"><span class="pre">getInt()</span></span></a></code>, <code class="docutils literal notranslate"><a class="reference internal" href="#classcvc5_1_1api_1_1Stat_1a55649078f30dfd90d828da3aed28101d"><span class="std std-ref"><span class="pre">getDouble()</span></span></a></code>, etc.). It is possible to query whether this statistic is an expert statistic by <code class="docutils literal notranslate"><a class="reference internal" href="#classcvc5_1_1api_1_1Stat_1abea284a5012a40db3e4cff551afc0089"><span class="std std-ref"><span class="pre">isExpert()</span></span></a></code> and whether its value is the default value by <code class="docutils literal notranslate"><a class="reference internal" href="#classcvc5_1_1api_1_1Stat_1a1bf4a87363e2233569b4cae71c6ef106"><span class="std std-ref"><span class="pre">isDefault()</span></span></a></code>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Stat13HistogramDataE">
+<span id="_CPPv3N4cvc53api4Stat13HistogramDataE"></span><span id="_CPPv2N4cvc53api4Stat13HistogramDataE"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1aeab47130478786d972038df7c984b590"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HistogramData</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint64_t</span></span><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Stat13HistogramDataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Representation of a histogram: maps names to frequencies. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Stat4StatEv">
+<span id="_CPPv3N4cvc53api4Stat4StatEv"></span><span id="_CPPv2N4cvc53api4Stat4StatEv"></span><span id="cvc5::api::Stat::Stat"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1a84d67f7e324cb8041091bf423db85d19"></span><span class="sig-name descname"><span class="n"><span class="pre">Stat</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">delete</span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Stat4StatEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Can only be obtained from a <code class="docutils literal notranslate"><a class="reference internal" href="#classcvc5_1_1api_1_1Statistics"><span class="std std-ref"><span class="pre">Statistics</span></span></a></code> object. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Stat4StatERK4Stat">
+<span id="_CPPv3N4cvc53api4Stat4StatERK4Stat"></span><span id="_CPPv2N4cvc53api4Stat4StatERK4Stat"></span><span id="cvc5::api::Stat::Stat__StatCR"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1ab93cff5d065dc4df437d1c42ce355c46"></span><span class="sig-name descname"><span class="n"><span class="pre">Stat</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4Stat4StatERK4Stat" title="cvc5::api::Stat::Stat"><span class="n"><span class="pre">Stat</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">s</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api4Stat4StatERK4Stat" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy constructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4StatD0Ev">
+<span id="_CPPv3N4cvc53api4StatD0Ev"></span><span id="_CPPv2N4cvc53api4StatD0Ev"></span><span id="cvc5::api::Stat::~Stat"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1ae87c9ccde08d8398ffc1d54cb7713d29"></span><span class="sig-name descname"><span class="n"><span class="pre">~Stat</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api4StatD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Destructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4StataSERK4Stat">
+<span id="_CPPv3N4cvc53api4StataSERK4Stat"></span><span id="_CPPv2N4cvc53api4StataSERK4Stat"></span><span id="cvc5::api::Stat::assign-operator__StatCR"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1aca88e833b3c2d53778809ceb33be18a4"></span><a class="reference internal" href="#_CPPv4N4cvc53api4StatE" title="cvc5::api::Stat"><span class="n"><span class="pre">Stat</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4StatE" title="cvc5::api::Stat"><span class="n"><span class="pre">Stat</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">s</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api4StataSERK4Stat" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy assignment </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Stat8isExpertEv">
+<span id="_CPPv3NK4cvc53api4Stat8isExpertEv"></span><span id="_CPPv2NK4cvc53api4Stat8isExpertEv"></span><span id="cvc5::api::Stat::isExpertC"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1abea284a5012a40db3e4cff551afc0089"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isExpert</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Stat8isExpertEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Is this value intended for experts only? </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether this is an expert statistic. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Stat9isDefaultEv">
+<span id="_CPPv3NK4cvc53api4Stat9isDefaultEv"></span><span id="_CPPv2NK4cvc53api4Stat9isDefaultEv"></span><span id="cvc5::api::Stat::isDefaultC"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1a1bf4a87363e2233569b4cae71c6ef106"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isDefault</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Stat9isDefaultEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Does this value hold the default value? </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether this is a defaulted statistic. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Stat5isIntEv">
+<span id="_CPPv3NK4cvc53api4Stat5isIntEv"></span><span id="_CPPv2NK4cvc53api4Stat5isIntEv"></span><span id="cvc5::api::Stat::isIntC"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1a11e4c4de297cdd6eb3d52f2d0c06c0bd"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isInt</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Stat5isIntEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Is this value an integer? </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether the value is an integer. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Stat6getIntEv">
+<span id="_CPPv3NK4cvc53api4Stat6getIntEv"></span><span id="_CPPv2NK4cvc53api4Stat6getIntEv"></span><span id="cvc5::api::Stat::getIntC"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1a91e1d993922b829e0962d02de80d6a5d"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInt</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Stat6getIntEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the integer value. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The integer value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Stat8isDoubleEv">
+<span id="_CPPv3NK4cvc53api4Stat8isDoubleEv"></span><span id="_CPPv2NK4cvc53api4Stat8isDoubleEv"></span><span id="cvc5::api::Stat::isDoubleC"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1a99dce42b97a3b5f83eac91efa4670d1b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isDouble</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Stat8isDoubleEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Is this value a double? </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether the value is a double. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Stat9getDoubleEv">
+<span id="_CPPv3NK4cvc53api4Stat9getDoubleEv"></span><span id="_CPPv2NK4cvc53api4Stat9getDoubleEv"></span><span id="cvc5::api::Stat::getDoubleC"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1a55649078f30dfd90d828da3aed28101d"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getDouble</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Stat9getDoubleEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the double value. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The double value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Stat8isStringEv">
+<span id="_CPPv3NK4cvc53api4Stat8isStringEv"></span><span id="_CPPv2NK4cvc53api4Stat8isStringEv"></span><span id="cvc5::api::Stat::isStringC"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1a7ab745947e4bcc68edb256e92f072583"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isString</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Stat8isStringEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Is this value a string? </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether the value is a string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Stat9getStringEv">
+<span id="_CPPv3NK4cvc53api4Stat9getStringEv"></span><span id="_CPPv2NK4cvc53api4Stat9getStringEv"></span><span id="cvc5::api::Stat::getStringC"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1a9b3f1ab2480db24125afe81c3f4963e0"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getString</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Stat9getStringEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the string value. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The string value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Stat11isHistogramEv">
+<span id="_CPPv3NK4cvc53api4Stat11isHistogramEv"></span><span id="_CPPv2NK4cvc53api4Stat11isHistogramEv"></span><span id="cvc5::api::Stat::isHistogramC"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1a681ed2400c55b10b3cb56b682867031d"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isHistogram</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Stat11isHistogramEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Is this value a histogram? </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether the value is a histogram. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Stat12getHistogramEv">
+<span id="_CPPv3NK4cvc53api4Stat12getHistogramEv"></span><span id="_CPPv2NK4cvc53api4Stat12getHistogramEv"></span><span id="cvc5::api::Stat::getHistogramC"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1a4e9e9e6cbe42fbe64499321c4b944eb6"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4Stat13HistogramDataE" title="cvc5::api::Stat::HistogramData"><span class="n"><span class="pre">HistogramData</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getHistogram</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Stat12getHistogramEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return the histogram value. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The histogram value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-friends">Friends</p>
+<dl>
+<dt class="sig sig-object cpp">
+<em class="property"><span class="pre">friend</span> <span class="pre">class</span></em> <span class="pre">Statistics</span></dt>
+</dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4StatlsERNSt7ostreamERK4Stat">
+<span id="_CPPv3N4cvc53api4StatlsERNSt7ostreamERK4Stat"></span><span id="_CPPv2N4cvc53api4StatlsERNSt7ostreamERK4Stat"></span><span id="cvc5::api::Stat::lshift-operator__osR.StatCR"></span><span class="target" id="classcvc5_1_1api_1_1Stat_1a190d16437f362f06c32c9a9e7018c44a"></span><span class="k"><span class="pre">friend</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ostream</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">&lt;&lt;</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ostream</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">os</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api4StatE" title="cvc5::api::Stat"><span class="n"><span class="pre">Stat</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">sv</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api4StatlsERNSt7ostreamERK4Stat" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Print a <code class="docutils literal notranslate"><a class="reference internal" href="#classcvc5_1_1api_1_1Stat"><span class="std std-ref"><span class="pre">Stat</span></span></a></code> object to an <code class="docutils literal notranslate"><span class="pre">std::ostream</span></code>. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="term.html" class="btn btn-neutral float-right" title="Term" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="sort.html" class="btn btn-neutral float-left" title="Sort" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, the authors of cvc5.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
