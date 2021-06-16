@@ -39,7 +39,7 @@ devs:
   affiliation: University of Oxford and City University of London
 - fname: Gereon
   lname: Kremer
-  website:
+  website: https://cs.stanford.edu/~gkremer/
   affiliation: Stanford University
 - fname: Makai
   lname: Mann
