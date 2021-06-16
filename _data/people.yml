@@ -61,6 +61,10 @@ devs:
   lname: Ozdemir
   website: https://cs.stanford.edu/~aozdemir/
   affiliation: Stanford University
+- fname: Ying
+  lname: Sheng
+  website:
+  affiliation: Stanford University
 - fname: Yoni
   lname: Zohar
   website: https://cs.stanford.edu/~yoniz/
