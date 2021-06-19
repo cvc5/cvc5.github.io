@@ -109,7 +109,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#proof-module">Proof Module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sat-layer-module">SAT Layer Module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#quantifiers-module">Quantifiers Module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#resource-manager-module">Resource Manager Module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#separation-logic-theory-module">Separation Logic Theory Module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sets-theory-module">Sets Theory Module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#smt-layer-module">SMT Layer Module</a></li>
@@ -184,8 +183,6 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/binary/options.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -202,13 +199,23 @@
 <div class="section" id="most-commonly-used-cvc5-options">
 <h2>Most Commonly-Used cvc5 Options<a class="headerlink" href="#most-commonly-used-cvc5-options" title="Permalink to this headline">¶</a></h2>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--incremental</span> <span class="pre">|</span> <span class="pre">-i</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable incremental solving</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--lang=LANG</span> <span class="pre">|</span> <span class="pre">--input-language=LANG</span> <span class="pre">|</span> <span class="pre">-L</span> <span class="pre">LANG</span></code></dt><dd><p>force input language (default is “auto”; see –lang help)</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--output-lang=LANG</span> <span class="pre">|</span> <span class="pre">--output-language=LANG</span></code></dt><dd><p>force output language (default is “auto”; see –output-lang help)</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--quiet</span> <span class="pre">|</span> <span class="pre">-q</span></code></dt><dd><p>decrease verbosity (may be repeated)</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--rlimit-per=N</span> <span class="pre">|</span> <span class="pre">--reproducible-resource-limit=N</span></code></dt><dd><p>set resource limit per query</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--rlimit=N</span></code></dt><dd><p>set resource limit</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--stats</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>give statistics on exit</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--tlimit-per=MS</span></code></dt><dd><p>set time limit per query in milliseconds</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--tlimit=MS</span></code></dt><dd><p>set time limit in milliseconds of wall clock time</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--verbose</span> <span class="pre">|</span> <span class="pre">-v</span></code></dt><dd><p>increase verbosity (may be repeated)</p>
 </dd>
@@ -224,19 +231,9 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--strict-parsing</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>be less tolerant of non-conforming inputs</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--rlimit-per=N</span> <span class="pre">|</span> <span class="pre">--reproducible-resource-limit=N</span></code></dt><dd><p>set resource limit per query</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--rlimit=N</span></code></dt><dd><p>set resource limit</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--tlimit-per=MS</span></code></dt><dd><p>set time limit per query in milliseconds</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--tlimit=MS</span></code></dt><dd><p>set time limit in milliseconds of wall clock time</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--dump-to=FILE</span></code></dt><dd><p>all dumping goes to FILE (instead of stdout)</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--dump=MODE</span></code></dt><dd><p>dump preprocessed assertions, etc., see –dump=help</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--incremental</span> <span class="pre">|</span> <span class="pre">-i</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>enable incremental solving</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--produce-assertions</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>keep an assertions list (enables get-assertions command)</p>
 </dd>
@@ -482,6 +479,13 @@
 <div class="admonition-this-option-is-intended-for-experts-only admonition">
 <p class="admonition-title">This option is intended for Experts only!</p>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--rweight=VAL=N</span></code></dt><dd><p>set a single resource weight</p>
+</dd>
+</dl>
+</div>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">--stats-all</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>print unchanged (defaulted) statistics as well</p>
 </dd>
 </dl>
@@ -597,12 +601,6 @@
 </dd>
 </dl>
 </div>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">--bv-lazy-reduce-extf</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>reduce extended functions like bv2nat and int2bv at last call instead of full effort</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--bv-lazy-rewrite-extf</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>lazily rewrite extended functions like bv2nat and int2bv</p>
-</dd>
-</dl>
 <div class="admonition-this-option-is-intended-for-experts-only admonition">
 <p class="admonition-title">This option is intended for Experts only!</p>
 <dl class="simple">
@@ -848,6 +846,18 @@
 </div>
 <div class="section" id="driver-module">
 <h3>Driver Module<a class="headerlink" href="#driver-module" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--dump-instantiations</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output instantiations of quantified formulas after every UNSAT/VALID response</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dump-models</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output models after every SAT/INVALID/UNKNOWN response</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dump-proofs</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output proofs after every UNSAT/VALID response</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dump-unsat-cores</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output unsat cores after every UNSAT/VALID response</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dump-unsat-cores-full</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>dump the full unsat core, including unlabeled assertions</p>
+</dd>
+</dl>
 <div class="admonition-this-option-is-intended-for-experts-only admonition">
 <p class="admonition-title">This option is intended for Experts only!</p>
 <dl class="simple">
@@ -856,6 +866,8 @@
 </dl>
 </div>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--force-no-limit-cpu-while-dump</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Force no CPU limit when dumping models and proofs</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--interactive</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>force interactive/non-interactive mode</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--segv-spin</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>spin on segfault/other crash waiting for gdb</p>
@@ -1736,16 +1748,6 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="resource-manager-module">
-<h3>Resource Manager Module<a class="headerlink" href="#resource-manager-module" title="Permalink to this headline">¶</a></h3>
-<div class="admonition-this-option-is-intended-for-experts-only admonition">
-<p class="admonition-title">This option is intended for Experts only!</p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">--rweight=VAL=N</span></code></dt><dd><p>set a single resource weight</p>
-</dd>
-</dl>
-</div>
-</div>
 <div class="section" id="separation-logic-theory-module">
 <h3>Separation Logic Theory Module<a class="headerlink" href="#separation-logic-theory-module" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
@@ -1811,16 +1813,6 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--diagnostic-output-channel=CHANNEL</span></code></dt><dd><p>set the diagnostic output channel of the solver</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--dump-instantiations</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output instantiations of quantified formulas after every UNSAT/VALID response</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--dump-models</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output models after every SAT/INVALID/UNKNOWN response</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--dump-proofs</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output proofs after every UNSAT/VALID response</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--dump-unsat-cores</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output unsat cores after every UNSAT/VALID response</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--dump-unsat-cores-full</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>dump the full unsat core, including unlabeled assertions</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--early-ite-removal</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>remove ITEs early in preprocessing</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--expand-definitions</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>always expand symbol definitions in output</p>
@@ -1828,8 +1820,6 @@
 <dt><code class="docutils literal notranslate"><span class="pre">--ext-rew-prep</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use extended rewriter as a preprocessing pass</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--ext-rew-prep-agg</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use aggressive extended rewriter as a preprocessing pass</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--force-no-limit-cpu-while-dump</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Force no CPU limit when dumping models and proofs</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--foreign-theory-rewrite</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Cross-theory rewrites</p>
 </dd>

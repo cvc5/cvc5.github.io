@@ -167,8 +167,6 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/theories/sets-and-relations.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -240,7 +238,7 @@ The simplest way to get a sense of the syntax is to look at an example:</p>
 <span class="linenos">51</span>
 <span class="linenos">52</span>    <span class="n">Term</span> <span class="n">theorem</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">EQUAL</span><span class="p">,</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">);</span>
 <span class="linenos">53</span>
-<span class="linenos">54</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;CVC4 reports: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">theorem</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkEntailed</span><span class="p">(</span><span class="n">theorem</span><span class="p">)</span>
+<span class="linenos">54</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;cvc5 reports: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">theorem</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkEntailed</span><span class="p">(</span><span class="n">theorem</span><span class="p">)</span>
 <span class="linenos">55</span>         <span class="o">&lt;&lt;</span> <span class="s">&quot;.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="linenos">56</span>  <span class="p">}</span>
 <span class="linenos">57</span>
@@ -251,7 +249,7 @@ The simplest way to get a sense of the syntax is to look at an example:</p>
 <span class="linenos">62</span>
 <span class="linenos">63</span>    <span class="n">Term</span> <span class="n">theorem</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SUBSET</span><span class="p">,</span> <span class="n">emptyset</span><span class="p">,</span> <span class="n">A</span><span class="p">);</span>
 <span class="linenos">64</span>
-<span class="linenos">65</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;CVC4 reports: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">theorem</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkEntailed</span><span class="p">(</span><span class="n">theorem</span><span class="p">)</span>
+<span class="linenos">65</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;cvc5 reports: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">theorem</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkEntailed</span><span class="p">(</span><span class="n">theorem</span><span class="p">)</span>
 <span class="linenos">66</span>         <span class="o">&lt;&lt;</span> <span class="s">&quot;.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="linenos">67</span>  <span class="p">}</span>
 <span class="linenos">68</span>
@@ -273,7 +271,7 @@ The simplest way to get a sense of the syntax is to look at an example:</p>
 <span class="linenos">84</span>    <span class="n">Term</span> <span class="n">e</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">MEMBER</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">intersection</span><span class="p">);</span>
 <span class="linenos">85</span>
 <span class="linenos">86</span>    <span class="n">Result</span> <span class="n">result</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkSatAssuming</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
-<span class="linenos">87</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;CVC4 reports: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">e</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">result</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="linenos">87</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;cvc5 reports: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">e</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">result</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="linenos">88</span>
 <span class="linenos">89</span>    <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">isSat</span><span class="p">())</span>
 <span class="linenos">90</span>    <span class="p">{</span>
@@ -415,8 +413,7 @@ The simplest way to get a sense of the syntax is to look at an example:</p>
 <li><p><a class="reference external" href="https://github.com/cvc5/cvc5/blob/master/examples/api/python/sets.cpp">Python API example</a></p></li>
 </ul>
 <p>Below is a short summary of the sorts, constants, functions and
-predicates.  For more details, see
-<a class="reference external" href="https://cvc4.github.io/publications/2016/BRBT16.pdf">this paper at IJCAR 2016</a>.</p>
+predicates.  More details can be found in <span id="id1">[<a class="reference internal" href="../references.html#id3">BBRT17</a>]</span>.</p>
 <p>For the C++ API examples in the table below, we assume that we have created
 a <cite>cvc5::api::Solver solver</cite> object.</p>
 <table class="docutils align-default">
@@ -608,8 +605,7 @@ counter-intuitive when quantifiers are present.</p>
 </div></div>
 <p>For reference, below is a short summary of the sorts, constants, functions and
 predicates.
-For more details, see
-<a class="reference external" href="https://cvc4.github.io/publications/2017/MRT+17.pdf">this paper at CADE 2017</a>.</p>
+More details can be found in <span id="id2">[<a class="reference internal" href="../references.html#id4">MRTB17</a>]</span>.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 14%" />

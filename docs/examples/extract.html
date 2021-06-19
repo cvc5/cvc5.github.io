@@ -103,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html">Theory of Datatypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="floatingpoint.html">Theory of Floating-Points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lineararith.html">Theory of Linear Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relations.html">Theory of Relations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sequences.html">Theory of Sequences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sets.html">Theory of Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strings.html">Theory of Strings</a></li>
@@ -172,8 +173,6 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/examples/extract.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -200,7 +199,7 @@
 <span class="linenos">10</span><span class="cm"> * directory for licensing information.</span>
 <span class="linenos">11</span><span class="cm"> * ****************************************************************************</span>
 <span class="linenos">12</span><span class="cm"> *</span>
-<span class="linenos">13</span><span class="cm"> * A simple demonstration of the solving capabilities of the CVC4</span>
+<span class="linenos">13</span><span class="cm"> * A simple demonstration of the solving capabilities of the cvc5</span>
 <span class="linenos">14</span><span class="cm"> * bit-vector solver.</span>
 <span class="linenos">15</span><span class="cm"> *</span>
 <span class="linenos">16</span><span class="cm"> */</span>
@@ -240,7 +239,7 @@
 <span class="linenos">50</span>  <span class="n">Term</span> <span class="n">eq2</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">EQUAL</span><span class="p">,</span> <span class="n">x_31_31</span><span class="p">,</span> <span class="n">x_0_0</span><span class="p">);</span>
 <span class="linenos">51</span>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; Check entailment assuming: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">eq2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="linenos">52</span>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; Expect ENTAILED. &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="linenos">53</span>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; CVC4: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkEntailed</span><span class="p">(</span><span class="n">eq2</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="linenos">53</span>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; cvc5: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkEntailed</span><span class="p">(</span><span class="n">eq2</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="linenos">54</span>
 <span class="linenos">55</span>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="linenos">56</span><span class="p">}</span>

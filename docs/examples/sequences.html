@@ -45,7 +45,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Theory of Sets" href="sets.html" />
-    <link rel="prev" title="Theory of Linear Arithmetic" href="lineararith.html" /> 
+    <link rel="prev" title="Theory of Relations" href="relations.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -103,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html">Theory of Datatypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="floatingpoint.html">Theory of Floating-Points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lineararith.html">Theory of Linear Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relations.html">Theory of Relations</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Theory of Sequences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sets.html">Theory of Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strings.html">Theory of Strings</a></li>
@@ -172,8 +173,6 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/examples/sequences.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -200,7 +199,7 @@
 <span class="linenos">10</span><span class="cm"> * directory for licensing information.</span>
 <span class="linenos">11</span><span class="cm"> * ****************************************************************************</span>
 <span class="linenos">12</span><span class="cm"> *</span>
-<span class="linenos">13</span><span class="cm"> * A simple demonstration of reasoning about sequences with CVC4 via C++ API.</span>
+<span class="linenos">13</span><span class="cm"> * A simple demonstration of reasoning about sequences with cvc5 via C++ API.</span>
 <span class="linenos">14</span><span class="cm"> */</span>
 <span class="linenos">15</span>
 <span class="linenos">16</span><span class="cp">#include</span> <span class="cpf">&lt;cvc5/cvc5.h&gt;</span><span class="cp"></span>
@@ -247,7 +246,7 @@
 <span class="linenos">57</span>
 <span class="linenos">58</span>  <span class="c1">// check sat</span>
 <span class="linenos">59</span>  <span class="n">Result</span> <span class="n">result</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkSatAssuming</span><span class="p">(</span><span class="n">q</span><span class="p">);</span>
-<span class="linenos">60</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;CVC4 reports: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">result</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">60</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;cvc5 reports: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">result</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="linenos">61</span>
 <span class="linenos">62</span>  <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">isSat</span><span class="p">())</span>
 <span class="linenos">63</span>  <span class="p">{</span>
@@ -330,7 +329,7 @@
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="sets.html" class="btn btn-neutral float-right" title="Theory of Sets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="lineararith.html" class="btn btn-neutral float-left" title="Theory of Linear Arithmetic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="relations.html" class="btn btn-neutral float-left" title="Theory of Relations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

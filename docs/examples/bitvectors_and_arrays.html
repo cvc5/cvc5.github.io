@@ -103,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html">Theory of Datatypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="floatingpoint.html">Theory of Floating-Points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lineararith.html">Theory of Linear Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relations.html">Theory of Relations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sequences.html">Theory of Sequences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sets.html">Theory of Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strings.html">Theory of Strings</a></li>
@@ -172,8 +173,6 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/examples/bitvectors_and_arrays.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -200,7 +199,7 @@
 <span class="linenos">10</span><span class="cm"> * directory for licensing information.</span>
 <span class="linenos">11</span><span class="cm"> * ****************************************************************************</span>
 <span class="linenos">12</span><span class="cm"> *</span>
-<span class="linenos">13</span><span class="cm"> * A simple demonstration of the solving capabilities of the CVC4</span>
+<span class="linenos">13</span><span class="cm"> * A simple demonstration of the solving capabilities of the cvc5</span>
 <span class="linenos">14</span><span class="cm"> * bit-vector and array solvers.</span>
 <span class="linenos">15</span><span class="cm"> *</span>
 <span class="linenos">16</span><span class="cm"> */</span>
@@ -274,10 +273,10 @@
 <span class="linenos">84</span>
 <span class="linenos">85</span>  <span class="n">Term</span> <span class="n">query</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">NOT</span><span class="p">,</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">AND</span><span class="p">,</span> <span class="n">assertions</span><span class="p">));</span>
 <span class="linenos">86</span>
-<span class="linenos">87</span>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Asserting &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">query</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; to CVC4 &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="linenos">87</span>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Asserting &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">query</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; to cvc5 &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="linenos">88</span>  <span class="n">slv</span><span class="p">.</span><span class="n">assertFormula</span><span class="p">(</span><span class="n">query</span><span class="p">);</span>
 <span class="linenos">89</span>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Expect sat. &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="linenos">90</span>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;CVC4: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkSatAssuming</span><span class="p">(</span><span class="n">slv</span><span class="p">.</span><span class="n">mkTrue</span><span class="p">())</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="linenos">90</span>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;cvc5: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkSatAssuming</span><span class="p">(</span><span class="n">slv</span><span class="p">.</span><span class="n">mkTrue</span><span class="p">())</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="linenos">91</span>
 <span class="linenos">92</span>  <span class="c1">// Getting the model</span>
 <span class="linenos">93</span>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;The satisfying model is: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>

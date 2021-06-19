@@ -103,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html">Theory of Datatypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="floatingpoint.html">Theory of Floating-Points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lineararith.html">Theory of Linear Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relations.html">Theory of Relations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sequences.html">Theory of Sequences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sets.html">Theory of Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strings.html">Theory of Strings</a></li>
@@ -172,8 +173,6 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/examples/helloworld.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -202,7 +201,7 @@ We create a solver, declare a Boolean variable and check whether it is entailed 
 <span class="linenos">10</span><span class="cm"> * directory for licensing information.</span>
 <span class="linenos">11</span><span class="cm"> * ****************************************************************************</span>
 <span class="linenos">12</span><span class="cm"> *</span>
-<span class="linenos">13</span><span class="cm"> * A very simple CVC4 example.</span>
+<span class="linenos">13</span><span class="cm"> * A very simple cvc5 example.</span>
 <span class="linenos">14</span><span class="cm"> */</span>
 <span class="linenos">15</span>
 <span class="linenos">16</span><span class="cp">#include</span> <span class="cpf">&lt;cvc5/cvc5.h&gt;</span><span class="cp"></span>
@@ -276,10 +275,10 @@ We create a solver, declare a Boolean variable and check whether it is entailed 
 <span class="linenos">23</span>    <span class="nb">print</span><span class="p">(</span><span class="n">helloworld</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="n">slv</span><span class="o">.</span><span class="n">checkEntailed</span><span class="p">(</span><span class="n">helloworld</span><span class="p">))</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">(</span><span class="nv">set-logic</span> <span class="nv">QF_UF</span><span class="p">)</span>
-<span class="linenos">2</span><span class="p">(</span><span class="nv">declare-const</span> <span class="nv">|Hello World!|</span> <span class="nv">Bool</span><span class="p">)</span>
-<span class="linenos">3</span><span class="p">(</span><span class="nb">assert</span> <span class="p">(</span><span class="nb">not</span> <span class="nv">|Hello World!|</span><span class="p">))</span>
-<span class="linenos">4</span><span class="p">(</span><span class="nv">check-sat</span><span class="p">)</span>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>(<span class="k">set-logic</span> <span class="n">QF</span><span class="err">_</span><span class="n">UF</span>)
+<span class="linenos">2</span>(<span class="k">declare-const</span> <span class="err">|</span><span class="n">Hello</span> <span class="n">World</span><span class="na">!</span><span class="err">|</span> <span class="n">Bool</span>)
+<span class="linenos">3</span>(<span class="k">assert</span> (<span class="o">not</span> <span class="err">|</span><span class="n">Hello</span> <span class="n">World</span><span class="na">!</span><span class="err">|</span>))
+<span class="linenos">4</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
 </div></div>

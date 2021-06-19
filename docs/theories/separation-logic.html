@@ -166,8 +166,6 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/theories/separation-logic.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -185,10 +183,9 @@
 language.</p>
 <div class="section" id="signature">
 <h2>Signature<a class="headerlink" href="#signature" title="Permalink to this headline">¶</a></h2>
-<p>Given a (decidable) base theory <span class="math notranslate nohighlight">\(T\)</span>, cvc5 has a
-<a class="reference external" href="https://cvc4.github.io/publications/2016/RIS+16.pdf">decision procedure</a>
-for quantifier-free <span class="math notranslate nohighlight">\(SL(T)_{Loc,Data}\)</span> formulas, where <span class="math notranslate nohighlight">\(Loc\)</span> and
-<span class="math notranslate nohighlight">\(Data\)</span> are any sort belonging to <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<p>Given a (decidable) base theory <span class="math notranslate nohighlight">\(T\)</span>, cvc5 implements a decision procedure
+for quantifier-free <span class="math notranslate nohighlight">\(SL(T)_{Loc,Data}\)</span> formulas <span id="id1">[<a class="reference internal" href="../references.html#id5">RISK16</a>]</span>,
+where <span class="math notranslate nohighlight">\(Loc\)</span> and <span class="math notranslate nohighlight">\(Data\)</span> are any sort belonging to <span class="math notranslate nohighlight">\(T\)</span>.</p>
 <p>A <span class="math notranslate nohighlight">\(SL(T)_{Loc,Data}\)</span> formula is one from the following grammar:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="p">:</span> <span class="n">L</span> <span class="o">|</span> <span class="p">(</span><span class="n">emp</span> <span class="n">t</span> <span class="n">u</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">pto</span> <span class="n">t</span> <span class="n">u</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">sep</span> <span class="n">F1</span> <span class="o">...</span> <span class="n">Fn</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">wand</span> <span class="n">F1</span> <span class="n">F2</span><span class="p">)</span> <span class="o">|</span> <span class="o">~</span><span class="n">F1</span> <span class="o">|</span> <span class="n">F1</span> <span class="n">op</span> <span class="o">...</span> <span class="n">op</span> <span class="n">Fn</span>
 </pre></div>

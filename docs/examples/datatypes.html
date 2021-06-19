@@ -103,6 +103,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Theory of Datatypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="floatingpoint.html">Theory of Floating-Points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lineararith.html">Theory of Linear Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relations.html">Theory of Relations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sequences.html">Theory of Sequences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sets.html">Theory of Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strings.html">Theory of Strings</a></li>
@@ -172,8 +173,6 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/examples/datatypes.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -200,7 +199,7 @@
 <span class="linenos"> 10</span><span class="cm"> * directory for licensing information.</span>
 <span class="linenos"> 11</span><span class="cm"> * ****************************************************************************</span>
 <span class="linenos"> 12</span><span class="cm"> *</span>
-<span class="linenos"> 13</span><span class="cm"> * An example of using inductive datatypes in CVC4.</span>
+<span class="linenos"> 13</span><span class="cm"> * An example of using inductive datatypes in cvc5.</span>
 <span class="linenos"> 14</span><span class="cm"> */</span>
 <span class="linenos"> 15</span>
 <span class="linenos"> 16</span><span class="cp">#include</span> <span class="cpf">&lt;cvc5/cvc5.h&gt;</span><span class="cp"></span>
@@ -317,7 +316,7 @@
 <span class="linenos">127</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Assert &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">assertion</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="linenos">128</span>  <span class="n">slv</span><span class="p">.</span><span class="n">assertFormula</span><span class="p">(</span><span class="n">assertion</span><span class="p">);</span>
 <span class="linenos">129</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Expect sat.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="linenos">130</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;CVC4: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkSat</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">130</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;cvc5: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkSat</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="linenos">131</span><span class="p">}</span>
 <span class="linenos">132</span>
 <span class="linenos">133</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
@@ -343,7 +342,7 @@
 <span class="linenos">153</span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;spec is:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">consListSpec</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="linenos">154</span>
 <span class="linenos">155</span>  <span class="c1">// Keep in mind that &quot;DatatypeDecl&quot; is the specification class for</span>
-<span class="linenos">156</span>  <span class="c1">// datatypes---&quot;DatatypeDecl&quot; is not itself a CVC4 Sort.</span>
+<span class="linenos">156</span>  <span class="c1">// datatypes---&quot;DatatypeDecl&quot; is not itself a cvc5 Sort.</span>
 <span class="linenos">157</span>  <span class="c1">// Now that our Datatype is fully specified, we can get a Sort for it.</span>
 <span class="linenos">158</span>  <span class="c1">// This step resolves the &quot;SelfSort&quot; reference and creates</span>
 <span class="linenos">159</span>  <span class="c1">// symbols for all the constructors, etc.</span>
