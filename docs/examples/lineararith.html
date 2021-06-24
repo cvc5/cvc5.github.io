@@ -439,14 +439,14 @@ The two checks are separated by using <code class="code docutils literal notrans
 <span class="linenos"> 4</span>(<span class="k">assert</span>
 <span class="linenos"> 5</span>    (<span class="o">and</span>
 <span class="linenos"> 6</span>        (<span class="o">&gt;=</span> <span class="n">x</span> (<span class="o">*</span> <span class="m">3</span> <span class="n">y</span>))
-<span class="linenos"> 7</span>        (<span class="err">&lt;</span><span class="o">=</span> <span class="n">x</span> <span class="n">y</span>)
-<span class="linenos"> 8</span>        (<span class="err">&lt;</span> (<span class="err">-</span> <span class="m">2</span>) <span class="n">x</span>)
+<span class="linenos"> 7</span>        (<span class="o">&lt;=</span> <span class="n">x</span> <span class="n">y</span>)
+<span class="linenos"> 8</span>        (<span class="o">&lt;</span> (<span class="err">-</span> <span class="m">2</span>) <span class="n">x</span>)
 <span class="linenos"> 9</span>    )
 <span class="linenos">10</span>)
 <span class="linenos">11</span>(<span class="k">push</span> <span class="m">1</span>)
 <span class="linenos">12</span>(<span class="n">echo</span> <span class="s">&quot;Checking entailement by asserting the negation&quot;</span>)
 <span class="linenos">13</span>(<span class="n">echo</span> <span class="s">&quot;Unsat == ENTAILED&quot;</span>)
-<span class="linenos">14</span>(<span class="k">assert</span> (<span class="o">not</span> (<span class="err">&lt;</span><span class="o">=</span> (<span class="err">-</span> <span class="n">y</span> <span class="n">x</span>) (<span class="err">/</span> <span class="m">2</span> <span class="m">3</span>))))
+<span class="linenos">14</span>(<span class="k">assert</span> (<span class="o">not</span> (<span class="o">&lt;=</span> (<span class="err">-</span> <span class="n">y</span> <span class="n">x</span>) (<span class="err">/</span> <span class="m">2</span> <span class="m">3</span>))))
 <span class="linenos">15</span>(<span class="k">check-sat</span>)
 <span class="linenos">16</span>(<span class="k">pop</span> <span class="m">1</span>)
 <span class="linenos">17</span>(<span class="k">push</span> <span class="m">1</span>)
