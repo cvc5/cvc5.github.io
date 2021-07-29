@@ -103,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html">Theory of Datatypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="floatingpoint.html">Theory of Floating-Points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lineararith.html">Theory of Linear Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html">Quickstart Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relations.html">Theory of Relations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sequences.html">Theory of Sequences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sets.html">Theory of Sets</a></li>
@@ -187,7 +188,7 @@
   <div class="section" id="theory-of-bit-vectors">
 <h1>Theory of Bit-Vectors<a class="headerlink" href="#theory-of-bit-vectors" title="Permalink to this headline">¶</a></h1>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Java</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cm">/******************************************************************************</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Java</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Python</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">SMT-LIBv2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cm">/******************************************************************************</span>
 <span class="linenos">  2</span><span class="cm"> * Top contributors (to current version):</span>
 <span class="linenos">  3</span><span class="cm"> *   Aina Niemetz, Liana Hadarean, Makai Mann</span>
 <span class="linenos">  4</span><span class="cm"> *</span>
@@ -551,6 +552,50 @@
 <span class="linenos">121</span>    <span class="n">slv</span><span class="o">.</span><span class="n">assertFormula</span><span class="p">(</span><span class="n">a_odd</span><span class="p">)</span>
 <span class="linenos">122</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expect sat&quot;</span><span class="p">)</span>
 <span class="linenos">123</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cvc5:&quot;</span><span class="p">,</span> <span class="n">slv</span><span class="o">.</span><span class="n">checkSat</span><span class="p">())</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_BV</span>)
+<span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:incremental</span> <span class="o">true</span>)
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>(<span class="k">declare-const</span> <span class="n">x</span> (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>))
+<span class="linenos"> 5</span>(<span class="k">declare-const</span> <span class="n">a</span> (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>))
+<span class="linenos"> 6</span>(<span class="k">declare-const</span> <span class="n">b</span> (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>))
+<span class="linenos"> 7</span>(<span class="k">declare-const</span> <span class="n">new_x</span> (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>))
+<span class="linenos"> 8</span>(<span class="k">declare-const</span> <span class="n">new_x_</span> (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>))
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>(<span class="k">echo</span> <span class="s">&quot;Assert the assumption.&quot;</span>)
+<span class="linenos">11</span>(<span class="k">assert</span> (<span class="o">or</span> (<span class="o">=</span> <span class="n">x</span> <span class="n">a</span>) (<span class="o">=</span> <span class="n">x</span> <span class="n">b</span>)))
+<span class="linenos">12</span>
+<span class="linenos">13</span>(<span class="k">echo</span> <span class="s">&quot;Asserting assignment to cvc5.&quot;</span>)
+<span class="linenos">14</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">new_x</span> (<span class="o">ite</span> (<span class="o">=</span> <span class="n">x</span> <span class="n">a</span>) <span class="n">b</span> <span class="n">a</span>)))
+<span class="linenos">15</span>
+<span class="linenos">16</span>(<span class="k">echo</span> <span class="s">&quot;Pushing a new context.&quot;</span>)
+<span class="linenos">17</span>(<span class="k">push</span> <span class="m">1</span>)
+<span class="linenos">18</span>
+<span class="linenos">19</span>(<span class="k">echo</span> <span class="s">&quot;Asserting another assignment to cvc5.&quot;</span>)
+<span class="linenos">20</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">new_x_</span> (<span class="o">bvxor</span> <span class="n">a</span> <span class="n">b</span> <span class="n">x</span>)))
+<span class="linenos">21</span>
+<span class="linenos">22</span>(<span class="k">echo</span> <span class="s">&quot;Check entailment assuming new_x = new_x_.&quot;</span>)
+<span class="linenos">23</span>(<span class="k">echo</span> <span class="s">&quot;UNSAT (of negation) == ENTAILED&quot;</span>)
+<span class="linenos">24</span>(<span class="k">check-sat-assuming</span> ((<span class="o">not</span> (<span class="o">=</span> <span class="n">new_x</span> <span class="n">new_x_</span>))))
+<span class="linenos">25</span>(<span class="k">echo</span> <span class="s">&quot;Popping context.&quot;</span>)
+<span class="linenos">26</span>(<span class="k">pop</span> <span class="m">1</span>)
+<span class="linenos">27</span>
+<span class="linenos">28</span>(<span class="k">echo</span> <span class="s">&quot;Asserting another assignment to cvc5.&quot;</span>)
+<span class="linenos">29</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">new_x_</span> (<span class="o">bvsub</span> (<span class="o">bvadd</span> <span class="n">a</span> <span class="n">b</span>) <span class="n">x</span>)))
+<span class="linenos">30</span>
+<span class="linenos">31</span>(<span class="k">echo</span> <span class="s">&quot;Check entailment assuming new_x = new_x_.&quot;</span>)
+<span class="linenos">32</span>(<span class="k">echo</span> <span class="s">&quot;UNSAT (of negation) == ENTAILED&quot;</span>)
+<span class="linenos">33</span>(<span class="k">check-sat-assuming</span> ((<span class="o">not</span> (<span class="o">=</span> <span class="n">new_x</span> <span class="n">new_x_</span>))))
+<span class="linenos">34</span>
+<span class="linenos">35</span>(<span class="k">echo</span> <span class="s">&quot;Check entailment assuming [new_x = new_x_, x != x.&quot;</span>)
+<span class="linenos">36</span>(<span class="k">echo</span> <span class="s">&quot;UNSAT (of negation) == ENTAILED&quot;</span>)
+<span class="linenos">37</span>(<span class="k">check-sat-assuming</span> ((<span class="o">not</span> (<span class="o">=</span> <span class="n">new_x</span> <span class="n">new_x_</span>)) (<span class="o">not</span> (<span class="o">=</span> <span class="n">x</span> <span class="n">x</span>))))
+<span class="linenos">38</span>
+<span class="linenos">39</span>(<span class="k">echo</span> <span class="s">&quot;Assert that a is odd, i.e. lsb is one.&quot;</span>)
+<span class="linenos">40</span>(<span class="k">assert</span> (<span class="o">=</span> ((<span class="na">_</span> <span class="o">extract</span> <span class="m">0</span> <span class="m">0</span>) <span class="n">a</span>) (<span class="na">_</span> <span class="m">bv1</span> <span class="m">1</span>)))
+<span class="linenos">41</span>(<span class="k">echo</span> <span class="s">&quot;Check satisfiability, expecting sat.&quot;</span>)
+<span class="linenos">42</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
 </div></div>

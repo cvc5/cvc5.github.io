@@ -110,6 +110,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="separation-logic.html">Theory Reference: Separation Logic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sets-and-relations.html">Theory Reference: Sets and Relations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transcendentals.html">Theory Reference: Transcendentals</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
@@ -186,11 +187,11 @@
 <div class="section" id="logic">
 <h2>Logic<a class="headerlink" href="#logic" title="Permalink to this headline">¶</a></h2>
 <p>To enable cvc5’s decision procedure for datatypes, include <code class="docutils literal notranslate"><span class="pre">DT</span></code> in the logic:</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">set-logic</span> QF_UFDT)
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">set-logic</span> <span class="n">QF_UFDT</span>)
 </pre></div>
 </div>
 <p>Alternatively, use the <code class="docutils literal notranslate"><span class="pre">ALL</span></code> logic:</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">set-logic</span> ALL)
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">set-logic</span> <span class="n">ALL</span>)
 </pre></div>
 </div>
 </div>
@@ -198,10 +199,10 @@
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
 <p>cvc5 supports the following syntax for declaring mutually recursive blocks of
 datatypes in <code class="docutils literal notranslate"><span class="pre">*.smt2</span></code> input files in the smt lib 2.6 format:</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatype</span><span class="n">s</span> ((<span class="n">D1</span> <span class="n">n1</span>) ... (<span class="n">Dk</span> <span class="n">nk</span>))
- (((<span class="n">C1</span> (<span class="n">S1</span> <span class="n">T1</span>) ... (<span class="n">Si</span> <span class="n">Ti</span>)) ... (<span class="n">Cj</span> ... ))
-  ...
-  ((...) ... (...)))
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatypes</span> ((<span class="n">D1</span> <span class="n">n1</span>) <span class="n">...</span> (<span class="n">Dk</span> <span class="n">nk</span>))
+ (((<span class="n">C1</span> (<span class="n">S1</span> <span class="n">T1</span>) <span class="n">...</span> (<span class="n">Si</span> <span class="n">Ti</span>)) <span class="n">...</span> (<span class="n">Cj</span> <span class="n">...</span> ))
+  <span class="n">...</span>
+  ((<span class="n">...</span>) <span class="n">...</span> (<span class="n">...</span>)))
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">D1</span> <span class="pre">...</span> <span class="pre">Dk</span></code> are datatype types, <code class="docutils literal notranslate"><span class="pre">C1</span> <span class="pre">...</span> <span class="pre">Cj</span></code> are the constructors for
@@ -219,48 +220,48 @@ evaluate to true iff their argument has top-symbol <code class="docutils literal
 <div class="section" id="semantics">
 <h2>Semantics<a class="headerlink" href="#semantics" title="Permalink to this headline">¶</a></h2>
 <p>The decision procedure for inductive datatypes is described in
-<span id="id1">[<a class="reference internal" href="../references.html#id7">BST07</a>]</span>.</p>
+<span id="id1">[<a class="reference internal" href="../references.html#id8">BST07</a>]</span>.</p>
 </div>
 <div class="section" id="example-declarations">
 <h2>Example Declarations<a class="headerlink" href="#example-declarations" title="Permalink to this headline">¶</a></h2>
 <p>An enumeration:</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatype</span><span class="n">s</span> ((<span class="n">Color</span> <span class="m">0</span>))
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatypes</span> ((<span class="n">Color</span> <span class="m">0</span>))
  (((<span class="n">Red</span>) (<span class="n">Black</span>))))
 </pre></div>
 </div>
 <p>A List of <code class="docutils literal notranslate"><span class="pre">Int</span></code> with <code class="docutils literal notranslate"><span class="pre">cons</span></code> and <code class="docutils literal notranslate"><span class="pre">nil</span></code> as constructors:</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatype</span><span class="n">s</span> ((<span class="n">list</span> <span class="m">0</span>))
- (((<span class="n">cons</span> (<span class="n">head</span> <span class="na">Int</span>) (<span class="n">tail</span> <span class="n">list</span>)) (<span class="n">nil</span>))))
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatypes</span> ((<span class="n">list</span> <span class="m">0</span>))
+ (((<span class="n">cons</span> (<span class="n">head</span> <span class="na">Int</span>) (<span class="n">tail</span> <span class="n">list</span>)) (<span class="o">nil</span>))))
 </pre></div>
 </div>
 <p>A parametric List of T’s:</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatype</span><span class="n">s</span> ((<span class="n">list</span> <span class="m">1</span>))
- ((<span class="n">par</span> (<span class="n">T</span>) ((<span class="n">cons</span> (<span class="n">head</span> <span class="n">T</span>) (<span class="n">tail</span> (<span class="n">list</span> <span class="n">T</span>))) (<span class="n">nil</span>)))))
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatypes</span> ((<span class="n">list</span> <span class="m">1</span>))
+ ((<span class="n">par</span> (<span class="n">T</span>) ((<span class="n">cons</span> (<span class="n">head</span> <span class="n">T</span>) (<span class="n">tail</span> (<span class="n">list</span> <span class="n">T</span>))) (<span class="o">nil</span>)))))
 </pre></div>
 </div>
 <p>Mutual recursion:</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatype</span><span class="n">s</span> ((<span class="n">list</span> <span class="m">0</span>) (<span class="n">tree</span> <span class="m">0</span>))
- (((<span class="n">cons</span> (<span class="n">head</span> <span class="n">tree</span>) (<span class="n">tail</span> <span class="n">list</span>)) (<span class="n">nil</span>))
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatypes</span> ((<span class="n">list</span> <span class="m">0</span>) (<span class="n">tree</span> <span class="m">0</span>))
+ (((<span class="n">cons</span> (<span class="n">head</span> <span class="n">tree</span>) (<span class="n">tail</span> <span class="n">list</span>)) (<span class="o">nil</span>))
   ((<span class="n">node</span> (<span class="n">data</span> <span class="na">Int</span>) (<span class="n">children</span> <span class="n">list</span>)))))
 </pre></div>
 </div>
 <p>A (non-recursive) record type:</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatype</span><span class="n">s</span> ((<span class="n">record</span> <span class="m">0</span>))
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatypes</span> ((<span class="n">record</span> <span class="m">0</span>))
  (((<span class="n">rec</span> (<span class="n">fname</span> <span class="na">String</span>) (<span class="n">lname</span> <span class="na">String</span>) (<span class="n">id</span> <span class="na">Int</span>)))))
 </pre></div>
 </div>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatype</span><span class="n">s</span> ((<span class="n">list</span> <span class="m">0</span>))
-   (((<span class="n">cons</span> (<span class="n">head</span> <span class="na">Int</span>) (<span class="n">tail</span> <span class="n">list</span>)) (<span class="n">nil</span>))))
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatypes</span> ((<span class="n">list</span> <span class="m">0</span>))
+   (((<span class="n">cons</span> (<span class="n">head</span> <span class="na">Int</span>) (<span class="n">tail</span> <span class="n">list</span>)) (<span class="o">nil</span>))))
  (<span class="k">declare-const</span> <span class="n">a</span> <span class="n">list</span>)
  (<span class="k">declare-const</span> <span class="n">b</span> <span class="n">list</span>)
- (<span class="k">assert</span> (<span class="o">and</span> (<span class="o">=</span> (<span class="n">tail</span> <span class="n">a</span>) <span class="n">b</span>) (<span class="o">not</span> ((_ <span class="n">is</span> <span class="n">nil</span>) <span class="n">b</span>)) (<span class="o">&gt;</span> (<span class="n">head</span> <span class="n">b</span>) <span class="m">0</span>)))
+ (<span class="k">assert</span> (<span class="o">and</span> (<span class="o">=</span> (<span class="n">tail</span> <span class="n">a</span>) <span class="n">b</span>) (<span class="o">not</span> ((<span class="na">_</span> <span class="n">is</span> <span class="o">nil</span>) <span class="n">b</span>)) (<span class="o">&gt;</span> (<span class="n">head</span> <span class="n">b</span>) <span class="m">0</span>)))
  (<span class="k">check-sat</span>)
 </pre></div>
 </div>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatype</span><span class="n">s</span> ((<span class="n">record</span> <span class="m">0</span>))
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatypes</span> ((<span class="n">record</span> <span class="m">0</span>))
   (((<span class="n">rec</span> (<span class="n">fname</span> <span class="na">String</span>) (<span class="n">lname</span> <span class="na">String</span>) (<span class="n">id</span> <span class="na">Int</span>)))))
 (<span class="k">declare-const</span> <span class="n">x</span> <span class="n">record</span>)
 (<span class="k">assert</span> (<span class="o">and</span> (<span class="o">=</span> (<span class="n">fname</span> <span class="n">x</span>) <span class="s">&quot;John&quot;</span>) (<span class="o">=</span> (<span class="n">lname</span> <span class="n">x</span>) <span class="s">&quot;Smith&quot;</span>)))
@@ -272,7 +273,7 @@ evaluate to true iff their argument has top-symbol <code class="docutils literal
 <h2>Parametric Datatypes<a class="headerlink" href="#parametric-datatypes" title="Permalink to this headline">¶</a></h2>
 <p>Instances of parametric datatypes must have their arguments instantiated with
 concrete types. For instance, in the example:</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatype</span><span class="n">s</span> ((<span class="n">list</span> <span class="m">1</span>)) ((<span class="n">par</span> (<span class="n">T</span>) (<span class="n">cons</span> (<span class="n">head</span> <span class="n">T</span>) (<span class="n">tail</span> (<span class="n">list</span> <span class="n">T</span>))) (<span class="n">nil</span>))))
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-datatypes</span> ((<span class="n">list</span> <span class="m">1</span>)) ((<span class="n">par</span> (<span class="n">T</span>) (<span class="n">cons</span> (<span class="n">head</span> <span class="n">T</span>) (<span class="n">tail</span> (<span class="n">list</span> <span class="n">T</span>))) (<span class="o">nil</span>))))
 </pre></div>
 </div>
 <p>To declare a list of <code class="docutils literal notranslate"><span class="pre">Int</span></code>, use the command:</p>
@@ -282,7 +283,7 @@ concrete types. For instance, in the example:</p>
 <p>Use of constructors that are ambiguously typed must be cast to a concrete type,
 for instance all occurrences of <code class="docutils literal notranslate"><span class="pre">nil</span></code> for the above datatype must be cast with
 the syntax:</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="na">as</span> <span class="n">nil</span> (<span class="n">list</span> <span class="na">Int</span>))
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">as</span> <span class="o">nil</span> (<span class="n">list</span> <span class="na">Int</span>))
 </pre></div>
 </div>
 </div>
@@ -292,7 +293,7 @@ the syntax:</p>
 special syntax for tuples as an extension of the SMT-LIB version 2 format.
 For example:</p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">declare-const</span> <span class="n">t</span> (<span class="na">Tuple</span> <span class="na">Int</span> <span class="na">Int</span>))
-(<span class="k">assert</span> (<span class="o">=</span> ((_ <span class="na">tupSel</span> <span class="m">0</span>) <span class="n">t</span>) <span class="m">3</span>))
+(<span class="k">assert</span> (<span class="o">=</span> ((<span class="na">_</span> <span class="o">tupSel</span> <span class="m">0</span>) <span class="n">t</span>) <span class="m">3</span>))
 (<span class="k">assert</span> (<span class="o">not</span> (<span class="o">=</span> <span class="n">t</span> (<span class="o">mkTuple</span> <span class="m">3</span> <span class="m">4</span>))))
 </pre></div>
 </div>
@@ -300,7 +301,7 @@ For example:</p>
 <div class="section" id="codatatypes">
 <h2>Codatatypes<a class="headerlink" href="#codatatypes" title="Permalink to this headline">¶</a></h2>
 <p>cvc5 also supports co-inductive datatypes, as described in
-<span id="id2">[<a class="reference internal" href="../references.html#id6">RB15</a>]</span>.</p>
+<span id="id2">[<a class="reference internal" href="../references.html#id7">RB15</a>]</span>.</p>
 <p>The syntax for declaring mutually recursive coinductive datatype blocks is
 identical to inductive datatypes, except that <code class="docutils literal notranslate"><span class="pre">declare-datatypes</span></code> is replaced
 by <code class="docutils literal notranslate"><span class="pre">declare-codatatypes</span></code>. For example, the following declares the type denote

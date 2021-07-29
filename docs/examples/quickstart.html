@@ -7,16 +7,16 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Quickstart Guide &mdash; cvc5  documentation</title>
+  <title>Quickstart Example &mdash; cvc5  documentation</title>
   
 
   
-  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../static/tabs.css" type="text/css" />
-  <link rel="stylesheet" href="../../static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../static/custom.css" type="text/css" />
 
   
   
@@ -28,25 +28,24 @@
 
   
   <!--[if lt IE 9]>
-    <script src="../../static/js/html5shiv.min.js"></script>
+    <script src="../static/js/html5shiv.min.js"></script>
   <![endif]-->
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
-        <script src="../../static/jquery.js"></script>
-        <script src="../../static/underscore.js"></script>
-        <script src="../../static/doctools.js"></script>
-        <script src="../../static/tabs.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../static/documentation_options.js"></script>
+        <script src="../static/jquery.js"></script>
+        <script src="../static/underscore.js"></script>
+        <script src="../static/doctools.js"></script>
+        <script src="../static/tabs.js"></script>
     
-    <script type="text/javascript" src="../../static/js/theme.js"></script>
+    <script type="text/javascript" src="../static/js/theme.js"></script>
 
     
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="C++ API Class Hierarchy" href="class_hierarchy.html" />
-    <link rel="prev" title="C++ API Documentation" href="cpp.html" /> 
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Theory of Relations" href="relations.html" />
+    <link rel="prev" title="Theory of Linear Arithmetic" href="lineararith.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -60,7 +59,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> cvc5
+            <a href="../index.html" class="icon icon-home"> cvc5
           
 
           
@@ -73,7 +72,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -92,40 +91,33 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../installation/installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../binary/binary.html">Binary Documentation</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="cpp.html">C++ API Documentation</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Quickstart Guide</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/binary.html">Binary Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">API Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="helloworld.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exception Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bitvectors.html">Theory of Bit-Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bitvectors_and_arrays.html">Theory of Bit-Vectors and Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extract.html">Theory of Bit-Vectors: <code class="code docutils literal notranslate"><span class="pre">extract</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Theory of Datatypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="floatingpoint.html">Theory of Floating-Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lineararith.html">Theory of Linear Arithmetic</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Quickstart Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relations.html">Theory of Relations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sequences.html">Theory of Sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sets.html">Theory of Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strings.html">Theory of Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="combination.html">Theory Combination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sygus-fun.html">SyGuS: Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sygus-grammar.html">SyGuS: Grammars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sygus-inv.html">SyGuS: Invariants</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="class_hierarchy.html">C++ API Class Hierarchy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatype.html">Datatype</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeconstructor.html">DatatypeConstructor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeconstructordecl.html">DatatypeConstructorDecl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypedecl.html">DatatypeDecl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="datatypeselector.html">DatatypeSelector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="grammar.html">Grammar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="kind.html">Kind</a></li>
-<li class="toctree-l3"><a class="reference internal" href="op.html">Op</a></li>
-<li class="toctree-l3"><a class="reference internal" href="result.html">Result</a></li>
-<li class="toctree-l3"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="solver.html">Solver</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sort.html">Sort</a></li>
-<li class="toctree-l3"><a class="reference internal" href="statistics.html">Statistics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="term.html">Term</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../python/python.html">Python API Documentation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../languages.html">Input Languages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../theory.html">Theory References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../languages.html">Input Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory.html">Theory References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 </ul>
 
             
@@ -141,7 +133,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">cvc5</a>
+          <a href="../index.html">cvc5</a>
         
       </nav>
 
@@ -172,13 +164,11 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../api.html">API Documentation</a> &raquo;</li>
+          <li><a href="examples.html">Examples</a> &raquo;</li>
         
-          <li><a href="cpp.html">C++ API Documentation</a> &raquo;</li>
-        
-      <li>Quickstart Guide</li>
+      <li>Quickstart Example</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -195,200 +185,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="quickstart-guide">
-<h1>Quickstart Guide<a class="headerlink" href="#quickstart-guide" title="Permalink to this headline">¶</a></h1>
-<p>First, create a cvc5 <a class="reference internal" href="solver.html#_CPPv4N4cvc53api6SolverE" title="cvc5::api::Solver"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Solver</span></code></a> instance:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="n">Solver</span> <span class="n">solver</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>We will ask the solver to produce models and unsat cores in the following,
-and for this we have to enable the following options.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="n">solver</span><span class="p">.</span><span class="n">setOption</span><span class="p">(</span><span class="s">&quot;produce-models&quot;</span><span class="p">,</span> <span class="s">&quot;true&quot;</span><span class="p">);</span>
-  <span class="n">solver</span><span class="p">.</span><span class="n">setOption</span><span class="p">(</span><span class="s">&quot;produce-unsat-cores&quot;</span><span class="p">,</span> <span class="s">&quot;true&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>Next we set the logic.
-The simplest way to set a logic for the solver is to choose “ALL”.
-This enables all logics in the solver.
-Alternatively, <code class="docutils literal notranslate"><span class="pre">&quot;QF_ALL&quot;</span></code> enables all logics without quantifiers.
-To optimize the solver’s behavior for a more specific logic,
-use the logic name, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;QF_BV&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;QF_AUFBV&quot;</span></code>.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="n">solver</span><span class="p">.</span><span class="n">setLogic</span><span class="p">(</span><span class="s">&quot;ALL&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>In the following, we will define constraints of reals and integers.
-For this, we first query the solver for the corresponding sorts.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="n">Sort</span> <span class="n">realSort</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">getRealSort</span><span class="p">();</span>
-  <span class="n">Sort</span> <span class="n">intSort</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">getIntegerSort</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>Now, we create two constants <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> of sort <code class="docutils literal notranslate"><span class="pre">Real</span></code>,
-and two constants <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> of sort <code class="docutils literal notranslate"><span class="pre">Integer</span></code>.
-Notice that these are <em>symbolic</em> constants, but not actual values.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="n">Term</span> <span class="n">x</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkConst</span><span class="p">(</span><span class="n">realSort</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">);</span>
-  <span class="n">Term</span> <span class="n">y</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkConst</span><span class="p">(</span><span class="n">realSort</span><span class="p">,</span> <span class="s">&quot;y&quot;</span><span class="p">);</span>
-  <span class="n">Term</span> <span class="n">a</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkConst</span><span class="p">(</span><span class="n">intSort</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">);</span>
-  <span class="n">Term</span> <span class="n">b</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkConst</span><span class="p">(</span><span class="n">intSort</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>We define the following constraints regarding <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>:</p>
-<div class="math notranslate nohighlight">
-\[(0 &lt; x) \wedge (0 &lt; y) \wedge (x + y &lt; 1) \wedge (x \leq y)\]</div>
-<p>We construct the required terms and assert them as follows:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="c1">// Formally, constraints are also terms. Their sort is Boolean.</span>
-  <span class="c1">// We will construct these constraints gradually,</span>
-  <span class="c1">// by defining each of their components.</span>
-  <span class="c1">// We start with the constant numerals 0 and 1:</span>
-  <span class="n">Term</span> <span class="n">zero</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkReal</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-  <span class="n">Term</span> <span class="n">one</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkReal</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-
-  <span class="c1">// Next, we construct the term x + y</span>
-  <span class="n">Term</span> <span class="n">xPlusY</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">PLUS</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
-
-  <span class="c1">// Now we can define the constraints.</span>
-  <span class="c1">// They use the operators +, &lt;=, and &lt;.</span>
-  <span class="c1">// In the API, these are denoted by PLUS, LEQ, and LT.</span>
-  <span class="c1">// A list of available operators is available in:</span>
-  <span class="c1">// src/api/cpp/cvc5_kind.h</span>
-  <span class="n">Term</span> <span class="n">constraint1</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">LT</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
-  <span class="n">Term</span> <span class="n">constraint2</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">LT</span><span class="p">,</span> <span class="n">zero</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
-  <span class="n">Term</span> <span class="n">constraint3</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">LT</span><span class="p">,</span> <span class="n">xPlusY</span><span class="p">,</span> <span class="n">one</span><span class="p">);</span>
-  <span class="n">Term</span> <span class="n">constraint4</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">LEQ</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
-
-  <span class="c1">// Now we assert the constraints to the solver.</span>
-  <span class="n">solver</span><span class="p">.</span><span class="n">assertFormula</span><span class="p">(</span><span class="n">constraint1</span><span class="p">);</span>
-  <span class="n">solver</span><span class="p">.</span><span class="n">assertFormula</span><span class="p">(</span><span class="n">constraint2</span><span class="p">);</span>
-  <span class="n">solver</span><span class="p">.</span><span class="n">assertFormula</span><span class="p">(</span><span class="n">constraint3</span><span class="p">);</span>
-  <span class="n">solver</span><span class="p">.</span><span class="n">assertFormula</span><span class="p">(</span><span class="n">constraint4</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>Now we check if the asserted formula is satisfiable, that is, we check if
-there exist values of sort <code class="docutils literal notranslate"><span class="pre">Real</span></code> for <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> that satisfy all
-the constraints.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="n">Result</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">checkSat</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>The result we get from this satisfiability check is either <code class="docutils literal notranslate"><span class="pre">sat</span></code>, <code class="docutils literal notranslate"><span class="pre">unsat</span></code>
-or <code class="docutils literal notranslate"><span class="pre">unknown</span></code>.
-It’s status can be queried via
-<a class="reference internal" href="result.html#_CPPv4NK4cvc53api6Result5isSatEv" title="cvc5::api::Result::isSat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">cvc5::api::Result::isSat()</span></code></a>,
-<a class="reference internal" href="result.html#_CPPv4NK4cvc53api6Result7isUnsatEv" title="cvc5::api::Result::isUnsat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">cvc5::api::Result::isUnsat()</span></code></a> and
-<a class="reference internal" href="result.html#_CPPv4NK4cvc53api6Result12isSatUnknownEv" title="cvc5::api::Result::isSatUnknown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">cvc5::api::Result::isSatUnknown()</span></code></a>.
-Alternatively, it can also be printed.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;expected: sat&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;result: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">r1</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>This will print:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>expected: sat
-result: sat
-</pre></div>
-</div>
-<p>Now, we query the solver for the values for <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> that satisfy
-the constraints.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="n">Term</span> <span class="n">xVal</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">getValue</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-  <span class="n">Term</span> <span class="n">yVal</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">getValue</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>It is also possible to get values for terms that do not appear in the original
-formula.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="n">Term</span> <span class="n">xMinusY</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">MINUS</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
-  <span class="n">Term</span> <span class="n">xMinusYVal</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">getValue</span><span class="p">(</span><span class="n">xMinusY</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>We can retrieve the string representation of these values as follows.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">xStr</span> <span class="o">=</span> <span class="n">xVal</span><span class="p">.</span><span class="n">getRealValue</span><span class="p">();</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">yStr</span> <span class="o">=</span> <span class="n">yVal</span><span class="p">.</span><span class="n">getRealValue</span><span class="p">();</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">xMinusYStr</span> <span class="o">=</span> <span class="n">xMinusYVal</span><span class="p">.</span><span class="n">getRealValue</span><span class="p">();</span>
-
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;value for x: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">xStr</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;value for y: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">yStr</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;value for x - y: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">xMinusYStr</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>This will print the following:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>value for x: 1/6
-value for y: 1/6
-value for x - y: 0.0
-</pre></div>
-</div>
-<p>We can convert these values to C++ types using standard conversion functions.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="kt">double</span> <span class="n">xDouble</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">stod</span><span class="p">(</span><span class="n">xStr</span><span class="p">);</span>
-  <span class="kt">double</span> <span class="n">yDouble</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">stod</span><span class="p">(</span><span class="n">yStr</span><span class="p">);</span>
-  <span class="kt">double</span> <span class="n">xMinusYDouble</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">stod</span><span class="p">(</span><span class="n">xMinusYStr</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>Another way to independently compute the value of <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">y</span></code> would be to
-use the C++ minus operator instead of asking the solver.
-However, for more complex terms, it is easier to let the solver do the
-evaluation.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="kt">double</span> <span class="n">xMinusYComputed</span> <span class="o">=</span> <span class="n">xDouble</span> <span class="o">-</span> <span class="n">yDouble</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">xMinusYComputed</span> <span class="o">==</span> <span class="n">xMinusYDouble</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;computed correctly&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">else</span>
-  <span class="p">{</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;computed incorrectly&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-  <span class="p">}</span>
-</pre></div>
-</div>
-<p>This will print:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>computed correctly
-</pre></div>
-</div>
-<p>Next, we will check satisfiability of the same formula,
-only this time over integer variables <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.
-For this, we first reset the assertions added to the solver.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="n">solver</span><span class="p">.</span><span class="n">resetAssertions</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>Next, we assert the same assertions as above, but with integers.
-This time, we inline the construction of terms
-to the assertion command.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="n">solver</span><span class="p">.</span><span class="n">assertFormula</span><span class="p">(</span><span class="n">solver</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">LT</span><span class="p">,</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkInteger</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">a</span><span class="p">));</span>
-  <span class="n">solver</span><span class="p">.</span><span class="n">assertFormula</span><span class="p">(</span><span class="n">solver</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">LT</span><span class="p">,</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkInteger</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">b</span><span class="p">));</span>
-  <span class="n">solver</span><span class="p">.</span><span class="n">assertFormula</span><span class="p">(</span>
-      <span class="n">solver</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">LT</span><span class="p">,</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">PLUS</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">solver</span><span class="p">.</span><span class="n">mkInteger</span><span class="p">(</span><span class="mi">1</span><span class="p">)));</span>
-  <span class="n">solver</span><span class="p">.</span><span class="n">assertFormula</span><span class="p">(</span><span class="n">solver</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">LEQ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">));</span>
-</pre></div>
-</div>
-<p>Now, we check whether the revised assertion is satisfiable.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="n">Result</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">checkSat</span><span class="p">();</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;expected: unsat&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;result: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">r2</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>This time the asserted formula is unsatisfiable:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>expected: unsat
-result: unsat
-</pre></div>
-</div>
-<p>We can query the solver for an unsatisfiable core, that is, a subset
-of the assertions that is already unsatisfiable.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Term</span><span class="o">&gt;</span> <span class="n">unsatCore</span> <span class="o">=</span> <span class="n">solver</span><span class="p">.</span><span class="n">getUnsatCore</span><span class="p">();</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;unsat core size: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">unsatCore</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;unsat core: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="n">Term</span><span class="o">&amp;</span> <span class="nl">t</span> <span class="p">:</span> <span class="n">unsatCore</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-  <span class="p">}</span>
-</pre></div>
-</div>
-<p>This will print:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>unsat core size: 3
-unsat core:
-(&lt; 0 a)
-(&lt; 0 b)
-(&lt; (+ a b) 1)
-</pre></div>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="line-block">
-<div class="line">The SMT-LIB input for this example can be found at <a class="reference external" href="https://github.com/cvc5/cvc5/blob/master/examples/api/smtlib/quickstart.smt2">examples/api/smtlib/quickstart.smt2</a>.</div>
-<div class="line">The source code for this example can be found at <a class="reference external" href="https://github.com/cvc5/cvc5/blob/master/examples/api/cpp/quickstart.cpp">examples/api/cpp/quickstart.cpp</a>.</div>
-</div>
+  <div class="section" id="quickstart-example">
+<h1>Quickstart Example<a class="headerlink" href="#quickstart-example" title="Permalink to this headline">¶</a></h1>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Python</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">SMT-LIBv2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cm">/******************************************************************************</span>
 <span class="linenos">  2</span><span class="cm"> * Top contributors (to current version):</span>
@@ -759,7 +557,6 @@ unsat core:
 </div>
 </div></div>
 </div>
-</div>
 
 
            </div>
@@ -767,8 +564,8 @@ unsat core:
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="class_hierarchy.html" class="btn btn-neutral float-right" title="C++ API Class Hierarchy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="cpp.html" class="btn btn-neutral float-left" title="C++ API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="relations.html" class="btn btn-neutral float-right" title="Theory of Relations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="lineararith.html" class="btn btn-neutral float-left" title="Theory of Linear Arithmetic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

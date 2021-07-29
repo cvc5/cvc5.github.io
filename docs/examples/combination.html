@@ -103,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html">Theory of Datatypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="floatingpoint.html">Theory of Floating-Points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lineararith.html">Theory of Linear Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html">Quickstart Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relations.html">Theory of Relations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sequences.html">Theory of Sequences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sets.html">Theory of Sets</a></li>
@@ -187,7 +188,7 @@
   <div class="section" id="theory-combination">
 <h1>Theory Combination<a class="headerlink" href="#theory-combination" title="Permalink to this headline">¶</a></h1>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Java</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cm">/******************************************************************************</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Java</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Python</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">SMT-LIBv2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cm">/******************************************************************************</span>
 <span class="linenos">  2</span><span class="cm"> * Top contributors (to current version):</span>
 <span class="linenos">  3</span><span class="cm"> *   Aina Niemetz, Tim King, Mudathir Mohamed</span>
 <span class="linenos">  4</span><span class="cm"> *</span>
@@ -524,6 +525,39 @@
 <span class="linenos">96</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; + child: &quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 <span class="linenos">97</span>
 <span class="linenos">98</span>    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_UFLIRA</span>)
+<span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
+<span class="linenos"> 3</span>(<span class="k">set-option</span> <span class="na">:incremental</span> <span class="o">true</span>)
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span>(<span class="k">declare-sort</span> <span class="n">U</span> <span class="m">0</span>)
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>(<span class="k">declare-const</span> <span class="n">x</span> <span class="n">U</span>)
+<span class="linenos"> 8</span>(<span class="k">declare-const</span> <span class="n">y</span> <span class="n">U</span>)
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>(<span class="k">declare-fun</span> <span class="n">f</span> (<span class="n">U</span>) <span class="na">Int</span>)
+<span class="linenos">11</span>(<span class="k">declare-fun</span> <span class="n">p</span> (<span class="na">Int</span>) <span class="na">Bool</span>)
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c">; 0 &lt;= f(x)</span>
+<span class="linenos">14</span>(<span class="k">assert</span> (<span class="o">&lt;=</span> <span class="m">0</span> (<span class="n">f</span> <span class="n">x</span>)))
+<span class="linenos">15</span><span class="c">; 0 &lt;= f(y)</span>
+<span class="linenos">16</span>(<span class="k">assert</span> (<span class="o">&lt;=</span> <span class="m">0</span> (<span class="n">f</span> <span class="n">y</span>)))
+<span class="linenos">17</span><span class="c">; f(x) + f(y) &lt;= 1</span>
+<span class="linenos">18</span>(<span class="k">assert</span> (<span class="o">&lt;=</span> (<span class="o">+</span> (<span class="n">f</span> <span class="n">x</span>) (<span class="n">f</span> <span class="n">y</span>)) <span class="m">1</span>))
+<span class="linenos">19</span><span class="c">; not p(0)</span>
+<span class="linenos">20</span>(<span class="k">assert</span> (<span class="o">not</span> (<span class="n">p</span> <span class="m">0</span>)))
+<span class="linenos">21</span><span class="c">; p(f(y))</span>
+<span class="linenos">22</span>(<span class="k">assert</span> (<span class="n">p</span> (<span class="n">f</span> <span class="n">y</span>)))
+<span class="linenos">23</span>
+<span class="linenos">24</span>(<span class="k">echo</span> <span class="s">&quot;Prove x != y is entailed. UNSAT (of negation) == ENTAILED&quot;</span>)
+<span class="linenos">25</span>(<span class="k">check-sat-assuming</span> ((<span class="o">not</span> (<span class="o">distinct</span> <span class="n">x</span> <span class="n">y</span>))))
+<span class="linenos">26</span>
+<span class="linenos">27</span>(<span class="k">echo</span> <span class="s">&quot;Call checkSat to show that the assertions are satisfiable&quot;</span>)
+<span class="linenos">28</span>(<span class="k">check-sat</span>)
+<span class="linenos">29</span>
+<span class="linenos">30</span>(<span class="k">echo</span> <span class="s">&quot;Call (getValue (...)) on terms of interest&quot;</span>)
+<span class="linenos">31</span>(<span class="k">get-value</span> ((<span class="n">f</span> <span class="n">x</span>) (<span class="n">f</span> <span class="n">y</span>) (<span class="o">+</span> (<span class="n">f</span> <span class="n">x</span>) (<span class="n">f</span> <span class="n">y</span>)) (<span class="n">p</span> <span class="m">0</span>) (<span class="n">p</span> (<span class="n">f</span> <span class="n">y</span>))))
 </pre></div>
 </div>
 </div></div>

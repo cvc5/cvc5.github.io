@@ -103,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html">Theory of Datatypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="floatingpoint.html">Theory of Floating-Points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lineararith.html">Theory of Linear Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html">Quickstart Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relations.html">Theory of Relations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sequences.html">Theory of Sequences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sets.html">Theory of Sets</a></li>
@@ -187,7 +188,7 @@
   <div class="section" id="theory-of-bit-vectors-and-arrays">
 <h1>Theory of Bit-Vectors and Arrays<a class="headerlink" href="#theory-of-bit-vectors-and-arrays" title="Permalink to this headline">¶</a></h1>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Java</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/******************************************************************************</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Java</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Python</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">SMT-LIBv2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/******************************************************************************</span>
 <span class="linenos"> 2</span><span class="cm"> * Top contributors (to current version):</span>
 <span class="linenos"> 3</span><span class="cm"> *   Aina Niemetz, Liana Hadarean</span>
 <span class="linenos"> 4</span><span class="cm"> *</span>
@@ -479,6 +480,64 @@
 <span class="linenos">91</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The satisfying model is: &quot;</span><span class="p">)</span>
 <span class="linenos">92</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; current_array =&quot;</span><span class="p">,</span> <span class="n">slv</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="n">current_array</span><span class="p">))</span>
 <span class="linenos">93</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; current_array[0]&quot;</span><span class="p">,</span> <span class="n">slv</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="n">current_array0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_AUFBV</span>)
+<span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c">; Consider the following code (where size is some previously defined constant):</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c">;   Assert (current_array[0] &gt; 0);</span>
+<span class="linenos"> 8</span><span class="c">;   for (unsigned i = 1; i &lt; k; ++i) {</span>
+<span class="linenos"> 9</span><span class="c">;     current_array[i] = 2 * current_array[i - 1];</span>
+<span class="linenos">10</span><span class="c">;     Assert (current_array[i-1] &lt; current_array[i]);</span>
+<span class="linenos">11</span><span class="c">;     }</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c">; We want to check whether the assertion in the body of the for loop holds</span>
+<span class="linenos">14</span><span class="c">; throughout the loop. We will do so for k = 4.</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span>(<span class="k">define-sort</span> <span class="n">Index</span> () (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">2</span>))
+<span class="linenos">18</span>(<span class="k">define-sort</span> <span class="n">Element</span> () (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>))
+<span class="linenos">19</span>(<span class="k">define-sort</span> <span class="n">ArraySort</span> () (<span class="na">Array</span> <span class="n">Index</span> <span class="n">Element</span>))
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="c">; Declaring the array</span>
+<span class="linenos">22</span>(<span class="k">declare-const</span> <span class="n">current_array</span> <span class="n">ArraySort</span>)
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="c">; Making utility bit-vector constants</span>
+<span class="linenos">25</span>(<span class="n">define-const</span> <span class="n">zeroI</span> <span class="n">Index</span> (<span class="na">_</span> <span class="m">bv0</span> <span class="m">2</span>))
+<span class="linenos">26</span>(<span class="n">define-const</span> <span class="n">oneI</span> <span class="n">Index</span> (<span class="na">_</span> <span class="m">bv1</span> <span class="m">2</span>))
+<span class="linenos">27</span>(<span class="n">define-const</span> <span class="n">twoI</span> <span class="n">Index</span> (<span class="na">_</span> <span class="m">bv2</span> <span class="m">2</span>))
+<span class="linenos">28</span>(<span class="n">define-const</span> <span class="n">threeI</span> <span class="n">Index</span> (<span class="na">_</span> <span class="m">bv3</span> <span class="m">2</span>))
+<span class="linenos">29</span>
+<span class="linenos">30</span>(<span class="n">define-const</span> <span class="n">zeroE</span> <span class="n">Element</span> (<span class="na">_</span> <span class="m">bv0</span> <span class="m">32</span>))
+<span class="linenos">31</span>(<span class="n">define-const</span> <span class="n">twoE</span> <span class="n">Element</span> (<span class="na">_</span> <span class="m">bv2</span> <span class="m">32</span>))
+<span class="linenos">32</span>
+<span class="linenos">33</span><span class="c">; Asserting that current_array[0] &gt; 0</span>
+<span class="linenos">34</span>(<span class="k">assert</span> (<span class="o">bvsgt</span> (<span class="o">select</span> <span class="n">current_array</span> <span class="n">zeroI</span>) <span class="n">zeroE</span>))
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="c">; Building the formulas representing loop unrolling</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span><span class="c">; current_array[0] &lt; array [1]</span>
+<span class="linenos">39</span>(<span class="n">define-const</span> <span class="n">unroll1</span> <span class="na">Bool</span> (<span class="o">bvslt</span> (<span class="o">select</span> <span class="n">current_array</span> <span class="n">zeroI</span>) (<span class="o">bvmul</span> <span class="n">twoE</span> (<span class="o">select</span> <span class="n">current_array</span> <span class="n">zeroI</span>))))
+<span class="linenos">40</span><span class="c">; current_array[1] = 2 * current_array[0]</span>
+<span class="linenos">41</span>(<span class="n">define-const</span> <span class="n">current_array_</span> <span class="n">ArraySort</span> (<span class="o">store</span> <span class="n">current_array</span> <span class="n">oneI</span> (<span class="o">bvmul</span> <span class="n">twoE</span> (<span class="o">select</span> <span class="n">current_array</span> <span class="n">zeroI</span>))))
+<span class="linenos">42</span>
+<span class="linenos">43</span><span class="c">; current_array[1] &lt; array [2]</span>
+<span class="linenos">44</span>(<span class="n">define-const</span> <span class="n">unroll2</span> <span class="na">Bool</span> (<span class="o">bvslt</span> (<span class="o">select</span> <span class="n">current_array_</span> <span class="n">oneI</span>) (<span class="o">bvmul</span> <span class="n">twoE</span> (<span class="o">select</span> <span class="n">current_array_</span> <span class="n">oneI</span>))))
+<span class="linenos">45</span><span class="c">; current_array[2] = 2 * current_array[1]</span>
+<span class="linenos">46</span>(<span class="n">define-const</span> <span class="n">current_array__</span> <span class="n">ArraySort</span> (<span class="o">store</span> <span class="n">current_array_</span> <span class="n">twoI</span> (<span class="o">bvmul</span> <span class="n">twoE</span> (<span class="o">select</span> <span class="n">current_array_</span> <span class="n">oneI</span>))))
+<span class="linenos">47</span>
+<span class="linenos">48</span><span class="c">; current_array[2] &lt; array [3]</span>
+<span class="linenos">49</span>(<span class="n">define-const</span> <span class="n">unroll3</span> <span class="na">Bool</span> (<span class="o">bvslt</span> (<span class="o">select</span> <span class="n">current_array_</span> <span class="n">twoI</span>) (<span class="o">bvmul</span> <span class="n">twoE</span> (<span class="o">select</span> <span class="n">current_array_</span> <span class="n">twoI</span>))))
+<span class="linenos">50</span><span class="c">; current_array[3] = 2 * current_array[2]</span>
+<span class="linenos">51</span>(<span class="n">define-const</span> <span class="n">current_array___</span> <span class="n">ArraySort</span> (<span class="o">store</span> <span class="n">current_array_</span> <span class="n">threeI</span> (<span class="o">bvmul</span> <span class="n">twoE</span> (<span class="o">select</span> <span class="n">current_array_</span> <span class="n">twoI</span>))))
+<span class="linenos">52</span>
+<span class="linenos">53</span>(<span class="k">assert</span> (<span class="o">not</span> (<span class="o">and</span> <span class="n">unroll1</span> <span class="n">unroll2</span> <span class="n">unroll3</span>)))
+<span class="linenos">54</span>
+<span class="linenos">55</span>(<span class="k">check-sat</span>)
+<span class="linenos">56</span>(<span class="k">get-value</span> (<span class="n">current_array___</span> (<span class="o">select</span> <span class="n">current_array___</span> <span class="n">zeroI</span>)))
 </pre></div>
 </div>
 </div></div>

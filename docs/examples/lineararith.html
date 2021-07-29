@@ -44,7 +44,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Theory of Relations" href="relations.html" />
+    <link rel="next" title="Quickstart Example" href="quickstart.html" />
     <link rel="prev" title="Theory of Floating-Points" href="floatingpoint.html" /> 
 </head>
 
@@ -103,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="datatypes.html">Theory of Datatypes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="floatingpoint.html">Theory of Floating-Points</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Theory of Linear Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html">Quickstart Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relations.html">Theory of Relations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sequences.html">Theory of Sequences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sets.html">Theory of Sets</a></li>
@@ -433,25 +434,25 @@ The two checks are separated by using <code class="code docutils literal notrans
 <span class="linenos">72</span>    <span class="n">slv</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF</span><span class="err">_</span><span class="n">LIRA</span>)
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_LIRA</span>)
 <span class="linenos"> 2</span>(<span class="k">declare-const</span> <span class="n">x</span> <span class="na">Int</span>)
-<span class="linenos"> 3</span>(<span class="k">declare-const</span> <span class="n">y</span> <span class="n">Real</span>)
+<span class="linenos"> 3</span>(<span class="k">declare-const</span> <span class="n">y</span> <span class="na">Real</span>)
 <span class="linenos"> 4</span>(<span class="k">assert</span>
 <span class="linenos"> 5</span>    (<span class="o">and</span>
 <span class="linenos"> 6</span>        (<span class="o">&gt;=</span> <span class="n">x</span> (<span class="o">*</span> <span class="m">3</span> <span class="n">y</span>))
 <span class="linenos"> 7</span>        (<span class="o">&lt;=</span> <span class="n">x</span> <span class="n">y</span>)
-<span class="linenos"> 8</span>        (<span class="o">&lt;</span> (<span class="err">-</span> <span class="m">2</span>) <span class="n">x</span>)
+<span class="linenos"> 8</span>        (<span class="o">&lt;</span> (<span class="o">-</span> <span class="m">2</span>) <span class="n">x</span>)
 <span class="linenos"> 9</span>    )
 <span class="linenos">10</span>)
 <span class="linenos">11</span>(<span class="k">push</span> <span class="m">1</span>)
-<span class="linenos">12</span>(<span class="n">echo</span> <span class="s">&quot;Checking entailement by asserting the negation&quot;</span>)
-<span class="linenos">13</span>(<span class="n">echo</span> <span class="s">&quot;Unsat == ENTAILED&quot;</span>)
-<span class="linenos">14</span>(<span class="k">assert</span> (<span class="o">not</span> (<span class="o">&lt;=</span> (<span class="err">-</span> <span class="n">y</span> <span class="n">x</span>) (<span class="err">/</span> <span class="m">2</span> <span class="m">3</span>))))
+<span class="linenos">12</span>(<span class="k">echo</span> <span class="s">&quot;Checking entailement by asserting the negation&quot;</span>)
+<span class="linenos">13</span>(<span class="k">echo</span> <span class="s">&quot;Unsat == ENTAILED&quot;</span>)
+<span class="linenos">14</span>(<span class="k">assert</span> (<span class="o">not</span> (<span class="o">&lt;=</span> (<span class="o">-</span> <span class="n">y</span> <span class="n">x</span>) (<span class="o">/</span> <span class="m">2</span> <span class="m">3</span>))))
 <span class="linenos">15</span>(<span class="k">check-sat</span>)
 <span class="linenos">16</span>(<span class="k">pop</span> <span class="m">1</span>)
 <span class="linenos">17</span>(<span class="k">push</span> <span class="m">1</span>)
-<span class="linenos">18</span>(<span class="n">echo</span> <span class="s">&quot;Checking that the assertions are consistent&quot;</span>)
-<span class="linenos">19</span>(<span class="k">assert</span> (<span class="o">=</span> (<span class="err">-</span> <span class="n">y</span> <span class="n">x</span>) (<span class="err">/</span> <span class="m">2</span> <span class="m">3</span>)))
+<span class="linenos">18</span>(<span class="k">echo</span> <span class="s">&quot;Checking that the assertions are consistent&quot;</span>)
+<span class="linenos">19</span>(<span class="k">assert</span> (<span class="o">=</span> (<span class="o">-</span> <span class="n">y</span> <span class="n">x</span>) (<span class="o">/</span> <span class="m">2</span> <span class="m">3</span>)))
 <span class="linenos">20</span>(<span class="k">check-sat</span>)
 <span class="linenos">21</span>(<span class="k">pop</span> <span class="m">1</span>)
 </pre></div>
@@ -465,7 +466,7 @@ The two checks are separated by using <code class="code docutils literal notrans
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="relations.html" class="btn btn-neutral float-right" title="Theory of Relations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quickstart Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="floatingpoint.html" class="btn btn-neutral float-left" title="Theory of Floating-Points" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

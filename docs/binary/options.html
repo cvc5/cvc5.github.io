@@ -250,6 +250,10 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--arith-brab</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>whether to use simple rounding, similar to a unit-cube test, for integers</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arith-cong-man</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>(experimental) whether to use the congruence manager when the equality solver is enabled</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--arith-eq-solver</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>whether to use the equality solver in the theory of arithmetic</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--arith-no-partial-fun</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do not use partial function semantics for arithmetic (not SMT LIB compliant)</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--arith-prop-clauses=N</span></code></dt><dd><p>rows shorter than this are propagated as clauses</p>
@@ -318,6 +322,43 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--nl-cad-initial</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>whether to use the linear model as initial guess for the cylindrical algebraic decomposition solver</p>
 </dd>
+</dl>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-cad-lift=MODE</span></code></dt><dd><p>choose the CAD lifting mode</p>
+<p>Modes for the CAD lifting in non-linear arithmetic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">regular</dt>
+<dd class="field-odd"><p>Regular lifting.</p>
+</dd>
+<dt class="field-even">lazard</dt>
+<dd class="field-even"><p>Lazard’s lifting scheme.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="admonition-this-option-is-intended-for-experts-only admonition">
+<p class="admonition-title">This option is intended for Experts only!</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-cad-proj=MODE</span></code></dt><dd><p>choose the CAD projection operator</p>
+<p>Modes for the CAD projection operator in non-linear arithmetic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">mccallum</dt>
+<dd class="field-odd"><p>McCallum’s projection operator.</p>
+</dd>
+<dt class="field-even">lazard</dt>
+<dd class="field-even"><p>Lazard’s projection operator.</p>
+</dd>
+<dt class="field-odd">lazard-mod</dt>
+<dd class="field-odd"><p>A modification of Lazard’s projection operator.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<dl>
 <dt><code class="docutils literal notranslate"><span class="pre">--nl-ext-ent-conf</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>check for entailed conflicts in non-linear solver</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--nl-ext-factor</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use factoring inference in non-linear incremental linearization solver</p>
@@ -356,8 +397,8 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--nl-icp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>whether to use ICP-style propagations for non-linear arithmetic</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--nl-rlv=MODE</span></code></dt><dd><p>choose mode for using relevance of assertoins in non-linear arithmetic</p>
-<p>Modes for using relevance of assertoins in non-linear arithmetic.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">--nl-rlv=MODE</span></code></dt><dd><p>choose mode for using relevance of assertions in non-linear arithmetic</p>
+<p>Modes for using relevance of assertions in non-linear arithmetic.</p>
 <dl class="field-list simple">
 <dt class="field-odd">none</dt>
 <dd class="field-odd"><p>Do not use relevance.</p>
@@ -466,8 +507,22 @@
 </div>
 <div class="section" id="base-module">
 <h3>Base Module<a class="headerlink" href="#base-module" title="Permalink to this headline">¶</a></h3>
-<dl class="simple">
+<dl>
 <dt><code class="docutils literal notranslate"><span class="pre">--debug=TAG</span> <span class="pre">|</span> <span class="pre">-d</span> <span class="pre">TAG</span></code></dt><dd><p>debug something (e.g. -d arith), can repeat</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--output=TAG</span> <span class="pre">|</span> <span class="pre">-o</span> <span class="pre">TAG</span></code></dt><dd><p>Enable output tag.</p>
+<p>Output tags.</p>
+<dl class="field-list simple">
+<dt class="field-odd">inst</dt>
+<dd class="field-odd"><p>print instantiations during solving</p>
+</dd>
+<dt class="field-even">sygus</dt>
+<dd class="field-even"><p>print enumerated terms and candidates generated by the sygus solver</p>
+</dd>
+<dt class="field-odd">trigger</dt>
+<dd class="field-odd"><p>print selected triggers for quantified formulas</p>
+</dd>
+</dl>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--parse-only</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>exit after parsing input</p>
 </dd>
@@ -560,7 +615,7 @@
 </dl>
 </div>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">--bv-algebraic-solver</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on experimental algebraic solver for the bit-vector theory (only if –bitblast=lazy)</p>
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-algebraic-solver</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on experimental algebraic solver for the bit-vector theory (only if –bv-solver=layered)</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--bv-assert-input</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>assert input assertions on user-level 0 instead of assuming them in the bit-vector SAT solver</p>
 </dd>
@@ -573,7 +628,7 @@
 </dl>
 </div>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">--bv-eq-solver</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use the equality engine for the bit-vector theory (only if –bitblast=lazy)</p>
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-eq-solver</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use the equality engine for the bit-vector theory (only if –bv-solver=layered)</p>
 </dd>
 </dl>
 <div class="admonition-this-option-is-intended-for-experts-only admonition">
@@ -591,7 +646,7 @@
 </dl>
 </div>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">--bv-inequality-solver</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on the inequality solver for the bit-vector theory (only if –bitblast=lazy)</p>
+<dt><code class="docutils literal notranslate"><span class="pre">--bv-inequality-solver</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on the inequality solver for the bit-vector theory (only if –bv-solver=layered)</p>
 </dd>
 </dl>
 <div class="admonition-this-option-is-intended-for-experts-only admonition">
@@ -646,11 +701,11 @@
 <dt class="field-odd">bitblast</dt>
 <dd class="field-odd"><p>Enables bitblasting solver.</p>
 </dd>
-<dt class="field-even">lazy</dt>
-<dd class="field-even"><p>Enables the lazy BV solver infrastructure.</p>
+<dt class="field-even">bitblast-internal</dt>
+<dd class="field-even"><p>Enables bitblasting to internal SAT solver with proof support.</p>
 </dd>
-<dt class="field-odd">simple</dt>
-<dd class="field-odd"><p>Enables simple bitblasting solver with proof support.</p>
+<dt class="field-odd">layered</dt>
+<dd class="field-odd"><p>Enables the layered BV solver.</p>
 </dd>
 </dl>
 </dd>
@@ -777,11 +832,14 @@
 <dt class="field-even">justification</dt>
 <dd class="field-even"><p>An ATGP-inspired justification heuristic.</p>
 </dd>
-<dt class="field-odd">justification-old</dt>
-<dd class="field-odd"><p>Older implementation of an ATGP-inspired justification heuristic.</p>
+<dt class="field-odd">stoponly</dt>
+<dd class="field-odd"><p>Use the justification heuristic only to stop early, not for decisions.</p>
 </dd>
-<dt class="field-even">justification-stoponly</dt>
-<dd class="field-even"><p>Use the justification heuristic only to stop early, not for decisions.</p>
+<dt class="field-even">justification-old</dt>
+<dd class="field-even"><p>Older implementation of an ATGP-inspired justification heuristic.</p>
+</dd>
+<dt class="field-odd">stoponly-old</dt>
+<dd class="field-odd"><p>Use the old implementation of justification heuristic only to stop early, not for decisions.</p>
 </dd>
 </dl>
 </dd>
@@ -841,6 +899,8 @@
 <h3>Floating-Point Module<a class="headerlink" href="#floating-point-module" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">--fp-exp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Allow floating-point sorts of all sizes, rather than only Float32 (8/24) or Float64 (11/53) (experimental)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--fp-lazy-wb</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Enable lazier word-blasting (on preNotifyFact instead of registerTerm)</p>
 </dd>
 </dl>
 </div>
@@ -1087,10 +1147,6 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--conjecture-no-filter</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do not filter conjectures</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--debug-inst</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>print instantiations during solving (for debugging)</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--debug-sygus</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>print enumerated terms and candidates generated by the sygus solver (for debugging)</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--dt-stc-ind</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>apply strengthening for existential quantification over datatypes based on structural induction</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--dt-var-exp-quant</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>expand datatype variables bound to one constructor in quantifiers</p>
@@ -1150,6 +1206,8 @@
 <dt><code class="docutils literal notranslate"><span class="pre">--inst-level-input-only</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>only input terms are assigned instantiation level zero</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--inst-max-level=N</span></code></dt><dd><p>maximum inst level of terms used to instantiate quantified formulas with (-1 == no limit, default)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--inst-max-rounds=N</span></code></dt><dd><p>maximum number of instantiation rounds (-1 == no limit, default)</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--inst-no-entail</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>do not consider instances of quantified formulas that are currently entailed</p>
 </dd>
@@ -1668,6 +1726,8 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--sygus-unif-shuffle-cond</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Shuffle condition pool when building solutions (may change solutions sizes)</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--sygus-verify-inst-max-rounds=N</span></code></dt><dd><p>maximum number of instantiation rounds for sygus verification calls (-1 == no limit, default is 3)</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--term-db-cd</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>register terms in term database based on the SAT context</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--term-db-mode=MODE</span></code></dt><dd><p>which ground terms to consider for instantiation</p>
@@ -1817,6 +1877,10 @@
 <dt><code class="docutils literal notranslate"><span class="pre">--foreign-theory-rewrite</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Cross-theory rewrites</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--ite-simp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on ite simplification (Kim (and Somenzi) et al., SAT 2009)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--learned-rewrite</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>rewrite the input based on learned literals</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--minimal-unsat-cores</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>if an unsat core is produced, it is reduced to a minimal unsat core</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--model-cores=MODE</span></code></dt><dd><p>mode for producing model cores</p>
 <p>Model cores modes.</p>
@@ -2034,6 +2098,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">distributed</dt>
 <dd class="field-odd"><p>Each theory maintains its own equality engine.</p>
+</dd>
+<dt class="field-even">central</dt>
+<dd class="field-even"><p>All applicable theories use the central equality engine.</p>
 </dd>
 </dl>
 </dd>

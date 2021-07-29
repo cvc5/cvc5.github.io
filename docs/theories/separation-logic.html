@@ -106,6 +106,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="sets-and-relations.html">Theory Reference: Sets and Relations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transcendentals.html">Theory Reference: Transcendentals</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
@@ -184,7 +185,7 @@ language.</p>
 <div class="section" id="signature">
 <h2>Signature<a class="headerlink" href="#signature" title="Permalink to this headline">¶</a></h2>
 <p>Given a (decidable) base theory <span class="math notranslate nohighlight">\(T\)</span>, cvc5 implements a decision procedure
-for quantifier-free <span class="math notranslate nohighlight">\(SL(T)_{Loc,Data}\)</span> formulas <span id="id1">[<a class="reference internal" href="../references.html#id5">RISK16</a>]</span>,
+for quantifier-free <span class="math notranslate nohighlight">\(SL(T)_{Loc,Data}\)</span> formulas <span id="id1">[<a class="reference internal" href="../references.html#id6">RISK16</a>]</span>,
 where <span class="math notranslate nohighlight">\(Loc\)</span> and <span class="math notranslate nohighlight">\(Data\)</span> are any sort belonging to <span class="math notranslate nohighlight">\(T\)</span>.</p>
 <p>A <span class="math notranslate nohighlight">\(SL(T)_{Loc,Data}\)</span> formula is one from the following grammar:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="p">:</span> <span class="n">L</span> <span class="o">|</span> <span class="p">(</span><span class="n">emp</span> <span class="n">t</span> <span class="n">u</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">pto</span> <span class="n">t</span> <span class="n">u</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">sep</span> <span class="n">F1</span> <span class="o">...</span> <span class="n">Fn</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">wand</span> <span class="n">F1</span> <span class="n">F2</span><span class="p">)</span> <span class="o">|</span> <span class="o">~</span><span class="n">F1</span> <span class="o">|</span> <span class="n">F1</span> <span class="n">op</span> <span class="o">...</span> <span class="n">op</span> <span class="n">Fn</span>
@@ -297,7 +298,7 @@ a <a class="reference internal" href="../api/cpp/solver.html#_CPPv4N4cvc53api6So
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <p>The following input on heaps <code class="docutils literal notranslate"><span class="pre">Int</span> <span class="pre">-&gt;</span> <span class="pre">Int</span></code> is unsatisfiable:</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">set-logic</span> QF_ALL)
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">set-logic</span> <span class="n">QF_ALL</span>)
 (<span class="k">set-info</span> <span class="na">:status</span> <span class="n">unsat</span>)
 (<span class="k">declare-const</span> <span class="n">x</span> <span class="na">Int</span>)
 (<span class="k">declare-const</span> <span class="n">a</span> <span class="na">Int</span>)
@@ -310,18 +311,18 @@ a <a class="reference internal" href="../api/cpp/solver.html#_CPPv4N4cvc53api6So
 <p>The following input on heaps <code class="docutils literal notranslate"><span class="pre">U</span> <span class="pre">-&gt;</span> <span class="pre">Int</span></code> is satisfiable. Notice that the
 formula <code class="docutils literal notranslate"><span class="pre">(not</span> <span class="pre">(emp</span> <span class="pre">x</span> <span class="pre">0))</span></code> is satisfied by heaps <code class="docutils literal notranslate"><span class="pre">U</span> <span class="pre">-&gt;</span> <span class="pre">Int</span></code> (the sorts of
 <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">0</span></code> respectively) whose domain is non-empty.</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">set-logic</span> QF_ALL)
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">set-logic</span> <span class="n">QF_ALL</span>)
 (<span class="k">set-info</span> <span class="na">:status</span> <span class="n">sat</span>)
 (<span class="k">declare-sort</span> <span class="n">U</span> <span class="m">0</span>)
 (<span class="k">declare-const</span> <span class="n">x</span> <span class="n">U</span>)
 (<span class="k">declare-const</span> <span class="n">a</span> <span class="na">Int</span>)
-(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">not</span> (_ <span class="o">emp</span> <span class="n">U</span> <span class="na">Int</span>)) (<span class="o">pto</span> <span class="n">x</span> <span class="n">a</span>)))
+(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">not</span> (<span class="na">_</span> <span class="o">emp</span> <span class="n">U</span> <span class="na">Int</span>)) (<span class="o">pto</span> <span class="n">x</span> <span class="n">a</span>)))
 (<span class="k">check-sat</span>)
 </pre></div>
 </div>
 <p>The following input on heaps <code class="docutils literal notranslate"><span class="pre">Int</span> <span class="pre">-&gt;</span> <span class="pre">Node</span></code> is satisfiable, where <code class="docutils literal notranslate"><span class="pre">Node</span></code>
 denotes a user-defined inductive <a class="reference external" href="datatypes">datatypes</a>.</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">set-logic</span> QF_ALL)
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">set-logic</span> <span class="n">QF_ALL</span>)
 (<span class="k">set-info</span> <span class="na">:status</span> <span class="n">sat</span>)
 (<span class="k">declare-const</span> <span class="n">x</span> <span class="na">Int</span>)
 (<span class="k">declare-const</span> <span class="n">y</span> <span class="na">Int</span>)
@@ -337,7 +338,7 @@ denotes a user-defined inductive <a class="reference external" href="datatypes">
 inferred by cvc5, and must be consistent across all predicates occurring in
 an input.
 cvc5 does not accept an input such as:</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">set-logic</span> QF_ALL)
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">set-logic</span> <span class="n">QF_ALL</span>)
 (<span class="k">declare-sort</span> <span class="n">U</span> <span class="m">0</span>)
 (<span class="k">declare-const</span> <span class="n">x</span> <span class="n">U</span>)
 (<span class="k">assert</span> (<span class="o">and</span> (<span class="o">pto</span> <span class="n">x</span> <span class="m">0</span>) (<span class="o">pto</span> <span class="m">1</span> <span class="m">2</span>)))
