@@ -199,15 +199,12 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api6Solver6SolverEPK7Options">
-<span id="_CPPv3N4cvc53api6Solver6SolverEPK7Options"></span><span id="_CPPv2N4cvc53api6Solver6SolverEPK7Options"></span><span id="cvc5::api::Solver::Solver__OptionsCP"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a0b5d91bccb2ae20a2c542a8a1bffc960"></span><span class="sig-name descname"><span class="n"><span class="pre">Solver</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Options</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">opts</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api6Solver6SolverEPK7Options" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api6Solver6SolverEv">
+<span id="_CPPv3N4cvc53api6Solver6SolverEv"></span><span id="_CPPv2N4cvc53api6Solver6SolverEv"></span><span id="cvc5::api::Solver::Solver"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1ab8e2f807d2c660c2ca279b8845731662"></span><span class="sig-name descname"><span class="n"><span class="pre">Solver</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api6Solver6SolverEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructor. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>opts</strong> – an optional pointer to a solver options object </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the <a class="reference internal" href="#classcvc5_1_1api_1_1Solver"><span class="std std-ref">Solver</span></a> </p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the <a class="reference internal" href="#classcvc5_1_1api_1_1Solver"><span class="std std-ref">Solver</span></a> </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1085,7 +1082,8 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver11mkBitVectorE8uint32_t8uint64_t">
 <span id="_CPPv3NK4cvc53api6Solver11mkBitVectorE8uint32_t8uint64_t"></span><span id="_CPPv2NK4cvc53api6Solver11mkBitVectorE8uint32_t8uint64_t"></span><span id="cvc5::api::Solver::mkBitVector__uint32_t.uint64_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a50d2d1452d1d9d6e874823b38f515f6b"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkBitVector</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">val</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver11mkBitVectorE8uint32_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a bit-vector constant of given size and value. </p>
+<dd><p>Create a bit-vector constant of given size and value.</p>
+<p>Note: The given value must fit into a bit-vector of the given size.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1100,32 +1098,10 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver11mkBitVectorERKNSt6stringE8uint32_t">
-<span id="_CPPv3NK4cvc53api6Solver11mkBitVectorERKNSt6stringE8uint32_t"></span><span id="_CPPv2NK4cvc53api6Solver11mkBitVectorERKNSt6stringE8uint32_t"></span><span id="cvc5::api::Solver::mkBitVector__ssCR.uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a0cd74e3356a3137b809a38946ef3125e"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkBitVector</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">s</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">base</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver11mkBitVectorERKNSt6stringE8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a bit-vector constant from a given string of base 2, 10 or 16.</p>
-<p>The size of resulting bit-vector is<ul class="simple">
-<li><p>base 2: the size of the binary string</p></li>
-<li><p>base 10: the min. size required to represent the decimal as a bit-vector</p></li>
-<li><p>base 16: the max. size required to represent the hexadecimal as a bit-vector (4 * size of the given value string)</p></li>
-</ul>
-</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>s</strong> – the string representation of the constant </p></li>
-<li><p><strong>base</strong> – the base of the string representation (2, 10, or 16) </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the bit-vector constant </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver11mkBitVectorE8uint32_tRKNSt6stringE8uint32_t">
 <span id="_CPPv3NK4cvc53api6Solver11mkBitVectorE8uint32_tRKNSt6stringE8uint32_t"></span><span id="_CPPv2NK4cvc53api6Solver11mkBitVectorE8uint32_tRKNSt6stringE8uint32_t"></span><span id="cvc5::api::Solver::mkBitVector__uint32_t.ssCR.uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1afae6eea83acce0bac678e9ae22a38e90"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkBitVector</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">s</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">base</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver11mkBitVectorE8uint32_tRKNSt6stringE8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a bit-vector constant of a given bit-width from a given string of base 2, 10 or 16. </p>
+<dd><p>Create a bit-vector constant of a given bit-width from a given string of base 2, 10 or 16.</p>
+<p>Note: The given value must fit into a bit-vector of the given size.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1765,6 +1741,17 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver14getOptionNamesEv">
+<span id="_CPPv3NK4cvc53api6Solver14getOptionNamesEv"></span><span id="_CPPv2NK4cvc53api6Solver14getOptionNamesEv"></span><span id="cvc5::api::Solver::getOptionNamesC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a3b70033ab7236b2cf15a8ff14588aa36"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOptionNames</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver14getOptionNamesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get all option names that can be used with <code class="docutils literal notranslate"><span class="pre">setOption</span></code>, <code class="docutils literal notranslate"><span class="pre">getOption</span></code> and <code class="docutils literal notranslate"><span class="pre">getOptionInfo</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>all option names </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver19getUnsatAssumptionsEv">
 <span id="_CPPv3NK4cvc53api6Solver19getUnsatAssumptionsEv"></span><span id="_CPPv2NK4cvc53api6Solver19getUnsatAssumptionsEv"></span><span id="cvc5::api::Solver::getUnsatAssumptionsC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a975b69c10f8a2cf55865b2fe0021347d"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getUnsatAssumptions</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver19getUnsatAssumptionsEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the set of unsat (“failed”) assumptions. SMT-LIB: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span> <span class="n">get</span><span class="o">-</span><span class="n">unsat</span><span class="o">-</span><span class="n">assumptions</span> <span class="p">)</span>
@@ -1790,6 +1777,21 @@
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>a set of terms representing the unsatisfiable core </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver8getProofEv">
+<span id="_CPPv3NK4cvc53api6Solver8getProofEv"></span><span id="_CPPv2NK4cvc53api6Solver8getProofEv"></span><span id="cvc5::api::Solver::getProofC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a3b19b2b87a6906ce7239b299f6b56442"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getProof</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver8getProofEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the refutation proof SMT-LIB: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span> <span class="n">get</span><span class="o">-</span><span class="n">proof</span> <span class="p">)</span>
+<span class="o">*</span>
+</pre></div>
+</div>
+ Requires to enable option ‘produce-proofs’. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a string representing the proof, according to the the value of proof-format-mode. </p>
 </dd>
 </dl>
 </dd></dl>

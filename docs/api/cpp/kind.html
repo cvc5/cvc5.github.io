@@ -1091,7 +1091,7 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 <p>Parameters: See <a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a50d2d1452d1d9d6e874823b38f515f6b"><span class="std std-ref">mkBitVector()</span></a>.</p>
 <p>Create with:<ul class="simple">
 <li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a50d2d1452d1d9d6e874823b38f515f6b"><span class="std std-ref"><span class="pre">Solver::mkBitVector(uint32_t</span> <span class="pre">size,</span> <span class="pre">uint64_t</span> <span class="pre">val)</span> <span class="pre">const</span></span></a></code></p></li>
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a0cd74e3356a3137b809a38946ef3125e"><span class="std std-ref"><span class="pre">Solver::mkBitVector(const</span> <span class="pre">std::string&amp;</span> <span class="pre">s,</span> <span class="pre">uint32_t</span> <span class="pre">base)</span> <span class="pre">const</span></span></a></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Solver::mkBitVector(const</span> <span class="pre">std::string&amp;</span> <span class="pre">s,</span> <span class="pre">uint32_t</span> <span class="pre">base)</span> <span class="pre">const</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1afae6eea83acce0bac678e9ae22a38e90"><span class="std std-ref"><span class="pre">Solver::mkBitVector(uint32_t</span> <span class="pre">size,</span> <span class="pre">const</span> <span class="pre">std::string&amp;</span> <span class="pre">s,</span> <span class="pre">uint32_t</span> <span class="pre">base)</span> <span class="pre">const</span></span></a></code> </p></li>
 </ul>
 </p>
@@ -4208,12 +4208,14 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 <dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind14INST_ATTRIBUTEE">
 <span id="_CPPv3N4cvc53api4Kind14INST_ATTRIBUTEE"></span><span id="_CPPv2N4cvc53api4Kind14INST_ATTRIBUTEE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba9afd74593191f1e4178957cd145c9916"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">INST_ATTRIBUTE</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind14INST_ATTRIBUTEE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>An instantiation attribute Specifies a custom property for a quantified formula given by a term that is ascribed a user attribute.</p>
-<p>Parameters:<ul class="simple">
-<li><p>1: <a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> with a user attribute.</p></li>
+<p>Parameters: n &gt;= 1<ul class="simple">
+<li><p>1: The keyword of the attribute (a term with kind CONST_STRING).</p></li>
+<li><p>2…n: The values of the attribute.</p></li>
 </ul>
 </p>
 <p>Create with:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1aa85a27077624951c3f5f48d8c12cdc6c"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child)</span> <span class="pre">const</span></span></a></code> </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">Term</span> <span class="pre">child1,</span> <span class="pre">Term</span> <span class="pre">child2)</span> <span class="pre">-</span></code>mkTerm(Kind kind, Term child1, Term child2, Term child3)</p></li>
+<li><p>`mkTerm(Kind kind, const std::vector&lt;Term&gt;&amp; children) </p></li>
 </ul>
 </p>
 </dd></dl>

@@ -909,6 +909,8 @@
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">--dump-instantiations</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output instantiations of quantified formulas after every UNSAT/VALID response</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--dump-instantiations-debug</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output instantiations of quantified formulas after every UNSAT/VALID response, with debug information</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--dump-models</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output models after every SAT/INVALID/UNKNOWN response</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--dump-proofs</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>output proofs after every UNSAT/VALID response</p>
@@ -928,7 +930,7 @@
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">--force-no-limit-cpu-while-dump</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>Force no CPU limit when dumping models and proofs</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--interactive</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>force interactive/non-interactive mode</p>
+<dt><code class="docutils literal notranslate"><span class="pre">--interactive</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>force interactive shell/non-interactive mode</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--segv-spin</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>spin on segfault/other crash waiting for gdb</p>
 </dd>
@@ -960,8 +962,6 @@
 <h3>Printing Module<a class="headerlink" href="#printing-module" title="Permalink to this headline">¶</a></h3>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">--flatten-ho-chains</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>print (binary) application chains in a flattened way, e.g. (a b c) rather than ((a b) c)</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--inst-format=MODE</span></code></dt><dd><p>print format mode for instantiations, see –inst-format=help</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--model-format=MODE</span></code></dt><dd><p>print format mode for models, see –model-format=help</p>
 <p>Model format modes.</p>
@@ -1005,6 +1005,9 @@
 </dd>
 <dt class="field-odd">verit</dt>
 <dd class="field-odd"><p>Output veriT proof</p>
+</dd>
+<dt class="field-even">tptp</dt>
+<dd class="field-even"><p>Output TPTP proof (work in progress)</p>
 </dd>
 </dl>
 </dd>
@@ -1438,8 +1441,6 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--relevant-triggers</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>prefer triggers that are more relevant based on SInE style analysis</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--strict-triggers</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>only instantiate quantifiers with user patterns based on triggers</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--sygus</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>use sygus solver (default is true for sygus inputs)</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--sygus-active-gen-cfactor=N</span></code></dt><dd><p>the branching factor for the number of interpreted constants to consider for each size when using –sygus-active-gen=enum</p>
@@ -1784,14 +1785,17 @@
 <dt class="field-even">trust</dt>
 <dd class="field-even"><p>When provided, use only user-provided patterns for a quantified formula.</p>
 </dd>
-<dt class="field-odd">resort</dt>
-<dd class="field-odd"><p>Use user-provided patterns only after auto-generated patterns saturate.</p>
+<dt class="field-odd">strict</dt>
+<dd class="field-odd"><p>When provided, use only user-provided patterns for a quantified formula, and do not use any other instantiation techniques.</p>
 </dd>
-<dt class="field-even">ignore</dt>
-<dd class="field-even"><p>Ignore user-provided patterns.</p>
+<dt class="field-even">resort</dt>
+<dd class="field-even"><p>Use user-provided patterns only after auto-generated patterns saturate.</p>
 </dd>
-<dt class="field-odd">interleave</dt>
-<dd class="field-odd"><p>Alternate between use/resort.</p>
+<dt class="field-odd">ignore</dt>
+<dd class="field-odd"><p>Ignore user-provided patterns.</p>
+</dd>
+<dt class="field-even">interleave</dt>
+<dd class="field-even"><p>Alternate between use/resort.</p>
 </dd>
 </dl>
 </dd>
@@ -1864,8 +1868,6 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--debug-check-models</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>after SAT/INVALID/UNKNOWN, check that the generated model satisfies user and internal assertions</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--diagnostic-output-channel=CHANNEL</span></code></dt><dd><p>set the diagnostic output channel of the solver</p>
-</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--early-ite-removal</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>remove ITEs early in preprocessing</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--expand-definitions</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>always expand symbol definitions in output</p>
@@ -1897,19 +1899,16 @@
 </dl>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--model-u-print=MODE</span> <span class="pre">|</span> <span class="pre">--model-uninterp-print=MODE</span></code></dt><dd><p>determines how to print uninterpreted elements in models</p>
-<p>uninterpreted elements in models printing  modes.</p>
+<p>uninterpreted elements in models printing modes.</p>
 <dl class="field-list simple">
-<dt class="field-odd">dtenum</dt>
-<dd class="field-odd"><p>print uninterpreted elements as datatype enumerations, where the sort is the datatype</p>
+<dt class="field-odd">decl-sort-and-fun</dt>
+<dd class="field-odd"><p>print uninterpreted elements declare-fun, and also include a declare-sort for the sort</p>
 </dd>
-<dt class="field-even">decl-sort-and-fun</dt>
-<dd class="field-even"><p>print uninterpreted elements declare-fun, and also include a declare-sort for the sort</p>
+<dt class="field-even">decl-fun</dt>
+<dd class="field-even"><p>print uninterpreted elements declare-fun, but don’t include a declare-sort for the sort</p>
 </dd>
-<dt class="field-odd">decl-fun</dt>
-<dd class="field-odd"><p>print uninterpreted elements declare-fun, but don’t include a declare-sort for the sort</p>
-</dd>
-<dt class="field-even">none</dt>
-<dd class="field-even"><p>(default) do not print declarations of uninterpreted elements in models.</p>
+<dt class="field-odd">none</dt>
+<dd class="field-odd"><p>(default) do not print declarations of uninterpreted elements in models.</p>
 </dd>
 </dl>
 </dd>
@@ -1924,8 +1923,6 @@
 <dt><code class="docutils literal notranslate"><span class="pre">--produce-unsat-assumptions</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on unsat assumptions generation</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--produce-unsat-cores</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>turn on unsat core generation. Unless otherwise specified, cores will be produced using SAT soving under assumptions and preprocessing proofs.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--regular-output-channel=CHANNEL</span></code></dt><dd><p>set the regular output channel of the solver</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--repeat-simp</span></code> (also <code class="docutils literal notranslate"><span class="pre">--no-*</span></code>)</dt><dd><p>make multiple passes with nonclausal simplifier</p>
 </dd>
