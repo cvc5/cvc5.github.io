@@ -1,0 +1,1730 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Solver &mdash; cvc5  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
+        <script src="../../static/jquery.js"></script>
+        <script src="../../static/underscore.js"></script>
+        <script src="../../static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Sort" href="sort.html" />
+    <link rel="prev" title="RoundingMode" href="roundingmode.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> cvc5
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../binary/binary.html">Binary Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../cpp/cpp.html">C++ API Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../java/index.html">Java API Documentation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="python.html">Python API Documentation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatype.html">Datatype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypeconstructor.html">DatatypeConstructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypeconstructordecl.html">DatatypeConstructorDecl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypedecl.html">DatatypeDecl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypeselector.html">DatatypeSelector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="grammar.html">Grammar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="op.html">Op</a></li>
+<li class="toctree-l3"><a class="reference internal" href="result.html">Result</a></li>
+<li class="toctree-l3"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sort.html">Sort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unknownexplanation.html">UnknownExplanation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../languages.html">Input Languages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory.html">Theory References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">cvc5</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="python.html">Python API Documentation</a> &raquo;</li>
+        
+      <li>Solver</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="solver">
+<h1>Solver<a class="headerlink" href="#solver" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pycvc5.Solver">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pycvc5.</span></span><span class="sig-name descname"><span class="pre">Solver</span></span><a class="headerlink" href="#pycvc5.Solver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper class for <a class="reference internal" href="../cpp/solver.html#_CPPv4N4cvc53api6SolverE" title="cvc5::api::Solver"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">cvc5::api::Solver</span></code></a>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.addSygusConstraint">
+<span class="sig-name descname"><span class="pre">addSygusConstraint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.addSygusConstraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a formula to the set of SyGuS constraints.</p>
+<p>SyGuS v2:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">constraint</span> <span class="n">&lt;term&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>term</strong> – the formula to add as a constraint</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.addSygusInvConstraint">
+<span class="sig-name descname"><span class="pre">addSygusInvConstraint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.addSygusInvConstraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a set of SyGuS constraints to the current state that correspond to an
+invariant synthesis problem.</p>
+<p>SyGuS v2:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">inv-constraint</span> <span class="n">&lt;inv&gt;</span> <span class="n">&lt;pre&gt;</span> <span class="n">&lt;trans&gt;</span> <span class="n">&lt;post&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inv</strong> – the function-to-synthesize</p></li>
+<li><p><strong>pre</strong> – the pre-condition</p></li>
+<li><p><strong>trans</strong> – the transition relation</p></li>
+<li><p><strong>post</strong> – the post-condition</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.assertFormula">
+<span class="sig-name descname"><span class="pre">assertFormula</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.assertFormula" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assert a formula</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">assert</span> <span class="n">&lt;term&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>term</strong> – the formula to assert</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.checkEntailed">
+<span class="sig-name descname"><span class="pre">checkEntailed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.checkEntailed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check entailment of the given formula w.r.t. the current set of assertions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>terms</strong> – the formulas to check entailment for, as a list or as distinct arguments</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the result of the entailment check.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.checkSat">
+<span class="sig-name descname"><span class="pre">checkSat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.checkSat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check satisfiability.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">check-sat</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the result of the satisfiability check.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.checkSatAssuming">
+<span class="sig-name descname"><span class="pre">checkSatAssuming</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.checkSatAssuming" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check satisfiability assuming the given formula.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">check-sat-assuming</span> ( <span class="n">&lt;prop_literal&gt;</span> ) )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>assumptions</strong> – the formulas to assume, as a list or as distinct arguments</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the result of the satisfiability check.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.checkSynth">
+<span class="sig-name descname"><span class="pre">checkSynth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.checkSynth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to find a solution for the synthesis conjecture corresponding to the
+current list of functions-to-synthesize, universal variables and
+constraints.</p>
+<p>SyGuS v2:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">check-synth</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the result of the synthesis conjecture.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.declareDatatype">
+<span class="sig-name descname"><span class="pre">declareDatatype</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.declareDatatype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create datatype sort.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">declare-datatype</span> <span class="n">&lt;symbol&gt;</span> <span class="n">&lt;datatype_decl&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – the name of the datatype sort</p></li>
+<li><p><strong>ctors</strong> – the constructor declarations of the datatype sort, as a list or as distinct arguments</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the datatype sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.declareFun">
+<span class="sig-name descname"><span class="pre">declareFun</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.declareFun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Declare n-ary function symbol.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">declare-fun</span> <span class="n">&lt;symbol&gt;</span> ( <span class="n">&lt;sort&gt;*</span> ) <span class="n">&lt;sort&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – the name of the function</p></li>
+<li><p><strong>sorts</strong> – the sorts of the parameters to this function</p></li>
+<li><p><strong>sort</strong> – the sort of the return value of this function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.declarePool">
+<span class="sig-name descname"><span class="pre">declarePool</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.declarePool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Declare a symbolic pool of terms with the given initial value.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">declare-pool</span> <span class="n">&lt;symbol&gt;</span> <span class="n">&lt;sort&gt;</span> ( <span class="n">&lt;term&gt;*</span> ) )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – The name of the pool</p></li>
+<li><p><strong>sort</strong> – The sort of the elements of the pool.</p></li>
+<li><p><strong>initValue</strong> – The initial value of the pool</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.declareSepHeap">
+<span class="sig-name descname"><span class="pre">declareSepHeap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.declareSepHeap" title="Permalink to this definition">¶</a></dt>
+<dd><p>When using separation logic, this sets the location sort and the
+datatype sort to the given ones. This method should be invoked exactly
+once, before any separation logic constraints are provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>locSort</strong> – The location sort of the heap</p></li>
+<li><p><strong>dataSort</strong> – The data sort of the heap</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.declareSort">
+<span class="sig-name descname"><span class="pre">declareSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.declareSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Declare uninterpreted sort.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">declare-sort</span> <span class="n">&lt;symbol&gt;</span> <span class="n">&lt;numeral&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – the name of the sort</p></li>
+<li><p><strong>arity</strong> – the arity of the sort</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.defineFun">
+<span class="sig-name descname"><span class="pre">defineFun</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.defineFun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define n-ary function.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">define-fun</span> <span class="n">&lt;function_def&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – the name of the function</p></li>
+<li><p><strong>bound_vars</strong> – the parameters to this function</p></li>
+<li><p><strong>sort</strong> – the sort of the return value of this function</p></li>
+<li><p><strong>term</strong> – the function body</p></li>
+<li><p><strong>glbl</strong> – determines whether this definition is global (i.e. persists when popping the context)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.defineFunRec">
+<span class="sig-name descname"><span class="pre">defineFunRec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.defineFunRec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define recursive functions.</p>
+<p>Supports two uses:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">defineFunRec(str</span> <span class="pre">symbol,</span> <span class="pre">List[Term]</span> <span class="pre">bound_vars,</span> <span class="pre">Sort</span> <span class="pre">sort,</span> <span class="pre">Term</span> <span class="pre">term,</span> <span class="pre">bool</span> <span class="pre">glbl)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">defineFunRec(Term</span> <span class="pre">fun,</span> <span class="pre">List[Term]</span> <span class="pre">bound_vars,</span> <span class="pre">Term</span> <span class="pre">term,</span> <span class="pre">bool</span> <span class="pre">glbl)</span></code></p></li>
+</ul>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">define-funs-rec</span> ( <span class="n">&lt;function_decl&gt;^n</span> ) ( <span class="n">&lt;term&gt;^n</span> ) )
+</pre></div>
+</div>
+<p>Create elements of parameter <code class="docutils literal notranslate"><span class="pre">funs</span></code> with mkConst().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>funs</strong> – the sorted functions</p></li>
+<li><p><strong>bound_vars</strong> – the list of parameters to the functions</p></li>
+<li><p><strong>terms</strong> – the list of function bodies of the functions</p></li>
+<li><p><strong>global</strong> – determines whether this definition is global (i.e. persists when popping the context)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.defineFunsRec">
+<span class="sig-name descname"><span class="pre">defineFunsRec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.defineFunsRec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define recursive functions.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">define-funs-rec</span> ( <span class="n">&lt;function_decl&gt;^n</span> ) ( <span class="n">&lt;term&gt;^n</span> ) )
+</pre></div>
+</div>
+<p>Create elements of parameter <code class="docutils literal notranslate"><span class="pre">funs</span></code> with mkConst().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>funs</strong> – the sorted functions</p></li>
+<li><p><strong>bound_vars</strong> – the list of parameters to the functions</p></li>
+<li><p><strong>terms</strong> – the list of function bodies of the functions</p></li>
+<li><p><strong>global</strong> – determines whether this definition is global (i.e. persists when popping the context)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getAssertions">
+<span class="sig-name descname"><span class="pre">getAssertions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getAssertions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of asserted formulas.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">get-assertions</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the list of asserted formulas</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getBooleanSort">
+<span class="sig-name descname"><span class="pre">getBooleanSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getBooleanSort" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>sort Boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getInfo">
+<span class="sig-name descname"><span class="pre">getInfo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get info from the solver.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">get-info</span> <span class="n">&lt;info_flag&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flag</strong> – the info flag</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the info</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getIntegerSort">
+<span class="sig-name descname"><span class="pre">getIntegerSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getIntegerSort" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>sort Integer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getModelDomainElements">
+<span class="sig-name descname"><span class="pre">getModelDomainElements</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getModelDomainElements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the domain elements of uninterpreted sort s in the current model. The
+current model interprets s as the finite sort whose domain elements are
+given in the return value of this method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s</strong> – The uninterpreted sort in question</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the domain elements of s in the current model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getNullSort">
+<span class="sig-name descname"><span class="pre">getNullSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getNullSort" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>sort null</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getOption">
+<span class="sig-name descname"><span class="pre">getOption</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value of a given option.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">get-option</span> <span class="n">&lt;keyword&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>option</strong> – the option for which the value is queried</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a string representation of the option value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getRealSort">
+<span class="sig-name descname"><span class="pre">getRealSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getRealSort" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>sort Real</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getRegExpSort">
+<span class="sig-name descname"><span class="pre">getRegExpSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getRegExpSort" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>sort of RegExp</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getRoundingModeSort">
+<span class="sig-name descname"><span class="pre">getRoundingModeSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getRoundingModeSort" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>sort RoundingMode</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getStringSort">
+<span class="sig-name descname"><span class="pre">getStringSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getStringSort" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>sort String</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getSynthSolution">
+<span class="sig-name descname"><span class="pre">getSynthSolution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getSynthSolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the synthesis solution of the given term. This method should be
+called immediately after the solver answers unsat for sygus input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>term</strong> – the term for which the synthesis solution is queried</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the synthesis solution of the given term</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getSynthSolutions">
+<span class="sig-name descname"><span class="pre">getSynthSolutions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getSynthSolutions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the synthesis solutions of the given terms. This method should be
+called immediately after the solver answers unsat for sygus input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>terms</strong> – the terms for which the synthesis solutions is queried</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the synthesis solutions of the given terms</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getUnsatAssumptions">
+<span class="sig-name descname"><span class="pre">getUnsatAssumptions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getUnsatAssumptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the set of unsat (“failed”) assumptions.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">get-unsat-assumptions</span> )
+</pre></div>
+</div>
+<p>Requires to enable option <a class="reference internal" href="../../binary/options.html#lbl-option-produce-unsat-assumptions"><span class="std std-ref">produce-unsat-assumptions</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the set of unsat assumptions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getUnsatCore">
+<span class="sig-name descname"><span class="pre">getUnsatCore</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getUnsatCore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the unsatisfiable core.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">get-unsat-core</span> )
+</pre></div>
+</div>
+<p>Requires to enable option <a class="reference internal" href="../../binary/options.html#lbl-option-produce-unsat-cores"><span class="std std-ref">produce-unsat-cores</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a set of terms representing the unsatisfiable core</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getValue">
+<span class="sig-name descname"><span class="pre">getValue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value of the given term in the current model.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">get-value</span> ( <span class="n">&lt;term&gt;</span> ) )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>term</strong> – the term for which the value is queried</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value of the given term</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getValueSepHeap">
+<span class="sig-name descname"><span class="pre">getValueSepHeap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getValueSepHeap" title="Permalink to this definition">¶</a></dt>
+<dd><p>When using separation logic, obtain the term for the heap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The term for the heap</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.getValueSepNil">
+<span class="sig-name descname"><span class="pre">getValueSepNil</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.getValueSepNil" title="Permalink to this definition">¶</a></dt>
+<dd><p>When using separation logic, obtain the term for nil.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The term for nil</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.isModelCoreSymbol">
+<span class="sig-name descname"><span class="pre">isModelCoreSymbol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.isModelCoreSymbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>This returns false if the model value of free constant v was not
+essential for showing the satisfiability of the last call to checkSat
+using the current model. This method will only return false (for any v)
+if the model-cores option has been set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> – The term in question</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if v is a model core symbol</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkAbstractValue">
+<span class="sig-name descname"><span class="pre">mkAbstractValue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkAbstractValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an abstract value constant.
+The given index needs to be positive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> – Index of the abstract value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkArraySort">
+<span class="sig-name descname"><span class="pre">mkArraySort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkArraySort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an array sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indexSort</strong> – the array index sort</p></li>
+<li><p><strong>elemSort</strong> – the array element sort</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the array sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkBagSort">
+<span class="sig-name descname"><span class="pre">mkBagSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkBagSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a bag sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>elemSort</strong> – the sort of the bag elements</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the bag sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkBitVector">
+<span class="sig-name descname"><span class="pre">mkBitVector</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkBitVector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Supports the following arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">mkBitVector(int</span> <span class="pre">size,</span> <span class="pre">int</span> <span class="pre">val=0)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">mkBitVector(int</span> <span class="pre">size,</span> <span class="pre">string</span> <span class="pre">val,</span> <span class="pre">int</span> <span class="pre">base)</span></code></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a bit-vector literal term</p>
+</dd>
+<dt class="field-even">Param</dt>
+<dd class="field-even"><p><cite>size</cite> an integer size.</p>
+</dd>
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p><cite>val</cite> an integer representating the value, in the first form. In the second form, a string representing the value.</p>
+</dd>
+<dt class="field-even">Param</dt>
+<dd class="field-even"><p><cite>base</cite> the base of the string representation (second form only)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkBitVectorSort">
+<span class="sig-name descname"><span class="pre">mkBitVectorSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkBitVectorSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a bit-vector sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> – the bit-width of the bit-vector sort</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the bit-vector sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkBoolean">
+<span class="sig-name descname"><span class="pre">mkBoolean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkBoolean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Boolean constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the Boolean constant</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>val</strong> – the value of the constant</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkCardinalityConstraint">
+<span class="sig-name descname"><span class="pre">mkCardinalityConstraint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkCardinalityConstraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create cardinality constraint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sort</strong> – Sort of the constraint</p></li>
+<li><p><strong>index</strong> – The upper bound for the cardinality of the sort</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkConst">
+<span class="sig-name descname"><span class="pre">mkConst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkConst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create (first-order) constant (0-arity function symbol).</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">declare-const</span> <span class="n">&lt;symbol&gt;</span> <span class="n">&lt;sort&gt;</span> )
+( <span class="k">declare-fun</span> <span class="n">&lt;symbol&gt;</span> ( ) <span class="n">&lt;sort&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sort</strong> – the sort of the constant</p></li>
+<li><p><strong>symbol</strong> – the name of the constant. If None, a default symbol is used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the first-order constant</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkConstArray">
+<span class="sig-name descname"><span class="pre">mkConstArray</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkConstArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a constant array with the provided constant value stored at every
+index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sort</strong> – the sort of the constant array (must be an array sort)</p></li>
+<li><p><strong>val</strong> – the constant value to store (must match the sort’s element sort)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the constant array term</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkDatatypeConstructorDecl">
+<span class="sig-name descname"><span class="pre">mkDatatypeConstructorDecl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkDatatypeConstructorDecl" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a datatype constructor declaration</p>
+</dd>
+<dt class="field-even">Param</dt>
+<dd class="field-even"><p><cite>name</cite> the constructor’s name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkDatatypeDecl">
+<span class="sig-name descname"><span class="pre">mkDatatypeDecl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkDatatypeDecl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a datatype declaration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the name of the datatype</p></li>
+<li><p><strong>isCoDatatype</strong> – true if a codatatype is to be constructed</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the DatatypeDecl</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkDatatypeSort">
+<span class="sig-name descname"><span class="pre">mkDatatypeSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkDatatypeSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a datatype sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dtypedecl</strong> – the datatype declaration from which the sort is created</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the datatype sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkDatatypeSorts">
+<span class="sig-name descname"><span class="pre">mkDatatypeSorts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkDatatypeSorts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a vector of datatype sorts using unresolved sorts. The names of
+the datatype declarations in dtypedecls must be distinct.</p>
+<p>This method is called when the DatatypeDecl objects dtypedecls have been
+built using “unresolved” sorts.</p>
+<p>We associate each sort in unresolvedSorts with exacly one datatype from
+dtypedecls. In particular, it must have the same name as exactly one
+datatype declaration in dtypedecls.</p>
+<p>When constructing datatypes, unresolved sorts are replaced by the datatype
+sort constructed for the datatype declaration it is associated with.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dtypedecls</strong> – the datatype declarations from which the sort is created</p></li>
+<li><p><strong>unresolvedSorts</strong> – the list of unresolved sorts</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the datatype sorts</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkEmptyBag">
+<span class="sig-name descname"><span class="pre">mkEmptyBag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkEmptyBag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a constant representing an empty bag of the given sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sort</strong> – the sort of the bag elements.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the empty bag constant</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkEmptySequence">
+<span class="sig-name descname"><span class="pre">mkEmptySequence</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkEmptySequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an empty sequence of the given element sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sort</strong> – The element sort of the sequence.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the empty sequence with given element sort.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkEmptySet">
+<span class="sig-name descname"><span class="pre">mkEmptySet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkEmptySet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a constant representing an empty set of the given sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sort</strong> – the sort of the set elements.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the empty set constant</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkFalse">
+<span class="sig-name descname"><span class="pre">mkFalse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkFalse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Boolean false constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the false constant</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkFloatingPoint">
+<span class="sig-name descname"><span class="pre">mkFloatingPoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkFloatingPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a floating-point constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – Size of the exponent</p></li>
+<li><p><strong>sig</strong> – Size of the significand</p></li>
+<li><p><strong>val</strong> – Value of the floating-point constant as a bit-vector term</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkFloatingPointSort">
+<span class="sig-name descname"><span class="pre">mkFloatingPointSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkFloatingPointSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a floating-point sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – the bit-width of the exponent of the floating-point sort.</p></li>
+<li><p><strong>sig</strong> – the bit-width of the significand of the floating-point sort.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkFunctionSort">
+<span class="sig-name descname"><span class="pre">mkFunctionSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkFunctionSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create function sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sorts</strong> – the sort of the function arguments</p></li>
+<li><p><strong>codomain</strong> – the sort of the function return value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the function sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkInteger">
+<span class="sig-name descname"><span class="pre">mkInteger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkInteger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an integer constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>val</strong> – representation of the constant: either a string or integer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a constant of sort Integer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkNaN">
+<span class="sig-name descname"><span class="pre">mkNaN</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkNaN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a not-a-number (NaN) floating-point constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – Number of bits in the exponent</p></li>
+<li><p><strong>sig</strong> – Number of bits in the significand</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the floating-point constant</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkNegInf">
+<span class="sig-name descname"><span class="pre">mkNegInf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkNegInf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a negative infinity floating-point constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – Number of bits in the exponent</p></li>
+<li><p><strong>sig</strong> – Number of bits in the significand</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the floating-point constant</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkNegZero">
+<span class="sig-name descname"><span class="pre">mkNegZero</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkNegZero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a negative zero (+0.0) floating-point constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – Number of bits in the exponent</p></li>
+<li><p><strong>sig</strong> – Number of bits in the significand</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the floating-point constant</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkOp">
+<span class="sig-name descname"><span class="pre">mkOp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkOp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Supports the following uses:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Op</span> <span class="pre">mkOp(Kind</span> <span class="pre">kind)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Op</span> <span class="pre">mkOp(Kind</span> <span class="pre">kind,</span> <span class="pre">Kind</span> <span class="pre">k)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Op</span> <span class="pre">mkOp(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">string&amp;</span> <span class="pre">arg)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Op</span> <span class="pre">mkOp(Kind</span> <span class="pre">kind,</span> <span class="pre">uint32_t</span> <span class="pre">arg)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Op</span> <span class="pre">mkOp(Kind</span> <span class="pre">kind,</span> <span class="pre">uint32_t</span> <span class="pre">arg0,</span> <span class="pre">uint32_t</span> <span class="pre">arg1)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Op</span> <span class="pre">mkOp(Kind</span> <span class="pre">kind,</span> <span class="pre">[uint32_t</span> <span class="pre">arg0,</span> <span class="pre">...])</span></code> (used for the TupleProject kind)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkParamSort">
+<span class="sig-name descname"><span class="pre">mkParamSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkParamSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a sort parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symbol</strong> – the name of the sort</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the sort parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkPi">
+<span class="sig-name descname"><span class="pre">mkPi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkPi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a constant representing the number Pi.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a constant representing Pi</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkPosInf">
+<span class="sig-name descname"><span class="pre">mkPosInf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkPosInf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a positive infinity floating-point constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – Number of bits in the exponent</p></li>
+<li><p><strong>sig</strong> – Number of bits in the significand</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the floating-point constant</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkPosZero">
+<span class="sig-name descname"><span class="pre">mkPosZero</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkPosZero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a positive zero (+0.0) floating-point constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>exp</strong> – Number of bits in the exponent</p></li>
+<li><p><strong>sig</strong> – Number of bits in the significand</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the floating-point constant</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkPredicateSort">
+<span class="sig-name descname"><span class="pre">mkPredicateSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkPredicateSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a predicate sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sorts</strong> – the list of sorts of the predicate, as a list or as distinct arguments.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the predicate sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkReal">
+<span class="sig-name descname"><span class="pre">mkReal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkReal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a real constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p><cite>val</cite> the value of the term. Can be an integer, float, or string. It will be formatted as a string before the term is built.</p>
+</dd>
+<dt class="field-even">Param</dt>
+<dd class="field-even"><p><cite>den</cite> if not None, the value is <cite>val</cite>/<cite>den</cite></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a real term with literal value</p>
+</dd>
+</dl>
+<p>Can be used in various forms:</p>
+<ul class="simple">
+<li><p>Given a string <code class="docutils literal notranslate"><span class="pre">&quot;N/D&quot;</span></code> constructs the corresponding rational.</p></li>
+<li><p>Given a string <code class="docutils literal notranslate"><span class="pre">&quot;W.D&quot;</span></code> constructs the reduction of <code class="docutils literal notranslate"><span class="pre">(W</span> <span class="pre">*</span> <span class="pre">P</span> <span class="pre">+</span> <span class="pre">D)/P</span></code>, where <code class="docutils literal notranslate"><span class="pre">P</span></code> is the appropriate power of 10.</p></li>
+<li><p>Given a float <code class="docutils literal notranslate"><span class="pre">f</span></code>, constructs the rational matching <code class="docutils literal notranslate"><span class="pre">f</span></code>’s string representation. This means that <code class="docutils literal notranslate"><span class="pre">mkReal(0.3)</span></code> gives <code class="docutils literal notranslate"><span class="pre">3/10</span></code> and not the IEEE-754 approximation of <code class="docutils literal notranslate"><span class="pre">3/10</span></code>.</p></li>
+<li><p>Given a string <code class="docutils literal notranslate"><span class="pre">&quot;W&quot;</span></code> or an integer, constructs that integer.</p></li>
+<li><p>Given two strings and/or integers <code class="docutils literal notranslate"><span class="pre">N</span></code> and <code class="docutils literal notranslate"><span class="pre">D</span></code>, constructs <code class="docutils literal notranslate"><span class="pre">N/D</span></code>.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkRecordSort">
+<span class="sig-name descname"><span class="pre">mkRecordSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkRecordSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a record sort</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fields</strong> – the list of fields of the record, as a list or as distinct arguments</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the record sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkRegexpAllchar">
+<span class="sig-name descname"><span class="pre">mkRegexpAllchar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkRegexpAllchar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a regular expression sigma term.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the sigma term</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkRegexpNone">
+<span class="sig-name descname"><span class="pre">mkRegexpNone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkRegexpNone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a regular expression empty term.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the empty term</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkRoundingMode">
+<span class="sig-name descname"><span class="pre">mkRoundingMode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkRoundingMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a roundingmode constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rm</strong> – the floating point rounding mode this constant represents</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkSepEmp">
+<span class="sig-name descname"><span class="pre">mkSepEmp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkSepEmp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a separation logic empty term.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the separation logic empty term</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkSepNil">
+<span class="sig-name descname"><span class="pre">mkSepNil</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkSepNil" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a separation logic nil term.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sort</strong> – the sort of the nil term</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the separation logic nil term</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkSequenceSort">
+<span class="sig-name descname"><span class="pre">mkSequenceSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkSequenceSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a sequence sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>elemSort</strong> – the sort of the sequence elements</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the sequence sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkSetSort">
+<span class="sig-name descname"><span class="pre">mkSetSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkSetSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a set sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>elemSort</strong> – the sort of the set elements</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the set sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkSortConstructorSort">
+<span class="sig-name descname"><span class="pre">mkSortConstructorSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkSortConstructorSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a sort constructor sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – the symbol of the sort</p></li>
+<li><p><strong>arity</strong> – the arity of the sort</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the sort constructor sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkString">
+<span class="sig-name descname"><span class="pre">mkString</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a String constant from a <cite>str</cite> which may contain SMT-LIB
+compatible escape sequences like <code class="docutils literal notranslate"><span class="pre">\u1234</span></code> to encode unicode characters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> – the string this constant represents</p></li>
+<li><p><strong>useEscSequences</strong> – determines whether escape sequences in <cite>s</cite> should be converted to the corresponding unicode character</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the String constant</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkSygusGrammar">
+<span class="sig-name descname"><span class="pre">mkSygusGrammar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkSygusGrammar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a SyGuS grammar. The first non-terminal is treated as the
+starting non-terminal, so the order of non-terminals matters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>boundVars</strong> – the parameters to corresponding synth-fun/synth-inv</p></li>
+<li><p><strong>ntSymbols</strong> – the pre-declaration of the non-terminal symbols</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the grammar</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkSygusVar">
+<span class="sig-name descname"><span class="pre">mkSygusVar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkSygusVar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append symbol to the current list of universal variables.</p>
+<p>SyGuS v2:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">declare-var</span> <span class="n">&lt;symbol&gt;</span> <span class="n">&lt;sort&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sort</strong> – the sort of the universal variable</p></li>
+<li><p><strong>symbol</strong> – the name of the universal variable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the universal variable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkTerm">
+<span class="sig-name descname"><span class="pre">mkTerm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkTerm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Supports the following arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">mkTerm(Kind</span> <span class="pre">kind)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">Op</span> <span class="pre">child1,</span> <span class="pre">List[Term]</span> <span class="pre">children)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">List[Term]</span> <span class="pre">children)</span></code></p></li>
+</ul>
+<p>where <code class="docutils literal notranslate"><span class="pre">List[Term]</span></code> can also be comma-separated arguments</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkTrue">
+<span class="sig-name descname"><span class="pre">mkTrue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkTrue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Boolean true constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the true constant</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkTuple">
+<span class="sig-name descname"><span class="pre">mkTuple</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkTuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a tuple term. Terms are automatically converted if sorts are compatible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sorts</strong> – The sorts of the elements in the tuple</p></li>
+<li><p><strong>terms</strong> – The elements in the tuple</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the tuple Term</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkTupleSort">
+<span class="sig-name descname"><span class="pre">mkTupleSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkTupleSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a tuple sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sorts</strong> – of the elements of the tuple, as a list or as distinct arguments</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the tuple sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkUninterpretedConst">
+<span class="sig-name descname"><span class="pre">mkUninterpretedConst</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkUninterpretedConst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create uninterpreted constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sort</strong> – Sort of the constant</p></li>
+<li><p><strong>index</strong> – Index of the constant</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkUninterpretedSort">
+<span class="sig-name descname"><span class="pre">mkUninterpretedSort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkUninterpretedSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an uninterpreted sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symbol</strong> – the name of the sort</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the uninterpreted sort</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkUniverseSet">
+<span class="sig-name descname"><span class="pre">mkUniverseSet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkUniverseSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a universe set of the given sort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sort</strong> – the sort of the set elements</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the universe set constant</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.mkVar">
+<span class="sig-name descname"><span class="pre">mkVar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.mkVar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a bound variable to be used in a binder (i.e. a quantifier, a
+lambda, or a witness binder).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sort</strong> – the sort of the variable</p></li>
+<li><p><strong>symbol</strong> – the name of the variable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the variable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pop <code class="docutils literal notranslate"><span class="pre">nscopes</span></code> level(s) from the assertion stack.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">pop</span> <span class="n">&lt;numeral&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nscopes</strong> – the number of levels to pop</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.push">
+<span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.push" title="Permalink to this definition">¶</a></dt>
+<dd><p>Push <code class="docutils literal notranslate"><span class="pre">nscopes</span></code> level(s) to the assertion stack.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">push</span> <span class="n">&lt;numeral&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nscopes</strong> – the number of levels to push</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.resetAssertions">
+<span class="sig-name descname"><span class="pre">resetAssertions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.resetAssertions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all assertions.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">reset-assertions</span> )
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.setInfo">
+<span class="sig-name descname"><span class="pre">setInfo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.setInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set info.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">set-info</span> <span class="n">&lt;attribute&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keyword</strong> – the info flag</p></li>
+<li><p><strong>value</strong> – the value of the info flag</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.setLogic">
+<span class="sig-name descname"><span class="pre">setLogic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.setLogic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set logic.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">set-logic</span> <span class="n">&lt;symbol&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logic</strong> – the logic to set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.setOption">
+<span class="sig-name descname"><span class="pre">setOption</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.setOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set option.</p>
+<p>SMT-LIB:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">set-option</span> <span class="n">&lt;option&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>option</strong> – the option name</p></li>
+<li><p><strong>value</strong> – the option value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.simplify">
+<span class="sig-name descname"><span class="pre">simplify</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.simplify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simplify a formula without doing “much” work.  Does not involve the
+SAT Engine in the simplification, but uses the current definitions,
+assertions, and the current partial model, if one has been constructed.
+It also involves theory normalization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> – the formula to simplify</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the simplified formula</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.synthFun">
+<span class="sig-name descname"><span class="pre">synthFun</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.synthFun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Synthesize n-ary function following specified syntactic constraints.</p>
+<p>SyGuS v2:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">synth-fun</span> <span class="n">&lt;symbol&gt;</span> ( <span class="n">&lt;boundVars&gt;*</span> ) <span class="n">&lt;sort&gt;</span> <span class="n">&lt;g&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – the name of the function</p></li>
+<li><p><strong>boundVars</strong> – the parameters to this function</p></li>
+<li><p><strong>sort</strong> – the sort of the return value of this function</p></li>
+<li><p><strong>grammar</strong> – the syntactic constraints</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Solver.synthInv">
+<span class="sig-name descname"><span class="pre">synthInv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Solver.synthInv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Synthesize invariant.</p>
+<p>SyGuS v2:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>( <span class="k">synth-inv</span> <span class="n">&lt;symbol&gt;</span> ( <span class="n">&lt;boundVars&gt;*</span> ) <span class="n">&lt;grammar&gt;</span> )
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – the name of the invariant</p></li>
+<li><p><strong>boundVars</strong> – the parameters to this invariant</p></li>
+<li><p><strong>grammar</strong> – the syntactic constraints</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the invariant</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="sort.html" class="btn btn-neutral float-right" title="Sort" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="roundingmode.html" class="btn btn-neutral float-left" title="RoundingMode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, the authors of cvc5.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

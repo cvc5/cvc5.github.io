@@ -105,6 +105,7 @@
 <li class="toctree-l3"><a class="reference internal" href="grammar.html">Grammar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="kind.html">Kind</a></li>
 <li class="toctree-l3"><a class="reference internal" href="op.html">Op</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optioninfo.html">OptionInfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="result.html">Result</a></li>
 <li class="toctree-l3"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="solver.html">Solver</a></li>
@@ -113,6 +114,7 @@
 <li class="toctree-l3"><a class="reference internal" href="term.html">Term</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../java/index.html">Java API Documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/python.html">Python API Documentation</a></li>
 </ul>
 </li>
@@ -310,7 +312,7 @@
 <dd><p>Is this a Boolean sort? </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>true if the sort is a Boolean sort </p>
+<dd class="field-odd"><p>true if the sort is the Boolean sort </p>
 </dd>
 </dl>
 </dd></dl>
@@ -321,7 +323,7 @@
 <dd><p>Is this a integer sort? </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>true if the sort is a integer sort </p>
+<dd class="field-odd"><p>true if the sort is the integer sort </p>
 </dd>
 </dl>
 </dd></dl>
@@ -332,7 +334,7 @@
 <dd><p>Is this a real sort? </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>true if the sort is a real sort </p>
+<dd class="field-odd"><p>true if the sort is the real sort </p>
 </dd>
 </dl>
 </dd></dl>
@@ -508,7 +510,7 @@
 <dd><p>Is this an array sort? </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>true if the sort is a array sort </p>
+<dd class="field-odd"><p>true if the sort is an array sort </p>
 </dd>
 </dl>
 </dd></dl>
@@ -549,10 +551,10 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Sort19isUninterpretedSortEv">
 <span id="_CPPv3NK4cvc53api4Sort19isUninterpretedSortEv"></span><span id="_CPPv2NK4cvc53api4Sort19isUninterpretedSortEv"></span><span id="cvc5::api::Sort::isUninterpretedSortC"></span><span class="target" id="classcvc5_1_1api_1_1Sort_1a532bbb12463c99537a3b2173296edc56"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isUninterpretedSort</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Sort19isUninterpretedSortEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Is this a sort kind? </p>
+<dd><p>Is this an uninterpreted sort? </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>true if this is a sort kind </p>
+<dd class="field-odd"><p>true if this is an uninterpreted sort </p>
 </dd>
 </dl>
 </dd></dl>
@@ -571,7 +573,11 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Sort12isFirstClassEv">
 <span id="_CPPv3NK4cvc53api4Sort12isFirstClassEv"></span><span id="_CPPv2NK4cvc53api4Sort12isFirstClassEv"></span><span id="cvc5::api::Sort::isFirstClassC"></span><span class="target" id="classcvc5_1_1api_1_1Sort_1ac758e96fce95c2b8b65c84e68fd55304"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isFirstClass</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Sort12isFirstClassEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Is this a first-class sort? First-class sorts are sorts for which: (1) we handle equalities between terms of that type, and (2) they are allowed to be parameters of parametric sorts (e.g. index or element sorts of arrays).</p>
+<dd><p>Is this a first-class sort? First-class sorts are sorts for which:<ol class="lowerroman simple">
+<li><p>we handle equalities between terms of that type, and</p></li>
+<li><p>they are allowed to be parameters of parametric sorts (e.g. index or element sorts of arrays).</p></li>
+</ol>
+</p>
 <p>Examples of sorts that are not first-class include sort constructor sorts and regular expression sorts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -800,7 +806,7 @@
 <span id="_CPPv3NK4cvc53api4Sort19getArrayElementSortEv"></span><span id="_CPPv2NK4cvc53api4Sort19getArrayElementSortEv"></span><span id="cvc5::api::Sort::getArrayElementSortC"></span><span class="target" id="classcvc5_1_1api_1_1Sort_1af577ff1726099596449fcd196d863f95"></span><a class="reference internal" href="#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort"><span class="n"><span class="pre">Sort</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getArrayElementSort</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Sort19getArrayElementSortEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the array element sort of an array element sort </p>
+<dd class="field-odd"><p>the array element sort of an array sort </p>
 </dd>
 </dl>
 </dd></dl>
@@ -850,7 +856,7 @@
 <span id="_CPPv3NK4cvc53api4Sort32isUninterpretedSortParameterizedEv"></span><span id="_CPPv2NK4cvc53api4Sort32isUninterpretedSortParameterizedEv"></span><span id="cvc5::api::Sort::isUninterpretedSortParameterizedC"></span><span class="target" id="classcvc5_1_1api_1_1Sort_1ab6446c11fed8f3e814e292dc58d3fe54"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isUninterpretedSortParameterized</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Sort32isUninterpretedSortParameterizedEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>true if an uninterpreted sort is parameterezied </p>
+<dd class="field-odd"><p>true if an uninterpreted sort is parameterized </p>
 </dd>
 </dl>
 </dd></dl>
@@ -886,8 +892,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Sort9getBVSizeEv">
-<span id="_CPPv3NK4cvc53api4Sort9getBVSizeEv"></span><span id="_CPPv2NK4cvc53api4Sort9getBVSizeEv"></span><span id="cvc5::api::Sort::getBVSizeC"></span><span class="target" id="classcvc5_1_1api_1_1Sort_1a4463cd0f484e7445bb6159ea348f2d6f"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getBVSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Sort9getBVSizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Sort16getBitVectorSizeEv">
+<span id="_CPPv3NK4cvc53api4Sort16getBitVectorSizeEv"></span><span id="_CPPv2NK4cvc53api4Sort16getBitVectorSizeEv"></span><span id="cvc5::api::Sort::getBitVectorSizeC"></span><span class="target" id="classcvc5_1_1api_1_1Sort_1a0d3b0ca28f6a74ec2aa0cdf5bc3d9de8"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getBitVectorSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Sort16getBitVectorSizeEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>the bit-width of the bit-vector sort </p>
@@ -896,8 +902,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Sort17getFPExponentSizeEv">
-<span id="_CPPv3NK4cvc53api4Sort17getFPExponentSizeEv"></span><span id="_CPPv2NK4cvc53api4Sort17getFPExponentSizeEv"></span><span id="cvc5::api::Sort::getFPExponentSizeC"></span><span class="target" id="classcvc5_1_1api_1_1Sort_1abddcea48758253ac2f2ee730f4240658"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getFPExponentSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Sort17getFPExponentSizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Sort28getFloatingPointExponentSizeEv">
+<span id="_CPPv3NK4cvc53api4Sort28getFloatingPointExponentSizeEv"></span><span id="_CPPv2NK4cvc53api4Sort28getFloatingPointExponentSizeEv"></span><span id="cvc5::api::Sort::getFloatingPointExponentSizeC"></span><span class="target" id="classcvc5_1_1api_1_1Sort_1ab76002f70da0f5373f9d18dae0439104"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getFloatingPointExponentSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Sort28getFloatingPointExponentSizeEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>the bit-width of the exponent of the floating-point sort </p>
@@ -906,8 +912,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Sort20getFPSignificandSizeEv">
-<span id="_CPPv3NK4cvc53api4Sort20getFPSignificandSizeEv"></span><span id="_CPPv2NK4cvc53api4Sort20getFPSignificandSizeEv"></span><span id="cvc5::api::Sort::getFPSignificandSizeC"></span><span class="target" id="classcvc5_1_1api_1_1Sort_1a1dcea55050f6386f63bf44e985cb4f3b"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getFPSignificandSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Sort20getFPSignificandSizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api4Sort31getFloatingPointSignificandSizeEv">
+<span id="_CPPv3NK4cvc53api4Sort31getFloatingPointSignificandSizeEv"></span><span id="_CPPv2NK4cvc53api4Sort31getFloatingPointSignificandSizeEv"></span><span id="cvc5::api::Sort::getFloatingPointSignificandSizeC"></span><span class="target" id="classcvc5_1_1api_1_1Sort_1a6c466dc6bc22fde197b5268293e96180"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getFloatingPointSignificandSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api4Sort31getFloatingPointSignificandSizeEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>the width of the significand of the floating-point sort </p>

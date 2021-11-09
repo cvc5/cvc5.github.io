@@ -110,7 +110,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#libpoly-optional-polynomial-library">LibPoly (Optional polynomial library)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cln-v1-3-class-library-for-numbers">CLN &gt;= v1.3 (Class Library for Numbers)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#glpk-cut-log-a-fork-of-the-gnu-linear-programming-kit">glpk-cut-log (A fork of the GNU Linear Programming Kit)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#abc-library-improved-bit-vector-support">ABC library (Improved Bit-Vector Support)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#editline-library-improved-interactive-experience">Editline library (Improved Interactive Experience)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#google-test-unit-testing-framework-unit-tests">Google Test Unit Testing Framework (Unit Tests)</a></li>
 </ul>
@@ -231,8 +230,11 @@ We generally recommend a 64-bit operating system.</p>
 <p>On macOS, we recommend using <a class="reference external" href="https://brew.sh/">Homebrew</a> to install the
 dependencies.  We also have a Homebrew Tap available at
 <a class="reference external" href="https://github.com/CVC4/homebrew-cvc4">https://github.com/CVC4/homebrew-cvc4</a> .
-To build a static binary for macOS, use:
-<code class="docutils literal notranslate"><span class="pre">./configure.sh</span> <span class="pre">--static</span> <span class="pre">--no-static-binary</span></code>.</p>
+Note that linking system libraries statically is
+<a class="reference external" href="https://developer.apple.com/library/archive/qa/qa1118/_index.html">strongly discouraged</a>
+on macOS. Using <code class="docutils literal notranslate"><span class="pre">./configure.sh</span> <span class="pre">--static</span></code> will thus produce a binary
+that uses static versions of all our dependencies, but is still a dynamically
+linked binary.</p>
 </div>
 <div class="section" id="cross-compiling-for-windows">
 <h3>Cross-compiling for Windows<a class="headerlink" href="#cross-compiling-for-windows" title="Permalink to this headline">¶</a></h3>
@@ -342,16 +344,6 @@ version 3</a>. If you choose to use
 cvc5 with GLPK support, you are licensing cvc5 under that same license. (Usually
 cvc5’s license is more permissive; see above discussion.)</p>
 </div>
-<div class="section" id="abc-library-improved-bit-vector-support">
-<h3>ABC library (Improved Bit-Vector Support)<a class="headerlink" href="#abc-library-improved-bit-vector-support" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="http://www.eecs.berkeley.edu/~alanmi/abc/">ABC</a> (A System for Sequential
-Synthesis and Verification) is a library for synthesis and verification of logic
-circuits. This dependency may improve performance of the eager bit-vector
-solver. When enabled, the bit-blasted formula is encoded into
-and-inverter-graphs (AIG) and ABC is used to simplify these AIGs.</p>
-<p>ABC can be installed using the <code class="docutils literal notranslate"><span class="pre">contrib/get-abc</span></code> script. Configure cvc5 with
-<code class="docutils literal notranslate"><span class="pre">configure.sh</span> <span class="pre">--abc</span></code> to build with this dependency.</p>
-</div>
 <div class="section" id="editline-library-improved-interactive-experience">
 <h3>Editline library (Improved Interactive Experience)<a class="headerlink" href="#editline-library-improved-interactive-experience" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference external" href="https://thrysoee.dk/editline/">Editline Library</a> library is optionally
@@ -397,12 +389,10 @@ binding, please contact the cvc5 team via <a class="reference external" href="ht
 <a class="reference external" href="https://sphinxcontrib-bibtex.readthedocs.io">sphinxcontrib-bibtex</a></p></li>
 <li><p><a class="reference external" href="https://breathe.readthedocs.io">Breathe</a></p></li>
 </ul>
-<p>To build the documentation, configure cvc5 with <code class="docutils literal notranslate"><span class="pre">./configure.sh</span> <span class="pre">--docs</span></code>.
-Building cvc5 will then include building the API documentation.</p>
+<p>To build the documentation, configure cvc5 with <code class="docutils literal notranslate"><span class="pre">./configure.sh</span> <span class="pre">--docs</span></code> and
+run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">docs</span></code> from within the build directory.</p>
 <p>The API documentation can then be found at
 <code class="docutils literal notranslate"><span class="pre">&lt;build_dir&gt;/docs/sphinx/index.html</span></code>.</p>
-<p>To only build the documentation, change to the build directory and call
-<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">docs</span></code>.</p>
 <p>To build the documentation for GitHub pages, change to the build directory and
 call <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">docs-gh</span></code>. The content of directory <code class="docutils literal notranslate"><span class="pre">&lt;build_dir&gt;/docs/sphinx-gh</span></code>
 can then be copied over to GitHub pages.</p>

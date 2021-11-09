@@ -188,7 +188,7 @@
   <div class="section" id="theory-of-bit-vectors-extract">
 <h1>Theory of Bit-Vectors: <code class="code docutils literal notranslate"><span class="pre">extract</span></code><a class="headerlink" href="#theory-of-bit-vectors-extract" title="Permalink to this headline">¶</a></h1>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Python</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">SMT-LIBv2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/******************************************************************************</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Java</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Python</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">SMT-LIBv2</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/******************************************************************************</span>
 <span class="linenos"> 2</span><span class="cm"> * Top contributors (to current version):</span>
 <span class="linenos"> 3</span><span class="cm"> *   Aina Niemetz, Makai Mann, Clark Barrett</span>
 <span class="linenos"> 4</span><span class="cm"> *</span>
@@ -246,7 +246,63 @@
 <span class="linenos">56</span><span class="p">}</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/usr/bin/env python</span>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/******************************************************************************</span>
+<span class="linenos"> 2</span><span class="cm"> * Top contributors (to current version):</span>
+<span class="linenos"> 3</span><span class="cm"> *   Aina Niemetz, Makai Mann, Clark Barrett</span>
+<span class="linenos"> 4</span><span class="cm"> *</span>
+<span class="linenos"> 5</span><span class="cm"> * This file is part of the cvc5 project.</span>
+<span class="linenos"> 6</span><span class="cm"> *</span>
+<span class="linenos"> 7</span><span class="cm"> * Copyright (c) 2009-2021 by the authors listed in the file AUTHORS</span>
+<span class="linenos"> 8</span><span class="cm"> * in the top-level source directory and their institutional affiliations.</span>
+<span class="linenos"> 9</span><span class="cm"> * All rights reserved.  See the file COPYING in the top-level source</span>
+<span class="linenos">10</span><span class="cm"> * directory for licensing information.</span>
+<span class="linenos">11</span><span class="cm"> * ****************************************************************************</span>
+<span class="linenos">12</span><span class="cm"> *</span>
+<span class="linenos">13</span><span class="cm"> * A simple demonstration of the solving capabilities of the cvc5</span>
+<span class="linenos">14</span><span class="cm"> * bit-vector solver.</span>
+<span class="linenos">15</span><span class="cm"> *</span>
+<span class="linenos">16</span><span class="cm"> */</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="kn">import</span> <span class="nn">io.github.cvc5.api.*</span><span class="p">;</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Extract</span>
+<span class="linenos">21</span><span class="p">{</span>
+<span class="linenos">22</span>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">CVC5ApiException</span>
+<span class="linenos">23</span>  <span class="p">{</span>
+<span class="linenos">24</span>    <span class="k">try</span> <span class="p">(</span><span class="n">Solver</span> <span class="n">slv</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Solver</span><span class="p">())</span>
+<span class="linenos">25</span>    <span class="p">{</span>
+<span class="linenos">26</span>      <span class="n">slv</span><span class="p">.</span><span class="na">setLogic</span><span class="p">(</span><span class="s">&quot;QF_BV&quot;</span><span class="p">);</span> <span class="c1">// Set the logic</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span>      <span class="n">Sort</span> <span class="n">bitvector32</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkBitVectorSort</span><span class="p">(</span><span class="mi">32</span><span class="p">);</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span>      <span class="n">Term</span> <span class="n">x</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkConst</span><span class="p">(</span><span class="n">bitvector32</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">);</span>
+<span class="linenos">31</span>
+<span class="linenos">32</span>      <span class="n">Op</span> <span class="n">ext_31_1</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkOp</span><span class="p">(</span><span class="n">Kind</span><span class="p">.</span><span class="na">BITVECTOR_EXTRACT</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="linenos">33</span>      <span class="n">Term</span> <span class="n">x_31_1</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkTerm</span><span class="p">(</span><span class="n">ext_31_1</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+<span class="linenos">34</span>
+<span class="linenos">35</span>      <span class="n">Op</span> <span class="n">ext_30_0</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkOp</span><span class="p">(</span><span class="n">Kind</span><span class="p">.</span><span class="na">BITVECTOR_EXTRACT</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="linenos">36</span>      <span class="n">Term</span> <span class="n">x_30_0</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkTerm</span><span class="p">(</span><span class="n">ext_30_0</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span>      <span class="n">Op</span> <span class="n">ext_31_31</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkOp</span><span class="p">(</span><span class="n">Kind</span><span class="p">.</span><span class="na">BITVECTOR_EXTRACT</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">);</span>
+<span class="linenos">39</span>      <span class="n">Term</span> <span class="n">x_31_31</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkTerm</span><span class="p">(</span><span class="n">ext_31_31</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+<span class="linenos">40</span>
+<span class="linenos">41</span>      <span class="n">Op</span> <span class="n">ext_0_0</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkOp</span><span class="p">(</span><span class="n">Kind</span><span class="p">.</span><span class="na">BITVECTOR_EXTRACT</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="linenos">42</span>      <span class="n">Term</span> <span class="n">x_0_0</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkTerm</span><span class="p">(</span><span class="n">ext_0_0</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+<span class="linenos">43</span>
+<span class="linenos">44</span>      <span class="n">Term</span> <span class="n">eq</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkTerm</span><span class="p">(</span><span class="n">Kind</span><span class="p">.</span><span class="na">EQUAL</span><span class="p">,</span> <span class="n">x_31_1</span><span class="p">,</span> <span class="n">x_30_0</span><span class="p">);</span>
+<span class="linenos">45</span>      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot; Asserting: &quot;</span> <span class="o">+</span> <span class="n">eq</span><span class="p">);</span>
+<span class="linenos">46</span>      <span class="n">slv</span><span class="p">.</span><span class="na">assertFormula</span><span class="p">(</span><span class="n">eq</span><span class="p">);</span>
+<span class="linenos">47</span>
+<span class="linenos">48</span>      <span class="n">Term</span> <span class="n">eq2</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkTerm</span><span class="p">(</span><span class="n">Kind</span><span class="p">.</span><span class="na">EQUAL</span><span class="p">,</span> <span class="n">x_31_31</span><span class="p">,</span> <span class="n">x_0_0</span><span class="p">);</span>
+<span class="linenos">49</span>      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot; Check entailment assuming: &quot;</span> <span class="o">+</span> <span class="n">eq2</span><span class="p">);</span>
+<span class="linenos">50</span>      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot; Expect ENTAILED. &quot;</span><span class="p">);</span>
+<span class="linenos">51</span>      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot; cvc5: &quot;</span> <span class="o">+</span> <span class="n">slv</span><span class="p">.</span><span class="na">checkEntailed</span><span class="p">(</span><span class="n">eq2</span><span class="p">));</span>
+<span class="linenos">52</span>    <span class="p">}</span>
+<span class="linenos">53</span>  <span class="p">}</span>
+<span class="linenos">54</span><span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/usr/bin/env python</span>
 <span class="linenos"> 2</span><span class="c1">###############################################################################</span>
 <span class="linenos"> 3</span><span class="c1"># Top contributors (to current version):</span>
 <span class="linenos"> 4</span><span class="c1">#   Makai Mann, Aina Niemetz</span>
@@ -300,7 +356,7 @@
 <span class="linenos">52</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cvc5:&quot;</span><span class="p">,</span> <span class="n">slv</span><span class="o">.</span><span class="n">checkEntailed</span><span class="p">(</span><span class="n">eq2</span><span class="p">))</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_BV</span>)
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_BV</span>)
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span>(<span class="k">declare-const</span> <span class="n">a</span> (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>))
 <span class="linenos"> 4</span>
@@ -313,7 +369,7 @@
 <span class="linenos">11</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">a_31_1</span> <span class="n">a_30_0</span>))
 <span class="linenos">12</span>
 <span class="linenos">13</span>(<span class="k">echo</span> <span class="s">&quot;Check unsatisfiability assuming a_31_31 != a_0_0&quot;</span>)
-<span class="linenos">14</span>(<span class="k">check-sat</span> (<span class="o">not</span> (<span class="o">=</span> <span class="n">a_31_31</span> <span class="n">a_0_0</span>)))
+<span class="linenos">14</span>(<span class="k">check-sat-assuming</span> ((<span class="o">not</span> (<span class="o">=</span> <span class="n">a_31_31</span> <span class="n">a_0_0</span>))))
 </pre></div>
 </div>
 </div></div>

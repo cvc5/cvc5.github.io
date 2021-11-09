@@ -230,12 +230,12 @@ The simplest way to get a sense of the syntax is to look at an example:</p>
 <span class="linenos">42</span>    <span class="n">Term</span> <span class="n">B</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkConst</span><span class="p">(</span><span class="n">set</span><span class="p">,</span> <span class="s">&quot;B&quot;</span><span class="p">);</span>
 <span class="linenos">43</span>    <span class="n">Term</span> <span class="n">C</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkConst</span><span class="p">(</span><span class="n">set</span><span class="p">,</span> <span class="s">&quot;C&quot;</span><span class="p">);</span>
 <span class="linenos">44</span>
-<span class="linenos">45</span>    <span class="n">Term</span> <span class="n">unionAB</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">UNION</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">);</span>
-<span class="linenos">46</span>    <span class="n">Term</span> <span class="n">lhs</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">INTERSECTION</span><span class="p">,</span> <span class="n">unionAB</span><span class="p">,</span> <span class="n">C</span><span class="p">);</span>
+<span class="linenos">45</span>    <span class="n">Term</span> <span class="n">unionAB</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SET_UNION</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">);</span>
+<span class="linenos">46</span>    <span class="n">Term</span> <span class="n">lhs</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SET_INTERSECTION</span><span class="p">,</span> <span class="n">unionAB</span><span class="p">,</span> <span class="n">C</span><span class="p">);</span>
 <span class="linenos">47</span>
-<span class="linenos">48</span>    <span class="n">Term</span> <span class="n">intersectionAC</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">INTERSECTION</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">);</span>
-<span class="linenos">49</span>    <span class="n">Term</span> <span class="n">intersectionBC</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">INTERSECTION</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">);</span>
-<span class="linenos">50</span>    <span class="n">Term</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">UNION</span><span class="p">,</span> <span class="n">intersectionAC</span><span class="p">,</span> <span class="n">intersectionBC</span><span class="p">);</span>
+<span class="linenos">48</span>    <span class="n">Term</span> <span class="n">intersectionAC</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SET_INTERSECTION</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">);</span>
+<span class="linenos">49</span>    <span class="n">Term</span> <span class="n">intersectionBC</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SET_INTERSECTION</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">);</span>
+<span class="linenos">50</span>    <span class="n">Term</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SET_UNION</span><span class="p">,</span> <span class="n">intersectionAC</span><span class="p">,</span> <span class="n">intersectionBC</span><span class="p">);</span>
 <span class="linenos">51</span>
 <span class="linenos">52</span>    <span class="n">Term</span> <span class="n">theorem</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">EQUAL</span><span class="p">,</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">);</span>
 <span class="linenos">53</span>
@@ -248,7 +248,7 @@ The simplest way to get a sense of the syntax is to look at an example:</p>
 <span class="linenos">60</span>    <span class="n">Term</span> <span class="n">A</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkConst</span><span class="p">(</span><span class="n">set</span><span class="p">,</span> <span class="s">&quot;A&quot;</span><span class="p">);</span>
 <span class="linenos">61</span>    <span class="n">Term</span> <span class="n">emptyset</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkEmptySet</span><span class="p">(</span><span class="n">set</span><span class="p">);</span>
 <span class="linenos">62</span>
-<span class="linenos">63</span>    <span class="n">Term</span> <span class="n">theorem</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SUBSET</span><span class="p">,</span> <span class="n">emptyset</span><span class="p">,</span> <span class="n">A</span><span class="p">);</span>
+<span class="linenos">63</span>    <span class="n">Term</span> <span class="n">theorem</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SET_SUBSET</span><span class="p">,</span> <span class="n">emptyset</span><span class="p">,</span> <span class="n">A</span><span class="p">);</span>
 <span class="linenos">64</span>
 <span class="linenos">65</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;cvc5 reports: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">theorem</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkEntailed</span><span class="p">(</span><span class="n">theorem</span><span class="p">)</span>
 <span class="linenos">66</span>         <span class="o">&lt;&lt;</span> <span class="s">&quot;.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
@@ -260,16 +260,16 @@ The simplest way to get a sense of the syntax is to look at an example:</p>
 <span class="linenos">72</span>    <span class="n">Term</span> <span class="n">two</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkInteger</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 <span class="linenos">73</span>    <span class="n">Term</span> <span class="n">three</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkInteger</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 <span class="linenos">74</span>
-<span class="linenos">75</span>    <span class="n">Term</span> <span class="n">singleton_one</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SINGLETON</span><span class="p">,</span> <span class="n">one</span><span class="p">);</span>
-<span class="linenos">76</span>    <span class="n">Term</span> <span class="n">singleton_two</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SINGLETON</span><span class="p">,</span> <span class="n">two</span><span class="p">);</span>
-<span class="linenos">77</span>    <span class="n">Term</span> <span class="n">singleton_three</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SINGLETON</span><span class="p">,</span> <span class="n">three</span><span class="p">);</span>
-<span class="linenos">78</span>    <span class="n">Term</span> <span class="n">one_two</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">UNION</span><span class="p">,</span> <span class="n">singleton_one</span><span class="p">,</span> <span class="n">singleton_two</span><span class="p">);</span>
-<span class="linenos">79</span>    <span class="n">Term</span> <span class="n">two_three</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">UNION</span><span class="p">,</span> <span class="n">singleton_two</span><span class="p">,</span> <span class="n">singleton_three</span><span class="p">);</span>
-<span class="linenos">80</span>    <span class="n">Term</span> <span class="n">intersection</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">INTERSECTION</span><span class="p">,</span> <span class="n">one_two</span><span class="p">,</span> <span class="n">two_three</span><span class="p">);</span>
+<span class="linenos">75</span>    <span class="n">Term</span> <span class="n">singleton_one</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SET_SINGLETON</span><span class="p">,</span> <span class="n">one</span><span class="p">);</span>
+<span class="linenos">76</span>    <span class="n">Term</span> <span class="n">singleton_two</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SET_SINGLETON</span><span class="p">,</span> <span class="n">two</span><span class="p">);</span>
+<span class="linenos">77</span>    <span class="n">Term</span> <span class="n">singleton_three</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SET_SINGLETON</span><span class="p">,</span> <span class="n">three</span><span class="p">);</span>
+<span class="linenos">78</span>    <span class="n">Term</span> <span class="n">one_two</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SET_UNION</span><span class="p">,</span> <span class="n">singleton_one</span><span class="p">,</span> <span class="n">singleton_two</span><span class="p">);</span>
+<span class="linenos">79</span>    <span class="n">Term</span> <span class="n">two_three</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SET_UNION</span><span class="p">,</span> <span class="n">singleton_two</span><span class="p">,</span> <span class="n">singleton_three</span><span class="p">);</span>
+<span class="linenos">80</span>    <span class="n">Term</span> <span class="n">intersection</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SET_INTERSECTION</span><span class="p">,</span> <span class="n">one_two</span><span class="p">,</span> <span class="n">two_three</span><span class="p">);</span>
 <span class="linenos">81</span>
 <span class="linenos">82</span>    <span class="n">Term</span> <span class="n">x</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkConst</span><span class="p">(</span><span class="n">integer</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">);</span>
 <span class="linenos">83</span>
-<span class="linenos">84</span>    <span class="n">Term</span> <span class="n">e</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">MEMBER</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">intersection</span><span class="p">);</span>
+<span class="linenos">84</span>    <span class="n">Term</span> <span class="n">e</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">SET_MEMBER</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">intersection</span><span class="p">);</span>
 <span class="linenos">85</span>
 <span class="linenos">86</span>    <span class="n">Result</span> <span class="n">result</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="n">checkSatAssuming</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
 <span class="linenos">87</span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;cvc5 reports: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">e</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">result</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
@@ -323,12 +323,12 @@ The simplest way to get a sense of the syntax is to look at an example:</p>
 <span class="linenos">39</span>    <span class="n">B</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkConst</span><span class="p">(</span><span class="n">set_</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">)</span>
 <span class="linenos">40</span>    <span class="n">C</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkConst</span><span class="p">(</span><span class="n">set_</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">)</span>
 <span class="linenos">41</span>
-<span class="linenos">42</span>    <span class="n">unionAB</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Union</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-<span class="linenos">43</span>    <span class="n">lhs</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Intersection</span><span class="p">,</span> <span class="n">unionAB</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="linenos">42</span>    <span class="n">unionAB</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">SetUnion</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="linenos">43</span>    <span class="n">lhs</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">SetIntersection</span><span class="p">,</span> <span class="n">unionAB</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
 <span class="linenos">44</span>
-<span class="linenos">45</span>    <span class="n">intersectionAC</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Intersection</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
-<span class="linenos">46</span>    <span class="n">intersectionBC</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Intersection</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
-<span class="linenos">47</span>    <span class="n">rhs</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Union</span><span class="p">,</span> <span class="n">intersectionAC</span><span class="p">,</span> <span class="n">intersectionBC</span><span class="p">)</span>
+<span class="linenos">45</span>    <span class="n">intersectionAC</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">SetIntersection</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="linenos">46</span>    <span class="n">intersectionBC</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">SetIntersection</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="linenos">47</span>    <span class="n">rhs</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">SetUnion</span><span class="p">,</span> <span class="n">intersectionAC</span><span class="p">,</span> <span class="n">intersectionBC</span><span class="p">)</span>
 <span class="linenos">48</span>
 <span class="linenos">49</span>    <span class="n">theorem</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Equal</span><span class="p">,</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">)</span>
 <span class="linenos">50</span>
@@ -340,7 +340,7 @@ The simplest way to get a sense of the syntax is to look at an example:</p>
 <span class="linenos">56</span>    <span class="n">A</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkConst</span><span class="p">(</span><span class="n">set_</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span>
 <span class="linenos">57</span>    <span class="n">emptyset</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkEmptySet</span><span class="p">(</span><span class="n">set_</span><span class="p">)</span>
 <span class="linenos">58</span>
-<span class="linenos">59</span>    <span class="n">theorem</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Subset</span><span class="p">,</span> <span class="n">emptyset</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="linenos">59</span>    <span class="n">theorem</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">SetSubset</span><span class="p">,</span> <span class="n">emptyset</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
 <span class="linenos">60</span>
 <span class="linenos">61</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cvc5 reports: </span><span class="si">{}</span><span class="s2"> is </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">theorem</span><span class="p">,</span>
 <span class="linenos">62</span>                                          <span class="n">slv</span><span class="o">.</span><span class="n">checkEntailed</span><span class="p">(</span><span class="n">theorem</span><span class="p">)))</span>
@@ -351,16 +351,16 @@ The simplest way to get a sense of the syntax is to look at an example:</p>
 <span class="linenos">67</span>    <span class="n">two</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkInteger</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="linenos">68</span>    <span class="n">three</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkInteger</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="linenos">69</span>
-<span class="linenos">70</span>    <span class="n">singleton_one</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Singleton</span><span class="p">,</span> <span class="n">one</span><span class="p">)</span>
-<span class="linenos">71</span>    <span class="n">singleton_two</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Singleton</span><span class="p">,</span> <span class="n">two</span><span class="p">)</span>
-<span class="linenos">72</span>    <span class="n">singleton_three</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Singleton</span><span class="p">,</span> <span class="n">three</span><span class="p">)</span>
-<span class="linenos">73</span>    <span class="n">one_two</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Union</span><span class="p">,</span> <span class="n">singleton_one</span><span class="p">,</span> <span class="n">singleton_two</span><span class="p">)</span>
-<span class="linenos">74</span>    <span class="n">two_three</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Union</span><span class="p">,</span> <span class="n">singleton_two</span><span class="p">,</span> <span class="n">singleton_three</span><span class="p">)</span>
-<span class="linenos">75</span>    <span class="n">intersection</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Intersection</span><span class="p">,</span> <span class="n">one_two</span><span class="p">,</span> <span class="n">two_three</span><span class="p">)</span>
+<span class="linenos">70</span>    <span class="n">singleton_one</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">SetSingleton</span><span class="p">,</span> <span class="n">one</span><span class="p">)</span>
+<span class="linenos">71</span>    <span class="n">singleton_two</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">SetSingleton</span><span class="p">,</span> <span class="n">two</span><span class="p">)</span>
+<span class="linenos">72</span>    <span class="n">singleton_three</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">SetSingleton</span><span class="p">,</span> <span class="n">three</span><span class="p">)</span>
+<span class="linenos">73</span>    <span class="n">one_two</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">SetUnion</span><span class="p">,</span> <span class="n">singleton_one</span><span class="p">,</span> <span class="n">singleton_two</span><span class="p">)</span>
+<span class="linenos">74</span>    <span class="n">two_three</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">SetUnion</span><span class="p">,</span> <span class="n">singleton_two</span><span class="p">,</span> <span class="n">singleton_three</span><span class="p">)</span>
+<span class="linenos">75</span>    <span class="n">intersection</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">SetIntersection</span><span class="p">,</span> <span class="n">one_two</span><span class="p">,</span> <span class="n">two_three</span><span class="p">)</span>
 <span class="linenos">76</span>
 <span class="linenos">77</span>    <span class="n">x</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkConst</span><span class="p">(</span><span class="n">integer</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
 <span class="linenos">78</span>
-<span class="linenos">79</span>    <span class="n">e</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">Member</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">intersection</span><span class="p">)</span>
+<span class="linenos">79</span>    <span class="n">e</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">mkTerm</span><span class="p">(</span><span class="n">kinds</span><span class="o">.</span><span class="n">SetMember</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">intersection</span><span class="p">)</span>
 <span class="linenos">80</span>
 <span class="linenos">81</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">slv</span><span class="o">.</span><span class="n">checkSatAssuming</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 <span class="linenos">82</span>
@@ -382,26 +382,26 @@ The simplest way to get a sense of the syntax is to look at an example:</p>
 <span class="linenos">10</span>(<span class="k">check-sat-assuming</span>
 <span class="linenos">11</span>  (
 <span class="linenos">12</span>    (<span class="o">distinct</span>
-<span class="linenos">13</span>      (<span class="o">intersection</span> (<span class="o">union</span> <span class="n">A</span> <span class="n">B</span>) <span class="n">C</span>)
-<span class="linenos">14</span>      (<span class="o">union</span> (<span class="o">intersection</span> <span class="n">A</span> <span class="n">C</span>) (<span class="o">intersection</span> <span class="n">B</span> <span class="n">C</span>)))
+<span class="linenos">13</span>      (<span class="n">set.intersection</span> (<span class="n">set.union</span> <span class="n">A</span> <span class="n">B</span>) <span class="n">C</span>)
+<span class="linenos">14</span>      (<span class="n">set.union</span> (<span class="n">set.intersection</span> <span class="n">A</span> <span class="n">C</span>) (<span class="n">set.intersection</span> <span class="n">B</span> <span class="n">C</span>)))
 <span class="linenos">15</span>  )
 <span class="linenos">16</span>)
 <span class="linenos">17</span>
 <span class="linenos">18</span><span class="c">; Verify emptset is a subset of any set</span>
 <span class="linenos">19</span>(<span class="k">check-sat-assuming</span>
 <span class="linenos">20</span>  (
-<span class="linenos">21</span>    (<span class="o">not</span> (<span class="o">subset</span> (<span class="k">as</span> <span class="o">emptyset</span> (<span class="na">Set</span> <span class="na">Int</span>)) <span class="n">A</span>))
+<span class="linenos">21</span>    (<span class="o">not</span> (<span class="n">set.subset</span> (<span class="k">as</span> <span class="n">set.empty</span> (<span class="na">Set</span> <span class="na">Int</span>)) <span class="n">A</span>))
 <span class="linenos">22</span>  )
 <span class="linenos">23</span>)
 <span class="linenos">24</span>
 <span class="linenos">25</span><span class="c">; Find an element in {1, 2} intersection {2, 3}, if there is one.</span>
 <span class="linenos">26</span>(<span class="k">check-sat-assuming</span>
 <span class="linenos">27</span>  (
-<span class="linenos">28</span>    (<span class="o">member</span>
+<span class="linenos">28</span>    (<span class="n">set.member</span>
 <span class="linenos">29</span>      <span class="n">x</span>
-<span class="linenos">30</span>      (<span class="o">intersection</span>
-<span class="linenos">31</span>        (<span class="o">union</span> (<span class="o">singleton</span> <span class="m">1</span>) (<span class="o">singleton</span> <span class="m">2</span>))
-<span class="linenos">32</span>        (<span class="o">union</span> (<span class="o">singleton</span> <span class="m">2</span>) (<span class="o">singleton</span> <span class="m">3</span>))))
+<span class="linenos">30</span>      (<span class="n">set.intersection</span>
+<span class="linenos">31</span>        (<span class="n">set.union</span> (<span class="n">set.singleton</span> <span class="m">1</span>) (<span class="n">set.singleton</span> <span class="m">2</span>))
+<span class="linenos">32</span>        (<span class="n">set.union</span> (<span class="n">set.singleton</span> <span class="m">2</span>) (<span class="n">set.singleton</span> <span class="m">3</span>))))
 <span class="linenos">33</span>  )
 <span class="linenos">34</span>)
 <span class="linenos">35</span>
@@ -423,8 +423,8 @@ a <cite>cvc5::api::Solver solver</cite> object.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
-<col style="width: 34%" />
-<col style="width: 50%" />
+<col style="width: 33%" />
+<col style="width: 52%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td></td>
@@ -450,63 +450,63 @@ a <cite>cvc5::api::Solver solver</cite> object.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Union</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(union</span> <span class="pre">X</span> <span class="pre">Y)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(set.union</span> <span class="pre">X</span> <span class="pre">Y)</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">Y</span> <span class="pre">=</span> <span class="pre">solver.mkConst(s,</span> <span class="pre">&quot;Y&quot;);</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::UNION,</span> <span class="pre">X,</span> <span class="pre">Y);</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::SET_UNION,</span> <span class="pre">X,</span> <span class="pre">Y);</span></code></p>
 </td>
 </tr>
 <tr class="row-even"><td><p>Intersection</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(setminus</span> <span class="pre">X</span> <span class="pre">Y)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::SETMINUS,</span> <span class="pre">X,</span> <span class="pre">Y);</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(set.minus</span> <span class="pre">X</span> <span class="pre">Y)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::SET_MINUS,</span> <span class="pre">X,</span> <span class="pre">Y);</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Membership</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(member</span> <span class="pre">x</span> <span class="pre">X)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(set.member</span> <span class="pre">x</span> <span class="pre">X)</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">solver.mkConst(solver.getIntegerSort(),</span> <span class="pre">&quot;x&quot;);</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::MEMBER,</span> <span class="pre">x,</span> <span class="pre">X);</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::SET_MEMBER,</span> <span class="pre">x,</span> <span class="pre">X);</span></code></p>
 </td>
 </tr>
 <tr class="row-even"><td><p>Subset</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(subset</span> <span class="pre">X</span> <span class="pre">Y)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::SUBSET,</span> <span class="pre">X,</span> <span class="pre">Y);</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(set.subset</span> <span class="pre">X</span> <span class="pre">Y)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::SET_SUBSET,</span> <span class="pre">X,</span> <span class="pre">Y);</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Emptyset</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(as</span> <span class="pre">emptyset</span> <span class="pre">(Set</span> <span class="pre">Int)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(as</span> <span class="pre">set.empty</span> <span class="pre">(Set</span> <span class="pre">Int)</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkEmptySet(s);</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Singleton Set</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(singleton</span> <span class="pre">1)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::SINGLETON,</span> <span class="pre">solver.mkInteger(1));</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(set.singleton</span> <span class="pre">1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::SET_SINGLETON,</span> <span class="pre">solver.mkInteger(1));</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Cardinality</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(card</span> <span class="pre">X)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::CARD,</span> <span class="pre">X);</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(set.card</span> <span class="pre">X)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::SET_CARD,</span> <span class="pre">X);</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Insert / Finite Sets</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(insert</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">(singleton</span> <span class="pre">4))</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(set.insert</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">(set.singleton</span> <span class="pre">4))</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">one</span> <span class="pre">=</span> <span class="pre">solver.mkInteger(1);</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">two</span> <span class="pre">=</span> <span class="pre">solver.mkInteger(2);</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">three</span> <span class="pre">=</span> <span class="pre">solver.mkInteger(3);</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">sgl</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::SINGLETON,</span> <span class="pre">solver.mkInteger(4));</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::INSERT,</span> <span class="pre">{one,</span> <span class="pre">two,</span> <span class="pre">three,</span> <span class="pre">sgl});</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">sgl</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::SET_SINGLETON,</span> <span class="pre">solver.mkInteger(4));</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::SET_INSERT,</span> <span class="pre">{one,</span> <span class="pre">two,</span> <span class="pre">three,</span> <span class="pre">sgl});</span></code></p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>Complement</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(complement</span> <span class="pre">X)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::COMPLEMENT,</span> <span class="pre">X);</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(set.complement</span> <span class="pre">X)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::SET_COMPLEMENT,</span> <span class="pre">X);</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Universe Set</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(as</span> <span class="pre">univset</span> <span class="pre">(Set</span> <span class="pre">Int))</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(as</span> <span class="pre">set.universe</span> <span class="pre">(Set</span> <span class="pre">Int))</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkUniverseSet(s);</span></code></p></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="semantics">
 <h3>Semantics<a class="headerlink" href="#semantics" title="Permalink to this headline">¶</a></h3>
-<p>The semantics of most of the above operators (e.g., set union, intersection,
-difference) are straightforward.
+<p>The semantics of most of the above operators (e.g., <code class="docutils literal notranslate"><span class="pre">set.union</span></code>,
+<code class="docutils literal notranslate"><span class="pre">set.intersection</span></code>, difference) are straightforward.
 The semantics for the universe set and complement are more subtle and explained
 in the following.</p>
-<p>The universe set <code class="docutils literal notranslate"><span class="pre">(as</span> <span class="pre">univset</span> <span class="pre">(Set</span> <span class="pre">T))</span></code> is <em>not</em> interpreted as the set
+<p>The universe set <code class="docutils literal notranslate"><span class="pre">(as</span> <span class="pre">set.universe</span> <span class="pre">(Set</span> <span class="pre">T))</span></code> is <em>not</em> interpreted as the set
 containing all elements of sort <code class="docutils literal notranslate"><span class="pre">T</span></code>.
 Instead it may be interpreted as any set such that all sets of sort <code class="docutils literal notranslate"><span class="pre">(Set</span> <span class="pre">T)</span></code>
 are interpreted as subsets of it.
@@ -518,14 +518,14 @@ our input.</p>
 (<span class="k">declare-fun</span> <span class="n">z</span> () (<span class="na">Set</span> <span class="na">Int</span>))
 (<span class="k">assert</span> (<span class="o">member</span> <span class="m">0</span> <span class="n">x</span>))
 (<span class="k">assert</span> (<span class="o">member</span> <span class="m">1</span> <span class="n">y</span>))
-(<span class="k">assert</span> (<span class="o">=</span> <span class="n">z</span> (<span class="k">as</span> <span class="o">univset</span> (<span class="na">Set</span> <span class="na">Int</span>))))
+(<span class="k">assert</span> (<span class="o">=</span> <span class="n">z</span> (<span class="k">as</span> <span class="n">set.universe</span> (<span class="na">Set</span> <span class="na">Int</span>))))
 (<span class="k">check-sat</span>)
 </pre></div>
 </div>
 <p>Here, a possible model is:</p>
-<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">define-fun</span> <span class="n">x</span> () (<span class="o">singleton</span> <span class="m">0</span>))
-(<span class="k">define-fun</span> <span class="n">y</span> () (<span class="o">singleton</span> <span class="m">1</span>))
-(<span class="k">define-fun</span> <span class="n">z</span> () (<span class="o">union</span> (<span class="o">singleton</span> <span class="m">1</span>) (<span class="o">singleton</span> <span class="m">0</span>)))
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">define-fun</span> <span class="n">x</span> () (<span class="n">set.singleton</span> <span class="m">0</span>))
+(<span class="k">define-fun</span> <span class="n">y</span> () (<span class="n">set.singleton</span> <span class="m">1</span>))
+(<span class="k">define-fun</span> <span class="n">z</span> () (<span class="n">set.union</span> (<span class="n">set.singleton</span> <span class="m">1</span>) (<span class="n">set.singleton</span> <span class="m">0</span>)))
 </pre></div>
 </div>
 <p>Notice that the universe set in this example is interpreted the same as <code class="docutils literal notranslate"><span class="pre">z</span></code>,
@@ -535,7 +535,7 @@ of it.</p>
 interpretation of the universe set for <code class="docutils literal notranslate"><span class="pre">(Set</span> <span class="pre">T)</span></code>, and not relative to the set
 of all elements of sort <code class="docutils literal notranslate"><span class="pre">T</span></code>.
 That is, for all sets <code class="docutils literal notranslate"><span class="pre">X</span></code> of sort <code class="docutils literal notranslate"><span class="pre">(Set</span> <span class="pre">T)</span></code>, the complement operator is
-such that <code class="docutils literal notranslate"><span class="pre">(=</span> <span class="pre">(complement</span> <span class="pre">X)</span> <span class="pre">(setminus</span> <span class="pre">(as</span> <span class="pre">univset</span> <span class="pre">(Set</span> <span class="pre">T))</span> <span class="pre">X))</span></code>
+such that <code class="docutils literal notranslate"><span class="pre">(=</span> <span class="pre">(set.complement</span> <span class="pre">X)</span> <span class="pre">(set.minus</span> <span class="pre">(as</span> <span class="pre">set.universe</span> <span class="pre">(Set</span> <span class="pre">T))</span> <span class="pre">X))</span></code>
 holds in all models.</p>
 <p>The motivation for these semantics is to ensure that the universe set for sort
 <code class="docutils literal notranslate"><span class="pre">T</span></code> and applications of set complement can always be interpreted as a finite
@@ -550,7 +550,7 @@ In particular, the following formula is SAT (even though cvc5 is not able to
 say this):</p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span>(<span class="k">set-logic</span> <span class="n">ALL</span>)
 (<span class="k">declare-fun</span> <span class="n">x</span> () (<span class="na">Set</span> <span class="na">Int</span>))
-(<span class="k">assert</span> (<span class="k">forall</span> ((<span class="n">z</span> <span class="na">Int</span>) (<span class="o">member</span> (<span class="o">*</span> <span class="m">2</span> <span class="n">z</span>) <span class="n">x</span>)))
+(<span class="k">assert</span> (<span class="k">forall</span> ((<span class="n">z</span> <span class="na">Int</span>) (<span class="n">set.member</span> (<span class="o">*</span> <span class="m">2</span> <span class="n">z</span>) <span class="n">x</span>)))
 (<span class="k">check-sat</span>)
 </pre></div>
 </div>
@@ -577,31 +577,31 @@ counter-intuitive when quantifiers are present.</p>
 <span class="linenos">12</span>
 <span class="linenos">13</span>(<span class="k">assert</span>
 <span class="linenos">14</span>  (<span class="o">=</span> <span class="n">r1</span>
-<span class="linenos">15</span>    (<span class="o">insert</span>
-<span class="linenos">16</span>      (<span class="o">mkTuple</span> <span class="s">&quot;a&quot;</span> <span class="m">1</span>)
-<span class="linenos">17</span>      (<span class="o">mkTuple</span> <span class="s">&quot;b&quot;</span> <span class="m">2</span>)
-<span class="linenos">18</span>      (<span class="o">mkTuple</span> <span class="s">&quot;c&quot;</span> <span class="m">3</span>)
-<span class="linenos">19</span>      (<span class="o">singleton</span> (<span class="o">mkTuple</span> <span class="s">&quot;d&quot;</span> <span class="m">4</span>)))))
+<span class="linenos">15</span>    (<span class="n">set.insert</span>
+<span class="linenos">16</span>      (<span class="n">tuple</span> <span class="s">&quot;a&quot;</span> <span class="m">1</span>)
+<span class="linenos">17</span>      (<span class="n">tuple</span> <span class="s">&quot;b&quot;</span> <span class="m">2</span>)
+<span class="linenos">18</span>      (<span class="n">tuple</span> <span class="s">&quot;c&quot;</span> <span class="m">3</span>)
+<span class="linenos">19</span>      (<span class="n">set.singleton</span> (<span class="n">tuple</span> <span class="s">&quot;d&quot;</span> <span class="m">4</span>)))))
 <span class="linenos">20</span>(<span class="k">assert</span>
 <span class="linenos">21</span>  (<span class="o">=</span> <span class="n">r2</span>
-<span class="linenos">22</span>    (<span class="o">insert</span>
-<span class="linenos">23</span>      (<span class="o">mkTuple</span> <span class="m">1</span> <span class="s">&quot;1&quot;</span>)
-<span class="linenos">24</span>      (<span class="o">mkTuple</span> <span class="m">2</span> <span class="s">&quot;2&quot;</span>)
-<span class="linenos">25</span>      (<span class="o">mkTuple</span> <span class="m">3</span> <span class="s">&quot;3&quot;</span>)
-<span class="linenos">26</span>      (<span class="o">singleton</span> (<span class="o">mkTuple</span> <span class="m">17</span> <span class="s">&quot;17&quot;</span>)))))
-<span class="linenos">27</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">r</span> (<span class="o">join</span> <span class="n">r1</span> <span class="n">r2</span>)))
-<span class="linenos">28</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">s</span> (<span class="o">transpose</span> <span class="n">r</span>)))
-<span class="linenos">29</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">t</span> (<span class="o">product</span> <span class="n">r1</span> <span class="n">r2</span>)))
+<span class="linenos">22</span>    (<span class="n">set.insert</span>
+<span class="linenos">23</span>      (<span class="n">tuple</span> <span class="m">1</span> <span class="s">&quot;1&quot;</span>)
+<span class="linenos">24</span>      (<span class="n">tuple</span> <span class="m">2</span> <span class="s">&quot;2&quot;</span>)
+<span class="linenos">25</span>      (<span class="n">tuple</span> <span class="m">3</span> <span class="s">&quot;3&quot;</span>)
+<span class="linenos">26</span>      (<span class="n">set.singleton</span> (<span class="n">tuple</span> <span class="m">17</span> <span class="s">&quot;17&quot;</span>)))))
+<span class="linenos">27</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">r</span> (<span class="n">rel.join</span> <span class="n">r1</span> <span class="n">r2</span>)))
+<span class="linenos">28</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">s</span> (<span class="n">rel.transpose</span> <span class="n">r</span>)))
+<span class="linenos">29</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">t</span> (<span class="n">rel.product</span> <span class="n">r1</span> <span class="n">r2</span>)))
 <span class="linenos">30</span>(<span class="k">assert</span>
 <span class="linenos">31</span>  (<span class="o">=</span>
 <span class="linenos">32</span>    <span class="n">lt1</span>
-<span class="linenos">33</span>     (<span class="o">insert</span>
-<span class="linenos">34</span>       (<span class="o">mkTuple</span> <span class="m">1</span> <span class="m">2</span>)
-<span class="linenos">35</span>       (<span class="o">mkTuple</span> <span class="m">2</span> <span class="m">3</span>)
-<span class="linenos">36</span>       (<span class="o">mkTuple</span> <span class="m">3</span> <span class="m">4</span>)
-<span class="linenos">37</span>       (<span class="o">singleton</span> (<span class="o">mkTuple</span> <span class="m">4</span> <span class="m">5</span>)))))
-<span class="linenos">38</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">lt2</span> (<span class="o">tclosure</span> <span class="n">lt1</span>)))
-<span class="linenos">39</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">i</span> (<span class="o">card</span> <span class="n">t</span>)))
+<span class="linenos">33</span>     (<span class="n">set.insert</span>
+<span class="linenos">34</span>       (<span class="n">tuple</span> <span class="m">1</span> <span class="m">2</span>)
+<span class="linenos">35</span>       (<span class="n">tuple</span> <span class="m">2</span> <span class="m">3</span>)
+<span class="linenos">36</span>       (<span class="n">tuple</span> <span class="m">3</span> <span class="m">4</span>)
+<span class="linenos">37</span>       (<span class="n">set.singleton</span> (<span class="n">tuple</span> <span class="m">4</span> <span class="m">5</span>)))))
+<span class="linenos">38</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">lt2</span> (<span class="n">rel.tclosure</span> <span class="n">lt1</span>)))
+<span class="linenos">39</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">i</span> (<span class="n">set.card</span> <span class="n">t</span>)))
 <span class="linenos">40</span>
 <span class="linenos">41</span>(<span class="k">check-sat</span>)
 </pre></div>
@@ -665,20 +665,20 @@ More details can be found in <span id="id2">[<a class="reference internal" href=
 </td>
 </tr>
 <tr class="row-odd"><td><p>Transpose</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(transpose</span> <span class="pre">X)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::TRANSPOSE,</span> <span class="pre">X);</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(rel.transpose</span> <span class="pre">X)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::RELATION_TRANSPOSE,</span> <span class="pre">X);</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Transitive Closure</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(tclosure</span> <span class="pre">X)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::TCLOSURE,</span> <span class="pre">X);</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(rel.tclosure</span> <span class="pre">X)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::RELATION_TCLOSURE,</span> <span class="pre">X);</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Join</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(join</span> <span class="pre">X</span> <span class="pre">Y)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::JOIN,</span> <span class="pre">X,</span> <span class="pre">Y);</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(rel.join</span> <span class="pre">X</span> <span class="pre">Y)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::RELATION_JOIN,</span> <span class="pre">X,</span> <span class="pre">Y);</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Product</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">(product</span> <span class="pre">X</span> <span class="pre">Y)</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::PRODUCT,</span> <span class="pre">X,</span> <span class="pre">Y);</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(rel.product</span> <span class="pre">X</span> <span class="pre">Y)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Term</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">solver.mkTerm(Kind::RELATION_PRODUCT,</span> <span class="pre">X,</span> <span class="pre">Y);</span></code></p></td>
 </tr>
 </tbody>
 </table>

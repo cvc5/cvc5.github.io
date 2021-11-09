@@ -105,6 +105,7 @@
 <li class="toctree-l3"><a class="reference internal" href="grammar.html">Grammar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="kind.html">Kind</a></li>
 <li class="toctree-l3"><a class="reference internal" href="op.html">Op</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optioninfo.html">OptionInfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="result.html">Result</a></li>
 <li class="toctree-l3"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Solver</a></li>
@@ -113,6 +114,7 @@
 <li class="toctree-l3"><a class="reference internal" href="term.html">Term</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../java/index.html">Java API Documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/python.html">Python API Documentation</a></li>
 </ul>
 </li>
@@ -374,7 +376,7 @@
 <span id="_CPPv3NK4cvc53api6Solver15mkDatatypeSortsERKNSt6vectorI12DatatypeDeclEERKNSt3setI4SortEE"></span><span id="_CPPv2NK4cvc53api6Solver15mkDatatypeSortsERKNSt6vectorI12DatatypeDeclEERKNSt3setI4SortEE"></span><span id="cvc5::api::Solver::mkDatatypeSorts__std::vector:DatatypeDecl:CR.std::set:Sort:CRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a0088b1d4a77d50d68b3ce60a7f73cfbd"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort"><span class="n"><span class="pre">Sort</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkDatatypeSorts</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="datatypedecl.html#_CPPv4N4cvc53api12DatatypeDeclE" title="cvc5::api::DatatypeDecl"><span class="n"><span class="pre">DatatypeDecl</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dtypedecls</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort"><span class="n"><span class="pre">Sort</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">unresolvedSorts</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver15mkDatatypeSortsERKNSt6vectorI12DatatypeDeclEERKNSt3setI4SortEE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Create a vector of datatype sorts using unresolved sorts. The names of the datatype declarations in dtypedecls must be distinct.</p>
 <p>This method is called when the <a class="reference internal" href="datatypedecl.html#classcvc5_1_1api_1_1DatatypeDecl"><span class="std std-ref">DatatypeDecl</span></a> objects dtypedecls have been built using “unresolved” sorts.</p>
-<p>We associate each sort in unresolvedSorts with exacly one datatype from dtypedecls. In particular, it must have the same name as exactly one datatype declaration in dtypedecls.</p>
+<p>We associate each sort in unresolvedSorts with exactly one datatype from dtypedecls. In particular, it must have the same name as exactly one datatype declaration in dtypedecls.</p>
 <p>When constructing datatypes, unresolved sorts are replaced by the datatype sort constructed for the datatype declaration it is associated with.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -396,7 +398,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>domain</strong> – the sort of the fuction argument </p></li>
+<li><p><strong>domain</strong> – the sort of the function argument </p></li>
 <li><p><strong>codomain</strong> – the sort of the function return value </p></li>
 </ul>
 </dd>
@@ -957,9 +959,9 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver13mkRegexpEmptyEv">
-<span id="_CPPv3NK4cvc53api6Solver13mkRegexpEmptyEv"></span><span id="_CPPv2NK4cvc53api6Solver13mkRegexpEmptyEv"></span><span id="cvc5::api::Solver::mkRegexpEmptyC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a5e0ba3186bb76a4e52fb1419dd5a8a08"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkRegexpEmpty</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver13mkRegexpEmptyEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a regular expression empty term. </p>
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver12mkRegexpNoneEv">
+<span id="_CPPv3NK4cvc53api6Solver12mkRegexpNoneEv"></span><span id="_CPPv2NK4cvc53api6Solver12mkRegexpNoneEv"></span><span id="cvc5::api::Solver::mkRegexpNoneC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a1c66915db2df2b1b127f512d281198f7"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkRegexpNone</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver12mkRegexpNoneEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a regular expression none (re.none) term. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>the empty term </p>
@@ -968,9 +970,9 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver13mkRegexpSigmaEv">
-<span id="_CPPv3NK4cvc53api6Solver13mkRegexpSigmaEv"></span><span id="_CPPv2NK4cvc53api6Solver13mkRegexpSigmaEv"></span><span id="cvc5::api::Solver::mkRegexpSigmaC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a088cd7cc02cd9685c587147950ffb53a"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkRegexpSigma</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver13mkRegexpSigmaEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a regular expression sigma term. </p>
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver15mkRegexpAllcharEv">
+<span id="_CPPv3NK4cvc53api6Solver15mkRegexpAllcharEv"></span><span id="_CPPv2NK4cvc53api6Solver15mkRegexpAllcharEv"></span><span id="cvc5::api::Solver::mkRegexpAllcharC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1afac66f08f42cab1e72b2656b08c6b8d2"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkRegexpAllchar</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver15mkRegexpAllcharEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a regular expression allchar (re.allchar) term. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>the sigma term </p>
@@ -1002,6 +1004,17 @@
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>the empty bag constant </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver8mkSepEmpEv">
+<span id="_CPPv3NK4cvc53api6Solver8mkSepEmpEv"></span><span id="_CPPv2NK4cvc53api6Solver8mkSepEmpEv"></span><span id="cvc5::api::Solver::mkSepEmpC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a65df2e3910ac539a64530b81a5c051b9"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkSepEmp</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver8mkSepEmpEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a separation logic empty term. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the separation logic empty term </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1136,7 +1149,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver8mkPosInfE8uint32_t8uint32_t">
 <span id="_CPPv3NK4cvc53api6Solver8mkPosInfE8uint32_t8uint32_t"></span><span id="_CPPv2NK4cvc53api6Solver8mkPosInfE8uint32_t8uint32_t"></span><span id="cvc5::api::Solver::mkPosInf__uint32_t.uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a46fa9b1b062c8a21bd0bf291f1a58fc3"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkPosInf</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">exp</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sig</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver8mkPosInfE8uint32_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a positive infinity floating-point constant. Requires cvc5 to be compiled with SymFPU support. </p>
+<dd><p>Create a positive infinity floating-point constant. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1153,7 +1166,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver8mkNegInfE8uint32_t8uint32_t">
 <span id="_CPPv3NK4cvc53api6Solver8mkNegInfE8uint32_t8uint32_t"></span><span id="_CPPv2NK4cvc53api6Solver8mkNegInfE8uint32_t8uint32_t"></span><span id="cvc5::api::Solver::mkNegInf__uint32_t.uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a62d76e319a1b75aad6c4ada55cb04b66"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkNegInf</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">exp</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sig</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver8mkNegInfE8uint32_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a negative infinity floating-point constant. Requires cvc5 to be compiled with SymFPU support. </p>
+<dd><p>Create a negative infinity floating-point constant. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1170,7 +1183,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver5mkNaNE8uint32_t8uint32_t">
 <span id="_CPPv3NK4cvc53api6Solver5mkNaNE8uint32_t8uint32_t"></span><span id="_CPPv2NK4cvc53api6Solver5mkNaNE8uint32_t8uint32_t"></span><span id="cvc5::api::Solver::mkNaN__uint32_t.uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a8ec80b2ebd1f7ad2346e7310982c437c"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkNaN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">exp</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sig</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver5mkNaNE8uint32_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a not-a-number (NaN) floating-point constant. Requires cvc5 to be compiled with SymFPU support. </p>
+<dd><p>Create a not-a-number (NaN) floating-point constant. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1187,7 +1200,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver9mkPosZeroE8uint32_t8uint32_t">
 <span id="_CPPv3NK4cvc53api6Solver9mkPosZeroE8uint32_t8uint32_t"></span><span id="_CPPv2NK4cvc53api6Solver9mkPosZeroE8uint32_t8uint32_t"></span><span id="cvc5::api::Solver::mkPosZero__uint32_t.uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a5a25615eebfe5d3c661452c725af748a"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkPosZero</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">exp</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sig</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver9mkPosZeroE8uint32_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a positive zero (+0.0) floating-point constant. Requires cvc5 to be compiled with SymFPU support. </p>
+<dd><p>Create a positive zero (+0.0) floating-point constant. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1204,7 +1217,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver9mkNegZeroE8uint32_t8uint32_t">
 <span id="_CPPv3NK4cvc53api6Solver9mkNegZeroE8uint32_t8uint32_t"></span><span id="_CPPv2NK4cvc53api6Solver9mkNegZeroE8uint32_t8uint32_t"></span><span id="cvc5::api::Solver::mkNegZero__uint32_t.uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a8afa8693ad7cf37f1c7347c3d43d1ba7"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkNegZero</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">exp</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sig</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver9mkNegZeroE8uint32_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a negative zero (-0.0) floating-point constant. Requires cvc5 to be compiled with SymFPU support. </p>
+<dd><p>Create a negative zero (-0.0) floating-point constant. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1268,7 +1281,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver15mkFloatingPointE8uint32_t8uint32_t4Term">
 <span id="_CPPv3NK4cvc53api6Solver15mkFloatingPointE8uint32_t8uint32_t4Term"></span><span id="_CPPv2NK4cvc53api6Solver15mkFloatingPointE8uint32_t8uint32_t4Term"></span><span id="cvc5::api::Solver::mkFloatingPoint__uint32_t.uint32_t.TermC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a7d849e26964d18f59b9675924e07f71b"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkFloatingPoint</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">exp</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sig</span></span>, <a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">val</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver15mkFloatingPointE8uint32_t8uint32_t4Term" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Create a floating-point constant (requires cvc5 to be compiled with symFPU support). </p>
+<dd><p>Create a floating-point constant. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1276,6 +1289,23 @@
 <li><p><strong>sig</strong> – Size of the significand </p></li>
 <li><p><strong>val</strong> – Value of the floating-point constant as a bit-vector term </p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver23mkCardinalityConstraintERK4Sort8uint32_t">
+<span id="_CPPv3NK4cvc53api6Solver23mkCardinalityConstraintERK4Sort8uint32_t"></span><span id="_CPPv2NK4cvc53api6Solver23mkCardinalityConstraintERK4Sort8uint32_t"></span><span id="cvc5::api::Solver::mkCardinalityConstraint__SortCR.uint32_tC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1ac86ef30c500227d1ef52be6103bc597f"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mkCardinalityConstraint</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort"><span class="n"><span class="pre">Sort</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">sort</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">upperBound</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver23mkCardinalityConstraintERK4Sort8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Create a cardinality constraint for an uninterpreted sort. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sort</strong> – the sort the cardinality constraint is for </p></li>
+<li><p><strong>upperBound</strong> – the upper bound on the cardinality of the sort </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the cardinality constraint </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1588,29 +1618,6 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver9defineFunERK4TermRKNSt6vectorI4TermEERK4Termb">
-<span id="_CPPv3NK4cvc53api6Solver9defineFunERK4TermRKNSt6vectorI4TermEERK4Termb"></span><span id="_CPPv2NK4cvc53api6Solver9defineFunERK4TermRKNSt6vectorI4TermEERK4Termb"></span><span id="cvc5::api::Solver::defineFun__TermCR.std::vector:Term:CR.TermCR.bC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a42139bf3ee71aa9fc78226b18e3295b7"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">defineFun</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">fun</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">bound_vars</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">term</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">global</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver9defineFunERK4TermRKNSt6vectorI4TermEERK4Termb" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Define n-ary function. SMT-LIB: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span> <span class="n">define</span><span class="o">-</span><span class="n">fun</span> <span class="o">&lt;</span><span class="n">function_def</span><span class="o">&gt;</span> <span class="p">)</span>
-<span class="o">*</span>
-</pre></div>
-</div>
- Create parameter ‘fun’ with <a class="reference internal" href="#classcvc5_1_1api_1_1Solver_1ae02c6a253f619ec2a805f3364759f076"><span class="std std-ref">mkConst()</span></a>. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>fun</strong> – the sorted function </p></li>
-<li><p><strong>bound_vars</strong> – the parameters to this function </p></li>
-<li><p><strong>term</strong> – the function body </p></li>
-<li><p><strong>global</strong> – determines whether this definition is global (i.e. persists when popping the context) </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the function </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver12defineFunRecERKNSt6stringERKNSt6vectorI4TermEERK4SortRK4Termb">
 <span id="_CPPv3NK4cvc53api6Solver12defineFunRecERKNSt6stringERKNSt6vectorI4TermEERK4SortRK4Termb"></span><span id="_CPPv2NK4cvc53api6Solver12defineFunRecERKNSt6stringERKNSt6vectorI4TermEERK4SortRK4Termb"></span><span id="cvc5::api::Solver::defineFunRec__ssCR.std::vector:Term:CR.SortCR.TermCR.bC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1af736e1ef521dd66b1b363afb770b8fbe"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">defineFunRec</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">symbol</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">bound_vars</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort"><span class="n"><span class="pre">Sort</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">sort</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">term</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">global</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver12defineFunRecERKNSt6stringERKNSt6vectorI4TermEERK4SortRK4Termb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Define recursive function. SMT-LIB: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span> <span class="n">define</span><span class="o">-</span><span class="n">fun</span><span class="o">-</span><span class="n">rec</span> <span class="o">&lt;</span><span class="n">function_def</span><span class="o">&gt;</span> <span class="p">)</span>
@@ -1714,19 +1721,24 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver7getInfoERKNSt6stringE">
+<span id="_CPPv3NK4cvc53api6Solver7getInfoERKNSt6stringE"></span><span id="_CPPv2NK4cvc53api6Solver7getInfoERKNSt6stringE"></span><span id="cvc5::api::Solver::getInfo__ssCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a1488d450cd73c672f4620487a4da9aae"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInfo</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">flag</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver7getInfoERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get info from the solver. SMT-LIB:<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span> <span class="n">get</span><span class="o">-</span><span class="n">info</span> <span class="o">&lt;</span><span class="n">info_flag</span><span class="o">&gt;</span> <span class="p">)</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the info </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver9getOptionERKNSt6stringE">
 <span id="_CPPv3NK4cvc53api6Solver9getOptionERKNSt6stringE"></span><span id="_CPPv2NK4cvc53api6Solver9getOptionERKNSt6stringE"></span><span id="cvc5::api::Solver::getOption__ssCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a362d22ba2726b18e695754cd659dc7c9"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOption</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">option</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver9getOptionERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get info from the solver. SMT-LIB:<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span> <span class="n">get</span><span class="o">-</span><span class="n">info</span> <span class="o">&lt;</span><span class="n">info_flag</span><span class="o">&gt;</span> <span class="p">)</span>\<span class="n">verbatim</span>
- <span class="o">*</span> <span class="nd">@return</span> <span class="n">the</span> <span class="n">info</span>
- <span class="o">*/</span>
-<span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">getInfo</span><span class="p">(</span><span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">flag</span><span class="p">)</span> <span class="n">const</span><span class="p">;</span>
-
-<span class="o">/**</span>
- <span class="o">*</span> <span class="n">Get</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">a</span> <span class="n">given</span> <span class="n">option</span><span class="o">.</span>
- <span class="o">*</span> <span class="n">SMT</span><span class="o">-</span><span class="n">LIB</span><span class="p">:</span>
- <span class="o">*</span> \<span class="n">verbatim</span>
- <span class="o">*</span> <span class="p">(</span> <span class="n">get</span><span class="o">-</span><span class="n">option</span> <span class="o">&lt;</span><span class="n">keyword</span><span class="o">&gt;</span> <span class="p">)</span>
- <span class="o">*</span>
+<dd><p>Get the value of a given option. SMT-LIB: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span> <span class="n">get</span><span class="o">-</span><span class="n">option</span> <span class="o">&lt;</span><span class="n">keyword</span><span class="o">&gt;</span> <span class="p">)</span>
+<span class="o">*</span>
 </pre></div>
 </div>
  </p>
@@ -1747,6 +1759,28 @@
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>all option names </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver13getOptionInfoERKNSt6stringE">
+<span id="_CPPv3NK4cvc53api6Solver13getOptionInfoERKNSt6stringE"></span><span id="_CPPv2NK4cvc53api6Solver13getOptionInfoERKNSt6stringE"></span><span id="cvc5::api::Solver::getOptionInfo__ssCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a36b79cc8bee927eb759688e3131a2aec"></span><a class="reference internal" href="optioninfo.html#_CPPv4N4cvc53api10OptionInfoE" title="cvc5::api::OptionInfo"><span class="n"><span class="pre">OptionInfo</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getOptionInfo</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">option</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver13getOptionInfoERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get some information about the given option. Check the <code class="docutils literal notranslate"><a class="reference internal" href="optioninfo.html#structcvc5_1_1api_1_1OptionInfo"><span class="std std-ref"><span class="pre">OptionInfo</span></span></a></code> class for more details on which information is available. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>information about the given option </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver16getDriverOptionsEv">
+<span id="_CPPv3NK4cvc53api6Solver16getDriverOptionsEv"></span><span id="_CPPv2NK4cvc53api6Solver16getDriverOptionsEv"></span><span id="cvc5::api::Solver::getDriverOptionsC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1ade313a8d180e0481a2b430b512af5f96"></span><span class="n"><span class="pre">DriverOptions</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getDriverOptions</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver16getDriverOptionsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the driver options, which provide access to options that can not be communicated properly via <a class="reference internal" href="#classcvc5_1_1api_1_1Solver_1a362d22ba2726b18e695754cd659dc7c9"><span class="std std-ref">getOption()</span></a> and <a class="reference internal" href="#classcvc5_1_1api_1_1Solver_1a36b79cc8bee927eb759688e3131a2aec"><span class="std std-ref">getOptionInfo()</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a DriverOptions object. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1782,6 +1816,17 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver13getDifficultyEv">
+<span id="_CPPv3NK4cvc53api6Solver13getDifficultyEv"></span><span id="_CPPv2NK4cvc53api6Solver13getDifficultyEv"></span><span id="cvc5::api::Solver::getDifficultyC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a39379d94a6962d4f57bcf1077a22ad93"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getDifficulty</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver13getDifficultyEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get a difficulty estimate for an asserted formula. This method is intended to be called immediately after any response to a checkSat.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a map from (a subset of) the input assertions to a real value that is an estimate of how difficult each assertion was to solve. Unmentioned assertions can be assumed to have zero difficulty. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver8getProofEv">
 <span id="_CPPv3NK4cvc53api6Solver8getProofEv"></span><span id="_CPPv2NK4cvc53api6Solver8getProofEv"></span><span id="cvc5::api::Solver::getProofC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a3b19b2b87a6906ce7239b299f6b56442"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getProof</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver8getProofEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the refutation proof SMT-LIB: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span> <span class="n">get</span><span class="o">-</span><span class="n">proof</span> <span class="p">)</span>
@@ -1791,7 +1836,7 @@
  Requires to enable option ‘produce-proofs’. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a string representing the proof, according to the the value of proof-format-mode. </p>
+<dd class="field-odd"><p>a string representing the proof, according to the value of proof-format-mode. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1799,7 +1844,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver8getValueERK4Term">
 <span id="_CPPv3NK4cvc53api6Solver8getValueERK4Term"></span><span id="_CPPv2NK4cvc53api6Solver8getValueERK4Term"></span><span id="cvc5::api::Solver::getValue__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a15ea983494f6713c6119f348d6423938"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getValue</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">term</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver8getValueERK4Term" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the value of the given term. SMT-LIB: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span> <span class="n">get</span><span class="o">-</span><span class="n">value</span> <span class="p">(</span> <span class="o">&lt;</span><span class="n">term</span><span class="o">&gt;</span> <span class="p">)</span> <span class="p">)</span>
+<dd><p>Get the value of the given term in the current model. SMT-LIB: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span> <span class="n">get</span><span class="o">-</span><span class="n">value</span> <span class="p">(</span> <span class="o">&lt;</span><span class="n">term</span><span class="o">&gt;</span> <span class="p">)</span> <span class="p">)</span>
 <span class="o">*</span>
 </pre></div>
 </div>
@@ -1817,7 +1862,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver8getValueERKNSt6vectorI4TermEE">
 <span id="_CPPv3NK4cvc53api6Solver8getValueERKNSt6vectorI4TermEE"></span><span id="_CPPv2NK4cvc53api6Solver8getValueERKNSt6vectorI4TermEE"></span><span id="cvc5::api::Solver::getValue__std::vector:Term:CRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1ab047706eeee6ec6691658769e7c964e5"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getValue</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">terms</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver8getValueERKNSt6vectorI4TermEE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the values of the given terms. SMT-LIB: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span> <span class="n">get</span><span class="o">-</span><span class="n">value</span> <span class="p">(</span> <span class="o">&lt;</span><span class="n">term</span><span class="o">&gt;+</span> <span class="p">)</span> <span class="p">)</span>
+<dd><p>Get the values of the given terms in the current model. SMT-LIB: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span> <span class="n">get</span><span class="o">-</span><span class="n">value</span> <span class="p">(</span> <span class="o">&lt;</span><span class="n">term</span><span class="o">&gt;+</span> <span class="p">)</span> <span class="p">)</span>
 <span class="o">*</span>
 </pre></div>
 </div>
@@ -1828,6 +1873,55 @@
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>the values of the given terms </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver22getModelDomainElementsERK4Sort">
+<span id="_CPPv3NK4cvc53api6Solver22getModelDomainElementsERK4Sort"></span><span id="_CPPv2NK4cvc53api6Solver22getModelDomainElementsERK4Sort"></span><span id="cvc5::api::Solver::getModelDomainElements__SortCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1ae8364714fc3684fcdd1dd1ccbe04c3f4"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getModelDomainElements</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort"><span class="n"><span class="pre">Sort</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">s</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver22getModelDomainElementsERK4Sort" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the domain elements of uninterpreted sort s in the current model. The current model interprets s as the finite sort whose domain elements are given in the return value of this method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s</strong> – The uninterpreted sort in question </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the domain elements of s in the current model </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver17isModelCoreSymbolERK4Term">
+<span id="_CPPv3NK4cvc53api6Solver17isModelCoreSymbolERK4Term"></span><span id="_CPPv2NK4cvc53api6Solver17isModelCoreSymbolERK4Term"></span><span id="cvc5::api::Solver::isModelCoreSymbol__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a2fe31d2430eac1d6e2854b26aac4bd92"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isModelCoreSymbol</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">v</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver17isModelCoreSymbolERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This returns false if the model value of free constant v was not essential for showing the satisfiability of the last call to checkSat using the current model. This method will only return false (for any v) if the model-cores option has been set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> – The term in question </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if v is a model core symbol </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver8getModelERKNSt6vectorI4SortEERKNSt6vectorI4TermEE">
+<span id="_CPPv3NK4cvc53api6Solver8getModelERKNSt6vectorI4SortEERKNSt6vectorI4TermEE"></span><span id="_CPPv2NK4cvc53api6Solver8getModelERKNSt6vectorI4SortEERKNSt6vectorI4TermEE"></span><span id="cvc5::api::Solver::getModel__std::vector:Sort:CR.std::vector:Term:CRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a38ead54c76abcfdf46a93166e33cc7ba"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getModel</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort"><span class="n"><span class="pre">Sort</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">sorts</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">vars</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver8getModelERKNSt6vectorI4SortEERKNSt6vectorI4TermEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the model SMT-LIB: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">(</span> <span class="n">get</span><span class="o">-</span><span class="n">model</span> <span class="p">)</span>
+<span class="o">*</span>
+</pre></div>
+</div>
+ Requires to enable option ‘produce-models’. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sorts</strong> – The list of uninterpreted sorts that should be printed in the model. </p></li>
+<li><p><strong>vars</strong> – The list of free constants that should be printed in the model. A subset of these may be printed based on isModelCoreSymbol. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a string representing the model. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1878,8 +1972,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver21declareSeparationHeapERK4SortRK4Sort">
-<span id="_CPPv3NK4cvc53api6Solver21declareSeparationHeapERK4SortRK4Sort"></span><span id="_CPPv2NK4cvc53api6Solver21declareSeparationHeapERK4SortRK4Sort"></span><span id="cvc5::api::Solver::declareSeparationHeap__SortCR.SortCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a3fdbab10fcbefa543fd333d655a53f47"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">declareSeparationHeap</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort"><span class="n"><span class="pre">Sort</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">locSort</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort"><span class="n"><span class="pre">Sort</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dataSort</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver21declareSeparationHeapERK4SortRK4Sort" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver14declareSepHeapERK4SortRK4Sort">
+<span id="_CPPv3NK4cvc53api6Solver14declareSepHeapERK4SortRK4Sort"></span><span id="_CPPv2NK4cvc53api6Solver14declareSepHeapERK4SortRK4Sort"></span><span id="cvc5::api::Solver::declareSepHeap__SortCR.SortCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a33039a48ff4f110c3bed32f5e49f136f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">declareSepHeap</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort"><span class="n"><span class="pre">Sort</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">locSort</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="sort.html#_CPPv4N4cvc53api4SortE" title="cvc5::api::Sort"><span class="n"><span class="pre">Sort</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dataSort</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver14declareSepHeapERK4SortRK4Sort" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>When using separation logic, this sets the location sort and the datatype sort to the given ones. This method should be invoked exactly once, before any separation logic constraints are provided. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1892,8 +1986,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver17getSeparationHeapEv">
-<span id="_CPPv3NK4cvc53api6Solver17getSeparationHeapEv"></span><span id="_CPPv2NK4cvc53api6Solver17getSeparationHeapEv"></span><span id="cvc5::api::Solver::getSeparationHeapC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a524cf6449a73af074454af8551656f7a"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSeparationHeap</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver17getSeparationHeapEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver15getValueSepHeapEv">
+<span id="_CPPv3NK4cvc53api6Solver15getValueSepHeapEv"></span><span id="_CPPv2NK4cvc53api6Solver15getValueSepHeapEv"></span><span id="cvc5::api::Solver::getValueSepHeapC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a44d4d0130ec55dc8fac2ccd67e069907"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getValueSepHeap</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver15getValueSepHeapEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>When using separation logic, obtain the term for the heap. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1903,8 +1997,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver20getSeparationNilTermEv">
-<span id="_CPPv3NK4cvc53api6Solver20getSeparationNilTermEv"></span><span id="_CPPv2NK4cvc53api6Solver20getSeparationNilTermEv"></span><span id="cvc5::api::Solver::getSeparationNilTermC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a7217f34c6dd97a7e689a07fd6e84ce65"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSeparationNilTerm</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver20getSeparationNilTermEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver14getValueSepNilEv">
+<span id="_CPPv3NK4cvc53api6Solver14getValueSepNilEv"></span><span id="_CPPv2NK4cvc53api6Solver14getValueSepNilEv"></span><span id="cvc5::api::Solver::getValueSepNilC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1ac0e67ce35e6fbed9fa42ae3a6b11266b"></span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getValueSepNil</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver14getValueSepNilEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>When using separation logic, obtain the term for nil. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -2299,6 +2393,21 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver14addSygusAssumeERK4Term">
+<span id="_CPPv3NK4cvc53api6Solver14addSygusAssumeERK4Term"></span><span id="_CPPv2NK4cvc53api6Solver14addSygusAssumeERK4Term"></span><span id="cvc5::api::Solver::addSygusAssume__TermCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a0f8abf7153b2ab099adaf203ad241514"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addSygusAssume</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">term</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver14addSygusAssumeERK4Term" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Add a forumla to the set of Sygus assumptions. SyGuS v2: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span>   <span class="p">(</span> <span class="n">assume</span> <span class="o">&lt;</span><span class="n">term</span><span class="o">&gt;</span> <span class="p">)</span>
+<span class="o">*</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>term</strong> – the formula to add as an assumption </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver21addSygusInvConstraintE4Term4Term4Term4Term">
 <span id="_CPPv3NK4cvc53api6Solver21addSygusInvConstraintE4Term4Term4Term4Term"></span><span id="_CPPv2NK4cvc53api6Solver21addSygusInvConstraintE4Term4Term4Term4Term"></span><span id="cvc5::api::Solver::addSygusInvConstraint__Term.Term.Term.TermC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a9941a17c98203bb367d45c979e5d357c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addSygusInvConstraint</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">inv</span></span>, <a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">pre</span></span>, <a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">trans</span></span>, <a class="reference internal" href="term.html#_CPPv4N4cvc53api4TermE" title="cvc5::api::Term"><span class="n"><span class="pre">Term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">post</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver21addSygusInvConstraintE4Term4Term4Term4Term" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Add a set of Sygus constraints to the current state that correspond to an invariant synthesis problem. SyGuS v2: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span>   <span class="p">(</span> <span class="n">inv</span><span class="o">-</span><span class="n">constraint</span> <span class="o">&lt;</span><span class="n">inv</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">trans</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">post</span><span class="o">&gt;</span> <span class="p">)</span>
@@ -2362,19 +2471,21 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver12getSmtEngineEv">
-<span id="_CPPv3NK4cvc53api6Solver12getSmtEngineEv"></span><span id="_CPPv2NK4cvc53api6Solver12getSmtEngineEv"></span><span id="cvc5::api::Solver::getSmtEngine__voidC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a4187b0aaac4b7d0608f15ee89b2aa855"></span><span class="n"><span class="pre">SmtEngine</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getSmtEngine</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver12getSmtEngineEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api6Solver10getOptionsEv">
-<span id="_CPPv3N4cvc53api6Solver10getOptionsEv"></span><span id="_CPPv2N4cvc53api6Solver10getOptionsEv"></span><span id="cvc5::api::Solver::getOptions__void"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1ac4c6b2b7d43a0a01fa2341e848b22f5d"></span><span class="n"><span class="pre">Options</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getOptions</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4cvc53api6Solver10getOptionsEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver13getStatisticsEv">
 <span id="_CPPv3NK4cvc53api6Solver13getStatisticsEv"></span><span id="_CPPv2NK4cvc53api6Solver13getStatisticsEv"></span><span id="cvc5::api::Solver::getStatisticsC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a1a26c751dce47d17fabe91a7cd3a0275"></span><a class="reference internal" href="statistics.html#_CPPv4N4cvc53api10StatisticsE" title="cvc5::api::Statistics"><span class="n"><span class="pre">Statistics</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getStatistics</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver13getStatisticsEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns a snapshot of the current state of the statistic values of this solver. The returned object is completely decoupled from the solver and will not change when the solver is used again. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver10isOutputOnERKNSt6stringE">
+<span id="_CPPv3NK4cvc53api6Solver10isOutputOnERKNSt6stringE"></span><span id="_CPPv2NK4cvc53api6Solver10isOutputOnERKNSt6stringE"></span><span id="cvc5::api::Solver::isOutputOn__ssCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1a3fed942be085121e664413cd6bbd1838"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isOutputOn</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">tag</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver10isOutputOnERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Whether the output stream for the given tag is enabled. Tags can be enabled with the <code class="docutils literal notranslate"><span class="pre">output</span></code> option (and <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">&lt;tag&gt;</span></code> on the command line). Raises an exception when an invalid tag is given. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK4cvc53api6Solver9getOutputERKNSt6stringE">
+<span id="_CPPv3NK4cvc53api6Solver9getOutputERKNSt6stringE"></span><span id="_CPPv2NK4cvc53api6Solver9getOutputERKNSt6stringE"></span><span id="cvc5::api::Solver::getOutput__ssCRC"></span><span class="target" id="classcvc5_1_1api_1_1Solver_1adb3a73d69accb3927d45f4ebd5309203"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ostream</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getOutput</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">tag</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK4cvc53api6Solver9getOutputERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns an output stream for the given tag. Tags can be enabled with the <code class="docutils literal notranslate"><span class="pre">output</span></code> option (and <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">&lt;tag&gt;</span></code> on the command line). Raises an exception when an invalid tag is given. </p>
 </dd></dl>
 
 </div>

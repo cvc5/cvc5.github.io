@@ -188,7 +188,7 @@
   <div class="section" id="sygus-grammars">
 <h1>SyGuS: Grammars<a class="headerlink" href="#sygus-grammars" title="Permalink to this headline">¶</a></h1>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cm">/******************************************************************************</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Java</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Python</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">SyGuS</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cm">/******************************************************************************</span>
 <span class="linenos">  2</span><span class="cm"> * Top contributors (to current version):</span>
 <span class="linenos">  3</span><span class="cm"> *   Abdalrhman Mohamed, Mudathir Mohamed, Aina Niemetz</span>
 <span class="linenos">  4</span><span class="cm"> *</span>
@@ -322,7 +322,139 @@
 <span class="linenos">132</span><span class="p">}</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/usr/bin/env python</span>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cm">/******************************************************************************</span>
+<span class="linenos">  2</span><span class="cm"> * Top contributors (to current version):</span>
+<span class="linenos">  3</span><span class="cm"> *   Abdalrhman Mohamed, Mudathir Mohamed, Aina Niemetz</span>
+<span class="linenos">  4</span><span class="cm"> *</span>
+<span class="linenos">  5</span><span class="cm"> * This file is part of the cvc5 project.</span>
+<span class="linenos">  6</span><span class="cm"> *</span>
+<span class="linenos">  7</span><span class="cm"> * Copyright (c) 2009-2021 by the authors listed in the file AUTHORS</span>
+<span class="linenos">  8</span><span class="cm"> * in the top-level source directory and their institutional affiliations.</span>
+<span class="linenos">  9</span><span class="cm"> * All rights reserved.  See the file COPYING in the top-level source</span>
+<span class="linenos"> 10</span><span class="cm"> * directory for licensing information.</span>
+<span class="linenos"> 11</span><span class="cm"> * ****************************************************************************</span>
+<span class="linenos"> 12</span><span class="cm"> *</span>
+<span class="linenos"> 13</span><span class="cm"> * A simple demonstration of the Sygus API.</span>
+<span class="linenos"> 14</span><span class="cm"> *</span>
+<span class="linenos"> 15</span><span class="cm"> * A simple demonstration of how to use Grammar to add syntax constraints to</span>
+<span class="linenos"> 16</span><span class="cm"> * the Sygus solution for the identity function. Here is the same problem</span>
+<span class="linenos"> 17</span><span class="cm"> * written in Sygus V2 format:</span>
+<span class="linenos"> 18</span><span class="cm"> *</span>
+<span class="linenos"> 19</span><span class="cm"> * (set-logic LIA)</span>
+<span class="linenos"> 20</span><span class="cm"> *</span>
+<span class="linenos"> 21</span><span class="cm"> * (synth-fun id1 ((x Int)) Int</span>
+<span class="linenos"> 22</span><span class="cm"> *   ((Start Int)) ((Start Int ((- x) (+ x Start)))))</span>
+<span class="linenos"> 23</span><span class="cm"> *</span>
+<span class="linenos"> 24</span><span class="cm"> * (synth-fun id2 ((x Int)) Int</span>
+<span class="linenos"> 25</span><span class="cm"> *   ((Start Int)) ((Start Int ((Variable Int) (- x) (+ x Start)))))</span>
+<span class="linenos"> 26</span><span class="cm"> *</span>
+<span class="linenos"> 27</span><span class="cm"> * (synth-fun id3 ((x Int)) Int</span>
+<span class="linenos"> 28</span><span class="cm"> *   ((Start Int)) ((Start Int (0 (- x) (+ x Start)))))</span>
+<span class="linenos"> 29</span><span class="cm"> *</span>
+<span class="linenos"> 30</span><span class="cm"> * (synth-fun id4 ((x Int)) Int</span>
+<span class="linenos"> 31</span><span class="cm"> *   ((Start Int)) ((Start Int ((- x) (+ x Start)))))</span>
+<span class="linenos"> 32</span><span class="cm"> *</span>
+<span class="linenos"> 33</span><span class="cm"> * (declare-var x Int)</span>
+<span class="linenos"> 34</span><span class="cm"> *</span>
+<span class="linenos"> 35</span><span class="cm"> * (constraint (= (id1 x) (id2 x) (id3 x) (id4 x) x))</span>
+<span class="linenos"> 36</span><span class="cm"> *</span>
+<span class="linenos"> 37</span><span class="cm"> * (check-synth)</span>
+<span class="linenos"> 38</span><span class="cm"> *</span>
+<span class="linenos"> 39</span><span class="cm"> * The printed output for this example should look like:</span>
+<span class="linenos"> 40</span><span class="cm"> * (</span>
+<span class="linenos"> 41</span><span class="cm"> *   (define-fun id1 ((x Int)) Int (+ x (+ x (- x))))</span>
+<span class="linenos"> 42</span><span class="cm"> *   (define-fun id2 ((x Int)) Int x)</span>
+<span class="linenos"> 43</span><span class="cm"> *   (define-fun id3 ((x Int)) Int (+ x 0))</span>
+<span class="linenos"> 44</span><span class="cm"> *   (define-fun id4 ((x Int)) Int (+ x (+ x (- x))))</span>
+<span class="linenos"> 45</span><span class="cm"> * )</span>
+<span class="linenos"> 46</span><span class="cm"> */</span>
+<span class="linenos"> 47</span>
+<span class="linenos"> 48</span><span class="kn">import static</span> <span class="nn">io.github.cvc5.api.Kind.*</span><span class="p">;</span>
+<span class="linenos"> 49</span>
+<span class="linenos"> 50</span><span class="kn">import</span> <span class="nn">io.github.cvc5.api.*</span><span class="p">;</span>
+<span class="linenos"> 51</span>
+<span class="linenos"> 52</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SygusGrammar</span>
+<span class="linenos"> 53</span><span class="p">{</span>
+<span class="linenos"> 54</span>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">CVC5ApiException</span>
+<span class="linenos"> 55</span>  <span class="p">{</span>
+<span class="linenos"> 56</span>    <span class="k">try</span> <span class="p">(</span><span class="n">Solver</span> <span class="n">slv</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Solver</span><span class="p">())</span>
+<span class="linenos"> 57</span>    <span class="p">{</span>
+<span class="linenos"> 58</span>      <span class="c1">// required options</span>
+<span class="linenos"> 59</span>      <span class="n">slv</span><span class="p">.</span><span class="na">setOption</span><span class="p">(</span><span class="s">&quot;lang&quot;</span><span class="p">,</span> <span class="s">&quot;sygus2&quot;</span><span class="p">);</span>
+<span class="linenos"> 60</span>      <span class="n">slv</span><span class="p">.</span><span class="na">setOption</span><span class="p">(</span><span class="s">&quot;incremental&quot;</span><span class="p">,</span> <span class="s">&quot;false&quot;</span><span class="p">);</span>
+<span class="linenos"> 61</span>
+<span class="linenos"> 62</span>      <span class="c1">// set the logic</span>
+<span class="linenos"> 63</span>      <span class="n">slv</span><span class="p">.</span><span class="na">setLogic</span><span class="p">(</span><span class="s">&quot;LIA&quot;</span><span class="p">);</span>
+<span class="linenos"> 64</span>
+<span class="linenos"> 65</span>      <span class="n">Sort</span> <span class="n">integer</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">getIntegerSort</span><span class="p">();</span>
+<span class="linenos"> 66</span>      <span class="n">Sort</span> <span class="n">bool</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">getBooleanSort</span><span class="p">();</span>
+<span class="linenos"> 67</span>
+<span class="linenos"> 68</span>      <span class="c1">// declare input variable for the function-to-synthesize</span>
+<span class="linenos"> 69</span>      <span class="n">Term</span> <span class="n">x</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkVar</span><span class="p">(</span><span class="n">integer</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">);</span>
+<span class="linenos"> 70</span>
+<span class="linenos"> 71</span>      <span class="c1">// declare the grammar non-terminal</span>
+<span class="linenos"> 72</span>      <span class="n">Term</span> <span class="n">start</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkVar</span><span class="p">(</span><span class="n">integer</span><span class="p">,</span> <span class="s">&quot;Start&quot;</span><span class="p">);</span>
+<span class="linenos"> 73</span>
+<span class="linenos"> 74</span>      <span class="c1">// define the rules</span>
+<span class="linenos"> 75</span>      <span class="n">Term</span> <span class="n">zero</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkInteger</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos"> 76</span>      <span class="n">Term</span> <span class="n">neg_x</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkTerm</span><span class="p">(</span><span class="n">UMINUS</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+<span class="linenos"> 77</span>      <span class="n">Term</span> <span class="n">plus</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkTerm</span><span class="p">(</span><span class="n">PLUS</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">start</span><span class="p">);</span>
+<span class="linenos"> 78</span>
+<span class="linenos"> 79</span>      <span class="c1">// create the grammar object</span>
+<span class="linenos"> 80</span>      <span class="n">Grammar</span> <span class="n">g1</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkSygusGrammar</span><span class="p">(</span><span class="k">new</span> <span class="n">Term</span><span class="o">[]</span> <span class="p">{</span><span class="n">x</span><span class="p">},</span> <span class="k">new</span> <span class="n">Term</span><span class="o">[]</span> <span class="p">{</span><span class="n">start</span><span class="p">});</span>
+<span class="linenos"> 81</span>
+<span class="linenos"> 82</span>      <span class="c1">// bind each non-terminal to its rules</span>
+<span class="linenos"> 83</span>      <span class="n">g1</span><span class="p">.</span><span class="na">addRules</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="k">new</span> <span class="n">Term</span><span class="o">[]</span> <span class="p">{</span><span class="n">neg_x</span><span class="p">,</span> <span class="n">plus</span><span class="p">});</span>
+<span class="linenos"> 84</span>
+<span class="linenos"> 85</span>      <span class="c1">// copy the first grammar with all of its non-terminals and their rules</span>
+<span class="linenos"> 86</span>      <span class="n">Grammar</span> <span class="n">g2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Grammar</span><span class="p">(</span><span class="n">g1</span><span class="p">);</span>
+<span class="linenos"> 87</span>      <span class="n">Grammar</span> <span class="n">g3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Grammar</span><span class="p">(</span><span class="n">g1</span><span class="p">);</span>
+<span class="linenos"> 88</span>
+<span class="linenos"> 89</span>      <span class="c1">// add parameters as rules for the start symbol. Similar to &quot;(Variable Int)&quot;</span>
+<span class="linenos"> 90</span>      <span class="n">g2</span><span class="p">.</span><span class="na">addAnyVariable</span><span class="p">(</span><span class="n">start</span><span class="p">);</span>
+<span class="linenos"> 91</span>
+<span class="linenos"> 92</span>      <span class="c1">// declare the functions-to-synthesize</span>
+<span class="linenos"> 93</span>      <span class="n">Term</span> <span class="n">id1</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">synthFun</span><span class="p">(</span><span class="s">&quot;id1&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Term</span><span class="o">[]</span> <span class="p">{</span><span class="n">x</span><span class="p">},</span> <span class="n">integer</span><span class="p">,</span> <span class="n">g1</span><span class="p">);</span>
+<span class="linenos"> 94</span>      <span class="n">Term</span> <span class="n">id2</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">synthFun</span><span class="p">(</span><span class="s">&quot;id2&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Term</span><span class="o">[]</span> <span class="p">{</span><span class="n">x</span><span class="p">},</span> <span class="n">integer</span><span class="p">,</span> <span class="n">g2</span><span class="p">);</span>
+<span class="linenos"> 95</span>
+<span class="linenos"> 96</span>      <span class="n">g3</span><span class="p">.</span><span class="na">addRule</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">zero</span><span class="p">);</span>
+<span class="linenos"> 97</span>
+<span class="linenos"> 98</span>      <span class="n">Term</span> <span class="n">id3</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">synthFun</span><span class="p">(</span><span class="s">&quot;id3&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Term</span><span class="o">[]</span> <span class="p">{</span><span class="n">x</span><span class="p">},</span> <span class="n">integer</span><span class="p">,</span> <span class="n">g3</span><span class="p">);</span>
+<span class="linenos"> 99</span>
+<span class="linenos">100</span>      <span class="c1">// g1 is reusable as long as it remains unmodified after first use</span>
+<span class="linenos">101</span>      <span class="n">Term</span> <span class="n">id4</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">synthFun</span><span class="p">(</span><span class="s">&quot;id4&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Term</span><span class="o">[]</span> <span class="p">{</span><span class="n">x</span><span class="p">},</span> <span class="n">integer</span><span class="p">,</span> <span class="n">g1</span><span class="p">);</span>
+<span class="linenos">102</span>
+<span class="linenos">103</span>      <span class="c1">// declare universal variables.</span>
+<span class="linenos">104</span>      <span class="n">Term</span> <span class="n">varX</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkSygusVar</span><span class="p">(</span><span class="n">integer</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">);</span>
+<span class="linenos">105</span>
+<span class="linenos">106</span>      <span class="n">Term</span> <span class="n">id1_x</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkTerm</span><span class="p">(</span><span class="n">APPLY_UF</span><span class="p">,</span> <span class="n">id1</span><span class="p">,</span> <span class="n">varX</span><span class="p">);</span>
+<span class="linenos">107</span>      <span class="n">Term</span> <span class="n">id2_x</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkTerm</span><span class="p">(</span><span class="n">APPLY_UF</span><span class="p">,</span> <span class="n">id2</span><span class="p">,</span> <span class="n">varX</span><span class="p">);</span>
+<span class="linenos">108</span>      <span class="n">Term</span> <span class="n">id3_x</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkTerm</span><span class="p">(</span><span class="n">APPLY_UF</span><span class="p">,</span> <span class="n">id3</span><span class="p">,</span> <span class="n">varX</span><span class="p">);</span>
+<span class="linenos">109</span>      <span class="n">Term</span> <span class="n">id4_x</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkTerm</span><span class="p">(</span><span class="n">APPLY_UF</span><span class="p">,</span> <span class="n">id4</span><span class="p">,</span> <span class="n">varX</span><span class="p">);</span>
+<span class="linenos">110</span>
+<span class="linenos">111</span>      <span class="c1">// add semantic constraints</span>
+<span class="linenos">112</span>      <span class="c1">// (constraint (= (id1 x) (id2 x) (id3 x) (id4 x) x))</span>
+<span class="linenos">113</span>      <span class="n">slv</span><span class="p">.</span><span class="na">addSygusConstraint</span><span class="p">(</span><span class="n">slv</span><span class="p">.</span><span class="na">mkTerm</span><span class="p">(</span><span class="n">EQUAL</span><span class="p">,</span> <span class="k">new</span> <span class="n">Term</span><span class="o">[]</span> <span class="p">{</span><span class="n">id1_x</span><span class="p">,</span> <span class="n">id2_x</span><span class="p">,</span> <span class="n">id3_x</span><span class="p">,</span> <span class="n">id4_x</span><span class="p">,</span> <span class="n">varX</span><span class="p">}));</span>
+<span class="linenos">114</span>
+<span class="linenos">115</span>      <span class="c1">// print solutions if available</span>
+<span class="linenos">116</span>      <span class="k">if</span> <span class="p">(</span><span class="n">slv</span><span class="p">.</span><span class="na">checkSynth</span><span class="p">().</span><span class="na">isUnsat</span><span class="p">())</span>
+<span class="linenos">117</span>      <span class="p">{</span>
+<span class="linenos">118</span>        <span class="c1">// Output should be equivalent to:</span>
+<span class="linenos">119</span>        <span class="c1">// (</span>
+<span class="linenos">120</span>        <span class="c1">//   (define-fun id1 ((x Int)) Int (+ x (+ x (- x))))</span>
+<span class="linenos">121</span>        <span class="c1">//   (define-fun id2 ((x Int)) Int x)</span>
+<span class="linenos">122</span>        <span class="c1">//   (define-fun id3 ((x Int)) Int (+ x 0))</span>
+<span class="linenos">123</span>        <span class="c1">//   (define-fun id4 ((x Int)) Int (+ x (+ x (- x))))</span>
+<span class="linenos">124</span>        <span class="c1">// )</span>
+<span class="linenos">125</span>        <span class="n">Term</span><span class="o">[]</span> <span class="n">terms</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Term</span><span class="o">[]</span> <span class="p">{</span><span class="n">id1</span><span class="p">,</span> <span class="n">id2</span><span class="p">,</span> <span class="n">id3</span><span class="p">,</span> <span class="n">id4</span><span class="p">};</span>
+<span class="linenos">126</span>        <span class="n">Utils</span><span class="p">.</span><span class="na">printSynthSolutions</span><span class="p">(</span><span class="n">terms</span><span class="p">,</span> <span class="n">slv</span><span class="p">.</span><span class="na">getSynthSolutions</span><span class="p">(</span><span class="n">terms</span><span class="p">));</span>
+<span class="linenos">127</span>      <span class="p">}</span>
+<span class="linenos">128</span>    <span class="p">}</span>
+<span class="linenos">129</span>  <span class="p">}</span>
+<span class="linenos">130</span><span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/usr/bin/env python</span>
 <span class="linenos"> 2</span><span class="c1">###############################################################################</span>
 <span class="linenos"> 3</span><span class="c1"># Top contributors (to current version):</span>
 <span class="linenos"> 4</span><span class="c1">#   Yoni Zohar, Mudathir Mohamed</span>
@@ -414,6 +546,24 @@
 <span class="linenos">90</span>    <span class="c1"># (define-fun id4 ((x Int)) Int (+ x (+ x (- x))))</span>
 <span class="linenos">91</span>    <span class="n">terms</span> <span class="o">=</span> <span class="p">[</span><span class="n">id1</span><span class="p">,</span> <span class="n">id2</span><span class="p">,</span> <span class="n">id3</span><span class="p">,</span> <span class="n">id4</span><span class="p">]</span>
 <span class="linenos">92</span>    <span class="n">utils</span><span class="o">.</span><span class="n">print_synth_solutions</span><span class="p">(</span><span class="n">terms</span><span class="p">,</span> <span class="n">slv</span><span class="o">.</span><span class="n">getSynthSolutions</span><span class="p">(</span><span class="n">terms</span><span class="p">))</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c">; The printed output for this example should look like:</span>
+<span class="linenos"> 2</span><span class="c">; (</span>
+<span class="linenos"> 3</span><span class="c">;   (define-fun id1 ((x Int)) Int (+ x (+ x (- x))))</span>
+<span class="linenos"> 4</span><span class="c">;   (define-fun id2 ((x Int)) Int x)</span>
+<span class="linenos"> 5</span><span class="c">;   (define-fun id3 ((x Int)) Int (+ x 0))</span>
+<span class="linenos"> 6</span><span class="c">;   (define-fun id4 ((x Int)) Int (+ x (+ x (- x))))</span>
+<span class="linenos"> 7</span><span class="c">; )</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>(<span class="k">set-logic</span> <span class="n">LIA</span>)
+<span class="linenos">10</span>(<span class="k">synth-fun</span> <span class="n">id1</span> ((<span class="n">x</span> <span class="na">Int</span>)) <span class="na">Int</span> ((<span class="n">Start</span> <span class="na">Int</span>)) ((<span class="n">Start</span> <span class="na">Int</span> ((<span class="o">-</span> <span class="n">x</span>) (<span class="o">+</span> <span class="n">x</span> <span class="n">Start</span>)))))
+<span class="linenos">11</span>(<span class="k">synth-fun</span> <span class="n">id2</span> ((<span class="n">x</span> <span class="na">Int</span>)) <span class="na">Int</span> ((<span class="n">Start</span> <span class="na">Int</span>)) ((<span class="n">Start</span> <span class="na">Int</span> ((<span class="n">Variable</span> <span class="na">Int</span>) (<span class="o">-</span> <span class="n">x</span>) (<span class="o">+</span> <span class="n">x</span> <span class="n">Start</span>)))))
+<span class="linenos">12</span>(<span class="k">synth-fun</span> <span class="n">id3</span> ((<span class="n">x</span> <span class="na">Int</span>)) <span class="na">Int</span> ((<span class="n">Start</span> <span class="na">Int</span>)) ((<span class="n">Start</span> <span class="na">Int</span> (<span class="m">0</span> (<span class="o">-</span> <span class="n">x</span>) (<span class="o">+</span> <span class="n">x</span> <span class="n">Start</span>)))))
+<span class="linenos">13</span>(<span class="k">synth-fun</span> <span class="n">id4</span> ((<span class="n">x</span> <span class="na">Int</span>)) <span class="na">Int</span> ((<span class="n">Start</span> <span class="na">Int</span>)) ((<span class="n">Start</span> <span class="na">Int</span> ((<span class="o">-</span> <span class="n">x</span>) (<span class="o">+</span> <span class="n">x</span> <span class="n">Start</span>)))))
+<span class="linenos">14</span>(<span class="k">declare-var</span> <span class="n">x</span> <span class="na">Int</span>)
+<span class="linenos">15</span>(<span class="k">constraint</span> (<span class="o">=</span> (<span class="n">id1</span> <span class="n">x</span>) (<span class="n">id2</span> <span class="n">x</span>) (<span class="n">id3</span> <span class="n">x</span>) (<span class="n">id4</span> <span class="n">x</span>) <span class="n">x</span>))
+<span class="linenos">16</span>(<span class="k">check-synth</span>)
 </pre></div>
 </div>
 </div></div>

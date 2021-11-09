@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Quickstart Guide" href="quickstart.html" />
-    <link rel="prev" title="Python API Documentation" href="python.html" /> 
+    <link rel="next" title="DatatypeConstructor" href="datatypeconstructor.html" />
+    <link rel="prev" title="Quickstart Guide" href="quickstart.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,9 +94,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../../binary/binary.html">Binary Documentation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../cpp/cpp.html">C++ API Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../java/index.html">Java API Documentation</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="python.html">Python API Documentation</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Datatype</a></li>
 <li class="toctree-l3"><a class="reference internal" href="quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Datatype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypeconstructor.html">DatatypeConstructor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypeconstructordecl.html">DatatypeConstructorDecl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypedecl.html">DatatypeDecl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatypeselector.html">DatatypeSelector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="grammar.html">Grammar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="op.html">Op</a></li>
+<li class="toctree-l3"><a class="reference internal" href="result.html">Result</a></li>
+<li class="toctree-l3"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solver.html">Solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sort.html">Sort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unknownexplanation.html">UnknownExplanation</a></li>
 </ul>
 </li>
 </ul>
@@ -180,13 +192,8 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="pycvc5.Datatype">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pycvc5.</span></span><span class="sig-name descname"><span class="pre">Datatype</span></span><a class="headerlink" href="#pycvc5.Datatype" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wrapper class for <a class="reference internal" href="../cpp/datatype.html#_CPPv4N4cvc53api8DatatypeE" title="cvc5::api::Datatype"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">cvc5::api::Datatype</span></code></a>.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="pycvc5.Datatype.__getitem__">
-<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.__getitem__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return self[key].</p>
-</dd></dl>
-
+<dd><p>A cvc5 datatype.
+Wrapper class for <a class="reference internal" href="../cpp/datatype.html#_CPPv4N4cvc53api8DatatypeE" title="cvc5::api::Datatype"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">cvc5::api::Datatype</span></code></a>.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pycvc5.Datatype.getConstructor">
 <span class="sig-name descname"><span class="pre">getConstructor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.getConstructor" title="Permalink to this definition">¶</a></dt>
@@ -251,7 +258,7 @@
 <span class="sig-name descname"><span class="pre">hasNestedRecursion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.hasNestedRecursion" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>whether this datatype has nested recursion (see <a class="reference internal" href="../cpp/datatype.html#_CPPv4NK4cvc53api8Datatype18hasNestedRecursionEv" title="cvc5::api::Datatype::hasNestedRecursion"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Datatype::hasNestedRecursion()</span></code></a>).</p>
+<dd class="field-odd"><p>True if this datatype has nested recursion (see <a class="reference internal" href="../cpp/datatype.html#_CPPv4NK4cvc53api8Datatype18hasNestedRecursionEv" title="cvc5::api::Datatype::hasNestedRecursion"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Datatype::hasNestedRecursion()</span></code></a>).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -261,7 +268,7 @@
 <span class="sig-name descname"><span class="pre">isCodatatype</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isCodatatype" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>whether this datatype corresponds to a co-datatype.</p>
+<dd class="field-odd"><p>True if this datatype corresponds to a co-datatype.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -271,7 +278,17 @@
 <span class="sig-name descname"><span class="pre">isFinite</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isFinite" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>whether this datatype is finite.</p>
+<dd class="field-odd"><p>True if this datatype is finite.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pycvc5.Datatype.isNull">
+<span class="sig-name descname"><span class="pre">isNull</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isNull" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if this Datatype is a null object.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -281,7 +298,7 @@
 <span class="sig-name descname"><span class="pre">isParametric</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isParametric" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>whether this datatype is parametric.</p>
+<dd class="field-odd"><p>True if this datatype is parametric.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -291,7 +308,7 @@
 <span class="sig-name descname"><span class="pre">isRecord</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isRecord" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>whether this datatype corresponds to a record.</p>
+<dd class="field-odd"><p>True if this datatype corresponds to a record.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -301,7 +318,7 @@
 <span class="sig-name descname"><span class="pre">isTuple</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isTuple" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>whether this datatype corresponds to a tuple.</p>
+<dd class="field-odd"><p>True if this datatype corresponds to a tuple.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -311,7 +328,7 @@
 <span class="sig-name descname"><span class="pre">isWellFounded</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycvc5.Datatype.isWellFounded" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>whether this datatype is well-founded (see <a class="reference internal" href="../cpp/datatype.html#_CPPv4NK4cvc53api8Datatype13isWellFoundedEv" title="cvc5::api::Datatype::isWellFounded"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Datatype::isWellFounded()</span></code></a>).</p>
+<dd class="field-odd"><p>True if this datatype is well-founded (see <a class="reference internal" href="../cpp/datatype.html#_CPPv4NK4cvc53api8Datatype13isWellFoundedEv" title="cvc5::api::Datatype::isWellFounded"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Datatype::isWellFounded()</span></code></a>).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -326,8 +343,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quickstart Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="python.html" class="btn btn-neutral float-left" title="Python API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="datatypeconstructor.html" class="btn btn-neutral float-right" title="DatatypeConstructor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quickstart Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

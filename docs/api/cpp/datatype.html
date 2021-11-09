@@ -105,6 +105,7 @@
 <li class="toctree-l3"><a class="reference internal" href="grammar.html">Grammar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="kind.html">Kind</a></li>
 <li class="toctree-l3"><a class="reference internal" href="op.html">Op</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optioninfo.html">OptionInfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="result.html">Result</a></li>
 <li class="toctree-l3"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="solver.html">Solver</a></li>
@@ -113,6 +114,7 @@
 <li class="toctree-l3"><a class="reference internal" href="term.html">Term</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../java/index.html">Java API Documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/python.html">Python API Documentation</a></li>
 </ul>
 </li>
@@ -398,8 +400,41 @@
 </div>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N4cvc53api8Datatype14const_iteratorE">
-<span id="_CPPv3N4cvc53api8Datatype14const_iteratorE"></span><span id="_CPPv2N4cvc53api8Datatype14const_iteratorE"></span><span id="cvc5::api::Datatype::const_iterator"></span><span class="target" id="classcvc5_1_1api_1_1Datatype_1_1const__iterator"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">const_iterator</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">iterator</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">input_iterator_tag</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api8DatatypeE" title="cvc5::api::Datatype"><span class="n"><span class="pre">Datatype</span></span></a><span class="p"><span class="pre">&gt;</span></span><a class="headerlink" href="#_CPPv4N4cvc53api8Datatype14const_iteratorE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N4cvc53api8Datatype14const_iteratorE"></span><span id="_CPPv2N4cvc53api8Datatype14const_iteratorE"></span><span id="cvc5::api::Datatype::const_iterator"></span><span class="target" id="classcvc5_1_1api_1_1Datatype_1_1const__iterator"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">const_iterator</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api8Datatype14const_iteratorE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Iterator for the constructors of a datatype. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api8Datatype14const_iterator17iterator_categoryE">
+<span id="_CPPv3N4cvc53api8Datatype14const_iterator17iterator_categoryE"></span><span id="_CPPv2N4cvc53api8Datatype14const_iterator17iterator_categoryE"></span><span class="target" id="classcvc5_1_1api_1_1Datatype_1_1const__iterator_1a2d6452996b05accc23d3e2e2633ba2e3"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">iterator_category</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">forward_iterator_tag</span></span><a class="headerlink" href="#_CPPv4N4cvc53api8Datatype14const_iterator17iterator_categoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Iterator tag </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api8Datatype14const_iterator10value_typeE">
+<span id="_CPPv3N4cvc53api8Datatype14const_iterator10value_typeE"></span><span id="_CPPv2N4cvc53api8Datatype14const_iterator10value_typeE"></span><span class="target" id="classcvc5_1_1api_1_1Datatype_1_1const__iterator_1a13bfbfcd5fb4a2627e92785409919f2b"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value_type</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api8DatatypeE" title="cvc5::api::Datatype"><span class="n"><span class="pre">Datatype</span></span></a><a class="headerlink" href="#_CPPv4N4cvc53api8Datatype14const_iterator10value_typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The type of the item </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api8Datatype14const_iterator7pointerE">
+<span id="_CPPv3N4cvc53api8Datatype14const_iterator7pointerE"></span><span id="_CPPv2N4cvc53api8Datatype14const_iterator7pointerE"></span><span class="target" id="classcvc5_1_1api_1_1Datatype_1_1const__iterator_1a73519317b194484ced81fcf33a3b6cbc"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pointer</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api8DatatypeE" title="cvc5::api::Datatype"><span class="n"><span class="pre">Datatype</span></span></a><span class="p"><span class="pre">*</span></span><a class="headerlink" href="#_CPPv4N4cvc53api8Datatype14const_iterator7pointerE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The pointer type of the item </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api8Datatype14const_iterator9referenceE">
+<span id="_CPPv3N4cvc53api8Datatype14const_iterator9referenceE"></span><span id="_CPPv2N4cvc53api8Datatype14const_iterator9referenceE"></span><span class="target" id="classcvc5_1_1api_1_1Datatype_1_1const__iterator_1a8355030157def04367d6c246c0e69663"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reference</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N4cvc53api8DatatypeE" title="cvc5::api::Datatype"><span class="n"><span class="pre">Datatype</span></span></a><span class="p"><span class="pre">&amp;</span></span><a class="headerlink" href="#_CPPv4N4cvc53api8Datatype14const_iterator9referenceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The reference type of the item </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api8Datatype14const_iterator15difference_typeE">
+<span id="_CPPv3N4cvc53api8Datatype14const_iterator15difference_typeE"></span><span id="_CPPv2N4cvc53api8Datatype14const_iterator15difference_typeE"></span><span class="target" id="classcvc5_1_1api_1_1Datatype_1_1const__iterator_1a5109a704cb1d3a6705b8513d82281905"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">difference_type</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ptrdiff_t</span></span><a class="headerlink" href="#_CPPv4N4cvc53api8Datatype14const_iterator15difference_typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The type returned when two iterators are subtracted </p>
+</dd></dl>
+
+</div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">

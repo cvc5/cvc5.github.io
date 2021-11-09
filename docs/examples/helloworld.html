@@ -233,22 +233,23 @@ We create a solver, declare a Boolean variable and check whether it is entailed 
 <span class="linenos">10</span><span class="cm"> * directory for licensing information.</span>
 <span class="linenos">11</span><span class="cm"> * ****************************************************************************</span>
 <span class="linenos">12</span><span class="cm"> *</span>
-<span class="linenos">13</span><span class="cm"> * A very simple CVC4 tutorial example.</span>
+<span class="linenos">13</span><span class="cm"> * A very simple CVC5 tutorial example.</span>
 <span class="linenos">14</span><span class="cm"> */</span>
 <span class="linenos">15</span>
-<span class="linenos">16</span><span class="kn">import</span> <span class="nn">edu.stanford.CVC4.*</span><span class="p">;</span>
+<span class="linenos">16</span><span class="kn">import</span> <span class="nn">io.github.cvc5.api.*</span><span class="p">;</span>
 <span class="linenos">17</span>
-<span class="linenos">18</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="p">{</span>
-<span class="linenos">19</span>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-<span class="linenos">20</span>    <span class="n">System</span><span class="p">.</span><span class="na">loadLibrary</span><span class="p">(</span><span class="s">&quot;cvc4jni&quot;</span><span class="p">);</span>
-<span class="linenos">21</span>
-<span class="linenos">22</span>    <span class="n">ExprManager</span> <span class="n">em</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ExprManager</span><span class="p">();</span>
-<span class="linenos">23</span>    <span class="n">Expr</span> <span class="n">helloworld</span> <span class="o">=</span> <span class="n">em</span><span class="p">.</span><span class="na">mkVar</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">,</span> <span class="n">em</span><span class="p">.</span><span class="na">booleanType</span><span class="p">());</span>
-<span class="linenos">24</span>    <span class="n">SmtEngine</span> <span class="n">smt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SmtEngine</span><span class="p">(</span><span class="n">em</span><span class="p">);</span>
+<span class="linenos">18</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span>
+<span class="linenos">19</span><span class="p">{</span>
+<span class="linenos">20</span>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="linenos">21</span>  <span class="p">{</span>
+<span class="linenos">22</span>    <span class="k">try</span> <span class="p">(</span><span class="n">Solver</span> <span class="n">slv</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Solver</span><span class="p">())</span>
+<span class="linenos">23</span>    <span class="p">{</span>
+<span class="linenos">24</span>      <span class="n">Term</span> <span class="n">helloworld</span> <span class="o">=</span> <span class="n">slv</span><span class="p">.</span><span class="na">mkVar</span><span class="p">(</span><span class="n">slv</span><span class="p">.</span><span class="na">getBooleanSort</span><span class="p">(),</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
 <span class="linenos">25</span>
-<span class="linenos">26</span>    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">helloworld</span> <span class="o">+</span> <span class="s">&quot; is &quot;</span> <span class="o">+</span> <span class="n">smt</span><span class="p">.</span><span class="na">checkEntailed</span><span class="p">(</span><span class="n">helloworld</span><span class="p">));</span>
-<span class="linenos">27</span>  <span class="p">}</span>
-<span class="linenos">28</span><span class="p">}</span>
+<span class="linenos">26</span>      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">helloworld</span> <span class="o">+</span> <span class="s">&quot; is &quot;</span> <span class="o">+</span> <span class="n">slv</span><span class="p">.</span><span class="na">checkEntailed</span><span class="p">(</span><span class="n">helloworld</span><span class="p">));</span>
+<span class="linenos">27</span>    <span class="p">}</span>
+<span class="linenos">28</span>  <span class="p">}</span>
+<span class="linenos">29</span><span class="p">}</span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/usr/bin/env python</span>

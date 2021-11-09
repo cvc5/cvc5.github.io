@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="grammar.html">Grammar</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Kind</a></li>
 <li class="toctree-l3"><a class="reference internal" href="op.html">Op</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optioninfo.html">OptionInfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="result.html">Result</a></li>
 <li class="toctree-l3"><a class="reference internal" href="roundingmode.html">RoundingMode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="solver.html">Solver</a></li>
@@ -114,6 +115,7 @@
 <li class="toctree-l3"><a class="reference internal" href="term.html">Term</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../java/index.html">Java API Documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/python.html">Python API Documentation</a></li>
 </ul>
 </li>
@@ -517,21 +519,6 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind17CARDINALITY_VALUEE">
-<span id="_CPPv3N4cvc53api4Kind17CARDINALITY_VALUEE"></span><span id="_CPPv2N4cvc53api4Kind17CARDINALITY_VALUEE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2baa03692198964884e84ad8a78f6de3787"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CARDINALITY_VALUE</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind17CARDINALITY_VALUEE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Cardinality value for uninterpreted sort S. An operator that returns an integer indicating the value of the cardinality of sort S.</p>
-<p>Parameters:<ul class="simple">
-<li><p>1: <a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> of sort S</p></li>
-</ul>
-</p>
-<p>Create with:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1aa85a27077624951c3f5f48d8c12cdc6c"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child1)</span> <span class="pre">const</span></span></a></code></p></li>
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a7a49bbf11d4b284fdcbf3f31c549aec3"><span class="std std-ref"><span class="pre">Solver::mkTerm</span></span></a><span class="pre">(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">std::vector&lt;</span><a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref"><span class="pre">Term</span></span></a><span class="pre">&gt;&amp;</span> <span class="pre">children)</span> <span class="pre">const</span></code> </p></li>
-</ul>
-</p>
-</dd></dl>
-
-<dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind8HO_APPLYE">
 <span id="_CPPv3N4cvc53api4Kind8HO_APPLYE"></span><span id="_CPPv2N4cvc53api4Kind8HO_APPLYE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2badc5719d0bf2ae42cf94fa594688f3ef3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HO_APPLY</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind8HO_APPLYE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Higher-order applicative encoding of function application, left associative.</p>
@@ -583,7 +570,8 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind4IANDE">
 <span id="_CPPv3N4cvc53api4Kind4IANDE"></span><span id="_CPPv2N4cvc53api4Kind4IANDE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2baa3724eeea3086d09dfcaf7123e71f883"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IAND</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind4IANDE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Operator for Integer AND</p>
+<dd><p>Operator for bit-wise AND over integers, parameterized by a (positive) bitwidth k.</p>
+<p>((_ iand k) i1 i2) is equivalent to: (bv2int (bvand ((_ int2bv k) i1) ((_ int2bv k) i2))) for all integers i1, i2.</p>
 <p>Parameters:<ul class="simple">
 <li><p>1: Size of the bit-vector that determines the semantics of the IAND</p></li>
 </ul>
@@ -592,7 +580,7 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 <li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a24a9f484255a6afcc357c99e3571158c"><span class="std std-ref"><span class="pre">Solver::mkOp(Kind</span> <span class="pre">kind,</span> <span class="pre">uint32_t</span> <span class="pre">param)</span> <span class="pre">const</span></span></a></code></p></li>
 </ul>
 </p>
-<p>Apply integer conversion to bit-vector.</p>
+<p>Apply integer and.</p>
 <p>Parameters:<ul class="simple">
 <li><p>1: <a class="reference internal" href="op.html#classcvc5_1_1api_1_1Op"><span class="std std-ref">Op</span></a> of kind IAND</p></li>
 <li><p>2: Integer term</p></li>
@@ -609,7 +597,7 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind4POW2E">
 <span id="_CPPv3N4cvc53api4Kind4POW2E"></span><span id="_CPPv2N4cvc53api4Kind4POW2E"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2baad5a21a6276dcaae49553d486aaaaff5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">POW2</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind4POW2E" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Operator for raising 2 to a non-negative integer power</p>
+<dd><p>Operator for raising 2 to a non-negative integer power.</p>
 <p>Create with:<ul class="simple">
 <li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1afa2c9f556e1f5595558f11c4851b6806"><span class="std std-ref"><span class="pre">Solver::mkOp(Kind</span> <span class="pre">kind)</span> <span class="pre">const</span></span></a></code></p></li>
 </ul>
@@ -619,6 +607,7 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 <li><p>2: Integer term</p></li>
 </ul>
 </p>
+<p>Apply 2 to the power operator.</p>
 <p>Create with:<ul class="simple">
 <li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a8846d4a083562ca7ec198d447bf02824"><span class="std std-ref"><span class="pre">Solver::mkTerm(const</span> <span class="pre">Op&amp;</span> <span class="pre">op,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child)</span> <span class="pre">const</span></span></a></code></p></li>
 <li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a7a49bbf11d4b284fdcbf3f31c549aec3"><span class="std std-ref"><span class="pre">Solver::mkTerm</span></span></a><span class="pre">(const</span> <a class="reference internal" href="op.html#classcvc5_1_1api_1_1Op"><span class="std std-ref"><span class="pre">Op</span></span></a><span class="pre">&amp;</span> <span class="pre">op,</span> <span class="pre">const</span> <span class="pre">std::vector&lt;</span><a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref"><span class="pre">Term</span></span></a><span class="pre">&gt;&amp;</span> <span class="pre">children)</span> <span class="pre">const</span></code> </p></li>
@@ -1077,6 +1066,7 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 <dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind2PIE">
 <span id="_CPPv3N4cvc53api4Kind2PIE"></span><span id="_CPPv2N4cvc53api4Kind2PIE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba7b14e49c9b5c809a431dddf8c7e6bde9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PI</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind2PIE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Pi constant.</p>
+<p>Note that PI is considered a special symbol of sort Real, but is not a real value, i.e., <code class="docutils literal notranslate"><a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term_1a91ed765d104580b9c8bc0d8f0dc8df19"><span class="std std-ref"><span class="pre">Term::isRealValue()</span> <span class="pre">const</span></span></a></code> will return false.</p>
 <p>Create with:<ul class="simple">
 <li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1abfd93fe9eb5a212413944b0bf6117bd3"><span class="std std-ref"><span class="pre">Solver::mkPi()</span> <span class="pre">const</span></span></a></code></p></li>
 <li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a7a49bbf11d4b284fdcbf3f31c549aec3"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind)</span> <span class="pre">const</span></span></a></code> </p></li>
@@ -2672,15 +2662,9 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind7SEP_EMPE">
 <span id="_CPPv3N4cvc53api4Kind7SEP_EMPE"></span><span id="_CPPv2N4cvc53api4Kind7SEP_EMPE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba1c08f6959b9b6aa1f8a1c28974213b58"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SEP_EMP</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind7SEP_EMPE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Separation logic empty heap.</p>
-<p>Parameters:<ul class="simple">
-<li><p>1: <a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> of the same sort as the sort of the location of the heap that is constrained to be empty</p></li>
-<li><p>2: <a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> of the same sort as the data sort of the heap that is that is constrained to be empty</p></li>
-</ul>
-</p>
+<dd><p>Separation logic empty heap constraint</p>
 <p>Create with:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a44e3cca7f0b1c10204b1782c406f251b"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child1,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child2)</span> <span class="pre">const</span></span></a></code></p></li>
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a7a49bbf11d4b284fdcbf3f31c549aec3"><span class="std std-ref"><span class="pre">Solver::mkTerm</span></span></a><span class="pre">(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">std::vector&lt;</span><a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref"><span class="pre">Term</span></span></a><span class="pre">&gt;&amp;</span> <span class="pre">children)</span> <span class="pre">const</span></code> </p></li>
+<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a7a49bbf11d4b284fdcbf3f31c549aec3"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind)</span> <span class="pre">const</span></span></a></code> </p></li>
 </ul>
 </p>
 </dd></dl>
@@ -2734,8 +2718,8 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind8EMPTYSETE">
-<span id="_CPPv3N4cvc53api4Kind8EMPTYSETE"></span><span id="_CPPv2N4cvc53api4Kind8EMPTYSETE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba43666c2b0134067c7475ac045931acf4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EMPTYSET</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind8EMPTYSETE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind9SET_EMPTYE">
+<span id="_CPPv3N4cvc53api4Kind9SET_EMPTYE"></span><span id="_CPPv2N4cvc53api4Kind9SET_EMPTYE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba7064a1826020ea953403bc2c95f30047"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SET_EMPTY</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind9SET_EMPTYE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Empty set constant.</p>
 <p>Parameters:<ul class="simple">
 <li><p>1: <a class="reference internal" href="sort.html#classcvc5_1_1api_1_1Sort"><span class="std std-ref">Sort</span></a> of the set elements</p></li>
@@ -2748,8 +2732,8 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind5UNIONE">
-<span id="_CPPv3N4cvc53api4Kind5UNIONE"></span><span id="_CPPv2N4cvc53api4Kind5UNIONE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba32ce8af18242336e258dcec02ead35fc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UNION</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind5UNIONE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind9SET_UNIONE">
+<span id="_CPPv3N4cvc53api4Kind9SET_UNIONE"></span><span id="_CPPv2N4cvc53api4Kind9SET_UNIONE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba024fc46adaa95cc8b80b10b0afac3898"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SET_UNION</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind9SET_UNIONE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set union.</p>
 <p>Parameters:<ul class="simple">
 <li><p>1..2: Terms of set sort</p></li>
@@ -2763,8 +2747,8 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind12INTERSECTIONE">
-<span id="_CPPv3N4cvc53api4Kind12INTERSECTIONE"></span><span id="_CPPv2N4cvc53api4Kind12INTERSECTIONE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bacc93648c5b0ced752dad57732a1c783d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">INTERSECTION</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind12INTERSECTIONE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind16SET_INTERSECTIONE">
+<span id="_CPPv3N4cvc53api4Kind16SET_INTERSECTIONE"></span><span id="_CPPv2N4cvc53api4Kind16SET_INTERSECTIONE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2badf76aaee7b901f377f513b38883c4abd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SET_INTERSECTION</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind16SET_INTERSECTIONE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set intersection.</p>
 <p>Parameters:<ul class="simple">
 <li><p>1..2: Terms of set sort</p></li>
@@ -2778,8 +2762,8 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind8SETMINUSE">
-<span id="_CPPv3N4cvc53api4Kind8SETMINUSE"></span><span id="_CPPv2N4cvc53api4Kind8SETMINUSE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba32fd344a856ca8b38220af2f8e3ccabe"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SETMINUS</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind8SETMINUSE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind9SET_MINUSE">
+<span id="_CPPv3N4cvc53api4Kind9SET_MINUSE"></span><span id="_CPPv2N4cvc53api4Kind9SET_MINUSE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2babe5b315b6d189db7b30a884c6ce7a709"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SET_MINUS</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind9SET_MINUSE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set subtraction.</p>
 <p>Parameters:<ul class="simple">
 <li><p>1..2: Terms of set sort</p></li>
@@ -2793,8 +2777,8 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind6SUBSETE">
-<span id="_CPPv3N4cvc53api4Kind6SUBSETE"></span><span id="_CPPv2N4cvc53api4Kind6SUBSETE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba22c802e86508dbb088676a233d2249ae"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SUBSET</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind6SUBSETE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind10SET_SUBSETE">
+<span id="_CPPv3N4cvc53api4Kind10SET_SUBSETE"></span><span id="_CPPv2N4cvc53api4Kind10SET_SUBSETE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bac54f28e82e3c755f8b4eae5640d6301e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SET_SUBSET</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind10SET_SUBSETE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Subset predicate.</p>
 <p>Parameters:<ul class="simple">
 <li><p>1..2: Terms of set sort, [1] a subset of set [2]?</p></li>
@@ -2808,8 +2792,8 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind6MEMBERE">
-<span id="_CPPv3N4cvc53api4Kind6MEMBERE"></span><span id="_CPPv2N4cvc53api4Kind6MEMBERE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bad33fcb52bece146d959c8e6571f8cd4a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MEMBER</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind6MEMBERE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind10SET_MEMBERE">
+<span id="_CPPv3N4cvc53api4Kind10SET_MEMBERE"></span><span id="_CPPv2N4cvc53api4Kind10SET_MEMBERE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bae00d2fa47b6b2c0703dee0ee3236a3a6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SET_MEMBER</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind10SET_MEMBERE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set membership predicate.</p>
 <p>Parameters:<ul class="simple">
 <li><p>1..2: Terms of set sort, [1] a member of set [2]?</p></li>
@@ -2823,8 +2807,8 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind9SINGLETONE">
-<span id="_CPPv3N4cvc53api4Kind9SINGLETONE"></span><span id="_CPPv2N4cvc53api4Kind9SINGLETONE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bad9ec63da0d769bfcbfd70068c5f8d331"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SINGLETON</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind9SINGLETONE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind13SET_SINGLETONE">
+<span id="_CPPv3N4cvc53api4Kind13SET_SINGLETONE"></span><span id="_CPPv2N4cvc53api4Kind13SET_SINGLETONE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2babf2dffaf33f9f22e1330f67e23056e0f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SET_SINGLETON</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind13SET_SINGLETONE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Construct a singleton set from an element given as a parameter. The returned set has same type of the element.</p>
 <p>Parameters:<ul class="simple">
 <li><p>1: Single element</p></li>
@@ -2837,8 +2821,8 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind6INSERTE">
-<span id="_CPPv3N4cvc53api4Kind6INSERTE"></span><span id="_CPPv2N4cvc53api4Kind6INSERTE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba177238208caddfa9c2366baf429688dc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">INSERT</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind6INSERTE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind10SET_INSERTE">
+<span id="_CPPv3N4cvc53api4Kind10SET_INSERTE"></span><span id="_CPPv2N4cvc53api4Kind10SET_INSERTE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bae9cc2dff238e350da452c8b25fc82a76"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SET_INSERT</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind10SET_INSERTE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>The set obtained by inserting elements;</p>
 <p>Parameters: n &gt; 0<ul class="simple">
 <li><p>1..n-1: Elements inserted into set [n]</p></li>
@@ -2855,8 +2839,8 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind4CARDE">
-<span id="_CPPv3N4cvc53api4Kind4CARDE"></span><span id="_CPPv2N4cvc53api4Kind4CARDE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2baccd65942b0b94467d518d9b662b74799"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CARD</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind4CARDE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind8SET_CARDE">
+<span id="_CPPv3N4cvc53api4Kind8SET_CARDE"></span><span id="_CPPv2N4cvc53api4Kind8SET_CARDE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba92d7d9cb7d7291e8c983964384b14e82"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SET_CARD</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind8SET_CARDE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set cardinality.</p>
 <p>Parameters:<ul class="simple">
 <li><p>1: Set to determine the cardinality of</p></li>
@@ -2869,8 +2853,8 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind10COMPLEMENTE">
-<span id="_CPPv3N4cvc53api4Kind10COMPLEMENTE"></span><span id="_CPPv2N4cvc53api4Kind10COMPLEMENTE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bae2912ff81cd90676a80e5f4250125302"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPLEMENT</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind10COMPLEMENTE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind14SET_COMPLEMENTE">
+<span id="_CPPv3N4cvc53api4Kind14SET_COMPLEMENTE"></span><span id="_CPPv2N4cvc53api4Kind14SET_COMPLEMENTE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba238b4e57b315bc817cdac37b0515f572"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SET_COMPLEMENT</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind14SET_COMPLEMENTE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set complement with respect to finite universe.</p>
 <p>Parameters:<ul class="simple">
 <li><p>1: Set to complement</p></li>
@@ -2883,9 +2867,10 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind12UNIVERSE_SETE">
-<span id="_CPPv3N4cvc53api4Kind12UNIVERSE_SETE"></span><span id="_CPPv2N4cvc53api4Kind12UNIVERSE_SETE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba9f2c3d68001dae15f183ba51bf8ee286"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UNIVERSE_SET</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind12UNIVERSE_SETE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind12SET_UNIVERSEE">
+<span id="_CPPv3N4cvc53api4Kind12SET_UNIVERSEE"></span><span id="_CPPv2N4cvc53api4Kind12SET_UNIVERSEE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba8cfc8dc7ec87c1d9c80246fa9c8b3354"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SET_UNIVERSE</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind12SET_UNIVERSEE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Finite universe set. All set variables must be interpreted as subsets of it.</p>
+<p>Note that SET_UNIVERSE is considered a special symbol of the theory of sets and is not considered as a set value, i.e., <code class="docutils literal notranslate"><a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term_1aa9a79b2d6fce5c7433c0aba4f611b232"><span class="std std-ref"><span class="pre">Term::isSetValue()</span> <span class="pre">const</span></span></a></code> will return false.</p>
 <p>Create with:<ul class="simple">
 <li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1ac2497596ecc517ee50218f375de534b0"><span class="std std-ref"><span class="pre">Solver::mkUniverseSet(const</span> <span class="pre">Sort&amp;</span> <span class="pre">sort)</span> <span class="pre">const</span></span></a></code> </p></li>
 </ul>
@@ -2893,95 +2878,8 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind4JOINE">
-<span id="_CPPv3N4cvc53api4Kind4JOINE"></span><span id="_CPPv2N4cvc53api4Kind4JOINE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bab6f6085adf1459863105c7b0234584bb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">JOIN</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind4JOINE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set join.</p>
-<p>Parameters:<ul class="simple">
-<li><p>1..2: Terms of set sort</p></li>
-</ul>
-</p>
-<p>Create with:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a44e3cca7f0b1c10204b1782c406f251b"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child1,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child2)</span> <span class="pre">const</span></span></a></code></p></li>
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a7a49bbf11d4b284fdcbf3f31c549aec3"><span class="std std-ref"><span class="pre">Solver::mkTerm</span></span></a><span class="pre">(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">std::vector&lt;</span><a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref"><span class="pre">Term</span></span></a><span class="pre">&gt;&amp;</span> <span class="pre">children)</span> <span class="pre">const</span></code> </p></li>
-</ul>
-</p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind7PRODUCTE">
-<span id="_CPPv3N4cvc53api4Kind7PRODUCTE"></span><span id="_CPPv2N4cvc53api4Kind7PRODUCTE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba1bb82b8a89bdfe4de35a306635d51588"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PRODUCT</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind7PRODUCTE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set cartesian product.</p>
-<p>Parameters:<ul class="simple">
-<li><p>1..2: Terms of set sort</p></li>
-</ul>
-</p>
-<p>Create with:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a44e3cca7f0b1c10204b1782c406f251b"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child1,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child2)</span> <span class="pre">const</span></span></a></code></p></li>
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a7a49bbf11d4b284fdcbf3f31c549aec3"><span class="std std-ref"><span class="pre">Solver::mkTerm</span></span></a><span class="pre">(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">std::vector&lt;</span><a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref"><span class="pre">Term</span></span></a><span class="pre">&gt;&amp;</span> <span class="pre">children)</span> <span class="pre">const</span></code> </p></li>
-</ul>
-</p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind9TRANSPOSEE">
-<span id="_CPPv3N4cvc53api4Kind9TRANSPOSEE"></span><span id="_CPPv2N4cvc53api4Kind9TRANSPOSEE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba85901e2950d537d2899436acd795fc64"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TRANSPOSE</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind9TRANSPOSEE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set transpose.</p>
-<p>Parameters:<ul class="simple">
-<li><p>1: <a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> of set sort</p></li>
-</ul>
-</p>
-<p>Create with:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1aa85a27077624951c3f5f48d8c12cdc6c"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child)</span> <span class="pre">const</span></span></a></code> </p></li>
-</ul>
-</p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind8TCLOSUREE">
-<span id="_CPPv3N4cvc53api4Kind8TCLOSUREE"></span><span id="_CPPv2N4cvc53api4Kind8TCLOSUREE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba56444d4d5e78ec212414755965326b6c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TCLOSURE</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind8TCLOSUREE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set transitive closure.</p>
-<p>Parameters:<ul class="simple">
-<li><p>1: <a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> of set sort</p></li>
-</ul>
-</p>
-<p>Create with:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1aa85a27077624951c3f5f48d8c12cdc6c"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child)</span> <span class="pre">const</span></span></a></code> </p></li>
-</ul>
-</p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind10JOIN_IMAGEE">
-<span id="_CPPv3N4cvc53api4Kind10JOIN_IMAGEE"></span><span id="_CPPv2N4cvc53api4Kind10JOIN_IMAGEE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba05de36e5881ccdb1d7398e26cb27586b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">JOIN_IMAGE</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind10JOIN_IMAGEE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set join image.</p>
-<p>Parameters:<ul class="simple">
-<li><p>1..2: Terms of set sort</p></li>
-</ul>
-</p>
-<p>Create with:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a44e3cca7f0b1c10204b1782c406f251b"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child1,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child2)</span> <span class="pre">const</span></span></a></code></p></li>
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a7a49bbf11d4b284fdcbf3f31c549aec3"><span class="std std-ref"><span class="pre">Solver::mkTerm</span></span></a><span class="pre">(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">std::vector&lt;</span><a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref"><span class="pre">Term</span></span></a><span class="pre">&gt;&amp;</span> <span class="pre">children)</span> <span class="pre">const</span></code> </p></li>
-</ul>
-</p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind4IDENE">
-<span id="_CPPv3N4cvc53api4Kind4IDENE"></span><span id="_CPPv2N4cvc53api4Kind4IDENE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba8ef8fe3c669797ad9b1c1ddc0cf1a052"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IDEN</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind4IDENE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set identity.</p>
-<p>Parameters:<ul class="simple">
-<li><p>1: <a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> of set sort</p></li>
-</ul>
-</p>
-<p>Create with:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1aa85a27077624951c3f5f48d8c12cdc6c"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child)</span> <span class="pre">const</span></span></a></code> </p></li>
-</ul>
-</p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind13COMPREHENSIONE">
-<span id="_CPPv3N4cvc53api4Kind13COMPREHENSIONE"></span><span id="_CPPv2N4cvc53api4Kind13COMPREHENSIONE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bae3024110eed3465f8ee91c11a453b36e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPREHENSION</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind13COMPREHENSIONE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind17SET_COMPREHENSIONE">
+<span id="_CPPv3N4cvc53api4Kind17SET_COMPREHENSIONE"></span><span id="_CPPv2N4cvc53api4Kind17SET_COMPREHENSIONE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba9685a402d3ad8a5b679504171adc133f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SET_COMPREHENSION</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind17SET_COMPREHENSIONE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set comprehension A set comprehension is specified by a bound variable list x1 … xn, a predicate P[x1…xn], and a term t[x1…xn]. A comprehension C with the above form has members given by the following semantics: <div class="math notranslate nohighlight">
 \[ \forall y. ( \exists x_1...x_n. P[x_1...x_n] \hat{} t[x_1...x_n] = y ) \Leftrightarrow (member y C) \]</div>
  where y ranges over the element type of the (set) type of the comprehension. If <span class="math notranslate nohighlight">\( t[x_1..x_n] \)</span> is not provided, it is equivalent to y in the above formula.</p>
@@ -3000,8 +2898,8 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind6CHOOSEE">
-<span id="_CPPv3N4cvc53api4Kind6CHOOSEE"></span><span id="_CPPv2N4cvc53api4Kind6CHOOSEE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2baa54d19b4e91e61a6e9c991001231edda"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CHOOSE</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind6CHOOSEE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind10SET_CHOOSEE">
+<span id="_CPPv3N4cvc53api4Kind10SET_CHOOSEE"></span><span id="_CPPv2N4cvc53api4Kind10SET_CHOOSEE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bab76584077e84cf47ce98327ee38ee02b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SET_CHOOSE</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind10SET_CHOOSEE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns an element from a given set. If a set A = {x}, then the term (choose A) is equivalent to the term x. If the set is empty, then (choose A) is an arbitrary value. If the set has cardinality &gt; 1, then (choose A) will deterministically return an element in A.</p>
 <p>Parameters:<ul class="simple">
 <li><p>1: <a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> of set sort</p></li>
@@ -3014,11 +2912,98 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind12IS_SINGLETONE">
-<span id="_CPPv3N4cvc53api4Kind12IS_SINGLETONE"></span><span id="_CPPv2N4cvc53api4Kind12IS_SINGLETONE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba8b99a103fdf2d39fba7e7d8495a8e65a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IS_SINGLETON</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind12IS_SINGLETONE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind16SET_IS_SINGLETONE">
+<span id="_CPPv3N4cvc53api4Kind16SET_IS_SINGLETONE"></span><span id="_CPPv2N4cvc53api4Kind16SET_IS_SINGLETONE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba7085f52e1755e94b29b2b16bc14ed746"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SET_IS_SINGLETON</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind16SET_IS_SINGLETONE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set is_singleton predicate.</p>
 <p>Parameters:<ul class="simple">
 <li><p>1: <a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> of set sort, is [1] a singleton set?</p></li>
+</ul>
+</p>
+<p>Create with:<ul class="simple">
+<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1aa85a27077624951c3f5f48d8c12cdc6c"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child)</span> <span class="pre">const</span></span></a></code> </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind13RELATION_JOINE">
+<span id="_CPPv3N4cvc53api4Kind13RELATION_JOINE"></span><span id="_CPPv2N4cvc53api4Kind13RELATION_JOINE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba8b4064e1b6e8e2959bed7b4de093bf19"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RELATION_JOIN</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind13RELATION_JOINE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set join.</p>
+<p>Parameters:<ul class="simple">
+<li><p>1..2: Terms of set sort</p></li>
+</ul>
+</p>
+<p>Create with:<ul class="simple">
+<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a44e3cca7f0b1c10204b1782c406f251b"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child1,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child2)</span> <span class="pre">const</span></span></a></code></p></li>
+<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a7a49bbf11d4b284fdcbf3f31c549aec3"><span class="std std-ref"><span class="pre">Solver::mkTerm</span></span></a><span class="pre">(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">std::vector&lt;</span><a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref"><span class="pre">Term</span></span></a><span class="pre">&gt;&amp;</span> <span class="pre">children)</span> <span class="pre">const</span></code> </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind16RELATION_PRODUCTE">
+<span id="_CPPv3N4cvc53api4Kind16RELATION_PRODUCTE"></span><span id="_CPPv2N4cvc53api4Kind16RELATION_PRODUCTE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba28e0bf732c28ba7ba1138e9a9f70ab64"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RELATION_PRODUCT</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind16RELATION_PRODUCTE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set cartesian product.</p>
+<p>Parameters:<ul class="simple">
+<li><p>1..2: Terms of set sort</p></li>
+</ul>
+</p>
+<p>Create with:<ul class="simple">
+<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a44e3cca7f0b1c10204b1782c406f251b"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child1,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child2)</span> <span class="pre">const</span></span></a></code></p></li>
+<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a7a49bbf11d4b284fdcbf3f31c549aec3"><span class="std std-ref"><span class="pre">Solver::mkTerm</span></span></a><span class="pre">(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">std::vector&lt;</span><a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref"><span class="pre">Term</span></span></a><span class="pre">&gt;&amp;</span> <span class="pre">children)</span> <span class="pre">const</span></code> </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind18RELATION_TRANSPOSEE">
+<span id="_CPPv3N4cvc53api4Kind18RELATION_TRANSPOSEE"></span><span id="_CPPv2N4cvc53api4Kind18RELATION_TRANSPOSEE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bafe8a66d8b11196962cc363b98dfa5594"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RELATION_TRANSPOSE</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind18RELATION_TRANSPOSEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set transpose.</p>
+<p>Parameters:<ul class="simple">
+<li><p>1: <a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> of set sort</p></li>
+</ul>
+</p>
+<p>Create with:<ul class="simple">
+<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1aa85a27077624951c3f5f48d8c12cdc6c"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child)</span> <span class="pre">const</span></span></a></code> </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind17RELATION_TCLOSUREE">
+<span id="_CPPv3N4cvc53api4Kind17RELATION_TCLOSUREE"></span><span id="_CPPv2N4cvc53api4Kind17RELATION_TCLOSUREE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bab0ee5fc7b3d1a21207e347fa90d5ca34"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RELATION_TCLOSURE</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind17RELATION_TCLOSUREE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set transitive closure.</p>
+<p>Parameters:<ul class="simple">
+<li><p>1: <a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> of set sort</p></li>
+</ul>
+</p>
+<p>Create with:<ul class="simple">
+<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1aa85a27077624951c3f5f48d8c12cdc6c"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child)</span> <span class="pre">const</span></span></a></code> </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind19RELATION_JOIN_IMAGEE">
+<span id="_CPPv3N4cvc53api4Kind19RELATION_JOIN_IMAGEE"></span><span id="_CPPv2N4cvc53api4Kind19RELATION_JOIN_IMAGEE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba5b923ec5fe34921045cb5156f58edd5d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RELATION_JOIN_IMAGE</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind19RELATION_JOIN_IMAGEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set join image.</p>
+<p>Parameters:<ul class="simple">
+<li><p>1..2: Terms of set sort</p></li>
+</ul>
+</p>
+<p>Create with:<ul class="simple">
+<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a44e3cca7f0b1c10204b1782c406f251b"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child1,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child2)</span> <span class="pre">const</span></span></a></code></p></li>
+<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a7a49bbf11d4b284fdcbf3f31c549aec3"><span class="std std-ref"><span class="pre">Solver::mkTerm</span></span></a><span class="pre">(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">std::vector&lt;</span><a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref"><span class="pre">Term</span></span></a><span class="pre">&gt;&amp;</span> <span class="pre">children)</span> <span class="pre">const</span></code> </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind13RELATION_IDENE">
+<span id="_CPPv3N4cvc53api4Kind13RELATION_IDENE"></span><span id="_CPPv2N4cvc53api4Kind13RELATION_IDENE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba621308ff02570344de921c3658a3c3e3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RELATION_IDEN</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind13RELATION_IDENE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set identity.</p>
+<p>Parameters:<ul class="simple">
+<li><p>1: <a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref">Term</span></a> of set sort</p></li>
 </ul>
 </p>
 <p>Create with:<ul class="simple">
@@ -3233,6 +3218,22 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </p>
 <p>Create with:<ul class="simple">
 <li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1aa85a27077624951c3f5f48d8c12cdc6c"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child)</span> <span class="pre">const</span></span></a></code> </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind7BAG_MAPE">
+<span id="_CPPv3N4cvc53api4Kind7BAG_MAPE"></span><span id="_CPPv2N4cvc53api4Kind7BAG_MAPE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2ba58e9608224623fc1c3c04a82145f5c4c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BAG_MAP</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind7BAG_MAPE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>bag.map operator applies the first argument, a function of type (-&gt; T1 T2), to every element of the second argument, a bag of type (Bag T1), and returns a bag of type (Bag T2).</p>
+<p>Parameters:<ul class="simple">
+<li><p>1: a function of type (-&gt; T1 T2)</p></li>
+<li><p>2: a bag of type (Bag T1)</p></li>
+</ul>
+</p>
+<p>Create with:<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child1,</span> <span class="pre">const</span> <span class="pre">Term&amp;</span> <span class="pre">child2)</span> <span class="pre">const</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a7a49bbf11d4b284fdcbf3f31c549aec3"><span class="std std-ref"><span class="pre">Solver::mkTerm</span></span></a><span class="pre">(Kind</span> <span class="pre">kind,</span> <span class="pre">const</span> <span class="pre">std::vector&lt;</span><a class="reference internal" href="term.html#classcvc5_1_1api_1_1Term"><span class="std std-ref"><span class="pre">Term</span></span></a><span class="pre">&gt;&amp;</span> <span class="pre">children)</span> <span class="pre">const</span></code> </p></li>
 </ul>
 </p>
 </dd></dl>
@@ -3828,24 +3829,24 @@ for example whether it is an equality (<a class="reference internal" href="#_CPP
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind12REGEXP_EMPTYE">
-<span id="_CPPv3N4cvc53api4Kind12REGEXP_EMPTYE"></span><span id="_CPPv2N4cvc53api4Kind12REGEXP_EMPTYE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bae9ba595d9d432d239e44d3b06d3c4ae9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REGEXP_EMPTY</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind12REGEXP_EMPTYE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Regexp empty.</p>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind11REGEXP_NONEE">
+<span id="_CPPv3N4cvc53api4Kind11REGEXP_NONEE"></span><span id="_CPPv2N4cvc53api4Kind11REGEXP_NONEE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bad9adff31a2ae5494dff333297da2cefd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REGEXP_NONE</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind11REGEXP_NONEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Regexp none.</p>
 <p>Parameters: none</p>
 <p>Create with:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a5e0ba3186bb76a4e52fb1419dd5a8a08"><span class="std std-ref"><span class="pre">Solver::mkRegexpEmpty()</span> <span class="pre">const</span></span></a></code></p></li>
+<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a1c66915db2df2b1b127f512d281198f7"><span class="std std-ref"><span class="pre">Solver::mkRegexpNone()</span> <span class="pre">const</span></span></a></code></p></li>
 <li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a7a49bbf11d4b284fdcbf3f31c549aec3"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind)</span> <span class="pre">const</span></span></a></code> </p></li>
 </ul>
 </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind12REGEXP_SIGMAE">
-<span id="_CPPv3N4cvc53api4Kind12REGEXP_SIGMAE"></span><span id="_CPPv2N4cvc53api4Kind12REGEXP_SIGMAE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2baa4f4d66610717cc13757294dedeffac0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REGEXP_SIGMA</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind12REGEXP_SIGMAE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4cvc53api4Kind14REGEXP_ALLCHARE">
+<span id="_CPPv3N4cvc53api4Kind14REGEXP_ALLCHARE"></span><span id="_CPPv2N4cvc53api4Kind14REGEXP_ALLCHARE"></span><span class="target" id="namespacecvc5_1_1api_1aa62eac1c7306566ca425123499296f2bad0f857a8c4ed7e3d3d9ca95d932bd86a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">REGEXP_ALLCHAR</span></span></span><a class="headerlink" href="#_CPPv4N4cvc53api4Kind14REGEXP_ALLCHARE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Regexp all characters.</p>
 <p>Parameters: none</p>
 <p>Create with:<ul class="simple">
-<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a088cd7cc02cd9685c587147950ffb53a"><span class="std std-ref"><span class="pre">Solver::mkRegexpSigma()</span> <span class="pre">const</span></span></a></code></p></li>
+<li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1afac66f08f42cab1e72b2656b08c6b8d2"><span class="std std-ref"><span class="pre">Solver::mkRegexpAllchar()</span> <span class="pre">const</span></span></a></code></p></li>
 <li><p><code class="docutils literal notranslate"><a class="reference internal" href="solver.html#classcvc5_1_1api_1_1Solver_1a7a49bbf11d4b284fdcbf3f31c549aec3"><span class="std std-ref"><span class="pre">Solver::mkTerm(Kind</span> <span class="pre">kind)</span> <span class="pre">const</span></span></a></code> </p></li>
 </ul>
 </p>
