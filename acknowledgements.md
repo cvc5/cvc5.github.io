@@ -9,7 +9,7 @@ cvc5 is supported in part by the following organizations:
   Research](http://www.wpafb.af.mil/AFRL/afosr/) (award FA9550-09-1-0596)
 - [Amazon AWS Automated Reasoning
   Group](https://aws.amazon.com/security/provable-security/)
-- [Centaur (Center for Automated Reasoning at Stanford University](https://centaur.stanford.edu)
+- [Centaur (Center for Automated Reasoning at Stanford University)](https://centaur.stanford.edu)
 - [The Defense Advanced Research Projects Agency](http://www.darpa.mil/)
   (awards FA8750-13-2-0241, FA8750-15-C-0113, N66001-18-C-4012,
   FA8650-18-2-7854, FA8650-18-2-7861)
