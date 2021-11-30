@@ -2,25 +2,26 @@
 layout: default
 ---
 
-# Releases
+# Downloads
 
-## Stable Versions
+## Releases
 
-[GitHub](https://github.com/cvc5/cvc5/releases)
+All releases (sources, binaries) are available on [GitHub](https://github.com/cvc5/cvc5/releases/).
+
+### Latest Release
+
+- [Source tarball](https://github.com/cvc5/cvc5/releases/latest/)
+- [Linux 64-bit binary](
+    https://github.com/cvc5/cvc5/releases/latest/download/cvc5-Linux)
+- [MacOS binary](
+    https://github.com/cvc5/cvc5/releases/latest/download/cvc5-macOS)
 
 
-## Development Versions
+## Nightly Builds
 
----
-
-[Linux 64-bit binaries](https://cvc5.stanford.edu/downloads/builds/x86_64-Linux-production/)
-
----
-
-[Windows 64-bit binaries](https://cvc5.stanford.edu/downloads/builds/x86_64-win64-production/)
-
----
-
-[Linux 64-bit competition binaries](https://cvc5.stanford.edu/downloads/builds/x86_64-Linux-competition/)
-
----
+- [Linux 64-bit binaries](
+    https://cvc5.stanford.edu/downloads/builds/x86_64-Linux-production/)
+- [Linux 64-bit competition binaries](
+    https://cvc5.stanford.edu/downloads/builds/x86_64-Linux-competition/)
+- [Windows 64-bit binaries](
+    https://cvc5.stanford.edu/downloads/builds/x86_64-win64-production/)

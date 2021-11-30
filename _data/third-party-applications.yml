@@ -1,0 +1,83 @@
+- name: Atelier B
+  url:  https://www.atelierb.eu/en/
+  desc: An industrial tool enabling the operational use of the B Method 
+        to develop provably defect-free software. 
+        CVC4 is one of the backend provers.
+- name: Boogie
+  url:  https://github.com/boogie-org/boogie
+  desc: A program verifier using the Boogie intermediate verification language.
+        Supports CVC4 as a backend. 
+- name: Certora
+  url:  https://www.certora.com/
+  desc: Certora provides security analysis tools for Smart Contracts. The
+        Certora Prover is capable of checking at compile-time that all
+        executions of a Smart Contract fulfill a set of security rules.
+        CVC4 is one of the backend provers.
+- name: CIVL
+  url: http://vsl.cis.udel.edu/civl/
+  desc: A symbolic execution-based model checker for a dialect of C supporting
+        concurrency.  CVC4 is one of the backend provers.
+- name: CoSA
+  url: https://github.com/cristian-mattarei/CoSA
+  desc: An SMT-based symbolic model checker for hardware design.
+- name: Inox (formerly Leon)
+  url: https://github.com/epfl-lara/inox
+  desc: A solver for higher-order functional programs.  Supports CVC4 as a
+        backend.
+- name: Isabelle (Sledgehammer)
+  url: https://isabelle.in.tum.de/dist/Isabelle2019/doc/sledgehammer.pdf
+  desc: Isabelle is a generic proof assistant.  Sledgehammer applies automated
+        reasoning tools (including CVC4) to solve Isabelle subgoals.
+- name: Maude
+  url: http://maude.cs.illinois.edu/w/index.php/The_Maude_System
+  desc: A system supporting equational and rewriting logic specification and
+        programming.  Uses CVC4 as a backend.
+- name: GPUVerify
+  url: http://multicore.doc.ic.ac.uk/tools/GPUVerify/
+  desc: A tool for formal static analysis of GPU kernels written in OpenCL and
+        CUDA. It can prove that kernels are free from defects such as data
+        races and barrier divergence. It is built on top of the Boogie
+        verification engine, using CVC4 as one of the available theorem
+        provers.
+- name: Inductor
+  url: https://github.com/cristina-serban/inductor
+  desc: A theorem prover for entailments between inductive definitions in first
+        order and separation logics.
+- name: Pysmt
+  url: https://github.com/pysmt/pysmt
+  desc: A generic python interface for SMT solving.  Supports CVC4 as a backend.
+- name: Rosette
+  url: https://emina.github.io/rosette/
+  desc: A solver-aided programming language that extends Racket with language
+        constructs for program synthesis and verification.  Supports CVC4 as a
+        backend solver.
+- name: SMTCoq
+  url: https://smtcoq.github.io/
+  desc: A Coq plugin that checks proof witnesses coming from external SAT and
+        SMT solvers.
+- name: Solidity’s SMTChecker
+  url:  https://medium.com/@leonardoalt/formal-verification-in-solidity-5cbff7b7ff8
+  desc: A built-in formal verification module in the Solidity Compiler.
+        CVC4 is one of the backend provers.
+- name: Solc-Verify
+  url: https://github.com/SRI-CSL/solidity/blob/boogie/SOLC-VERIFY-README.md
+  desc: An extended version of the Solidity compiler (v0.5.17) able to perform
+        automated formal verification on Solidity smart contracts using
+        specification annotations and modular program verification.
+        CVC4 is one of the backend provers.
+- name: SPARK
+  url: https://www.adacore.com/about-spark
+  desc: SPARK is a verification paradigm for a subset of the Ada programming
+        language.  It uses CVC4 as the default backend for solving verification
+        conditions.
+- name: TorXakis
+  url: https://github.com/TorXakis/TorXakis
+  desc: A model-based testing framework.
+- name: Why3
+  url: http://why3.lri.fr/
+  desc: A platform for deductive program verification.  Uses CVC4 as an
+        external prover.
+- name: Zelkova
+  url: https://aws.amazon.com/blogs/security/protect-sensitive-data-in-the-cloud-with-automated-reasoning-zelkova/
+  desc: Zelkova uses an encoding into the SMT theory of strings to check the
+        security of access policies on Amazon Web Services.
