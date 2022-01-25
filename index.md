@@ -26,18 +26,6 @@ cvc5 is a joint project led by Stanford University and the University of Iowa.
 
 
 
-# Guidelines For Fuzzing cvc5
-
-The development team of cvc5 is committed to ensure that its core
-usage model (without experimental options) is extremely robust.
-At the same time, our team is small and we have to set priorities,
-including prioritizing user bugs over fuzzer bugs.
-
-For fuzzing bugs, we ask you to follow this
-[guidelines](https://github.com/cvc5/cvc5/wiki/Fuzzing-cvc5).
-
-
-
 # Technical Support
 
 For bug reports, please use the <a title="cvc5 bug tracking system"
@@ -51,3 +39,15 @@ href="http://www.cs.nyu.edu/mailman/listinfo/cvc-users" rel="nofollow">The
 CVC-USERS list</a> is for users of cvc5.
 We will make periodic announcements to this list and users are also encouraged
 to use it for discussion.
+
+
+
+# Guidelines For Fuzzing cvc5
+
+The development team of cvc5 is committed to ensure that its core
+usage model (without experimental options) is extremely robust.
+At the same time, our team is small and we have to set priorities,
+including prioritizing user bugs over fuzzer bugs.
+
+For fuzzing bugs, we ask you to follow this
+[guidelines](https://github.com/cvc5/cvc5/wiki/Fuzzing-cvc5).
