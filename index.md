@@ -33,7 +33,7 @@ href="https://github.com/cvc5/cvc5/issues" rel="nofollow">cvc5 issue
 tracker</a>.
 
 If you have a question, a feature request, or if you would like to contribute
-in some way, please use the <a title="https://github.com/cvc5/cvc5/discussions">discussions feature on the cvc5 GitHub repository</a>.
+in some way, please use the <a title="cvc5 discussions" href="https://github.com/cvc5/cvc5/discussions">discussions feature on the cvc5 GitHub repository</a>.
 
 
 
