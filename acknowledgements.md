@@ -31,8 +31,9 @@ cvc5 is supported in part by the following organizations:
 - The Office of Naval Research (award N68335-17-C-0558)
 - [The Semiconductor Research Corporation](http://www.src.org/) (tasks
   1850.001, 1850.002)
-- The Stanford Agile Hardware Center
-- The Stanford SystemX Alliance
+- [The Stanford Agile Hardware Center](https://aha.stanford.edu/)
+- [The Stanford Center for Blockchain Research](https://cbr.stanford.edu/)
+- [The Stanford SystemX Alliance](https://systemx.stanford.edu/)
 - [United Technologies Research Center](http://www.utrc.utc.com/)
 - [The US-Israel Binational Science Foundation](https://www.bsf.org.il/)
   (grant 2020704)
