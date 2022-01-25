@@ -10,6 +10,7 @@ cvc5 is supported in part by the following organizations:
 - [Amazon AWS Automated Reasoning
   Group](https://aws.amazon.com/security/provable-security/)
 - [Centaur (Center for Automated Reasoning at Stanford University)](https://centaur.stanford.edu)
+- [Certora](https://www.certora.com/)
 - [The Defense Advanced Research Projects Agency](http://www.darpa.mil/)
   (awards FA8750-13-2-0241, FA8750-15-C-0113, N66001-18-C-4012,
   FA8650-18-2-7854, FA8650-18-2-7861)
@@ -19,6 +20,7 @@ cvc5 is supported in part by the following organizations:
 - [Google](http://www.google.com)
 - [Intel Corporation](http://www.intel.com/)
 - NASA (contract #NNL14AA06C)
+- [Meta Novi](https://about.facebook.com/technologies/novi/)
 - [The National Science Foundation](http://www.nsf.gov/) (grants
   [0644299](http://www.fastlane.nsf.gov/servlet/showaward?award=0644299),
   [0914956](http://www.fastlane.nsf.gov/servlet/showaward?award=0914956),
@@ -32,6 +34,8 @@ cvc5 is supported in part by the following organizations:
 - The Stanford Agile Hardware Center
 - The Stanford SystemX Alliance
 - [United Technologies Research Center](http://www.utrc.utc.com/)
+- [The US-Israel Binational Science Foundation](https://www.bsf.org.il/)
+  (grant 2020704)
 
 Any opinions, findings and conclusions or recommendations expressed in this
 site are those of the authors and do not necessarily reflect the views of the
