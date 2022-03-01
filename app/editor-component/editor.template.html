@@ -1,0 +1,96 @@
+<div class="editorComponent">
+    <div class="editorCenter">
+        <div class="editorCenterHeader">
+            <a class="btn btn-success" ng-click="run()"
+            title="{{!waitingCheck ?'Run the code on the web server': 'Cancel the current run'}}">{{ !waitingCheck ? 'Run ': 'Cancel'}} </a>
+            <a class="btn btn-primary" ng-click="openModal()"
+            title="Load an example or a file">Load</a>
+            <a class="btn btn-primary" ng-click="download()" ng-href="{{savedFile}}"
+               download="{{parameters['lang'].startsWith('smt')? 'file.smt2':
+                           parameters['lang'].startsWith('cvc')? 'file.cvc':
+                           parameters['lang'].startsWith('sygus')? 'file.sy':
+                           parameters['lang'].startsWith('tptp')? 'file.p':
+                           'file.smt2'}}"
+               title="Download the current code">Download</a>
+
+            <a class="btn btn-primary" ng-click="saveJob(null)"
+               data-toggle="tooltip"
+               title="Save code in the server using a new URL that can be shared">New Save</a>
+            <a class="btn btn-primary" ng-click="saveJob(jobId)"
+               data-toggle="tooltip"
+               title="Save code in the server using the current URL. Generate a new URL if there is none">Save for 3 days</a>
+            <a style="height:34px" class="btn btn-primary" ng-click="toggleTheme()"
+            title="{{isDarkTheme? 'Use a light theme' : 'Use a dark theme'}}">
+                <img ng-src="{{isDarkTheme? 'icons/bright.png' : 'icons/dark.png'}}" width="20" height="20">
+            </a>
+        </div>
+        <div class="form-group">
+            <!--<label class="colo-2 col-form-label" for="addArgument">Add Argument</label>-->
+            <div class="colo-10" style="margin-right: 5px;">
+            <input type="text"
+                   ng-model="selectedName"
+                   uib-typeahead="argument for argument in search | filter:$viewValue | limitTo:30 | orderBy:argument"
+                   typeahead-on-select="onSelect($item, $model, $label, $event)"
+                   class="form-control"
+                   id="addArgument"
+                   placeholder="Add argument">
+            </div>
+        </div>
+        <div class="editorCenterBody">
+            <span us-spinner="{radius:30, width:8, length: 16, color: '#999'}"
+                  spinner-on="waitingCheck || waitingSave || waitingSimulate || waitingRun"></span>
+            <div class="editorContainer">
+                <div id="editor"></div>
+            </div>
+        </div>
+        <splitter direction="down" class="editorRowSplitter">
+        </splitter>
+        <div class="editorCenterFooter">
+            <div class="output">Output</div>
+            <div class="outputEditorContainer">
+                <div id="outputEditor" class="outputEditor"></div>
+            </div>
+        </div>
+    </div>
+    <splitter class="editorColumnSplitter" direction="right"></splitter>
+    <div class="editorArguments">
+        <div class="arguments">
+            <div class="form-group">
+                <div ng-repeat="(key, value) in parameters">
+                    <div>
+                        <div style="clear:both"></div>
+                        <p style="float: left;">{{key}}</p>
+                        <a ng-show="!defaultParameters.includes(key)" ng-click="remove(key)"><i class="fa fa-times" style="float: right"></i></a>
+                    </div>
+                    <div ng-switch on="argumentsList[key].type">
+                        <select ng-switch-when="boolean" ng-model="parameters[key]"
+                                class="btn btn-primary form-control">
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </select>
+                        <input ng-model="parameters[key]" ng-switch-when="int"
+                               type="number"
+                               min="{{argumentsList[key].min}}"
+                               max="{{argumentsList[key].max}}"
+                               class="form-control"/>
+                        <input ng-model="parameters[key]" ng-switch-when="float"
+                               type="number"
+                               min="{{argumentsList[key].min}}"
+                               max="{{argumentsList[key].max}}"
+                               class="form-control"/>
+                        <select ng-switch-when="string" ng-model="parameters[key]"
+                                class="btn btn-primary form-control"
+                                ng-options="v for v in argumentsList[key].allowedValues"
+                                ng-change="onArgumentChange()">
+                        </select>
+                    </div>
+                    <br/>
+                </div>
+            </div>
+            <hr/>
+            <div>
+                <button class="btn btn-primary" ng-click="reset()" title="Reset arguments">Reset</button>
+            </div>
+        </div>
+    </div>
+</div>

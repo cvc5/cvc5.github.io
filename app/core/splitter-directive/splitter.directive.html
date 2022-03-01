@@ -1,0 +1,12 @@
+<div class="splitter"
+     ng-class="direction == 'left'||direction == 'right'? 'columnSplitter':'rowSplitter'"
+     ng-mousedown="onMouseDown($event)">
+
+    <div class="arrowIcon"
+         ng-switch on="direction" ng-click="hide($event)">
+        <i ng-switch-when="left" class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+        <i ng-switch-when="right" class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+        <i ng-switch-when="down" class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+        <i ng-switch-when="up" class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+    </div>
+</div>

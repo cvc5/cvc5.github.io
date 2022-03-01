@@ -1,0 +1,41 @@
+<div class="argumentsDirective">
+    <div class="form-group">
+        <div ng-repeat="(key, value) in parameters">
+            <label>{{key}}</label>
+            <div ng-switch on="argumentsList[key].type">
+                <select ng-switch-when="boolean" ng-model="parameters[key]"
+                        class="btn btn-primary form-control">
+                    <option value="true">true</option>
+                    <option value="false">false</option>
+                </select>
+                <input ng-model="parameters[key]" ng-switch-when="int"
+                       type="number"
+                       min="{{argumentsList[key].min}}"
+                       max="{{argumentsList[key].max}}"
+                       class="form-control"/>
+                <input ng-model="parameters[key]" ng-switch-when="float"
+                       type="number"
+                       min="{{argumentsList[key].min}}"
+                       max="{{argumentsList[key].max}}"
+                       class="form-control"/>
+                <select ng-switch-when="string" ng-model="parameters[key]"
+                        class="btn btn-primary form-control"
+                        ng-options="v for v in argumentsList[key].allowedValues">
+                </select>
+            </div>
+            <br/>
+        </div>
+    </div>
+    <hr/>
+    <div class="form-group">
+        <label>Add Argument</label>
+        <input type="text"
+               ng-model="selectedName"
+               uib-typeahead="argument for argument in search | filter:$viewValue | limitTo:8"
+               typeahead-on-select="onSelect($item, $model, $label, $event)"
+               class="form-control"/>
+    </div>
+    <div>
+        <button class="btn btn-primary" ng-click="reset()">Reset</button>
+    </div>
+</div>
