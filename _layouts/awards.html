@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+<h1>{{ page.event }}</h1>
+<a href="{{ page.event_url }}">{{ page.event_url }}</a><br/>
+{% for track in page.tracks %}
+<h2>{{ track.name }}</h2>
+<p>
+{% if track.results.size %}
+  {% for results in track.results %}<a href="{{ results.url }}">{{ results.url }}<br/></a>{% endfor %}
+{% else %}
+  {% assign results_url_base = page.event_url | append: "/" | append: "results/" %}
+  {% assign results_url = results_url_base | append: "results-" | append: track.track %}
+  <a href="{{ results_url }}">{{ results_url }}</a>
+{% endif %}
+</p>
+{% for medal in track.medals %}
+<i class="fa fa-trophy"></i>&nbsp;
+{% if medal.division_url %}
+  {% assign division_url = medal.division_url %}
+{% else %}
+  {% if track.results.size > 1 %}
+    <span style="color:red;">ERROR: missing 'division_url'</span>
+  {% else %}
+    {% assign division_str = medal.division | replace: "_", "-" | replace: "+", "-" | downcase %}
+    {% assign division_url = results_url_base | append: division_str | append: '-' | append: track.track %}
+  {% endif %}
+{% endif %}
+{% if medal.place == 1 %}<span class="green">{{ medal.place }}<sup>st</sup></span>{% else %}{{ medal.place}}<sup>nd</sup>{% endif %} place in division <a href="{{ division_url }}">{{ medal.division}}</a> ({% if medal.awards %}{{ medal.awards }}{% else %}<b>all</b>{% endif %})
+  <br/>
+{% endfor %}
+{% for mention in track.mentions %}
+  <h3>Honorable Mentions</h3>
+  {% assign division_str = mention.division | replace: "_", "-" | replace: "+", "-" | downcase %}
+  {% assign division_url = results_url_base | append: division_str | append: '-' | append: track.track %}
+  In division <a href="{{ division_url }}">{{ mention.division }}</a>:
+  {% for logic in mention.logics %}
+  {% assign logic_str = logic.name| replace: "_", "-" | downcase %}
+  {% assign logic_url = results_url_base | append: division_str | append: '-' | append: track.track %}
+  <br/>
+  &nbsp;&nbsp;{% if logic.place == 1 %}<span class="green">{{ logic.place }}<sup>st</sup></span>{% else %}{{ logic.place}}<sup>nd</sup>{% endif %} place in logic <a href="{{ logic_url }}">{{ logic.name }}</a> ({% if logic.awards %}{{ logic.awards }}{% endif %})
+  {% endfor %}
+{% endfor %}
+{% endfor %}
+
+{% for award in page.overall %}
+<h2>{{ award.name }}</h2>
+{% for medal in award.tracks %}
+  {% if medal.track_url %}
+    {% assign track_url = medal.track_url %}
+  {% else %}
+    {% assign track_url = results_url_base | append: award.award | append: "-" | append: medal.track %}
+  {% endif %}
+  <i class="fa fa-trophy"></i>&nbsp;
+  {% if medal.place == 1 %}<span class="green">{{ medal.place }}<sup>st</sup></span>{% else %}{{ medal.place }}<sup>{% if medal.place == 2 %}nd{% else %}rd{% endif %}</sup>{% endif %} place ({% if medal.place == 1 %}gold{% else %}{% if medal.place == 2 %}silver{% else %}bronze{% endif %}{% endif %}) in the <a href="{{ track_url }}">{{ medal.name}}</a> ({% if medal.awards %}{{ medal.awards }}{% else %}<b>all</b>{% endif %})
+<br/>
+{% endfor %}
+{% for medal in award.medals %}
+<i class="fa fa-trophy"></i>&nbsp;
+{{ medal.medal }}<br/>
+{% endfor %}
+{% endfor %}
+<br/>
+<br/>
+<br/>
+{% if page.img %}<img src="{{ page.img | relative_url }}"/>{% endif %}
