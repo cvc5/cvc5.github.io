@@ -3,9 +3,42 @@ layout: default
 ---
 
 <h1>{{ page.event }}</h1>
-<a href="{{ page.event_url }}">{{ page.event_url }}</a><br/>
+<a href="{{ page.event_url }}">{{ page.event_url }}</a><br/><br/>
+
+<b>System Description:</b> &nbsp;<a href="{{ page.sysdesc-url }}">{{ page.sysdesc-title }}</a>
+<br/>
+{% if page.version %}<b>Competing Version:</b>&nbsp; {{ page.version }}<br/>{% endif %}
+<b>Submitted Binaries:</b>
+<ul>
+{% for track in page.binaries %}
+  <li><a href="{{ track.binary }}">{{ track.name }}</a></li>
+{% endfor %}
+</ul>
+
+<h2>Divisions Entered</h2>
+<ul class="awards">
+{% for track in page.entered %}
+{% assign results_url = page.event_url | append: "/" | append: "results/" %}
+<li>
+  <b>{{ track.name }}:</b> &nbsp;
+  {% assign divisions = track.divisions | split: "," %}
+  {% assign division_str = "" %}
+  <ul class="awards-entered">
+  {% for division in divisions %}
+  {% assign division_url_str = division | replace: "_", "-" | downcase %}
+  {% assign division_url = results_url | append: division_url_str | append: '-' | append: track.track %}
+  <li><a href="{{ division_url}}">{{ division }}</a></li>
+  {% endfor %}
+  </ul>
+</li>
+{% endfor %}
+</ul>
+
+<h2>Division Awards</h2>
+
 {% for track in page.tracks %}
-<h2>{{ track.name }}</h2>
+
+<h3>{{ track.name }}</h3>
 <p>
 {% if track.results.size %}
   {% for results in track.results %}<a href="{{ results.url }}">{{ results.url }}<br/></a>{% endfor %}
@@ -31,7 +64,7 @@ layout: default
   <br/>
 {% endfor %}
 {% for mention in track.mentions %}
-  <h3>Honorable Mentions</h3>
+  <h4>Honorable Mentions</h4>
   {% assign division_str = mention.division | replace: "_", "-" | replace: "+", "-" | downcase %}
   {% assign division_url = results_url_base | append: division_str | append: '-' | append: track.track %}
   In division <a href="{{ division_url }}">{{ mention.division }}</a>:

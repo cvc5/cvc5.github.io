@@ -5,7 +5,7 @@ event: SMT-COMP 2021
 event_url: https://smt-comp.github.io/2021
 
 version:
-binary:
+binaries:
 - track: single-query
   name: Single Query Track
   binary: https://www.starexec.org/starexec/secure/details/solver.jsp?id=33471
@@ -20,6 +20,40 @@ binary:
   binary: https://www.starexec.org/starexec/secure/details/solver.jsp?id=33473
 sysdesc-title: cvc5 at the SMT Competition 2021
 sysdesc-url: /papers/2021/smt-comp-2021.pdf
+
+entered:
+
+- track: single-query
+  name: Single Query Track
+  divisions: Arith, Bitvec, Equality+LinearArith, Equality+MachineArith,
+             Equality+NonLinearArith, Equality, FPArith, QF_Bitvec,
+             QF_Equality+Bitvec, QF_Equality+LinearArith,
+             QF_Equality+NonLinearArith, QF_Equality, QF_FPArith,
+             QF_LinearIntArith, QF_LinearRealArith, QF_NonLinearIntArith,
+             QF_NonLinearRealArith, QF_Strings
+
+- track: incremental
+  name: Incremental Track
+  divisions: Arith, Bitvec, Equality+LinearArith, Equality+NonLinearArith,
+             Equality, FPArith, QF_Bitvec, QF_Equality+Bitvec,
+             QF_Equality+LinearArith, QF_Equality+NonLinearArith, QF_Equality,
+             QF_FPArith, QF_LinearIntArith, QF_LinearRealArith,
+             QF_NonLinearIntArith
+
+- track: unsat-core
+  name: Unsat Core Track
+  divisions: Arith, Bitvec, Equality+LinearArith, Equality+MachineArith,
+             Equality+NonLinearArith, Equality, FPArith, QF_Bitvec,
+             QF_Equality+Bitvec, QF_Equality+LinearArith,
+             QF_Equality+NonLinearArith, QF_Equality, QF_FPArith,
+             QF_LinearIntArith, QF_LinearRealArith, QF_NonLinearIntArith,
+             QF_NonLinearRealArith
+
+- track: model-validation
+  name: Model Validation Track
+  divisions: QF_Bitvec, QF_Equality+Bitvec, QF_Equality+LinearArith,
+             QF_Equality, QF_LinearIntArith, QF_LinearRealArith
+
 
 tracks:
 
