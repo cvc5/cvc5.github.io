@@ -7,3 +7,6 @@ collections:
   artifacts:
     output: true
     permalink: /artifacts/:name
+  awards:
+    output: true
+    permalink: /awards/:name

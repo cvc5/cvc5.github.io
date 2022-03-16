@@ -1,0 +1,17 @@
+---
+competitions:
+
+- name: SMT-COMP
+  events:
+  - event: SMT-COMP 2021
+    event_url: http://smt-comp.github.io/2021
+    entered:
+      divisions: 59
+      awards: 155
+    gold:
+      divisions: 92
+      competition-wide: 17
+    year: 2021
+    details: /awards/smt-comp-2021.html
+
+---
