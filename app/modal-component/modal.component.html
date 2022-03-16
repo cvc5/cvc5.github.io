@@ -6,7 +6,7 @@
     <input-file file-changed="$ctrl.upload(text)"></input-file>
 </div>
 <div class="modal-body" id="modal-body">
-    <uib-tabset active="1">
+    <uib-tabset active="0">
         <uib-tab ng-repeat="kind in $ctrl.exampleKinds | orderBy:'name'" heading="{{kind.name}}">
             <br/>
             <ul>
