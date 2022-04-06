@@ -55,3 +55,34 @@ img.menu {
   width: 40px;
 }
 
+.btn {
+  display: inline-block;
+  padding: 0px 4px;
+  margin-top: 4px;
+  margin-bottom: 0;
+  margin-right: 2px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  border-color: #739900;
+  color: #739900;
+}
+
+.btn:hover,
+{
+  border-color: #0099e6; //6
+  color: #0099e6; //6
+}
+
+code, pre {
+  color: #eeeeee;
+  background: #111;
+  border:2px solid #e5e5e5;
+  border-radius:5px;
+  padding: 5px 3px 3px;
+}
+
