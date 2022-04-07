@@ -18,7 +18,12 @@ pandoc_args = [
 
 markdown = subprocess.check_output(pandoc_args).decode('utf8').strip()
 
-special_fields = ['pdf', 'bibtex', 'artifact']
+special_fields = ['pdf', 'bibtex', 'artifact', 'award']
+
+def format_note(match):
+    note = re.sub(r' +', ' ', match.groups()[0].replace('\n', ' '))
+    note = note.split(',')
+    return ''.join('\n  ' + n.strip() for n in note)
 
 subst = {
         '---\n': '',
@@ -32,8 +37,7 @@ subst = {
         r'\$([0-9]*)\^\{(.*)\}\$': r'\1<sup>\2</sup>',
         r'(title:.*)\[': r'\1',
         r'\]{\.nocase}': '',
-        r'(' + "|".join(w for w in special_fields) + ')=(.*),': r'\n  \1: \2',
-        r'.*note: "([\s\S]*?)"': r'\1',
+        r'.*note: "([\s\S]*?)"': format_note,
         r'\s+\n': '\n',
         }
 

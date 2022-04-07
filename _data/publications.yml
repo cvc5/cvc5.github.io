@@ -51,6 +51,7 @@ references:
   pdf: /papers/2022/BarbosaBBKLMMMN-TACAS22.pdf
   bibtex: https://dblp.org/rec/conf/tacas/BarbosaBBKLMMMN22.html?view=bibtex
   artifact: https://zenodo.org/record/5740365
+  award: SCP Best Tool Paper Award
   page: 415-442
   publisher: Springer
   title: "cvc5: A versatile and industrial-strength SMT solver"
@@ -100,4 +101,3 @@ references:
   type: paper-conference
   url: "https://doi.org/10.1007/978-3-030-94583-1\\\\\\_24"
   volume: 13182
----
