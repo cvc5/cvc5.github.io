@@ -50,7 +50,7 @@ references:
     month: 4
   pdf: /papers/2022/BarbosaBBKLMMMN-TACAS22.pdf
   bibtex: https://dblp.org/rec/conf/tacas/BarbosaBBKLMMMN22.html?view=bibtex
-  artifact : https://zenodo.org/record/5740365
+  artifact: https://zenodo.org/record/5740365
   page: 415-442
   publisher: Springer
   title: "cvc5: A versatile and industrial-strength SMT solver"
@@ -93,7 +93,7 @@ references:
     month: 1
   pdf: /papers/2022/ZoharIMNNPRBT22-VMCAI22.pdf
   bibtex: https://dblp.uni-trier.de/rec/conf/vmcai/ZoharIMNNPRBT22.html?view=bibtex
-  artifact : https://zenodo.org/record/5652826
+  artifact: https://zenodo.org/record/5652826
   page: 496-518
   publisher: Springer
   title: Bit-precise reasoning via int-blasting

@@ -22,16 +22,18 @@ special_fields = ['pdf', 'bibtex', 'artifact']
 
 subst = {
         '---\n': '',
+        '\n---': '',
         'nocite: \"\[@\*\]\"\n': '',
         r'issued: ([0-9][0-9][0-9][0-9])-([0-9][0-9])':\
                 r'issued:\n  - year: \1\n    month: \2',
+        r'issued: ([0-9][0-9][0-9][0-9])': \
+                r'issued:\n  - year: \1\n    month: 01',
         'month: 0': 'month: ',
-        r'\$\([0-9]\)*^{\(.*\)}\$': '\1<sup>\2</sup>',
-        r'(title:.*)\[': '\1',
+        r'\$([0-9]*)\^\{(.*)\}\$': r'\1<sup>\2</sup>',
+        r'(title:.*)\[': r'\1',
         r'\]{\.nocase}': '',
         r'(' + "|".join(w for w in special_fields) + ')=(.*),': r'\n  \1: \2',
-        r'(' + "|".join(w for w in special_fields) + ')(.*)"': r'\1 \2',
-        r'.*note: "\n': '',
+        r'.*note: "([\s\S]*?)"': r'\1',
         r'\s+\n': '\n',
         }
 
