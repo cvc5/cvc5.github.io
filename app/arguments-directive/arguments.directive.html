@@ -18,7 +18,7 @@
                        min="{{argumentsList[key].min}}"
                        max="{{argumentsList[key].max}}"
                        class="form-control"/>
-                <select ng-switch-when="string" ng-model="parameters[key]"
+                <select ng-switch-when="list" ng-model="parameters[key]"
                         class="btn btn-primary form-control"
                         ng-options="v for v in argumentsList[key].allowedValues">
                 </select>
