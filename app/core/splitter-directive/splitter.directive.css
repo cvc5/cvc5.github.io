@@ -1,0 +1,24 @@
+.splitter{
+    background: linear-gradient(to right, #dddddd, #dddddd);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.splitter.columnSplitter {
+    width: 10px;
+    cursor: col-resize;
+    height: 100%;
+}
+
+
+.splitter.rowSplitter {
+    height: 10px;
+    cursor: row-resize;
+}
+
+.arrowIcon{
+    color: black;
+    font-size: large;
+    cursor: pointer
+}

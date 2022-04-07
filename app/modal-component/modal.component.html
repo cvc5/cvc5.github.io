@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Load an example or a file</h3>
+</div>
+<div class="modal-body">
+    <Label>Load a file</Label>
+    <input-file file-changed="$ctrl.upload(text)"></input-file>
+</div>
+<div class="modal-body" id="modal-body">
+    <uib-tabset active="0">
+        <uib-tab ng-repeat="kind in $ctrl.exampleKinds | orderBy:'name'" heading="{{kind.name}}">
+            <br/>
+            <ul>
+                <li ng-repeat="example in kind.names | orderBy:example">
+                    <a href="{{$ctrl.path+'/#examples/' + kind.name + '/' + example}}" ng-click="$ctrl.getExampleModal(kind.name + '/' + example)">{{example}}</a>
+                </li>
+            </ul>
+        </uib-tab>
+    </uib-tabset>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">Close</button>
+</div>

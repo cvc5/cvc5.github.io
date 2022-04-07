@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" ng-app="cvc">
+  <head>
+
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <meta charset="utf-8">
+    <title>cvc5</title>
+    <link rel="icon" href="icons/logo.svg">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="lib/fa/css/font-awesome.css"/>
+    <link rel="stylesheet" href="app.css"/>
+    <link rel="stylesheet" href="core/splitter-directive/splitter.directive.css"/>
+    <link rel="stylesheet" href="editor-component/editor.component.css"/>
+    <link rel="stylesheet" href="arguments-directive/arguments.directive.css"/>
+    <link href="js/vs/editor/editor.main.css" rel="stylesheet" />
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/ui-bootstrap/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="environment.js"></script>
+    <script src="configurations.js"></script>
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+    <script src="core/shared-service/shared.service.js"></script>
+    <script src="core/input-file-directive/input-file.directive.js"></script>
+    <script src="cvc-service/cvc.service.js"></script>
+    <script src="core/splitter-directive/splitter.directive.js"></script>
+    <script src="modal-component/modal.component.js"></script>
+    <script src="arguments-directive/arguments.directive.js"></script>
+    <script src="editor-component/editor.component.js"></script>
+    <script src="lib/jquery/jquery-3.2.1.min.js"></script>
+    <script src="lib/angular/angular-spinner/angular-spinner.min.js"></script>
+    <script>var require = { paths: { 'vs': 'js/vs' } };</script>
+    <script type="text/javascript" src="js/vs/loader.js"></script>
+    <script type="text/javascript" src="js/vs/editor/editor.main.nls.js"></script>
+    <script type="text/javascript" src="js/vs/editor/editor.main.js"></script>
+  </head>
+  <body>
+    <h1 class="indexHeader"><a href="https://cvc5.github.io">
+      <img src="icons/logo.svg" width="80" height="30">
+    </a></h1>
+    <div ng-view class="indexView">
+    </div>
+  </body>
+</html>
