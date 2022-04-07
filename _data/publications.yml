@@ -1,0 +1,103 @@
+references:
+- author:
+  - family: Barbosa
+    given: Haniel
+  - family: Barrett
+    given: Clark W.
+  - family: Brain
+    given: Martin
+  - family: Kremer
+    given: Gereon
+  - family: Lachnitt
+    given: Hanna
+  - family: Mann
+    given: Makai
+  - family: Mohamed
+    given: Abdalrhman
+  - family: Mohamed
+    given: Mudathir
+  - family: Niemetz
+    given: Aina
+  - family: Nötzli
+    given: Andres
+  - family: Ozdemir
+    given: Alex
+  - family: Preiner
+    given: Mathias
+  - family: Reynolds
+    given: Andrew
+  - family: Sheng
+    given: Ying
+  - family: Tinelli
+    given: Cesare
+  - family: Zohar
+    given: Yoni
+  collection-title: Lecture notes in computer science
+  container-title: Tools and algorithms for the construction and
+    analysis of systems - 28th international conference, TACAS 2022,
+    held as part of the european joint conferences on theory and
+    practice of software, ETAPS 2022, munich, germany, april 2-7, 2022,
+    proceedings, part I
+  doi: 10.1007/978-3-030-99524-9\\\_24
+  editor:
+  - family: Fisman
+    given: Dana
+  - family: Rosu
+    given: Grigore
+  id: "DBLP:conf/tacas/BarbosaBBKLMMMN22"
+  issued:
+  - year: 2022
+    month: 4
+  pdf: /papers/2022/BarbosaBBKLMMMN-TACAS22.pdf
+  bibtex: https://dblp.org/rec/conf/tacas/BarbosaBBKLMMMN22.html?view=bibtex
+  artifact: https://zenodo.org/record/5740365
+  award: SCP Best Tool Paper Award
+  page: 415-442
+  publisher: Springer
+  title: "cvc5: A versatile and industrial-strength SMT solver"
+  title-short: cvc5
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-030-99524-9\\\\\\_24"
+  volume: 13243
+- author:
+  - family: Zohar
+    given: Yoni
+  - family: Irfan
+    given: Ahmed
+  - family: Mann
+    given: Makai
+  - family: Niemetz
+    given: Aina
+  - family: Nötzli
+    given: Andres
+  - family: Preiner
+    given: Mathias
+  - family: Reynolds
+    given: Andrew
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  collection-title: Lecture notes in computer science
+  container-title: Verification, model checking, and abstract
+    interpretation - 23rd international conference, VMCAI 2022,
+    philadelphia, PA, USA, january 16-18, 2022, proceedings
+  doi: 10.1007/978-3-030-94583-1\\\_24
+  editor:
+  - family: Finkbeiner
+    given: Bernd
+  - family: Wies
+    given: Thomas
+  id: "DBLP:conf/vmcai/ZoharIMNNPRBT22"
+  issued:
+  - year: 2022
+    month: 1
+  pdf: /papers/2022/ZoharIMNNPRBT22-VMCAI22.pdf
+  bibtex: https://dblp.uni-trier.de/rec/conf/vmcai/ZoharIMNNPRBT22.html?view=bibtex
+  artifact: https://zenodo.org/record/5652826
+  page: 496-518
+  publisher: Springer
+  title: Bit-precise reasoning via int-blasting
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-030-94583-1\\\\\\_24"
+  volume: 13182

@@ -9,10 +9,10 @@ cvc5 is an efficient open-source automatic theorem prover for
     https://en.wikipedia.org/wiki/Satisfiability_Modulo_Theories)
 problems.
 It can be used to prove the **satisfiability** (or, dually, the **validity**)
-of first-order formulas in a large number of theories and their combination.
+of first-order formulas with respect to (combinations of) a variety of useful background theories.
 It further provides a [Syntax-Guided Synthesis (SyGuS)](https://sygus.org)
 engine to synthesize functions with respect to background theories and their
-combination.
+combinations.
 
 cvc5 is the successor of [CVC4](https://cvc4.cs.stanford.edu) and is
 intended to be an open and extensible SMT engine.
@@ -39,10 +39,10 @@ in some way, please use the <a title="cvc5 discussions" href="https://github.com
 
 # Guidelines For Fuzzing cvc5
 
-The development team of cvc5 is committed to ensure that its core
+The development team of cvc5 is committed to ensuring that its core
 usage model (without experimental options) is extremely robust.
 At the same time, our team is small and we have to set priorities,
 including prioritizing user bugs over fuzzer bugs.
 
-For fuzzing bugs, we ask you to follow this
+When applying fuzzing techniques to cvc5, we ask you to follow these
 [guidelines](https://github.com/cvc5/cvc5/wiki/Fuzzing-cvc5).

@@ -41,9 +41,9 @@ devs:
   lname: Kremer
   website: https://cs.stanford.edu/~gkremer/
   affiliation: Stanford University
-- fname: Makai
-  lname: Mann
-  website: https://makaimann.github.io/
+- fname: Hanna
+  lname: Lachnitt
+  website:
   affiliation: Stanford University
 - fname: Abdalrhman
   lname: Mohamed
