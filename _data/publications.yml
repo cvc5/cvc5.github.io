@@ -94,6 +94,7 @@ references:
   - year: 2022
     month: 1
   pdf: /papers/2022/ZoharIMNNPRBT22-VMCAI22.pdf
+  slides: /papers/2022/ZoharIMNNPRBT22-VMCAI22-slides.pdf
   bibtex: https://dblp.uni-trier.de/rec/conf/vmcai/ZoharIMNNPRBT22.html?view=bibtex
   artifact: https://zenodo.org/record/5652826
   page: 496-518
