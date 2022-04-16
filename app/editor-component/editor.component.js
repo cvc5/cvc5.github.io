@@ -47,6 +47,18 @@ angular.module('cvc').component('editor', {
                 fontSize: 20
             });
             outputEditor.updateOptions({readOnly: true});
+            const zoomInAction = editor.getAction('editor.action.fontZoomIn');
+            const zoomOutAction = editor.getAction('editor.action.fontZoomOut');
+            const zoomResetAction = editor.getAction('editor.action.fontZoomReset');
+            zoomInAction.contextMenuGroupId = 'font';
+            zoomOutAction.contextMenuGroupId = 'font';
+            zoomResetAction.contextMenuGroupId = 'font';
+            zoomInAction.keybindings = [monaco.KeyMod.Alt | monaco.KeyCode.Equal];
+            zoomOutAction.keybindings = [monaco.KeyMod.Alt | monaco.KeyCode.Minus];
+            zoomResetAction.keybindings = [monaco.KeyMod.Alt | monaco.KeyCode.Digit0];
+            editor.addAction(zoomInAction);
+            editor.addAction(zoomOutAction);
+            editor.addAction(zoomResetAction);
 
             // https://stackoverflow.com/questions/47017753/monaco-editor-dynamically-resizable
             const editorParent = editorElement.parentElement;
