@@ -60,6 +60,10 @@ angular.module('cvc').component('editor', {
             editor.addAction(zoomOutAction);
             editor.addAction(zoomResetAction);
 
+            outputEditor.addAction(zoomInAction);
+            outputEditor.addAction(zoomOutAction);
+            outputEditor.addAction(zoomResetAction);
+
             // https://stackoverflow.com/questions/47017753/monaco-editor-dynamically-resizable
             const editorParent = editorElement.parentElement;
             const outputEditorParent = outputEditorElement.parentElement;
