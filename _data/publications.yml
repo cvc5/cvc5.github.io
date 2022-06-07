@@ -49,6 +49,7 @@ references:
   - year: 2022
     month: 4
   pdf: /papers/2022/BarbosaBBKLMMMN-TACAS22.pdf
+  slides: /slides/2022/BarbosaBBKLMMMN-TACAS22-slides.pdf
   bibtex: https://dblp.org/rec/conf/tacas/BarbosaBBKLMMMN22.html?view=bibtex
   artifact: https://zenodo.org/record/5740365
   award: SCP Best Tool Paper Award
