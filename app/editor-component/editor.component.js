@@ -84,7 +84,7 @@ angular.module('cvc').component('editor', {
 
             var errors = [];
 
-            $scope.isDarkTheme = true;
+            $scope.monacoTheme = "vs-dark";
 
             var defaultCode = "(set-logic ALL)\n" +
                 "(set-option :produce-models true)\n" +
@@ -363,13 +363,8 @@ angular.module('cvc').component('editor', {
             }
 
 
-            $scope.toggleTheme = function () {
-                $scope.isDarkTheme = !$scope.isDarkTheme;
-                if ($scope.isDarkTheme) {
-                    monaco.editor.setTheme('vs-dark');
-                } else {
-                    monaco.editor.setTheme('vs-light');
-                }
+            $scope.changeTheme = function () {
+                monaco.editor.setTheme($scope.monacoTheme);
             }
 
             $rootScope.setWaitingRun = function (value) {
