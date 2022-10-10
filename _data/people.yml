@@ -37,10 +37,6 @@ devs:
   lname: Brain
   website: https://www.cs.ox.ac.uk/people/martin.brain/
   affiliation: University of Oxford and City University of London
-- fname: Gereon
-  lname: Kremer
-  website: https://cs.stanford.edu/~gkremer/
-  affiliation: Stanford University
 - fname: Hanna
   lname: Lachnitt
   website:
@@ -53,10 +49,6 @@ devs:
   lname: Mohamed
   website: https://homepage.cs.uiowa.edu/~mahgoubyahia/
   affiliation: University of Iowa
-- fname: Andres
-  lname: Nötzli
-  website: https://cs.stanford.edu/people/noetzli/
-  affiliation: Stanford University, Amazon
 - fname: Alex
   lname: Ozdemir
   website: https://cs.stanford.edu/~aozdemir/
