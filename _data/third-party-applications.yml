@@ -43,9 +43,21 @@
   url: https://github.com/cristina-serban/inductor
   desc: A theorem prover for entailments between inductive definitions in first
         order and separation logics.
+- name: Kind 2
+  url: https://kind2-mc.github.io/kind2/
+  desc: A multi-engine SMT-based automatic model checker for safety properties
+        of Lustre programs. It supports cvc5 as a backend solver. It also uses
+        cvc5 proof production capabilities to generate proofs for model
+        properties that Kind 2 claims to be valid.
 - name: Pysmt
   url: https://github.com/pysmt/pysmt
   desc: A generic python interface for SMT solving.  Supports CVC4 as a backend.
+- name: QMaxUSE
+  url: https://github.com/classicwuhao/qmaxuse
+  desc: QMaxUSE is a query-based verification tool for verifying UML class
+        diagrams with OCL invariants. It supports a query language and
+        concurrent verification. QMaxUSE uses CVC5 as one of its backend
+        solvers.
 - name: Rosette
   url: https://emina.github.io/rosette/
   desc: A solver-aided programming language that extends Racket with language
