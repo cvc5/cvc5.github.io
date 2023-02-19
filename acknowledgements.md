@@ -31,8 +31,8 @@ cvc5 is supported in part by the following organizations:
   [1228768](http://www.nsf.gov/awardsearch/showAward?AWD_ID=1228768),
   [1320583](http://www.nsf.gov/awardsearch/showAward?AWD_ID=1320583),
   1656926,
-  [2019348](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019348,
   [2006407](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2006407,
+  [2019348](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019348,
   [2110397](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2110397))
 - The Office of Naval Research (award N68335-17-C-0558)
 - [The Semiconductor Research Corporation](http://www.src.org/) (tasks
