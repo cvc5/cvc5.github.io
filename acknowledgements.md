@@ -21,6 +21,7 @@ cvc5 is supported in part by the following organizations:
 - [GE Global Research](http://www.geglobalresearch.com/)
 - [Google](http://www.google.com)
 - [Intel Corporation](http://www.intel.com/)
+- [The Israel Science Foundation](http://www.isf.org.il/) (grant 619/21)
 - NASA (contract #NNL14AA06C)
 - [Meta Novi](https://about.facebook.com/technologies/novi/)
 - [The National Science Foundation](http://www.nsf.gov/) (grants
