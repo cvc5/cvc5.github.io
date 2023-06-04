@@ -4,7 +4,7 @@ layout: default
 
 # Acknowledgments
 
-cvc5 is supported in part by the following organizations:
+Support for cvc5 has been provided by the following organizations:
 - [AdaCore](https://www.adacore.com/)
 - [The Air Force Office of Scientific
   Research](http://www.wpafb.af.mil/AFRL/afosr/) (award FA9550-09-1-0596)
@@ -23,7 +23,7 @@ cvc5 is supported in part by the following organizations:
 - [Intel Corporation](http://www.intel.com/)
 - [The Israel Science Foundation](http://www.isf.org.il/) (grant 619/21)
 - NASA (contract #NNL14AA06C)
-- [Meta Novi](https://about.facebook.com/technologies/novi/)
+- [Meta](http://about.meta.com) Novi
 - [The National Science Foundation](http://www.nsf.gov/) (grants
   [0644299](http://www.fastlane.nsf.gov/servlet/showaward?award=0644299),
   [0914956](http://www.fastlane.nsf.gov/servlet/showaward?award=0914956),
@@ -32,8 +32,8 @@ cvc5 is supported in part by the following organizations:
   [1228768](http://www.nsf.gov/awardsearch/showAward?AWD_ID=1228768),
   [1320583](http://www.nsf.gov/awardsearch/showAward?AWD_ID=1320583),
   1656926,
-  [2006407](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2006407,
-  [2019348](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019348,
+  [2006407](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2006407),
+  [2019348](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2019348),
   [2110397](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2110397))
 - The Office of Naval Research (award N68335-17-C-0558)
 - [The Semiconductor Research Corporation](http://www.src.org/) (tasks
