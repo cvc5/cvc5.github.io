@@ -18,17 +18,20 @@
             <a class="btn btn-primary" ng-click="saveJob(jobId)"
                data-toggle="tooltip"
                title="Save code in the server using the current URL. Generate a new URL if there is none">Save for 3 days</a>
-            <a style="height:34px" class="btn btn-primary" ng-click="toggleTheme()"
-            title="{{isDarkTheme? 'Use a light theme' : 'Use a dark theme'}}">
-                <img ng-src="{{isDarkTheme? 'icons/bright.png' : 'icons/dark.png'}}" width="20" height="20">
-            </a>
+            <select ng-model="monacoTheme" style="height:34px"
+                    class="btn btn-primary"
+                    ng-change="changeTheme()">
+                <option>vs-dark</option>
+                <option>vs</option>
+                <option>hc-black</option>
+            </select>
         </div>
         <div class="form-group">
             <!--<label class="colo-2 col-form-label" for="addArgument">Add Argument</label>-->
             <div class="colo-10" style="margin-right: 5px;">
             <input type="text"
                    ng-model="selectedName"
-                   uib-typeahead="argument for argument in search | filter:$viewValue | limitTo:30 | orderBy:argument"
+                   uib-typeahead="argument for argument in search | filter:$viewValue.replace('--', '') | limitTo:30 | orderBy:argument"
                    typeahead-on-select="onSelect($item, $model, $label, $event)"
                    class="form-control"
                    id="addArgument"

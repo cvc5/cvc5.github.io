@@ -89,3 +89,23 @@ code, pre {
 span.awards * {
   color: #739900;
 }
+
+.tryonline {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.btn-tryonline {
+  padding: 5px;
+  background-color: #e98301; // orange
+  color: #efefef;
+  text-decoration:none;
+}
+
+a.btn-tryonline:hover {
+  padding: 5px;
+  background-color: #fcfffa;
+  border: 1px solid #e98301;
+  color: #e98301;
+  text-decoration:none;
+}

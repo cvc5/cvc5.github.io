@@ -35,20 +35,56 @@ angular.module('cvc').component('editor', {
             var editor = monaco.editor.create(editorElement, {
                 theme: 'vs-dark',
                 model: monaco.editor.createModel("", "clojure"),
-                automaticLayout: true
+                automaticLayout: false,
+                fontSize: 20
             });
 
             var outputEditorElement = document.getElementById('outputEditor');
             var outputEditor = monaco.editor.create(outputEditorElement, {
                 theme: 'vs-dark',
                 model: monaco.editor.createModel("", "clojure"),
-                automaticLayout: true
+                automaticLayout: false,
+                fontSize: 20
             });
             outputEditor.updateOptions({readOnly: true});
+            const zoomInAction = editor.getAction('editor.action.fontZoomIn');
+            const zoomOutAction = editor.getAction('editor.action.fontZoomOut');
+            const zoomResetAction = editor.getAction('editor.action.fontZoomReset');
+            zoomInAction.contextMenuGroupId = 'font';
+            zoomOutAction.contextMenuGroupId = 'font';
+            zoomResetAction.contextMenuGroupId = 'font';
+            zoomInAction.keybindings = [monaco.KeyMod.Alt | monaco.KeyCode.Equal];
+            zoomOutAction.keybindings = [monaco.KeyMod.Alt | monaco.KeyCode.Minus];
+            zoomResetAction.keybindings = [monaco.KeyMod.Alt | monaco.KeyCode.Digit0];
+            editor.addAction(zoomInAction);
+            editor.addAction(zoomOutAction);
+            editor.addAction(zoomResetAction);
+
+            outputEditor.addAction(zoomInAction);
+            outputEditor.addAction(zoomOutAction);
+            outputEditor.addAction(zoomResetAction);
+
+            // https://stackoverflow.com/questions/47017753/monaco-editor-dynamically-resizable
+            const editorParent = editorElement.parentElement;
+            const outputEditorParent = outputEditorElement.parentElement;
+            window.addEventListener('resize', () => {
+                // make editor as small as possible
+                editor.layout({width: 0, height: 0});
+                outputEditor.layout({width: 0, height: 0});
+
+                // wait for next frame to ensure last layout finished
+                window.requestAnimationFrame(() => {
+                    // get the parent dimensions and re-layout the editor
+                    const editorRect = editorParent.getBoundingClientRect();
+                    const outputRect = outputEditorParent.getBoundingClientRect();
+                    editor.layout({width: editorRect.width, height: editorRect.height});
+                    outputEditor.layout({width: outputRect.width, height: outputRect.height});
+                });
+            });
 
             var errors = [];
 
-            $scope.isDarkTheme = true;
+            $scope.monacoTheme = "vs-dark";
 
             var defaultCode = "(set-logic ALL)\n" +
                 "(set-option :produce-models true)\n" +
@@ -87,10 +123,10 @@ angular.module('cvc').component('editor', {
             // });
 
             //https://github.com/devuxd/SeeCodeRun/wiki/Ace-code-editor
-            function updateTooltip(position, text){
+            function updateTooltip(position, text) {
                 //example with container creation via JS
                 var div = document.getElementById('tooltip_0');
-                if(div === null){
+                if (div === null) {
                     div = document.createElement('div');
                     div.setAttribute('id', 'tooltip_0');
                     div.setAttribute('class', 'ace_editor ace_tooltip tooltip_0');
@@ -99,10 +135,10 @@ angular.module('cvc').component('editor', {
 
                 div.style.left = position.pageX + 'px';
                 div.style.top = position.pageY + 'px';
-                if(text){
+                if (text) {
                     div.style.display = "block";
                     div.innerText = text;
-                }else{
+                } else {
                     div.style.display = "none";
                     div.innerText = "";
                 }
@@ -133,18 +169,16 @@ angular.module('cvc').component('editor', {
                     editor.getModel().setValue(response.code);
 
                     // change the language
-                    if(example.includes('smt')){
+                    if (example.includes('smt')) {
                         $scope.parameters['lang'] = 'smtlib2.6';
-                    }
-                    else if (example.includes('sygus2')){
+                    } else if (example.includes('sygus2')) {
                         $scope.parameters['lang'] = 'sygus2';
-                    }
-                    else if (example.includes('tptp')){
+                    } else if (example.includes('tptp')) {
                         $scope.parameters['lang'] = 'tptp';
                     }
 
                     // change the syntax highlighter
-                     $scope.onArgumentChange();
+                    $scope.onArgumentChange();
 
                 });
             }
@@ -185,10 +219,9 @@ angular.module('cvc').component('editor', {
 
                 $scope.results = response;
 
-                if(sharedService.checkNested(response, 'data')) {
+                if (sharedService.checkNested(response, 'data')) {
                     outputEditor.getModel().setValue(response.data.join('\n'));
-                }
-                else {
+                } else {
                     outputEditor.getModel().setValue('');
                 }
 
@@ -255,8 +288,7 @@ angular.module('cvc').component('editor', {
                         }, function onError(response) {
                             throw response;
                         });
-                }
-                else {
+                } else {
                     $scope.waitingCheck = false;
                     $interval.cancel($scope.getResultInterval);
                     cvcService.cancelJob($scope.jobId);
@@ -266,7 +298,7 @@ angular.module('cvc').component('editor', {
             $scope.saveJob = function (jobId) {
 
 
-                if(!jobId && $scope.getResultInterval) {
+                if (!jobId && $scope.getResultInterval) {
                     // cancel getResults related to old jobId
                     $interval.cancel($scope.getResultInterval);
                     $scope.waitingCheck = false;
@@ -303,8 +335,7 @@ angular.module('cvc').component('editor', {
                             var smtLibPattern = /Parse Error: \/code.txt:\d+.\d+:.*/g;
                             var parseErrors = data.match(smtLibPattern);
 
-                            if(parseErrors && parseErrors.length > 0)
-                            {
+                            if (parseErrors && parseErrors.length > 0) {
                                 angular.forEach(parseErrors, function (parseError) {
 
                                     // example "Parse Error: /code.txt:10.7: Unexpected token: '('."
@@ -332,14 +363,8 @@ angular.module('cvc').component('editor', {
             }
 
 
-            $scope.toggleTheme = function () {
-                $scope.isDarkTheme = !$scope.isDarkTheme;
-                if ($scope.isDarkTheme) {
-                    monaco.editor.setTheme('vs-dark');
-                }
-                else {
-                    monaco.editor.setTheme('vs-light');
-                }
+            $scope.changeTheme = function () {
+                monaco.editor.setTheme($scope.monacoTheme);
             }
 
             $rootScope.setWaitingRun = function (value) {
@@ -379,10 +404,9 @@ angular.module('cvc').component('editor', {
                 }
                 // set the default value
                 else {
-                    if(argument.type == 'int' || argument.type == 'float'){
+                    if (argument.type == 'int' || argument.type == 'float') {
                         $scope.parameters[$scope.selectedName] = parseInt(argument.defaultValue);
-                    }
-                    else {
+                    } else {
                         $scope.parameters[$scope.selectedName] = argument.defaultValue;
                     }
                 }
@@ -402,11 +426,13 @@ angular.module('cvc').component('editor', {
                 $uibModal.open({
                     component: 'modal',
                     resolve: {
-                        path: function () {return $scope.path;},
+                        path: function () {
+                            return $scope.path;
+                        },
                         examples: function () {
                             return $scope.exampleKinds;
                         },
-                        getExample: function() {
+                        getExample: function () {
                             return $scope.getExample;
                         },
                         upload: function () {
@@ -416,23 +442,22 @@ angular.module('cvc').component('editor', {
                 });
             }
 
-            $scope.onArgumentChange = function() {
-                switch($scope.parameters['lang'])
-                {
+            $scope.onArgumentChange = function () {
+                switch ($scope.parameters['lang']) {
                     case 'smtlib1':
                     case 'smtlib2.0':
                     case 'smtlib2.5':
                     case 'smtlib2.6':
                     case 'sygus1':
                     case 'sygus2':
-                    case 'sygus':{
+                    case 'sygus': {
 
-                                 }
-                                    break;
-                    case 'tptp':{
+                    }
+                        break;
+                    case 'tptp': {
 
-                                }
-                                break;
+                    }
+                        break;
 
                 }
             }
