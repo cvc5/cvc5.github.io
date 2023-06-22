@@ -18,6 +18,7 @@ binaries:
 - track: model-validation
   name: Model Validation Track
   binary: https://www.starexec.org/starexec/secure/details/solver.jsp?id=33473
+
 sysdesc-title: cvc5 at the SMT Competition 2021
 sysdesc-url: /papers/2021/smt-comp-2021.pdf
 

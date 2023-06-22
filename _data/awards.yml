@@ -3,15 +3,34 @@ competitions:
 
 - name: SMT-COMP
   events:
+
+  - event: SMT-COMP 2022
+    event_url: http://smt-comp.github.io/2022
+    year: 2022
+    entered: 61
+    divisions:
+      total: 163
+      gold: 67
+    competition-wide:
+      total: 20
+      gold: 47
+      bronze: 3
+    floc:
+      gold: 3
+    details: /awards/smt-comp-2022.html
+
   - event: SMT-COMP 2021
     event_url: http://smt-comp.github.io/2021
-    entered:
-      divisions: 59
-      awards: 155
-    gold:
-      divisions: 92
-      competition-wide: 17
     year: 2021
+    entered: 59
+    divisions:
+      total: 155
+      gold: 92
+    competition-wide:
+      total: 20
+      gold: 17
+      silver: 2
+      bronze: 1
     details: /awards/smt-comp-2021.html
 
 ---

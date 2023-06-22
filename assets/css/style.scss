@@ -86,7 +86,55 @@ code, pre {
   padding: 5px 3px 3px;
 }
 
-span.awards * {
+li {
+   list-style-type: square;
+}
+
+li ul li {
+   list-style-type: circle;
+}
+
+ul.awards li {
+  margin: 0;
+  list-style-image: none;
+  list-style-type: none;
+}
+
+ul.awards li::before {
+  font-family: FontAwesome;
+  content: "\f091";
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  font-size: 1.2em;
+  font-weight: 900;
+  width: 1.5em;
+}
+
+ul.awards li ul li::before {
+  content: "";
+  width: 0em;
+}
+
+ul.awards li ul {
+   margin-top: 10px;
+}
+
+ul.awards li ul li {
+   list-style-type: square;
+}
+
+ul.awards li ul li ul {
+  margin: 0;
+}
+
+ul.awards li ul li ul li {
+   list-style-type: circle;
+}
+
+span.awards {
   color: #739900;
 }
 

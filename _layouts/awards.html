@@ -16,23 +16,19 @@ layout: default
 </ul>
 
 <h2>Divisions Entered</h2>
-<ul class="awards">
 {% for track in page.entered %}
 {% assign results_url = page.event_url | append: "/" | append: "results/" %}
-<li>
-  <b>{{ track.name }}:</b> &nbsp;
-  {% assign divisions = track.divisions | split: "," %}
-  {% assign division_str = "" %}
-  <ul class="awards-entered">
-  {% for division in divisions %}
-  {% assign division_url_str = division | replace: "_", "-" | downcase %}
-  {% assign division_url = results_url | append: division_url_str | append: '-' | append: track.track %}
-  <li><a href="{{ division_url}}">{{ division }}</a></li>
-  {% endfor %}
-  </ul>
-</li>
+<h3>{{ track.name }}</h3>
+{% assign divisions = track.divisions | split: "," %}
+{% assign division_str = "" %}
+<ul class="awards-entered">
+{% for division in divisions %}
+{% assign division_url_str = division | replace: "_", "-" | downcase %}
+{% assign division_url = results_url | append: division_url_str | append: '-' | append: track.track %}
+<li><a href="{{ division_url}}">{{ division }}</a></li>
 {% endfor %}
 </ul>
+{% endfor %}
 
 <h2>Division Awards</h2>
 
