@@ -17,9 +17,10 @@ layout: default
 {% assign yearInt = year | plus: 0 %}
 {% assign entries = competition.events | where_exp: "e","e.year == year" %}
 {% for item in entries %}
-<ul class="awards">
-<li>
+<p class="awards">
+<i class="fa fa-trophy"></i>&nbsp;
 <b><a href="{{ item.event_url }}">{{ item.event }}</a></b> (<a href="{{ item.details | relative_url }}">details</a>)
+</p>
 <ul>
 <li><b>entered:</b> {{ item.entered}} divisions</li>
 <li><b>overall:</b>
@@ -75,8 +76,6 @@ layout: default
   {% endif %}
 </li>
 {% endif %}
-</ul>
-</li>
 </ul>
 
 {% endfor %}
