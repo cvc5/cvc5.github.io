@@ -56,7 +56,7 @@
   url: https://github.com/classicwuhao/qmaxuse
   desc: QMaxUSE is a query-based verification tool for verifying UML class
         diagrams with OCL invariants. It supports a query language and
-        concurrent verification. QMaxUSE uses CVC5 as one of its backend
+        concurrent verification. QMaxUSE uses cvc5 as one of its backend
         solvers.
 - name: Rosette
   url: https://emina.github.io/rosette/
@@ -89,7 +89,7 @@
   url: https://github.com/bmw-software-engineering/trlc/
   desc: TRLC is a text-based requirement language used at BMW, which includes
         user-defined checks that may raise run-time errors (like division by
-        zero). TRLC includes a linter that uses CVC5 to prove absence of
+        zero). TRLC includes a linter that uses cvc5 to prove absence of
         run-time errors for these user-defined checks.
 - name: Why3
   url: http://why3.lri.fr/
