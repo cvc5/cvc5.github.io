@@ -85,6 +85,12 @@
 - name: TorXakis
   url: https://github.com/TorXakis/TorXakis
   desc: A model-based testing framework.
+- name: TRLC (using PyVCG)
+  url: https://github.com/bmw-software-engineering/trlc/
+  desc: TRLC is a text-based requirement language used at BMW, which includes
+        user-defined checks that may raise run-time errors (like division by
+        zero). TRLC includes a linter that uses CVC5 to prove absence of
+        run-time errors for these user-defined checks.
 - name: Why3
   url: http://why3.lri.fr/
   desc: A platform for deductive program verification.  Uses CVC4 as an
