@@ -160,6 +160,6 @@ overall:
   medals:
   - medal: 3 gold medals
 
-img: /img/floc22-smt.jpg
+img: /img/floc-smt-2022.jpg
 
 ---
