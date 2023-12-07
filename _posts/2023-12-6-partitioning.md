@@ -27,7 +27,7 @@ If you're interested in trying out some of our partitioning strategies, they can
 
 For time-based cube type partitions: 
 ```
-cvc5 --partition-when=tlimit --compute-partitions=8 --partition-start-time=3 --partition-strategy=decision-cube
+cvc5 --partition-when=tlimit --compute-partitions=8 --partition-start-time=3 --partition-strategy=decision-cube problem.smt2
 ```
 8 can be replaced with the desired number of partitions (must be a power of 2 for cube type partitions),
 3 can be replaced with the desired number of seconds to wait until creating partitions (3 is empirically a good choice here),
