@@ -32,3 +32,6 @@ cvc5 --partition-when=tlimit --compute-partitions=8 --partition-start-time=3 --p
 8 can be replaced with the desired number of partitions (must be a power of 2 for cube type partitions),
 3 can be replaced with the desired number of seconds to wait until creating partitions (3 is empirically a good choice here),
 and decision-cube can be replaced with any cube type partition strategy: decision-cube, lemma-cube, or heap-cube. Additional documentation for different partitioning parameters can be found under the parallel options documentation. 
+
+
+#### [Amalee Wilson](https://www.linkedin.com/in/amalee-wilson/) is a PhD student advised by Clark Barrett in the Stanford Center for Automated Reasoning ([Centaur](https://centaur.stanford.edu/)) Lab. Her PhD work is focused on strategies for distributed SMT solving.
