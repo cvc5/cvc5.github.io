@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<small>{{ page.date | date: "%-d %B %Y" }}</small>
+<h1>{{ page.title }}</h1>
+
+<p class="view">by {{ page.author | default: site.author }}</p>
+
+{{content}}
+
+<!-- We can add tags back later if we want -->
+<!-- {% if page.tags %}
+<small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small>
+{% endif %} -->
+
+<p>
+<p>
+    <a href="/blog" class="button">Back to All Blog Posts</a>
+
+</p>
+</p>
