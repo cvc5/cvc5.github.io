@@ -58,7 +58,7 @@ references:
   title: "cvc5: A versatile and industrial-strength SMT solver"
   title-short: cvc5
   type: paper-conference
-  url: "https://doi.org/10.1007/978-3-030-99524-9\\\\\\_24"
+  url: "https://doi.org/10.1007/978-3-030-99524-9\\\_24"
   volume: 13243
 - author:
   - family: Zohar
@@ -101,5 +101,5 @@ references:
   publisher: Springer
   title: Bit-precise reasoning via int-blasting
   type: paper-conference
-  url: "https://doi.org/10.1007/978-3-030-94583-1\\\\\\_24"
+  url: "https://doi.org/10.1007/978-3-030-94583-1\\\_24"
   volume: 13182
