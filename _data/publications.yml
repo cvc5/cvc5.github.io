@@ -38,7 +38,7 @@ references:
     held as part of the european joint conferences on theory and
     practice of software, ETAPS 2022, munich, germany, april 2-7, 2022,
     proceedings, part I
-  doi: 10.1007/978-3-030-99524-9\\\_24
+  doi: 10.1007/978-3-030-99524-9_24
   editor:
   - family: Fisman
     given: Dana
@@ -58,7 +58,7 @@ references:
   title: "cvc5: A versatile and industrial-strength SMT solver"
   title-short: cvc5
   type: paper-conference
-  url: "https://doi.org/10.1007/978-3-030-99524-9\\\\\\_24"
+  url: "https://doi.org/10.1007/978-3-030-99524-9_24"
   volume: 13243
 - author:
   - family: Zohar
@@ -83,7 +83,7 @@ references:
   container-title: Verification, model checking, and abstract
     interpretation - 23rd international conference, VMCAI 2022,
     philadelphia, PA, USA, january 16-18, 2022, proceedings
-  doi: 10.1007/978-3-030-94583-1\\\_24
+  doi: 10.1007/978-3-030-94583-1_24
   editor:
   - family: Finkbeiner
     given: Bernd
@@ -101,5 +101,5 @@ references:
   publisher: Springer
   title: Bit-precise reasoning via int-blasting
   type: paper-conference
-  url: "https://doi.org/10.1007/978-3-030-94583-1\\\\\\_24"
+  url: "https://doi.org/10.1007/978-3-030-94583-1_24"
   volume: 13182
