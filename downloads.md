@@ -4,24 +4,4 @@ layout: default
 
 # Downloads
 
-## Releases
-
-All releases (sources, binaries) are available on [GitHub](https://github.com/cvc5/cvc5/releases/).
-
-### Latest Release
-
-- [Source tarball](https://github.com/cvc5/cvc5/releases/latest/)
-- [Linux 64-bit binary](
-    https://github.com/cvc5/cvc5/releases/latest/download/cvc5-Linux)
-- [MacOS binary](
-    https://github.com/cvc5/cvc5/releases/latest/download/cvc5-macOS)
-
-
-## Nightly Builds
-
-- [Linux 64-bit binaries](
-    https://cvc5.stanford.edu/downloads/builds/x86_64-Linux-production/)
-- [Linux 64-bit competition binaries](
-    https://cvc5.stanford.edu/downloads/builds/x86_64-Linux-competition/)
-- [Windows 64-bit binaries](
-    https://cvc5.stanford.edu/downloads/builds/x86_64-win64-production/)
+All releases (sources, binaries) for Linux, MacOS, and Windows are available on our [GitHub release page](https://github.com/cvc5/cvc5/releases/). If you are new to cvc5 and/or SMT solvers in general, then we suggest downloading one of the pre-built binaries from the GitHub release page. If you are interested in latest/unstable builds, those can also be found on GitHub. 

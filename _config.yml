@@ -11,3 +11,6 @@ collections:
   awards:
     output: true
     permalink: /awards/:name
+kramdown:
+  math_engine: mathjax
+

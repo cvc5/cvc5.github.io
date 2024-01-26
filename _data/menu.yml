@@ -10,6 +10,9 @@
 - title: Blog
   url: /blog.html
 
+- title: Join the Conversation
+  url: https://github.com/cvc5/cvc5/discussions
+
 - title: People
   url: /people.html
 
@@ -24,3 +27,6 @@
 
 - title: Acknowledgements
   url: /acknowledgements.html
+
+- title: Newsletter
+  url: /newsletter.html
