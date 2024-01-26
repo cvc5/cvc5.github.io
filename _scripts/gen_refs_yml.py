@@ -28,6 +28,8 @@ def format_note(match):
 subst = {
         '---\n': '',
         '\n---': '',
+        r'\\\\\\\\\\\\\_': '_', # remove 6 \ before _
+        r'\\\\\\\_': '_', # remove 3 \ before _
         'nocite: \"\[@\*\]\"\n': '',
         r'issued: ([0-9][0-9][0-9][0-9])-([0-9][0-9])':\
                 r'issued:\n  - year: \1\n    month: \2',
