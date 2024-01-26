@@ -78,13 +78,69 @@ img.menu {
   color: #0099e6; //6
 }
 
-code, pre {
-  color: #eeeeee;
-  background: #111;
-  border:2px solid #e5e5e5;
-  border-radius:5px;
-  padding: 5px 3px 3px;
-}
+ pre,
+ code {
+   margin: 0;
+   padding: 0;
+   font-family: 'Consolas', 'Monaco', 'Courier New', Courier, monospace;
+   font-size: 12px;
+   color: #000000;
+   /* Adjust the font size as needed */
+   line-height: 1.8;
+   /* white-space: pre-wrap; */
+   /* Ensures that the code doesn't overflow */
+   word-break: normal;
+   /* Keeps the words from breaking */
+   word-wrap: normal;
+   /* Allows long lines to be broken */
+ }
+
+ /* Style for 'pre' tag to define the appearance of code blocks */
+ pre {
+   /* background-color: #fffb00; */
+   /* Light grey background */
+   border: 1px solid #9a9a9a;
+   /* Light grey border */
+   border-left: 4px solid #f47d20;
+   /* Accent color on the left border */
+   /* padding: 1em; */
+   /* Padding inside the code block */
+   overflow-x: auto;
+   /* Adds horizontal scrolling if code overflows */
+   max-width: 100%;
+   /* Ensures the block does not exceed its container */
+   box-sizing: border-box;
+   /* Includes padding and border in the width */
+ }
+
+ /* Style for 'code' tag when used inline with text */
+ code {
+   background-color: #efefef;
+   /* Slightly darker background for inline code */
+   padding: 0.2em 0.4em;
+   /* Padding inside inline code */
+   border-radius: 3px;
+   /* Rounded corners for inline code */
+   border: 0px solid #000000;
+   /* Border for inline code */
+ }
+
+ pre>code {
+   display: block;
+   white-space: pre;
+   /* Ensures whitespace is preserved */
+   overflow-x: auto;
+   /* Adds horizontal scrollbar if needed */
+   padding: 1em;
+   /* Adds padding inside the block */
+   background-color: #efefef;
+   /* Light gray background */
+   border: 0px solid #ccc;
+   /* Light gray border */
+   font-size: 1em;
+   /* Matches the size of regular text */
+   /* Additional styles for block code */
+ }
 
 li {
    list-style-type: square;

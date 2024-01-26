@@ -42,10 +42,16 @@ For 8 time-based, cube-type partitions:
 ```
 cvc5 --partition-when=tlimit --compute-partitions=8 --partition-start-time=3 --partition-strategy=decision-cube problem.smt2
 ```
--\-compute-partitions=8 communicates that 8 partitions should be made, and 8 can be replaced with the desired number of partitions (must be a power of 2 for cube type partitions).
--\-partition-start-time=3 communicates that the partitioner should wait 3 seconds before creating partitions, and although 3 can be replaced by any number of seconds, it is empirically a good choice.
--\-partition-strategy=decision-cube communicates that cubes should be made based on decisions. This parameter can be replaced in this code snippet with either lemma-cube or heap-cube. 
+`--compute-partitions=8` communicates that 8 partitions should be made, and 8 can be replaced with the desired number of partitions (must be a power of 2 for cube type partitions).
+`--partition-start-time=3` communicates that the partitioner should wait 3 seconds before creating partitions, and although 3 can be replaced by any number of seconds, it is empirically a good choice.
+`--partition-strategy=decision-cube` communicates that cubes should be made based on decisions. This parameter can be replaced in this code snippet with either lemma-cube or heap-cube. 
 Additional documentation for different partitioning parameters, including scatter partitions, can be found under the parallel options documentation. Note that this code snippet only produces the partitions --- it does not solve them.
 
+**Edited on January 26, 2024:** Based on questions that we have received about this blog post, we wanted to clarify the output of the partitioning. 
+* If no partitions are produced, and the output of cvc5 is `sat` or `unsat`, then cvc5 successfully solved the problem without partitioning. The output is the final answer.
+* If partitions are emitted followed by `unsat`, this is expected behavior, even for a satisfiable problem. The partitions need to be solved to determine the final answer.
+* If partitions are emitted followed by `sat`, this means that the problem was found to be satisfiable during partitioning. The partitions do not need to be solved in this case.
+
+To solve the partitions, each of the partitions must be appended, separately, to the original problem, and these copies corresponding to each partition must be solved in parallel. cvc5 does not do this for you, but a straightforward Python or Bash script can achieve this task.
 
 #### [Amalee Wilson](https://www.linkedin.com/in/amalee-wilson/) is a PhD student advised by Clark Barrett in the Stanford Center for Automated Reasoning ([Centaur](https://centaur.stanford.edu/)) Lab. Her PhD work is focused on strategies for distributed SMT solving.

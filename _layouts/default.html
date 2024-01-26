@@ -22,18 +22,26 @@
         {% endif %}
 
         <p>{{ site.description | default: site.github.project_tagline }}</p>
-
-        <p>
-          <a href="https://github.com/cvc5/cvc5">
-            <img class="menu" src="{{ "/assets/img/GitHub-Mark-64px.png" | relative_url }}" />
-          </a>
-        </p>
+        <p class="tryonline"><a class="btn-tryonline" href="/app">Try cvc5 online!</a></p>
         <p>
           {% for item in site.data.menu %}
             <a href="{{ item.url | relative_url }}">{{ item.title }}</a><br />
           {% endfor %}
         </p>
-        <p class="tryonline"><a class="btn-tryonline" href="/app">Try cvc5 online!</a></p>
+        <p>
+          <a href="https://github.com/cvc5/cvc5" target="_blank" title="Find us on GitHub">
+            <img class="menu" src="/assets/img/github-mark.svg" alt="GitHub" style="width: 30px; height: 30px;" />
+          </a>
+          <a href="https://www.linkedin.com/company/cvc5-solver/" target="_blank" title="Follow us on LinkedIn">
+            <img class="menu" src="/assets/img/linkedin.svg" alt="LinkedIn" style="width: 30px; height: 30px;" />
+          </a>
+          <a href="https://twitter.com/cvc5_solver" target="_blank" title="Follow us on Twitter">
+            <img class="menu" src="/assets/img/twitter.svg" alt="Twitter" style="width: 30px; height: 30px;" />
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61553934819937" target="_blank" title="Follow us on Facebook">
+            <img class="menu" src="/assets/img/facebook.svg" alt="Facebook" style="width: 30px; height: 30px;" />
+          </a>
+        </p>
         <p>
           <a href="https://opensource.org/licenses/BSD-3-Clause">
             <img src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg"
