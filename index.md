@@ -10,7 +10,7 @@ cvc5 is an efficient open-source automatic theorem prover for
 problems.
 It can be used to prove the **satisfiability** (or, dually, the **validity**)
 of first-order formulas with respect to (combinations of) a variety of useful background theories.
-It further provides a [Syntax-Guided Synthesis (SyGuS)](https://sygus.org)
+It further provides a [Syntax-Guided Synthesis (SyGuS)](https://sygus-org.github.io/)
 engine to synthesize functions with respect to background theories and their
 combinations.
 
