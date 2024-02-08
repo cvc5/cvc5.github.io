@@ -87,9 +87,71 @@ a satisfying model.
 ```
 
 ## Algorithms
+cvc5 is able to solve complex formulas that reason about 
+sequences, in combination with a wide variety of other
+theories that represent the elements of the sequences.
+How is this done? 
+
+The theory of sequences is very similar
+to the theory of [strings](https://smtlib.cs.uiowa.edu/theories-UnicodeStrings.shtml).
+The main differences come from the fact that strings
+are a very particular instances of sequences, where
+the domain of the elements of the sequences is fixed
+to be the set of Unicode characters. 
+In contrast, the theory of sequences is generic.
+
+Still, the solving techniques for strings can be adapted
+for sequences.
+Thus, the core of our implementation is based on an adaptation
+of the theory-solver for strings.
+There are two operators, however, that are very common,
+whose reduction to strings is not very natural:
+These are `seq.nth` and `seq.update`, that read
+and update elements in sequences.
+When reducing these operators to existing string operators,
+the result is a concatenation.
+For example, asserting that the `5`th element of a sequence `x`
+equals to some element `e`, amounts to asserting
+the existence of two sequences `x1,x2`, such that
+x is the concatenation of `x1`, the unit sequence `[e]`,
+and `x2`.
+
+However, these particular operators are almost identical
+the reading and writing operators of the theory
+of [arrays](https://smtlib.cs.uiowa.edu/theories-ArraysEx.shtml).
+The only difference is that arrays are completely defined
+over their entire domain, whereas sequences have a certain length,
+which introduces the problem of out-of-bounds access
+(e.g., accessing the `5`th element of a sequence with 2 elements).
+Thus, existing decision procedures for arrays-based reasoning
+can also be utilized for solving sequences constraints.
+
+In cvc5, we implemented both approaches.
+In the first approach, we perform a full reduction of
+the sequences problem into the (adapted) algorithm
+for solving strings.
+In the second approach, we reduce a part of the problem
+(the part without reading and updating) to strings,
+while performing array-like reasoning for the reading and writing parts.
+
+## Evaluation
 
 
-## Implementation
+
+| ![A table summarizing the evaluation results.](/assets/blog-images/2024-2-15-sequences-theory/table.jpg) | 
+|:--:| 
+| *The table includes overall results.* |
+
+
+| ![A scatter plot comparing the two approaches on array-like benchmarks.](/assets/blog-images/2024-2-15-sequences-theory/arrays.jpg) | 
+|:--:| 
+| *Second algorithm is better.* |
+
+
+| ![A scatter plot comparing the two approaches on move-prover benchmarks.](/assets/blog-images/2024-2-15-sequences-theory/diem.jpg) | 
+|:--:| 
+| *Second algorithm is better.* |
+
 
 ## Conclusion
 
