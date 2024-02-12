@@ -133,15 +133,53 @@ for solving strings.
 In the second approach, we reduce a part of the problem
 (the part without reading and updating) to strings,
 while performing array-like reasoning for the reading and writing parts.
+While the former approach was relatively straight forward
+to implement and to reason about, the latter
+introduces many challenges, as combining 
+array-like reasoning with string-like reasoning
+for the same input formula is far from trivial.
+More details about this can be found in the
+18-pages long correctness proof of our 
+[JAR publication](https://link.springer.com/article/10.1007/s10817-023-09682-2) regarding this theory.
+For a more condensed version, check out the
+[IJCAR](https://u.cs.biu.ac.il/~zoharyo1/ijcar22-seq.pdf) publication.
 
 ## Evaluation
+To evaluate our implementations, we compared their performance to each other,
+as well as to the sequences solver of the SMT solver z3.
+We used two benchmarks for this evaluation.
+The first is based on verification conditions
+that are emitted by the Move Prover,
+and make heavy usage of sequences.
+The second is a synthetic set of formulas,
+that are obtained by translating 
+standard benchmarks for the theory of arrays
+to the theory of sequences.
+The goal of the first set is to
+check to what extent our theory solver can be used
+in a real-life environment. The second
+is meant to provide a finer comparison between 
+our two approaches, as they differ only in
+the operators that are available in the theory of arrays.
 
+The results are summarized in the following table. In it,
+cvc5 and cvc5-a refer to the first and second
+approaches, respectively.
+The best configuration overall is the implementation that is
+based on combining strings and array reasoning.
 
 
 | ![A table summarizing the evaluation results.](/assets/blog-images/2024-2-15-sequences-theory/table.jpg) | 
 |:--:| 
 | *The table includes overall results.* |
 
+
+The following two scatter plots compare
+the two approaches that we implemented, on each
+benchmark set separately. 
+Other than some exceptions, it is clear that the
+combination of strings and arrays as a basis
+for solving sequences constraints performs better. 
 
 | ![A scatter plot comparing the two approaches on array-like benchmarks.](/assets/blog-images/2024-2-15-sequences-theory/arrays.jpg) | 
 |:--:| 
@@ -154,7 +192,19 @@ while performing array-like reasoning for the reading and writing parts.
 
 
 ## Conclusion
-
+cvc5 is able to solve constraints about sequences,
+with a rich set of operators that can be found
+in standard programming languages (such as 
+concatenation, length computation, reading, updating,
+and more).
+The implementation employs two techniques that differ
+on the way they handle reading from and updating
+sequences.
+The solver is capable of efficiently solving
+both industrial benchmark 
+from the Move Prover,
+as well as hand-crafted ones.
+[Check it out for yourself](https://cvc5.github.io/app/#examples%2Fsmt-lib%2Fsequences)!
 
 
 #### [Yoni Zohar](https://u.cs.biu.ac.il/~zoharyo1/) is a faculty member at Bar-Ilan University. His research interests are automated reasoning, satisfiability modulo theories, proof theory, and verification.
