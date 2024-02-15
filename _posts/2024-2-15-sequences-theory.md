@@ -12,22 +12,24 @@ author: Yoni Zohar
 
 The theory of [sequences](https://cvc5.github.io/docs/cvc5-1.1.1/theories/sequences.html) in cvc5 is relatively new.
 In essence, it is meant to model data structures such as `List` in `Java`, or `std::vector` in `c++`.
-Unlike the theory of [arrays](https://smtlib.cs.uiowa.edu/theories-ArraysEx.shtml), which is actually
-a theory of maps, the theory of sequences is very rich, and allows, in addition to array-like
-read and write operations, also operators such as concatenation, sub-list, length, and more.
+Unlike the theory of [arrays](https://smtlib.cs.uiowa.edu/theories-ArraysEx.shtml) (which is actually
+a theory of maps), the theory of sequences is very rich, and allows, in addition to array-like
+read and write operations, to also use operators such as concatenation, sub-list, length, and more.
+
+<!--more-->
 
 ## Motivation
 The idea of having a specialized theory for 
 sequences [has been around before](https://www.researchgate.net/publication/229069636_An_SMT-LIB_Format_for_Sequences_and_Regular_Expressions).
 However, it was recently revisited, generalized, and expanded,
 following a fruitful collaboration between members of the cvc5 team and the
-[Move-Prover](https://github.com/move-language/move/tree/main/language/move-prover) 
-team at Meta.
+[move-prover](https://github.com/move-language/move/tree/main/language/move-prover) 
+team at Meta (formerly Facebook).
 
-The Move Prover is a formal verification tool for smart contracts
-written in the Move language. These are programs that are meant
-to run on the blockchain, and are written in a resource-aware manner.
-Given a program and a specification, the Move Prover tries
+The move-prover is a formal verification tool for smart contracts
+written in the [move](https://move-language.github.io/move/introduction.html) language. These are programs that are meant
+to run on the [Diem](https://www.diem.com/en-us/) blockchain, and are written in a resource-aware manner.
+Given a program and a specification, the move-prover tries
 to determine whether the program meets the specification.
 It does so by translating both the program and the specification into
 an SMT-LIB query, which is unsatisfiable if and only if the 
@@ -68,7 +70,7 @@ as well as the existence of a third sequence, obtained
 from the first sequence by changing its first element to be the first 
 element of the second sequence.
 
-Of course, this formula is satisfiable, and `cvc5`
+This formula is satisfiable, and `cvc5`
 can quickly report satisfiability, and to provide
 a satisfying model.
 
@@ -95,8 +97,8 @@ How is this done?
 The theory of sequences is very similar
 to the theory of [strings](https://smtlib.cs.uiowa.edu/theories-UnicodeStrings.shtml).
 The main differences come from the fact that strings
-are a very particular instances of sequences, where
-the domain of the elements of the sequences is fixed
+form a very particular instance of sequences, where
+the domain of the elements is fixed
 to be the set of Unicode characters. 
 In contrast, the theory of sequences is generic.
 
@@ -110,19 +112,19 @@ These are `seq.nth` and `seq.update`, that read
 and update elements in sequences.
 When reducing these operators to existing string operators,
 the result is a concatenation.
-For example, asserting that the `5`th element of a sequence `x`
+For example, asserting that the 5<sup>th</sup> element of a sequence `x`
 equals to some element `e`, amounts to asserting
 the existence of two sequences `x1,x2`, such that
 x is the concatenation of `x1`, the unit sequence `[e]`,
 and `x2`.
 
 However, these particular operators are almost identical
-the reading and writing operators of the theory
+to the reading and writing operators of the theory
 of [arrays](https://smtlib.cs.uiowa.edu/theories-ArraysEx.shtml).
 The only difference is that arrays are completely defined
 over their entire domain, whereas sequences have a certain length,
 which introduces the problem of out-of-bounds access
-(e.g., accessing the `5`th element of a sequence with 2 elements).
+(e.g., accessing the 5<sup>th</sup> element of a sequence with 2 elements).
 Thus, existing decision procedures for arrays-based reasoning
 can also be utilized for solving sequences constraints.
 
@@ -133,45 +135,46 @@ for solving strings.
 In the second approach, we reduce a part of the problem
 (the part without reading and updating) to strings,
 while performing array-like reasoning for the reading and writing parts.
-While the former approach was relatively straight forward
+While the former approach was relatively straightforward
 to implement and to reason about, the latter
 introduces many challenges, as combining 
 array-like reasoning with string-like reasoning
 for the same input formula is far from trivial.
 More details about this can be found in the
 18-pages long correctness proof of our 
-[JAR publication](https://link.springer.com/article/10.1007/s10817-023-09682-2) regarding this theory.
-For a more condensed version, check out the
-[IJCAR](https://u.cs.biu.ac.il/~zoharyo1/ijcar22-seq.pdf) publication.
+[JAR](https://link.springer.com/article/10.1007/s10817-023-09682-2) publication regarding this theory.
+For a more condensed description, check out our
+[IJCAR](https://link.springer.com/chapter/10.1007/978-3-031-10769-6_9) publication.
 
 ## Evaluation
 To evaluate our implementations, we compared their performance to each other,
 as well as to the sequences solver of the SMT solver z3.
-We used two benchmarks for this evaluation.
+We used two benchmark sets for this evaluation.
 The first is based on verification conditions
-that are emitted by the Move Prover,
+that are emitted by the move-prover,
 and make heavy usage of sequences.
 The second is a synthetic set of formulas,
 that are obtained by translating 
 standard benchmarks for the theory of arrays
 to the theory of sequences.
 The goal of the first set is to
-check to what extent our theory solver can be used
+check to what extent our solver can be used
 in a real-life environment. The second
 is meant to provide a finer comparison between 
 our two approaches, as they differ only in
 the operators that are available in the theory of arrays.
 
 The results are summarized in the following table. In it,
-cvc5 and cvc5-a refer to the first and second
-approaches, respectively.
+`cvc5` and `cvc5-a` refer to the first and second
+approach, respectively;
+`DIEM` and `ARRAYS` correspond to the first and second benchmark set, respectively.
 The best configuration overall is the implementation that is
 based on combining strings and array reasoning.
 
 
-| ![A table summarizing the evaluation results.](/assets/blog-images/2024-2-15-sequences-theory/table.jpg) | 
+| ![A table summarizing the evaluation results.](/assets/blog-images/2024-2-15-sequences-theory/table_small.jpg) | 
 |:--:| 
-| *The table includes overall results.* |
+| *Overall results.* |
 
 
 The following two scatter plots compare
@@ -181,14 +184,14 @@ Other than some exceptions, it is clear that the
 combination of strings and arrays as a basis
 for solving sequences constraints performs better. 
 
-| ![A scatter plot comparing the two approaches on array-like benchmarks.](/assets/blog-images/2024-2-15-sequences-theory/arrays.jpg) | 
+| ![A scatter plot comparing the two approaches on array-like benchmarks.](/assets/blog-images/2024-2-15-sequences-theory/arrays_small.jpg) | 
 |:--:| 
-| *Second algorithm is better.* |
+| *Arrays-based benchmarks.* |
 
 
-| ![A scatter plot comparing the two approaches on move-prover benchmarks.](/assets/blog-images/2024-2-15-sequences-theory/diem.jpg) | 
+| ![A scatter plot comparing the two approaches on move-prover benchmarks.](/assets/blog-images/2024-2-15-sequences-theory/diem_small.jpg) | 
 |:--:| 
-| *Second algorithm is better.* |
+| *move-prover based benchmarks* |
 
 
 ## Conclusion
@@ -202,7 +205,7 @@ on the way they handle reading from and updating
 sequences.
 The solver is capable of efficiently solving
 both industrial benchmark 
-from the Move Prover,
+from the move-prover,
 as well as hand-crafted ones.
 [Check it out for yourself](https://cvc5.github.io/app/#examples%2Fsmt-lib%2Fsequences)!
 
