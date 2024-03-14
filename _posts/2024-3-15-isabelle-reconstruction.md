@@ -1,6 +1,17 @@
+---
+layout: blog-post
+categories: blog
+excerpt_separator: <!--more-->
+title: "Reconstructing cvc5 proofs in Isabelle/HOL- Part I: Isabelle"
+author: Hanna Lachnitt
+date: 2024-14-15
+---
+
 # Reconstructing cvc5 proofs in Isabelle/HOL- Part I: Isabelle
 
 If you have used the cvc5 SMT solver before you know that it can solve many complicated problems fast, especially for the theories it supports! But can other programs profit from cvc5's efficiency too? And if so, how can cvc5 effectively communicate with these external tools? Could we use their feedback to increase our trust in cvc5's result even more?
+
+<!--more-->
 
 This blog post is the first in a series of two on improving proof automation in [Isabelle](https://isabelle.in.tum.de/) with SMT solvers. This part will give some background on Isabelle and describe the general approach we are using to integrate cvc5. If you are already familiar with Isabelle, feel free to skip ahead to [this section](#proof-automation-in-isabelle).
 
@@ -153,4 +164,5 @@ We have used this method to evaluate cvc5s performance on SMT-LIB XYZ benchmarks
 ```
 
 Are you intrigued about the differences between cvc5 with rewrites and without? Keep your eyes open for part 2 of this series on Isabelle and cvc5.
-#### [Hanna Lachnitt](https://lachnitt.github.io/)is a PhD student advised by Clark Barrett in the Stanford Center for Automated Reasoning ([Centaur](https://centaur.stanford.edu/)) Lab. Her research is focused on SMT Proofs.
+
+#### [Hanna Lachnitt](https://lachnitt.github.io/) is a PhD student advised by Clark Barrett in the Stanford Center for Automated Reasoning ([Centaur](https://centaur.stanford.edu/)) Lab. Her research is focused on SMT Proofs.
