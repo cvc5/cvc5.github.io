@@ -21,7 +21,7 @@ This blog post is the first in a series of two on improving proof automation in 
 
 ## What is Isabelle?
 
-Isabelle is an interactive theorem prover (also called proof assistant); a tool where human and machine work together to find proofs! Proofs to what you might ask? Isabelle uses a very expressive language that enables you to formalize almost any problem! It has been successfully used in various domains!  From the verification of the [seL4 microkernel](https://sel4.systems/) to the formalization of [pure math results](https://www.isa-afp.org/topics/), chances are that someone has already used Isabelle for it!
+Isabelle is an interactive theorem prover (also called proof assistant); a tool where human and machine work together to find proofs! Proofs to what you might ask? Isabelle uses a very expressive language that enables you to formalize almost any problem! It has been successfully used in various domains.  From the verification of the [seL4 microkernel](https://sel4.systems/) to the formalization of pure math results [like this one](https://www.isa-afp.org/entries/Hermite_Lindemann.html), chances are that someone has already used Isabelle for it!
 
 This has led to many nifty libraries and tools that you can use in Isabelle out of the box. For example, say you want to make sure that the quantum gate you defined is invertible or make some changes to your cryptographic standard and are worried that this could create bugs? Then, there are already many definitions and results proven in Isabelle that you can build on!
 
@@ -33,7 +33,7 @@ You can think of a proof in Isabelle as a little algorithm (we call this a tacti
 <img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/comic.png" alt="comic" class="center"/>
 </div>
 
-Think of it as writing a proof in math class in school. You'll have to convince your teacher that you have actually solved the problem and not just made a lucky guess. When you write your proof, you will have to state and justify all the steps you did to reach the result. Every step has to be explained in a way that your teacher can comprehend, and it also has to be detailed enough so that it is easy to verify its correctness.
+Think of it as writing a proof in math class in school. You'll have to convince your teacher that you have actually solved the problem and not just made a lucky guess. When you write your proof, you will have to state and justify all the steps you did to reach the result. Every step has to be explained in a way that your teacher can comprehend, and it also has to be detailed enough so that it is easy to verify its correctness. But unlike humans, Isabelle is never too tired or too bored to catch mistakes!
 
 For example, you might have proven something by contradiction or by induction before. Isabelle has an induction tactic as well as one that does case splits, and one that you can use to apply a previously proven fact. Another tactic called `simp`, automatically tries to simplify the goal as much as possible using previously proven statements and definitions. Unlike your pen and paper proof, Isabelle expects a formal proof where every step is well-defined. You cannot just skip steps by writing “exercise left to the reader” or “trivial”. However, the simplifier is already quite powerful and can solve many goals for you!
 
@@ -49,17 +49,17 @@ In contrast to an automated theorem prover where you input your problem and get 
 
 ### Proof automation in Isabelle
 
-But that's not all that Isabelle has to offer! You can ask Isabelle to help you to find the right lemmas and tactics you need to solve your goal. [Sledgehammer](https://isabelle.in.tum.de/dist/doc/sledgehammer.pdf) is a tool inside of Isabelle that will tackle your lemma automatically and suggest a proof (maybe by a tactic you have not known about before like `presburger` or `force`):
+But that's not all that Isabelle has to offer! You can ask Isabelle to help you to find the right lemmas and tactics you need to solve your goal. [Sledgehammer](https://isabelle.in.tum.de/dist/doc/sledgehammer.pdf) is a tool inside of Isabelle that will tackle your lemma automatically and suggest a proof (maybe by a tactic you have not known about before like `presburger` or `force` or a lemma out of the 2200 in the standard library (HOL-Library)):
 
 <div align='center'>
 <img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabelleAutomation.png" alt="IsabelleAutomation" class="center"  width=80%/>
 </div>
 
-Sledgehammer has the ability to call external solvers. Here it called two solvers called zipperposition and vampire. It will encode the statement you want to prove in Isabelle (your current proof goal) into a format that these solvers can understand. It also includes some lemmas and facts that it thinks the solvers will need to solve the goal. For example, in this case it seems like there is already a lemma called `gauss_sum_nat` that shows something similar to our lemma and that we can use to prove the new goal.
+Sledgehammer has the ability to call external solvers. Here it called two solvers called zipperposition and Vampire. It will encode the statement you want to prove in Isabelle (your current proof goal) into a format that these solvers can understand. It also includes some lemmas and facts that it thinks the solvers will need to solve the goal. For example, in this case it seems like there is already a lemma called `gauss_sum_nat` that shows something similar to our lemma and that we can use to prove the new goal.
 
-Sledgehammer will call solvers repeatedly with different collections of lemmas. While this is often necessary to enable the solver to even find a proof before it reaches its resource limit, it has even more vital than just giving shortcuts. For example, a first-order logic solver has no concept of what a natural number is, so if that is important for the goal sledgehammer will have to include a definition in the facts it passes over to the solver.
+Sledgehammer will call solvers repeatedly with different collections of lemmas and different strategies. While this is often necessary to enable the solver to even find a proof before it reaches its resource limit, it has even more vital than just giving shortcuts. For example, a first-order logic solver has no concept of what a natural number is, so if that is important for the goal sledgehammer will have to include a definition in the facts it passes over to the solver.
 
-SMT solvers like cvc5 have dedicated theory reasoning for a number of theories! This gives them an advantage for problems in these theories since they can apply dedicated decision procedures for each theory. Furthermore, Sledgehammer has to pass less lemmas on to the solver. This all provided that Sledgehammer translates every constant, type, and operator in Isabelle into the correct SMT-LIB constant, sort, and function.
+SMT solvers like cvc5 have dedicated theory reasoning for a number of theories! This gives them an advantage for problems in these theories since they can apply dedicated decision procedures for each theory. Furthermore, Sledgehammer has to pass fewer lemmas on to the solver. This all provided that Sledgehammer translates every constant, type, and operator in Isabelle into the correct SMT-LIB constant, sort, and function.
 
 <div align='center'>
 <img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabelleAsksCvc5.svg" alt="IsabelleAsksCvc5" class="center" width=70%/>
