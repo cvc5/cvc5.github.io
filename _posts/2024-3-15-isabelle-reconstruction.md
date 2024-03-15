@@ -59,13 +59,13 @@ Sledgehammer has the ability to call external solvers. Here it called two solver
 
 Sledgehammer will call solvers repeatedly with different collections of lemmas. While this is often necessary to enable the solver to even find a proof before it reaches its resource limit, it has even more vital than just giving shortcuts. For example, a first-order logic solver has no concept of what a natural number is, so if that is important for the goal sledgehammer will have to include a definition in the facts it passes over to the solver.
 
-SMT solvers like cvc5 do support theory reasoning for a small set of theories! This gives them an advantage for problems in theories they support since they can have dedicated decision procedures for each theory. Furthermore, Sledgehammer has to pass less lemmas on to the solver. This all is provided Sledgehammer translates every integer constant, type, and operator in Isabelle into the correct SMT-LIB constant, sorts, and function.
+SMT solvers like cvc5 have dedicated theory reasoning for a number of theories! This gives them an advantage for problems in these theories since they can apply dedicated decision procedures for each theory. Furthermore, Sledgehammer has to pass less lemmas on to the solver. This all provided that Sledgehammer translates every constant, type, and operator in Isabelle into the correct SMT-LIB constant, sort, and function.
 
 <div align='center'>
 <img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabelleAsksCvc5.svg" alt="IsabelleAsksCvc5" class="center" width=70%/>
 </div>
 
-Sledgehammer can already translate goals into SMT-LIB problems for some theories (see for example, this paper by [Blanchette et al.](https://doi.org/10.1007/s10817-013-9278-5)). This includes parts of the theory of bit-vectors however, not all of SMT-LIBs features are supported.
+Sledgehammer can already translate goals into SMT-LIB problems for some theories (see for example, this paper by [Blanchette et al.](https://doi.org/10.1007/s10817-013-9278-5)). 
 
 ## Trusting the untrustworthy? 
 
@@ -73,7 +73,7 @@ Exciting! So we can now use cvc5 to solve goals and Isabelle merely has to lean 
 
 Isabelle only uses a small kernel of inference rules and everything else has to be proven from them. This results in Isabelle's reasoning having a high trustworthiness attached to it. Therefore, Isabelle is quite skeptical when it comes to results proven outside of the solver that could endanger this trust. It will try and find its own proof internally.
 
-Why did it call the external solvers then? Well, Isabelle's proof search is quite slow and it helps a lot to know which facts are needed to solve an open goal or even learning that the goal is indeed true. Isabelle will call solvers repeatedly trying to find the smallest set of facts needed to prove the goal. It can also apply an optimization using so called unsat cores; for this an external solver tells Isabelle which subset of facts it used to solve the goal.
+Why did it call the external solvers then? Well, Isabelle's proof search is quite slow and it helps a lot to know which facts are needed to solve an open goal or even learning that the goal is indeed true. Isabelle will call solvers repeatedly trying to find the smallest set of facts needed to prove the goal (this is generally called the "unsat core" of the problem). As an optimization an external solver can also pass an unsat core to Isabelle directly.
 
 This does work for a lot of problems but even knowing which facts are needed to prove a goal Isabelle might not find a proof on its own. In the following example only the two SMT solvers found a proof but Isabelle could still not use its powerful `metis` tactic to do the same.
 
@@ -89,7 +89,7 @@ SMT solvers are large and complex software systems that are constantly improved 
 <img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabelleAsksCvc5_2.svg" alt="IsabelleAsksCvc5_2" class="center"  width=80% />
 </div>
 
-One solution would be to verify the solver in Isabelle. This would be a massive effort that probably would require performance compromises. And since solvers are not static maintaining the verification after each change requires expensive maintenance.
+One solution would be to verify the solver in Isabelle. This would be a massive effort that probably would require performance compromises. And since solvers are not static, each change would require expensive maintenance of the proofs.
 
 Fortunately, there is a less expensive alternative. Instead of checking the whole solver once, we can check each result the solver outputs. In the case that a problem is *satisfiable* we require the solver to output a model that can be checked by evaluation. 
 
@@ -99,13 +99,13 @@ In Isabelle we are more interested in *unsatisfiable* results, since these show 
 <img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabelleAsksCvc5_3.svg" alt="IsabelleAsksCvc5_3" class="center" width=80% />
 </div>
 
-It is not practical to have cvc5 print *proof certificates* using Isabelle's proof language (although this approach is currently used in our lab for similar research for other proof assistants). However, we can teach Isabelle to understand the solver's output. There are different formats for *proof certificates*. 
+It is not practical to have cvc5 print *proof certificates* using Isabelle's proof language. However, we can teach Isabelle to understand the solver's output. There are different formats for *proof certificates*. 
 
 Isabelle already knows how to reconstruct proof steps in the [Alethe](https://verit.loria.fr/documentation/alethe-spec.pdf) proof format (see [here](https://arxiv.org/abs/1908.09480)). The SMT solver [veriT](https://verit.loria.fr/) outputs this format. It is complete for the theories of quantifier-free formulas with uninterpreted functions and linear arithmetic on real numbers and integers. It also supports quantifier problems. There is also an independent proof checker for the Alethe format called [Carcara](https://link.springer.com/chapter/10.1007/978-3-031-30823-9_19). Carcara is not currently formally verified.
 
 ### Outputting Proof Certificates in Alethe from cvc5 
 
-We instructed cvc5 to output proofs in the Alethe format using its [modular proof infrastructure](https://link.springer.com/chapter/10.1007/978-3-031-10769-6_3). You can get Alethe proofs from cvc5 by using the flag `--proof-format-mode=alethe`. 
+We instructed cvc5 to output proofs in the Alethe format using its [modular proof infrastructure](https://link.springer.com/chapter/10.1007/978-3-031-10769-6_3). You can get Alethe proofs from cvc5 by using the flag `--proof-format-mode=alethe`. Note that support for Alethe proofs on the `main` branch of our cvc5 repo is still unstable and full support is available only on our proofs development branch [proof-new](https://github.com/cvc5/cvc5/tree/proof-new). We are running the last tests on this as we speak and it will soon be fully available in main as well. 
 
 The transformation from internal cvc5 proofs to Alethe proofs is done in a post-processing step. Each proof step in the internal cvc5 proof is an instance of one of the proof rules of the [cvc5 calculus ](https://cvc5.github.io/docs/latest/proofs/proof_rules.html). The proof rule describes how the step was derived from its premises. For example, NOT_NOT_ELIM is a rule that allows the solver to reason that from a premise that is negated twice you can conclude the same statement but without the two negations.
 
