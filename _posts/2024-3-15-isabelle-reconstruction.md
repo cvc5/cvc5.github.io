@@ -76,7 +76,7 @@ Why did it call the external solvers then? Well, Isabelle's proof search is quit
 This does work for a lot of problems but even knowing which facts are needed to prove a goal Isabelle might not find a proof on its own. In the following example only the two SMT solvers found a proof but Isabelle could still not use its powerful `metis` tactic to do the same.
 
 <div align='center'>
-<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/MetisTimeout1.png" alt="MetisTimeout1" class="center" style="width:80%" />
+<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/MetisTimeout1.png" alt="MetisTimeout1" class="center"  />
 </div>
 
 ## The solution: Proof certificates
