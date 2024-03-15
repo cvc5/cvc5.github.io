@@ -4,10 +4,8 @@ categories: blog
 excerpt_separator: <!--more-->
 title: "Reconstructing cvc5 proofs in Isabelle/HOL- Part I: Communication between Isabelle and cvc5"
 author: Hanna Lachnitt
-date: 2024-14-15
+date: 2024-3-15
 ---
-
-# Reconstructing cvc5 proofs in Isabelle/HOL- Part I: Communication between Isabelle and cvc5
 
 If you have used the cvc5 SMT solver before you know that it can solve many complicated problems fast, especially for the theories it supports! But can other programs profit from cvc5's efficiency too? And if so, how can cvc5 effectively communicate with these external tools? Could we use their feedback to increase our trust in cvc5's result even more?
 
@@ -16,7 +14,7 @@ If you have used the cvc5 SMT solver before you know that it can solve many comp
 This blog post is the first in a series of two on improving proof automation in [Isabelle](https://isabelle.in.tum.de/) with SMT solvers. This part will give some background on Isabelle and describe the general approach we are using to integrate cvc5. If you are already familiar with Isabelle, feel free to skip ahead to [this section](#proof-automation-in-isabelle).
 
 <div align='center'>
-<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabellePlusCvc5.svg" alt="isabellepluscvc5" class="center" width=80% />
+<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabellePlusCvc5.svg" alt="isabellepluscvc5" class="center" style="width:80%" />
 </div>
 
 ## What is Isabelle?
@@ -40,7 +38,7 @@ For example, you might have proven something by contradiction or by induction be
 This is a small lemma in Isabelle that proves Gauss' sum formula. Don't worry if you don't understand every part of this lemma. It uses induction to solve that the sum of the numbers from $0$ to $n$ is $n*(n+1)/2$. Then, it uses the `simp` tactic to solve both base case and hypothesis. 
 
 <div align='center'>
-<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/lemmaGauss.png" alt="lemmaGauss" class="center" width=50% />
+<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/lemmaGauss.png" alt="lemmaGauss" class="center" style="width:50%" />
 </div>
 
 It might seem obvious, but this example shows that Isabelle provides a definition of natural numbers `nat` as well as operators such as addition, multiplication, and division on them that we are able to use here without defining them ourselves. 
@@ -52,7 +50,7 @@ In contrast to an automated theorem prover where you input your problem and get 
 But that's not all that Isabelle has to offer! You can ask Isabelle to help you to find the right lemmas and tactics you need to solve your goal. [Sledgehammer](https://isabelle.in.tum.de/dist/doc/sledgehammer.pdf) is a tool inside of Isabelle that will tackle your lemma automatically and suggest a proof (maybe by a tactic you have not known about before like `presburger` or `force` or a lemma out of the 2200 in the standard library (HOL-Library)):
 
 <div align='center'>
-<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabelleAutomation.png" alt="IsabelleAutomation" class="center"  width=80%/>
+<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabelleAutomation.png" alt="IsabelleAutomation" class="center"  style="width:80%"/>
 </div>
 
 Sledgehammer has the ability to call external solvers. Here it called two solvers called zipperposition and Vampire. It will encode the statement you want to prove in Isabelle (your current proof goal) into a format that these solvers can understand. It also includes some lemmas and facts that it thinks the solvers will need to solve the goal. For example, in this case it seems like there is already a lemma called `gauss_sum_nat` that shows something similar to our lemma and that we can use to prove the new goal.
@@ -62,7 +60,7 @@ Sledgehammer will call solvers repeatedly with different collections of lemmas a
 SMT solvers like cvc5 have dedicated theory reasoning for a number of theories! This gives them an advantage for problems in these theories since they can apply dedicated decision procedures for each theory. Furthermore, Sledgehammer has to pass fewer lemmas on to the solver. This all provided that Sledgehammer translates every constant, type, and operator in Isabelle into the correct SMT-LIB constant, sort, and function.
 
 <div align='center'>
-<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabelleAsksCvc5.svg" alt="IsabelleAsksCvc5" class="center" width=70%/>
+<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabelleAsksCvc5.svg" alt="IsabelleAsksCvc5" class="center" style="width:70%"/>
 </div>
 
 Sledgehammer can already translate goals into SMT-LIB problems for some theories (see for example, this paper by [Blanchette et al.](https://doi.org/10.1007/s10817-013-9278-5)). 
@@ -78,7 +76,7 @@ Why did it call the external solvers then? Well, Isabelle's proof search is quit
 This does work for a lot of problems but even knowing which facts are needed to prove a goal Isabelle might not find a proof on its own. In the following example only the two SMT solvers found a proof but Isabelle could still not use its powerful `metis` tactic to do the same.
 
 <div align='center'>
-<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/MetisTimeout1.png" alt="MetisTimeout1" class="center" width=80% />
+<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/MetisTimeout1.png" alt="MetisTimeout1" class="center" style="width:80%" />
 </div>
 
 ## The solution: Proof certificates
@@ -86,7 +84,7 @@ This does work for a lot of problems but even knowing which facts are needed to 
 SMT solvers are large and complex software systems that are constantly improved and extended. As any large software project they are known to have bugs even when applying best engineering practices.
 
 <div align='center'>
-<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabelleAsksCvc5_2.svg" alt="IsabelleAsksCvc5_2" class="center"  width=80% />
+<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabelleAsksCvc5_2.svg" alt="IsabelleAsksCvc5_2" class="center"  style="width:80%" />
 </div>
 
 One solution would be to verify the solver in Isabelle. This would be a massive effort that probably would require performance compromises. And since solvers are not static, each change would require expensive maintenance of the proofs.
@@ -96,7 +94,7 @@ Fortunately, there is a less expensive alternative. Instead of checking the whol
 In Isabelle we are more interested in *unsatisfiable* results, since these show that the lemma is valid. In the *unsat* case, the solver outputs a *proof certificate*, a series of steps that explain how the solver concluded that the problem is `unsat`. Checking the steps should generally be easier than solving the problem. A tool that does this is called a proof checker. We will refer to the checking of `proof certificates` inside of Isabelle as replaying the proof or reconstructing the proof in the following. 
 
 <div align='center'>
-<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabelleAsksCvc5_3.svg" alt="IsabelleAsksCvc5_3" class="center" width=80% />
+<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/IsabelleAsksCvc5_3.svg" alt="IsabelleAsksCvc5_3" class="center" style="width:80%" />
 </div>
 
 It is not practical to have cvc5 print *proof certificates* using Isabelle's proof language. However, we can teach Isabelle to understand the solver's output. There are different formats for *proof certificates*. 
@@ -110,7 +108,7 @@ We instructed cvc5 to output proofs in the Alethe format using its [modular proo
 The transformation from internal cvc5 proofs to Alethe proofs is done in a post-processing step. Each proof step in the internal cvc5 proof is an instance of one of the proof rules of the [cvc5 calculus ](https://cvc5.github.io/docs/latest/proofs/proof_rules.html). The proof rule describes how the step was derived from its premises. For example, NOT_NOT_ELIM is a rule that allows the solver to reason that from a premise that is negated twice you can conclude the same statement but without the two negations.
 
 <div align='center'>
-<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/cvc5ProofRule.png" alt="cvc5ProofRule" class="center" width=70% />
+<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/cvc5ProofRule.png" alt="cvc5ProofRule" class="center" style="width:70%" />
 </div>
 
 Whenever a proof step with this rule appears in the internal cvc5 proof it has to be translated into one or more steps in the Alethe calculus. As an example, let's say that our premise is some assumption `(not (not (>= i 2048)))` and the conclusion of the currently translated step `F` is `(>= i 2048)`.
