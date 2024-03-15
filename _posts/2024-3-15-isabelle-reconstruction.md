@@ -128,7 +128,7 @@ The translation we wrote is adding an additional step from the calculus: `resolu
 
 ```
 
-On our proof-new branch we can produce proofs for all of cvc5's regression tests except for 618 benchmarks that were disabled. Most of those are using a logic that is not supported in Alethe or don't have proof support that (399). 
+On our proof-new branch we can produce proofs for all of cvc5's regression tests (~1582) except for 618 benchmarks that were disabled. Most of those are using a logic that is not supported in Alethe or don't have proof support that (399). 
 
 ## The Reconstruction Cycle
 
