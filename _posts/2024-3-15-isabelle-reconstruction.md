@@ -147,6 +147,7 @@ This blog post explained the basic approach our work on improving proof automati
 
 In the next part of this series we will write about how the `smt` tactic works internally and what extensions we made to it. We will introduce our work on adding support for Alethe bit-vector proofs to Isabelle and speak about an important component of cvc5 proofs: rewrites. 
 
+A big thanks goes out to Haniel Barbosa and Mathias Fleury for proof reading this blog post.
 
 
 #### [Hanna Lachnitt](https://lachnitt.github.io/) is a PhD student advised by Clark Barrett in the Stanford Center for Automated Reasoning ([Centaur](https://centaur.stanford.edu/)) Lab. Her research is focused on SMT Proofs.
