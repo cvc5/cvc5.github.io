@@ -2,12 +2,12 @@
 layout: blog-post
 categories: blog
 excerpt_separator: <!--more-->
-title: "Reconstructing cvc5 proofs in Isabelle/HOL- Part I: Isabelle"
+title: "Reconstructing cvc5 proofs in Isabelle/HOL- Part I: Communication between Isabelle and cvc5"
 author: Hanna Lachnitt
 date: 2024-14-15
 ---
 
-# Reconstructing cvc5 proofs in Isabelle/HOL- Part I: Isabelle
+# Reconstructing cvc5 proofs in Isabelle/HOL- Part I: Communication between Isabelle and cvc5
 
 If you have used the cvc5 SMT solver before you know that it can solve many complicated problems fast, especially for the theories it supports! But can other programs profit from cvc5's efficiency too? And if so, how can cvc5 effectively communicate with these external tools? Could we use their feedback to increase our trust in cvc5's result even more?
 
@@ -129,6 +129,9 @@ The translation we wrote is adding an additional step from the calculus: `resolu
 (step t2 (cl (>= i 2048)) :rule resultion :premises t1)
 
 ```
+
+On our proof-new branch we can produce proofs for all of cvc5's regression tests except for 618 benchmarks that were disabled. Most of those are using a logic that is not supported in Alethe or don't have proof support that (399). 
+
 ## The Reconstruction Cycle
 
 Now we can put all the steps together. Inside of Isabelle we call sledgehammer on a goal. That generates an SMT-LIB problem that we give to cvc5. The proof certificate that we get receive from the solver is then parsed back in into Isabelle. The `smt` tactic checks every step of that proof and discharges the original goal.
@@ -137,32 +140,13 @@ Now we can put all the steps together. Inside of Isabelle we call sledgehammer o
 <img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/CENTAURRetreatSimp.svg" alt="CENTAURRetreatSimp" class="center"/>
 </div>
 
+
+## Summary and Outlook
+
+This blog post explained the basic approach our work on improving proof automation in Isabelle/HOL by using cvc5 follows. The solver returns a proof certificate to Isabelle which can then check every step in it instead of having to find the proof itself. We reuse an existing integration that requires proofs in the Alethe proof format. This post explained how we generate Alethe proofs from cvc5.
+
 In the next part of this series we will write about how the `smt` tactic works internally and what extensions we made to it. We will introduce our work on adding support for Alethe bit-vector proofs to Isabelle and speak about an important component of cvc5 proofs: rewrites. 
 
-However, before we'll end this post, we want to present some of our first preliminary results that reuse the Alethe reconstruction infrastructure that we describe above.
 
-
-## Isabelle as a Proof Checker and First Results
-
-To be able to efficiently evaluate our work we have extended Isabelle to not just check proofs for problems that it generated itself. It can now parse an SMT-LIB problem and a proof and then check whether the assumptions from the proof occur in the problem and that every step in the proof is correct.
-
-For this we introduced a new command called check_smt:
-
-<div align='center'>
-<img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/checkSMT.png" alt="checkSMT" class="center" width=70% />
-</div>
-
-This command takes as an SMT-LIB problem and an Alethe proof for that problem as an input. It then reads in the problem: it generates types and terms for all definitions in the problem and creates an internal goal from the assertions. Then, it uses the same reconstruction process that it also uses for internal goals.
-
-We have used this method to evaluate cvc5s performance on SMT-LIB XYZ benchmarks
-
-```
-|                             | cvc5        | verit      |
-| ----------------------------| ----------- |----------- |
-| nr benchmarks solved        |             |            |
-| nr benchmarks reconstructed |             |            |
-```
-
-Are you intrigued about the differences between cvc5 with rewrites and without? Keep your eyes open for part 2 of this series on Isabelle and cvc5.
 
 #### [Hanna Lachnitt](https://lachnitt.github.io/) is a PhD student advised by Clark Barrett in the Stanford Center for Automated Reasoning ([Centaur](https://centaur.stanford.edu/)) Lab. Her research is focused on SMT Proofs.
