@@ -35,7 +35,7 @@ Think of it as writing a proof in math class in school. You'll have to convince 
 
 For example, you might have proven something by contradiction or by induction before. Isabelle has an induction tactic as well as one that does case splits, and one that you can use to apply a previously proven fact. Another tactic called `simp`, automatically tries to simplify the goal as much as possible using previously proven statements and definitions. Unlike your pen and paper proof, Isabelle expects a formal proof where every step is well-defined. You cannot just skip steps by writing “exercise left to the reader” or “trivial”. However, the simplifier is already quite powerful and can solve many goals for you!
 
-This is a small lemma in Isabelle that proves Gauss' sum formula. Don't worry if you don't understand every part of this lemma. It uses induction to solve that the sum of the numbers from $0$ to $n$ is $n*(n+1)/2$. Then, it uses the `simp` tactic to solve both base case and hypothesis. 
+This is a small lemma in Isabelle that proves Gauss' sum formula. Don't worry if you don't understand every part of this lemma. It uses induction to solve that the sum of the numbers from \\(0\\) to \\(n\\) is \\(n*(n+1)/2\\). Then, it uses the `simp` tactic to solve both base case and hypothesis. 
 
 <div align='center'>
 <img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/lemmaGauss.png" alt="lemmaGauss" class="center" style="width:50%" />
@@ -128,11 +128,11 @@ The translation we wrote is adding an additional step from the calculus: `resolu
 
 ```
 
-On our proof-new branch we can produce proofs for all of cvc5's regression tests (~1582) except for 618 benchmarks that were disabled. Most of those are using a logic that is not supported in Alethe or don't have proof support that (399). 
+On our proof-new branch we can produce proofs for all of cvc5's regression tests (~1582) except for 618 benchmarks that were disabled. Most of those are using a logic that is not supported in Alethe or for which cvc5 does not produce proofs (399). 
 
 ## The Reconstruction Cycle
 
-Now we can put all the steps together. Inside of Isabelle we call sledgehammer on a goal. That generates an SMT-LIB problem that we give to cvc5. The proof certificate that we get receive from the solver is then parsed back in into Isabelle. The `smt` tactic checks every step of that proof and discharges the original goal.
+Now we can put all the steps together. Inside of Isabelle we call sledgehammer on a goal. That generates an SMT-LIB problem that we give to cvc5. The proof certificate that we receive from the solver is then parsed back in into Isabelle. The `smt` tactic checks every step of that proof and discharges the original goal.
 
 <div align='center'>
 <img src="/assets/blog-images/2024-3-15-isabelle-reconstruction/CENTAURRetreatSimp.svg" alt="CENTAURRetreatSimp" class="center"/>
@@ -141,11 +141,11 @@ Now we can put all the steps together. Inside of Isabelle we call sledgehammer o
 
 ## Summary and Outlook
 
-This blog post explained the basic approach our work on improving proof automation in Isabelle/HOL by using cvc5 follows. The solver returns a proof certificate to Isabelle which can then check every step in it instead of having to find the proof itself. We reuse an existing integration that requires proofs in the Alethe proof format. This post explained how we generate Alethe proofs from cvc5.
+This blog post explained the basic approach of our work on improving proof automation in Isabelle/HOL by using cvc5. The solver returns a proof certificate to Isabelle which can then check every step in it instead of having to find the proof itself. We reuse an existing integration that requires proofs in the Alethe proof format. This post explained how we generate Alethe proofs from cvc5.
 
 In the next part of this series we will write about how the `smt` tactic works internally and what extensions we made to it. We will introduce our work on adding support for Alethe bit-vector proofs to Isabelle and speak about an important component of cvc5 proofs: rewrites. 
 
-A big thanks goes out to Haniel Barbosa and Mathias Fleury for proof reading this blog post.
+A big thanks goes out to Haniel Barbosa, Yoni Zohar and Mathias Fleury for proof reading this blog post.
 
 
 #### [Hanna Lachnitt](https://lachnitt.github.io/) is a PhD student advised by Clark Barrett in the Stanford Center for Automated Reasoning ([Centaur](https://centaur.stanford.edu/)) Lab. Her research is focused on SMT Proofs.
