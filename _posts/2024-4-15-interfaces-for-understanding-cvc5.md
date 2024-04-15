@@ -31,7 +31,8 @@ In this blog post, we first recap the standard SMT-LIB interfaces for how to int
 In the following, we frequently reference:
 - SMT-LIB version 2.6 commands in the text interface (e.g. `(get-unsat-core)`).
 - Command line options (e.g. `produce-unsat-cores`).
-- Output tags, which are a family of command line options (e.g. `-o unsat-core-benchmark`). These do not impact the behavior of the solver apart from printing diagnostic information. These are documented here: https://cvc5.github.io/docs-ci/docs-main/output-tags.html.
+- Output tags, which are a family of command line options (e.g. `-o unsat-core-benchmark`). These do not impact the behavior of the solver apart from printing diagnostic information. 
+For more details, see our documentation of [output tags](https://cvc5.github.io/docs-ci/docs-main/output-tags.html).
 
 While the discussion will focus on the command line interface and *.smt2 text interface, most of the features mentioned in this post are available in each of our APIs (C++, Java, Python).
 Many of these features are new and are under active development.
@@ -104,7 +105,7 @@ The preprocessed form of the input is also available, which we will describe lat
 
 Theory lemmas may involve symbols that were introduced internally by cvc5 during solving, which we call "skolems".
 A classic example is the "division by zero" skolem introduced to reason about the possibility of division with a zero denominator.
-For details on all the documented skolem cvc5 supports, see: https://cvc5.github.io/docs-ci/docs-main/skolem-ids.html.
+For details on all the documented skolem cvc5 supports, see our documentation for [Skolem identifiers](https://cvc5.github.io/docs-ci/docs-main/skolem-ids.html).
 
 We also support dumping the unsat core along the lemmas used as a standalone benchmark via the output flag `-o unsat-core-lemmas-benchmark`.
 
@@ -141,7 +142,7 @@ Analogous to unsat cores, this requires the option `produce-proofs` to be enable
 This section gives a cursory overview of the interface for getting proofs.
 
 A proof is a step-by-step account of how a refutation can be derived from the input.
-For documentation on the proof rules supported by cvc5, see documentation of our [proof rules](https://cvc5.github.io/docs/cvc5-1.1.2/proofs/proof_rules.html).
+For documentation on the proof rules supported by cvc5, see documentation of our [proof rules](https://cvc5.github.io/docs-ci/docs-main/proofs/proof_rules.html).
 
 The following outputs control how proofs are computed and printed:
 - `proof-granularity=X` controls the granularity of the generated proof. This can range from allowing large informal "macro" steps to requiring each small-step theory rewrite to be justified.
@@ -302,9 +303,9 @@ unknown
 ```
 
 In the above example, cvc5 gave up because it could not determine the satisfability of the given quantified formula.
-The first identifier `INCOMPLETE` captures the high-level reason for why "unknown" was returned, which is a value from this enumeration: https://cvc5.github.io/docs/cvc5-1.1.2/api/cpp/unknownexplanation.html#unknownexplanation.
+The first identifier `INCOMPLETE` captures the high-level reason for why "unknown" was returned, which is an [unknown explanation](https://cvc5.github.io/docs-ci/docs-main/api/cpp/unknownexplanation.html#unknownexplanation).
 The second identifier `QUANTIFIERS` is a finer grained internal explanation of why the theory solvers were incomplete.
-Note these identifiers are not currently part of our API, but are documented internally here: https://github.com/cvc5/cvc5/blob/main/src/theory/incomplete_id.h.
+Note these identifiers are not currently part of our API, but are documented internally [here](https://github.com/cvc5/cvc5/blob/main/src/theory/incomplete_id.h).
 
 ### More Information to Understand what the Solver is Doing
 
