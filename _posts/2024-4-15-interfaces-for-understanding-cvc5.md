@@ -64,7 +64,7 @@ A
 )
 ```
 
-We support additional refinements to unsat cores:
+We support additional options pertaining to the way unsat cores are computed and printed:
 - `minimal-unsat-cores`, which uses a greedy algorithm to drop assertions from the unsat core.
 This option may induce additional performance overhead, but is useful if the user prioritizes smaller unsat cores.
 The cores returned from this option are locally minimal (in that dropping any formula from the unsat core does not lead to an "unsat" response), although they are not guaranteed to be globally minimal.
@@ -100,14 +100,14 @@ unsat
 ```
 
 In the above example, a single theory lemma was generated which was required for showing the first assertion to be unsatisfiable.
-Note that the literals `(>= x 3)` and `(>= x 0` in this lemma correspond to the original two atoms after preprocessing.
+Note that the literals `(>= x 3)` and `(>= x 0)` in this lemma correspond to the original two atoms after preprocessing.
 The preprocessed form of the input is also available, which we will describe later in this post.
-
-We also support dumping the unsat core along the lemmas used as a standalone benchmark via the output flag `-o unsat-core-lemmas-benchmark`.
 
 Theory lemmas may involve symbols that were introduced internally by cvc5 during solving, which we call "skolems".
 A classic example is the "division by zero" skolem introduced to reason about the possibility of division with a zero denominator.
 For details on all the documented skolem cvc5 supports, see: https://cvc5.github.io/docs-ci/docs-main/skolem-ids.html.
+
+We also support dumping the unsat core along the lemmas used as a standalone benchmark via the output flag `-o unsat-core-lemmas-benchmark`.
 
 #### Unsat core of instantiations
 
@@ -115,52 +115,78 @@ As a further refinement, one can ask specifically the shape of the quantifier in
 These are available via the command line option `dump-instantitions`.
 When proofs are enabled, this list is refined to only include the instantiations that were used in the proof of unsatisfiability.
 
+```
+% cat test.smt2
+(set-logic UFLIA)
+(declare-fun P (Int) Bool)
+(assert (forall ((x Int)) (P x)))
+(assert (or (not (P 3)) (not (P 4))))
+(check-sat)
+
+% cvc5 test.smt2 --dump-instantiations
+unsat
+(instantiations (forall ((x Int)) (P x))
+  ( 3 )
+  ( 4 )
+)
+```
+
 A further refinement to this feature prints the "source" of the instantiation lemma, which is a unique identifier (which we call an "inference identifier") that indicates which part of cvc5's code base was responsible for the lemma.
 This is available by the command line option `dump-instantiations-debug`.
-
-$EXAMPLE$
-
 In the future, we are planning to export more information about the meaning of the inference identifiers.
 
 ### Proofs
 
 When cvc5 answers "unsat", a fine-grained account of its reasoning can be obtained via the SMT-LIB command `(get-proof)`.
 Analogous to unsat cores, this requires the option `produce-proofs` to be enabled.
-The option `dump-proofs` issues a command to the get the proof after every unsatisfiable response.
+This section gives a cursory overview of the interface for getting proofs.
 
 A proof is a step-by-step account of how a refutation can be derived from the input.
-A fine-grained proof can 
 For documentation on the proof rules supported by cvc5, see https://cvc5.github.io/docs/cvc5-1.1.2/proofs/proof_rules.html.
 
-By default, cvc5 generates proofs in the AletheLF format, which is a new proof format based on the SMT-LIB version 3.0 proposal.
-For details on AletheLF proofs in cvc5, see https://cvc5.github.io/docs/cvc5-1.1.2/proofs/output_alf.html.
-A majority of cvc5's proof rules are formally defined in this framework (see https://github.com/cvc5/cvc5/blob/main/proofs/alf/cvc5/Cvc5.smt3 for details).
-
-The granularity of proofs can be controlled via the option `proof-granularity=X`.
-This can range from allowing large informal "macro" steps to requiring
-
-Proof can be double checked for correctness using the option `check-unsat-cores`, which runs an internal proof checker in cvc5 on the final proof.
-We additionally support an external checker `alfc` for the AletheLF format (see https://github.com/cvc5/alfc/blob/main/user_manual.md for details), and provide a script for getting started with this proof checker ().
+The following outputs control how proofs are computed and printed:
+- `proof-granularity=X` controls the granularity of the generated proof. This can range from allowing large informal "macro" steps to requiring each small-step theory rewrite to be justified.
+- `check-proofs`, which runs an internal proof checker in cvc5 on the final proof.
+- `proof-format=X` which impacts the format of the proof. By default, cvc5 generates proofs in the AletheLF format, which is a new proof format based on the SMT-LIB version 3.0 proposal. For details on AletheLF proofs in cvc5, see https://cvc5.github.io/docs/cvc5-1.1.2/proofs/output_alf.html.
+- `dump-proofs`, which issues a command to the get the proof automatically after every unsatisfiable response.
 
 cvc5 additionally provides interfaces for getting only part of the entire proof.
 In particular, our `get-proof` command takes an optional "component" identifier, indicating the part of the proof that the user is interested in.
-For instance, the user can ask for only the proofs of theory lemmas with the command `(get-proof :
+For instance, the user can ask for only the proofs of theory lemmas with the command `(get-proof :theory_lemmas)`.
+
+We support an external proof checker `alfc` for the AletheLF format (see https://github.com/cvc5/alfc/blob/main/user_manual.md for details), and provide a script for getting started with this proof checker (https://github.com/cvc5/cvc5/blob/main/contrib/get-alf-checker).
 
 ### Models
 
 cvc5 supports models via the SMT-LIB command `(get-model)` which is available immediately after a "sat" response.
 This requires the option `produce-models` to be set to true.
 Again, analogous to other features `dump-models` can be used to issue a command to print the model after every satisfiable response.
+Models can be double checked for correctness internally using the option `check-models`.
 
 #### Model cores
 
 cvc5 supports a refinement to models where only the variables that were relevant for satisfying the user input.
 We call this a "model core".
+```
+% cat test.smt2
+(set-logic QF_UFLIA)
+(set-option :produce-models true)
+(declare-fun x () Int)
+(declare-fun y () Int)
+(declare-fun z () Int)
+(assert (or (> z 5) (> y 5)))
+(check-sat)
+(get-model)
 
-$EXAMPLE$
+% cvc5 test.smt2 --model-cores=simple
+sat
+(
+(define-fun y () Int 6)
+)
+```
 
 In detail, a model core is an interpretation of a subset of the user variables where all extensions of that interpretation are also a model.
-
+In the above example, if `y` is assigned the value `6`, then the input assertion evaluates to true no matter what the value of `x` or `z`.
 
 ## Interfaces for when things go wrong
 
@@ -169,15 +195,12 @@ Unfortunately, users are often unaware of how to obtain useful information in su
 In the following, we first focus on information that documents what the solver is doing. 
 We then focus on newer features that are tailored towards aiding the user in assessing what went wrong, and in some cases, how to fix it.
 
-
-
 ### Incompleteness
 
 When cvc5 answers "unknown", the user may ask for an explanation of why cvc5 gave up using the output tag `-o incomplete`.
 Reasons can include resource limiting, incomplete heuristics for quantifier instantiation, unsupported combinations of theories, options misconfiguration, and so on.
 
 > These reasons are not currently part of our API, but are documented internally here: https://github.com/cvc5/cvc5/blob/main/src/theory/incomplete_id.h.
-
 
 ### Timeout cores
 
