@@ -141,19 +141,21 @@ Analogous to unsat cores, this requires the option `produce-proofs` to be enable
 This section gives a cursory overview of the interface for getting proofs.
 
 A proof is a step-by-step account of how a refutation can be derived from the input.
-For documentation on the proof rules supported by cvc5, see https://cvc5.github.io/docs/cvc5-1.1.2/proofs/proof_rules.html.
+For documentation on the proof rules supported by cvc5, see documentation of our [proof rules](https://cvc5.github.io/docs/cvc5-1.1.2/proofs/proof_rules.html).
 
 The following outputs control how proofs are computed and printed:
 - `proof-granularity=X` controls the granularity of the generated proof. This can range from allowing large informal "macro" steps to requiring each small-step theory rewrite to be justified.
 - `check-proofs`, which runs an internal proof checker in cvc5 on the final proof.
-- `proof-format=X` which impacts the format of the proof. By default, cvc5 generates proofs in the AletheLF format, which is a new proof format based on the SMT-LIB version 3.0 proposal. For details on AletheLF proofs in cvc5, see https://cvc5.github.io/docs/cvc5-1.1.2/proofs/output_alf.html.
+- `proof-format=X` which impacts the format of the proof. By default, cvc5 generates proofs in the AletheLF format, which is a new proof format based on the SMT-LIB version 3.0 proposal. For details on AletheLF proofs in cvc5, see [AletheLF](https://cvc5.github.io/docs-ci/docs-main/proofs/output_alf.html).
 - `dump-proofs`, which issues a command to the get the proof automatically after every unsatisfiable response.
 
 cvc5 additionally provides interfaces for getting only part of the entire proof.
 In particular, our `get-proof` command takes an optional "component" identifier, indicating the part of the proof that the user is interested in.
 For instance, the user can ask for only the proofs of theory lemmas with the command `(get-proof :theory_lemmas)`.
+More details
 
-We support an external proof checker `alfc` for the AletheLF format (see https://github.com/cvc5/alfc/blob/main/user_manual.md for details), and provide a script for getting started with this proof checker (https://github.com/cvc5/cvc5/blob/main/contrib/get-alf-checker).
+Proofs can be checking externally using the proof checker `alfc` for the AletheLF format (see this [user manual](https://github.com/cvc5/alfc/blob/main/user_manual.md) for details).
+We provide a [script](https://github.com/cvc5/cvc5/blob/main/contrib/get-alf-checker) for getting started with this proof checker.
 
 ### Models
 
@@ -300,7 +302,8 @@ unknown
 ```
 
 In the above example, cvc5 gave up because it could not determine the satisfability of the given quantified formula.
-This is captured by the identifier `QUANTIFIERS`.
+The first identifier `INCOMPLETE` captures the high-level reason for why "unknown" was returned, which is a value from this enumeration: https://cvc5.github.io/docs/cvc5-1.1.2/api/cpp/unknownexplanation.html#unknownexplanation.
+The second identifier `QUANTIFIERS` is a finer grained internal explanation of why the theory solvers were incomplete.
 Note these identifiers are not currently part of our API, but are documented internally here: https://github.com/cvc5/cvc5/blob/main/src/theory/incomplete_id.h.
 
 ### More Information to Understand what the Solver is Doing
@@ -353,10 +356,50 @@ We also have support for "learned literals", which we describe next.
 #### Learned Literals
 
 cvc5 supports the custom SMT-LIB command `(get-learned-literals)`, which prints the set of unit clauses that were learned by cvc5 during preprocessing and solving.
-These literals can be further classified based 
+It is available when the option `produce-learned-literals` is enabled.
 
 ```
+% cat test.smt2
+(set-logic ALL)
+(set-option :produce-learned-literals true)
+(declare-fun x () Int)
+(declare-fun y () Int)
+(declare-fun z () Int)
+(assert (> x 5))
+(assert (< y 4))
+(assert (or (< x y) (>= z 1)))
+(check-sat)
+(get-learned-literals)
+
+% cvc5 test.smt2
+sat
+(
+(>= z 1)
+(>= (+ x (* (- 1) y)) 0)
+)
 ```
+In particular, for this example, cvc5 learns that `x` must be greater than or equal `y`, and hence by the third constraint, `z` must be greater than or equal to one.
+
+With `-o learned-lits`, cvc5 will print the literals it learns as they are learned.
+For the above example, cvc5 prints:
+
+```
+% cvc5 test.smt2 -o learned-lits
+(learned-lit (>= x 6) :preprocess)
+(learned-lit (not (>= y 4)) :preprocess)
+(learned-lit (>= (+ x (* (- 1) y)) 0) :input)
+(learned-lit (>= z 1) :input)
+sat
+(
+(>= z 1)
+(>= (+ x (* (- 1) y)) 0)
+)
+```
+
+Learned literals can be further classified based on whether the literal occurs in the original input problem (after preprocessing), and when it was learned.
+In the above example, the first two literals were learned as part of preprocessing, whereas the latter two literals were input literals learned during solving.
+By default, cvc5 will only report input literals that are not learned as part of preprocessing.
+More documentation about the classification of learned literals is available here: https://cvc5.github.io/docs-ci/docs-main/api/cpp/modes.html#_CPPv4N4cvc55modes14LearnedLitTypeE.
 
 #### Candidate Models
 
