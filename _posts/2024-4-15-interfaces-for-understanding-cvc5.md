@@ -303,7 +303,7 @@ In the above example, cvc5 gave up because it could not determine the satisfabil
 This is captured by the identifier `QUANTIFIERS`.
 Note these identifiers are not currently part of our API, but are documented internally here: https://github.com/cvc5/cvc5/blob/main/src/theory/incomplete_id.h.
 
-### More information to understand what the Solver is doing
+### More Information to Understand what the Solver is Doing
 
 #### Statistics
 
@@ -311,7 +311,7 @@ The most basic form of information one can retrieve from cvc5 is its statistics.
 These are dumped when cvc5 terminates when the option `stats` is enabled.
 A more detailed account of statistics, including timing information and histograms of the inference identifiers used during solving is available when the option `stats-internal` is enabled.
 
-#### Preprocessor
+#### Diagnostics for Preprocessing
 
 cvc5 implements a number of preprocessing passes that are applied to the input formulas prior to solving.
 It is often useful to see how these passes modify the user input, prior to when the solving begins.
@@ -323,7 +323,7 @@ Let us revisit our earlier example:
 (declare-fun x () Int)
 (declare-fun y () Int)
 (assert (and (> x 2) (< x 0)))
-(assert (< y 0))
+(assert (> (+ y 1) y))
 (check-sat)
 
 % cvc5 test.smt2 -o post-asserts
@@ -333,7 +333,7 @@ Let us revisit our earlier example:
 (declare-fun x () Int)
 (assert (>= x 3))
 (assert (not (>= x 0)))
-(assert (not (>= y 0)))
+(assert true)
 (assert true)
 (check-sat)
 ;; post-asserts end
@@ -341,28 +341,31 @@ unsat
 ```
 
 Here, we can see that cvc5 replaces strict inequalities with non-strict inequalities.
-The set of input assertions, prior to preprocessing are also available via `-o pre-asserts`.
+Furthermore, the constraint involving `y` was replaced by `true` since it holds in all models.
+This output can be helpful for narrowing down what the exact form of an input assertion is after preprocessing.
+It can also help contextualize further information that cvc5 provides, e.g. the lemmas that cvc5 provides will often be over atoms contained in the input after preprocessing.
+
+The set of input assertions prior to preprocessing are also available via `-o pre-asserts`.
 cvc5 also has other output tags that pertain to important things learned during preprocessing, 
 for example, `-o subs` will output the substitutions corresponding to variable elimination inferred during preprocessing.
+We also have support for "learned literals", which we describe next.
 
-#### Candidate Models and Learned Literals
+#### Learned Literals
 
-When the SMT solver is unsuccessful at solving a given query, one logical question to ask is "What progress did the solver make?".
-We can summarize this progress in two ways:
-- What was the last candidate model that was tried?
-- Which formulas were learned during solving?
+cvc5 supports the custom SMT-LIB command `(get-learned-literals)`, which prints the set of unit clauses that were learned by cvc5 during preprocessing and solving.
+These literals can be further classified based 
 
-For the former, cvc5 supports commands such as `get-model` after an "unknown" response, e.g. after reaching a time or resource limit.
+```
+```
+
+#### Candidate Models
+
+cvc5 supports commands such as `get-model` after an "unknown" response, e.g. after reaching a time or resource limit.
 The model given to the user reflects the most recent *candidate* model that cvc5 computed.
 A candidate model is one that satisfies (decidable) quantifier-free constraints but could not be confirmed to satisfy quantified or undecidable constraints.
 In a sense, the most recent candidate model typically indicates cvc5's best approximation of what a model of the constraints are.
 
-For the former, cvc5 supports the custom SMT-LIB command `(get-learned-literals)`, which prints the set of unit clauses that were learned by cvc5 during preprocessing and solving.
-
-```
-```
-
-#### Quantifier triggers and instantiations
+#### Quantifier Triggers and Instantiations
 
 Problems with quantified formulas can be notoriously sensitive and difficult to debug.
 cvc5 supports various output tags to understand how quantified formulas are been handled internally.
@@ -396,7 +399,7 @@ unsat
 In the above example, `-o lemmas` prints the set of lemmas that are generated when solving this problem.
 In this case, a single lemma sufficed for showing the input is unsatisfiable, which was given the identifier `ARITH_UNATE`.
 
-#### Output tags for Syntax-guided Synthesis
+#### Diagnostics for Syntax-guided Synthesis
 
 cvc5 supports other kinds of constraints beside satisfiability.
 In particular, we support syntax-guided synthesis problems, for details see [CAV2015](https://homepage.divms.uiowa.edu/~ajreynol/cav15a.pdf) and [CAV2019](https://homepage.divms.uiowa.edu/~ajreynol/cav19b.pdf).
