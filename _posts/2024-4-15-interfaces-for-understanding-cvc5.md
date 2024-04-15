@@ -195,6 +195,95 @@ Unfortunately, users are often unaware of how to obtain useful information in su
 In the following, we first focus on information that documents what the solver is doing. 
 We then focus on newer features that are tailored towards aiding the user in assessing what went wrong, and in some cases, how to fix it.
 
+### Timeout cores
+
+cvc5 has experimental support for SMT-LIB command `(get-timeout-core)`.
+A "timeout core" is a subset of the user input that is sufficient for making cvc5 timeout in a given timeout (configurable by `timeout-core-limit=X`).
+It is generally most useful for undecidable quantifier-free logics such as non-linear arithmetic or strings.
+
+```
+% cat test.smt2
+(set-logic ALL)
+(set-option :produce-unsat-cores true)
+(declare-fun x () Int)
+(declare-fun w () Int)
+(declare-fun u () Int)
+(assert (! (> u 0) :named u0))
+(assert (! (< w 0) :named w0))
+(assert (! (= (* x x x) 564838384999) :named hard))
+(get-timeout-core)
+
+% cvc5 test.smt2
+unknown
+(
+hard
+)
+```
+
+Unlike other interfaces, timeout cores are *only* available when using the extended SMT-LIB command `get-timeout-core`.
+In other words, timeout cores are not impacted by previous calls to `check-sat`.
+
+The expected result of a `get-timeout-core` is "unknown" followed by a list of formulas corresponding to a timeout core.
+However, it may be the case that cvc5 stumbles upon a model or is able to prove unsat.
+In these cases, it may respond "sat" or "unsat" to a `get-timeout-core` command.
+In the latter case of "unsat", it will report the unsatisfiable core that it computed, which was a candidate timeout core that happened to be solvable "unsat" within the given timeout.
+
+The following options are available which impact how timeout cores are computed and printed:
+- `timeout-core-limit=X`, which impacts the timeout (in milliseconds) that the core is based on.
+- `print-cores-full`, which analogous to unsat cores makes cvc5 agnostic to named assertions.
+
+cvc5 additionally supports a variant of the timeout core command where assumptions are provided.
+In particular, the command `(get-timeout-core-assuming (a1 ... an))` asks cvc5 to find a subset of the formulas `a1, ..., an` that when combined with the input assertions cause a timeout.
+This is helpful if the user wants to focus on a particular subset of the input while implicitly assuming that all other assertions are part of the timeout core. 
+
+Also, it may be the case that the timeout core itself takes a long time to compute.
+The algorithm for computing timeout cores tries to build subsets of the given assertions until one is either solved or times out.
+If it tries many different subsets of the input, all of which are "sat" within the timeout.
+
+### Difficulty
+
+cvc5 supports a notion of "difficulty" for input assertions, which is estimate of how likely the input assertion was the reason for cvc5 timing out.
+The custom SMT-LIB command `get-difficulty` returns a mapping from user assertions to natural number values, where the higher the value, the more likely the assertion was the cause of the higher runtime of cvc5.
+
+```
+% cat temp.smt2
+(set-logic ALL)
+(set-option :finite-model-find true)
+(set-option :fmf-mbqi none)
+(set-option :produce-difficulty true)
+(declare-sort U 0)
+(declare-fun a () U)
+(declare-fun b () U)
+(declare-fun c () U)
+(declare-fun P (U U) Bool)
+(declare-fun Q (U) Bool)
+(assert (distinct a b c))
+(assert (forall ((x U) (y U)) (P x y)))
+(assert (forall ((x U)) (Q x)))
+(check-sat)
+(get-difficulty)
+
+% cvc5 temp.smt2
+sat
+(
+((distinct a b c) 16)
+((forall ((x U) (y U)) (P x y)) 9)
+((forall ((x U)) (Q x)) 3)
+)
+```
+
+The command `get-difficulty` can be used to get the difficulty mapping after *any* response ("unsat", "sat" or "unknown") to a satisfiability query.
+It requires that the option `produce-difficulty` is enabled.
+
+In the above example, we declare an uninterpreted sort `U` with (at least) three distinct elements `a,b,c`.
+We then assert two quantified formulas over `U`.
+In this example, we configure `cvc5` to perform exhaustive instantiation based on finite model finding.
+The difficulty measurement is tracked for all three assertions, which is printed in response to `get-difficulty`.
+For the latter two, we can see that the first quantified formula was assigned a difficulty of `9`, which in this case corresponds directly to the number of instantiation lemmas that were required for expand its definition, whereas the second was assigned a difficulty of `3`.
+
+The difficulty of a user assertion can be measured based on several criteria which is configurable via the option `difficulty-mode=X`.
+By default, the difficulty measurement roughly corresponds to clause activity, where if literals from a user input participate in a lemma or conflict, the difficulty of the assertion is incremented by one.
+
 ### Incompleteness
 
 When cvc5 answers "unknown", the user may ask for an explanation of why cvc5 gave up using the output tag `-o incomplete`.
@@ -202,46 +291,13 @@ Reasons can include resource limiting, incomplete heuristics for quantifier inst
 
 > These reasons are not currently part of our API, but are documented internally here: https://github.com/cvc5/cvc5/blob/main/src/theory/incomplete_id.h.
 
-### Timeout cores
-
-cvc5 has experimental support for SMT-LIB command `(get-timeout-core)` which is analogous to unsat cores but is focused on queries that timeout.
-In particular, a "timeout core" is a subset of the user input that is sufficient for making cvc5 timeout in a given timeout (configurable by `timeout-core-limit=X`).
-
-$EXAMPLE$
-
-cvc5 additionally supports a variant of the timeout core command where assumptions are provided.
-In particular, the command `(get-timeout-core-assuming (a1 ... an))` asks cvc5 to find a subset of the formulas `a1, ..., an` that when combined with the input assertions cause a timeout.
-
-$EXAMPLE$
-
-
-When computing a timeout core, it may be the case that cvc5 stumbles upon a model or is able to prove unsat.
-In these cases, it may respond "sat" or "unsat" to a `get-timeout-core` or `get-timeout-core-assuming` command.
-In the latter case of "unsat", it will report the unsatisfiable core that it computed (which was a candidate timeout core that happened to be solved).
-
-### Difficulty
-
-cvc5 supports a notion of "difficulty" for input assertions, which is estimate of how likely the input assertion was the reason for cvc5 timing out.
-The custom SMT-LIB command 
-
-### Proof holes
-
-
-
 ### Abduction
 
 A more ambitious line of work is to suggestion to the user how to repair a failed proof goal by synthesizing a formula, if true, would imply the user's proof goal.
-This is called *abductive reasoning*, and can be used in
-
+This is called *abductive reasoning*.
 cvc5 supports a custom SMT-LIB command `get-abduct` which takes as arguments the name of the abduct and (optionally) a grammar of the abduct to synthesize.
 It uses enumerative syntax-guided synthesis for deriving the abduct, which is then reported to the user as a `define-fun`.
-Details on this algorithm can be found in [].
-
-$EXAMPLE$
-
-Abduction can 
-
-
+More details on this technique can be found in 
 
 ### More information to understand what the Solver is doing
 
@@ -306,7 +362,7 @@ This prints both
 
 #### Quantifier triggers and instantiations
 
-
+Problems with quantified formulas can be notoriously difficult to debug.
 
 
 #### Output tags for Syntax-guided Synthesis
@@ -337,7 +393,11 @@ We elaborate on this point specifically for logics involving quantifiers in the 
 
 The flow chart below explains how to categorize the typical user of SMT quantifiers and which options to recommend in cvc5.
 
-$DIAGRAM$
+<div align='center'>
+<img src="/assets/blog-images/2024-4-15-interfaces-for-understanding-cvc5/flowchart-quantifiers.png" alt="flowchart-quantifiers" class="center"/>
+</div>
+
+
 
 As future work, we would like to improve the experience of expert users that require suggestions for which options to use.
 When all else fails, feel free to reach out to us via github issues or discussions.
