@@ -64,15 +64,14 @@ A
 )
 ```
 
-Since unsat cores are not necessarily minimal, cvc5 supports the additional option `minimal-unsat-cores`, which uses a greedy algorithm to drop assertions from the unsat core.
+We support additional refinements to unsat cores:
+- `minimal-unsat-cores`, which uses a greedy algorithm to drop assertions from the unsat core.
 This option may induce additional performance overhead, but is useful if the user prioritizes smaller unsat cores.
 The cores returned from this option are locally minimal (in that dropping any formula from the unsat core does not lead to an "unsat" response), although they are not guaranteed to be globally minimal.
-
-By default, an unsat core is a subset of the user assertions marked with smt2 attribute `:named`.
-Unsat cores can also be made agnostic to names via the option `print-cores-full`.
-While typically unsat cores are only generated in response to the SMT-LIB command `(get-unsat-core)`, the option `dump-unsat-cores` can be used to issue a command to the print the unsat core after every unsatisfiable response.
-We also support dumping the unsat core as a standalone benchmark via the output flag `-o unsat-core-benchmark`.
-Unsat cores can be internally double checked for correctness using the option `check-unsat-cores`.
+- `print-cores-full`, which makes unsat cores can also be made agnostic to the smt2 attribute `:named`.
+- `dump-unsat-cores`, which issues a command to the print the unsat core automatically after every unsatisfiable response.
+- `-o unsat-core-benchmark`, which prints the unsat core as a standalone benchmark.
+- `check-unsat-cores`, which internally double checks the correctness of the given unsat core.
 
 cvc5 additionally supports more fine-grained variants of unsatisfiable cores which we describe in the following.
 
@@ -106,7 +105,7 @@ The preprocessed form of the input is also available, which we will describe lat
 
 We also support dumping the unsat core along the lemmas used as a standalone benchmark via the output flag `-o unsat-core-lemmas-benchmark`.
 
-Theory lemmas (including those reported in the unsat core of lemmas) may involve symbols that were introduced internally by cvc5 during solving, which we call "skolems".
+Theory lemmas may involve symbols that were introduced internally by cvc5 during solving, which we call "skolems".
 A classic example is the "division by zero" skolem introduced to reason about the possibility of division with a zero denominator.
 For details on all the documented skolem cvc5 supports, see: https://cvc5.github.io/docs-ci/docs-main/skolem-ids.html.
 
