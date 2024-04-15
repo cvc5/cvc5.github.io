@@ -79,7 +79,7 @@ cvc5 additionally supports more fine-grained variants of unsatisfiable cores whi
 
 cvc5 supports a custom SMT-LIB command `(get-unsat-core-lemmas)` which prints the theory lemmas that were relevant to showing unsatisfiable.
 This is a list of valid formulas that were generated internally by theory solvers involving atoms not necessarily from the user input.
-The lemmas used in the unsat core are availabe immediately after an "unsat" response and only when proofs are enabled (command line option `produce-proofs`).
+The lemmas used in the unsat core are available immediately after an "unsat" response and only when proofs are enabled (command line option `produce-proofs`).
 
 ```
 % cat test.smt2
@@ -103,16 +103,16 @@ In the above example, a single theory lemma was generated which was required for
 Note that the literals `(>= x 3)` and `(>= x 0)` in this lemma correspond to the original two atoms after preprocessing.
 The preprocessed form of the input is also available, which we will describe later in this post.
 
-Theory lemmas may involve symbols that were introduced internally by cvc5 during solving, which we call "skolems".
-A classic example is the "division by zero" skolem introduced to reason about the possibility of division with a zero denominator.
-For details on all the documented skolem cvc5 supports, see our documentation for [Skolem identifiers](https://cvc5.github.io/docs-ci/docs-main/skolem-ids.html).
+Theory lemmas may involve symbols that were introduced internally by cvc5 during solving, which we call "Skolems".
+A classic example is the "division by zero" Skolem introduced to reason about the possibility of division with a zero denominator.
+For details on all the documented Skolem cvc5 supports, see our documentation for [Skolem identifiers](https://cvc5.github.io/docs-ci/docs-main/skolem-ids.html).
 
 We also support dumping the unsat core along the lemmas used as a standalone benchmark via the output flag `-o unsat-core-lemmas-benchmark`.
 
 #### Unsat core of instantiations
 
 As a further refinement, one can ask specifically the shape of the quantifier instantiation lemmas used by cvc5 when solving a query.
-These are available via the command line option `dump-instantitions`.
+These are available via the command line option `dump-instantiations`.
 When proofs are enabled, this list is refined to only include the instantiations that were used in the proof of unsatisfiability.
 
 ```
@@ -147,7 +147,7 @@ For documentation on the proof rules supported by cvc5, see documentation of our
 The following outputs control how proofs are computed and printed:
 - `proof-granularity=X` controls the granularity of the generated proof. This can range from allowing large informal "macro" steps to requiring each small-step theory rewrite to be justified.
 - `check-proofs`, which runs an internal proof checker in cvc5 on the final proof.
-- `proof-format=X` which impacts the format of the proof. By default, cvc5 generates proofs in the AletheLF format, which is a new proof format based on the SMT-LIB version 3.0 proposal. For details on AletheLF proofs in cvc5, see [AletheLF](https://cvc5.github.io/docs-ci/docs-main/proofs/output_alf.html).
+- `proof-format=X` which impacts the format of the proof. By default, cvc5 generates proofs in the Alethe LF format, which is a new proof format based on the SMT-LIB version 3.0 proposal. For details on Alethe LF proofs in cvc5, see [AletheLF](https://cvc5.github.io/docs-ci/docs-main/proofs/output_alf.html).
 - `dump-proofs`, which issues a command to the get the proof automatically after every unsatisfiable response.
 
 cvc5 additionally provides interfaces for getting only part of the entire proof.
@@ -155,7 +155,7 @@ In particular, our `get-proof` command takes an optional "component" identifier,
 For instance, the user can ask for only the proofs of theory lemmas with the command `(get-proof :theory_lemmas)`.
 More details
 
-Proofs can be checking externally using the proof checker `alfc` for the AletheLF format (see this [user manual](https://github.com/cvc5/alfc/blob/main/user_manual.md) for details).
+Proofs can be checking externally using the proof checker `alfc` for the Alethe LF format (see this [user manual](https://github.com/cvc5/alfc/blob/main/user_manual.md) for details).
 We provide a [script](https://github.com/cvc5/cvc5/blob/main/contrib/get-alf-checker) for getting started with this proof checker.
 
 ### Models
@@ -302,7 +302,7 @@ Reasons can include resource limiting, incomplete heuristics for quantifier inst
 unknown
 ```
 
-In the above example, cvc5 gave up because it could not determine the satisfability of the given quantified formula.
+In the above example, cvc5 gave up because it could not determine the satisfiability of the given quantified formula.
 The first identifier `INCOMPLETE` captures the high-level reason for why "unknown" was returned, which is an [unknown explanation](https://cvc5.github.io/docs-ci/docs-main/api/cpp/unknownexplanation.html#unknownexplanation).
 The second identifier `QUANTIFIERS` is a finer grained internal explanation of why the theory solvers were incomplete.
 Note these identifiers are not currently part of our API, but are documented internally [here](https://github.com/cvc5/cvc5/blob/main/src/theory/incomplete_id.h).
@@ -458,8 +458,52 @@ The configuration routine is run prior to solving, after which options are fixed
 The output tag `-o options-auto` prints which options were automatically configured, as well as the reason for why the value of the option was modified.
 
 ```
+% cat test.smt2
+(set-logic ALL)
+(declare-fun x () Int)
+(declare-fun y () Int)
+(assert (and (> x 2) (< x 0)))
+(assert (< y 0))
+(check-sat)
+
+% cvc5 test.smt2 -o options-auto
+(options-auto stringExp true :reason "logic including strings")
+(options-auto bitvectorPropagate false :reason "bitblast solver")
+(options-auto arithHeuristicPivots 5 :reason "logic")
+(options-auto decisionMode justification :reason "logic")
+(options-auto cegqi true :reason "logic")
+(options-auto dtSharedSelectors false :reason "quantified logic without SyGuS")
+(options-auto minisatSimpMode options::MinisatSimpMode::CLAUSE_ELIM :reason "non-basic logic")
 ```
 
+Above, cvc5 lists the changes it made to its default options, along with a reason for why it made this change.
+Note that in the original benchmark, the logic was set to `ALL`, indicating that any kind of constraint may be present in the input.
+For this reason, certain options were configured to account for this possibility, including using a more conservative simplification policy in Minisat.
+In contrast, if the user had set the logic to `QF_LIA`, the automatic configuration would be different:
+
+```
+% cat test.smt2
+(set-logic QF_LIA)
+(declare-fun x () Int)
+(declare-fun y () Int)
+(assert (and (> x 2) (< x 0)))
+(assert (< y 0))
+(check-sat)
+
+% cvc5 test.smt2 -o options-auto
+(options-auto bitvectorPropagate false :reason "bitblast solver")
+(options-auto arithRewriteEq 1 :reason "logic")
+(options-auto arithHeuristicPivots 5 :reason "logic")
+(options-auto arithStandardCheckVarOrderPivots 200 :reason "logic")
+(options-auto nlExtTangentPlanesInterleave true :reason "pure integer logic")
+(options-auto nlRlvAssertBounds 1 :reason "non-quantified logic")
+(options-auto quantDynamicSplit options::QuantDSplitMode::NONE :reason "non-datatypes logic")
+```
+
+Above, more specific options were configured that are specific to `QF_LIA`, for example the option `arithRewriteEq` (which eagerly replaces arithmetic equalities by a conjunction of inequalities) is set to true.
+Furthermore we do not require modifying the Minisat simplification mode in this case.
+
+When given no command line options, cvc5 generally will perform close to optimal in most use cases.
 However, some expert users may require manually configuring options that are tailored to their use of cvc5.
 Notably, the set of options for solving quantified formulas may vary significantly based on the logic and the needs and priorities of the user. 
 We plan to publish a followup post on recommendations how to find the best combination for your application.
