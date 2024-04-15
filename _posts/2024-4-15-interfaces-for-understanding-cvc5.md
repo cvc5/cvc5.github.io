@@ -242,8 +242,7 @@ If it tries many different subsets of the input, all of which are "sat" within t
 
 ### Difficulty
 
-cvc5 supports a notion of "difficulty" for input assertions, which is estimate of how likely the input assertion was the reason for cvc5 timing out.
-The custom SMT-LIB command `get-difficulty` returns a mapping from user assertions to natural number values, where the higher the value, the more likely the assertion was the cause of the higher runtime of cvc5.
+cvc5 also supports an experimental custom SMT-LIB command `(get-difficulty)`, which returns a mapping from user assertions to natural number values, where the higher the value, the more likely the assertion was the cause of the higher runtime of cvc5.
 
 ```
 % cat temp.smt2
@@ -289,15 +288,24 @@ By default, the difficulty measurement roughly corresponds to clause activity, w
 When cvc5 answers "unknown", the user may ask for an explanation of why cvc5 gave up using the output tag `-o incomplete`.
 Reasons can include resource limiting, incomplete heuristics for quantifier instantiation, unsupported combinations of theories, options misconfiguration, and so on.
 
-> These reasons are not currently part of our API, but are documented internally here: https://github.com/cvc5/cvc5/blob/main/src/theory/incomplete_id.h.
+; COMMAND-LINE: -o incomplete
+; EXPECT: (incomplete INCOMPLETE QUANTIFIERS)
+; EXPECT: unknown
+```
+% cat temp.smt2
+(set-logic ALL)
+(declare-fun f (Int) Int)
+(assert (forall ((x Int)) (= (f x) (* x (f (- x 1))))))
+(check-sat)
 
-### Abduction
+% cvc5 temp.smt2
+(incomplete INCOMPLETE QUANTIFIERS)
+unknown
+```
 
-A more ambitious line of work is to suggestion to the user how to repair a failed proof goal by synthesizing a formula, if true, would imply the user's proof goal.
-This is called *abductive reasoning*.
-cvc5 supports a custom SMT-LIB command `get-abduct` which takes as arguments the name of the abduct and (optionally) a grammar of the abduct to synthesize.
-It uses enumerative syntax-guided synthesis for deriving the abduct, which is then reported to the user as a `define-fun`.
-More details on this technique can be found in 
+In the above example, cvc5 gave up because it could not determine the satisfability of the given quantified formula.
+This is captured by the identifier `QUANTIFIERS`.
+Note these identifiers are not currently part of our API, but are documented internally here: https://github.com/cvc5/cvc5/blob/main/src/theory/incomplete_id.h.
 
 ### More information to understand what the Solver is doing
 
@@ -344,11 +352,9 @@ Let us revisit our earlier example:
 (check-sat)
 ;; post-asserts end
 unsat
-
 ```
 
 Here, we can see that cvc5 replaces strict inequalities with non-strict inequalities.
-
 The set of input assertions, prior to preprocessing are also available via `-o pre-asserts`.
 cvc5 also has other output tags that pertain to important things learned during preprocessing, 
 for example, `-o subs` will output the substitutions corresponding to variable elimination inferred during preprocessing.
@@ -358,7 +364,6 @@ for example, `-o subs` will output the substitutions corresponding to variable e
 The main solving loop in SMT consists of a propositional SAT solver in combination with a set of theory solvers, the latter of which we call the "theory engine".
 The latter sends a stream of theory lemmas to the SAT solver until the input and these lemmas is propositionally unsatisfiable, or a model is found.
 The set of theory lemmas that are generated internally in cvc5 is available via `-o lemmas`.
-This prints both 
 
 #### Quantifier triggers and instantiations
 
@@ -397,7 +402,15 @@ The flow chart below explains how to categorize the typical user of SMT quantifi
 <img src="/assets/blog-images/2024-4-15-interfaces-for-understanding-cvc5/flowchart-quantifiers.png" alt="flowchart-quantifiers" class="center"/>
 </div>
 
-
+For more information on each of these techniques, see further reading:
+- **Finite Model Finding** (`finite-model-find`): cvc5 implements quantifier-free techniques for minimizing models [CAV2013](https://homepage.divms.uiowa.edu/~ajreynol/cav13.pdf) and corresponding techniques for quantifier instantiation in finite domains [CADE2013](https://homepage.divms.uiowa.edu/~ajreynol/cade24.pdf).
+- **Model-Based Instantiation** (`mbqi`): cvc5 implements model-based instantiation similar to z3 [CAV2009](https://leodemoura.github.io/files/ci.pdf).
+- **Syntax-Guided Synthesis** (`sygus-inference`): The experimental option `sygus-inference` can be used to synthesize models with non-trivial shapes. This technique will take the input SMT problem and construct a (multi-function) syntax-guided synthesis problem and use enumerative techniques to solve it. These techniques are described in [CAV2019](https://homepage.divms.uiowa.edu/~ajreynol/cav19b.pdf).
+- **E-matching** (`e-matching`): cvc5 implements a lazy version of E-matching. This technique was decribed in earlier works on z3 [CADE2007](https://leodemoura.github.io/files/ematching.pdf) and cvc3 [CADE2007](https://theory.stanford.edu/~barrett/pubs/GBT09.pdf).
+- **Enumerative Instantiation** (`enum-inst`): This technique was introduced in [TACAS2018](https://homepage.divms.uiowa.edu/~ajreynol/tacas18.pdf) and further refined in more recent work [FMCAD2021](https://homepage.divms.uiowa.edu/~ajreynol/fmcad21.pdf).
+- **Conflict-based Instantion** (`cbqi`): In all of the above techniques for logics with uninterpreted functions, cvc5 uses conflict-based instantiation [FMCAD2014](https://homepage.divms.uiowa.edu/~ajreynol/fmcad14.pdf) [TACAS2017](https://homepage.divms.uiowa.edu/~ajreynol/tacas17.pdf) as an optimization for quickly finding when a single instance suffices to show the current state is unsatsifable.
+- **Counterexample-Guided Instantiation** (`cegqi`): This technique was initially introduced for quantified linear arithmetic [FMSD2017](https://homepage.divms.uiowa.edu/~ajreynol/fmsd17-instla.pdf) and was later extended to bitvectors [CAV2018](https://homepage.divms.uiowa.edu/~ajreynol/cav18.pdf).
+- **Syntax-Guided Instantiation** (`sygus-inst`): This technique uses sygus-guided synthesis to find relevant instantiations, as described in [TACAS2021](https://homepage.divms.uiowa.edu/~ajreynol/tacas21.pdf).
 
 As future work, we would like to improve the experience of expert users that require suggestions for which options to use.
 When all else fails, feel free to reach out to us via github issues or discussions.
