@@ -7,25 +7,25 @@ author: Andrew Reynolds
 date: 2024-04-15
 ---
 
-## The information gap in SMT solvers
+## The Information Gap between SMT solvers and their Users
 
 State-of-the-art SMT solvers like cvc5 can be used to solve constraints in a growing number of application domains.
 These applications often rely on constraints in undecidable logics, for example logics with quantified formulas, non-linear arithmetic and strings.
 While there are no termination guarantees for such constraints, SMT solvers are nevertheless surprisingly effective at solving constraints in these logics.
 
 In a perfect world, SMT solvers can be seen as black boxes that reliably respond to every user query in a reasonably small amount of time.
-However, due to the increased complexity of constraints handled by SMT solver, this is far from a guarantee.
+However, this is far from a guarantee due to the increased complexity of constraints handled by SMT solver
 The solver may return "unknown", or depending on the patience of the user may be perceived as "going off into the woods".
 It can be highly frustrating to users, since seemingly no information can be extracted when the solver times out.
 In fact, it has been said that users of SMT solvers spend a *majority* of their time dealing with the case where the solver is unsuccessful.
 
 This blog post focuses on improving the user experience of SMT solvers.
-In particular, we focus on bridging the information gap between users and the internals of cvc5, particularly for when it is unable to solve a user query in a reasonable amount of time.
+In particular, we focus on bridging the information gap between users and the internals of cvc5, particularly for when it is *unable* to solve a user query in a reasonable amount of time.
 
 Many of the features explained in this post were originally used by cvc5 developers for purposes of internal debugging.
 As these features matured, many were polished so that users could understand and benefit from them.
 We hope this post will foster further dialogue between users and developers of cvc5.
-We welcome any further suggestions for diagnostic information that would benefit your application.
+In particular, we welcome any further suggestions for diagnostic information that would benefit your application.
 
 In this blog post, we first recap the standard SMT-LIB interfaces for how to interact with the SMT solver when things go right, and then turn our attention to when things go wrong.
 In the following, we frequently reference:
@@ -360,23 +360,7 @@ In a sense, the most recent candidate model typically indicates cvc5's best appr
 For the former, cvc5 supports the custom SMT-LIB command `(get-learned-literals)`, which prints the set of unit clauses that were learned by cvc5 during preprocessing and solving.
 
 ```
-% cat test.smt2
-(set-logic ALL)
-(declare-fun x () Int)
-(declare-fun y () Int)
-(assert (and (> x 2) (< x 0)))
-(assert (< y 0))
-(check-sat)
-
-% cvc5 test.smt2 -o lemmas
-(lemma (or (not (>= x 3)) (>= x 0)) :source ARITH_UNATE)
-unsat
 ```
-
-In the above example, `-o lemmas` prints the set of lemmas that are generated when solving this problem.
-In this case, a single lemma sufficed for showing the input is unsatisfiable, which was given the identifier `ARITH_UNATE`.
-
-
 
 #### Quantifier triggers and instantiations
 
@@ -395,11 +379,27 @@ The main solving loop in SMT consists of a propositional SAT solver in combinati
 The latter sends a stream of theory lemmas to the SAT solver until the input and these lemmas is propositionally unsatisfiable, or a model is found.
 The set of theory lemmas that are generated internally in cvc5 is available via `-o lemmas`.
 
+```
+% cat test.smt2
+(set-logic ALL)
+(declare-fun x () Int)
+(declare-fun y () Int)
+(assert (and (> x 2) (< x 0)))
+(assert (< y 0))
+(check-sat)
+
+% cvc5 test.smt2 -o lemmas
+(lemma (or (not (>= x 3)) (>= x 0)) :source ARITH_UNATE)
+unsat
+```
+
+In the above example, `-o lemmas` prints the set of lemmas that are generated when solving this problem.
+In this case, a single lemma sufficed for showing the input is unsatisfiable, which was given the identifier `ARITH_UNATE`.
 
 #### Output tags for Syntax-guided Synthesis
 
 cvc5 supports other kinds of constraints beside satisfiability.
-In particular, we support syntax-guided synthesis problems (see ).
+In particular, we support syntax-guided synthesis problems, for details see [CAV2015](https://homepage.divms.uiowa.edu/~ajreynol/cav15a.pdf) and [CAV2019](https://homepage.divms.uiowa.edu/~ajreynol/cav19b.pdf).
 Our syntax-guided synthesis solver also supports diagnostic output flags, including `-o sygus` which output the list of candidate solutions as they are tried, `-o sygus-grammar` which outputs auto-generated grammars for functions-to-synthesize, and `-o sygus-sol-gterm` which indicates which production rules of a grammar were used in constructing the final solution.
 
 #### Auto-configuration of Options
@@ -414,5 +414,5 @@ The output tag `-o options-auto` prints which options were automatically configu
 ```
 
 However, some expert users may require manually configuring options that are tailored to their use of cvc5.
-Notably, the specific technique for 
+Notably, the set of options for solving quantified formulas may vary significantly based on the logic and the needs and priorities of the user. 
 We plan to publish a followup post on recommendations how to find the best combination for your application.
