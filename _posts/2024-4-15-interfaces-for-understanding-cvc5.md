@@ -311,37 +311,20 @@ The most basic form of information one can retrieve from cvc5 is its statistics.
 These are dumped when cvc5 terminates when the option `stats` is enabled.
 A more detailed account of statistics, including timing information and histograms of the inference identifiers used during solving is available when the option `stats-internal` is enabled.
 
-### Candidate Models and Learned Literals
-
-When the SMT solver is unsuccessful at solving a given query, one logical question to ask is "What progress did the solver make?".
-We can summarize this progress in two ways:
-- What was the last candidate model that was tried?
-- Which formulas were learned during solving?
-
-For the former, cvc5 supports commands such as `get-model` after an "unknown" response, e.g. after reaching a time or resource limit.
-The model given to the user reflects the most recent *candidate* model that cvc5 computed.
-A candidate model is one that satisfies (decidable) quantifier-free constraints but could not be confirmed to satisfy quantified or undecidable constraints.
-In a sense, the most recent candidate model typically indicates cvc5's best approximation of what a model of the constraints are.
-
-For the former, cvc5 supports the custom SMT-LIB command `(get-learned-literals)`.
-
 #### Preprocessor
 
 cvc5 implements a number of preprocessing passes that are applied to the input formulas prior to solving.
 It is often useful to see how these passes modify the user input, prior to when the solving begins.
-
 Let us revisit our earlier example:
 
 ```
 % cat test.smt2
 (set-logic ALL)
-(set-option :produce-proofs true)
 (declare-fun x () Int)
 (declare-fun y () Int)
-(assert (! (and (> x 2) (< x 0)) :named A))
-(assert (! (< y 0) :named B))
+(assert (and (> x 2) (< x 0)))
+(assert (< y 0))
 (check-sat)
-(get-unsat-core-lemmas)
 
 % cvc5 test.smt2 -o post-asserts
 ;; post-asserts start
@@ -362,15 +345,55 @@ The set of input assertions, prior to preprocessing are also available via `-o p
 cvc5 also has other output tags that pertain to important things learned during preprocessing, 
 for example, `-o subs` will output the substitutions corresponding to variable elimination inferred during preprocessing.
 
+#### Candidate Models and Learned Literals
+
+When the SMT solver is unsuccessful at solving a given query, one logical question to ask is "What progress did the solver make?".
+We can summarize this progress in two ways:
+- What was the last candidate model that was tried?
+- Which formulas were learned during solving?
+
+For the former, cvc5 supports commands such as `get-model` after an "unknown" response, e.g. after reaching a time or resource limit.
+The model given to the user reflects the most recent *candidate* model that cvc5 computed.
+A candidate model is one that satisfies (decidable) quantifier-free constraints but could not be confirmed to satisfy quantified or undecidable constraints.
+In a sense, the most recent candidate model typically indicates cvc5's best approximation of what a model of the constraints are.
+
+For the former, cvc5 supports the custom SMT-LIB command `(get-learned-literals)`, which prints the set of unit clauses that were learned by cvc5 during preprocessing and solving.
+
+```
+% cat test.smt2
+(set-logic ALL)
+(declare-fun x () Int)
+(declare-fun y () Int)
+(assert (and (> x 2) (< x 0)))
+(assert (< y 0))
+(check-sat)
+
+% cvc5 test.smt2 -o lemmas
+(lemma (or (not (>= x 3)) (>= x 0)) :source ARITH_UNATE)
+unsat
+```
+
+In the above example, `-o lemmas` prints the set of lemmas that are generated when solving this problem.
+In this case, a single lemma sufficed for showing the input is unsatisfiable, which was given the identifier `ARITH_UNATE`.
+
+
+
+#### Quantifier triggers and instantiations
+
+Problems with quantified formulas can be notoriously sensitive and difficult to debug.
+cvc5 supports various output tags to understand how quantified formulas are been handled internally.
+In particular, note the following output tags:
+- `-o inst`: This tag prints the number of instantiations tried for each quantified formula.
+- `-o trigger`: This tag prints the triggers chosen
+
+Note that the formatting of quantified formula in the above output traces can be refined for clarity by assigning names to quantified formulas.
+This can be accomplished by the SMT attribute `:qid`.
+
 #### Lemmas
 
 The main solving loop in SMT consists of a propositional SAT solver in combination with a set of theory solvers, the latter of which we call the "theory engine".
 The latter sends a stream of theory lemmas to the SAT solver until the input and these lemmas is propositionally unsatisfiable, or a model is found.
 The set of theory lemmas that are generated internally in cvc5 is available via `-o lemmas`.
-
-#### Quantifier triggers and instantiations
-
-Problems with quantified formulas can be notoriously difficult to debug.
 
 
 #### Output tags for Syntax-guided Synthesis
@@ -381,8 +404,7 @@ Our syntax-guided synthesis solver also supports diagnostic output flags, includ
 
 #### Auto-configuration of Options
 
-Finally, we remark that cvc5 has a vast array of configurable options that have accumulated over many years of development and research.
-
+cvc5 has a vast array of configurable options that have accumulated over many years of development and research.
 In an ideal world, users of cvc5 should not need to worry about which options to use, and trust that the default configuration of cvc5 will always do the optimal thing.
 For this purpose, cvc5 automatically configures its options based on the provided logic, as well as resolving any dependencies between options and reporting if there was an incompatibility of options.
 The configuration routine is run prior to solving, after which options are fixed for the remainder of the run.
@@ -391,4 +413,6 @@ The output tag `-o options-auto` prints which options were automatically configu
 ```
 ```
 
-
+However, some expert users may require manually configuring options that are tailored to their use of cvc5.
+Notably, the specific technique for 
+We plan to publish a followup post on recommendations how to find the best combination for your application.
