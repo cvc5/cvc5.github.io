@@ -147,16 +147,17 @@ For documentation on the proof rules supported by cvc5, see documentation of our
 The following outputs control how proofs are computed and printed:
 - `proof-granularity=X` controls the granularity of the generated proof. This can range from allowing large informal "macro" steps to requiring each small-step theory rewrite to be justified.
 - `check-proofs`, which runs an internal proof checker in cvc5 on the final proof.
-- `proof-format=X` which impacts the format of the proof. By default, cvc5 generates proofs in the Alethe LF format, which is a new proof format based on the SMT-LIB version 3.0 proposal. For details on Alethe LF proofs in cvc5, see [AletheLF](https://cvc5.github.io/docs-ci/docs-main/proofs/output_alf.html).
+- `proof-format=X` which impacts the format of the proof. By default, cvc5 generates proofs in the Alethe LF format, which is based on the SMT-LIB version 3.0 proposal. For details on generating Alethe LF proofs in cvc5, see [AletheLF](https://cvc5.github.io/docs-ci/docs-main/proofs/output_alf.html).
 - `dump-proofs`, which issues a command to the get the proof automatically after every unsatisfiable response.
 
 cvc5 additionally provides interfaces for getting only part of the entire proof.
 In particular, our `get-proof` command takes an optional "component" identifier, indicating the part of the proof that the user is interested in.
 For instance, the user can ask for only the proofs of theory lemmas with the command `(get-proof :theory_lemmas)`.
-More details
+More details on proof components can be found [here](https://cvc5.github.io/docs-ci/docs-main/api/cpp/modes.html#_CPPv4N4cvc55modes14ProofComponentE).
 
 Proofs can be checking externally using the proof checker `alfc` for the Alethe LF format (see this [user manual](https://github.com/cvc5/alfc/blob/main/user_manual.md) for details).
 We provide a [script](https://github.com/cvc5/cvc5/blob/main/contrib/get-alf-checker) for getting started with this proof checker.
+Further efforts are in progress towards exporting proofs to trustworthy proof assistants like Lean or Isabelle.
 
 ### Models
 
@@ -400,7 +401,7 @@ sat
 Learned literals can be further classified based on whether the literal occurs in the original input problem (after preprocessing), and when it was learned.
 In the above example, the first two literals were learned as part of preprocessing, whereas the latter two literals were input literals learned during solving.
 By default, cvc5 will only report input literals that are not learned as part of preprocessing.
-More documentation about the classification of learned literals is available here: https://cvc5.github.io/docs-ci/docs-main/api/cpp/modes.html#_CPPv4N4cvc55modes14LearnedLitTypeE.
+More documentation about the classification of learned literals is available [here](https://cvc5.github.io/docs-ci/docs-main/api/cpp/modes.html#_CPPv4N4cvc55modes14LearnedLitTypeE).
 
 #### Candidate Models
 
