@@ -311,12 +311,19 @@ The most basic form of information one can retrieve from cvc5 is its statistics.
 These are dumped when cvc5 terminates when the option `stats` is enabled.
 A more detailed account of statistics, including timing information and histograms of the inference identifiers used during solving is available when the option `stats-internal` is enabled.
 
-### Partial information: learned literals, candidate model
+### Candidate Models and Learned Literals
 
-When the SMT solver is unsuccessful at solving a given query, one logical question to ask is "what progress did the solver make?".
+When the SMT solver is unsuccessful at solving a given query, one logical question to ask is "What progress did the solver make?".
 We can summarize this progress in two ways:
-(1) Which formulas were learned during solving?
-(2) What was the last candidate model that was tried?
+- What was the last candidate model that was tried?
+- Which formulas were learned during solving?
+
+For the former, cvc5 supports commands such as `get-model` after an "unknown" response, e.g. after reaching a time or resource limit.
+The model given to the user reflects the most recent *candidate* model that cvc5 computed.
+A candidate model is one that satisfies (decidable) quantifier-free constraints but could not be confirmed to satisfy quantified or undecidable constraints.
+In a sense, the most recent candidate model typically indicates cvc5's best approximation of what a model of the constraints are.
+
+For the former, cvc5 supports the custom SMT-LIB command `(get-learned-literals)`.
 
 #### Preprocessor
 
@@ -372,12 +379,9 @@ cvc5 supports other kinds of constraints beside satisfiability.
 In particular, we support syntax-guided synthesis problems (see ).
 Our syntax-guided synthesis solver also supports diagnostic output flags, including `-o sygus` which output the list of candidate solutions as they are tried, `-o sygus-grammar` which outputs auto-generated grammars for functions-to-synthesize, and `-o sygus-sol-gterm` which indicates which production rules of a grammar were used in constructing the final solution.
 
-### The Blessing and the Curse of Options
+#### Auto-configuration of Options
 
 Finally, we remark that cvc5 has a vast array of configurable options that have accumulated over many years of development and research.
-Options are categorized into the categories "common", "regular" and "expert", which classify whether the option should be consider robust for use in production settings.
-This policy us furthermore be enforced automatically when using the (meta) option `safe-options`, which throws an exception if the user uses a combination of options that we consider unsafe.
-More information for using cvc5 is available here: https://github.com/cvc5/cvc5/wiki/Fuzzing-cvc5.
 
 In an ideal world, users of cvc5 should not need to worry about which options to use, and trust that the default configuration of cvc5 will always do the optimal thing.
 For this purpose, cvc5 automatically configures its options based on the provided logic, as well as resolving any dependencies between options and reporting if there was an incompatibility of options.
@@ -387,27 +391,4 @@ The output tag `-o options-auto` prints which options were automatically configu
 ```
 ```
 
-Unfortunately, it is not always possible to infer optimal options, since it may be impossible to infer the user's intention and needs in their application.
-We elaborate on this point specifically for logics involving quantifiers in the following.
-
-#### Quantifiers
-
-The flow chart below explains how to categorize the typical user of SMT quantifiers and which options to recommend in cvc5.
-
-<div align='center'>
-<img src="/assets/blog-images/2024-4-15-interfaces-for-understanding-cvc5/flowchart-quantifiers.png" alt="flowchart-quantifiers" class="center"/>
-</div>
-
-For more information on each of these techniques, see further reading:
-- **Finite Model Finding** (`finite-model-find`): cvc5 implements quantifier-free techniques for minimizing models [CAV2013](https://homepage.divms.uiowa.edu/~ajreynol/cav13.pdf) and corresponding techniques for quantifier instantiation in finite domains [CADE2013](https://homepage.divms.uiowa.edu/~ajreynol/cade24.pdf).
-- **Model-Based Instantiation** (`mbqi`): cvc5 implements model-based instantiation similar to z3 [CAV2009](https://leodemoura.github.io/files/ci.pdf).
-- **Syntax-Guided Synthesis** (`sygus-inference`): The experimental option `sygus-inference` can be used to synthesize models with non-trivial shapes. This technique will take the input SMT problem and construct a (multi-function) syntax-guided synthesis problem and use enumerative techniques to solve it. These techniques are described in [CAV2019](https://homepage.divms.uiowa.edu/~ajreynol/cav19b.pdf).
-- **E-matching** (`e-matching`): cvc5 implements a lazy version of E-matching. This technique was decribed in earlier works on z3 [CADE2007](https://leodemoura.github.io/files/ematching.pdf) and cvc3 [CADE2007](https://theory.stanford.edu/~barrett/pubs/GBT09.pdf).
-- **Enumerative Instantiation** (`enum-inst`): This technique was introduced in [TACAS2018](https://homepage.divms.uiowa.edu/~ajreynol/tacas18.pdf) and further refined in more recent work [FMCAD2021](https://homepage.divms.uiowa.edu/~ajreynol/fmcad21.pdf).
-- **Conflict-based Instantion** (`cbqi`): In all of the above techniques for logics with uninterpreted functions, cvc5 uses conflict-based instantiation [FMCAD2014](https://homepage.divms.uiowa.edu/~ajreynol/fmcad14.pdf) [TACAS2017](https://homepage.divms.uiowa.edu/~ajreynol/tacas17.pdf) as an optimization for quickly finding when a single instance suffices to show the current state is unsatsifable.
-- **Counterexample-Guided Instantiation** (`cegqi`): This technique was initially introduced for quantified linear arithmetic [FMSD2017](https://homepage.divms.uiowa.edu/~ajreynol/fmsd17-instla.pdf) and was later extended to bitvectors [CAV2018](https://homepage.divms.uiowa.edu/~ajreynol/cav18.pdf).
-- **Syntax-Guided Instantiation** (`sygus-inst`): This technique uses sygus-guided synthesis to find relevant instantiations, as described in [TACAS2021](https://homepage.divms.uiowa.edu/~ajreynol/tacas21.pdf).
-
-As future work, we would like to improve the experience of expert users that require suggestions for which options to use.
-When all else fails, feel free to reach out to us via github issues or discussions.
 
