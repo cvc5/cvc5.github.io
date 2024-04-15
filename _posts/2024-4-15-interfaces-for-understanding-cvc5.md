@@ -24,11 +24,10 @@ In particular, we focus on bridging the information gap between users and the in
 
 Many of the features explained in this post were originally used by cvc5 developers for purposes of internal debugging.
 As these features matured, many were polished so that users could understand and benefit from them.
-Users may be surprised to find out just how much information is available in the internals of cvc5.
-If you are a user of cvc5, we welcome suggestions for new diagnostic information that would benefit your application.
+We hope this post will foster further dialogue between users and developers of cvc5.
+We welcome any further suggestions for diagnostic information that would benefit your application.
 
 In this blog post, we first recap the standard SMT-LIB interfaces for how to interact with the SMT solver when things go right, and then turn our attention to when things go wrong.
-
 In the following, we frequently reference:
 - SMT-LIB version 2.6 commands in the text interface (e.g. `(get-unsat-core)`).
 - Command line options (e.g. `produce-unsat-cores`).
@@ -288,9 +287,6 @@ By default, the difficulty measurement roughly corresponds to clause activity, w
 When cvc5 answers "unknown", the user may ask for an explanation of why cvc5 gave up using the output tag `-o incomplete`.
 Reasons can include resource limiting, incomplete heuristics for quantifier instantiation, unsupported combinations of theories, options misconfiguration, and so on.
 
-; COMMAND-LINE: -o incomplete
-; EXPECT: (incomplete INCOMPLETE QUANTIFIERS)
-; EXPECT: unknown
 ```
 % cat temp.smt2
 (set-logic ALL)
