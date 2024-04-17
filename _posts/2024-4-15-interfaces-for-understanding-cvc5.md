@@ -69,7 +69,7 @@ We support additional options pertaining to the way unsat cores are computed and
 This option may induce additional performance overhead, but is useful if the user prioritizes smaller unsat cores.
 The cores returned from this option are locally minimal (in that dropping any formula from the unsat core does not lead to an "unsat" response), although they are not guaranteed to be globally minimal.
 - `print-cores-full`, which makes unsat cores can also be made agnostic to the smt2 attribute `:named`.
-- `dump-unsat-cores`, which issues a command to the print the unsat core automatically after every unsatisfiable response.
+- `dump-unsat-cores`, which issues a command to print the unsat core automatically after every unsatisfiable response.
 - `-o unsat-core-benchmark`, which prints the unsat core as a standalone benchmark.
 - `check-unsat-cores`, which internally double checks the correctness of the given unsat core.
 
