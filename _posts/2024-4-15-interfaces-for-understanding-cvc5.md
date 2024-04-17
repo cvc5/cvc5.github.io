@@ -105,7 +105,7 @@ The preprocessed form of the input is also available, which we will describe lat
 
 Theory lemmas may involve symbols that were introduced internally by cvc5 during solving, which we call "Skolems".
 A classic example is the "division by zero" Skolem introduced to reason about the possibility of division with a zero denominator.
-For details on all the documented Skolem cvc5 supports, see our documentation for [Skolem identifiers](https://cvc5.github.io/docs-ci/docs-main/skolem-ids.html).
+For details on all the documented Skolems cvc5 supports, see our documentation for [Skolem identifiers](https://cvc5.github.io/docs-ci/docs-main/skolem-ids.html).
 
 We also support dumping the unsat core along the lemmas used as a standalone benchmark via the output flag `-o unsat-core-lemmas-benchmark`.
 
