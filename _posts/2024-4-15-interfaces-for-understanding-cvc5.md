@@ -446,7 +446,7 @@ Problems with quantified formulas can be notoriously sensitive and difficult to 
 cvc5 supports various output tags to understand how quantified formulas are been handled internally.
 In particular, note the following output tags:
 - `-o inst`: This tag prints the number of instantiations tried for each quantified formula.
-- `-o trigger`: This tag prints the triggers chosen for quantified formulas via outputs of the form `(trigger <quantified formula> <trigger>)`. It also prints the quantified formulas for which *no* triggers could be inferred via `(no-trigger <quantified formula>)`. The latter can be indicative of a performance issue, since quantified formulas with no triggers cannot be handled by traditional quantifier instantiation techniques (E-matching).
+- `-o trigger`: This tag prints the triggers chosen for quantified formulas via outputs of the form `(trigger <quantified formula> <trigger>)`. It also prints the quantified formulas for which *no* triggers could be inferred via `(no-trigger <quantified formula>)`. The latter can be indicative of a performance issue, since quantified formulas with no triggers cannot be handled by traditional quantifier instantiation techniques, i.e. E-matching.
 
 Note that the formatting of quantified formula in the above output traces can be refined for clarity by assigning names to quantified formulas.
 This can be accomplished by the SMT attribute `:qid`.
@@ -478,7 +478,7 @@ In this case, a single lemma sufficed for showing the input is unsatisfiable, wh
 
 cvc5 supports other kinds of constraints beside satisfiability.
 In particular, we support syntax-guided synthesis problems, for details see [CAV2015](https://homepage.divms.uiowa.edu/~ajreynol/cav15a.pdf) and [CAV2019](https://homepage.divms.uiowa.edu/~ajreynol/cav19b.pdf).
-Our syntax-guided synthesis solver also supports diagnostic output flags, including `-o sygus` which output the list of candidate solutions as they are tried, `-o sygus-grammar` which outputs auto-generated grammars for functions-to-synthesize, and `-o sygus-sol-gterm` which indicates which production rules of a grammar were used in constructing the final solution.
+Our syntax-guided synthesis solver also supports diagnostic output flags, including `-o sygus` which output the list of candidate solutions as they are tried, `-o sygus-grammar` which outputs auto-generated grammars for functions-to-synthesize, `-o sygus-enumerator` outputs a summary of the enumeration strategy, and `-o sygus-sol-gterm` which indicates which production rules of a grammar were used in constructing the final solution.
 
 #### Auto-configuration of Options
 
@@ -545,6 +545,6 @@ This post covers many of the diagnostic features of cvc5 that are intended to be
 We have shown various interfaces that are available in the *.smt2 interface and available via our APIs.
 
 Many other diagnostics are available internally, some of which we are in the process of making available to users as well.
-If you have a request for more information to understand what cvc5 is doing, don't hesistate to contact us, or to post a question on our [discussions page](https://github.com/cvc5/cvc5/discussions).
+If you have a request for more information to understand what cvc5 is doing, don't hesitate to contact us, or to post a question on our [discussions page](https://github.com/cvc5/cvc5/discussions).
 
 #### [Andrew Reynolds](https://homepage.cs.uiowa.edu/~ajreynol/) is a research scientist at the University of Iowa in the Computational Logic Center ([CLC](https://clc.cs.uiowa.edu/site/index.shtml)) and one of the main developers of cvc5. His research is focused on several aspects of SMT solving, including quantified formulas, strings and regular expressions, syntax-guided synthesis and proofs.
