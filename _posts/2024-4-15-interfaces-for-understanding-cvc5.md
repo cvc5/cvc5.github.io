@@ -7,6 +7,11 @@ author: Andrew Reynolds
 date: 2024-04-15
 ---
 
+This blog post focuses on new interfaces for understanding the behavior of cvc5 and what to do when things go right and more importantly when they go wrong.
+We review the numerous diagnotic features of cvc5 and give tips on what to do when you are stuck.
+
+<!--more-->
+
 ## The Information Gap between SMT solvers and their Users
 
 State-of-the-art SMT solvers like cvc5 can be used to solve constraints in a growing number of application domains.
@@ -36,7 +41,7 @@ For more details, see our documentation of [output tags](https://cvc5.github.io/
 
 While the discussion will focus on the command line interface and *.smt2 text interface, most of the features mentioned in this post are available in each of our APIs (C++, Java, Python).
 Many of these features are new and are under active development.
-All features are available in the latest unstable version of cvc5 on its main branch.
+All features are available in the latest development version of cvc5 on its [main branch](https://github.com/cvc5/cvc5).
 
 ## Interfaces for when things go right
 
@@ -107,7 +112,7 @@ Theory lemmas may involve symbols that were introduced internally by cvc5 during
 A classic example is the "division by zero" Skolem introduced to reason about the possibility of division with a zero denominator.
 For details on all the documented Skolems cvc5 supports, see our documentation for [Skolem identifiers](https://cvc5.github.io/docs-ci/docs-main/skolem-ids.html).
 
-We also support dumping the unsat core along the lemmas used as a standalone benchmark via the output flag `-o unsat-core-lemmas-benchmark`.
+We also support dumping the unsat core along with the lemmas used as a standalone benchmark via the output flag `-o unsat-core-lemmas-benchmark`.
 
 #### Unsat core of instantiations
 
@@ -239,9 +244,9 @@ cvc5 additionally supports a variant of the timeout core command where assumptio
 In particular, the command `(get-timeout-core-assuming (a1 ... an))` asks cvc5 to find a subset of the formulas `a1, ..., an` that when combined with the input assertions cause a timeout.
 This is helpful if the user wants to focus on a particular subset of the input while implicitly assuming that all other assertions are part of the timeout core. 
 
-Also, it may be the case that the timeout core itself takes a long time to compute.
 The algorithm for computing timeout cores tries to build subsets of the given assertions until one is either solved or times out.
-If it tries many different subsets of the input, all of which are "sat" within the timeout.
+It may be the case that the timeout core itself takes a long time to compute, in particular
+if it tries many different subsets of the input all of which are "sat" within the timeout.
 
 ### Difficulty
 
@@ -305,8 +310,11 @@ unknown
 
 In the above example, cvc5 gave up because it could not determine the satisfiability of the given quantified formula.
 The first identifier `INCOMPLETE` captures the high-level reason for why "unknown" was returned, which is an [unknown explanation](https://cvc5.github.io/docs-ci/docs-main/api/cpp/unknownexplanation.html#unknownexplanation).
-The second identifier `QUANTIFIERS` is a finer grained internal explanation of why the theory solvers were incomplete.
+This is a high-level categorization of why cvc5 answered unknown, which may be due to theory solvers being incomplete, resource or time limits being reached, or whether the user specified an option that make cvc5 intentionally answer unknown (e.g. `--preprocess-only`).
+The second identifier is a finer grained internal explanation of why the theory solvers were incomplete.
 Note these identifiers are not currently part of our API, but are documented internally [here](https://github.com/cvc5/cvc5/blob/main/src/theory/incomplete_id.h).
+In the above example, the second identifier `QUANTIFIERS` indicates that cvc5 gave up due to the presence of quantified formulas.
+Indeed, in the above example, cvc5 is unable to determine a model for `f`.
 
 ### More Information to Understand what the Solver is Doing
 
@@ -315,6 +323,28 @@ Note these identifiers are not currently part of our API, but are documented int
 The most basic form of information one can retrieve from cvc5 is its statistics.
 These are dumped when cvc5 terminates when the option `stats` is enabled.
 A more detailed account of statistics, including timing information and histograms of the inference identifiers used during solving is available when the option `stats-internal` is enabled.
+An example output is shown below:
+
+```
+% cat test.smt2
+(set-logic ALL)
+(declare-fun x () Int)
+(declare-fun y () Int)
+(assert (and (> x 2) (< x 0)))
+(assert (> (+ y 1) y))
+(check-sat)
+
+% cvc5 test.smt2 --stats 
+unsat
+driver::filename = test.smt2
+global::totalTime = 5ms
+theory::arith::inferencesLemma = { ARITH_UNATE: 1 }
+cvc5::CONSTANT = { integer type: 2 }
+cvc5::TERM = { AND: 1, GT: 1, LT: 2 }
+cvc5::VARIABLE = { Boolean type: 1 }
+```
+
+The statistics output gives various information about the file solved, the global time, the set of inferences used to solve the problem (as given by their *inference identifiers*), as well as the kinds of terms that were constructed.
 
 #### Diagnostics for Preprocessing
 
@@ -468,13 +498,13 @@ The output tag `-o options-auto` prints which options were automatically configu
 (check-sat)
 
 % cvc5 test.smt2 -o options-auto
-(options-auto stringExp true :reason "logic including strings")
-(options-auto bitvectorPropagate false :reason "bitblast solver")
-(options-auto arithHeuristicPivots 5 :reason "logic")
-(options-auto decisionMode justification :reason "logic")
+(options-auto strings-exp true :reason "logic including strings")
+(options-auto bv-propagate false :reason "bitblast solver")
+(options-auto heuristic-pivots 5 :reason "logic")
+(options-auto decision justification :reason "logic")
 (options-auto cegqi true :reason "logic")
-(options-auto dtSharedSelectors false :reason "quantified logic without SyGuS")
-(options-auto minisatSimpMode options::MinisatSimpMode::CLAUSE_ELIM :reason "non-basic logic")
+(options-auto dt-share-sel false :reason "quantified logic without SyGuS")
+(options-auto minisat-simplification clause-elim :reason "non-basic logic")
 ```
 
 Above, cvc5 lists the changes it made to its default options, along with a reason for why it made this change.
@@ -492,13 +522,13 @@ In contrast, if the user had set the logic to `QF_LIA`, the automatic configurat
 (check-sat)
 
 % cvc5 test.smt2 -o options-auto
-(options-auto bitvectorPropagate false :reason "bitblast solver")
-(options-auto arithRewriteEq 1 :reason "logic")
-(options-auto arithHeuristicPivots 5 :reason "logic")
-(options-auto arithStandardCheckVarOrderPivots 200 :reason "logic")
-(options-auto nlExtTangentPlanesInterleave true :reason "pure integer logic")
-(options-auto nlRlvAssertBounds 1 :reason "non-quantified logic")
-(options-auto quantDynamicSplit options::QuantDSplitMode::NONE :reason "non-datatypes logic")
+(options-auto bv-propagate false :reason "bitblast solver")
+(options-auto arith-rewrite-equalities 1 :reason "logic")
+(options-auto heuristic-pivots 5 :reason "logic")
+(options-auto standard-effort-variable-order-pivots 200 :reason "logic")
+(options-auto nl-ext-tplanes-interleave true :reason "pure integer logic")
+(options-auto nl-rlv-assert-bounds 1 :reason "non-quantified logic")
+(options-auto quant-dsplit none :reason "non-datatypes logic")
 ```
 
 Above, more specific options were configured that are specific to `QF_LIA`, for example the option `arithRewriteEq` (which eagerly replaces arithmetic equalities by a conjunction of inequalities) is set to true.
@@ -508,3 +538,13 @@ When given no command line options, cvc5 generally will perform close to optimal
 However, some expert users may require manually configuring options that are tailored to their use of cvc5.
 Notably, the set of options for solving quantified formulas may vary significantly based on the logic and the needs and priorities of the user. 
 We plan to publish a followup post on recommendations how to find the best combination for your application.
+
+## Conclusion
+
+This post covers many of the diagnostic features of cvc5 that are intended to be useful both to users and developers of cvc5.
+We have shown various interfaces that are available in the *.smt2 interface and available via our APIs.
+
+Many other diagnostics are available internally, some of which we are in the process of making available to users as well.
+If you have a request for more information to understand what cvc5 is doing, don't hesistate to contact us, or to post a question on our [discussions page](https://github.com/cvc5/cvc5/discussions).
+
+#### [Andrew Reynolds](https://homepage.cs.uiowa.edu/~ajreynol/) is a research scientist at the University of Iowa in the Computational Logic Center ([CLC](https://clc.cs.uiowa.edu/site/index.shtml)) and one of the main developers of cvc5. His research is focused on several aspects of SMT solving, including quantified formulas, strings and regular expressions, syntax-guided synthesis and proofs.
