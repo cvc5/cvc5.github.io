@@ -446,7 +446,7 @@ Problems with quantified formulas can be notoriously sensitive and difficult to 
 cvc5 supports various output tags to understand how quantified formulas are been handled internally.
 In particular, note the following output tags:
 - `-o inst`: This tag prints the number of instantiations tried for each quantified formula.
-- `-o trigger`: This tag prints the triggers chosen
+- `-o trigger`: This tag prints the triggers chosen for quantified formulas via outputs of the form `(trigger <quantified formula> <trigger>)`. It also prints the quantified formulas for which *no* triggers could be inferred via `(no-trigger <quantified formula>)`. The latter can be indicative of a performance issue, since quantified formulas with no triggers cannot be handled by traditional quantifier instantiation techniques (E-matching).
 
 Note that the formatting of quantified formula in the above output traces can be refined for clarity by assigning names to quantified formulas.
 This can be accomplished by the SMT attribute `:qid`.
