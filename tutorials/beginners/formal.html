@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formal Foundations &mdash; Satisfiability Modulo Theories: A Beginner&#39;s Tutorial  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b9602cbe" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SMT Theories" href="theories.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Satisfiability Modulo Theories: A Beginner's Tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Formal Foundations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#syntax">Syntax</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#signatures">Signatures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variables-terms-and-formulas">Variables, terms and formulas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#semantics">Semantics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#theories">Theories</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#satisfiability-modulo-a-theory">Satisfiability modulo a theory</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theories.html">SMT Theories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outputs.html">SMT Solver Outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions to Exercises</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Satisfiability Modulo Theories: A Beginner's Tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Formal Foundations</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="formal-foundations">
+<span id="id1"></span><h1>Formal Foundations<a class="headerlink" href="#formal-foundations" title="Link to this heading"></a></h1>
+<p>The satisfiability modulo theories problem can be formalized in many-sorted
+first-order logic with equality. We briefly outline the necessary concepts
+here. Due to space constraints, we assume some familiarity with basic concepts
+and notation from mathematical logic. More details can be found in <a class="reference internal" href="references.html#r21" id="id2"><span>[R21]</span></a>,
+<a class="reference internal" href="references.html#r25" id="id3"><span>[R25]</span></a>.</p>
+<section id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Link to this heading"></a></h2>
+<p>In first-order logic, one constructs formulas that are statements about
+individuals in some domain of discourse and their relationships. Many-sorted
+logic adds the possibility of talking about multiple, separate domains.</p>
+<section id="signatures">
+<h3>Signatures<a class="headerlink" href="#signatures" title="Link to this heading"></a></h3>
+<p>The language of formulas is determined by a vocabulary of
+symbols, called a <em>signature</em>, which has three main components: <em>sort symbols</em>
+(such as <span class="math notranslate nohighlight">\(\mathsf{Int}\)</span>, <span class="math notranslate nohighlight">\(\mathsf{Real}\)</span>, <span class="math notranslate nohighlight">\(\mathsf{Person}\)</span>,
+etc.)  which name, or <em>denote</em>, domains of interest; <em>function symbols</em> (such
+as, <span class="math notranslate nohighlight">\(+\)</span>, <span class="math notranslate nohighlight">\(*\)</span>, <span class="math notranslate nohighlight">\(\mathsf{log}\)</span>, <span class="math notranslate nohighlight">\(\mathsf{mother}\)</span>,
+<span class="math notranslate nohighlight">\(\mathsf{father}\)</span>) which denote total functions over the domains; and
+<em>relation symbols</em> (such as, <span class="math notranslate nohighlight">\(=\)</span>, <span class="math notranslate nohighlight">\(&lt;\)</span>, <span class="math notranslate nohighlight">\(\mathsf{even}\)</span>,
+<span class="math notranslate nohighlight">\(\mathsf{married}\)</span>) which denote total relations over the domains.  A
+signature also specifies the <em>arity</em> of each function symbol <span class="math notranslate nohighlight">\(f\)</span>, which
+is the number of inputs <span class="math notranslate nohighlight">\(f\)</span> takes, as well as its <em>rank</em>, which consists
+of the sort of <span class="math notranslate nohighlight">\(f\)</span>’s inputs and of <span class="math notranslate nohighlight">\(f\)</span>’s output. <a class="footnote-reference brackets" href="#id5" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>  We say that
+<span class="math notranslate nohighlight">\(f\)</span> has arity <span class="math notranslate nohighlight">\(n\)</span> and rank <span class="math notranslate nohighlight">\(\sigma_1\cdots\sigma_n\sigma\)</span> in
+a signature <span class="math notranslate nohighlight">\(\Sigma\)</span> if <span class="math notranslate nohighlight">\(f\)</span> takes <span class="math notranslate nohighlight">\(n\)</span> inputs of respective sorts
+<span class="math notranslate nohighlight">\(\sigma_1, \ldots, \sigma_n\)</span> and returns an output of sort <span class="math notranslate nohighlight">\(\sigma\)</span>.  A
+function symbol of arity 0 and rank sigma (such as 0, 1,
+<span class="math notranslate nohighlight">\(\mathsf{true}\)</span>, etc.) is also called a <em>constant symbol</em> of sort sigma.
+It is convenient to consider only signatures that have a distinguished sort
+<span class="math notranslate nohighlight">\(\mathsf{Bool}\)</span>, for the Booleans, and treat relation symbols as function symbols whose
+return type is <span class="math notranslate nohighlight">\(\mathsf{Bool}\)</span>.  In addition, we assume that every signature contains a
+distinguished function symbol <span class="math notranslate nohighlight">\(\approx_\sigma\)</span> of rank
+<span class="math notranslate nohighlight">\(\sigma\sigma\)</span><span class="math notranslate nohighlight">\(\mathsf{Bool}\)</span>, denoting the identity relation, for each sort
+<span class="math notranslate nohighlight">\(\sigma\)</span> of <span class="math notranslate nohighlight">\(\Sigma\)</span>.</p>
+<p>A signature <span class="math notranslate nohighlight">\(\Sigma\)</span> is a <em>subsignature</em> of a signature <span class="math notranslate nohighlight">\(\Omega\)</span>,
+and <span class="math notranslate nohighlight">\(\Omega\)</span> is a <em>supersignature</em> of <span class="math notranslate nohighlight">\(\Sigma\)</span>,
+if all the sort and function symbols of <span class="math notranslate nohighlight">\(\Sigma\)</span> are also in <span class="math notranslate nohighlight">\(\Omega\)</span>
+and the function symbols have the same rank in <span class="math notranslate nohighlight">\(\Omega\)</span> as they do in <span class="math notranslate nohighlight">\(\Sigma\)</span>.</p>
+</section>
+<section id="variables-terms-and-formulas">
+<h3>Variables, terms and formulas<a class="headerlink" href="#variables-terms-and-formulas" title="Link to this heading"></a></h3>
+<p>To build formulas, in addition to fixing a
+signature <span class="math notranslate nohighlight">\(\Sigma\)</span>, we also fix a set <strong>X</strong> of <em>sorted</em> variables,
+each associated with a sort <span class="math notranslate nohighlight">\(\sigma\)</span> and standing for some element from (the set
+denoted by) <span class="math notranslate nohighlight">\(\sigma\)</span>.  We can then build terms out of variables and function
+symbols from <span class="math notranslate nohighlight">\(\Sigma\)</span>.  Given a signature <span class="math notranslate nohighlight">\(\Sigma\)</span>, a <em>well-sorted</em>
+<span class="math notranslate nohighlight">\(\Sigma\)</span><em>-term</em>, or just <em>term</em> for short, is defined inductively as
+follows: <span class="math notranslate nohighlight">\((i)\)</span> a variable or constant symbol of sort <span class="math notranslate nohighlight">\(\sigma\)</span> is a term of
+sort <span class="math notranslate nohighlight">\(\sigma\)</span>; <span class="math notranslate nohighlight">\((ii)\)</span> if <span class="math notranslate nohighlight">\(f\)</span> is a function symbol of rank
+<span class="math notranslate nohighlight">\(\sigma_1\cdots\sigma_n\sigma\)</span>, with <span class="math notranslate nohighlight">\(n&gt;0\)</span>, and <span class="math notranslate nohighlight">\(t_1, \ldots,
+t_n\)</span> are terms of sort <span class="math notranslate nohighlight">\(\sigma_1\cdots\sigma_n\)</span>, respectively, then the
+expression <span class="math notranslate nohighlight">\(f(t_1, \ldots, t_n)\)</span> is a term of sort <span class="math notranslate nohighlight">\(\sigma\)</span>; <span class="math notranslate nohighlight">\((iii)\)</span>
+if <span class="math notranslate nohighlight">\(\varphi\)</span> is a term of sort <span class="math notranslate nohighlight">\(\mathsf{Bool}\)</span> and <span class="math notranslate nohighlight">\(x\)</span> is a variable of sort <span class="math notranslate nohighlight">\(\sigma\)</span>,
+then the expressions <span class="math notranslate nohighlight">\(\exists\, x : \sigma\)</span> <span class="math notranslate nohighlight">\(\varphi\)</span> and <span class="math notranslate nohighlight">\(\forall\, x :
+\sigma\)</span> <span class="math notranslate nohighlight">\(\varphi\)</span> are terms of sort <span class="math notranslate nohighlight">\(\mathsf{Bool}\)</span>.  We then <em>identify formulas with
+terms of sort</em> <span class="math notranslate nohighlight">\(\mathsf{Bool}\)</span>.  The distinguished symbols <span class="math notranslate nohighlight">\(\forall\)</span> and
+<span class="math notranslate nohighlight">\(\exists\)</span> are <em>quantifier symbols</em>.  We say that a variable <span class="math notranslate nohighlight">\(x\)</span>
+<em>occurs free</em> in a formula <span class="math notranslate nohighlight">\(\varphi\)</span> if <span class="math notranslate nohighlight">\(x\)</span> occurs in <span class="math notranslate nohighlight">\(\varphi\)</span> and either
+<span class="math notranslate nohighlight">\(\varphi\)</span> contains no quantifier symbols or it has the form <span class="math notranslate nohighlight">\(\exists\, y :
+\sigma. \varphi'\)</span> or <span class="math notranslate nohighlight">\(\forall\, y :\sigma. \varphi'\)</span>, for some variable
+<span class="math notranslate nohighlight">\(y\)</span>, where <span class="math notranslate nohighlight">\(x\)</span> occurs free in <span class="math notranslate nohighlight">\(\varphi'\)</span>.</p>
+</section>
+</section>
+<section id="semantics">
+<h2>Semantics<a class="headerlink" href="#semantics" title="Link to this heading"></a></h2>
+<p>For each signature <span class="math notranslate nohighlight">\(\Sigma\)</span>, the meaning of <span class="math notranslate nohighlight">\(\sigma\)</span>-terms is provided
+by mathematical structures called interpretations.
+A <span class="math notranslate nohighlight">\(\Sigma\)</span><em>-interpretation</em> <span class="math notranslate nohighlight">\(\mathcal{I}\)</span> maps:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>each sort <span class="math notranslate nohighlight">\(\sigma\)</span> of <span class="math notranslate nohighlight">\(\Sigma\)</span> to a <em>non-empty</em> set <span class="math notranslate nohighlight">\(\sigma^\mathcal{I}\)</span>,
+the <em>domain</em> of <span class="math notranslate nohighlight">\(\sigma\)</span> in <span class="math notranslate nohighlight">\(\mathcal{I}\)</span>, with <span class="math notranslate nohighlight">\(\mathsf{Bool}^\mathcal{I}\)</span> being
+the binary set <span class="math notranslate nohighlight">\(\{\mathsf{true},\mathsf{false}\}\)</span>;</p></li>
+<li><p>each variable <span class="math notranslate nohighlight">\(x \in\)</span> <strong>X</strong> of sort <span class="math notranslate nohighlight">\(\sigma\)</span> to an element
+<span class="math notranslate nohighlight">\(x^\mathcal{I} \in \sigma^\mathcal{I}\)</span>;</p></li>
+<li><p>each function symbol <span class="math notranslate nohighlight">\(f\)</span> of rank <span class="math notranslate nohighlight">\(\sigma_1\cdots\sigma_n\sigma\)</span> to
+a <em>total</em> function <span class="math notranslate nohighlight">\(f^\mathcal{I}\)</span> of type <span class="math notranslate nohighlight">\(\sigma_1^\mathcal{I} \times \cdots
+\times \sigma_n^\mathcal{I} \to \sigma^\mathcal{I}\)</span> (and, in particular, each constant symbol
+<span class="math notranslate nohighlight">\(c\)</span> of sort <span class="math notranslate nohighlight">\(\sigma\)</span> to an element <span class="math notranslate nohighlight">\(c^\mathcal{I} \in \sigma^\mathcal{I}\)</span>).</p></li>
+</ul>
+</div></blockquote>
+<p>We say that <span class="math notranslate nohighlight">\(\sigma\)</span> (resp. <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(f\)</span>) <em>denotes</em> the set
+<span class="math notranslate nohighlight">\(\sigma^\mathcal{I}\)</span> (element <span class="math notranslate nohighlight">\(x^\mathcal{I}\)</span>, function
+<span class="math notranslate nohighlight">\(f^\mathcal{I}\)</span>) in <span class="math notranslate nohighlight">\(\mathcal{I}\)</span>.  Every <span class="math notranslate nohighlight">\(\Sigma\)</span>-interpretation <span class="math notranslate nohighlight">\(\mathcal{I}\)</span> extends from
+variables and function symbols to <span class="math notranslate nohighlight">\(\Sigma\)</span>-terms <span class="math notranslate nohighlight">\(t\)</span> as follows:
+<span class="math notranslate nohighlight">\((i)\)</span> a term <span class="math notranslate nohighlight">\(f(t_1,\ldots,t_n)\)</span> <em>evaluates</em> in <span class="math notranslate nohighlight">\(\mathcal{I}\)</span> to
+<span class="math notranslate nohighlight">\(f^\mathcal{I}(t_1^\mathcal{I},\ldots,t_n^\mathcal{I})\)</span>, the value
+returned by function <span class="math notranslate nohighlight">\(f^\mathcal{I}\)</span> when applied to the elements denoted
+by <span class="math notranslate nohighlight">\(t_1,\ldots,t_n\)</span>; <span class="math notranslate nohighlight">\((ii)\)</span> an <em>existentially quantified</em> formula
+<span class="math notranslate nohighlight">\(\exists\, x : \sigma. \varphi\)</span> evaluates to <span class="math notranslate nohighlight">\(\mathsf{true}\)</span> in <span class="math notranslate nohighlight">\(\mathcal{I}\)</span>
+if and only if <span class="math notranslate nohighlight">\(\varphi\)</span> evaluates to <span class="math notranslate nohighlight">\(\mathsf{true}\)</span> in an interpretation
+<span class="math notranslate nohighlight">\(\mathcal{I}[x \mapsto a]\)</span> that maps <span class="math notranslate nohighlight">\(x\)</span> to <em>some</em> suitable
+<span class="math notranslate nohighlight">\(a \in \sigma^\mathcal{I}\)</span> and is otherwise identical to <span class="math notranslate nohighlight">\(\mathcal{I}\)</span>;
+<span class="math notranslate nohighlight">\((iii)\)</span> a <em>universally quantified</em> formula <span class="math notranslate nohighlight">\(\forall\, x :
+\sigma. \varphi\)</span> evaluates to <span class="math notranslate nohighlight">\(\mathsf{true}\)</span> in <span class="math notranslate nohighlight">\(\mathcal{I}\)</span> if and only if
+<span class="math notranslate nohighlight">\(\varphi\)</span> evaluates to <span class="math notranslate nohighlight">\(\mathsf{true}\)</span> in <span class="math notranslate nohighlight">\(\mathcal{I}[x \mapsto a]\)</span>
+for <em>all</em> possible choices of values for <span class="math notranslate nohighlight">\(x\)</span> in
+<span class="math notranslate nohighlight">\(\sigma^\mathcal{I}\)</span>.</p>
+<p>An interpretation <span class="math notranslate nohighlight">\(\mathcal{I}\)</span> <em>satisfies</em> a formula <span class="math notranslate nohighlight">\(\varphi\)</span> if <span class="math notranslate nohighlight">\(\varphi^\mathcal{I} = \mathsf{true}\)</span>
+and <em>falsifies</em> it if <span class="math notranslate nohighlight">\(\varphi^\mathcal{I} = \mathsf{false}\)</span>.  In the
+former case, we also say that <span class="math notranslate nohighlight">\(\mathcal{I}\)</span> is a <em>model</em> of <span class="math notranslate nohighlight">\(\varphi\)</span>.</p>
+<p>The <em>reduct</em> of an <span class="math notranslate nohighlight">\(\Omega\)</span>-interpretation <span class="math notranslate nohighlight">\(\mathcal{I}\)</span> to a subsignature <span class="math notranslate nohighlight">\(\Sigma\)</span> of
+<span class="math notranslate nohighlight">\(\Omega\)</span> is the (unique) <span class="math notranslate nohighlight">\(\Sigma\)</span>-interpretation that interprets the symbols of
+<span class="math notranslate nohighlight">\(\Sigma\)</span> exactly as <span class="math notranslate nohighlight">\(\mathcal{I}\)</span>.  Intuitively, the reduct is obtained by <em>forgetting</em>
+the symbols of <span class="math notranslate nohighlight">\(\Omega\)</span> that are not in <span class="math notranslate nohighlight">\(\Sigma\)</span>.</p>
+<p>In the definition of interpretation above, we have not provided a meaning for
+the usual Boolean connectives such as <span class="math notranslate nohighlight">\(\lnot, \land, \lor, \Rightarrow\)</span> and
+so on.  In SMT, specific interpretations of function symbols are provided by a
+theory, as explained next.</p>
+</section>
+<section id="theories">
+<h2>Theories<a class="headerlink" href="#theories" title="Link to this heading"></a></h2>
+<p>In general, we are not interested in arbitrary interpretations of terms and
+formulas in a signature <span class="math notranslate nohighlight">\(\Sigma\)</span> but in interpretations belonging to a specific
+<em>theory</em> <span class="math notranslate nohighlight">\(T\)</span> that <em>constrain</em> the meaning of the symbols in <span class="math notranslate nohighlight">\(\Sigma\)</span>; for
+instance, that interpret <span class="math notranslate nohighlight">\(\lnot\)</span> and <span class="math notranslate nohighlight">\(\land\)</span> as logical negation
+and conjunction, <span class="math notranslate nohighlight">\(0, 1, 2, \ldots\)</span> as the natural numbers, and so on.
+Traditionally in logic, a theory is defined by a set of formulas, called
+<em>axioms</em>: one considers only <span class="math notranslate nohighlight">\(\Sigma\)</span>-interpretations that satisfy all the axioms.
+In SMT, a theory is, more generally, a class of interpretations that can be
+specified axiomatically or in other ways.  More precisely, a <span class="math notranslate nohighlight">\(\Sigma\)</span><em>-theory</em> <span class="math notranslate nohighlight">\(T\)</span>
+is a pair <span class="math notranslate nohighlight">\((\Sigma, \mathbf{I})\)</span> where <span class="math notranslate nohighlight">\(\Sigma\)</span> is a signature and <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> is a class of
+<span class="math notranslate nohighlight">\(\Sigma\)</span>-interpretations, however specified.  We describe and discuss several
+examples of theories commonly used in SMT in the next section.</p>
+<p>Given a theory <span class="math notranslate nohighlight">\(T\)</span> <span class="math notranslate nohighlight">\(= (\Sigma, \mathbf{I})\)</span>, we consider not just <span class="math notranslate nohighlight">\(\Sigma\)</span>-formulas
+but <span class="math notranslate nohighlight">\(\Omega\)</span>-formulas for some supersignature <span class="math notranslate nohighlight">\(\Omega\)</span> of <span class="math notranslate nohighlight">\(\Sigma\)</span>.</p>
+<p>In the context of <span class="math notranslate nohighlight">\(T\)</span>, we refer to the symbols of <span class="math notranslate nohighlight">\(\Sigma\)</span> as <em>theory</em> symbols and
+to the additional symbols in <span class="math notranslate nohighlight">\(\Omega\)</span> as <em>uninterpreted</em> symbols.  For
+instance, in the theory of reals, we may write a formula of the form <span class="math notranslate nohighlight">\(a +
+1 &gt; b\)</span> where <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are uninterpreted, or <em>symbolic</em>,
+constants of sort <span class="math notranslate nohighlight">\(\mathsf{Real}\)</span>.  Intuitively, while the meaning of <span class="math notranslate nohighlight">\(+\)</span> and
+<span class="math notranslate nohighlight">\(1\)</span> is fixed by the theory, the meaning of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> is
+not.  Hence, we consider the formula satisfiable if there are real values for
+<span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> which make the formula evaluate to <span class="math notranslate nohighlight">\(\mathsf{true}\)</span>.  This idea is
+formalized in the notion of <em>satisfiability in</em> <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<section id="satisfiability-modulo-a-theory">
+<h3>Satisfiability modulo a theory<a class="headerlink" href="#satisfiability-modulo-a-theory" title="Link to this heading"></a></h3>
+<p>If <span class="math notranslate nohighlight">\(T\)</span> is a <span class="math notranslate nohighlight">\(\Sigma\)</span>-theory, a <span class="math notranslate nohighlight">\(T\)</span><em>-interpretation</em> is
+<em>any</em> <span class="math notranslate nohighlight">\(\Omega\)</span>-interpretation <span class="math notranslate nohighlight">\(\mathcal{I}\)</span> for some supersignature <span class="math notranslate nohighlight">\(\Omega\)</span> of <span class="math notranslate nohighlight">\(\Sigma\)</span>
+whose restriction to <span class="math notranslate nohighlight">\(\Sigma\)</span> differs from an interpretation of <span class="math notranslate nohighlight">\(T\)</span>
+at most in the way it interprets the variables.</p>
+<p>An <span class="math notranslate nohighlight">\(\Omega\)</span>-formula <span class="math notranslate nohighlight">\(\varphi\)</span> is <em>satisfiable in</em> <span class="math notranslate nohighlight">\(T\)</span> if it is satisfied by
+<em>some</em> <span class="math notranslate nohighlight">\(T\)</span>-interpretation <span class="math notranslate nohighlight">\(\mathcal{I}\)</span>—which may interpret the variables of <span class="math notranslate nohighlight">\(\varphi\)</span> and
+the sort, function, and predicate symbols not in <span class="math notranslate nohighlight">\(\Sigma\)</span> arbitrarily.  The
+formula is <em>valid in</em> <span class="math notranslate nohighlight">\(T\)</span> if it is satisfied by <em>all</em> <span class="math notranslate nohighlight">\(T\)</span>-interpretations.  A
+set <span class="math notranslate nohighlight">\(\Phi\)</span> of <span class="math notranslate nohighlight">\(\Omega\)</span>-formulas <em>entails</em> <span class="math notranslate nohighlight">\(\varphi\)</span> <em>in</em> <span class="math notranslate nohighlight">\(T\)</span>, written
+<span class="math notranslate nohighlight">\(\Phi \models_T \varphi\)</span>, if every <span class="math notranslate nohighlight">\(T\)</span>-interpretation that
+satisfies all formulas in <span class="math notranslate nohighlight">\(\Phi\)</span> satisfies <span class="math notranslate nohighlight">\(\varphi\)</span> as well.  The set
+<span class="math notranslate nohighlight">\(\Phi\)</span> is <em>satisfiable in</em> <span class="math notranslate nohighlight">\(T\)</span> if there is a <span class="math notranslate nohighlight">\(T\)</span>-interpretation
+that satisfies all of its formulas.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id5" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
+<p>For simplicity, we do not consider the more general case where function
+symbols can be overloaded by being assigned more than one arity and/or
+rank.</p>
+</aside>
+</aside>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="theories.html" class="btn btn-neutral float-right" title="SMT Theories" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Clark Barrett, Cesare Tinelli, Haniel Barbosa, Aina Niemetz, Mathias Preiner, Andrew Reynolds, Yoni Zohar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

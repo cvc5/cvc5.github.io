@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMT Theories &mdash; Satisfiability Modulo Theories: A Beginner&#39;s Tutorial  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b9602cbe" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/tabs.js?v=3030b3cb"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SMT Solver Outputs" href="outputs.html" />
+    <link rel="prev" title="Formal Foundations" href="formal.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Satisfiability Modulo Theories: A Beginner's Tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formal.html">Formal Foundations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SMT Theories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#core-theory-and-uninterpreted-symbols">Core Theory and Uninterpreted Symbols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arithmetic">Arithmetic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#difference-logic">Difference Logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linear-arithmetic">Linear Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nonlinear-arithmetic">Nonlinear arithmetic</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#arrays">Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bit-vectors">Bit-vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datatypes">Datatypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#floating-point-arithmetic">Floating-Point Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#strings">Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quantifiers">Quantifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#non-standard-theories">Non-standard Theories</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sequences">Sequences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#finite-fields">Finite Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#finite-sets">Finite Sets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#combinations-of-theories">Combinations of Theories</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="outputs.html">SMT Solver Outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions to Exercises</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Satisfiability Modulo Theories: A Beginner's Tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SMT Theories</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="smt-theories">
+<span id="id1"></span><h1>SMT Theories<a class="headerlink" href="#smt-theories" title="Link to this heading"></a></h1>
+<p>A key feature of SMT is that the entire problem is parameterized by the choice
+of a theory <span class="math notranslate nohighlight">\(T\)</span>. This is important because it means that SMT is an algorithmic
+<em>framework</em>, rather than a fixed algorithm. Thus, if a particular problem cannot
+easily be encoded in any existing theory supported by SMT solvers, one option
+is to add support for a new theory which is better suited to the problem. In
+fact, this is exactly the process by which many of the theories supported by
+modern SMT solvers were added.</p>
+<p>Theories can be used alone or in arbitrary combinations. Besides the theory,
+other parameters related to the syntax of formulas include whether or not to
+enable quantifiers and whether to disallow or limit the use of certain theory
+operations. In the SMT-LIB standard, and in solvers that support it, these pa-
+rameters are configured by specifying a <em>logic</em>. A logic identifies the theory
+(or theories) being used and optionally imposes syntactic restrictions on the
+allowed formulas. Users can provide the SMT solver with a predefined <em>logic name</em>
+(like <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_LIA</span></code>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_BV</span></code> and <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">UF</span></code> seen earlier) to specify which logic is to be
+used. By default (i.e., if no logic name is provided), SMT solvers typically
+enable all the theories they support and allow all operations. This is
+equivalent to using the special logic name <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">ALL</span></code>. However, solvers are often
+tuned with specific heuristics for specific logics. Thus, it is advisable to
+provide the solver with the most specific logic name possible. In this section,
+we discuss the most common theories and logics supported by SMT solvers, with
+examples of each.</p>
+<section id="core-theory-and-uninterpreted-symbols">
+<span id="core"></span><h2>Core Theory and Uninterpreted Symbols<a class="headerlink" href="#core-theory-and-uninterpreted-symbols" title="Link to this heading"></a></h2>
+<p>The SMT-LIB standard defines a <em>core theory</em> which consists of a core signature
+with a fixed interpretation that is always present, regardless of which other
+theories are being used.  The core theory defines the Boolean sort <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="na">Bool</span></code>
+(<code class="code highlight python docutils literal highlight-python"><span class="n">BoolSort</span><span class="p">()</span></code> in Python), the Boolean theory constants <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">true</span></code> and
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">false</span></code> (<code class="code highlight python docutils literal highlight-python"><span class="n">BoolVal</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">BoolVal</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span></code> in Python),
+and the operators <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">=</span></code>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">not</span></code>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">and</span></code>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">or</span></code>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">xor</span></code>, and
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">=&gt;</span></code> (<code class="code highlight python docutils literal highlight-python"><span class="o">==</span></code>, <code class="code highlight python docutils literal highlight-python"><span class="n">Not</span></code>, <code class="code highlight python docutils literal highlight-python"><span class="n">And</span></code>, <code class="code highlight python docutils literal highlight-python"><span class="n">Or</span></code>,
+<code class="code highlight python docutils literal highlight-python"><span class="n">Xor</span></code>, and <code class="code highlight python docutils literal highlight-python"><span class="n">Implies</span></code> in Python), all with the usual meanings.
+The equality symbol <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">=</span></code> is <em>polymorphic</em>: it can be applied to two terms
+of the same sort, for any predefined or user-declared sort.  There are also two
+more polymorphic operators that require a bit more explanation.  The
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">distinct</span></code> (<code class="code highlight python docutils literal highlight-python"><span class="n">Distinct</span></code>) operator takes two or more arguments of
+the same sort and returns <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">true</span></code> exactly when all the arguments have
+pairwise distinct values.  The <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">ite</span></code> (<code class="code highlight python docutils literal highlight-python"><span class="n">If</span></code>) operator takes three
+arguments, the first of which must be of Boolean sort.  The other two arguments
+can have any sort as long as it is the same for both.  The meaning of the
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">ite</span></code> operator is the second argument when the first argument is true, and
+the third argument otherwise.</p>
+<p>The simplest logic that builds on the core theory is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_UF</span></code>, short for
+“quantifier-free uninterpreted functions.”  This logic disallows quantifiers
+and does not define any new symbols beyond those in the core theory.  However,
+it allows the user to extend the signature with new sorts and symbols.  The SMT
+solver is allowed to interpret these symbols in any way it chooses.  This is
+why they are referred to as uninterpreted: the solver does not impose any
+restrictions on the interpretation (besides the declared arity and rank).  The
+following example illustrates the use of uninterpreted symbols as well as the
+<code class="code highlight python docutils literal highlight-python"><span class="n">And</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">Distinct</span></code> operators.</p>
+<blockquote>
+<div><p><span class="target" id="example-4">Example 4</span>. Let <span class="math notranslate nohighlight">\(f\)</span> be a unary function from <span class="math notranslate nohighlight">\(U\)</span> to <span class="math notranslate nohighlight">\(U\)</span>,
+for some set <span class="math notranslate nohighlight">\(U\)</span>. Check that, whatever the meaning of <span class="math notranslate nohighlight">\(f\)</span>, if
+<span class="math notranslate nohighlight">\(f(f(f(x)))=x\)</span> and <span class="math notranslate nohighlight">\(f(f(f(f(f(x)))))=x\)</span>, then <span class="math notranslate nohighlight">\(f(x)=x\)</span>.</p>
+</div></blockquote>
+<p>Solutions for this example are shown below.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/ffff.smt2">examples/ffff.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_UF</span>)
+<span class="linenos"> 2</span>(<span class="k">declare-sort</span> <span class="n">U</span> <span class="m">0</span>)
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>(<span class="k">declare-fun</span> <span class="n">f</span> (<span class="n">U</span>) <span class="n">U</span>)
+<span class="linenos"> 5</span>(<span class="k">declare-const</span> <span class="n">x</span> <span class="n">U</span>) 
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">=</span> (<span class="n">f</span> (<span class="n">f</span> (<span class="n">f</span> <span class="n">x</span>))) <span class="n">x</span>) (<span class="o">=</span> (<span class="n">f</span> (<span class="n">f</span> (<span class="n">f</span> (<span class="n">f</span> (<span class="n">f</span> <span class="n">x</span>))))) <span class="n">x</span>)))
+<span class="linenos"> 8</span>(<span class="k">assert</span> (<span class="o">distinct</span> (<span class="n">f</span> <span class="n">x</span>) <span class="n">x</span>))
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>(<span class="k">check-sat</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/ffff.py">examples/ffff.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span><span class="n">U</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">f</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">x</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_UF&#39;</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">((</span><span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span> <span class="o">==</span> <span class="n">x</span><span class="p">),</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)))))</span> <span class="o">==</span> <span class="n">x</span><span class="p">)))</span>
+<span class="linenos"> 8</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Distinct</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">))</span>  <span class="c1"># negation of f(x) = x</span>
+<span class="linenos"> 9</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">())</span>
+<span class="linenos">10</span>
+</pre></div>
+</div>
+</div></div>
+<p>We can derive <span class="math notranslate nohighlight">\(f(x) = x\)</span> from the first assertion by performing a series of
+substitutions, and thus the problem is unsatisfiable.
+Now, we present a simple example that illustrates the <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">ite</span></code> operator.  It
+also shows that in Python, we can use <code class="code highlight python docutils literal highlight-python"><span class="o">!=</span></code> instead of
+<code class="code highlight python docutils literal highlight-python"><span class="n">Distinct</span></code> to assert that two terms are distinct.</p>
+<blockquote>
+<div><p><span class="target" id="example-5">Example 5</span>. Suppose we know that <span class="math notranslate nohighlight">\(x\)</span> is either equal to <span class="math notranslate nohighlight">\(y\)</span> or
+<span class="math notranslate nohighlight">\(z\)</span>, depending on the value of the Boolean <span class="math notranslate nohighlight">\(b\)</span>.  Suppose we
+further know that <span class="math notranslate nohighlight">\(w\)</span> is equal to one of <span class="math notranslate nohighlight">\(y\)</span> or <span class="math notranslate nohighlight">\(z\)</span>.  Does
+it follow that <span class="math notranslate nohighlight">\(x\)</span> equals <span class="math notranslate nohighlight">\(w\)</span>?</p>
+</div></blockquote>
+<p>Solutions are shown below.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/xyzwite.smt2">examples/xyzwite.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_UF</span>)
+<span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>(<span class="k">declare-sort</span> <span class="n">U</span> <span class="m">0</span>)
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>(<span class="k">declare-const</span> <span class="n">b</span> <span class="na">Bool</span>)
+<span class="linenos"> 7</span>(<span class="k">declare-const</span> <span class="n">x</span> <span class="n">U</span>) 
+<span class="linenos"> 8</span>(<span class="k">declare-const</span> <span class="n">y</span> <span class="n">U</span>) 
+<span class="linenos"> 9</span>(<span class="k">declare-const</span> <span class="n">z</span> <span class="n">U</span>) 
+<span class="linenos">10</span>(<span class="k">declare-const</span> <span class="n">w</span> <span class="n">U</span>) 
+<span class="linenos">11</span>
+<span class="linenos">12</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">x</span> (<span class="o">ite</span> <span class="n">b</span> <span class="n">y</span> <span class="n">z</span>)))
+<span class="linenos">13</span>(<span class="k">assert</span> (<span class="o">or</span> (<span class="o">=</span> <span class="n">w</span> <span class="n">y</span>) (<span class="o">=</span> <span class="n">w</span> <span class="n">z</span>)))
+<span class="linenos">14</span>(<span class="k">assert</span> (<span class="o">distinct</span> <span class="n">x</span> <span class="n">w</span>))
+<span class="linenos">15</span>  
+<span class="linenos">16</span>(<span class="k">check-sat</span>)
+<span class="linenos">17</span>(<span class="k">get-model</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/xyzwite.py">examples/xyzwite.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span><span class="n">U</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">b</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">BoolSort</span><span class="p">())</span>
+<span class="linenos"> 4</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Consts</span><span class="p">(</span><span class="s2">&quot;x y z w&quot;</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_UF&#39;</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="p">(</span><span class="n">If</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)))</span>
+<span class="linenos"> 8</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Or</span><span class="p">((</span><span class="n">w</span> <span class="o">==</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">z</span><span class="p">)))</span>
+<span class="linenos"> 9</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">w</span><span class="p">)</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span><span class="p">:</span>
+<span class="linenos">12</span>  <span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
+<span class="linenos">13</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">m</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div></div>
+<p>The Python output when using cvc5 is as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="p">:</span> <span class="kc">True</span>
+<span class="n">w</span> <span class="p">:</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_0</span> <span class="n">U</span><span class="p">)</span>
+<span class="n">x</span> <span class="p">:</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_1</span> <span class="n">U</span><span class="p">)</span>
+<span class="n">y</span> <span class="p">:</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_1</span> <span class="n">U</span><span class="p">)</span>
+<span class="n">z</span> <span class="p">:</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_0</span> <span class="n">U</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The result tells us that it does <em>not</em> follow that <span class="math notranslate nohighlight">\(x=w\)</span>.  The model
+gives us a <em>counterexample</em> to that claim.  Because the sort <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">U</span></code> is
+uninterpreted, the model returned by cvc5 must choose an interpretation for
+it.  Here, cvc5 tells us that it is interpreting <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">U</span></code> as a set with two
+elements, named <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">@U_0</span></code> and <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">@U_1</span></code>.  The model then specifies that
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code> and <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">y</span></code> have one value and <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">z</span></code> and <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">w</span></code> have the other,
+so <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code> is not equal to <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">w</span></code>.</p>
+<blockquote>
+<div><p><span class="target" id="exercise-3">Exercise 3</span>. Modify <a class="reference internal" href="#example-4">Example 4</a> to make it satisfiable and <a class="reference internal" href="#example-5">Example 5</a> to make it unsatisfiable.</p>
+<p><a class="reference internal" href="solutions.html#solution-to-exercise-3"><span class="std std-ref">Solution to Exercise 3</span></a></p>
+</div></blockquote>
+</section>
+<section id="arithmetic">
+<span id="arith"></span><h2>Arithmetic<a class="headerlink" href="#arithmetic" title="Link to this heading"></a></h2>
+<p>Though there are many tools available for arithmetic reasoning, SMT solvers are
+unique in their ability to reason efficiently about arbitrary Boolean
+combinations of arithmetic constraints, as well as to combine arithmetic
+reasoning with reasoning about other theories.  It is important to note that
+SMT solvers reason <em>precisely</em> about both integer and real arithmetic.  That
+is, they use arbitrary-precision arithmetic as opposed to machine integer or
+floating-point approximations.  This means that SMT solvers are not susceptible
+to the numerical errors that can arise, for instance, when using floating-point
+arithmetic to approximate real arithmetic.  It also means that for problems
+whose complexity lies mainly in the arithmetic reasoning, as opposed to Boolean
+reasoning, SMT solvers are typically slower than tools that use floating-point
+approximations.  The underlying algorithms for arithmetic reasoning in SMT
+solvers are based on standard techniques that have been adapted to the SMT
+context, such as the Simplex algorithm <a class="reference internal" href="references.html#r20" id="id2"><span>[R20]</span></a> and Cylindrical Algebraic
+Decomposition <a class="reference internal" href="references.html#r2" id="id3"><span>[R2]</span></a>.</p>
+<p>There are a large number of logics to choose from within the arithmetic
+umbrella, with reasoning over reals generally more efficient than reasoning
+over integers, and reasoning over less expressive formulas generally more
+efficient than reasoning over more expressive ones.  We briefly discuss the
+various logics here.</p>
+<section id="difference-logic">
+<h3>Difference Logic<a class="headerlink" href="#difference-logic" title="Link to this heading"></a></h3>
+<p>In <em>difference logic</em>, every arithmetic constraint must be of the form
+<span class="math notranslate nohighlight">\(x - y \bowtie c\)</span> or <span class="math notranslate nohighlight">\(x \bowtie c\)</span>, where <span class="math notranslate nohighlight">\(\bowtie\ \in\{=,
+&lt;, &gt;, \le, \ge\}\)</span>, and <span class="math notranslate nohighlight">\(c\)</span> is a numeric theory constant.  If <span class="math notranslate nohighlight">\(x\)</span>
+and <span class="math notranslate nohighlight">\(y\)</span> range over integers, we call it <em>integer difference logic</em>, and
+if they range over reals, we call it <em>real difference logic</em>.  Efficient
+algorithms exist for both <a class="reference internal" href="references.html#r17" id="id4"><span>[R17]</span></a>, <a class="reference internal" href="references.html#r36" id="id5"><span>[R36]</span></a>.  The names of these logics are
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_IDL</span></code> and <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_RDL</span></code>, respectively.  One application for difference logic is
+<em>job shop scheduling</em> <a class="reference internal" href="references.html#r41" id="id6"><span>[R41]</span></a>.</p>
+<blockquote>
+<div><p><span class="target" id="example-6">Example 6</span>. Suppose we have 3 jobs to complete on 2 machines.  Job 1
+requires machine 1 for 10 minutes and then machine 2 for 5 minutes.  Job 2
+requires machine 2 for 20 minutes and then machine 1 for 5 minutes.  And Job
+3 requires machine 1 for 5 minutes and then machine 2 for 5 minutes.  Can all
+jobs be completed in 30 minutes?</p>
+</div></blockquote>
+<p>To solve the problem, we create integer variables for the start times of each
+task within each job.  We assert that the start times are non-negative, each
+task within each job doesn’t start until the previous task finishes, and tasks
+on each machine don’t overlap.  Finally, we check that each task finishes on
+time.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/diff.smt2">examples/diff.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_IDL</span>)
+<span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>(<span class="k">declare-const</span> <span class="n">j11</span> <span class="na">Int</span>)
+<span class="linenos"> 5</span>(<span class="k">declare-const</span> <span class="n">j12</span> <span class="na">Int</span>) 
+<span class="linenos"> 6</span>(<span class="k">declare-const</span> <span class="n">j21</span> <span class="na">Int</span>)
+<span class="linenos"> 7</span>(<span class="k">declare-const</span> <span class="n">j22</span> <span class="na">Int</span>)
+<span class="linenos"> 8</span>(<span class="k">declare-const</span> <span class="n">j31</span> <span class="na">Int</span>)
+<span class="linenos"> 9</span>(<span class="k">declare-const</span> <span class="n">j32</span> <span class="na">Int</span>)
+<span class="linenos">10</span>
+<span class="linenos">11</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">&gt;=</span> <span class="n">j11</span> <span class="m">0</span>) (<span class="o">&gt;=</span> <span class="n">j12</span> <span class="m">0</span>) (<span class="o">&gt;=</span> <span class="n">j21</span> <span class="m">0</span>) (<span class="o">&gt;=</span> <span class="n">j22</span> <span class="m">0</span>) (<span class="o">&gt;=</span> <span class="n">j31</span> <span class="m">0</span>) (<span class="o">&gt;=</span> <span class="n">j32</span> <span class="m">0</span>)))
+<span class="linenos">12</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j12</span> <span class="n">j11</span>) <span class="m">10</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j22</span> <span class="n">j21</span>) <span class="m">20</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j32</span> <span class="n">j31</span>) <span class="m">5</span>)))
+<span class="linenos">13</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j22</span> <span class="n">j11</span>) <span class="m">10</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j11</span> <span class="n">j22</span>) <span class="m">5</span>))
+<span class="linenos">14</span>             (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j31</span> <span class="n">j11</span>) <span class="m">10</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j11</span> <span class="n">j31</span>) <span class="m">5</span>))
+<span class="linenos">15</span>             (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j31</span> <span class="n">j22</span>) <span class="m">5</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j22</span> <span class="n">j31</span>) <span class="m">5</span>))))
+<span class="linenos">16</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j21</span> <span class="n">j12</span>) <span class="m">5</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j12</span> <span class="n">j21</span>) <span class="m">5</span>))
+<span class="linenos">17</span>             (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j32</span> <span class="n">j12</span>) <span class="m">5</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j12</span> <span class="n">j32</span>) <span class="m">5</span>))
+<span class="linenos">18</span>             (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j32</span> <span class="n">j21</span>) <span class="m">5</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j21</span> <span class="n">j32</span>) <span class="m">5</span>))))
+<span class="linenos">19</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">&lt;=</span> <span class="n">j12</span> <span class="m">20</span>) (<span class="o">&lt;=</span> <span class="n">j22</span> <span class="m">20</span>) (<span class="o">&lt;=</span> <span class="n">j32</span> <span class="m">20</span>)))
+<span class="linenos">20</span>  
+<span class="linenos">21</span>(<span class="k">check-sat</span>)
+<span class="linenos">22</span>(<span class="k">get-model</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/diff.py">examples/diff.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">j11</span><span class="p">,</span><span class="n">j12</span><span class="p">,</span><span class="n">j21</span><span class="p">,</span><span class="n">j22</span><span class="p">,</span><span class="n">j31</span><span class="p">,</span><span class="n">j32</span> <span class="o">=</span> <span class="n">Ints</span><span class="p">(</span><span class="s2">&quot;j11 j12 j21 j22 j31 j32&quot;</span><span class="p">)</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_IDL&#39;</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">([</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="n">j11</span><span class="p">,</span> <span class="n">j12</span><span class="p">,</span> <span class="n">j21</span><span class="p">,</span> <span class="n">j22</span><span class="p">,</span> <span class="n">j31</span><span class="p">,</span> <span class="n">j32</span><span class="p">]]))</span>
+<span class="linenos"> 7</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">j12</span> <span class="o">-</span> <span class="n">j11</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">j22</span> <span class="o">-</span> <span class="n">j21</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">j32</span> <span class="o">-</span> <span class="n">j31</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">))</span>
+<span class="linenos"> 8</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Or</span><span class="p">(</span><span class="n">j22</span> <span class="o">-</span> <span class="n">j11</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">j11</span> <span class="o">-</span> <span class="n">j22</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">),</span> 
+<span class="linenos"> 9</span>          <span class="n">Or</span><span class="p">(</span><span class="n">j31</span> <span class="o">-</span> <span class="n">j11</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">j11</span> <span class="o">-</span> <span class="n">j31</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">),</span> 
+<span class="linenos">10</span>          <span class="n">Or</span><span class="p">(</span><span class="n">j31</span> <span class="o">-</span> <span class="n">j22</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j22</span> <span class="o">-</span> <span class="n">j31</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)))</span>
+<span class="linenos">11</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Or</span><span class="p">(</span><span class="n">j21</span> <span class="o">-</span> <span class="n">j12</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j12</span> <span class="o">-</span> <span class="n">j21</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">),</span> 
+<span class="linenos">12</span>          <span class="n">Or</span><span class="p">(</span><span class="n">j32</span> <span class="o">-</span> <span class="n">j12</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j12</span> <span class="o">-</span> <span class="n">j32</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">),</span> 
+<span class="linenos">13</span>          <span class="n">Or</span><span class="p">(</span><span class="n">j32</span> <span class="o">-</span> <span class="n">j21</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j21</span> <span class="o">-</span> <span class="n">j32</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)))</span>
+<span class="linenos">14</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">j12</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">j22</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">j32</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">))</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span> <span class="k">else</span> <span class="s2">&quot;unsat&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<blockquote>
+<div><p><span class="target" id="exercise-4">Exercise 4</span>. What is the minimum amount of time that it will take to
+complete all of the jobs in <a class="reference internal" href="#example-6">Example 6</a>?</p>
+<p><a class="reference internal" href="solutions.html#solution-to-exercise-4"><span class="std std-ref">Solution to Exercise 4</span></a></p>
+</div></blockquote>
+</section>
+<section id="linear-arithmetic">
+<h3>Linear Arithmetic<a class="headerlink" href="#linear-arithmetic" title="Link to this heading"></a></h3>
+<p>The logic of linear arithmetic allows arithmetic constraints to have any form
+that is equivalent to <span class="math notranslate nohighlight">\(\sum c_i x_i + b \bowtie 0\)</span>, where <span class="math notranslate nohighlight">\(b,c_i\)</span>
+are numeric theory constants and <span class="math notranslate nohighlight">\(\bowtie\ \in\{=,&lt;,&gt;,\le,\ge\}\)</span>.  As
+before, there are both integer and real variants, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_LIA</span></code> and
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_LRA</span></code>, respectively.  One can also mix the two with <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_LIRA</span></code>.  Note
+that, according to the SMT-LIB standard, when using <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_LIRA</span></code>, integers and
+reals should not be mixed in the same linear sum, but most solvers (including
+cvc5 and z3) are more permissive and do allow mixed terms.
+<a class="reference internal" href="overview.html#example-1"><span class="std std-ref">Example 1</span></a> is a good example of a simple <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_LIA</span></code> problem.</p>
+<blockquote>
+<div><p><span class="target" id="exercise-5">Exercise 5</span>. Repeat <a class="reference internal" href="overview.html#exercise-1"><span class="std std-ref">Exercise 1</span></a>, but change the logic to
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_LRA</span></code>, change the types of the variables from <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="na">Int</span></code> to <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="na">Real</span></code>,
+and append <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">.0</span></code> to each numeric constant.  Now, what output does the
+solver give?</p>
+<p><a class="reference internal" href="solutions.html#solution-to-exercise-5"><span class="std std-ref">Solution to Exercise 5</span></a></p>
+</div></blockquote>
+</section>
+<section id="nonlinear-arithmetic">
+<h3>Nonlinear arithmetic<a class="headerlink" href="#nonlinear-arithmetic" title="Link to this heading"></a></h3>
+<p>Moving up the expressiveness hierarchy, we next have logics for quantifier-free
+<em>nonlinear arithmetic</em>.  In these logics, arbitrary polynomials are allowed in
+constraints.  The logic <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_NRA</span></code> is for nonlinear arithmetic over the
+reals, which is decidable but with doubly exponential
+complexity <a class="reference internal" href="references.html#r2" id="id7"><span>[R2]</span></a>.  On the other hand, the same
+logic over integers, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_NIA</span></code>, is undecidable.  cvc5 implements a decision
+procedure for <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_NRA</span></code> based on a combination of heuristic pruning and
+cylindrical algebraic coverings <a class="reference internal" href="references.html#r29" id="id8"><span>[R29]</span></a>.  cvc5 and
+other tools implement incomplete heuristic procedures for <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_NIA</span></code>.</p>
+<blockquote>
+<div><p><span class="target" id="example-7">Example 7</span>. Find a solution for <span class="math notranslate nohighlight">\(x^2y + yz + 2xyz + 4xy + 8xz + 16 = 0\)</span>.</p>
+</div></blockquote>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/qfnra.smt2">examples/qfnra.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_NRA</span>)
+<span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>(<span class="k">declare-const</span> <span class="n">x</span> <span class="na">Real</span>)
+<span class="linenos"> 5</span>(<span class="k">declare-const</span> <span class="n">y</span> <span class="na">Real</span>) 
+<span class="linenos"> 6</span>(<span class="k">declare-const</span> <span class="n">z</span> <span class="na">Real</span>)
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>(<span class="k">assert</span> (<span class="o">=</span> (<span class="o">+</span> (<span class="o">*</span> <span class="n">x</span> <span class="n">x</span> <span class="n">y</span>) (<span class="o">*</span> <span class="n">y</span> <span class="n">z</span>) (<span class="o">*</span> <span class="m">2</span><span class="n">.0</span> <span class="n">x</span> <span class="n">y</span> <span class="n">z</span>) (<span class="o">*</span> <span class="m">4</span><span class="n">.0</span> <span class="n">x</span> <span class="n">y</span>) (<span class="o">*</span> <span class="m">8</span><span class="n">.0</span> <span class="n">x</span> <span class="n">z</span>) <span class="m">16</span><span class="n">.0</span>) <span class="m">0</span><span class="n">.0</span>))
+<span class="linenos"> 9</span>(<span class="k">check-sat</span>)
+<span class="linenos">10</span>(<span class="k">get-model</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/qfnra.py">examples/qfnra.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos">2</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Reals</span><span class="p">(</span><span class="s2">&quot;x y z&quot;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_NRA&#39;</span><span class="p">)</span>
+<span class="linenos">4</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">z</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">z</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="mi">8</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">z</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="linenos">5</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span> <span class="k">else</span> <span class="s2">&quot;unsat&quot;</span><span class="p">)</span>
+<span class="linenos">6</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="arrays">
+<span id="id9"></span><h2>Arrays<a class="headerlink" href="#arrays" title="Link to this heading"></a></h2>
+<p>Consider the following Python function which swaps two elements in a dictionary.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">):</span>
+  <span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+  <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+  <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+</pre></div>
+</div>
+<p>If <code class="code highlight python docutils literal highlight-python"><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span></code> happen to be equal, the dictionary
+<code class="code highlight python docutils literal highlight-python"><span class="n">a</span></code> is unchanged by the function.  To prove this fact, we could try
+modeling dictionaries as uninterpreted functions.  However, asserting that two
+functions are equal is not allowed in first-order logic.  Alternatively, we
+could use a quantifier to assert that two functions return the same output when
+given the same input, for any input.  However, we would like to avoid
+quantifiers when possible, as their use puts us in an undecidable logic.</p>
+<p>Fortunately, the SMT-LIB standard includes a theory of arrays <a class="reference internal" href="references.html#r30" id="id10"><span>[R30]</span></a>, which can
+help in this situation.  The theory is perhaps more accurately viewed as a
+theory of mutable maps and is parameterized by two sorts, one for the index
+(corresponding to the key type of the dictionary) and one for the elements
+(values in the dictionary).  For example, the SMT-LIB sort <code class="code highlight smt smtlib docutils literal highlight-smtlib">(<span class="na">Array</span> <span class="na">Int</span>
+<span class="na">Real</span>)</code> represents arrays indexed by integers and containing reals.  Note that
+SMT arrays are always total, in the sense that they have an element for every
+value in the index sort.  In particular, an array indexed by <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="na">Int</span></code> is
+conceptually infinite.</p>
+<p>The theory has two operators: <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">select</span></code>, which takes an array and an index
+and returns the element at that index, and <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">store</span></code>, which takes an array
+<span class="math notranslate nohighlight">\(a\)</span>, an index <span class="math notranslate nohighlight">\(i\)</span>, and an element <span class="math notranslate nohighlight">\(e\)</span>, and returns a new
+array that is the result of updating <span class="math notranslate nohighlight">\(a\)</span> with the element <span class="math notranslate nohighlight">\(e\)</span> at
+index <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>Typically, the theory of arrays is used in combination with other theories that
+make sense for the index and element sorts.  For example, the logic
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_ALIA</span></code> allows quantifier-free formulas with variables that range over
+integers and arrays of integers.  The simplest logic with arrays is
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_AX</span></code>, in which all the sorts must be uninterpreted.</p>
+<p>In the example below, we encode the above problem using the array theory.</p>
+<blockquote>
+<div><p><span class="target" id="example-8">Example 8</span>.  For the Python program above, show that, for arbitrary index
+and element sorts, if <code class="code highlight python docutils literal highlight-python"><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span></code> are equal, then so
+are <code class="code highlight python docutils literal highlight-python"><span class="n">a</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span></code>.</p>
+</div></blockquote>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/arrays.smt2">examples/arrays.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_AX</span>)
+<span class="linenos"> 2</span>(<span class="k">declare-sort</span> <span class="n">I</span> <span class="m">0</span>)
+<span class="linenos"> 3</span>(<span class="k">declare-sort</span> <span class="n">E</span> <span class="m">0</span>)
+<span class="linenos"> 4</span>(<span class="k">declare-fun</span> <span class="n">i</span> () <span class="n">I</span>)
+<span class="linenos"> 5</span>(<span class="k">declare-fun</span> <span class="n">j</span> () <span class="n">I</span>)
+<span class="linenos"> 6</span>(<span class="k">declare-fun</span> <span class="n">tmp</span> () <span class="n">E</span>)
+<span class="linenos"> 7</span>(<span class="k">declare-fun</span> <span class="n">a_in</span> () (<span class="na">Array</span> <span class="n">I</span> <span class="n">E</span>))
+<span class="linenos"> 8</span>(<span class="k">declare-fun</span> <span class="n">a_out</span> () (<span class="na">Array</span> <span class="n">I</span> <span class="n">E</span>))
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">tmp</span> (<span class="o">select</span> <span class="n">a_in</span> <span class="n">i</span>)))
+<span class="linenos">11</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">a_out</span> (<span class="o">store</span> (<span class="o">store</span> <span class="n">a_in</span> <span class="n">i</span> (<span class="o">select</span> <span class="n">a_in</span> <span class="n">j</span>)) <span class="n">j</span> <span class="n">tmp</span>)))
+<span class="linenos">12</span>(<span class="k">assert</span> (<span class="o">=</span> (<span class="o">select</span> <span class="n">a_in</span> <span class="n">i</span>) (<span class="o">select</span> <span class="n">a_in</span> <span class="n">j</span>)))
+<span class="linenos">13</span>(<span class="k">assert</span> (<span class="o">distinct</span> <span class="n">a_in</span> <span class="n">a_out</span>))
+<span class="linenos">14</span>
+<span class="linenos">15</span>(<span class="k">check-sat</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/arrays.py">examples/arrays.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span><span class="n">I</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">E</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">Consts</span><span class="p">(</span><span class="s2">&quot;i j&quot;</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&quot;tmp&quot;</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">array</span> <span class="o">=</span> <span class="n">ArraySort</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">a_in</span><span class="p">,</span> <span class="n">a_out</span> <span class="o">=</span> <span class="n">Consts</span><span class="p">(</span><span class="s2">&quot;a_in, a_out&quot;</span><span class="p">,</span> <span class="n">array</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_AX&#39;</span><span class="p">)</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tmp</span> <span class="o">==</span> <span class="p">(</span><span class="n">Select</span><span class="p">(</span><span class="n">a_in</span><span class="p">,</span> <span class="n">i</span><span class="p">)))</span>
+<span class="linenos">12</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a_out</span> <span class="o">==</span> <span class="p">(</span><span class="n">Store</span><span class="p">(</span><span class="n">Store</span><span class="p">(</span><span class="n">a_in</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">Select</span><span class="p">(</span><span class="n">a_in</span><span class="p">,</span> <span class="n">j</span><span class="p">)),</span> 
+<span class="linenos">13</span>    <span class="n">j</span><span class="p">,</span> <span class="n">tmp</span><span class="p">)))</span>
+<span class="linenos">14</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">Select</span><span class="p">(</span><span class="n">a_in</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span> <span class="o">==</span> <span class="p">(</span><span class="n">Select</span><span class="p">(</span><span class="n">a_in</span><span class="p">,</span> <span class="n">j</span><span class="p">)))</span>
+<span class="linenos">15</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a_in</span> <span class="o">!=</span> <span class="n">a_out</span><span class="p">)</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">())</span>
+<span class="linenos">18</span>
+</pre></div>
+</div>
+</div></div>
+<blockquote>
+<div><p><span class="target" id="exercise-6">Exercise 6</span>.  Another property of <code class="code highlight python docutils literal highlight-python"><span class="n">swap</span></code> that we can prove is that
+if <code class="code highlight python docutils literal highlight-python"><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span></code> are distinct, then <code class="code highlight python docutils literal highlight-python"><span class="n">swap</span></code> would
+change <code class="code highlight python docutils literal highlight-python"><span class="n">a</span></code>.  Modify the solution for <a class="reference internal" href="#example-8">Example 8</a> to prove this
+property.</p>
+<p><a class="reference internal" href="solutions.html#solution-to-exercise-6"><span class="std std-ref">Solution to Exercise 6</span></a></p>
+</div></blockquote>
+</section>
+<section id="bit-vectors">
+<span id="bitvectors"></span><h2>Bit-vectors<a class="headerlink" href="#bit-vectors" title="Link to this heading"></a></h2>
+<p>Consider a simple implementation (written in a C-like syntax) for computing the
+absolute value of a 32-bit integer: <span class="math notranslate nohighlight">\(abs(x) := x &lt; 0 \;?\; {-x} :
+x\)</span>.  Instead of branching on <span class="math notranslate nohighlight">\(x &lt; 0\)</span>, it is possible to compute the
+absolute value of <span class="math notranslate nohighlight">\(x\)</span> with three or four branch-free operations <a class="reference internal" href="references.html#r28" id="id11"><span>[R28]</span></a> as
+follows.  Let <span class="math notranslate nohighlight">\(\mathit{xrs}\)</span> be an abbreviation for the arithmetic right shift
+(<span class="math notranslate nohighlight">\(\mathop{&gt;\kern-.3em&gt;}_s\)</span>) of <span class="math notranslate nohighlight">\(x\)</span> by <span class="math notranslate nohighlight">\(31\)</span> bits.  Note that the result of
+this operation is either <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(-1\)</span> (all bits set to 1), depending
+on the most significant bit (MSB) of <span class="math notranslate nohighlight">\(x\)</span>: if the MSB of <span class="math notranslate nohighlight">\(x\)</span> is 0,
+<span class="math notranslate nohighlight">\(\mathit{xrs}\)</span> is 0; otherwise, <span class="math notranslate nohighlight">\(\mathit{xrs}\)</span> is -1.  Three branchless alternatives for
+computing the absolute value of <span class="math notranslate nohighlight">\(x\)</span> are as follows.</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\mathit{abs}_1(x) := (x \oplus \mathit{xrs}) - \mathit{xrs}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathit{abs}_2(x) := (x + \mathit{xrs}) \oplus \mathit{xrs}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathit{abs}_3(x) := x - ((x \mathop{&lt;\kern-.3em&lt;} 1) \mathrel{\&amp;} \mathit{xrs})\)</span></p></li>
+</ol>
+<p>These branchless versions of <span class="math notranslate nohighlight">\(\mathit{abs}(x)\)</span> make use of the 32-bit versions of the bit-wise operations
+exclusive or (<span class="math notranslate nohighlight">\(\oplus\)</span>), bit-wise and (<span class="math notranslate nohighlight">\(\mathrel{\&amp;}\)</span>), logical shift left
+(<span class="math notranslate nohighlight">\(\mathop{&lt;\kern-.3em&lt;}\)</span>), and arithmetic shift right (<span class="math notranslate nohighlight">\(\mathop{&gt;\kern-.3em&gt;}_s\)</span>).</p>
+<p>We can use an SMT solver to prove whether the branchless versions are
+equivalent to the original implementation.  Note that integers, as discussed in
+<a class="reference internal" href="#arith"><span class="std std-ref">Arithmetic</span></a>, are not a good fit, as it is difficult to model the bitwise
+operators using the arithmetic operators.  However, the SMT-LIB standard
+includes a theory of fixed-size bit-vectors, which defines the bit-precise
+semantics of fixed-size machine integers.  The name for the quantifier-free
+logic containing just this theory is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_BV</span></code>.  Using this logic, we can
+easily check the equivalence of the absolute value computations.</p>
+<blockquote>
+<div><p><span class="target" id="example-9">Example 9</span>. Show that the first branchless alternative <span class="math notranslate nohighlight">\(\mathit{abs}_1\)</span> is
+equivalent to <span class="math notranslate nohighlight">\(\mathit{abs}\)</span>.</p>
+</div></blockquote>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/branchless_abs.smt2">examples/branchless_abs.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_BV</span>)
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>(<span class="k">declare-const</span> <span class="n">x</span> (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>))
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c">; orignal abs(x) version</span>
+<span class="linenos"> 6</span>(<span class="k">define-fun</span> <span class="o">abs</span> ((<span class="n">x</span> (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>))) (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>) (<span class="o">ite</span> (<span class="o">bvslt</span> <span class="n">x</span> (<span class="na">_</span> <span class="m">bv0</span> <span class="m">32</span>)) (<span class="o">bvneg</span> <span class="n">x</span>) <span class="n">x</span>))
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c">; encode branchless abs(x)</span>
+<span class="linenos"> 9</span>(<span class="k">define-fun</span> <span class="n">xrs</span> () (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>) (<span class="o">bvashr</span> <span class="n">x</span> (<span class="na">_</span> <span class="m">bv31</span> <span class="m">32</span>)))
+<span class="linenos">10</span>(<span class="k">define-fun</span> <span class="n">abs1</span> ((<span class="n">x</span> (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>))) (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>) (<span class="o">bvsub</span> (<span class="o">bvxor</span> <span class="n">x</span> <span class="n">xrs</span>) <span class="n">xrs</span>))
+<span class="linenos">11</span>
+<span class="linenos">12</span>(<span class="k">assert</span> (<span class="o">distinct</span> (<span class="o">abs</span> <span class="n">x</span>) (<span class="n">abs1</span> <span class="n">x</span>)))  <span class="c">; check if abs() and abs1() are equivalent</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span>(<span class="k">check-sat</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/branchless_abs.py">examples/branchless_abs.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos">2</span><span class="n">x</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">BitVecSort</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
+<span class="linenos">3</span><span class="n">xrs</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span>
+<span class="linenos">4</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_BV&#39;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">If</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="n">x</span> <span class="o">^</span> <span class="n">xrs</span><span class="p">)</span> <span class="o">-</span> <span class="n">xrs</span><span class="p">)</span>      <span class="c1"># prove abs() == abs1()</span>
+<span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span> <span class="k">else</span> <span class="s2">&quot;unsat&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<blockquote>
+<div><p><span class="target" id="exercise-7">Exercise 7</span>. Show that the second and third branchless alternatives
+<span class="math notranslate nohighlight">\(\mathit{abs}_2\)</span> and <span class="math notranslate nohighlight">\(\mathit{abs}_3\)</span> are equivalent to <span class="math notranslate nohighlight">\(\mathit{abs}\)</span>.</p>
+<p><a class="reference internal" href="solutions.html#solution-to-exercise-7"><span class="std std-ref">Solution to Exercise 7</span></a></p>
+</div></blockquote>
+</section>
+<section id="datatypes">
+<span id="id12"></span><h2>Datatypes<a class="headerlink" href="#datatypes" title="Link to this heading"></a></h2>
+<p>Built into the SMT-LIB language is a mechanism for defining <em>(algebraic)
+datatypes</em>.  Datatypes are highly useful in applications for reasoning
+about data structures like records, lists, and trees <a class="reference internal" href="references.html#r7" id="id13"><span>[R7]</span></a>.  The
+quantifier-free logic name is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_DT</span></code>.</p>
+<blockquote>
+<div><p><span class="target" id="example-10">Example 10</span>.  Model a binary tree containing integer data.  Find trees
+<span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> such that <span class="math notranslate nohighlight">\((i)\)</span> the left subtree of <span class="math notranslate nohighlight">\(x\)</span>
+is the same as the right subtree of <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\((ii)\)</span> the data
+stored in <span class="math notranslate nohighlight">\(x\)</span> is greater than <span class="math notranslate nohighlight">\(100\)</span>.</p>
+</div></blockquote>
+<p>Note that we need both datatypes and integer arithmetic for this example.
+cvc5 supports the logic name <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_DTLIA</span></code>, but z3 does not.
+Fortunately, we can always use <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">ALL</span></code> for the logic if a
+more specific logic is not available.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-6-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-6-6-0" name="6-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-6-6-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-1" name="6-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-6-6-0" class="sphinx-tabs-panel" id="panel-6-6-0" name="6-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/datatypes.smt2">examples/datatypes.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_DTLIA</span>)
+<span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>(<span class="k">declare-datatypes</span> ((<span class="n">Tree</span> <span class="m">0</span>)) (((<span class="n">node</span> (<span class="n">data</span> <span class="na">Int</span>) (<span class="n">left</span> <span class="n">Tree</span>) (<span class="n">right</span> <span class="n">Tree</span>)) (<span class="n">nil</span>))))
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>(<span class="k">declare-fun</span> <span class="n">x</span> () <span class="n">Tree</span>)
+<span class="linenos"> 7</span>(<span class="k">declare-fun</span> <span class="n">y</span> () <span class="n">Tree</span>)
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>(<span class="k">assert</span> ((<span class="na">_</span> <span class="n">is</span> <span class="n">node</span>) <span class="n">x</span>))
+<span class="linenos">10</span>(<span class="k">assert</span> ((<span class="na">_</span> <span class="n">is</span> <span class="n">node</span>) <span class="n">y</span>))
+<span class="linenos">11</span>
+<span class="linenos">12</span>(<span class="k">assert</span> (<span class="o">=</span> (<span class="n">left</span> <span class="n">x</span>) (<span class="n">right</span> <span class="n">y</span>)))
+<span class="linenos">13</span>(<span class="k">assert</span> (<span class="o">&gt;</span> (<span class="n">data</span> <span class="n">x</span>) <span class="m">100</span>))
+<span class="linenos">14</span>
+<span class="linenos">15</span>(<span class="k">check-sat</span>)
+<span class="linenos">16</span>(<span class="k">get-model</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-6-1" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-1" name="6-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/datatypes.py">examples/datatypes.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span><span class="n">decl</span> <span class="o">=</span> <span class="n">Datatype</span><span class="p">(</span><span class="s2">&quot;tree&quot;</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">decl</span><span class="o">.</span><span class="n">declare</span><span class="p">(</span><span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">IntSort</span><span class="p">()),</span> <span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">decl</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">decl</span><span class="p">))</span>
+<span class="linenos"> 4</span><span class="n">decl</span><span class="o">.</span><span class="n">declare</span><span class="p">(</span><span class="s2">&quot;nil&quot;</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">Tree</span> <span class="o">=</span> <span class="n">decl</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Consts</span><span class="p">(</span><span class="s2">&quot;x y&quot;</span><span class="p">,</span> <span class="n">Tree</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;ALL&#39;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Tree</span><span class="o">.</span><span class="n">is_node</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="linenos">11</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Tree</span><span class="o">.</span><span class="n">is_node</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="linenos">12</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Tree</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="n">Tree</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="linenos">13</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Tree</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span> <span class="k">else</span> <span class="s2">&quot;unsat&quot;</span><span class="p">)</span>
+<span class="linenos">16</span>    
+</pre></div>
+</div>
+</div></div>
+<p>The Python output from cvc5 is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="n">x</span> <span class="o">=</span> <span class="n">node</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">nil</span><span class="p">,</span> <span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nil</span><span class="p">,</span> <span class="n">nil</span><span class="p">)),</span> <span class="n">y</span> <span class="o">=</span> <span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nil</span><span class="p">,</span> <span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nil</span><span class="p">,</span> <span class="n">nil</span><span class="p">)),</span> <span class="n">nil</span><span class="p">)]</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><span class="target" id="exercise-8">Exercise 8</span>.  Show that a tree cannot be equal to its own left subtree.</p>
+<p><a class="reference internal" href="solutions.html#solution-to-exercise-8"><span class="std std-ref">Solution to Exercise 8</span></a></p>
+</div></blockquote>
+</section>
+<section id="floating-point-arithmetic">
+<span id="floating-point"></span><h2>Floating-Point Arithmetic<a class="headerlink" href="#floating-point-arithmetic" title="Link to this heading"></a></h2>
+<p>The most common representation of real numbers in hardware and software is
+the binary floating-point number representation system as defined by the
+IEEE Standard 754-2019 for Floating-Point Arithmetic <a class="reference internal" href="references.html#r27" id="id14"><span>[R27]</span></a>.
+Floating-point numbers are encoded as a triple of bit-vectors: the fractional
+part (the significand), the exponent  (a power of 10 by which the
+significand is multiplied), and a sign bit.
+This representation is of limited range and precision, and thus, the domain of
+floating-point numbers is finite.  It also includes special values for
+representing errors as not-a-number and for plus and minus infinity.
+In SMT-LIB, the IEEE-754 standard is formalized as the theory of floating-point
+arithmetic <a class="reference internal" href="references.html#r11" id="id15"><span>[R11]</span></a>.  The quantifier-free logic name is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_FP</span></code>.</p>
+<blockquote>
+<div><p><span class="target" id="example-11">Example 11</span>. The SMT-LIB standard supports a <em>fused multiplication and
+addition</em> operator <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">fp.fma</span></code>.  Given three single precision
+floating-point numbers <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, and <span class="math notranslate nohighlight">\(c\)</span>, show that the
+floating-point fused multiplication and addition of <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, and
+<span class="math notranslate nohighlight">\(c\)</span> is different from first multiplying <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> and
+then adding <span class="math notranslate nohighlight">\(c\)</span>.</p>
+</div></blockquote>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-7-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-7-7-0" name="7-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-7-7-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-1" name="7-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-7-7-0" class="sphinx-tabs-panel" id="panel-7-7-0" name="7-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/fp.smt2">examples/fp.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_FP</span>)
+<span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
+<span class="linenos"> 3</span>(<span class="k">declare-const</span> <span class="n">a</span> <span class="na">Float32</span>)
+<span class="linenos"> 4</span>(<span class="k">declare-const</span> <span class="n">b</span> <span class="na">Float32</span>)
+<span class="linenos"> 5</span>(<span class="k">declare-const</span> <span class="n">c</span> <span class="na">Float32</span>)
+<span class="linenos"> 6</span>(<span class="k">declare-const</span> <span class="n">rm</span> <span class="na">RoundingMode</span>)
+<span class="linenos"> 7</span>(<span class="k">assert</span> (<span class="o">distinct</span> (<span class="o">fp.fma</span> <span class="n">rm</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span>) (<span class="o">fp.add</span> <span class="n">rm</span> (<span class="o">fp.mul</span> <span class="n">rm</span> <span class="n">a</span> <span class="n">b</span>) <span class="n">c</span>)))
+<span class="linenos"> 8</span>(<span class="k">check-sat</span>)
+<span class="linenos"> 9</span>(<span class="k">get-model</span>)
+<span class="linenos">10</span>(<span class="k">get-value</span> ((<span class="o">fp.fma</span> <span class="n">rm</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span>)))
+<span class="linenos">11</span>(<span class="k">get-value</span> ((<span class="o">fp.add</span> <span class="n">rm</span> (<span class="o">fp.mul</span> <span class="n">rm</span> <span class="n">a</span> <span class="n">b</span>) <span class="n">c</span>)))
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-7-1" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-1" name="7-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/fp.py">examples/fp.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">FPs</span><span class="p">(</span><span class="s2">&quot;a b c&quot;</span><span class="p">,</span> <span class="n">Float32</span><span class="p">())</span>
+<span class="linenos"> 4</span><span class="n">rm</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&quot;rm&quot;</span><span class="p">,</span> <span class="n">RNE</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">())</span>
+<span class="linenos"> 5</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_FP&#39;</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Distinct</span><span class="p">(</span><span class="n">fpFMA</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span> <span class="n">fpAdd</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span> <span class="n">fpMul</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span><span class="n">c</span><span class="p">)))</span>
+<span class="linenos"> 7</span><span class="n">result</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+<span class="linenos"> 8</span><span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
+<span class="linenos"> 9</span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;fpFMA(rm, a, b, c) = </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">fpFMA</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;fpAdd(rm, fpMul(rm, a, b),c) = </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">fpAdd</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span><span class="w"> </span><span class="n">fpMul</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">),</span><span class="n">c</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>The Python output from cvc5 is as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.3333333730697632</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">1</span><span class="p">),</span> <span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.9999998807907104</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">1</span><span class="p">),</span>
+ <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.9999998807907104</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">1</span><span class="p">),</span> <span class="n">rm</span> <span class="o">=</span> <span class="n">RTP</span><span class="p">()]</span>
+<span class="n">fpFMA</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.333333134651184</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fpAdd</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span> <span class="n">fpMul</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span><span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.3333330154418945</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><span class="target" id="exercise-9">Exercise 9</span>. Modify the solution to <a class="reference internal" href="#example-11">Example 11</a> to show that
+floating-point addition is not associative, i.e., <span class="math notranslate nohighlight">\(a + (b + c) \not=
+(a + b) + c\)</span>.</p>
+<p><a class="reference internal" href="solutions.html#solution-to-exercise-9"><span class="std std-ref">Solution to Exercise 9</span></a></p>
+</div></blockquote>
+</section>
+<section id="strings">
+<span id="id16"></span><h2>Strings<a class="headerlink" href="#strings" title="Link to this heading"></a></h2>
+<p>It is often necessary to reason about string data when reasoning about
+programs.  Reasoning about bit-vector representations of strings has the
+disadvantage that it requires fixing the string length up front.  Also, the
+theory of bit-vectors does not include many of the utility functions for
+strings that exist in string libraries in programming languages.  The SMT-LIB
+theory of strings provides support for variable-length strings and a large set
+of string operations.  The quantifier-free logic name is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_S</span></code>.  Typically,
+though, we use <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_SLIA</span></code> since we need arithmetic to reason about string
+lengths.</p>
+<blockquote>
+<div><p><span class="target" id="example-12">Example 12</span>. Given two strings, <code class="code highlight python docutils literal highlight-python"><span class="n">x1</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">x2</span></code>, each
+consisting of no more than two characters, is it possible to build the string
+<code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;abbaabb&quot;</span></code> using only 3 string concatenations (where each
+concatenation may use any previous result including <code class="code highlight python docutils literal highlight-python"><span class="n">x1</span></code> and
+<code class="code highlight python docutils literal highlight-python"><span class="n">x2</span></code>)?</p>
+</div></blockquote>
+<p>We can solve this problem by building a <em>circuit</em> of string concatenations
+and using nondeterministic choice to pick the inputs for each concatenation.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-8-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-8-8-0" name="8-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-8-8-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-8-8-1" name="8-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-8-8-0" class="sphinx-tabs-panel" id="panel-8-8-0" name="8-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/strings.smt2">examples/strings.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_SLIA</span>)
+<span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>(<span class="k">declare-const</span> <span class="n">p1</span> <span class="na">Bool</span>)
+<span class="linenos"> 5</span>(<span class="k">declare-const</span> <span class="n">p2</span> <span class="na">Bool</span>)
+<span class="linenos"> 6</span>(<span class="k">declare-const</span> <span class="n">p3</span> <span class="na">Bool</span>)
+<span class="linenos"> 7</span>(<span class="k">declare-const</span> <span class="n">p4</span> <span class="na">Bool</span>)
+<span class="linenos"> 8</span>(<span class="k">declare-const</span> <span class="n">p5</span> <span class="na">Bool</span>)
+<span class="linenos"> 9</span>(<span class="k">declare-const</span> <span class="n">p6</span> <span class="na">Bool</span>)
+<span class="linenos">10</span>(<span class="k">declare-const</span> <span class="n">p7</span> <span class="na">Bool</span>)
+<span class="linenos">11</span>(<span class="k">declare-const</span> <span class="n">p8</span> <span class="na">Bool</span>)
+<span class="linenos">12</span>(<span class="k">declare-const</span> <span class="n">p9</span> <span class="na">Bool</span>)
+<span class="linenos">13</span>(<span class="k">declare-const</span> <span class="n">p10</span> <span class="na">Bool</span>)
+<span class="linenos">14</span>(<span class="k">declare-const</span> <span class="n">p11</span> <span class="na">Bool</span>)
+<span class="linenos">15</span>(<span class="k">declare-const</span> <span class="n">p12</span> <span class="na">Bool</span>)
+<span class="linenos">16</span>
+<span class="linenos">17</span>(<span class="k">declare-const</span> <span class="n">x1</span> <span class="na">String</span>)
+<span class="linenos">18</span>(<span class="k">declare-const</span> <span class="n">x2</span> <span class="na">String</span>)
+<span class="linenos">19</span>(<span class="k">declare-const</span> <span class="n">x3</span> <span class="na">String</span>)
+<span class="linenos">20</span>(<span class="k">declare-const</span> <span class="n">x4</span> <span class="na">String</span>)
+<span class="linenos">21</span>(<span class="k">declare-const</span> <span class="n">x5</span> <span class="na">String</span>)
+<span class="linenos">22</span>
+<span class="linenos">23</span>(<span class="k">declare-const</span> <span class="n">i1</span> <span class="na">String</span>)
+<span class="linenos">24</span>(<span class="k">declare-const</span> <span class="n">i2</span> <span class="na">String</span>)
+<span class="linenos">25</span>(<span class="k">declare-const</span> <span class="n">i3</span> <span class="na">String</span>)
+<span class="linenos">26</span>(<span class="k">declare-const</span> <span class="n">i4</span> <span class="na">String</span>)
+<span class="linenos">27</span>(<span class="k">declare-const</span> <span class="n">i5</span> <span class="na">String</span>)
+<span class="linenos">28</span>(<span class="k">declare-const</span> <span class="n">i6</span> <span class="na">String</span>)
+<span class="linenos">29</span>
+<span class="linenos">30</span>(<span class="k">define-const</span> <span class="n">result</span> <span class="na">String</span> <span class="s">&quot;abbaabb&quot;</span>)
+<span class="linenos">31</span>
+<span class="linenos">32</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">&lt;=</span> (<span class="o">str.len</span> <span class="n">x1</span>) <span class="m">2</span>) (<span class="o">&lt;=</span> (<span class="o">str.len</span> <span class="n">x2</span>) <span class="m">2</span>)))
+<span class="linenos">33</span>
+<span class="linenos">34</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">i1</span> (<span class="o">ite</span> <span class="n">p1</span> <span class="n">x1</span> <span class="n">x2</span>)))
+<span class="linenos">35</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">i2</span> (<span class="o">ite</span> <span class="n">p2</span> <span class="n">x1</span> <span class="n">x2</span>)))
+<span class="linenos">36</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">x3</span> (<span class="o">str.++</span> <span class="n">i1</span> <span class="n">i2</span>)))
+<span class="linenos">37</span>
+<span class="linenos">38</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">i3</span> (<span class="o">ite</span> <span class="n">p3</span> <span class="n">x1</span> (<span class="o">ite</span> <span class="n">p4</span> <span class="n">x2</span> <span class="n">x3</span>))))
+<span class="linenos">39</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">i4</span> (<span class="o">ite</span> <span class="n">p5</span> <span class="n">x1</span> (<span class="o">ite</span> <span class="n">p6</span> <span class="n">x2</span> <span class="n">x3</span>))))
+<span class="linenos">40</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">x4</span> (<span class="o">str.++</span> <span class="n">i3</span> <span class="n">i4</span>)))
+<span class="linenos">41</span>
+<span class="linenos">42</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">i5</span> (<span class="o">ite</span> <span class="n">p7</span> <span class="n">x1</span> (<span class="o">ite</span> <span class="n">p8</span> <span class="n">x2</span> (<span class="o">ite</span> <span class="n">p9</span> <span class="n">x3</span> <span class="n">x4</span>)))))
+<span class="linenos">43</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">i6</span> (<span class="o">ite</span> <span class="n">p10</span> <span class="n">x1</span> (<span class="o">ite</span> <span class="n">p11</span> <span class="n">x2</span> (<span class="o">ite</span> <span class="n">p12</span> <span class="n">x3</span> <span class="n">x4</span>)))))
+<span class="linenos">44</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">x5</span> (<span class="o">str.++</span> <span class="n">i5</span> <span class="n">i6</span>)))
+<span class="linenos">45</span>
+<span class="linenos">46</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">x5</span> <span class="n">result</span>))
+<span class="linenos">47</span>
+<span class="linenos">48</span>(<span class="k">check-sat</span>)
+<span class="linenos">49</span>(<span class="k">get-model</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-8-1" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-1" name="8-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/strings.py">examples/strings.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span><span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{},</span> <span class="p">{}</span>
+<span class="linenos"> 3</span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span> <span class="n">p</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">Bool</span><span class="p">(</span><span class="s2">&quot;p&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+<span class="linenos"> 4</span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">String</span><span class="p">(</span><span class="s2">&quot;x&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+<span class="linenos"> 5</span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">):</span> <span class="n">i</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">String</span><span class="p">(</span><span class="s2">&quot;i&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">result</span> <span class="o">=</span> <span class="n">StringVal</span><span class="p">(</span><span class="s2">&quot;abbaabb&quot;</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_SLIA&#39;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Length</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">Length</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">))</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">If</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="linenos">13</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">If</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="linenos">14</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">Concat</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">If</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">If</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">])))</span>
+<span class="linenos">17</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="n">If</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">If</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">])))</span>
+<span class="linenos">18</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="n">Concat</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="n">If</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">If</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">If</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">4</span><span class="p">]))))</span>
+<span class="linenos">21</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">==</span> <span class="n">If</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">If</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">If</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">4</span><span class="p">]))))</span>
+<span class="linenos">22</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="n">Concat</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="mi">6</span><span class="p">]))</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="n">result</span><span class="p">)</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span> <span class="k">else</span> <span class="s2">&quot;unsat&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<blockquote>
+<div><p><span class="target" id="exercise-10">Exercise 10</span>.  Use SMT to determine how many concatenations are needed to
+get <code class="code highlight python docutils literal highlight-python"><span class="s2">&quot;abbaabb&quot;</span></code> if <code class="code highlight python docutils literal highlight-python"><span class="n">x1</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">x2</span></code> are both restricted
+to have a length of 1.</p>
+<p><a class="reference internal" href="solutions.html#solution-to-exercise-10"><span class="std std-ref">Solution to Exercise 10</span></a></p>
+</div></blockquote>
+</section>
+<section id="quantifiers">
+<span id="id17"></span><h2>Quantifiers<a class="headerlink" href="#quantifiers" title="Link to this heading"></a></h2>
+<p>We saw an example of quantified formulas in <a class="reference internal" href="overview.html#example-3"><span class="std std-ref">Example 3</span></a>.
+Quantifiers can be enabled in SMT solvers by dropping <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF</span></code> from the logic name.
+However, enabling quantifiers typically increases the complexity of the
+decision problem significantly.  In fact, solving <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">UF</span></code> problems is equivalent
+to solving the decision problem for first-order logic, Hilbert’s original
+Entscheidungsproblem, which is undecidable.  And although <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">LIA</span></code>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">LRA</span></code>, and
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">NRA</span></code> are decidable, the decision procedures are expensive.  For these reasons,
+SMT solvers mostly handle quantifiers by attempting to find quantifier
+<em>instantiations</em> that, together with the other quantifier-free assertions, are
+unsatisfiable.  For problems that are expected to be unsatisfiable, this
+approach can be quite effective.  Moreover, by using different instantiation
+techniques and effort levels, a wide variety of problems can be solved.</p>
+<p>cvc5 supports several techniques for handling quantified formulas, which can
+vary based on the logic.  By default, cvc5 limits its effort so that it
+usually returns quickly with an answer of either <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unsat</span></code> or
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unknown</span></code>.  For logics that include uninterpreted functions, it uses a
+combination of E-matching <a class="reference internal" href="references.html#r31" id="id18"><span>[R31]</span></a> and conflict-based instantiation <a class="reference internal" href="references.html#r40" id="id19"><span>[R40]</span></a>.  In
+case the user wants to invest more effort, these techniques can be supplemented
+with techniques such as enumerative instantiation <a class="reference internal" href="references.html#r38" id="id20"><span>[R38]</span></a> (option
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">enum-inst</span></code>).  For logics that admit quantifier elimination (e.g.,
+quantified linear arithmetic or bit-vectors), it uses counterexample-guided
+quantifier instantiation <a class="reference internal" href="references.html#r34" id="id21"><span>[R34]</span></a>, <a class="reference internal" href="references.html#r39" id="id22"><span>[R39]</span></a>, which is a complete procedure for
+these logics.</p>
+<p>By default, cvc5 will generally not attempt to determine that an input with
+quantified formulas is satisfiable.  However, more advanced techniques can be
+used to answer <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">sat</span></code> in the presence of quantified formulas, including
+finite model finding <a class="reference internal" href="references.html#r37" id="id23"><span>[R37]</span></a> (option <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">finite-model-find</span></code>), model-based
+quantifier instantiation <a class="reference internal" href="references.html#r23" id="id24"><span>[R23]</span></a> (option <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">mbqi</span></code>), and syntax-guided
+quantifier instantiation <a class="reference internal" href="references.html#r35" id="id25"><span>[R35]</span></a> (option <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">sygus-inst</span></code>).</p>
+<p>In general, to set options that are not on by default, we can use the
+<code class="code highlight python docutils literal highlight-python"><span class="n">setOption</span></code> solver method in Python, as shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;UF&#39;</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">setOption</span><span class="p">(</span><span class="s1">&#39;enum-inst&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">setOption</span><span class="p">(</span><span class="s1">&#39;finite-model-find&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">setOption</span><span class="p">(</span><span class="s1">&#39;mbqi&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">setOption</span><span class="p">(</span><span class="s1">&#39;sygus-inst&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="non-standard-theories">
+<span id="non-standard"></span><h2>Non-standard Theories<a class="headerlink" href="#non-standard-theories" title="Link to this heading"></a></h2>
+<p>cvc5 and z3 support several theories that are not (yet) part of the
+SMT-LIB standard.  We discuss a few of them briefly here, focusing on those
+supported by cvc5.  More documentation about non-standard theories, including
+reference tables describing the supported operators can be found on the cvc5
+<a class="reference external" href="http://cvc5.github.io">website</a>.</p>
+<section id="sequences">
+<span id="id26"></span><h3>Sequences<a class="headerlink" href="#sequences" title="Link to this heading"></a></h3>
+<p>The theory of <em>sequences</em> brings together features of the theories of arrays
+and strings.  Similar to arrays, sequences are parameterized by the sort of
+their elements.  So we can declare a sequence of integers, a sequence of
+bit-vectors, and so on.  Like strings, sequences have a variable but finite
+length and can be concatenated together.  The sequence theory is enabled
+whenever the string theory is enabled (e.g., by using the logic name <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_S</span></code> or
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_SLIA</span></code>.  Note that z3 also supports a theory of sequences that is mostly
+(but not entirely) compatible with the cvc5 version.</p>
+<blockquote>
+<div><p><span class="target" id="example-13">Example 13</span>. Let <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code> be a sequence of integers.  Find a value for
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code> such that the first and last elements sum to 9, and if we
+concatenate <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code> with itself, then <span class="math notranslate nohighlight">\((3,4,5)\)</span> appears as a
+subsequence.</p>
+</div></blockquote>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-9-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-9-9-0" name="9-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-9-9-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-9-9-1" name="9-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-9-9-0" class="sphinx-tabs-panel" id="panel-9-9-0" name="9-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/sequences.smt2">examples/sequences.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_SLIA</span>)
+<span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>(<span class="k">declare-const</span> <span class="n">x</span> (<span class="na">Seq</span> <span class="na">Int</span>))
+<span class="linenos"> 5</span>(<span class="k">declare-const</span> <span class="n">y</span> (<span class="na">Seq</span> <span class="na">Int</span>))
+<span class="linenos"> 6</span>(<span class="k">declare-const</span> <span class="n">z</span> (<span class="na">Seq</span> <span class="na">Int</span>))
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>(<span class="k">assert</span> (<span class="o">&gt;</span> (<span class="o">seq.len</span> <span class="n">x</span>) <span class="m">0</span>))
+<span class="linenos"> 9</span>(<span class="k">assert</span> (<span class="o">=</span> (<span class="o">+</span> (<span class="o">seq.nth</span> <span class="n">x</span> <span class="m">0</span>) (<span class="o">seq.nth</span> <span class="n">x</span> (<span class="o">-</span> (<span class="o">seq.len</span> <span class="n">x</span>) <span class="m">1</span>))) <span class="m">9</span>))
+<span class="linenos">10</span>
+<span class="linenos">11</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">y</span> (<span class="o">seq.++</span> <span class="n">x</span> <span class="n">x</span>)))
+<span class="linenos">12</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">z</span> (<span class="o">seq.++</span> (<span class="o">seq.unit</span> <span class="m">3</span>) (<span class="o">seq.unit</span> <span class="m">4</span>) (<span class="o">seq.unit</span> <span class="m">5</span>))))
+<span class="linenos">13</span>(<span class="k">assert</span> (<span class="o">seq.contains</span> <span class="n">y</span> <span class="n">z</span>))
+<span class="linenos">14</span>
+<span class="linenos">15</span>(<span class="k">check-sat</span>)
+<span class="linenos">16</span>(<span class="k">get-model</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-9-1" class="sphinx-tabs-panel" hidden="true" id="panel-9-9-1" name="9-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/sequences.py">examples/sequences.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Consts</span><span class="p">(</span><span class="s2">&quot;x y z&quot;</span><span class="p">,</span> <span class="n">SeqSort</span><span class="p">(</span><span class="n">IntSort</span><span class="p">()))</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_SLIA&#39;</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="n">Length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">9</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">Concat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+<span class="linenos"> 9</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">z</span> <span class="o">==</span> <span class="n">Concat</span><span class="p">(</span><span class="n">Unit</span><span class="p">(</span><span class="n">IntVal</span><span class="p">(</span><span class="mi">3</span><span class="p">)),</span> <span class="n">Unit</span><span class="p">(</span><span class="n">IntVal</span><span class="p">(</span><span class="mi">4</span><span class="p">)),</span> <span class="n">Unit</span><span class="p">(</span><span class="n">IntVal</span><span class="p">(</span><span class="mi">5</span><span class="p">))))</span>
+<span class="linenos">10</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Contains</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span> <span class="k">else</span> <span class="s2">&quot;unsat&quot;</span><span class="p">)</span>
+<span class="linenos">13</span>
+</pre></div>
+</div>
+</div></div>
+<blockquote>
+<div><p><span class="target" id="exercise-11">Exercise 11</span>. Show that it’s not possible to have sequences <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code>,
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">y</span></code>, and <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">z</span></code> such that <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code> is a proper prefix of <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">y</span></code>,
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">y</span></code> is a proper prefix of <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">z</span></code>, and <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">z</span></code> is a proper prefix of
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code>.</p>
+<p><a class="reference internal" href="solutions.html#solution-to-exercise-11"><span class="std std-ref">Solution to Exercise 11</span></a></p>
+</div></blockquote>
+</section>
+<section id="finite-fields">
+<span id="id27"></span><h3>Finite Fields<a class="headerlink" href="#finite-fields" title="Link to this heading"></a></h3>
+<p>cvc5 can reason about constraints over finite fields of order <span class="math notranslate nohighlight">\(p\)</span>,
+where <span class="math notranslate nohighlight">\(p\)</span> is any prime.  It relies on the fact that a field of order
+<span class="math notranslate nohighlight">\(p\)</span> is isomorphic to the integers modulo <span class="math notranslate nohighlight">\(p\)</span>.  The quantifier-free
+logic name for finite fields is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_FF</span></code>.  At the time of writing, this
+theory is not supported by other SMT solvers.</p>
+<blockquote>
+<div><p><span class="target" id="example-14">Example 14</span>.  In a finite field of order 13, find two elements such that
+their sum and product are both equal to the multiplicative identity in the
+field.</p>
+</div></blockquote>
+<p>Running this example requires a GPL build of cvc5, as explained in <a class="reference internal" href="introduction.html#introduction"><span class="std std-ref">Introduction</span></a>.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-10-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-10-10-0" name="10-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-10-10-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-10-10-1" name="10-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-10-10-0" class="sphinx-tabs-panel" id="panel-10-10-0" name="10-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/fields.smt2">examples/fields.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_FF</span>)
+<span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>(<span class="k">define-sort</span> <span class="n">F</span> () (<span class="na">_</span> <span class="n">FiniteField</span> <span class="m">13</span>))  <span class="c">; F is an alias of sort (_ FiniteField 13)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>(<span class="k">declare-const</span> <span class="n">x</span> <span class="n">F</span>)
+<span class="linenos"> 7</span>(<span class="k">declare-const</span> <span class="n">y</span> <span class="n">F</span>)
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>(<span class="k">assert</span> (<span class="o">=</span> (<span class="n">ff.add</span> <span class="n">x</span> <span class="n">y</span>) (<span class="k">as</span> <span class="n">ff1</span> <span class="n">F</span>)))
+<span class="linenos">10</span>(<span class="k">assert</span> (<span class="o">=</span> (<span class="n">ff.mul</span> <span class="n">x</span> <span class="n">y</span>) (<span class="k">as</span> <span class="n">ff1</span> <span class="n">F</span>)))
+<span class="linenos">11</span>
+<span class="linenos">12</span>(<span class="k">check-sat</span>)
+<span class="linenos">13</span>(<span class="k">get-model</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-10-10-1" class="sphinx-tabs-panel" hidden="true" id="panel-10-10-1" name="10-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/fields.py">examples/fields.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos">2</span><span class="n">F</span> <span class="o">=</span> <span class="n">FiniteFieldSort</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">FiniteFieldElems</span><span class="p">(</span><span class="s2">&quot;x y&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">)</span>
+<span class="linenos">4</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s2">&quot;QF_FF&quot;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos">6</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos">7</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span> <span class="k">else</span> <span class="s2">&quot;unsat&quot;</span><span class="p">)</span>
+<span class="linenos">8</span>
+</pre></div>
+</div>
+</div></div>
+<blockquote>
+<div><p><span class="target" id="exercise-12">Exercise 12</span>.  In a finite field of order 13, find an element such that if
+you square it twice you get the multiplicative identity.</p>
+<p><a class="reference internal" href="solutions.html#solution-to-exercise-12"><span class="std std-ref">Solution to Exercise 12</span></a></p>
+</div></blockquote>
+</section>
+<section id="finite-sets">
+<span id="id28"></span><h3>Finite Sets<a class="headerlink" href="#finite-sets" title="Link to this heading"></a></h3>
+<p>cvc5 has support for the theory of finite sets.  This theory supports basic
+set operations like membership, union, and intersection, as well as constraints
+on a set’s cardinality.  The quantifier-free logic name is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_FS</span></code>.  At
+the time of writing, this theory is not supported by other SMT solvers.</p>
+<blockquote>
+<div><p><span class="target" id="example-15">Example 15</span>. Verify that union distributes over intersection.</p>
+</div></blockquote>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-11-11-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-11-11-0" name="11-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-11-11-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-11-11-1" name="11-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-11-11-0" class="sphinx-tabs-panel" id="panel-11-11-0" name="11-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/sets.smt2">examples/sets.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_FS</span>)
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>(<span class="k">declare-sort</span> <span class="n">U</span> <span class="m">0</span>)
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span>(<span class="k">declare-const</span> <span class="n">A</span> (<span class="na">Set</span> <span class="n">U</span>))
+<span class="linenos"> 6</span>(<span class="k">declare-const</span> <span class="n">B</span> (<span class="na">Set</span> <span class="n">U</span>))
+<span class="linenos"> 7</span>(<span class="k">declare-const</span> <span class="n">C</span> (<span class="na">Set</span> <span class="n">U</span>))
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>(<span class="k">assert</span> (<span class="o">not</span> (<span class="o">=</span> (<span class="o">set.union</span> <span class="n">A</span> (<span class="o">set.inter</span> <span class="n">B</span> <span class="n">C</span>)) (<span class="o">set.inter</span> (<span class="o">set.union</span> <span class="n">A</span> <span class="n">B</span>) (<span class="o">set.union</span> <span class="n">A</span> <span class="n">C</span>)))))
+<span class="linenos">10</span>
+<span class="linenos">11</span>(<span class="k">check-sat</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-11-11-1" class="sphinx-tabs-panel" hidden="true" id="panel-11-11-1" name="11-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/sets.py">examples/sets.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos">2</span><span class="n">S</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="n">Set</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="s2">&quot;C&quot;</span><span class="p">]]</span>
+<span class="linenos">4</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_FS&#39;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Not</span><span class="p">((</span><span class="n">A</span> <span class="o">|</span> <span class="p">(</span><span class="n">B</span> <span class="o">&amp;</span> <span class="n">C</span><span class="p">))</span> <span class="o">==</span> <span class="p">((</span><span class="n">A</span> <span class="o">|</span> <span class="n">B</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">A</span> <span class="o">|</span> <span class="n">C</span><span class="p">))))</span>
+<span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">())</span>
+<span class="linenos">7</span>
+</pre></div>
+</div>
+</div></div>
+<blockquote>
+<div><p><span class="target" id="exercise-13">Exercise 13</span>. Does set difference distribute over intersection?  If not,
+find a counterexample.</p>
+<p><a class="reference internal" href="solutions.html#solution-to-exercise-13"><span class="std std-ref">Solution to Exercise 13</span></a></p>
+</div></blockquote>
+</section>
+</section>
+<section id="combinations-of-theories">
+<span id="theory-combinations"></span><h2>Combinations of Theories<a class="headerlink" href="#combinations-of-theories" title="Link to this heading"></a></h2>
+<p>So far, we have mostly seen examples of how to pose queries that involve a
+single theory.  Part of the appeal of SMT solvers is their ability to mix
+reasoning about different theories.  This can be done in a natural way.  Any
+well-sorted formula is allowed, and all sort constructors can take any other
+sort as an argument.</p>
+<p>One slight complication is the question of how to specify the logic name.  It
+is always safe to use <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">ALL</span></code> as the logic name, though as mentioned above,
+it may be more efficient to give a more precise logic name.  When mixing
+theories, cvc5 allows any logic name that follows the following rules.
+First, the logic name must start with the prefix <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_</span></code> if the intent is to
+limit reasoning to quantifier-free formulas.  The rest of the logic name can
+include any of the following components, in any order: <span class="math notranslate nohighlight">\((i)\)</span> <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">A</span></code> for
+arrays; <span class="math notranslate nohighlight">\((ii)\)</span> <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">UF</span></code> for uninterpreted functions; <span class="math notranslate nohighlight">\((iii)\)</span>
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">BV</span></code> for bit-vectors; (iv) <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">FP</span></code> for floating-point numbers;
+<span class="math notranslate nohighlight">\((v)\)</span> <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">DT</span></code> for datatypes; (vi) <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">S</span></code> for strings and sequences;
+<span class="math notranslate nohighlight">\((vii)\)</span> either <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">IDL</span></code>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">RDL</span></code>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">LIA</span></code>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">LRA</span></code>,
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">LIRA</span></code>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">NIA</span></code>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">NRA</span></code>, or <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">NIRA</span></code> for arithmetic;
+<span class="math notranslate nohighlight">\((viii)\)</span> <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">FF</span></code> for finite fields; and <span class="math notranslate nohighlight">\((ix)\)</span> <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">FS</span></code> for
+finite sets.  Thus, for example, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_AUFDTBVLRA</span></code> allows formulas that are
+quantifier-free and mix arrays, uninterpreted functions, datatypes,
+bit-vectors, and linear real arithmetic.
+<a class="reference internal" href="#example-10">Example 10</a>, <a class="reference internal" href="#example-12">Example 12</a>, and <a class="reference internal" href="#example-13">Example 13</a> illustrate
+combinations of theories.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="formal.html" class="btn btn-neutral float-left" title="Formal Foundations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="outputs.html" class="btn btn-neutral float-right" title="SMT Solver Outputs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Clark Barrett, Cesare Tinelli, Haniel Barbosa, Aina Niemetz, Mathias Preiner, Andrew Reynolds, Yoni Zohar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

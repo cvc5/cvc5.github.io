@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; Satisfiability Modulo Theories: A Beginner&#39;s Tutorial  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b9602cbe" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Overview" href="overview.html" />
+    <link rel="prev" title="Satisfiability Modulo Theories: A Beginner’s Tutorial" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Satisfiability Modulo Theories: A Beginner's Tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formal.html">Formal Foundations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theories.html">SMT Theories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outputs.html">SMT Solver Outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions to Exercises</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Satisfiability Modulo Theories: A Beginner's Tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
+<p>Great minds have long dreamed of creating machines that can reason deductively,
+that is, from a set of assumptions, determine whether a particular conclusion
+logically follows. The question of whether such a machine is possible
+was posed formally as a grand challenge by the famous mathematician David
+Hilbert in 1928, who called it the “Entscheidungsproblem” (decision problem)
+<a class="reference internal" href="references.html#r24" id="id2"><span>[R24]</span></a>. In 1936, both Church and Turing showed that, in general, this is
+impossible—the problem is undecidable <a class="reference internal" href="references.html#r13" id="id3"><span>[R13]</span></a>, <a class="reference internal" href="references.html#r42" id="id4"><span>[R42]</span></a>. Undeterred, researchers in
+automated reasoning have searched for ways to solve either special cases of the
+problem that are decid- able or to find heuristics that work well in
+practice. Satisfiability modulo theories (SMT) has emerged as an approach that
+seems to fill a sweet spot in this search space. SMT leverages a rich
+collection of decidable theories to provide considerable expressive power
+without sacrificing decidability. SMT also permits some queries over problems
+that are undecidable or whose decidability is unknown. For these, it employs
+powerful heuristics that often work well in practice.</p>
+<p>This tutorial is an introduction to SMT for new users. We explain what kinds of
+problems are suitable for SMT solvers, describe the capabilities of modern
+solvers, and provide guidance on how to encode problems as SMT queries.</p>
+<p>Throughout the tutorial, we provide examples and exercises to illustrate the
+concepts being explained. Unless otherwise stated, the exercises can be com-
+pleted using either the cvc5 <a class="reference internal" href="references.html#r3" id="id5"><span>[R3]</span></a> or the z3 SMT solver <a class="reference internal" href="references.html#r32" id="id6"><span>[R32]</span></a>, through either
+their Python interface or their textual interface based on the SMT-LIB 2 format
+<a class="reference internal" href="references.html#r8" id="id7"><span>[R8]</span></a>. The cvc5 website at <a class="reference external" href="http://cvc5.github.io">cvc5.github.io</a> contains
+documentation that can be used as a reference to supplement the material in
+this tutorial. An online version of the tutorial is also available on that site
+by clicking on Tutorials. To work through the examples and exercises, we
+recommend one of the following options.</p>
+<ol class="upperalpha">
+<li><p>To use a Python API for SMT, first create a virtual environment.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>smt-tutorial
+<span class="nb">source</span><span class="w"> </span>smt-tutorial/bin/activate
+</pre></div>
+</div>
+<p>Next, install cvc5’s Python API or z3’s Python API, or both.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>cvc5
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>z3-solver
+</pre></div>
+</div>
+<p>cvc5 is distributed under the BSD 3-clause license. Some features, however,
+such as its finite field solver (see <span id="id8">[finite-fields]</span>), are only available in an
+extended version of cvc5 distributed under the GNU General Public License
+(GPL). <a class="footnote-reference brackets" href="#id11" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>
+Since GPL is a problem for some users, the GPL version is not built
+or distributed by default. To install the GPL version of cvc5, use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>cvc5-gpl
+</pre></div>
+</div>
+<p>Once a solver API is installed, you can copy example Python code into a
+script file, e.g., Example.py`, and then type:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>Example.py
+</pre></div>
+</div>
+<p>Note that, for the examples below, if you are using z3 instead of cvc5, you
+must replace the first line of each Python code snippet with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">z3</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</li>
+<li><p>Executables for cvc5 and z3 are available for download. For cvc5, go to the
+cvc5 website, click on <a class="reference external" href="https://cvc5.github.io/downloads.html">Downloads</a>,
+and follow the link to the release page
+on GitHub. Alternatively, for z3, go to the z3 releases page at
+<a class="reference external" href="http://github.com/z3Prover/z3/releases">github.com/z3Prover/z3/releases</a>. From either release page,
+download the
+latest release compatible with your machine (for cvc5, choose a GPL download
+if you want support for finite fields). Once you unzip the downloaded
+archive, the executable will be in the bin directory. Thus, if the unzipped
+directory is called release-dir, and you have downloaded cvc5, you can run
+an SMT-LIB example called Example.smt2 by typing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>release-dir/bin/cvc5<span class="w"> </span>Example.smt2
+</pre></div>
+</div>
+<p>from your shell’s command line. If you downloaded z3, type instead:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>release-dir/bin/z3<span class="w"> </span>Example.smt2
+</pre></div>
+</div>
+</li>
+<li><p>From the cvc5 website, click on <a class="reference external" href="https://cvc5.github.io/app/">Try cvc5 online</a>. This links to a page that
+provides a web interface for running cvc5 on scripts in the SMT-LIB format.</p></li>
+</ol>
+<p>This tutorial has been tested with cvc5 1.2.0, z3 4.13.0, and Python 3.12.3,
+but later releases should work as well. Solver outputs shown below are based on
+cvc5 version 1.2.0. Other versions or solvers should produce conceptually
+similar results, but the outputs may not be exactly the same. The SMT-LIB
+examples are based on version 2.6 of the format <a class="reference internal" href="references.html#r5" id="id10"><span>[R5]</span></a>. cvc5’s Python API was
+designed to be a drop-in replacement for z3’s Python API. The credit for the
+design of the Python API thus goes to the z3 authors.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id11" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">1</a><span class="fn-bracket">]</span></span>
+<p>The finite field solver uses the CoCoA library <a class="reference internal" href="references.html#r1" id="id12"><span>[R1]</span></a>, which has a GPL license.</p>
+</aside>
+</aside>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Satisfiability Modulo Theories: A Beginner’s Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="overview.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Clark Barrett, Cesare Tinelli, Haniel Barbosa, Aina Niemetz, Mathias Preiner, Andrew Reynolds, Yoni Zohar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

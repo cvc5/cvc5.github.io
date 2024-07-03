@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMT Solver Outputs &mdash; Satisfiability Modulo Theories: A Beginner&#39;s Tutorial  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b9602cbe" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/tabs.js?v=3030b3cb"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Conclusion" href="conclusion.html" />
+    <link rel="prev" title="SMT Theories" href="theories.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Satisfiability Modulo Theories: A Beginner's Tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formal.html">Formal Foundations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theories.html">SMT Theories</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SMT Solver Outputs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#satisfiable-queries">Satisfiable Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unsatisfiable-queries">Unsatisfiable Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unknown-queries">Unknown Queries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions to Exercises</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Satisfiability Modulo Theories: A Beginner's Tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SMT Solver Outputs</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="smt-solver-outputs">
+<span id="id1"></span><h1>SMT Solver Outputs<a class="headerlink" href="#smt-solver-outputs" title="Link to this heading"></a></h1>
+<p>As we have seen, the main result of an SMT query is either <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">sat</span></code> or
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unsat</span></code>.  In some cases, the solver may also output <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unknown</span></code>.  This
+can happen, for example, if the problem includes quantifiers.  In this section,
+we discuss how to obtain more information from the solver in each case.</p>
+<section id="satisfiable-queries">
+<h2>Satisfiable Queries<a class="headerlink" href="#satisfiable-queries" title="Link to this heading"></a></h2>
+<p>When a solver returns <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">sat</span></code>, we have already seen that one possible way to
+get more information is to call <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="k">get-model</span></code>, which returns values for all
+of the uninterpreted constants in the formula.  A more fine-grained approach is
+to call <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="k">get-value</span></code> which takes a term as an argument and returns the
+value of that specific term.</p>
+</section>
+<section id="unsatisfiable-queries">
+<h2>Unsatisfiable Queries<a class="headerlink" href="#unsatisfiable-queries" title="Link to this heading"></a></h2>
+<p>When a solver returns <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unsat</span></code>, it makes a quite strong statement: there is
+<em>no interpretation</em> of the user-declared symbols that satisfies the formula.
+SMT solvers can provide more information as to why a formula is unsatisfiable
+via an <em>unsat(isfiable) core</em>, a subset of the assertions that is already
+unsatisfiable. In SMT-LIB scripts, it can be obtained with the command
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="k">get-unsat-core</span></code>.  The unsat core is not guaranteed to be minimal, but
+solvers generally make an effort to reduce its size as much as possible without
+having to solve additional SMT queries.</p>
+<p>Some solvers can also produce <em>proofs</em> for the unsatisfiability of a formula,
+i.e., a structured argument showing how an inconsistency can be derived from an
+unsat core of the formula. A proof can serve as a certificate of the result and
+be used to independently validate the solver’s response <a class="reference internal" href="references.html#r4" id="id2"><span>[R4]</span></a>.  A proof (if
+supported) can be obtained in an SMT-LIB script with the command
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="k">get-proof</span></code>.  The result is dependent on the proof system and format the
+solver uses to represent its reasoning.  cvc5 has full support for proofs and
+unsat cores.</p>
+<p>Consider again the Socrates example (<a class="reference internal" href="overview.html#example-3"><span class="std std-ref">Example 3</span></a>).  Below, we show
+how to retrieve an unsat core and a proof of its unsatisfiability.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Python</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/socrates-proof.py">examples/socrates-proof.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;UF&#39;</span><span class="p">)</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">s</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;produce-proofs&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">s</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;proof-granularity&quot;</span><span class="p">,</span> <span class="s2">&quot;theory-rewrite&quot;</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">s</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;produce-unsat-cores&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">S</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">Human</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s2">&quot;Human&quot;</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">BoolSort</span><span class="p">())</span>
+<span class="linenos">11</span><span class="n">Mortal</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s2">&quot;Mortal&quot;</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">BoolSort</span><span class="p">())</span>
+<span class="linenos">12</span><span class="n">Socrates</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&quot;Socrates&quot;</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="n">x</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ForAll</span><span class="p">([</span><span class="n">x</span><span class="p">],</span> <span class="n">Implies</span><span class="p">(</span><span class="n">Human</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">Mortal</span><span class="p">(</span><span class="n">x</span><span class="p">))))</span>
+<span class="linenos">17</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Human</span><span class="p">(</span><span class="n">Socrates</span><span class="p">))</span>
+<span class="linenos">18</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Not</span><span class="p">(</span><span class="n">Mortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)))</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">())</span>
+<span class="linenos">21</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The core is: &quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">unsat_core</span><span class="p">())</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="n">p</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">proof</span><span class="p">()</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The proof is:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>The first part of the output is the unsat core.</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> (<span class="k">forall</span> ((<span class="n">x</span> <span class="n">S</span>)) (<span class="o">=&gt;</span> (<span class="n">Human</span> <span class="n">x</span>) (<span class="n">Mortal</span> <span class="n">x</span>)))
+<span class="o">-</span> (<span class="n">Human</span> <span class="n">Socrates</span>)
+<span class="o">-</span> (<span class="o">not</span> (<span class="n">Mortal</span> <span class="n">Socrates</span>))
+</pre></div>
+</div>
+<p>The core contains all three assertions.  In this case, the core is minimal, as
+all three are needed to derive <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unsat</span></code>. The reasoning is shown in the
+proof.  The result of the <code class="code highlight python docutils literal highlight-python"><span class="n">proof</span><span class="p">()</span></code> method is a proof object which
+connects the input assertions to the conclusion (<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unsat</span></code>) via a sequence
+of steps justified by proof rules.  The proof rules used by cvc5 are
+documented on the cvc5 website.</p>
+<figure class="align-default" id="id3">
+<img alt="_images/socrates.png" src="_images/socrates.png" />
+<figcaption>
+<p><span class="caption-text">A proof tree generated by cvc5</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The above figure shows a visualization of the proof as a tree.  For readability, we
+use simple names to abbreviate long terms.  Each node in the tree shows:
+<span class="math notranslate nohighlight">\((i)\)</span> the formula proved (the conclusion); <span class="math notranslate nohighlight">\((ii)\)</span> the name of the
+proof rule used; <span class="math notranslate nohighlight">\((iii)\)</span> a numeric id; and <span class="math notranslate nohighlight">\((iv)\)</span> the total number
+of descendants.  Immediate children of each node represent premises required
+for the node’s proof rule.  The root node of the tree is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">let9</span></code>, which
+stands for <code class="code highlight smt smtlib docutils literal highlight-smtlib">(<span class="o">not</span> (<span class="o">and</span> <span class="n">let4</span> <span class="n">let3</span> <span class="n">let2</span>))</code>, where <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">let4</span></code>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">let3</span></code>,
+and <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">let2</span></code> represent the three assertions.  This node has a single child
+containing the conclusion <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">false</span></code>, based on a proof tree whose leaves are
+the three assertions.  The derivation of <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">false</span></code> depends on instantiating
+the quantified assertion (<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">let4</span></code>) with <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code> as <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">Socrates</span></code>.  This
+is done in node 5, but only after <code class="code highlight smt smtlib docutils literal highlight-smtlib">(<span class="k">forall</span> ((<span class="n">x</span> <span class="n">S</span>)) (<span class="o">=&gt;</span> (<span class="n">Human</span> <span class="n">x</span>) (<span class="n">Mortal</span>
+<span class="n">x</span>)))</code> (i.e., <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">let4</span></code>) is rewritten (node 8) into <code class="code highlight smt smtlib docutils literal highlight-smtlib">(<span class="k">forall</span> ((<span class="n">x</span> <span class="n">S</span>)) (<span class="o">or</span>
+(<span class="o">not</span> (<span class="n">Human</span> <span class="n">x</span>)) (<span class="n">Mortal</span> <span class="n">x</span>)))</code> (i.e., <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">let8</span></code>). The instantiation <code class="code highlight smt smtlib docutils literal highlight-smtlib">(<span class="o">or</span>
+(<span class="o">not</span> (<span class="n">Human</span> <span class="n">Socrates</span>)) (<span class="n">Mortal</span> <span class="n">Socrates</span>))</code> is named <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">let6</span></code>.  Node 9
+concludes <code class="code highlight smt smtlib docutils literal highlight-smtlib">(<span class="o">not</span> <span class="n">let6</span>)</code> from the other assertions. And finally, node 2
+concludes <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">false</span></code> by combining the mutually inconsistent clauses derived
+by the solver (where <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">let7</span></code> is <code class="code highlight smt smtlib docutils literal highlight-smtlib">(<span class="o">not</span> <span class="n">let6</span>)</code>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">let2</span></code> is
+<code class="code highlight smt smtlib docutils literal highlight-smtlib">(<span class="o">not</span> <span class="n">let1</span>)</code>, and <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">let5</span></code> is <code class="code highlight smt smtlib docutils literal highlight-smtlib">(<span class="o">not</span> <span class="n">let3</span>)</code>).</p>
+</section>
+<section id="unknown-queries">
+<h2>Unknown Queries<a class="headerlink" href="#unknown-queries" title="Link to this heading"></a></h2>
+<p>A solver returns <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unknown</span></code> when it is unable to solve the input problem.
+There could be several different reasons for this.  One is that the solver’s
+procedure may be incomplete for the class of problems the input belongs to,
+which means that it is not always able to determine if the problem is
+satisfiable or not.  Another possible reason is that some resource limit was
+exceeded, causing the solver to stop before it could find an answer.  In
+SMT-LIB, the command <code class="code highlight smt smtlib docutils literal highlight-smtlib">(<span class="k">get-info</span> <span class="na">:reason-unknown</span>)</code> can be used to request
+more information about why a solver returned <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unknown</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="theories.html" class="btn btn-neutral float-left" title="SMT Theories" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="conclusion.html" class="btn btn-neutral float-right" title="Conclusion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Clark Barrett, Cesare Tinelli, Haniel Barbosa, Aina Niemetz, Mathias Preiner, Andrew Reynolds, Yoni Zohar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

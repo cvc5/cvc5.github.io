@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview &mdash; Satisfiability Modulo Theories: A Beginner&#39;s Tutorial  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b9602cbe" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/tabs.js?v=3030b3cb"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Formal Foundations" href="formal.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Satisfiability Modulo Theories: A Beginner's Tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formal.html">Formal Foundations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theories.html">SMT Theories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outputs.html">SMT Solver Outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutions.html">Solutions to Exercises</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Satisfiability Modulo Theories: A Beginner's Tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Overview</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="overview">
+<span id="id1"></span><h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
+<p>At an intuitive level, SMT solvers are general-purpose problem solving
+tools. They are somewhat similar to calculators, in that the user provides the
+problem of interest, and the tool does some calculation to produce an
+answer. However, they are much more powerful than a simple calculator.</p>
+<p>SMT solvers reason <em>symbolically</em>, as is done in grade school algebra. The user
+provides a set of <em>assertions</em> that describe constraints to be satisfied, and the
+solver produces a <em>solution</em> satisfying <em>all</em> of the constraints, if there is
+one. Consider the following simple example, mimicking a typical algebra word
+problem.</p>
+<blockquote id="example-1">
+<div><p>Example 1.  In 10 years, Alice will be twice as old as Bob is now, but in 22
+years, Bob will be twice as old as Alice is now. How old are Alice and Bob?</p>
+</div></blockquote>
+<p>First, let’s see how to solve this using Python.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Python</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/Example1.py">examples/Example1.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos">2</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Ints</span><span class="p">(</span><span class="s1">&#39;a b&#39;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">solve</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">22</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>The Pythonic API is designed to be as simple and intuitive as possible. We
+introduce the symbols we are using (SMT solvers always require that symbols be
+introduced before they are used), and then we call solve, passing in the two
+equations in much the same way we would write them naturally. The output is a
+simple representation of the solution as a Python list.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">a</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">14</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Alternatively, SMT solvers can take as input a script written in the SMT- LIB
+language <a class="reference internal" href="references.html#r5" id="id2"><span>[R5]</span></a>, a standard developed by the SMT community whose syntax is
+similar to that of LISP. Below is the same example written in SMT-LIB.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">SMT-LIBv2</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/Example1.smt2">examples/Example1.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_LIA</span>)
+<span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>(<span class="k">declare-const</span> <span class="n">a</span> <span class="na">Int</span>)
+<span class="linenos"> 5</span>(<span class="k">declare-const</span> <span class="n">b</span> <span class="na">Int</span>)
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>(<span class="k">assert</span> (<span class="o">=</span> (<span class="o">+</span> <span class="n">a</span> <span class="m">10</span>) (<span class="o">*</span> <span class="m">2</span> <span class="n">b</span>)))
+<span class="linenos"> 8</span>(<span class="k">assert</span> (<span class="o">=</span> (<span class="o">+</span> <span class="n">b</span> <span class="m">22</span>) (<span class="o">*</span> <span class="m">2</span> <span class="n">a</span>)))
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>(<span class="k">check-sat</span>)
+<span class="linenos">11</span>(<span class="k">get-model</span>)
+</pre></div>
+</div>
+</div></div>
+<p>The result is:</p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="n">sat</span>
+(
+(<span class="k">define-fun</span> <span class="n">a</span> () <span class="na">Int</span> <span class="m">18</span>)
+(<span class="k">define-fun</span> <span class="n">b</span> () <span class="na">Int</span> <span class="m">14</span>)
+)
+</pre></div>
+</div>
+<p>Notice that the solver replies <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">sat</span></code> before giving the solution. This is short
+for “satisfiable,” a word meaning that there is at least one solution. SMT
+solvers can also identify when a set of assertions has no solution. In this
+case, the solver replies <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unsat</span></code>, which is short for “unsatisfiable.”</p>
+<p>Let’s take a closer look at the SMT-LIB input file, which is a sequence of
+<em>commands</em>. The command in the first line tells the solver which <em>logic</em> we are
+working in. In this case, we are using <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_LIA</span></code> which stands for quantifier-free
+linear integer arithmetic. We explain more about logics in <a class="reference internal" href="theories.html#smt-theories"><span class="std std-ref">SMT Theories</span></a>. The
+second line tells the solver to produce <em>models</em>. A model assigns a concrete
+meaning to every user-declared symbol. Without turning this option on, a
+solver will still respond with <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">sat</span></code> or <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unsat</span></code>, but it may not be able to provide
+a model. The next two lines declare two <em>uninterpreted constants</em> called a
+and b. Informally, we often refer to these as variables, because they play the
+same role that variables do in math. However, in the automated reasoning
+literature, a <em>variable</em> typically refers to a symbol that is bound by a
+quantifier, whereas an uninterpreted constant is a symbol whose value is
+determined by a model. SMT-LIB follows the the latter terminology. The next two
+lines create <em>assertions</em>. An assertion is a way of telling the solver about a
+formula that we would like to be true in the model that is produced. Note that
+the formulas too are specified in a LISP-like prefix syntax. Finally, the
+command <code class="code highlight smt smtlib docutils literal highlight-smtlib">(<span class="k">check-sat</span>)</code> tells the solver to check whether the set of assertions
+made so far is satisfiable, and the command <code class="code highlight smt smtlib docutils literal highlight-smtlib">(<span class="k">get-model</span>)</code> (which is only legal if
+the solver returns <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">sat</span></code>) prints values for each uninterpreted constant, with the
+guarantee that assigning these values to the constants makes all the assertions
+true. The values are printed using legal SMT-LIB syntax in case the user wants
+to copy and paste them into a new SMT-LIB script.</p>
+<blockquote id="exercise-1">
+<div><p>Exercise 1. Consider a modification of <a class="reference internal" href="#example-1"><span class="std std-ref">Example 1</span></a>. The
+first assertion will stay the same, but for the second, let’s assert that Bob
+will be twice as old as Alice in only 20 years. Modify the Python program or
+SMT-LIB script to reflect the new set of constraints. What output does the
+SMT solver give?</p>
+<p><a class="reference internal" href="solutions.html#solution-to-exercise-1"><span class="std std-ref">Solution to Exercise 1</span></a></p>
+</div></blockquote>
+<p>So far, we have seen the most basic use of an SMT solver. Given a set of
+assertions, determine whether there is a solution for them. We now show that
+this basic capability can be used to answer several similar questions.</p>
+<p>Suppose we have a set <span class="math notranslate nohighlight">\(X\)</span> of assumptions about the world, and we want to know
+whether some hypothetical <span class="math notranslate nohighlight">\(Y\)</span> is possible under those assumptions. If we can
+express <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> as SMT formulas, then an SMT solver can answer the question. In
+fact, we simply assert each assumption in <span class="math notranslate nohighlight">\(X\)</span> as well as the formula representing
+<span class="math notranslate nohighlight">\(Y\)</span> and check whether this set of assertions is satisfiable.</p>
+<blockquote>
+<div><p><span class="target" id="example-2">Example 2</span>. Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> be 32-bit integers, with <span class="math notranslate nohighlight">\(x\)</span> a multiple of 2. Is it
+possible for the machine arithmetic product of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> to be 1?</p>
+</div></blockquote>
+<p>For this problem, we’ll use <em>bit-vectors</em>. SMT solvers use bit-vectors to model
+machine arithmetic and other operations on fixed-size vectors of bits.  The
+SMT-LIB encoding and a corresponding Python script are shown below.  This time,
+we use the Python API in a way that more closely resembles the SMT-LIB script.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/Example2.smt2">examples/Example2.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_BV</span>)
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>(<span class="k">declare-const</span> <span class="n">x</span> (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>))
+<span class="linenos"> 4</span>(<span class="k">declare-const</span> <span class="n">y</span> (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>))
+<span class="linenos"> 5</span>(<span class="k">declare-const</span> <span class="n">z</span> (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>))
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">x</span> (<span class="o">bvmul</span> <span class="n">z</span> (<span class="na">_</span> <span class="m">bv2</span> <span class="m">32</span>))))
+<span class="linenos"> 8</span>(<span class="k">assert</span> (<span class="o">=</span> (<span class="o">bvmul</span> <span class="n">x</span> <span class="n">y</span>) (<span class="na">_</span> <span class="m">bv1</span> <span class="m">32</span>)))
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>(<span class="k">check-sat</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/Example2.py">examples/Example2.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">BitVecs</span><span class="p">(</span><span class="s1">&#39;x y z&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_BV&#39;</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">z</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">result</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+<span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;result: &quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>We use the logic <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_BV</span></code> which stands for quantifier-free bit-vectors. The
+underscore symbol _ is used in SMT-LIB to indicate that the next symbol is
+indexed by the following argument. It is used to specify the bit-vector size in
+this example. The <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">bvmul</span></code> symbol represents bit-vector multiplication, and the
+notation <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">bvX</span></code> is the bit-vector constant whose value, in decimal notation,
+is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">X</span></code>. Constant <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">z</span></code> names the value we must multiply by 2 to get <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code>.  There is no
+solution because an even number does not have a multiplicative inverse in
+machine arithmetic (i.e., when doing arithmetic modulo a power of 2).</p>
+<blockquote>
+<div><p><span class="target" id="exercise-2">Exercise 2</span>. Find the multiplicative inverse of 5 (mod <span class="math notranslate nohighlight">\(2^8\)</span>).</p>
+<p><a class="reference internal" href="solutions.html#solution-to-exercise-2"><span class="std std-ref">Solution to Exercise 2</span></a></p>
+</div></blockquote>
+<p>Another common situation is when we have a set <span class="math notranslate nohighlight">\(X\)</span> of assumptions, and we
+want to know whether some <span class="math notranslate nohighlight">\(Y\)</span> <em>must</em> hold as a consequence. If so, we say
+that <span class="math notranslate nohighlight">\(Y\)</span> is <em>implied</em> or <em>entailed</em> by <span class="math notranslate nohighlight">\(X\)</span>. Again, assuming we can represent
+<span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> using formulas, we can start by asserting the formulas
+representing <span class="math notranslate nohighlight">\(X\)</span>. At this point, however, we do not assert the formula for <span class="math notranslate nohighlight">\(Y\)</span>
+. Instead, we assert its <em>negation</em>. If the result is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unsat</span></code>, then <span class="math notranslate nohighlight">\(Y\)</span> must follow
+from <span class="math notranslate nohighlight">\(X\)</span>. The reasoning is that if it is not possible for the negation of <span class="math notranslate nohighlight">\(Y\)</span> to be
+true when <span class="math notranslate nohighlight">\(X\)</span> is true, then <span class="math notranslate nohighlight">\(Y\)</span> itself must be true. Let’s look at a version of the
+well-known syllogism about Socrates.</p>
+<blockquote id="example-3">
+<div><p>Example 3. If all humans are mortal, and Socrates is a human, then must
+Socrates be mortal?</p>
+</div></blockquote>
+<p>The SMT-LIB and Python versions are as follows.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/socrates.smt2">examples/socrates.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">UF</span>)
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>(<span class="k">declare-sort</span> <span class="n">S</span> <span class="m">0</span>)
+<span class="linenos"> 4</span>(<span class="k">declare-fun</span> <span class="n">Human</span> (<span class="n">S</span>) <span class="na">Bool</span>)
+<span class="linenos"> 5</span>(<span class="k">declare-fun</span> <span class="n">Mortal</span> (<span class="n">S</span>) <span class="na">Bool</span>)
+<span class="linenos"> 6</span>(<span class="k">declare-const</span> <span class="n">Socrates</span> <span class="n">S</span>)
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>(<span class="k">assert</span> (<span class="k">forall</span> ((<span class="n">x</span> <span class="n">S</span>)) (<span class="o">=&gt;</span> (<span class="n">Human</span> <span class="n">x</span>) (<span class="n">Mortal</span> <span class="n">x</span>))))
+<span class="linenos"> 9</span>(<span class="k">assert</span> (<span class="n">Human</span> <span class="n">Socrates</span>))
+<span class="linenos">10</span>(<span class="k">assert</span> (<span class="o">not</span> (<span class="n">Mortal</span> <span class="n">Socrates</span>)))
+<span class="linenos">11</span>
+<span class="linenos">12</span>(<span class="k">check-sat</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/cvc5/tree/main/tutorials/beginners/examples/socrates.py">examples/socrates.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span><span class="n">S</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">Bool</span> <span class="o">=</span> <span class="n">BoolSort</span><span class="p">()</span>
+<span class="linenos"> 4</span><span class="n">Human</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s2">&quot;Human&quot;</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">Bool</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">Mortal</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s2">&quot;Mortal&quot;</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">Bool</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">Socrates</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&quot;Socrates&quot;</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;UF&#39;</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">x</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ForAll</span><span class="p">([</span><span class="n">x</span><span class="p">],</span> <span class="n">Implies</span><span class="p">(</span><span class="n">Human</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">Mortal</span><span class="p">(</span><span class="n">x</span><span class="p">))))</span>
+<span class="linenos">12</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Human</span><span class="p">(</span><span class="n">Socrates</span><span class="p">))</span>
+<span class="linenos">13</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Not</span><span class="p">(</span><span class="n">Mortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)))</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">())</span>
+<span class="linenos">16</span>
+</pre></div>
+</div>
+</div></div>
+<p>This problem illustrates a few new encoding tools. First, we use the logic <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">UF</span></code>
+which stands for “uninterpreted functions.” This logic allows us to declare new
+function symbols. Note that it is also missing the <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF</span></code> prefix we’ve used above,
+which means that quantifiers are also allowed. We declare a new uninterpreted
+<em>sort</em> <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">S</span></code>. A sort is like a type in programming languages. We use an <em>uninterpreted</em>
+sort to represent a class of individual objects that cannot be modeled with the
+predefined sorts provided by SMT-LIB, (so far, we’ve seen the predefined sorts
+for integers and bit-vectors). Next, we declare two functions, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">Human</span></code> and
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">Mortal</span></code>, each of which takes a single argument of sort <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">S</span></code> and returns a <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="na">Bool</span></code>, the
+SMT-LIB Boolean sort. A function returning a Boolean is also called a
+<em>predicate</em>. We then declare an uninterpreted constant called <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">Socrates</span></code> of
+sort <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">S</span></code>. Now, we are ready to encode the first fact, namely that all humans are
+mortal. To do so, we use the <em>universal quantifier</em>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">ForAll</span></code>. The assertion states
+that for every individual <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code> of sort <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">S</span></code>, if the predicate <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">Human</span></code> holds for that
+individual, then the predicate <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">Mortal</span></code> also holds. The next assertion states
+that the <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">Human</span></code> predicate holds for <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">Socrates</span></code>. Finally, we want to see whether
+the fact that Socrates is mortal necessarily follows from the assumptions. To
+do this, we assert the negation of the statement and check for
+satisfiability. Running the example confirms that the result is unsatisfiable
+and thus, indeed, this statement is entailed.</p>
+<p>What we have presented so far should provide a good high-level idea of what is
+possible with SMT solvers. <a class="footnote-reference brackets" href="#id4" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> We cover these ideas in more detail in the
+following. In <a class="reference internal" href="formal.html#formal-foundations"><span class="std std-ref">Formal Foundations</span></a>, we briefly describe the formal foundations for
+SMT. Next, in <a class="reference internal" href="theories.html#smt-theories"><span class="std std-ref">SMT Theories</span></a>, we catalog the different theories supported by SMT
+solvers and provide examples of how to use them. We cover the different outputs
+produced by SMT solvers, including models and proofs, in <a class="reference internal" href="outputs.html#smt-solver-outputs"><span class="std std-ref">SMT Solver Outputs</span></a>, and
+conclude in <a class="reference internal" href="conclusion.html#conclusion"><span class="std std-ref">Conclusion</span></a> with pointers to additional resources.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<p>More sophisticated features and use cases are beyond the scope of this
+tutorial, but we plan to provide additional tutorials on more advanced
+topics in the future.</p>
+</aside>
+</aside>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="formal.html" class="btn btn-neutral float-right" title="Formal Foundations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Clark Barrett, Cesare Tinelli, Haniel Barbosa, Aina Niemetz, Mathias Preiner, Andrew Reynolds, Yoni Zohar.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
