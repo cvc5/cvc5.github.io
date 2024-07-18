@@ -5,23 +5,26 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction &mdash; Satisfiability Modulo Theories: A Beginner&#39;s Tutorial  documentation</title>
-      <link rel="stylesheet" type="text/css" href="static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="static/tabs.css?v=a5c4661c" />
-      <link rel="stylesheet" type="text/css" href="static/custom.css?v=b9602cbe" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b9602cbe" />
 
   
   <!--[if lt IE 9]>
-    <script src="static/js/html5shiv.min.js"></script>
+    <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="static/jquery.js?v=5d32c60e"></script>
-        <script src="static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="static/documentation_options.js?v=5929fcd5"></script>
-        <script src="static/doctools.js?v=9a2dae69"></script>
-        <script src="static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="static/js/theme.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Overview" href="overview.html" />
@@ -121,9 +124,9 @@ python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </s
 </pre></div>
 </div>
 <p>cvc5 is distributed under the BSD 3-clause license. Some features, however,
-such as its finite field solver (see <span id="id8">[finite-fields]</span>), are only available in an
+such as its finite field solver (see <a class="reference internal" href="theories.html#finite-fields"><span class="std std-ref">Finite Fields</span></a>), are only available in an
 extended version of cvc5 distributed under the GNU General Public License
-(GPL). <a class="footnote-reference brackets" href="#id11" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>
+(GPL). <a class="footnote-reference brackets" href="#id10" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>
 Since GPL is a problem for some users, the GPL version is not built
 or distributed by default. To install the GPL version of cvc5, use:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>cvc5-gpl
@@ -166,13 +169,13 @@ provides a web interface for running cvc5 on scripts in the SMT-LIB format.</p><
 but later releases should work as well. Solver outputs shown below are based on
 cvc5 version 1.2.0. Other versions or solvers should produce conceptually
 similar results, but the outputs may not be exactly the same. The SMT-LIB
-examples are based on version 2.6 of the format <a class="reference internal" href="references.html#r5" id="id10"><span>[R5]</span></a>. cvc5’s Python API was
+examples are based on version 2.6 of the format <a class="reference internal" href="references.html#r5" id="id9"><span>[R5]</span></a>. cvc5’s Python API was
 designed to be a drop-in replacement for z3’s Python API. The credit for the
 design of the Python API thus goes to the z3 authors.</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id11" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">1</a><span class="fn-bracket">]</span></span>
-<p>The finite field solver uses the CoCoA library <a class="reference internal" href="references.html#r1" id="id12"><span>[R1]</span></a>, which has a GPL license.</p>
+<aside class="footnote brackets" id="id10" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">1</a><span class="fn-bracket">]</span></span>
+<p>The finite field solver uses the CoCoA library <a class="reference internal" href="references.html#r1" id="id11"><span>[R1]</span></a>, which has a GPL license.</p>
 </aside>
 </aside>
 </section>

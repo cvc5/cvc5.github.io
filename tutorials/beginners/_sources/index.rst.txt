@@ -35,3 +35,5 @@ SMT-LIB language, using either the cvc5 or the z3 SMT solver.
 
  * :ref:`genindex`
  * :ref:`search`
+
+.. TODO: Add analytics

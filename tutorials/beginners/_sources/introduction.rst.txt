@@ -12,7 +12,7 @@ Hilbert in 1928, who called it the “Entscheidungsproblem” (decision problem)
 [R24]_. In 1936, both Church and Turing showed that, in general, this is
 impossible—the problem is undecidable [R13]_, [R42]_. Undeterred, researchers in
 automated reasoning have searched for ways to solve either special cases of the
-problem that are decid- able or to find heuristics that work well in
+problem that are decidable or to find heuristics that work well in
 practice. Satisfiability modulo theories (SMT) has emerged as an approach that
 seems to fill a sweet spot in this search space. SMT leverages a rich
 collection of decidable theories to provide considerable expressive power
@@ -25,8 +25,7 @@ problems are suitable for SMT solvers, describe the capabilities of modern
 solvers, and provide guidance on how to encode problems as SMT queries.
 
 Throughout the tutorial, we provide examples and exercises to illustrate the
-concepts being explained. Unless otherwise stated, the exercises can be com-
-pleted using either the |cvcv| [R3]_ or the |ziii| SMT solver [R32]_, through either
+concepts being explained. Unless otherwise stated, the exercises can be completed using either the |cvcv| [R3]_ or the |ziii| SMT solver [R32]_, through either
 their Python interface or their textual interface based on the SMT-LIB 2 format
 [R8]_. The |cvcv| website at `cvc5.github.io <http://cvc5.github.io>`_ contains
 documentation that can be used as a reference to supplement the material in
@@ -49,7 +48,7 @@ A. To use a Python API for SMT, first create a virtual environment.
       python3 -m pip install z3-solver
 
    |cvcv| is distributed under the BSD 3-clause license. Some features, however,
-   such as its finite field solver (see [finite-fields]_), are only available in an
+   such as its finite field solver (see :ref:`finite-fields`), are only available in an
    extended version of |cvcv| distributed under the GNU General Public License
    (GPL). [#]_
    Since GPL is a problem for some users, the GPL version is not built

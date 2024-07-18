@@ -5,22 +5,27 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Solutions to Exercises &mdash; Satisfiability Modulo Theories: A Beginner&#39;s Tutorial  documentation</title>
-      <link rel="stylesheet" type="text/css" href="static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="static/tabs.css?v=a5c4661c" />
-      <link rel="stylesheet" type="text/css" href="static/custom.css?v=b9602cbe" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b9602cbe" />
 
   
   <!--[if lt IE 9]>
-    <script src="static/js/html5shiv.min.js"></script>
+    <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="static/jquery.js?v=5d32c60e"></script>
-        <script src="static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="static/documentation_options.js?v=5929fcd5"></script>
-        <script src="static/doctools.js?v=9a2dae69"></script>
-        <script src="static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="static/js/theme.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/tabs.js?v=3030b3cb"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="References" href="references.html" /> 
@@ -54,19 +59,19 @@
 <li class="toctree-l1"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Solutions to Exercises</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-1">Solution to Exercise 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-2">Solution to Exercise 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-3">Solution to Exercise 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-4">Solution to Exercise 4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-5">Solution to Exercise 5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-6">Solution to Exercise 6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-7">Solution to Exercise 7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-8">Solution to Exercise 8</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-9">Solution to Exercise 9</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-10">Solution to Exercise 10</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-11">Solution to Exercise 11</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-12">Solution to Exercise 12</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-13">Solution to Exercise 13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-1">Solution to <span class="xref std std-ref">Exercise 1</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-2">Solution to <span class="xref std std-ref">Exercise 2</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-3">Solution to <span class="xref std std-ref">Exercise 3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-4">Solution to <span class="xref std std-ref">Exercise 4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-5">Solution to <span class="xref std std-ref">Exercise 5</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-6">Solution to <span class="xref std std-ref">Exercise 6</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-7">Solution to <span class="xref std std-ref">Exercise 7</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-8">Solution to <span class="xref std std-ref">Exercise 8</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-9">Solution to <span class="xref std std-ref">Exercise 9</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-10">Solution to <span class="xref std std-ref">Exercise 10</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-11">Solution to <span class="xref std std-ref">Exercise 11</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-12">Solution to <span class="xref std std-ref">Exercise 12</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution-to-exercise-13">Solution to <span class="xref std std-ref">Exercise 13</span></a></li>
 </ul>
 </li>
 </ul>
@@ -95,45 +100,386 @@
            <div itemprop="articleBody">
              
   <section id="solutions-to-exercises">
-<h1>Solutions to Exercises<a class="headerlink" href="#solutions-to-exercises" title="Link to this heading"></a></h1>
+<span id="solutions"></span><h1>Solutions to Exercises<a class="headerlink" href="#solutions-to-exercises" title="Link to this heading"></a></h1>
 <section id="solution-to-exercise-1">
-<span id="id1"></span><h2>Solution to Exercise 1<a class="headerlink" href="#solution-to-exercise-1" title="Link to this heading"></a></h2>
+<span id="id1"></span><h2>Solution to <a class="reference internal" href="overview.html#exercise-1"><span class="std std-ref">Exercise 1</span></a><a class="headerlink" href="#solution-to-exercise-1" title="Link to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise1.smt2">solutions/Exercise1.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>(<span class="k">set-logic</span> <span class="n">QF_LIA</span>)
+<span class="linenos">2</span>
+<span class="linenos">3</span>(<span class="k">declare-const</span> <span class="n">a</span> <span class="na">Int</span>)
+<span class="linenos">4</span>(<span class="k">declare-const</span> <span class="n">b</span> <span class="na">Int</span>)
+<span class="linenos">5</span>
+<span class="linenos">6</span>(<span class="k">assert</span> (<span class="o">=</span> (<span class="o">+</span> <span class="n">a</span> <span class="m">10</span>) (<span class="o">*</span> <span class="m">2</span> <span class="n">b</span>)))
+<span class="linenos">7</span>(<span class="k">assert</span> (<span class="o">=</span> (<span class="o">+</span> <span class="n">b</span> <span class="m">20</span>) (<span class="o">*</span> <span class="m">2</span> <span class="n">a</span>)))
+<span class="linenos">8</span>
+<span class="linenos">9</span>(<span class="k">check-sat</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise1.py">solutions/Exercise1.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos">2</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Ints</span><span class="p">(</span><span class="s1">&#39;a b&#39;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">solve</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>The output is as follows.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise1.out.smt2">solutions/Exercise1.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">unsat</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise1.out.py">solutions/Exercise1.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">no</span> <span class="n">solution</span>
+</pre></div>
+</div>
+</div></div>
+<p>The SMT solver says <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unsat</span></code> (or “no solution” for the Python version)
+because there are no <em>integer</em> values that satisfy the constraints.</p>
 </section>
 <section id="solution-to-exercise-2">
-<span id="id2"></span><h2>Solution to Exercise 2<a class="headerlink" href="#solution-to-exercise-2" title="Link to this heading"></a></h2>
+<span id="id2"></span><h2>Solution to <a class="reference internal" href="overview.html#exercise-2"><span class="std std-ref">Exercise 2</span></a><a class="headerlink" href="#solution-to-exercise-2" title="Link to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise2.smt2">solutions/Exercise2.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>(<span class="k">set-logic</span> <span class="n">QF_BV</span>)
+<span class="linenos">2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
+<span class="linenos">3</span>
+<span class="linenos">4</span>(<span class="k">declare-const</span> <span class="n">x</span> (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">8</span>))
+<span class="linenos">5</span>
+<span class="linenos">6</span>(<span class="k">assert</span> (<span class="o">=</span> (<span class="o">bvmul</span> <span class="n">x</span> (<span class="na">_</span> <span class="m">bv5</span> <span class="m">8</span>)) (<span class="na">_</span> <span class="m">bv1</span> <span class="m">8</span>)))
+<span class="linenos">7</span>
+<span class="linenos">8</span>(<span class="k">check-sat</span>)
+<span class="linenos">9</span>(<span class="k">get-model</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise2.py">solutions/Exercise2.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">x</span> <span class="o">=</span> <span class="n">BitVec</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_BV&#39;</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="n">result</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+<span class="linenos"> 9</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;result: &quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+<span class="linenos">10</span><span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="n">sat</span><span class="p">:</span>
+<span class="linenos">11</span>  <span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
+<span class="linenos">12</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">m</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div></div>
+<p>The output is as follows.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise2.out.smt2">solutions/Exercise2.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">sat</span>
+<span class="linenos">2</span>(
+<span class="linenos">3</span>(<span class="k">define-fun</span> <span class="n">x</span> () (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">8</span>) <span class="m">#b11001101</span>)
+<span class="linenos">4</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise2.out.py">solutions/Exercise2.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">result</span><span class="p">:</span>  <span class="n">sat</span>
+<span class="linenos">2</span><span class="n">x</span> <span class="p">:</span> <span class="mi">205</span>
+</pre></div>
+</div>
+</div></div>
+<p>The SMT solver gives a binary value of <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code> as <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="m">#b11001101</span></code>.  This
+equals <code class="code highlight python docutils literal highlight-python"><span class="mi">205</span></code> in decimal.  And, indeed, <span class="math notranslate nohighlight">\(5 \times 205 = 1025\)</span>, and
+<span class="math notranslate nohighlight">\(1025 \equiv 1\ \mathsf{mod}\ 256\)</span>.</p>
 </section>
 <section id="solution-to-exercise-3">
-<span id="id3"></span><h2>Solution to Exercise 3<a class="headerlink" href="#solution-to-exercise-3" title="Link to this heading"></a></h2>
+<span id="id3"></span><h2>Solution to <a class="reference internal" href="theories.html#exercise-3"><span class="std std-ref">Exercise 3</span></a><a class="headerlink" href="#solution-to-exercise-3" title="Link to this heading"></a></h2>
+<p>One way to modify <a class="reference internal" href="theories.html#example-4"><span class="std std-ref">Example 4</span></a> to make it satisfiable is to change the
+hypothesis so that <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">f</span></code> is applied 2 and 4 times instead of 3 and 5 times.
+In fact, any two number of applications that are not relatively prime will work.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise3a.smt2">solutions/Exercise3a.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_UF</span>)
+<span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>(<span class="k">declare-sort</span> <span class="n">U</span> <span class="m">0</span>)
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>(<span class="k">declare-fun</span> <span class="n">f</span> (<span class="n">U</span>) <span class="n">U</span>)
+<span class="linenos"> 7</span>(<span class="k">declare-const</span> <span class="n">x</span> <span class="n">U</span>) 
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">=</span> (<span class="n">f</span> (<span class="n">f</span> <span class="n">x</span>)) <span class="n">x</span>) (<span class="o">=</span> (<span class="n">f</span> (<span class="n">f</span> (<span class="n">f</span> (<span class="n">f</span> <span class="n">x</span>)))) <span class="n">x</span>)))
+<span class="linenos">10</span>(<span class="k">assert</span> (<span class="o">distinct</span> (<span class="n">f</span> <span class="n">x</span>) <span class="n">x</span>))
+<span class="linenos">11</span>
+<span class="linenos">12</span>(<span class="k">check-sat</span>)
+<span class="linenos">13</span>(<span class="k">get-model</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise3a.py">solutions/Exercise3a.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span><span class="n">U</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">f</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">x</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_UF&#39;</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">((</span><span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">==</span> <span class="n">x</span><span class="p">),</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)))))</span> <span class="o">==</span> <span class="n">x</span><span class="p">))</span>
+<span class="linenos"> 8</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Distinct</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">))</span>  <span class="c1"># negation of f(x) = x</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">result</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+<span class="linenos">11</span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="linenos">12</span><span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="n">sat</span><span class="p">:</span>
+<span class="linenos">13</span>  <span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
+<span class="linenos">14</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">m</span><span class="p">]))</span>
+<span class="linenos">15</span>
+</pre></div>
+</div>
+</div></div>
+<p>The output from cvc5 is as follows.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise3a.out.smt2">solutions/Exercise3a.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">sat</span>
+<span class="linenos">2</span>(
+<span class="linenos">3</span><span class="c">; cardinality of U is 2</span>
+<span class="linenos">4</span><span class="c">; rep: (as @U_0 U)</span>
+<span class="linenos">5</span><span class="c">; rep: (as @U_1 U)</span>
+<span class="linenos">6</span>(<span class="k">define-fun</span> <span class="n">f</span> ((<span class="n">_arg_1</span> <span class="n">U</span>)) <span class="n">U</span> (<span class="o">ite</span> (<span class="o">=</span> (<span class="k">as</span> <span class="n">@U_1</span> <span class="n">U</span>) <span class="n">_arg_1</span>) (<span class="k">as</span> <span class="n">@U_0</span> <span class="n">U</span>) (<span class="k">as</span> <span class="n">@U_1</span> <span class="n">U</span>)))
+<span class="linenos">7</span>(<span class="k">define-fun</span> <span class="n">x</span> () <span class="n">U</span> (<span class="k">as</span> <span class="n">@U_1</span> <span class="n">U</span>))
+<span class="linenos">8</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise3a.out.py">solutions/Exercise3a.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">sat</span>
+<span class="linenos">2</span><span class="n">f</span> <span class="p">:</span> <span class="n">Lambda</span><span class="p">(</span><span class="n">_arg_1</span><span class="p">,</span>
+<span class="linenos">3</span>       <span class="n">If</span><span class="p">((</span><span class="k">as</span> <span class="nd">@U_1</span> <span class="n">U</span><span class="p">)</span> <span class="o">==</span> <span class="n">_arg_1</span><span class="p">,</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_0</span> <span class="n">U</span><span class="p">),</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_1</span> <span class="n">U</span><span class="p">)))</span>
+<span class="linenos">4</span><span class="n">x</span> <span class="p">:</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_1</span> <span class="n">U</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>Notice that for the SMT-LIB example, cvc5 uses a custom output format to describe how it has
+interpreted the sort <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">U</span></code>: as a set with two elements, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">@U_0</span></code> and
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">@U_1</span></code>.  Furthermore, cvc5 uses the <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="k">define-fun</span></code> command to
+describe the value assigned to <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">f</span></code>.  In this case, the interpretation of
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">f</span></code> maps <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">@U_1</span></code> to <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">@U_0</span></code> and everything else (i.e.,
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">@U_0</span></code>) to <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">@U_1</span></code>.  Then, interpreting <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code> as <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">@U_1</span></code>
+satisfies the constraints.  The Python output gives the same model, but it uses
+<code class="code highlight python docutils literal highlight-python"><span class="n">Lambda</span></code> to define the function.</p>
+<p>We next consider how to modify <a class="reference internal" href="theories.html#example-5"><span class="std std-ref">Example 5</span></a>.  One way to do
+this is to additionally require that <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">y</span></code> and <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">z</span></code>: are equal.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-6-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-6-6-0" name="6-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-6-6-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-1" name="6-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-6-6-0" class="sphinx-tabs-panel" id="panel-6-6-0" name="6-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise3b.smt2">solutions/Exercise3b.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_UF</span>)
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>(<span class="k">declare-sort</span> <span class="n">U</span> <span class="m">0</span>)
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span>(<span class="k">declare-const</span> <span class="n">b</span> <span class="na">Bool</span>)
+<span class="linenos"> 6</span>(<span class="k">declare-const</span> <span class="n">x</span> <span class="n">U</span>) 
+<span class="linenos"> 7</span>(<span class="k">declare-const</span> <span class="n">y</span> <span class="n">U</span>) 
+<span class="linenos"> 8</span>(<span class="k">declare-const</span> <span class="n">z</span> <span class="n">U</span>) 
+<span class="linenos"> 9</span>(<span class="k">declare-const</span> <span class="n">w</span> <span class="n">U</span>) 
+<span class="linenos">10</span>
+<span class="linenos">11</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">x</span> (<span class="o">ite</span> <span class="n">b</span> <span class="n">y</span> <span class="n">z</span>)))
+<span class="linenos">12</span>(<span class="k">assert</span> (<span class="o">or</span> (<span class="o">=</span> <span class="n">w</span> <span class="n">y</span>) (<span class="o">=</span> <span class="n">w</span> <span class="n">z</span>)))
+<span class="linenos">13</span>(<span class="k">assert</span> (<span class="o">=</span> <span class="n">y</span> <span class="n">z</span>))
+<span class="linenos">14</span>(<span class="k">assert</span> (<span class="o">distinct</span> <span class="n">x</span> <span class="n">w</span>))
+<span class="linenos">15</span>  
+<span class="linenos">16</span>(<span class="k">check-sat</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-6-1" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-1" name="6-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise3b.py">solutions/Exercise3b.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span><span class="n">U</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">b</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">BoolSort</span><span class="p">())</span>
+<span class="linenos"> 4</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Consts</span><span class="p">(</span><span class="s2">&quot;x y z w&quot;</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_UF&#39;</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="p">(</span><span class="n">If</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)))</span>
+<span class="linenos"> 8</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Or</span><span class="p">((</span><span class="n">w</span> <span class="o">==</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">w</span> <span class="o">==</span> <span class="n">z</span><span class="p">)))</span>
+<span class="linenos"> 9</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">w</span><span class="p">)</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span><span class="p">:</span>
+<span class="linenos">13</span>  <span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
+<span class="linenos">14</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">m</span><span class="p">]))</span>
+<span class="linenos">15</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">16</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;no solution&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>The output from cvc5 is as follows.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-7-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-7-7-0" name="7-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-7-7-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-1" name="7-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-7-7-0" class="sphinx-tabs-panel" id="panel-7-7-0" name="7-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise3b.out.smt2">solutions/Exercise3b.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">unsat</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-7-1" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-1" name="7-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise3b.out.py">solutions/Exercise3b.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">no</span> <span class="n">solution</span>
+</pre></div>
+</div>
+</div></div>
 </section>
 <section id="solution-to-exercise-4">
-<span id="id4"></span><h2>Solution to Exercise 4<a class="headerlink" href="#solution-to-exercise-4" title="Link to this heading"></a></h2>
+<span id="id4"></span><h2>Solution to <a class="reference internal" href="theories.html#exercise-4"><span class="std std-ref">Exercise 4</span></a><a class="headerlink" href="#solution-to-exercise-4" title="Link to this heading"></a></h2>
+<p>In the SMT-LIB solution, we make use of the <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">incremental</span></code> options, which
+enables the commands <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="k">push</span></code> and <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="k">pop</span></code>.  These commands allow us to
+temporarily add one or more assertions, check for satisfiability, and then
+return to the previous state.  The Python example demonstrates the power of
+having the solver embedded in a general-purpose programming language: we can
+use a loop to iterate until no better solution is found.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-8-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-8-8-0" name="8-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-8-8-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-8-8-1" name="8-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-8-8-0" class="sphinx-tabs-panel" id="panel-8-8-0" name="8-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise4.smt2">solutions/Exercise4.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_IDL</span>)
+<span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
+<span class="linenos"> 3</span>(<span class="k">set-option</span> <span class="na">:incremental</span> <span class="o">true</span>)
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span>(<span class="k">declare-const</span> <span class="n">j11</span> <span class="na">Int</span>)
+<span class="linenos"> 6</span>(<span class="k">declare-const</span> <span class="n">j12</span> <span class="na">Int</span>) 
+<span class="linenos"> 7</span>(<span class="k">declare-const</span> <span class="n">j21</span> <span class="na">Int</span>)
+<span class="linenos"> 8</span>(<span class="k">declare-const</span> <span class="n">j22</span> <span class="na">Int</span>)
+<span class="linenos"> 9</span>(<span class="k">declare-const</span> <span class="n">j31</span> <span class="na">Int</span>)
+<span class="linenos">10</span>(<span class="k">declare-const</span> <span class="n">j32</span> <span class="na">Int</span>)
+<span class="linenos">11</span>
+<span class="linenos">12</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">&gt;=</span> <span class="n">j11</span> <span class="m">0</span>) (<span class="o">&gt;=</span> <span class="n">j12</span> <span class="m">0</span>) (<span class="o">&gt;=</span> <span class="n">j21</span> <span class="m">0</span>) (<span class="o">&gt;=</span> <span class="n">j22</span> <span class="m">0</span>) (<span class="o">&gt;=</span> <span class="n">j31</span> <span class="m">0</span>) (<span class="o">&gt;=</span> <span class="n">j32</span> <span class="m">0</span>)))
+<span class="linenos">13</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j12</span> <span class="n">j11</span>) <span class="m">10</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j22</span> <span class="n">j21</span>) <span class="m">20</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j32</span> <span class="n">j31</span>) <span class="m">5</span>)))
+<span class="linenos">14</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j22</span> <span class="n">j11</span>) <span class="m">10</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j11</span> <span class="n">j22</span>) <span class="m">5</span>))
+<span class="linenos">15</span>             (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j31</span> <span class="n">j11</span>) <span class="m">10</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j11</span> <span class="n">j31</span>) <span class="m">5</span>))
+<span class="linenos">16</span>             (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j31</span> <span class="n">j22</span>) <span class="m">5</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j22</span> <span class="n">j31</span>) <span class="m">5</span>))))
+<span class="linenos">17</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j21</span> <span class="n">j12</span>) <span class="m">5</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j12</span> <span class="n">j21</span>) <span class="m">5</span>))
+<span class="linenos">18</span>             (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j32</span> <span class="n">j12</span>) <span class="m">5</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j12</span> <span class="n">j32</span>) <span class="m">5</span>))
+<span class="linenos">19</span>             (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j32</span> <span class="n">j21</span>) <span class="m">5</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j21</span> <span class="n">j32</span>) <span class="m">5</span>))))
+<span class="linenos">20</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">&lt;=</span> <span class="n">j12</span> <span class="m">25</span>) (<span class="o">&lt;=</span> <span class="n">j22</span> <span class="m">25</span>) (<span class="o">&lt;=</span> <span class="n">j32</span> <span class="m">25</span>)))
+<span class="linenos">21</span>
+<span class="linenos">22</span>(<span class="k">define-fun</span> <span class="n">max3</span> ((<span class="n">i</span> <span class="na">Int</span>) (<span class="n">j</span> <span class="na">Int</span>) (<span class="n">k</span> <span class="na">Int</span>)) <span class="na">Int</span>
+<span class="linenos">23</span>                 (<span class="o">ite</span> (<span class="o">&lt;</span> <span class="n">i</span> <span class="n">j</span>) (<span class="o">ite</span> (<span class="o">&lt;</span> <span class="n">j</span> <span class="n">k</span>) <span class="n">k</span> <span class="n">j</span>) (<span class="o">ite</span> (<span class="o">&lt;</span> <span class="n">i</span> <span class="n">k</span>) <span class="n">k</span> <span class="n">i</span>)))
+<span class="linenos">24</span>
+<span class="linenos">25</span>(<span class="k">check-sat</span>)
+<span class="linenos">26</span>(<span class="k">get-model</span>)
+<span class="linenos">27</span>
+<span class="linenos">28</span>(<span class="k">push</span>)
+<span class="linenos">29</span>(<span class="k">assert</span> (<span class="o">&lt;</span> (<span class="n">max3</span> <span class="n">j12</span> <span class="n">j22</span> <span class="n">j32</span>) <span class="m">25</span>))
+<span class="linenos">30</span>(<span class="k">check-sat</span>)
+<span class="linenos">31</span>(<span class="k">pop</span>)
+<span class="linenos">32</span>
+<span class="linenos">33</span>(<span class="k">push</span>)
+<span class="linenos">34</span>(<span class="k">assert</span> (<span class="o">&lt;</span> (<span class="n">max3</span> <span class="n">j12</span> <span class="n">j22</span> <span class="n">j32</span>) <span class="m">24</span>))
+<span class="linenos">35</span>(<span class="k">check-sat</span>)
+<span class="linenos">36</span>(<span class="k">pop</span>)
+<span class="linenos">37</span>
+<span class="linenos">38</span>(<span class="k">push</span>)
+<span class="linenos">39</span>(<span class="k">assert</span> (<span class="o">&lt;</span> (<span class="n">max3</span> <span class="n">j12</span> <span class="n">j22</span> <span class="n">j32</span>) <span class="m">23</span>))
+<span class="linenos">40</span>(<span class="k">check-sat</span>)
+<span class="linenos">41</span>(<span class="k">pop</span>)
+<span class="linenos">42</span>
+<span class="linenos">43</span>(<span class="k">push</span>)
+<span class="linenos">44</span>(<span class="k">assert</span> (<span class="o">&lt;</span> (<span class="n">max3</span> <span class="n">j12</span> <span class="n">j22</span> <span class="n">j32</span>) <span class="m">22</span>))
+<span class="linenos">45</span>(<span class="k">check-sat</span>)
+<span class="linenos">46</span>(<span class="k">pop</span>)
+<span class="linenos">47</span>
+<span class="linenos">48</span>(<span class="k">push</span>)
+<span class="linenos">49</span>(<span class="k">assert</span> (<span class="o">&lt;</span> (<span class="n">max3</span> <span class="n">j12</span> <span class="n">j22</span> <span class="n">j32</span>) <span class="m">21</span>))
+<span class="linenos">50</span>(<span class="k">check-sat</span>)
+<span class="linenos">51</span>(<span class="k">pop</span>)
+<span class="linenos">52</span>
+<span class="linenos">53</span>(<span class="k">assert</span> (<span class="o">&lt;</span> (<span class="n">max3</span> <span class="n">j12</span> <span class="n">j22</span> <span class="n">j32</span>) <span class="m">20</span>))
+<span class="linenos">54</span>(<span class="k">check-sat</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-8-1" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-1" name="8-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise4.py">solutions/Exercise4.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">max2</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+<span class="linenos"> 2</span>  <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">:</span>
+<span class="linenos"> 3</span>      <span class="k">return</span> <span class="n">j</span>
+<span class="linenos"> 4</span>  <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 5</span>      <span class="k">return</span> <span class="n">i</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="k">def</span> <span class="nf">max3</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+<span class="linenos"> 8</span>  <span class="k">return</span> <span class="n">max2</span><span class="p">(</span><span class="n">max2</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span><span class="n">k</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="n">j11</span><span class="p">,</span><span class="n">j12</span><span class="p">,</span><span class="n">j21</span><span class="p">,</span><span class="n">j22</span><span class="p">,</span><span class="n">j31</span><span class="p">,</span><span class="n">j32</span> <span class="o">=</span> <span class="n">Ints</span><span class="p">(</span><span class="s2">&quot;j11 j12 j21 j22 j31 j32&quot;</span><span class="p">)</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_IDL&#39;</span><span class="p">)</span>
+<span class="linenos">15</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">([</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="n">j11</span><span class="p">,</span> <span class="n">j12</span><span class="p">,</span> <span class="n">j21</span><span class="p">,</span> <span class="n">j22</span><span class="p">,</span> <span class="n">j31</span><span class="p">,</span> <span class="n">j32</span><span class="p">]]))</span>
+<span class="linenos">16</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">j12</span> <span class="o">-</span> <span class="n">j11</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">j22</span> <span class="o">-</span> <span class="n">j21</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">j32</span> <span class="o">-</span> <span class="n">j31</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">))</span>
+<span class="linenos">17</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Or</span><span class="p">(</span><span class="n">j22</span> <span class="o">-</span> <span class="n">j11</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">j11</span> <span class="o">-</span> <span class="n">j22</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">),</span> 
+<span class="linenos">18</span>          <span class="n">Or</span><span class="p">(</span><span class="n">j31</span> <span class="o">-</span> <span class="n">j11</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">j11</span> <span class="o">-</span> <span class="n">j31</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">),</span> 
+<span class="linenos">19</span>          <span class="n">Or</span><span class="p">(</span><span class="n">j31</span> <span class="o">-</span> <span class="n">j22</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j22</span> <span class="o">-</span> <span class="n">j31</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)))</span>
+<span class="linenos">20</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Or</span><span class="p">(</span><span class="n">j21</span> <span class="o">-</span> <span class="n">j12</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j12</span> <span class="o">-</span> <span class="n">j21</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">),</span> 
+<span class="linenos">21</span>          <span class="n">Or</span><span class="p">(</span><span class="n">j32</span> <span class="o">-</span> <span class="n">j12</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j12</span> <span class="o">-</span> <span class="n">j32</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">),</span> 
+<span class="linenos">22</span>          <span class="n">Or</span><span class="p">(</span><span class="n">j32</span> <span class="o">-</span> <span class="n">j21</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j21</span> <span class="o">-</span> <span class="n">j32</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)))</span>
+<span class="linenos">23</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">j12</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">j22</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">j32</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">))</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">()</span>
+<span class="linenos">26</span><span class="n">result</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+<span class="linenos">27</span><span class="k">while</span> <span class="n">result</span> <span class="o">==</span> <span class="n">sat</span><span class="p">:</span>
+<span class="linenos">28</span>  <span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
+<span class="linenos">29</span>  <span class="n">a</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">j12</span><span class="p">)</span><span class="o">.</span><span class="n">as_long</span><span class="p">()</span>
+<span class="linenos">30</span>  <span class="n">b</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">j22</span><span class="p">)</span><span class="o">.</span><span class="n">as_long</span><span class="p">()</span>
+<span class="linenos">31</span>  <span class="n">c</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">j32</span><span class="p">)</span><span class="o">.</span><span class="n">as_long</span><span class="p">()</span>
+<span class="linenos">32</span>  <span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="linenos">33</span>  <span class="n">best</span> <span class="o">=</span> <span class="n">max3</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="linenos">34</span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best solution so far:&quot;</span><span class="p">,</span> <span class="n">best</span><span class="p">,</span> <span class="s2">&quot;minutes&quot;</span><span class="p">)</span>
+<span class="linenos">35</span>  <span class="n">new_threshold</span> <span class="o">=</span> <span class="n">best</span> <span class="o">-</span> <span class="mi">5</span>
+<span class="linenos">36</span>  <span class="n">s</span><span class="o">.</span><span class="n">push</span><span class="p">()</span>
+<span class="linenos">37</span>  <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">j12</span> <span class="o">&lt;</span> <span class="n">new_threshold</span><span class="p">,</span> <span class="n">j22</span> <span class="o">&lt;</span> <span class="n">new_threshold</span><span class="p">,</span> <span class="n">j32</span> <span class="o">&lt;</span> <span class="n">new_threshold</span><span class="p">))</span>
+<span class="linenos">38</span>  <span class="n">result</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+<span class="linenos">39</span>
+<span class="linenos">40</span><span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="linenos">41</span><span class="nb">print</span><span class="p">(</span><span class="n">best</span><span class="p">,</span> <span class="s2">&quot;is the best solution&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>The output from cvc5 is as follows.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-9-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-9-9-0" name="9-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-9-9-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-9-9-1" name="9-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-9-9-0" class="sphinx-tabs-panel" id="panel-9-9-0" name="9-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise4.out.smt2">solutions/Exercise4.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">sat</span>
+<span class="linenos"> 2</span>(
+<span class="linenos"> 3</span>(<span class="k">define-fun</span> <span class="n">j11</span> () <span class="na">Int</span> <span class="m">0</span>)
+<span class="linenos"> 4</span>(<span class="k">define-fun</span> <span class="n">j12</span> () <span class="na">Int</span> <span class="m">10</span>)
+<span class="linenos"> 5</span>(<span class="k">define-fun</span> <span class="n">j21</span> () <span class="na">Int</span> <span class="m">5</span>)
+<span class="linenos"> 6</span>(<span class="k">define-fun</span> <span class="n">j22</span> () <span class="na">Int</span> <span class="m">25</span>)
+<span class="linenos"> 7</span>(<span class="k">define-fun</span> <span class="n">j31</span> () <span class="na">Int</span> <span class="m">20</span>)
+<span class="linenos"> 8</span>(<span class="k">define-fun</span> <span class="n">j32</span> () <span class="na">Int</span> <span class="m">25</span>)
+<span class="linenos"> 9</span>)
+<span class="linenos">10</span><span class="n">sat</span>
+<span class="linenos">11</span><span class="n">sat</span>
+<span class="linenos">12</span><span class="n">sat</span>
+<span class="linenos">13</span><span class="n">sat</span>
+<span class="linenos">14</span><span class="n">sat</span>
+<span class="linenos">15</span><span class="n">unsat</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-9-1" class="sphinx-tabs-panel" hidden="true" id="panel-9-9-1" name="9-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise4.out.py">solutions/Exercise4.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">Best</span> <span class="n">solution</span> <span class="n">so</span> <span class="n">far</span><span class="p">:</span> <span class="mi">30</span> <span class="n">minutes</span>
+<span class="linenos">2</span><span class="n">Best</span> <span class="n">solution</span> <span class="n">so</span> <span class="n">far</span><span class="p">:</span> <span class="mi">29</span> <span class="n">minutes</span>
+<span class="linenos">3</span><span class="n">Best</span> <span class="n">solution</span> <span class="n">so</span> <span class="n">far</span><span class="p">:</span> <span class="mi">28</span> <span class="n">minutes</span>
+<span class="linenos">4</span><span class="n">Best</span> <span class="n">solution</span> <span class="n">so</span> <span class="n">far</span><span class="p">:</span> <span class="mi">27</span> <span class="n">minutes</span>
+<span class="linenos">5</span><span class="n">Best</span> <span class="n">solution</span> <span class="n">so</span> <span class="n">far</span><span class="p">:</span> <span class="mi">26</span> <span class="n">minutes</span>
+<span class="linenos">6</span><span class="n">Best</span> <span class="n">solution</span> <span class="n">so</span> <span class="n">far</span><span class="p">:</span> <span class="mi">25</span> <span class="n">minutes</span>
+<span class="linenos">7</span><span class="mi">25</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">best</span> <span class="n">solution</span>
+</pre></div>
+</div>
+</div></div>
 </section>
 <section id="solution-to-exercise-5">
-<span id="id5"></span><h2>Solution to Exercise 5<a class="headerlink" href="#solution-to-exercise-5" title="Link to this heading"></a></h2>
+<span id="id5"></span><h2>Solution to <a class="reference internal" href="theories.html#exercise-5"><span class="std std-ref">Exercise 5</span></a><a class="headerlink" href="#solution-to-exercise-5" title="Link to this heading"></a></h2>
 </section>
 <section id="solution-to-exercise-6">
-<span id="id6"></span><h2>Solution to Exercise 6<a class="headerlink" href="#solution-to-exercise-6" title="Link to this heading"></a></h2>
+<span id="id6"></span><h2>Solution to <a class="reference internal" href="theories.html#exercise-6"><span class="std std-ref">Exercise 6</span></a><a class="headerlink" href="#solution-to-exercise-6" title="Link to this heading"></a></h2>
 </section>
 <section id="solution-to-exercise-7">
-<span id="id7"></span><h2>Solution to Exercise 7<a class="headerlink" href="#solution-to-exercise-7" title="Link to this heading"></a></h2>
+<span id="id7"></span><h2>Solution to <a class="reference internal" href="theories.html#exercise-7"><span class="std std-ref">Exercise 7</span></a><a class="headerlink" href="#solution-to-exercise-7" title="Link to this heading"></a></h2>
 </section>
 <section id="solution-to-exercise-8">
-<span id="id8"></span><h2>Solution to Exercise 8<a class="headerlink" href="#solution-to-exercise-8" title="Link to this heading"></a></h2>
+<span id="id8"></span><h2>Solution to <a class="reference internal" href="theories.html#exercise-8"><span class="std std-ref">Exercise 8</span></a><a class="headerlink" href="#solution-to-exercise-8" title="Link to this heading"></a></h2>
 </section>
 <section id="solution-to-exercise-9">
-<span id="id9"></span><h2>Solution to Exercise 9<a class="headerlink" href="#solution-to-exercise-9" title="Link to this heading"></a></h2>
+<span id="id9"></span><h2>Solution to <a class="reference internal" href="theories.html#exercise-9"><span class="std std-ref">Exercise 9</span></a><a class="headerlink" href="#solution-to-exercise-9" title="Link to this heading"></a></h2>
 </section>
 <section id="solution-to-exercise-10">
-<span id="id10"></span><h2>Solution to Exercise 10<a class="headerlink" href="#solution-to-exercise-10" title="Link to this heading"></a></h2>
+<span id="id10"></span><h2>Solution to <a class="reference internal" href="theories.html#exercise-10"><span class="std std-ref">Exercise 10</span></a><a class="headerlink" href="#solution-to-exercise-10" title="Link to this heading"></a></h2>
 </section>
 <section id="solution-to-exercise-11">
-<span id="id11"></span><h2>Solution to Exercise 11<a class="headerlink" href="#solution-to-exercise-11" title="Link to this heading"></a></h2>
+<span id="id11"></span><h2>Solution to <a class="reference internal" href="theories.html#exercise-11"><span class="std std-ref">Exercise 11</span></a><a class="headerlink" href="#solution-to-exercise-11" title="Link to this heading"></a></h2>
 </section>
 <section id="solution-to-exercise-12">
-<span id="id12"></span><h2>Solution to Exercise 12<a class="headerlink" href="#solution-to-exercise-12" title="Link to this heading"></a></h2>
+<span id="id12"></span><h2>Solution to <a class="reference internal" href="theories.html#exercise-12"><span class="std std-ref">Exercise 12</span></a><a class="headerlink" href="#solution-to-exercise-12" title="Link to this heading"></a></h2>
 </section>
 <section id="solution-to-exercise-13">
-<span id="id13"></span><h2>Solution to Exercise 13<a class="headerlink" href="#solution-to-exercise-13" title="Link to this heading"></a></h2>
+<span id="id13"></span><h2>Solution to <a class="reference internal" href="theories.html#exercise-13"><span class="std std-ref">Exercise 13</span></a><a class="headerlink" href="#solution-to-exercise-13" title="Link to this heading"></a></h2>
 </section>
 </section>
 
