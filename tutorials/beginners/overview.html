@@ -3,6 +3,15 @@
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ML12X2V35B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ML12X2V35B');
+    </script>
+    
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Overview &mdash; Satisfiability Modulo Theories: A Beginner&#39;s Tutorial  documentation</title>
       <link rel="stylesheet" type="text/css" href="static/pygments.css?v=80d5e7a1" />
@@ -232,7 +241,18 @@ this example. The <code class="code highlight smt smtlib docutils literal highli
 notation <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">bvX</span></code> is the bit-vector constant whose value, in decimal notation,
 is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">X</span></code>. Constant <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">z</span></code> names the value we must multiply by 2 to get <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code>.  There is no
 solution because an even number does not have a multiplicative inverse in
-machine arithmetic (i.e., when doing arithmetic modulo a power of 2).</p>
+machine arithmetic (i.e., when doing arithmetic modulo a power of 2).  The
+output of cvc5 is shown below.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/Example2.out.smt2">examples/Example2.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">unsat</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/Example2.out.py">examples/Example2.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">result</span><span class="p">:</span>  <span class="n">unsat</span>
+</pre></div>
+</div>
+</div></div>
 <blockquote id="exercise-2">
 <div><p>Exercise 2. Find the multiplicative inverse of 5 (mod <span class="math notranslate nohighlight">\(2^8\)</span>).</p>
 <p><a class="reference internal" href="solutions.html#solution-to-exercise-2"><span class="std std-ref">Solution to Exercise 2</span></a></p>
@@ -252,7 +272,7 @@ Socrates be mortal?</p>
 </div></blockquote>
 <p>The SMT-LIB and Python versions are as follows.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/socrates.smt2">examples/socrates.smt2</a></p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/socrates.smt2">examples/socrates.smt2</a></p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">UF</span>)
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span>(<span class="k">declare-sort</span> <span class="n">S</span> <span class="m">0</span>)
@@ -267,7 +287,7 @@ Socrates be mortal?</p>
 <span class="linenos">12</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/socrates.py">examples/socrates.py</a></p>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/socrates.py">examples/socrates.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">S</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
 <span class="linenos"> 3</span><span class="n">Bool</span> <span class="o">=</span> <span class="n">BoolSort</span><span class="p">()</span>
@@ -299,14 +319,26 @@ for integers and bit-vectors). Next, we declare two functions, <code class="code
 SMT-LIB Boolean sort. A function returning a Boolean is also called a
 <em>predicate</em>. We then declare an uninterpreted constant called <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">Socrates</span></code> of
 sort <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">S</span></code>. Now, we are ready to encode the first fact, namely that all humans are
-mortal. To do so, we use the <em>universal quantifier</em>, <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">ForAll</span></code>. The assertion states
+mortal. To do so, we use the <em>universal quantifier</em> (<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="k">forall</span></code> in SMT-LIB,
+<code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">ForAll</span></code> in Python). The assertion states
 that for every individual <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">x</span></code> of sort <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">S</span></code>, if the predicate <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">Human</span></code> holds for that
 individual, then the predicate <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">Mortal</span></code> also holds. The next assertion states
 that the <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">Human</span></code> predicate holds for <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">Socrates</span></code>. Finally, we want to see whether
 the fact that Socrates is mortal necessarily follows from the assumptions. To
 do this, we assert the negation of the statement and check for
 satisfiability. Running the example confirms that the result is unsatisfiable
-and thus, indeed, this statement is entailed.</p>
+and thus, indeed, this statement is entailed.  The output of cvc5 is shown
+below.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/socrates.out.smt2">examples/socrates.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">unsat</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/socrates.out.py">examples/socrates.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">unsat</span>
+</pre></div>
+</div>
+</div></div>
 <p>What we have presented so far should provide a good high-level idea of what is
 possible with SMT solvers. <a class="footnote-reference brackets" href="#id4" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> We cover these ideas in more detail in the
 following. In <a class="reference internal" href="formal.html#formal-foundations"><span class="std std-ref">Formal Foundations</span></a>, we briefly describe the formal foundations for

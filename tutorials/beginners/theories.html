@@ -3,6 +3,15 @@
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ML12X2V35B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ML12X2V35B');
+    </script>
+    
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SMT Theories &mdash; Satisfiability Modulo Theories: A Beginner&#39;s Tutorial  documentation</title>
       <link rel="stylesheet" type="text/css" href="static/pygments.css?v=80d5e7a1" />
@@ -195,8 +204,18 @@ for some set <span class="math notranslate nohighlight">\(U\)</span>. Check that
 </div>
 </div></div>
 <p>We can derive <span class="math notranslate nohighlight">\(f(x) = x\)</span> from the first assertion by performing a series of
-substitutions, and thus the problem is unsatisfiable.
-Now, we present a simple example that illustrates the <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">ite</span></code> operator.  It
+substitutions, and thus the problem is unsatisfiable.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/ffff.out.smt2">examples/ffff.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">unsat</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/ffff.out.py">examples/ffff.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">unsat</span>
+</pre></div>
+</div>
+</div></div>
+<p>Now, we present a simple example that illustrates the <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">ite</span></code> operator.  It
 also shows that in Python, we can use <code class="code highlight python docutils literal highlight-python"><span class="o">!=</span></code> instead of
 <code class="code highlight python docutils literal highlight-python"><span class="n">Distinct</span></code> to assert that two terms are distinct.</p>
 <blockquote id="example-5">
@@ -207,7 +226,7 @@ it follow that <span class="math notranslate nohighlight">\(x\)</span> equals <s
 </div></blockquote>
 <p>Solutions are shown below.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/xyzwite.smt2">examples/xyzwite.smt2</a></p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/xyzwite.smt2">examples/xyzwite.smt2</a></p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_UF</span>)
 <span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
 <span class="linenos"> 3</span>
@@ -227,7 +246,7 @@ it follow that <span class="math notranslate nohighlight">\(x\)</span> equals <s
 <span class="linenos">17</span>(<span class="k">get-model</span>)
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/xyzwite.py">examples/xyzwite.py</a></p>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/xyzwite.py">examples/xyzwite.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">U</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
 <span class="linenos"> 3</span><span class="n">b</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">BoolSort</span><span class="p">())</span>
@@ -244,14 +263,31 @@ it follow that <span class="math notranslate nohighlight">\(x\)</span> equals <s
 </pre></div>
 </div>
 </div></div>
-<p>The Python output when using cvc5 is as follows.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="p">:</span> <span class="kc">True</span>
-<span class="n">w</span> <span class="p">:</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_0</span> <span class="n">U</span><span class="p">)</span>
-<span class="n">x</span> <span class="p">:</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_1</span> <span class="n">U</span><span class="p">)</span>
-<span class="n">y</span> <span class="p">:</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_1</span> <span class="n">U</span><span class="p">)</span>
-<span class="n">z</span> <span class="p">:</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_0</span> <span class="n">U</span><span class="p">)</span>
+<p>The SMT-LIB and Python outputs when using cvc5 are as follows.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/xyzwite.out.smt2">examples/xyzwite.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">sat</span>
+<span class="linenos"> 2</span>(
+<span class="linenos"> 3</span><span class="c">; cardinality of U is 2</span>
+<span class="linenos"> 4</span><span class="c">; rep: (as @U_0 U)</span>
+<span class="linenos"> 5</span><span class="c">; rep: (as @U_1 U)</span>
+<span class="linenos"> 6</span>(<span class="k">define-fun</span> <span class="n">b</span> () <span class="na">Bool</span> <span class="o">true</span>)
+<span class="linenos"> 7</span>(<span class="k">define-fun</span> <span class="n">x</span> () <span class="n">U</span> (<span class="k">as</span> <span class="n">@U_1</span> <span class="n">U</span>))
+<span class="linenos"> 8</span>(<span class="k">define-fun</span> <span class="n">y</span> () <span class="n">U</span> (<span class="k">as</span> <span class="n">@U_1</span> <span class="n">U</span>))
+<span class="linenos"> 9</span>(<span class="k">define-fun</span> <span class="n">z</span> () <span class="n">U</span> (<span class="k">as</span> <span class="n">@U_0</span> <span class="n">U</span>))
+<span class="linenos">10</span>(<span class="k">define-fun</span> <span class="n">w</span> () <span class="n">U</span> (<span class="k">as</span> <span class="n">@U_0</span> <span class="n">U</span>))
+<span class="linenos">11</span>)
 </pre></div>
 </div>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/xyzwite.out.py">examples/xyzwite.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>   <span class="n">b</span> <span class="p">:</span> <span class="kc">True</span>
+<span class="linenos">2</span>   <span class="n">w</span> <span class="p">:</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_0</span> <span class="n">U</span><span class="p">)</span>
+<span class="linenos">3</span>   <span class="n">x</span> <span class="p">:</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_1</span> <span class="n">U</span><span class="p">)</span>
+<span class="linenos">4</span>   <span class="n">y</span> <span class="p">:</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_1</span> <span class="n">U</span><span class="p">)</span>
+<span class="linenos">5</span>   <span class="n">z</span> <span class="p">:</span> <span class="p">(</span><span class="k">as</span> <span class="nd">@U_0</span> <span class="n">U</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
 <p>The result tells us that it does <em>not</em> follow that <span class="math notranslate nohighlight">\(x=w\)</span>.  The model
 gives us a <em>counterexample</em> to that claim.  Because the sort <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">U</span></code> is
 uninterpreted, the model returned by cvc5 must choose an interpretation for
@@ -309,7 +345,7 @@ task within each job doesn’t start until the previous task finishes, and tasks
 on each machine don’t overlap.  Finally, we check that each task finishes on
 time.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/diff.smt2">examples/diff.smt2</a></p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/diff.smt2">examples/diff.smt2</a></p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_IDL</span>)
 <span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
 <span class="linenos"> 3</span>
@@ -334,7 +370,7 @@ time.</p>
 <span class="linenos">22</span>(<span class="k">get-model</span>)
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/diff.py">examples/diff.py</a></p>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/diff.py">examples/diff.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="n">j11</span><span class="p">,</span><span class="n">j12</span><span class="p">,</span><span class="n">j21</span><span class="p">,</span><span class="n">j22</span><span class="p">,</span><span class="n">j31</span><span class="p">,</span><span class="n">j32</span> <span class="o">=</span> <span class="n">Ints</span><span class="p">(</span><span class="s2">&quot;j11 j12 j21 j22 j31 j32&quot;</span><span class="p">)</span>
@@ -351,6 +387,25 @@ time.</p>
 <span class="linenos">14</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">j12</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">j22</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">j32</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">))</span>
 <span class="linenos">15</span>
 <span class="linenos">16</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span> <span class="k">else</span> <span class="s2">&quot;unsat&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>The output is as follows.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/diff.out.smt2">examples/diff.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">sat</span>
+<span class="linenos">2</span>(
+<span class="linenos">3</span>(<span class="k">define-fun</span> <span class="n">j11</span> () <span class="na">Int</span> <span class="m">0</span>)
+<span class="linenos">4</span>(<span class="k">define-fun</span> <span class="n">j12</span> () <span class="na">Int</span> <span class="m">10</span>)
+<span class="linenos">5</span>(<span class="k">define-fun</span> <span class="n">j21</span> () <span class="na">Int</span> <span class="m">5</span>)
+<span class="linenos">6</span>(<span class="k">define-fun</span> <span class="n">j22</span> () <span class="na">Int</span> <span class="m">25</span>)
+<span class="linenos">7</span>(<span class="k">define-fun</span> <span class="n">j31</span> () <span class="na">Int</span> <span class="m">20</span>)
+<span class="linenos">8</span>(<span class="k">define-fun</span> <span class="n">j32</span> () <span class="na">Int</span> <span class="m">25</span>)
+<span class="linenos">9</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/diff.out.py">examples/diff.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">[</span><span class="n">j11</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j12</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">j21</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j22</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">j31</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">j32</span> <span class="o">=</span> <span class="mi">25</span><span class="p">]</span>
 </pre></div>
 </div>
 </div></div>
@@ -394,7 +449,7 @@ other tools implement incomplete heuristic procedures for <a class="reference ex
 <div><p><span class="target" id="example-7">Example 7</span>. Find a solution for <span class="math notranslate nohighlight">\(x^2y + yz + 2xyz + 4xy + 8xz + 16 = 0\)</span>.</p>
 </div></blockquote>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/qfnra.smt2">examples/qfnra.smt2</a></p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-6-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-6-6-0" name="6-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-6-6-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-1" name="6-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-6-6-0" class="sphinx-tabs-panel" id="panel-6-6-0" name="6-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/qfnra.smt2">examples/qfnra.smt2</a></p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_NRA</span>)
 <span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
 <span class="linenos"> 3</span>
@@ -407,13 +462,29 @@ other tools implement incomplete heuristic procedures for <a class="reference ex
 <span class="linenos">10</span>(<span class="k">get-model</span>)
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/qfnra.py">examples/qfnra.py</a></p>
+</div><div aria-labelledby="tab-6-6-1" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-1" name="6-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/qfnra.py">examples/qfnra.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos">2</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Reals</span><span class="p">(</span><span class="s2">&quot;x y z&quot;</span><span class="p">)</span>
 <span class="linenos">3</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_NRA&#39;</span><span class="p">)</span>
 <span class="linenos">4</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">z</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">z</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="mi">8</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">z</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
 <span class="linenos">5</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span> <span class="k">else</span> <span class="s2">&quot;unsat&quot;</span><span class="p">)</span>
 <span class="linenos">6</span>
+</pre></div>
+</div>
+</div></div>
+<p>The output is as follows.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-7-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-7-7-0" name="7-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-7-7-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-1" name="7-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-7-7-0" class="sphinx-tabs-panel" id="panel-7-7-0" name="7-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/qfnra.out.smt2">examples/qfnra.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">sat</span>
+<span class="linenos">2</span>(
+<span class="linenos">3</span>(<span class="k">define-fun</span> <span class="n">x</span> () <span class="na">Real</span> (<span class="o">-</span> <span class="m">2</span><span class="n">.0</span>))
+<span class="linenos">4</span>(<span class="k">define-fun</span> <span class="n">y</span> () <span class="na">Real</span> (<span class="o">-</span> <span class="m">7</span><span class="n">.0</span>))
+<span class="linenos">5</span>(<span class="k">define-fun</span> <span class="n">z</span> () <span class="na">Real</span> (<span class="o">/</span> (<span class="o">-</span> <span class="m">44</span>) <span class="m">5</span>))
+<span class="linenos">6</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-7-1" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-1" name="7-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/qfnra.out.py">examples/qfnra.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">[</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">44</span><span class="o">/</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div></div>
@@ -461,7 +532,7 @@ and element sorts, if <code class="code highlight python docutils literal highli
 are <code class="code highlight python docutils literal highlight-python"><span class="n">a</span></code> and <code class="code highlight python docutils literal highlight-python"><span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span></code>.</p>
 </div></blockquote>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/arrays.smt2">examples/arrays.smt2</a></p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-8-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-8-8-0" name="8-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-8-8-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-8-8-1" name="8-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-8-8-0" class="sphinx-tabs-panel" id="panel-8-8-0" name="8-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/arrays.smt2">examples/arrays.smt2</a></p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_AX</span>)
 <span class="linenos"> 2</span>(<span class="k">declare-sort</span> <span class="n">I</span> <span class="m">0</span>)
 <span class="linenos"> 3</span>(<span class="k">declare-sort</span> <span class="n">E</span> <span class="m">0</span>)
@@ -479,7 +550,7 @@ are <code class="code highlight python docutils literal highlight-python"><span 
 <span class="linenos">15</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/arrays.py">examples/arrays.py</a></p>
+</div><div aria-labelledby="tab-8-8-1" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-1" name="8-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/arrays.py">examples/arrays.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">I</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">)</span>
 <span class="linenos"> 3</span><span class="n">E</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">)</span>
@@ -498,6 +569,17 @@ are <code class="code highlight python docutils literal highlight-python"><span 
 <span class="linenos">16</span>
 <span class="linenos">17</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">())</span>
 <span class="linenos">18</span>
+</pre></div>
+</div>
+</div></div>
+<p>The output is as follows.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-9-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-9-9-0" name="9-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-9-9-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-9-9-1" name="9-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-9-9-0" class="sphinx-tabs-panel" id="panel-9-9-0" name="9-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/arrays.out.smt2">examples/arrays.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">unsat</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-9-1" class="sphinx-tabs-panel" hidden="true" id="panel-9-9-1" name="9-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/arrays.out.py">examples/arrays.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">unsat</span>
 </pre></div>
 </div>
 </div></div>
@@ -542,7 +624,7 @@ easily check the equivalence of the absolute value computations.</p>
 equivalent to <span class="math notranslate nohighlight">\(\mathit{abs}\)</span>.</p>
 </div></blockquote>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/branchless_abs.smt2">examples/branchless_abs.smt2</a></p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-10-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-10-10-0" name="10-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-10-10-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-10-10-1" name="10-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-10-10-0" class="sphinx-tabs-panel" id="panel-10-10-0" name="10-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/branchless_abs.smt2">examples/branchless_abs.smt2</a></p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_BV</span>)
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span>(<span class="k">declare-const</span> <span class="n">x</span> (<span class="na">_</span> <span class="na">BitVec</span> <span class="m">32</span>))
@@ -559,13 +641,24 @@ equivalent to <span class="math notranslate nohighlight">\(\mathit{abs}\)</span>
 <span class="linenos">14</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/branchless_abs.py">examples/branchless_abs.py</a></p>
+</div><div aria-labelledby="tab-10-10-1" class="sphinx-tabs-panel" hidden="true" id="panel-10-10-1" name="10-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/branchless_abs.py">examples/branchless_abs.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos">2</span><span class="n">x</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">BitVecSort</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
 <span class="linenos">3</span><span class="n">xrs</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span>
 <span class="linenos">4</span><span class="n">s</span> <span class="o">=</span> <span class="n">SolverFor</span><span class="p">(</span><span class="s1">&#39;QF_BV&#39;</span><span class="p">)</span>
 <span class="linenos">5</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">If</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="n">x</span> <span class="o">^</span> <span class="n">xrs</span><span class="p">)</span> <span class="o">-</span> <span class="n">xrs</span><span class="p">)</span>      <span class="c1"># prove abs() == abs1()</span>
 <span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span> <span class="k">else</span> <span class="s2">&quot;unsat&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>The output is as follows.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-11-11-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-11-11-0" name="11-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-11-11-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-11-11-1" name="11-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-11-11-0" class="sphinx-tabs-panel" id="panel-11-11-0" name="11-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/branchless_abs.out.smt2">examples/branchless_abs.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">unsat</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-11-11-1" class="sphinx-tabs-panel" hidden="true" id="panel-11-11-1" name="11-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/branchless_abs.out.py">examples/branchless_abs.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">unsat</span>
 </pre></div>
 </div>
 </div></div>
@@ -592,7 +685,7 @@ cvc5 supports the logic name <code class="code highlight smt smtlib docutils lit
 Fortunately, we can always use <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">ALL</span></code> for the logic if a
 more specific logic is not available.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-6-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-6-6-0" name="6-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-6-6-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-1" name="6-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-6-6-0" class="sphinx-tabs-panel" id="panel-6-6-0" name="6-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/datatypes.smt2">examples/datatypes.smt2</a></p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-12-12-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-12-12-0" name="12-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-12-12-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-12-12-1" name="12-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-12-12-0" class="sphinx-tabs-panel" id="panel-12-12-0" name="12-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/datatypes.smt2">examples/datatypes.smt2</a></p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_DTLIA</span>)
 <span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
 <span class="linenos"> 3</span>
@@ -611,7 +704,7 @@ more specific logic is not available.</p>
 <span class="linenos">16</span>(<span class="k">get-model</span>)
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-6-6-1" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-1" name="6-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/datatypes.py">examples/datatypes.py</a></p>
+</div><div aria-labelledby="tab-12-12-1" class="sphinx-tabs-panel" hidden="true" id="panel-12-12-1" name="12-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/datatypes.py">examples/datatypes.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">decl</span> <span class="o">=</span> <span class="n">Datatype</span><span class="p">(</span><span class="s2">&quot;tree&quot;</span><span class="p">)</span>
 <span class="linenos"> 3</span><span class="n">decl</span><span class="o">.</span><span class="n">declare</span><span class="p">(</span><span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">IntSort</span><span class="p">()),</span> <span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">decl</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">decl</span><span class="p">))</span>
@@ -631,10 +724,21 @@ more specific logic is not available.</p>
 </pre></div>
 </div>
 </div></div>
-<p>The Python output from cvc5 is:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="n">x</span> <span class="o">=</span> <span class="n">node</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">nil</span><span class="p">,</span> <span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nil</span><span class="p">,</span> <span class="n">nil</span><span class="p">)),</span> <span class="n">y</span> <span class="o">=</span> <span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nil</span><span class="p">,</span> <span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nil</span><span class="p">,</span> <span class="n">nil</span><span class="p">)),</span> <span class="n">nil</span><span class="p">)]</span>
+<p>The output from cvc5 is:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-13-13-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-13-13-0" name="13-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-13-13-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-13-13-1" name="13-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-13-13-0" class="sphinx-tabs-panel" id="panel-13-13-0" name="13-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/datatypes.out.smt2">examples/datatypes.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">sat</span>
+<span class="linenos">2</span>(
+<span class="linenos">3</span>(<span class="k">define-fun</span> <span class="n">x</span> () <span class="n">Tree</span> (<span class="n">node</span> <span class="m">101</span> <span class="n">nil</span> (<span class="n">node</span> <span class="m">0</span> <span class="n">nil</span> <span class="n">nil</span>)))
+<span class="linenos">4</span>(<span class="k">define-fun</span> <span class="n">y</span> () <span class="n">Tree</span> (<span class="n">node</span> <span class="m">0</span> (<span class="n">node</span> <span class="m">0</span> <span class="n">nil</span> (<span class="n">node</span> <span class="m">0</span> <span class="n">nil</span> <span class="n">nil</span>)) <span class="n">nil</span>))
+<span class="linenos">5</span>)
 </pre></div>
 </div>
+</div><div aria-labelledby="tab-13-13-1" class="sphinx-tabs-panel" hidden="true" id="panel-13-13-1" name="13-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/datatypes.out.py">examples/datatypes.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">[</span><span class="n">x</span> <span class="o">=</span> <span class="n">node</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">nil</span><span class="p">,</span> <span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nil</span><span class="p">,</span> <span class="n">nil</span><span class="p">)),</span> <span class="n">y</span> <span class="o">=</span> <span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nil</span><span class="p">,</span> <span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nil</span><span class="p">,</span> <span class="n">nil</span><span class="p">)),</span> <span class="n">nil</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div></div>
 <blockquote>
 <div><p><span class="target" id="exercise-8">Exercise 8</span>.  Show that a tree cannot be equal to its own left subtree.</p>
 <p><a class="reference internal" href="solutions.html#solution-to-exercise-8"><span class="std std-ref">Solution to Exercise 8</span></a></p>
@@ -662,7 +766,7 @@ floating-point fused multiplication and addition of <span class="math notranslat
 then adding <span class="math notranslate nohighlight">\(c\)</span>.</p>
 </div></blockquote>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-7-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-7-7-0" name="7-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-7-7-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-1" name="7-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-7-7-0" class="sphinx-tabs-panel" id="panel-7-7-0" name="7-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/fp.smt2">examples/fp.smt2</a></p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-14-14-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-14-14-0" name="14-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-14-14-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-14-14-1" name="14-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-14-14-0" class="sphinx-tabs-panel" id="panel-14-14-0" name="14-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/fp.smt2">examples/fp.smt2</a></p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_FP</span>)
 <span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
 <span class="linenos"> 3</span>(<span class="k">declare-const</span> <span class="n">a</span> <span class="na">Float32</span>)
@@ -676,7 +780,7 @@ then adding <span class="math notranslate nohighlight">\(c\)</span>.</p>
 <span class="linenos">11</span>(<span class="k">get-value</span> ((<span class="o">fp.add</span> <span class="n">rm</span> (<span class="o">fp.mul</span> <span class="n">rm</span> <span class="n">a</span> <span class="n">b</span>) <span class="n">c</span>)))
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-7-7-1" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-1" name="7-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/fp.py">examples/fp.py</a></p>
+</div><div aria-labelledby="tab-14-14-1" class="sphinx-tabs-panel" hidden="true" id="panel-14-14-1" name="14-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/fp.py">examples/fp.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">FPs</span><span class="p">(</span><span class="s2">&quot;a b c&quot;</span><span class="p">,</span> <span class="n">Float32</span><span class="p">())</span>
@@ -691,13 +795,27 @@ then adding <span class="math notranslate nohighlight">\(c\)</span>.</p>
 </pre></div>
 </div>
 </div></div>
-<p>The Python output from cvc5 is as follows.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.3333333730697632</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">1</span><span class="p">),</span> <span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.9999998807907104</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">1</span><span class="p">),</span>
- <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.9999998807907104</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">1</span><span class="p">),</span> <span class="n">rm</span> <span class="o">=</span> <span class="n">RTP</span><span class="p">()]</span>
-<span class="n">fpFMA</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.333333134651184</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fpAdd</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span> <span class="n">fpMul</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span><span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.3333330154418945</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
+<p>The output from cvc5 is as follows.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-15-15-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-15-15-0" name="15-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-15-15-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-15-15-1" name="15-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-15-15-0" class="sphinx-tabs-panel" id="panel-15-15-0" name="15-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/fp.out.smt2">examples/fp.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">sat</span>
+<span class="linenos">2</span>(
+<span class="linenos">3</span>(<span class="k">define-fun</span> <span class="n">a</span> () (<span class="na">_</span> <span class="na">FloatingPoint</span> <span class="m">8</span> <span class="m">24</span>) (<span class="o">fp</span> <span class="m">#b1</span> <span class="m">#b01111110</span> <span class="m">#b01010101010101010101011</span>))
+<span class="linenos">4</span>(<span class="k">define-fun</span> <span class="n">b</span> () (<span class="na">_</span> <span class="na">FloatingPoint</span> <span class="m">8</span> <span class="m">24</span>) (<span class="o">fp</span> <span class="m">#b1</span> <span class="m">#b01111110</span> <span class="m">#b11111111111111111111111</span>))
+<span class="linenos">5</span>(<span class="k">define-fun</span> <span class="n">c</span> () (<span class="na">_</span> <span class="na">FloatingPoint</span> <span class="m">8</span> <span class="m">24</span>) (<span class="o">fp</span> <span class="m">#b1</span> <span class="m">#b01111110</span> <span class="m">#b11111111111111111111111</span>))
+<span class="linenos">6</span>(<span class="k">define-fun</span> <span class="n">rm</span> () <span class="na">RoundingMode</span> <span class="n">roundTowardPositive</span>)
+<span class="linenos">7</span>)
+<span class="linenos">8</span>(((<span class="o">fp.fma</span> <span class="n">rm</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span>) (<span class="o">fp</span> <span class="m">#b1</span> <span class="m">#b01111101</span> <span class="m">#b01010101010101010101001</span>)))
+<span class="linenos">9</span>(((<span class="o">fp.add</span> <span class="n">rm</span> (<span class="o">fp.mul</span> <span class="n">rm</span> <span class="n">a</span> <span class="n">b</span>) <span class="n">c</span>) (<span class="o">fp</span> <span class="m">#b1</span> <span class="m">#b01111101</span> <span class="m">#b01010101010101010101000</span>)))
 </pre></div>
 </div>
+</div><div aria-labelledby="tab-15-15-1" class="sphinx-tabs-panel" hidden="true" id="panel-15-15-1" name="15-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/fp.out.py">examples/fp.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">[</span><span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.3333333730697632</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">1</span><span class="p">),</span> <span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.9999998807907104</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">1</span><span class="p">),</span> <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.9999998807907104</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">1</span><span class="p">),</span> <span class="n">rm</span> <span class="o">=</span> <span class="n">RTP</span><span class="p">()]</span>
+<span class="linenos">2</span><span class="n">fpFMA</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.333333134651184</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">fpAdd</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span> <span class="n">fpMul</span><span class="p">(</span><span class="n">rm</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span><span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.3333330154418945</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**-</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
 <blockquote>
 <div><p><span class="target" id="exercise-9">Exercise 9</span>. Modify the solution to <a class="reference internal" href="#example-11">Example 11</a> to show that
 floating-point addition is not associative, i.e., <span class="math notranslate nohighlight">\(a + (b + c) \not=
@@ -726,7 +844,7 @@ concatenation may use any previous result including <code class="code highlight 
 <p>We can solve this problem by building a <em>circuit</em> of string concatenations
 and using nondeterministic choice to pick the inputs for each concatenation.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-8-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-8-8-0" name="8-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-8-8-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-8-8-1" name="8-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-8-8-0" class="sphinx-tabs-panel" id="panel-8-8-0" name="8-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/strings.smt2">examples/strings.smt2</a></p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-16-16-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-16-16-0" name="16-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-16-16-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-16-16-1" name="16-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-16-16-0" class="sphinx-tabs-panel" id="panel-16-16-0" name="16-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/strings.smt2">examples/strings.smt2</a></p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_SLIA</span>)
 <span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
 <span class="linenos"> 3</span>
@@ -778,7 +896,7 @@ and using nondeterministic choice to pick the inputs for each concatenation.</p>
 <span class="linenos">49</span>(<span class="k">get-model</span>)
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-8-8-1" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-1" name="8-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/strings.py">examples/strings.py</a></p>
+</div><div aria-labelledby="tab-16-16-1" class="sphinx-tabs-panel" hidden="true" id="panel-16-16-1" name="16-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/strings.py">examples/strings.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{},</span> <span class="p">{}</span>
 <span class="linenos"> 3</span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span> <span class="n">p</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">Bool</span><span class="p">(</span><span class="s2">&quot;p&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
@@ -805,6 +923,42 @@ and using nondeterministic choice to pick the inputs for each concatenation.</p>
 <span class="linenos">24</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="n">result</span><span class="p">)</span>
 <span class="linenos">25</span>
 <span class="linenos">26</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span> <span class="k">else</span> <span class="s2">&quot;unsat&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>The output is as follows:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-17-17-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-17-17-0" name="17-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-17-17-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-17-17-1" name="17-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-17-17-0" class="sphinx-tabs-panel" id="panel-17-17-0" name="17-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/strings.out.smt2">examples/strings.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">sat</span>
+<span class="linenos"> 2</span>(
+<span class="linenos"> 3</span>(<span class="k">define-fun</span> <span class="n">p1</span> () <span class="na">Bool</span> <span class="o">true</span>)
+<span class="linenos"> 4</span>(<span class="k">define-fun</span> <span class="n">p2</span> () <span class="na">Bool</span> <span class="o">false</span>)
+<span class="linenos"> 5</span>(<span class="k">define-fun</span> <span class="n">p3</span> () <span class="na">Bool</span> <span class="o">true</span>)
+<span class="linenos"> 6</span>(<span class="k">define-fun</span> <span class="n">p4</span> () <span class="na">Bool</span> <span class="o">true</span>)
+<span class="linenos"> 7</span>(<span class="k">define-fun</span> <span class="n">p5</span> () <span class="na">Bool</span> <span class="o">false</span>)
+<span class="linenos"> 8</span>(<span class="k">define-fun</span> <span class="n">p6</span> () <span class="na">Bool</span> <span class="o">false</span>)
+<span class="linenos"> 9</span>(<span class="k">define-fun</span> <span class="n">p7</span> () <span class="na">Bool</span> <span class="o">false</span>)
+<span class="linenos">10</span>(<span class="k">define-fun</span> <span class="n">p8</span> () <span class="na">Bool</span> <span class="o">false</span>)
+<span class="linenos">11</span>(<span class="k">define-fun</span> <span class="n">p9</span> () <span class="na">Bool</span> <span class="o">true</span>)
+<span class="linenos">12</span>(<span class="k">define-fun</span> <span class="n">p10</span> () <span class="na">Bool</span> <span class="o">false</span>)
+<span class="linenos">13</span>(<span class="k">define-fun</span> <span class="n">p11</span> () <span class="na">Bool</span> <span class="o">false</span>)
+<span class="linenos">14</span>(<span class="k">define-fun</span> <span class="n">p12</span> () <span class="na">Bool</span> <span class="o">false</span>)
+<span class="linenos">15</span>(<span class="k">define-fun</span> <span class="n">x1</span> () <span class="na">String</span> <span class="s">&quot;a&quot;</span>)
+<span class="linenos">16</span>(<span class="k">define-fun</span> <span class="n">x2</span> () <span class="na">String</span> <span class="s">&quot;bb&quot;</span>)
+<span class="linenos">17</span>(<span class="k">define-fun</span> <span class="n">x3</span> () <span class="na">String</span> <span class="s">&quot;abb&quot;</span>)
+<span class="linenos">18</span>(<span class="k">define-fun</span> <span class="n">x4</span> () <span class="na">String</span> <span class="s">&quot;aabb&quot;</span>)
+<span class="linenos">19</span>(<span class="k">define-fun</span> <span class="n">x5</span> () <span class="na">String</span> <span class="s">&quot;abbaabb&quot;</span>)
+<span class="linenos">20</span>(<span class="k">define-fun</span> <span class="n">i1</span> () <span class="na">String</span> <span class="s">&quot;a&quot;</span>)
+<span class="linenos">21</span>(<span class="k">define-fun</span> <span class="n">i2</span> () <span class="na">String</span> <span class="s">&quot;bb&quot;</span>)
+<span class="linenos">22</span>(<span class="k">define-fun</span> <span class="n">i3</span> () <span class="na">String</span> <span class="s">&quot;a&quot;</span>)
+<span class="linenos">23</span>(<span class="k">define-fun</span> <span class="n">i4</span> () <span class="na">String</span> <span class="s">&quot;abb&quot;</span>)
+<span class="linenos">24</span>(<span class="k">define-fun</span> <span class="n">i5</span> () <span class="na">String</span> <span class="s">&quot;abb&quot;</span>)
+<span class="linenos">25</span>(<span class="k">define-fun</span> <span class="n">i6</span> () <span class="na">String</span> <span class="s">&quot;aabb&quot;</span>)
+<span class="linenos">26</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-17-17-1" class="sphinx-tabs-panel" hidden="true" id="panel-17-17-1" name="17-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/strings.out.py">examples/strings.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">[</span><span class="n">i1</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">i2</span> <span class="o">=</span> <span class="s2">&quot;bb&quot;</span><span class="p">,</span> <span class="n">i3</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">i4</span> <span class="o">=</span> <span class="s2">&quot;abb&quot;</span><span class="p">,</span> <span class="n">i5</span> <span class="o">=</span> <span class="s2">&quot;abb&quot;</span><span class="p">,</span> <span class="n">i6</span> <span class="o">=</span> <span class="s2">&quot;aabb&quot;</span><span class="p">,</span> <span class="n">p1</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">p10</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">p11</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">p12</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">p3</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">p4</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">p5</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">p6</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">p7</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">p8</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">p9</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="s2">&quot;bb&quot;</span><span class="p">,</span> <span class="n">x3</span> <span class="o">=</span> <span class="s2">&quot;abb&quot;</span><span class="p">,</span> <span class="n">x4</span> <span class="o">=</span> <span class="s2">&quot;aabb&quot;</span><span class="p">,</span> <span class="n">x5</span> <span class="o">=</span> <span class="s2">&quot;abbaabb&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div></div>
@@ -881,7 +1035,7 @@ concatenate <code class="code highlight smt smtlib docutils literal highlight-sm
 subsequence.</p>
 </div></blockquote>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-9-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-9-9-0" name="9-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-9-9-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-9-9-1" name="9-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-9-9-0" class="sphinx-tabs-panel" id="panel-9-9-0" name="9-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/sequences.smt2">examples/sequences.smt2</a></p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-18-18-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-18-18-0" name="18-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-18-18-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-18-18-1" name="18-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-18-18-0" class="sphinx-tabs-panel" id="panel-18-18-0" name="18-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/sequences.smt2">examples/sequences.smt2</a></p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_SLIA</span>)
 <span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
 <span class="linenos"> 3</span>
@@ -900,7 +1054,7 @@ subsequence.</p>
 <span class="linenos">16</span>(<span class="k">get-model</span>)
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-9-9-1" class="sphinx-tabs-panel" hidden="true" id="panel-9-9-1" name="9-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/sequences.py">examples/sequences.py</a></p>
+</div><div aria-labelledby="tab-18-18-1" class="sphinx-tabs-panel" hidden="true" id="panel-18-18-1" name="18-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/sequences.py">examples/sequences.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Consts</span><span class="p">(</span><span class="s2">&quot;x y z&quot;</span><span class="p">,</span> <span class="n">SeqSort</span><span class="p">(</span><span class="n">IntSort</span><span class="p">()))</span>
 <span class="linenos"> 3</span>
@@ -914,6 +1068,22 @@ subsequence.</p>
 <span class="linenos">11</span>
 <span class="linenos">12</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span> <span class="k">else</span> <span class="s2">&quot;unsat&quot;</span><span class="p">)</span>
 <span class="linenos">13</span>
+</pre></div>
+</div>
+</div></div>
+<p>The output is as follows.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-19-19-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-19-19-0" name="19-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-19-19-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-19-19-1" name="19-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-19-19-0" class="sphinx-tabs-panel" id="panel-19-19-0" name="19-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/sequences.out.smt2">examples/sequences.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">sat</span>
+<span class="linenos">2</span>(
+<span class="linenos">3</span>(<span class="k">define-fun</span> <span class="n">x</span> () (<span class="na">Seq</span> <span class="na">Int</span>) (<span class="o">seq.++</span> (<span class="o">seq.unit</span> <span class="m">4</span>) (<span class="o">seq.unit</span> <span class="m">3</span>) (<span class="o">seq.unit</span> <span class="m">4</span>) (<span class="o">seq.unit</span> <span class="m">5</span>)))
+<span class="linenos">4</span>(<span class="k">define-fun</span> <span class="n">y</span> () (<span class="na">Seq</span> <span class="na">Int</span>) (<span class="o">seq.++</span> (<span class="o">seq.unit</span> <span class="m">4</span>) (<span class="o">seq.unit</span> <span class="m">3</span>) (<span class="o">seq.unit</span> <span class="m">4</span>) (<span class="o">seq.unit</span> <span class="m">5</span>) (<span class="o">seq.unit</span> <span class="m">4</span>) (<span class="o">seq.unit</span> <span class="m">3</span>) (<span class="o">seq.unit</span> <span class="m">4</span>) (<span class="o">seq.unit</span> <span class="m">5</span>)))
+<span class="linenos">5</span>(<span class="k">define-fun</span> <span class="n">z</span> () (<span class="na">Seq</span> <span class="na">Int</span>) (<span class="o">seq.++</span> (<span class="o">seq.unit</span> <span class="m">3</span>) (<span class="o">seq.unit</span> <span class="m">4</span>) (<span class="o">seq.unit</span> <span class="m">5</span>)))
+<span class="linenos">6</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-19-19-1" class="sphinx-tabs-panel" hidden="true" id="panel-19-19-1" name="19-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/sequences.out.py">examples/sequences.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">[</span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">seq</span><span class="o">.++</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">5</span><span class="p">))(),</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">seq</span><span class="o">.++</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">5</span><span class="p">))(),</span> <span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">seq</span><span class="o">.++</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">unit</span> <span class="mi">5</span><span class="p">))()]</span>
 </pre></div>
 </div>
 </div></div>
@@ -937,9 +1107,9 @@ theory is not supported by other SMT solvers.</p>
 their sum and product are both equal to the multiplicative identity in the
 field.</p>
 </div></blockquote>
-<p>Running this example requires a GPL build of cvc5, as explained in <a class="reference internal" href="introduction.html#introduction"><span class="std std-ref">Introduction</span></a>.</p>
+<p>Running this example requires a GPL build of cvc5, as explained in the <a class="reference internal" href="introduction.html#introduction"><span class="std std-ref">Introduction</span></a>.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-10-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-10-10-0" name="10-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-10-10-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-10-10-1" name="10-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-10-10-0" class="sphinx-tabs-panel" id="panel-10-10-0" name="10-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/fields.smt2">examples/fields.smt2</a></p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-20-20-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-20-20-0" name="20-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-20-20-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-20-20-1" name="20-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-20-20-0" class="sphinx-tabs-panel" id="panel-20-20-0" name="20-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/fields.smt2">examples/fields.smt2</a></p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_FF</span>)
 <span class="linenos"> 2</span>(<span class="k">set-option</span> <span class="na">:produce-models</span> <span class="o">true</span>)
 <span class="linenos"> 3</span>
@@ -955,7 +1125,7 @@ field.</p>
 <span class="linenos">13</span>(<span class="k">get-model</span>)
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-10-10-1" class="sphinx-tabs-panel" hidden="true" id="panel-10-10-1" name="10-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/fields.py">examples/fields.py</a></p>
+</div><div aria-labelledby="tab-20-20-1" class="sphinx-tabs-panel" hidden="true" id="panel-20-20-1" name="20-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/fields.py">examples/fields.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos">2</span><span class="n">F</span> <span class="o">=</span> <span class="n">FiniteFieldSort</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
 <span class="linenos">3</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">FiniteFieldElems</span><span class="p">(</span><span class="s2">&quot;x y&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">)</span>
@@ -964,6 +1134,21 @@ field.</p>
 <span class="linenos">6</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
 <span class="linenos">7</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span> <span class="k">else</span> <span class="s2">&quot;unsat&quot;</span><span class="p">)</span>
 <span class="linenos">8</span>
+</pre></div>
+</div>
+</div></div>
+<p>The output is as follows.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-21-21-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-21-21-0" name="21-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-21-21-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-21-21-1" name="21-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-21-21-0" class="sphinx-tabs-panel" id="panel-21-21-0" name="21-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/fields.out.smt2">examples/fields.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">sat</span>
+<span class="linenos">2</span>(
+<span class="linenos">3</span>(<span class="k">define-fun</span> <span class="n">x</span> () (<span class="na">_</span> <span class="n">FiniteField</span> <span class="m">13</span>) <span class="m">#f4m13</span>)
+<span class="linenos">4</span>(<span class="k">define-fun</span> <span class="n">y</span> () (<span class="na">_</span> <span class="n">FiniteField</span> <span class="m">13</span>) <span class="m">#f10m13</span>)
+<span class="linenos">5</span>)
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-21-21-1" class="sphinx-tabs-panel" hidden="true" id="panel-21-21-1" name="21-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/fields.out.py">examples/fields.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">[</span><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
 </div></div>
@@ -983,7 +1168,7 @@ the time of writing, this theory is not supported by other SMT solvers.</p>
 <div><p><span class="target" id="example-15">Example 15</span>. Verify that union distributes over intersection.</p>
 </div></blockquote>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-11-11-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-11-11-0" name="11-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-11-11-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-11-11-1" name="11-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-11-11-0" class="sphinx-tabs-panel" id="panel-11-11-0" name="11-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/sets.smt2">examples/sets.smt2</a></p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-22-22-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-22-22-0" name="22-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-22-22-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-22-22-1" name="22-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-22-22-0" class="sphinx-tabs-panel" id="panel-22-22-0" name="22-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/sets.smt2">examples/sets.smt2</a></p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_FS</span>)
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span>(<span class="k">declare-sort</span> <span class="n">U</span> <span class="m">0</span>)
@@ -997,7 +1182,7 @@ the time of writing, this theory is not supported by other SMT solvers.</p>
 <span class="linenos">11</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-11-11-1" class="sphinx-tabs-panel" hidden="true" id="panel-11-11-1" name="11-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/sets.py">examples/sets.py</a></p>
+</div><div aria-labelledby="tab-22-22-1" class="sphinx-tabs-panel" hidden="true" id="panel-22-22-1" name="22-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/sets.py">examples/sets.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos">2</span><span class="n">S</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
 <span class="linenos">3</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="n">Set</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="s2">&quot;C&quot;</span><span class="p">]]</span>
@@ -1005,6 +1190,17 @@ the time of writing, this theory is not supported by other SMT solvers.</p>
 <span class="linenos">5</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Not</span><span class="p">((</span><span class="n">A</span> <span class="o">|</span> <span class="p">(</span><span class="n">B</span> <span class="o">&amp;</span> <span class="n">C</span><span class="p">))</span> <span class="o">==</span> <span class="p">((</span><span class="n">A</span> <span class="o">|</span> <span class="n">B</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">A</span> <span class="o">|</span> <span class="n">C</span><span class="p">))))</span>
 <span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">())</span>
 <span class="linenos">7</span>
+</pre></div>
+</div>
+</div></div>
+<p>As, expected, the result is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unsat</span></code></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-23-23-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-23-23-0" name="23-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-23-23-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-23-23-1" name="23-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-23-23-0" class="sphinx-tabs-panel" id="panel-23-23-0" name="23-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/sets.out.smt2">examples/sets.out.smt2</a></p>
+<div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">unsat</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-23-23-1" class="sphinx-tabs-panel" hidden="true" id="panel-23-23-1" name="23-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/sets.out.py">examples/sets.out.py</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">unsat</span>
 </pre></div>
 </div>
 </div></div>
