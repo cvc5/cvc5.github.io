@@ -343,7 +343,7 @@ jobs be completed in 30 minutes?</p>
 task within each job.  We assert that the start times are non-negative, each
 task within each job doesn’t start until the previous task finishes, and tasks
 on each machine don’t overlap.  Finally, we check that each task finishes on
-time.</p>
+time.<a class="footnote-reference brackets" href="#id8" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/diff.smt2">examples/diff.smt2</a></p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>(<span class="k">set-logic</span> <span class="n">QF_IDL</span>)
@@ -361,9 +361,9 @@ time.</p>
 <span class="linenos">13</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j22</span> <span class="n">j11</span>) <span class="m">10</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j11</span> <span class="n">j22</span>) <span class="m">5</span>))
 <span class="linenos">14</span>             (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j31</span> <span class="n">j11</span>) <span class="m">10</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j11</span> <span class="n">j31</span>) <span class="m">5</span>))
 <span class="linenos">15</span>             (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j31</span> <span class="n">j22</span>) <span class="m">5</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j22</span> <span class="n">j31</span>) <span class="m">5</span>))))
-<span class="linenos">16</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j21</span> <span class="n">j12</span>) <span class="m">5</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j12</span> <span class="n">j21</span>) <span class="m">5</span>))
+<span class="linenos">16</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j21</span> <span class="n">j12</span>) <span class="m">5</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j12</span> <span class="n">j21</span>) <span class="m">20</span>))
 <span class="linenos">17</span>             (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j32</span> <span class="n">j12</span>) <span class="m">5</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j12</span> <span class="n">j32</span>) <span class="m">5</span>))
-<span class="linenos">18</span>             (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j32</span> <span class="n">j21</span>) <span class="m">5</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j21</span> <span class="n">j32</span>) <span class="m">5</span>))))
+<span class="linenos">18</span>             (<span class="o">or</span> (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j32</span> <span class="n">j21</span>) <span class="m">20</span>) (<span class="o">&gt;=</span> (<span class="o">-</span> <span class="n">j21</span> <span class="n">j32</span>) <span class="m">5</span>))))
 <span class="linenos">19</span>(<span class="k">assert</span> (<span class="o">and</span> (<span class="o">&lt;=</span> <span class="n">j12</span> <span class="m">25</span>) (<span class="o">&lt;=</span> <span class="n">j22</span> <span class="m">25</span>) (<span class="o">&lt;=</span> <span class="n">j32</span> <span class="m">25</span>)))
 <span class="linenos">20</span>  
 <span class="linenos">21</span>(<span class="k">check-sat</span>)
@@ -381,9 +381,9 @@ time.</p>
 <span class="linenos"> 8</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Or</span><span class="p">(</span><span class="n">j22</span> <span class="o">-</span> <span class="n">j11</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">j11</span> <span class="o">-</span> <span class="n">j22</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">),</span> 
 <span class="linenos"> 9</span>          <span class="n">Or</span><span class="p">(</span><span class="n">j31</span> <span class="o">-</span> <span class="n">j11</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">j11</span> <span class="o">-</span> <span class="n">j31</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">),</span> 
 <span class="linenos">10</span>          <span class="n">Or</span><span class="p">(</span><span class="n">j31</span> <span class="o">-</span> <span class="n">j22</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j22</span> <span class="o">-</span> <span class="n">j31</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)))</span>
-<span class="linenos">11</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Or</span><span class="p">(</span><span class="n">j21</span> <span class="o">-</span> <span class="n">j12</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j12</span> <span class="o">-</span> <span class="n">j21</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">),</span> 
+<span class="linenos">11</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Or</span><span class="p">(</span><span class="n">j21</span> <span class="o">-</span> <span class="n">j12</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j12</span> <span class="o">-</span> <span class="n">j21</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">),</span> 
 <span class="linenos">12</span>          <span class="n">Or</span><span class="p">(</span><span class="n">j32</span> <span class="o">-</span> <span class="n">j12</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j12</span> <span class="o">-</span> <span class="n">j32</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">),</span> 
-<span class="linenos">13</span>          <span class="n">Or</span><span class="p">(</span><span class="n">j32</span> <span class="o">-</span> <span class="n">j21</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j21</span> <span class="o">-</span> <span class="n">j32</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)))</span>
+<span class="linenos">13</span>          <span class="n">Or</span><span class="p">(</span><span class="n">j32</span> <span class="o">-</span> <span class="n">j21</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">j21</span> <span class="o">-</span> <span class="n">j32</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)))</span>
 <span class="linenos">14</span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">j12</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">j22</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">j32</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">))</span>
 <span class="linenos">15</span>
 <span class="linenos">16</span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span> <span class="o">==</span> <span class="n">sat</span> <span class="k">else</span> <span class="s2">&quot;unsat&quot;</span><span class="p">)</span>
@@ -395,25 +395,33 @@ time.</p>
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">SMT-LIBv2</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/diff.out.smt2">examples/diff.out.smt2</a></p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">sat</span>
 <span class="linenos">2</span>(
-<span class="linenos">3</span>(<span class="k">define-fun</span> <span class="n">j11</span> () <span class="na">Int</span> <span class="m">0</span>)
-<span class="linenos">4</span>(<span class="k">define-fun</span> <span class="n">j12</span> () <span class="na">Int</span> <span class="m">10</span>)
-<span class="linenos">5</span>(<span class="k">define-fun</span> <span class="n">j21</span> () <span class="na">Int</span> <span class="m">5</span>)
-<span class="linenos">6</span>(<span class="k">define-fun</span> <span class="n">j22</span> () <span class="na">Int</span> <span class="m">25</span>)
-<span class="linenos">7</span>(<span class="k">define-fun</span> <span class="n">j31</span> () <span class="na">Int</span> <span class="m">20</span>)
+<span class="linenos">3</span>(<span class="k">define-fun</span> <span class="n">j11</span> () <span class="na">Int</span> <span class="m">5</span>)
+<span class="linenos">4</span>(<span class="k">define-fun</span> <span class="n">j12</span> () <span class="na">Int</span> <span class="m">20</span>)
+<span class="linenos">5</span>(<span class="k">define-fun</span> <span class="n">j21</span> () <span class="na">Int</span> <span class="m">0</span>)
+<span class="linenos">6</span>(<span class="k">define-fun</span> <span class="n">j22</span> () <span class="na">Int</span> <span class="m">20</span>)
+<span class="linenos">7</span>(<span class="k">define-fun</span> <span class="n">j31</span> () <span class="na">Int</span> <span class="m">15</span>)
 <span class="linenos">8</span>(<span class="k">define-fun</span> <span class="n">j32</span> () <span class="na">Int</span> <span class="m">25</span>)
 <span class="linenos">9</span>)
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/diff.out.py">examples/diff.out.py</a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">[</span><span class="n">j11</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j12</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">j21</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j22</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">j31</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">j32</span> <span class="o">=</span> <span class="mi">25</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">[</span><span class="n">j11</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">j12</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">j21</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j22</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">j31</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">j32</span> <span class="o">=</span> <span class="mi">25</span><span class="p">]</span>
 </pre></div>
 </div>
 </div></div>
 <blockquote>
 <div><p><span class="target" id="exercise-4">Exercise 4</span>. What is the minimum amount of time that it will take to
-complete all of the jobs in <a class="reference internal" href="#example-6">Example 6</a>?</p>
+complete all of the jobs in <a class="reference internal" href="#example-6">Example 6</a>?  What is the minimum if we
+change the requirements so that Job 2 only requires machine 2 for 15,
+and all other requirements remain the same?</p>
 <p><a class="reference internal" href="solutions.html#solution-to-exercise-4"><span class="std std-ref">Solution to Exercise 4</span></a></p>
 </div></blockquote>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">1</a><span class="fn-bracket">]</span></span>
+<p>The code for <a class="reference internal" href="#example-6">Example 6</a> in the published (print) version of this tutorial is incorrect.  It has been corrected in the code shown above.</p>
+</aside>
+</aside>
 </section>
 <section id="linear-arithmetic">
 <h3>Linear Arithmetic<a class="headerlink" href="#linear-arithmetic" title="Link to this heading"></a></h3>
@@ -440,10 +448,10 @@ solver give?</p>
 <em>nonlinear arithmetic</em>.  In these logics, arbitrary polynomials are allowed in
 constraints.  The logic <a class="reference external" href="https://smt-lib.org/logics-all.shtml#QF_NRA">QF_NRA</a> is for nonlinear arithmetic over the
 reals, which is decidable but with doubly exponential
-complexity <a class="reference internal" href="references.html#r2" id="id7"><span>[R2]</span></a>.  On the other hand, the same
+complexity <a class="reference internal" href="references.html#r2" id="id9"><span>[R2]</span></a>.  On the other hand, the same
 logic over integers, <a class="reference external" href="https://smt-lib.org/logics-all.shtml#QF_NIA">QF_NIA</a>, is undecidable.  cvc5 implements a decision
 procedure for <a class="reference external" href="https://smt-lib.org/logics-all.shtml#QF_NRA">QF_NRA</a> based on a combination of heuristic pruning and
-cylindrical algebraic coverings <a class="reference internal" href="references.html#r29" id="id8"><span>[R29]</span></a>.  cvc5 and
+cylindrical algebraic coverings <a class="reference internal" href="references.html#r29" id="id10"><span>[R29]</span></a>.  cvc5 and
 other tools implement incomplete heuristic procedures for <a class="reference external" href="https://smt-lib.org/logics-all.shtml#QF_NIA">QF_NIA</a>.</p>
 <blockquote>
 <div><p><span class="target" id="example-7">Example 7</span>. Find a solution for <span class="math notranslate nohighlight">\(x^2y + yz + 2xyz + 4xy + 8xz + 16 = 0\)</span>.</p>
@@ -491,7 +499,7 @@ other tools implement incomplete heuristic procedures for <a class="reference ex
 </section>
 </section>
 <section id="arrays">
-<span id="id9"></span><h2>Arrays<a class="headerlink" href="#arrays" title="Link to this heading"></a></h2>
+<span id="id11"></span><h2>Arrays<a class="headerlink" href="#arrays" title="Link to this heading"></a></h2>
 <p>Consider the following Python function which swaps two elements in a dictionary.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">):</span>
   <span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -506,7 +514,7 @@ functions are equal is not allowed in first-order logic.  Alternatively, we
 could use a quantifier to assert that two functions return the same output when
 given the same input, for any input.  However, we would like to avoid
 quantifiers when possible, as their use puts us in an undecidable logic.</p>
-<p>Fortunately, the SMT-LIB standard includes a theory of arrays <a class="reference internal" href="references.html#r30" id="id10"><span>[R30]</span></a>, which can
+<p>Fortunately, the SMT-LIB standard includes a theory of arrays <a class="reference internal" href="references.html#r30" id="id12"><span>[R30]</span></a>, which can
 help in this situation.  The theory is perhaps more accurately viewed as a
 theory of mutable maps and is parameterized by two sorts, one for the index
 (corresponding to the key type of the dictionary) and one for the elements
@@ -596,7 +604,7 @@ property.</p>
 <p>Consider a simple implementation (written in a C-like syntax) for computing the
 absolute value of a 32-bit integer: <span class="math notranslate nohighlight">\(abs(x) := x &lt; 0 \;?\; {-x} :
 x\)</span>.  Instead of branching on <span class="math notranslate nohighlight">\(x &lt; 0\)</span>, it is possible to compute the
-absolute value of <span class="math notranslate nohighlight">\(x\)</span> with three or four branch-free operations <a class="reference internal" href="references.html#r28" id="id11"><span>[R28]</span></a> as
+absolute value of <span class="math notranslate nohighlight">\(x\)</span> with three or four branch-free operations <a class="reference internal" href="references.html#r28" id="id13"><span>[R28]</span></a> as
 follows.  Let <span class="math notranslate nohighlight">\(\mathit{xrs}\)</span> be an abbreviation for the arithmetic right shift
 (<span class="math notranslate nohighlight">\(\mathop{&gt;\kern-.3em&gt;}_s\)</span>) of <span class="math notranslate nohighlight">\(x\)</span> by <span class="math notranslate nohighlight">\(31\)</span> bits.  Note that the result of
 this operation is either <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(-1\)</span> (all bits set to 1), depending
@@ -669,10 +677,10 @@ equivalent to <span class="math notranslate nohighlight">\(\mathit{abs}\)</span>
 </div></blockquote>
 </section>
 <section id="datatypes">
-<span id="id12"></span><h2>Datatypes<a class="headerlink" href="#datatypes" title="Link to this heading"></a></h2>
+<span id="id14"></span><h2>Datatypes<a class="headerlink" href="#datatypes" title="Link to this heading"></a></h2>
 <p>Built into the SMT-LIB language is a mechanism for defining <em>(algebraic)
 datatypes</em>.  Datatypes are highly useful in applications for reasoning
-about data structures like records, lists, and trees <a class="reference internal" href="references.html#r7" id="id13"><span>[R7]</span></a>.  The
+about data structures like records, lists, and trees <a class="reference internal" href="references.html#r7" id="id15"><span>[R7]</span></a>.  The
 quantifier-free logic name is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_DT</span></code>.</p>
 <blockquote>
 <div><p><span class="target" id="example-10">Example 10</span>.  Model a binary tree containing integer data.  Find trees
@@ -748,7 +756,7 @@ more specific logic is not available.</p>
 <span id="floating-point"></span><h2>Floating-Point Arithmetic<a class="headerlink" href="#floating-point-arithmetic" title="Link to this heading"></a></h2>
 <p>The most common representation of real numbers in hardware and software is
 the binary floating-point number representation system as defined by the
-IEEE Standard 754-2019 for Floating-Point Arithmetic <a class="reference internal" href="references.html#r27" id="id14"><span>[R27]</span></a>.
+IEEE Standard 754-2019 for Floating-Point Arithmetic <a class="reference internal" href="references.html#r27" id="id16"><span>[R27]</span></a>.
 Floating-point numbers are encoded as a triple of bit-vectors: the fractional
 part (the significand), the exponent  (a power of 10 by which the
 significand is multiplied), and a sign bit.
@@ -756,7 +764,7 @@ This representation is of limited range and precision, and thus, the domain of
 floating-point numbers is finite.  It also includes special values for
 representing errors as not-a-number and for plus and minus infinity.
 In SMT-LIB, the IEEE-754 standard is formalized as the theory of floating-point
-arithmetic <a class="reference internal" href="references.html#r11" id="id15"><span>[R11]</span></a>.  The quantifier-free logic name is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_FP</span></code>.</p>
+arithmetic <a class="reference internal" href="references.html#r11" id="id17"><span>[R11]</span></a>.  The quantifier-free logic name is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_FP</span></code>.</p>
 <blockquote>
 <div><p><span class="target" id="example-11">Example 11</span>. The SMT-LIB standard supports a <em>fused multiplication and
 addition</em> operator <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="o">fp.fma</span></code>.  Given three single precision
@@ -824,7 +832,7 @@ floating-point addition is not associative, i.e., <span class="math notranslate 
 </div></blockquote>
 </section>
 <section id="strings">
-<span id="id16"></span><h2>Strings<a class="headerlink" href="#strings" title="Link to this heading"></a></h2>
+<span id="id18"></span><h2>Strings<a class="headerlink" href="#strings" title="Link to this heading"></a></h2>
 <p>It is often necessary to reason about string data when reasoning about
 programs.  Reasoning about bit-vector representations of strings has the
 disadvantage that it requires fixing the string length up front.  Also, the
@@ -970,7 +978,7 @@ to have a length of 1.</p>
 </div></blockquote>
 </section>
 <section id="quantifiers">
-<span id="id17"></span><h2>Quantifiers<a class="headerlink" href="#quantifiers" title="Link to this heading"></a></h2>
+<span id="id19"></span><h2>Quantifiers<a class="headerlink" href="#quantifiers" title="Link to this heading"></a></h2>
 <p>We saw an example of quantified formulas in <a class="reference internal" href="overview.html#example-3"><span class="std std-ref">Example 3</span></a>.
 Quantifiers can be enabled in SMT solvers by dropping <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF</span></code> from the logic name.
 However, enabling quantifiers typically increases the complexity of the
@@ -987,19 +995,19 @@ techniques and effort levels, a wide variety of problems can be solved.</p>
 vary based on the logic.  By default, cvc5 limits its effort so that it
 usually returns quickly with an answer of either <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unsat</span></code> or
 <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">unknown</span></code>.  For logics that include uninterpreted functions, it uses a
-combination of E-matching <a class="reference internal" href="references.html#r31" id="id18"><span>[R31]</span></a> and conflict-based instantiation <a class="reference internal" href="references.html#r40" id="id19"><span>[R40]</span></a>.  In
+combination of E-matching <a class="reference internal" href="references.html#r31" id="id20"><span>[R31]</span></a> and conflict-based instantiation <a class="reference internal" href="references.html#r40" id="id21"><span>[R40]</span></a>.  In
 case the user wants to invest more effort, these techniques can be supplemented
-with techniques such as enumerative instantiation <a class="reference internal" href="references.html#r38" id="id20"><span>[R38]</span></a> (option
+with techniques such as enumerative instantiation <a class="reference internal" href="references.html#r38" id="id22"><span>[R38]</span></a> (option
 <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">enum-inst</span></code>).  For logics that admit quantifier elimination (e.g.,
 quantified linear arithmetic or bit-vectors), it uses counterexample-guided
-quantifier instantiation <a class="reference internal" href="references.html#r34" id="id21"><span>[R34]</span></a>, <a class="reference internal" href="references.html#r39" id="id22"><span>[R39]</span></a>, which is a complete procedure for
+quantifier instantiation <a class="reference internal" href="references.html#r34" id="id23"><span>[R34]</span></a>, <a class="reference internal" href="references.html#r39" id="id24"><span>[R39]</span></a>, which is a complete procedure for
 these logics.</p>
 <p>By default, cvc5 will generally not attempt to determine that an input with
 quantified formulas is satisfiable.  However, more advanced techniques can be
 used to answer <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">sat</span></code> in the presence of quantified formulas, including
-finite model finding <a class="reference internal" href="references.html#r37" id="id23"><span>[R37]</span></a> (option <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">finite-model-find</span></code>), model-based
-quantifier instantiation <a class="reference internal" href="references.html#r23" id="id24"><span>[R23]</span></a> (option <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">mbqi</span></code>), and syntax-guided
-quantifier instantiation <a class="reference internal" href="references.html#r35" id="id25"><span>[R35]</span></a> (option <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">sygus-inst</span></code>).</p>
+finite model finding <a class="reference internal" href="references.html#r37" id="id25"><span>[R37]</span></a> (option <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">finite-model-find</span></code>), model-based
+quantifier instantiation <a class="reference internal" href="references.html#r23" id="id26"><span>[R23]</span></a> (option <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">mbqi</span></code>), and syntax-guided
+quantifier instantiation <a class="reference internal" href="references.html#r35" id="id27"><span>[R35]</span></a> (option <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">sygus-inst</span></code>).</p>
 <p>In general, to set options that are not on by default, we can use the
 <code class="code highlight python docutils literal highlight-python"><span class="n">setOption</span></code> solver method in Python, as shown below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
@@ -1019,7 +1027,7 @@ supported by cvc5.  More documentation about non-standard theories, including
 reference tables describing the supported operators can be found on the cvc5
 <a class="reference external" href="http://cvc5.github.io">website</a>.</p>
 <section id="sequences">
-<span id="id26"></span><h3>Sequences<a class="headerlink" href="#sequences" title="Link to this heading"></a></h3>
+<span id="id28"></span><h3>Sequences<a class="headerlink" href="#sequences" title="Link to this heading"></a></h3>
 <p>The theory of <em>sequences</em> brings together features of the theories of arrays
 and strings.  Similar to arrays, sequences are parameterized by the sort of
 their elements.  So we can declare a sequence of integers, a sequence of
@@ -1096,7 +1104,7 @@ subsequence.</p>
 </div></blockquote>
 </section>
 <section id="finite-fields">
-<span id="id27"></span><h3>Finite Fields<a class="headerlink" href="#finite-fields" title="Link to this heading"></a></h3>
+<span id="id29"></span><h3>Finite Fields<a class="headerlink" href="#finite-fields" title="Link to this heading"></a></h3>
 <p>cvc5 can reason about constraints over finite fields of order <span class="math notranslate nohighlight">\(p\)</span>,
 where <span class="math notranslate nohighlight">\(p\)</span> is any prime.  It relies on the fact that a field of order
 <span class="math notranslate nohighlight">\(p\)</span> is isomorphic to the integers modulo <span class="math notranslate nohighlight">\(p\)</span>.  The quantifier-free
@@ -1159,7 +1167,7 @@ you square it twice you get the multiplicative identity.</p>
 </div></blockquote>
 </section>
 <section id="finite-sets">
-<span id="id28"></span><h3>Finite Sets<a class="headerlink" href="#finite-sets" title="Link to this heading"></a></h3>
+<span id="id30"></span><h3>Finite Sets<a class="headerlink" href="#finite-sets" title="Link to this heading"></a></h3>
 <p>cvc5 has support for the theory of finite sets.  This theory supports basic
 set operations like membership, union, and intersection, as well as constraints
 on a set’s cardinality.  The quantifier-free logic name is <code class="code highlight smt smtlib docutils literal highlight-smtlib"><span class="n">QF_FS</span></code>.  At
