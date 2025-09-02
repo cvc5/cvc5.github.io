@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVC5 SMT Solver</title>
+    <style>
+        body {
+            font-family: arial;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .custom-interface, .output-container {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+
+        .custom-interface {
+            margin-bottom: 20px;
+        }
+
+        .output-container {
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+            transition: background-color 0.3s;
+        }
+        
+        .copy-button:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .copy-button svg {
+            margin-right: 5px;
+            width: 16px;
+            height: 16px;
+        }
+        
+        .copy-success {
+            background-color: rgba(76, 175, 80, 0.9) !important;
+        }
+
+        .input-section {
+            margin-bottom: 20px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #smt-editor {
+            width: 100%;
+            height: 150px;
+            font-family: monospace;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        #args-input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        .options-section {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .checkbox-label input {
+            margin-right: 8px;
+        }
+
+        .run-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 0;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .run-button:hover {
+            background-color: #45a049;
+        }
+
+        .run-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        #output {
+            width: 100%;
+            height: 300px;
+            padding: 12px;
+            box-sizing: border-box;
+            display: block;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Lucida Console', Monaco, monospace;
+            border-radius: 4px;
+            overflow: auto;
+            font-size: 14px;
+            line-height: 1.4;
+            border: none;
+            resize: vertical;
+        }
+
+        .status-area {
+            width: 100%;
+            text-align: center;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        #status {
+            font-weight: bold;
+            color: #333;
+            margin-left: 5px;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 3px solid rgba(0,0,0,0.1);
+            border-radius: 50%;
+            border-top-color: #3498db;
+            animation: spin 1s ease-in-out infinite;
+            vertical-align: middle;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            
+            .custom-interface, .output-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="custom-interface">
+            <h2>CVC5 SMT Solver</h2>
+            
+            <div class="input-section">
+                <label for="smt-editor" class="input-label">SMT Input:</label>
+                <textarea id="smt-editor" placeholder="Enter your SMT formula here...">
+(declare-fun x () Int)
+(assert (> x 0))
+(check-sat)
+(get-model)
+                </textarea>
+            </div>
+            
+            <div class="input-section">
+                <label for="args-input" class="input-label">Arguments:</label>
+                <input type="text" id="args-input" placeholder="Enter arguments (space separated)" value="--produce-models">
+            </div>
+            
+            <div class="options-section">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="hide-syscall-warnings" checked>
+                    Hide syscall warnings
+                </label>
+            </div>
+            
+            <button class="run-button" id="run-button" onclick="runSolver()">Run Solver</button>
+        </div>
+
+        <div class="status-area">
+            <span class="spinner" id="spinner"></span>
+            <span id="status">Loading...</span>
+        </div>
+
+        <div class="output-container">
+            <button class="copy-button" id="copy-button" onclick="copyOutput()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy
+            </button>
+            <textarea id="output" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        var moduleLoaded = false;
+        var captureOutput = false;
+        var originalConsoleError = console.error;
+        var outputBuffer = "";
+        var lastOutputTime = 0;
+        var outputUpdateInterval = 50; // milliseconds between updates
+        var maxOutputSize = 1000000; // Maximum characters to keep (1MB)
+        var outputMode = "buffered"; // Options: "buffered", "virtual"
+        
+        // Function to write to the output textarea with buffering
+        function writeToOutput(text) {
+            // Add to buffer instead of immediately writing
+            outputBuffer += text;
+            
+            // Check if it's time to update the UI
+            var currentTime = performance.now();
+            if (currentTime - lastOutputTime > outputUpdateInterval) {
+                flushOutputBuffer();
+                lastOutputTime = currentTime;
+            }
+        }
+        
+        // Function to flush the buffer to the UI
+        function flushOutputBuffer() {
+            if (outputBuffer.length === 0) return;
+            
+            var outputElement = document.getElementById('output');
+            if (outputElement) {
+                // Append the entire buffer at once
+                outputElement.value += outputBuffer;
+                
+                // Trim if the output gets too large
+                if (outputElement.value.length > maxOutputSize) {
+                    outputElement.value = outputElement.value.substring(
+                        outputElement.value.length - maxOutputSize
+                    );
+                }
+                
+                // Scroll to bottom
+                outputElement.scrollTop = outputElement.scrollHeight;
+            }
+            
+            // Clear the buffer
+            outputBuffer = "";
+        }
+        
+        // Function to filter syscall warnings if needed
+        function filterWarnings(text) {
+            var hideSyscallWarnings = document.getElementById('hide-syscall-warnings').checked;
+            if (hideSyscallWarnings && text.includes("warning: unsupported syscall:")) {
+                return null; // Don't output this text
+            }
+            return text; // Output the text normally
+        }
+        
+        // Override prompt to avoid dialogs
+        window.prompt = function() {
+            console.log("Prompt intercepted");
+            return null;
+        };
+        
+        // Emscripten module configuration
+        var Module = {
+            preRun: [
+                function() {
+                    console.log("Setting up file system and I/O...");
+                    
+                    // Set up custom output functions with buffering
+                    FS.init(
+                        // stdin: We don't need custom stdin as we're using file input
+                        null,
+                        
+                        // stdout: Buffered writing
+                        (function() {
+                            var stdoutBuffer = "";
+                            return function(c) {
+                                if (captureOutput) {
+                                    stdoutBuffer += String.fromCharCode(c);
+                                    
+                                    // Process buffer in chunks
+                                    if (stdoutBuffer.length >= 1024 || c === 10) { // 10 is newline
+                                        var filteredText = filterWarnings(stdoutBuffer);
+                                        if (filteredText !== null) {
+                                            writeToOutput(filteredText);
+                                        }
+                                        stdoutBuffer = "";
+                                    }
+                                }
+                            };
+                        })(),
+                        
+                        // stderr: Buffered writing
+                        (function() {
+                            var stderrBuffer = "";
+                            return function(c) {
+                                if (captureOutput) {
+                                    stderrBuffer += String.fromCharCode(c);
+                                    
+                                    // Process buffer in chunks
+                                    if (stderrBuffer.length >= 1024 || c === 10) { // 10 is newline
+                                        var filteredText = filterWarnings(stderrBuffer);
+                                        if (filteredText !== null) {
+                                            writeToOutput(filteredText);
+                                        }
+                                        stderrBuffer = "";
+                                    }
+                                }
+                            };
+                        })()
+                    );
+                    
+                    // Create directory if needed
+                    try {
+                        FS.mkdir('/tmp');
+                    } catch(e) {
+                        // Directory might already exist
+                    }
+                }
+            ],
+            
+            // Text output - only capture when running solver with buffering
+            print: function(text) {
+                if (captureOutput) {
+                    var filteredText = filterWarnings(text);
+                    if (filteredText !== null) {
+                        writeToOutput(filteredText + "\n");
+                    }
+                }
+            },
+            
+            // Error output - only capture when running solver with buffering
+            printErr: function(text) {
+                if (captureOutput) {
+                    var filteredText = filterWarnings(text);
+                    if (filteredText !== null) {
+                        writeToOutput(filteredText + "\n");
+                    }
+                }
+            },
+            
+            // Module is ready
+            onRuntimeInitialized: function() {
+                moduleLoaded = true;
+                document.getElementById('spinner').style.display = 'none';
+                document.getElementById('status').textContent = 'Ready';
+                console.log("Module loaded and ready");
+            },
+            
+            // Error handling - always show abort messages
+            onAbort: function(what) {
+                if (captureOutput) {
+                    writeToOutput("\nAborted: " + what + "\n");
+                    flushOutputBuffer(); // Make sure to flush on abort
+                }
+                document.getElementById('spinner').style.display = 'none';
+                document.getElementById('status').textContent = 'Aborted';
+                document.getElementById('run-button').disabled = false;
+                captureOutput = false;
+            }
+        };
+        
+        // Function to run the solver with the editor content
+        function runSolver() {
+            // Check if module is loaded
+            if (!moduleLoaded) {
+                document.getElementById('output').value = "Error: Module not loaded yet. Please wait and try again.";
+                return;
+            }
+            
+            // Enable output capture
+            captureOutput = true;
+            
+            // Disable the button while running
+            document.getElementById('run-button').disabled = true;
+            
+            // Clear output
+            document.getElementById('output').value = '';
+            outputBuffer = '';
+            
+            // Get SMT input
+            var smtInput = document.getElementById('smt-editor').value.trim();
+            if (!smtInput.endsWith('\n')) {
+                smtInput += '\n';
+            }
+            
+            // Get arguments
+            var argsInput = document.getElementById('args-input').value.trim();
+            var args = [];
+            if (argsInput) {
+                args = argsInput.split(/\s+/).filter(function(arg) { 
+                    return arg.length > 0; 
+                });
+            }
+            
+            try {
+                // Show spinner while running
+                document.getElementById('spinner').style.display = 'inline-block';
+                document.getElementById('status').textContent = 'Running...';
+                
+                try {
+                    // Create a virtual file with the SMT input
+                    var inputFile = '/input.smt2';
+                    Module.FS.writeFile(inputFile, smtInput);
+                    
+                    // Add the file to the arguments
+                    args.push(inputFile);
+                } catch (e) {
+                    console.error("Error creating input file:", e);
+                    document.getElementById('output').value += "Error creating input file: " + e.message + "\n";
+                    document.getElementById('run-button').disabled = false;
+                    document.getElementById('spinner').style.display = 'none';
+                    document.getElementById('status').textContent = 'Error';
+                    captureOutput = false;
+                    return;
+                }
+                
+                // Override console.error to filter syscall warnings
+                console.error = function() {
+                    var args = Array.prototype.slice.call(arguments);
+                    var message = args.join(' ');
+                    
+                    // Forward to the original console.error
+                    originalConsoleError.apply(console, args);
+                    
+                    // Add to output if it's not a syscall warning or if we're showing warnings
+                    if (captureOutput) {
+                        var filteredText = filterWarnings(message);
+                        if (filteredText !== null) {
+                            writeToOutput("Error: " + filteredText + "\n");
+                        }
+                    }
+                };
+                
+                // Execute with a small delay to update UI
+                setTimeout(function() {
+                    try {
+                        // Completely disable the prompt dialog
+                        var originalPrompt = window.prompt;
+                        window.prompt = function() { return null; };
+                        
+                        // Run the solver
+                        Module.callMain(args);
+                        
+                        // Restore original functions
+                        window.prompt = originalPrompt;
+                        console.error = originalConsoleError;
+                        
+                        // Update status
+                        document.getElementById('spinner').style.display = 'none';
+                        document.getElementById('status').textContent = 'Completed';
+                    } catch (e) {
+                        console.error("Error executing solver:", e);
+                        // This error will be displayed by our custom console.error
+                        
+                        document.getElementById('spinner').style.display = 'none';
+                        document.getElementById('status').textContent = 'Error';
+                        console.error = originalConsoleError;
+                    } finally {
+                        // Make sure to flush any remaining output
+                        flushOutputBuffer();
+                        
+                        // Re-enable the button
+                        document.getElementById('run-button').disabled = false;
+                        
+                        // Stop capturing output
+                        captureOutput = false;
+                    }
+                }, 100);
+            } catch (e) {
+                console.error("Error setting up solver execution:", e);
+                document.getElementById('output').value += "Error: " + e.message + "\n";
+                document.getElementById('spinner').style.display = 'none';
+                document.getElementById('status').textContent = 'Error';
+                document.getElementById('run-button').disabled = false;
+                console.error = originalConsoleError;
+                captureOutput = false;
+            }
+        }
+        
+        // Function to copy output content to clipboard
+        function copyOutput() {
+            var outputElement = document.getElementById('output');
+            var copyButton = document.getElementById('copy-button');
+            
+            // Select the text
+            outputElement.select();
+            outputElement.setSelectionRange(0, 99999999); // For mobile devices
+            
+            try {
+                // Copy to clipboard
+                document.execCommand('copy');
+                
+                // Visual feedback
+                copyButton.classList.add('copy-success');
+                copyButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+                
+                // Reset button after delay
+                setTimeout(function() {
+                    copyButton.classList.remove('copy-success');
+                    copyButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy';
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                // Fallback for modern browsers
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(outputElement.value)
+                        .then(function() {
+                            // Visual feedback
+                            copyButton.classList.add('copy-success');
+                            copyButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+                            
+                            // Reset button after delay
+                            setTimeout(function() {
+                                copyButton.classList.remove('copy-success');
+                                copyButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy';
+                            }, 2000);
+                        })
+                        .catch(function(err) {
+                            console.error('Async clipboard API error: ', err);
+                        });
+                }
+            }
+        }
+    </script>
+    <script async src="cvc5.js"></script>
+</body>
+
+</html>
