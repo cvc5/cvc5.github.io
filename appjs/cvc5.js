@@ -17,7 +17,7 @@ function locateFile(path) {
     }
 
     if(path.endsWith('.wasm')){
-        return 'https://cvc5.github.io/appjs/cvc5.wasm';
+        return 'https://buildbot-cvc5.stanford.edu/wasm/cvc5.wasm';
     }
 
     return scriptDirectory + path
