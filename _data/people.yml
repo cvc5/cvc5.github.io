@@ -31,6 +31,11 @@ technical:
   website: http://cs.uiowa.edu/~ajreynol
   affiliation: University of Iowa
   bio:
+- fname: Yoni
+  lname: Zohar
+  website: http://cs.biu.ac.il/~zoharyo1
+  affiliation: Stanford University, Bar Ilan University
+  bio:
 
 devs:
 - fname: Martin
@@ -39,29 +44,25 @@ devs:
   affiliation: University of Oxford and City University of London
 - fname: Hanna
   lname: Lachnitt
-  website:
+  website: https://lachnitt.github.io/
   affiliation: Stanford University
+- fname: Daniel
+  lname: Larraz
+  website: https://daniel-larraz.github.io/
+  affiliation: University of Iowa
 - fname: Abdalrhman
   lname: Mohamed
   website:
-  affiliation: University of Iowa
+  affiliation: Stanford University
 - fname: Mudathir
   lname: Mohamed
   website: https://homepage.cs.uiowa.edu/~mahgoubyahia/
   affiliation: University of Iowa
-- fname: Alex
-  lname: Ozdemir
-  website: https://cs.stanford.edu/~aozdemir/
-  affiliation: Stanford University
-- fname: Ying
-  lname: Sheng
-  website: https://sites.google.com/view/yingsheng/home
-  affiliation: Stanford University
-- fname: Amalee
-  lname: Wilson
-  website: https://www.linkedin.com/in/amalee-wilson/
-  affiliation: Stanford University
-- fname: Yoni
-  lname: Zohar
-  website: http://cs.biu.ac.il/~zoharyo1
-  affiliation: Stanford University, Bar Ilan University
+- fname: Hans-Joerg
+  lname: Schurr
+  website: https://schurr.io/
+  affiliation: KU Leuven
+
+
+
+Daniel and Hans-Jörg 
