@@ -34,7 +34,7 @@ technical:
 - fname: Yoni
   lname: Zohar
   website: http://cs.biu.ac.il/~zoharyo1
-  affiliation: Stanford University, Bar Ilan University
+  affiliation: Bar Ilan University
   bio:
 
 devs:
@@ -58,11 +58,7 @@ devs:
   lname: Mohamed
   website: https://homepage.cs.uiowa.edu/~mahgoubyahia/
   affiliation: University of Iowa
-- fname: Hans-Joerg
+- fname: Hans-Jörg
   lname: Schurr
   website: https://schurr.io/
   affiliation: KU Leuven
-
-
-
-Daniel and Hans-Jörg 
