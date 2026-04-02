@@ -588,6 +588,36 @@
         }
     </script>
     <script async src="cvc5.js"></script>
+
+    <script>
+        (function () {
+            // Parse #smt=... from the URL hash
+            var hash = window.location.hash;
+            if (!hash || hash.indexOf('#smt=') !== 0) return;
+
+            var code;
+            try {
+            code = decodeURIComponent(hash.slice(5)); // strip leading "#smt="
+            } catch (e) {
+            return; // malformed encoding — do nothing
+            }
+            if (!code) return;
+
+            // Fill the editor immediately (even before WASM is ready)
+            var editor = document.getElementById('smt-editor');
+            if (editor) editor.value = code;
+
+            // Wait for the WASM module, then run
+            function tryRun() {
+            if (typeof moduleLoaded === 'undefined' || !moduleLoaded) {
+                setTimeout(tryRun, 50);
+                return;
+            }
+            runSolver();
+            }
+            tryRun();
+        })();
+    </script>
 </body>
 
 </html>
