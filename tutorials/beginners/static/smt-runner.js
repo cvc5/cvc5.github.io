@@ -9,10 +9,8 @@
  * (they are expected-output panels, not input panels).
  */
 (function () {
-  // ─── Config ────────────────────────────────────────────────────────────────
   var SMT_SOLVER_URL = '../../appjs/index.html';
 
-  // ─── Styles ────────────────────────────────────────────────────────────────
   var style = document.createElement('style');
   style.textContent = [
     '.smt-run-btn {',
@@ -29,7 +27,7 @@
     '  font-family: sans-serif;',
     '  cursor: pointer;',
     '  transition: background 0.2s;',
-    '  text-decoration: none;',  /* when rendered as <a> */
+    '  text-decoration: none;',  // when rendered as <a>
     '}',
     '.smt-run-btn:hover { background: #219150; color: #fff; }',
     '.smt-run-btn svg { width: 11px; height: 11px; fill: currentColor; flex-shrink: 0; }',
@@ -38,7 +36,7 @@
 
   var PLAY_ICON = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
 
-  /** Strip .linenos spans and return plain SMT text. */
+  // Strip .linenos spans and return plain SMT text
   function extractCode(highlightDiv) {
     var pre = highlightDiv.querySelector('pre');
     if (!pre) return '';
@@ -49,7 +47,7 @@
 
   /**
    * Returns true if this highlight block is inside a Sphinx tab panel
-   * whose download link href contains ".out." — i.e. it is an output block.
+   * whose download link href contains ".out."
    */
   function isOutputBlock(highlightDiv) {
     // Walk up to the nearest sphinx-tabs-panel ancestor
