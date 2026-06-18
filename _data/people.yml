@@ -58,6 +58,10 @@ devs:
   lname: Mohamed
   website: https://homepage.cs.uiowa.edu/~mahgoubyahia/
   affiliation: University of Iowa
+- fname: Kartik
+  lname: Sabharwal
+  website: https://kartik-sabharwal.github.io/
+  affiliation: University of Iowa
 - fname: Hans-Jörg
   lname: Schurr
   website: https://schurr.io/
