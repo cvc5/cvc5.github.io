@@ -7,6 +7,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CVC5 SMT Solver</title>
     <style>
+        /* ------------------------------------------------------------------ */
+        /* Theme variables                                                     */
+        /* ------------------------------------------------------------------ */
+        :root {
+            --bg: #f7f7f7;
+            --panel-bg: #ffffff;
+            --panel-shadow: rgba(0, 0, 0, 0.1);
+            --text: #333333;
+            --border: #dddddd;
+            --input-bg: #ffffff;
+            --status-bg: #f9f9f9;
+            --output-bg: #000000;
+            --output-text: #ffffff;
+            --editor-bg: #ffffff;
+            --editor-text: #333333;
+            --caret: #333333;
+
+            /* Syntax highlighting (light) */
+            --syn-keyword: #0000cc;   /* commands: set-logic, assert, ... */
+            --syn-attr: #7d5700;      /* :produce-models */
+            --syn-string: #a31515;    /* "..." */
+            --syn-number: #098658;    /* 10, 2.0, #b0101, #xFF */
+            --syn-comment: #808080;   /* ; comment */
+            --syn-paren: #777777;
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #1e1e1e;
+            --panel-bg: #252526;
+            --panel-shadow: rgba(0, 0, 0, 0.5);
+            --text: #d4d4d4;
+            --border: #3c3c3c;
+            --input-bg: #1e1e1e;
+            --status-bg: #2d2d2d;
+            --output-bg: #0c0c0c;
+            --output-text: #d4d4d4;
+            --editor-bg: #1e1e1e;
+            --editor-text: #d4d4d4;
+            --caret: #d4d4d4;
+
+            /* Syntax highlighting (dark) */
+            --syn-keyword: #569cd6;
+            --syn-attr: #dcdcaa;
+            --syn-string: #ce9178;
+            --syn-number: #b5cea8;
+            --syn-comment: #6a9955;
+            --syn-paren: #9a9a9a;
+        }
+
         body {
             font-family: arial;
             margin: 0;
@@ -14,7 +63,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #f7f7f7;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.2s, color 0.2s;
         }
 
         .container {
@@ -25,22 +76,57 @@
 
         .custom-interface, .output-container {
             width: 100%;
-            background-color: #ffffff;
+            background-color: var(--panel-bg);
             padding: 25px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px var(--panel-shadow);
             box-sizing: border-box;
         }
 
         .custom-interface {
             margin-bottom: 20px;
+            position: relative;
         }
 
         .output-container {
             margin-top: 20px;
             position: relative;
         }
-        
+
+        /* ------------------------------------------------------------------ */
+        /* Theme toggle                                                        */
+        /* ------------------------------------------------------------------ */
+        .theme-toggle {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            transition: background-color 0.2s;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--status-bg);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Show only the icon of the theme we would switch TO */
+        :root[data-theme="dark"] .icon-moon { display: none; }
+        :root:not([data-theme="dark"]) .icon-sun { display: none; }
+
         .copy-button {
             position: absolute;
             top: 10px;
@@ -80,29 +166,116 @@
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
-            color: #333;
+            color: var(--text);
         }
 
-        #smt-editor {
+        /* ------------------------------------------------------------------ */
+        /* Editor with syntax highlighting and line numbers                    */
+        /*                                                                     */
+        /* Layout: a fixed line-number gutter on the left, and an editor area  */
+        /* on the right using the overlay technique: a highlighted <pre> sits  */
+        /* behind a <textarea> whose text is transparent. All layers share     */
+        /* identical font metrics, and their scroll positions are kept in      */
+        /* sync, so the colored tokens and line numbers line up exactly with   */
+        /* the (invisible) typed text.                                         */
+        /* The textarea keeps its id, so the rest of the page code that reads  */
+        /* #smt-editor.value continues to work unchanged.                      */
+        /* ------------------------------------------------------------------ */
+        .editor-wrapper {
+            display: flex;
             width: 100%;
-            height: 150px;
-            font-family: monospace;
-            padding: 12px;
-            box-sizing: border-box;
-            border: 1px solid #ddd;
+            height: 300px;
+            border: 1px solid var(--border);
             border-radius: 4px;
-            font-size: 14px;
+            background-color: var(--editor-bg);
+            overflow: hidden;
             resize: vertical;
+            min-height: 80px;
         }
+
+        .editor-gutter,
+        .editor-area > textarea,
+        .editor-area > pre {
+            /* Identical metrics on all layers is what keeps them aligned */
+            margin: 0;
+            border: 0;
+            box-sizing: border-box;
+            font-family: monospace;
+            font-size: 14px;
+            line-height: 1.4;
+            white-space: pre;
+            tab-size: 4;
+        }
+
+        .editor-gutter {
+            flex-shrink: 0;
+            min-width: 34px;
+            padding: 12px 8px 12px 10px;
+            text-align: right;
+            color: var(--syn-comment);
+            background-color: var(--status-bg);
+            border-right: 1px solid var(--border);
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .editor-area {
+            position: relative;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .editor-area > textarea,
+        .editor-area > pre {
+            padding: 12px;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .editor-area > pre {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            color: var(--editor-text);
+            background: transparent;
+            /* Hide the scrollbars of the back layer; the textarea drives them */
+            scrollbar-width: none;
+        }
+
+        .editor-area > pre::-webkit-scrollbar {
+            display: none;
+        }
+
+        .editor-area > textarea {
+            position: relative;
+            background: transparent;
+            color: transparent;
+            caret-color: var(--caret);
+            resize: none;
+            outline: none;
+            z-index: 1;
+        }
+
+        /* Token colors */
+        .tok-kw   { color: var(--syn-keyword); }
+        .tok-attr { color: var(--syn-attr); }
+        .tok-str  { color: var(--syn-string); }
+        .tok-num  { color: var(--syn-number); }
+        .tok-com  { color: var(--syn-comment); font-style: italic; }
+        .tok-par  { color: var(--syn-paren); }
 
         #args-input {
             width: 100%;
             padding: 10px;
             box-sizing: border-box;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border);
             border-radius: 4px;
             font-family: monospace;
             font-size: 14px;
+            background-color: var(--input-bg);
+            color: var(--text);
         }
 
         .options-section {
@@ -114,7 +287,7 @@
             display: flex;
             align-items: center;
             font-size: 14px;
-            color: #333;
+            color: var(--text);
             cursor: pointer;
         }
 
@@ -152,8 +325,8 @@
             padding: 12px;
             box-sizing: border-box;
             display: block;
-            background-color: #000;
-            color: #fff;
+            background-color: var(--output-bg);
+            color: var(--output-text);
             font-family: 'Lucida Console', Monaco, monospace;
             border-radius: 4px;
             overflow: auto;
@@ -168,14 +341,14 @@
             text-align: center;
             margin: 15px 0;
             padding: 10px;
-            background-color: #f9f9f9;
+            background-color: var(--status-bg);
             border-radius: 4px;
             box-sizing: border-box;
         }
 
         #status {
             font-weight: bold;
-            color: #333;
+            color: var(--text);
             margin-left: 5px;
         }
 
@@ -183,7 +356,7 @@
             display: inline-block;
             width: 18px;
             height: 18px;
-            border: 3px solid rgba(0,0,0,0.1);
+            border: 3px solid rgba(128,128,128,0.2);
             border-radius: 50%;
             border-top-color: #3498db;
             animation: spin 1s ease-in-out infinite;
@@ -191,7 +364,7 @@
         }
 
         h2 {
-            color: #333;
+            color: var(--text);
             margin-top: 0;
             margin-bottom: 20px;
             text-align: center;
@@ -212,21 +385,48 @@
             }
         }
     </style>
+    <script>
+        // Apply the saved (or system-preferred) theme before first paint
+        // to avoid a flash of the wrong theme.
+        (function () {
+            'use strict';
+            var saved = null;
+            try {
+                saved = localStorage.getItem('smt-theme');
+            } catch (e) { /* storage may be unavailable */ }
+            var theme = saved ||
+                (window.matchMedia &&
+                 window.matchMedia('(prefers-color-scheme: dark)').matches
+                    ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 </head>
 
 <body>
     <div class="container">
         <div class="custom-interface">
+            <button class="theme-toggle" id="theme-toggle" title="Toggle light/dark theme" aria-label="Toggle light/dark theme">
+                <svg class="icon-moon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 0 1-4.4 2.26 5.4 5.4 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24"><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/></svg>
+            </button>
+
             <h2>CVC5 SMT Solver</h2>
             
             <div class="input-section">
                 <label for="smt-editor" class="input-label">SMT Input:</label>
-                <textarea id="smt-editor" placeholder="Enter your SMT formula here...">
+                <div class="editor-wrapper">
+                    <pre class="editor-gutter" id="smt-gutter" aria-hidden="true"></pre>
+                    <div class="editor-area">
+                        <pre id="smt-highlight" aria-hidden="true"></pre>
+                        <textarea id="smt-editor" spellcheck="false" wrap="off" placeholder="Enter your SMT formula here...">
 (declare-fun x () Int)
 (assert (> x 0))
 (check-sat)
 (get-model)
-                </textarea>
+                        </textarea>
+                    </div>
+                </div>
             </div>
             
             <div class="input-section">
@@ -262,6 +462,137 @@
     </div>
 
     <script>
+        // ------------------------------------------------------------------
+        // Theme toggle
+        // ------------------------------------------------------------------
+        (function () {
+            'use strict';
+            var toggle = document.getElementById('theme-toggle');
+            toggle.addEventListener('click', function () {
+                var root = document.documentElement;
+                var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                root.setAttribute('data-theme', next);
+                try {
+                    localStorage.setItem('smt-theme', next);
+                } catch (e) { /* storage may be unavailable */ }
+            });
+        })();
+
+        // ------------------------------------------------------------------
+        // SMT-LIB syntax highlighting (overlay technique)
+        //
+        // The highlighted <pre> behind the textarea is re-rendered on every
+        // input event, and its scroll position mirrors the textarea's.
+        // updateEditorHighlight() is exposed globally so code that sets the
+        // editor value programmatically (e.g. the URL-hash auto-run script)
+        // can refresh the highlight layer.
+        // ------------------------------------------------------------------
+        (function () {
+            'use strict';
+
+            var editor = document.getElementById('smt-editor');
+            var highlightLayer = document.getElementById('smt-highlight');
+            var gutter = document.getElementById('smt-gutter');
+
+            function escapeHtml(str) {
+                return str
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+            }
+
+            // Single-pass tokenizer. Alternatives are tried in order, so
+            // comments and strings win over anything inside them.
+            var TOKEN_RE = new RegExp(
+                [
+                    '(;[^\\n]*)',                                   // 1: comment
+                    '("(?:[^"\\\\]|\\\\.)*")',                      // 2: string
+                    '(:[A-Za-z0-9_.\\-]+)',                         // 3: attribute keyword
+                    '(#b[01]+|#x[0-9A-Fa-f]+|\\b\\d+\\.\\d+\\b|\\b\\d+\\b)', // 4: numeral
+                    '([()])',                                       // 5: parenthesis
+                    '([A-Za-z_~!@$%^&*+=<>.?\\/\\-][A-Za-z0-9_~!@$%^&*+=<>.?\\/\\-]*)' // 6: symbol
+                ].join('|'),
+                'g'
+            );
+
+            // SMT-LIB commands and core keywords rendered as keywords
+            var KEYWORDS = {};
+            [
+                'set-logic', 'set-option', 'set-info', 'declare-sort',
+                'declare-fun', 'declare-const', 'declare-datatype',
+                'declare-datatypes', 'define-sort', 'define-fun',
+                'define-fun-rec', 'define-const', 'assert', 'check-sat',
+                'check-sat-assuming', 'get-model', 'get-value', 'get-proof',
+                'get-unsat-core', 'get-assertions', 'get-info', 'get-option',
+                'push', 'pop', 'reset', 'reset-assertions', 'exit', 'echo',
+                'as', 'let', 'forall', 'exists', 'match', 'par',
+                'true', 'false', 'ite', 'not', 'and', 'or', 'xor', 'distinct'
+            ].forEach(function (kw) { KEYWORDS[kw] = true; });
+
+            function highlight(code) {
+                var html = '';
+                var lastIndex = 0;
+                TOKEN_RE.lastIndex = 0;
+                var m;
+                while ((m = TOKEN_RE.exec(code)) !== null) {
+                    // Plain text between tokens
+                    html += escapeHtml(code.slice(lastIndex, m.index));
+                    lastIndex = TOKEN_RE.lastIndex;
+
+                    var text = escapeHtml(m[0]);
+                    if (m[1]) {
+                        html += '<span class="tok-com">' + text + '</span>';
+                    } else if (m[2]) {
+                        html += '<span class="tok-str">' + text + '</span>';
+                    } else if (m[3]) {
+                        html += '<span class="tok-attr">' + text + '</span>';
+                    } else if (m[4]) {
+                        html += '<span class="tok-num">' + text + '</span>';
+                    } else if (m[5]) {
+                        html += '<span class="tok-par">' + text + '</span>';
+                    } else if (m[6] && KEYWORDS[m[0]]) {
+                        html += '<span class="tok-kw">' + text + '</span>';
+                    } else {
+                        html += text;
+                    }
+                }
+                html += escapeHtml(code.slice(lastIndex));
+                return html;
+            }
+
+            function renderGutter() {
+                var lineCount = editor.value.split('\n').length;
+                var numbers = '';
+                for (var i = 1; i <= lineCount; i++) {
+                    numbers += i + '\n';
+                }
+                gutter.textContent = numbers;
+            }
+
+            function render() {
+                // Trailing newline keeps the last line visible when the
+                // textarea scrolls past the end of the content.
+                highlightLayer.innerHTML = highlight(editor.value) + '\n';
+                renderGutter();
+                syncScroll();
+            }
+
+            function syncScroll() {
+                highlightLayer.scrollTop = editor.scrollTop;
+                highlightLayer.scrollLeft = editor.scrollLeft;
+                // The gutter only scrolls vertically
+                gutter.scrollTop = editor.scrollTop;
+            }
+
+            editor.addEventListener('input', render);
+            editor.addEventListener('scroll', syncScroll);
+
+            // Expose for programmatic value changes (URL-hash auto-run)
+            window.updateEditorHighlight = render;
+
+            render();
+        })();
+
         // Global variables
         var moduleLoaded = false;
         var captureOutput = false;
@@ -591,30 +922,60 @@
 
     <script>
         (function () {
+            'use strict';
+
+            // Maximum time to wait for the WASM module before giving up
+            var WASM_LOAD_TIMEOUT_MS = 30000;
+            var POLL_INTERVAL_MS = 50;
+
             // Parse #smt=... from the URL hash
             var hash = window.location.hash;
             if (!hash || hash.indexOf('#smt=') !== 0) return;
 
             var code;
             try {
-            code = decodeURIComponent(hash.slice(5)); // strip leading "#smt="
+                code = decodeURIComponent(hash.slice(5)); // strip leading "#smt="
             } catch (e) {
-            return; // malformed encoding — do nothing
+                return; // malformed encoding: do nothing
             }
             if (!code) return;
 
-            // Fill the editor immediately (even before WASM is ready)
+            // Pre-fill the editor immediately, even before the WASM module is ready
             var editor = document.getElementById('smt-editor');
-            if (editor) editor.value = code;
+            if (editor) {
+                editor.value = code;
+                // Programmatic value changes do not fire 'input' events,
+                // so refresh the highlight layer explicitly.
+                if (typeof window.updateEditorHighlight === 'function') {
+                    window.updateEditorHighlight();
+                }
+            }
 
-            // Wait for the WASM module, then run
+            // Wait for the WASM module with a bounded timeout, then run
+            var deadline = Date.now() + WASM_LOAD_TIMEOUT_MS;
+
             function tryRun() {
-            if (typeof moduleLoaded === 'undefined' || !moduleLoaded) {
-                setTimeout(tryRun, 50);
-                return;
+                if (typeof moduleLoaded !== 'undefined' && moduleLoaded) {
+                    runSolver();
+                    return;
+                }
+                if (Date.now() >= deadline) {
+                    var output = document.getElementById('output');
+                    if (output) {
+                        output.value =
+                            'Error: the solver module did not load within ' +
+                            (WASM_LOAD_TIMEOUT_MS / 1000) +
+                            ' seconds. Please reload the page and press "Run Solver" manually.';
+                    }
+                    var status = document.getElementById('status');
+                    if (status) status.textContent = 'Load timeout';
+                    var spinner = document.getElementById('spinner');
+                    if (spinner) spinner.style.display = 'none';
+                    return;
+                }
+                setTimeout(tryRun, POLL_INTERVAL_MS);
             }
-            runSolver();
-            }
+
             tryRun();
         })();
     </script>

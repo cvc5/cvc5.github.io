@@ -1,115 +1,208 @@
 /**
  * smt-runner.js
- * Injects a "Run" button into Sphinx SMT-LIBv2 code blocks.
  *
- * Clicking opens the CVC5 solver page in a new tab with the code
- * pre-loaded via the URL hash (#smt=<encoded>).
+ * Opt-in "Run" button component for SMT-LIBv2 code blocks.
  *
- * Blocks whose download link href contains ".out." are skipped
- * (they are expected-output panels, not input panels).
+ * Page authors add a placeholder element wherever they want a Run
+ * button. The component resolves the code to run in the following
+ * order of priority:
+ *
+ *   1. data-code-selector attribute (CSS selector to any element):
+ *
+ *        <div class="smt-run" data-code-selector="#my-example"></div>
+ *
+ *   2. Inline code written directly inside the placeholder. The text
+ *      content is used as the code and the placeholder content is
+ *      replaced by the button:
+ *
+ *        <div class="smt-run">
+ *        (set-logic QF_LIA)
+ *        (declare-const a Int)
+ *        (assert (> a 0))
+ *        (check-sat)
+ *        </div>
+ *
+ *   3. The nearest previous sibling that is a Sphinx highlight block:
+ *
+ *        <div class="highlight-smtlib notranslate">...</div>
+ *        <div class="smt-run"></div>
+ *
+ * Code extraction is structure-tolerant: if the source element contains
+ * a <pre>, its content is used (with Sphinx .linenos spans stripped);
+ * otherwise the element's plain text content is used as-is.
+ *
+ * Per-button solver URL override:
+ *
+ *   <div class="smt-run" data-solver-url="../../appjs/index.html"></div>
+ *
+ * Global configuration (optional, set before this script loads):
+ *
+ *   <script>window.SMT_SOLVER_URL = '../../appjs/index.html';</script>
+ *
+ * Public API:
+ *
+ *   window.SmtRun.init(rootElement)
+ *     Re-scans for placeholders (useful for dynamically inserted
+ *     content). Defaults to document when no argument is given.
+ *
+ * Clicking a button opens the solver page in a new tab with the code
+ * passed through the URL hash: <solver-url>#smt=<encoded code>.
  */
 (function () {
-  var SMT_SOLVER_URL = '../../appjs/index.html';
+  'use strict';
 
-  var style = document.createElement('style');
-  style.textContent = [
-    '.smt-run-btn {',
-    '  display: inline-flex;',
-    '  align-items: center;',
-    '  gap: 5px;',
-    '  margin-top: 6px;',
-    '  padding: 4px 11px;',
-    '  background: #27ae60;',
-    '  color: #fff;',
-    '  border: none;',
-    '  border-radius: 4px;',
-    '  font-size: 12px;',
-    '  font-family: sans-serif;',
-    '  cursor: pointer;',
-    '  transition: background 0.2s;',
-    '  text-decoration: none;',  // when rendered as <a>
-    '}',
-    '.smt-run-btn:hover { background: #219150; color: #fff; }',
-    '.smt-run-btn svg { width: 11px; height: 11px; fill: currentColor; flex-shrink: 0; }',
-  ].join('\n');
-  document.head.appendChild(style);
+  var DEFAULT_SOLVER_URL = '../../appjs/index.html';
 
-  var PLAY_ICON = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  var HIGHLIGHT_SELECTOR =
+    '.highlight-smtlib, .highlight-smt2, .highlight-smtlib2';
 
-  // Strip .linenos spans and return plain SMT text
-  function extractCode(highlightDiv) {
-    var pre = highlightDiv.querySelector('pre');
-    if (!pre) return '';
-    var clone = pre.cloneNode(true);
-    clone.querySelectorAll('.linenos').forEach(function (el) { el.remove(); });
-    return clone.textContent.trim();
+  var PLACEHOLDER_SELECTOR = '.smt-run';
+
+  var PLAY_ICON =
+    '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+    '<path d="M8 5v14l11-7z"/></svg>';
+
+  // ---------------------------------------------------------------------------
+  // Styles (injected once)
+  // ---------------------------------------------------------------------------
+  function injectStyles() {
+    if (document.getElementById('smt-run-styles')) return;
+    var style = document.createElement('style');
+    style.id = 'smt-run-styles';
+    style.textContent = [
+      '.smt-run-btn {',
+      '  display: inline-flex;',
+      '  align-items: center;',
+      '  gap: 5px;',
+      '  margin-top: 6px;',
+      '  padding: 4px 11px;',
+      '  background: #27ae60;',
+      '  color: #fff;',
+      '  border: none;',
+      '  border-radius: 4px;',
+      '  font-size: 12px;',
+      '  font-family: sans-serif;',
+      '  cursor: pointer;',
+      '  text-decoration: none;',
+      '  transition: background 0.2s;',
+      '}',
+      '.smt-run-btn:hover { background: #219150; color: #fff; }',
+      '.smt-run-btn svg {',
+      '  width: 11px; height: 11px;',
+      '  fill: currentColor; flex-shrink: 0;',
+      '}',
+    ].join('\n');
+    document.head.appendChild(style);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Code extraction
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Extracts plain code text from an arbitrary element.
+   *
+   * Structure-tolerant: if the element contains a <pre> (Sphinx highlight
+   * blocks), its content is used with .linenos spans stripped; otherwise
+   * the element's own text content is used as-is.
+   */
+  function extractCode(el) {
+    if (!el) return '';
+    var source = el.querySelector('pre') || el;
+    var clone = source.cloneNode(true);
+    var linenos = clone.querySelectorAll('.linenos');
+    for (var i = 0; i < linenos.length; i++) {
+      linenos[i].parentNode.removeChild(linenos[i]);
+    }
+    return (clone.textContent || '').trim();
+  }
+
+  /** Finds the nearest previous sibling that is a highlight block. */
+  function findPreviousHighlight(placeholder) {
+    var el = placeholder.previousElementSibling;
+    while (el) {
+      if (el.matches && el.matches(HIGHLIGHT_SELECTOR)) return el;
+      el = el.previousElementSibling;
+    }
+    return null;
   }
 
   /**
-   * Returns true if this highlight block is inside a Sphinx tab panel
-   * whose download link href contains ".out."
+   * Resolves the code for a given placeholder.
+   *
+   * Priority:
+   *   1. data-code-selector attribute
+   *   2. inline text content of the placeholder itself
+   *   3. nearest previous sibling highlight block
    */
-  function isOutputBlock(highlightDiv) {
-    // Walk up to the nearest sphinx-tabs-panel ancestor
-    var panel = highlightDiv.closest
-      ? highlightDiv.closest('.sphinx-tabs-panel')
-      : (function () {
-          var el = highlightDiv;
-          while (el) {
-            if (el.classList && el.classList.contains('sphinx-tabs-panel')) return el;
-            el = el.parentElement;
-          }
-          return null;
-        })();
-
-    if (!panel) return false;
-
-    // Look for any download link inside the panel
-    var links = panel.querySelectorAll('a.reference.external');
-    for (var i = 0; i < links.length; i++) {
-      if (links[i].href && links[i].href.indexOf('.out.') !== -1) {
-        return true;
+  function resolveCode(placeholder) {
+    var selector = placeholder.getAttribute('data-code-selector');
+    if (selector) {
+      var target;
+      try {
+        target = document.querySelector(selector);
+      } catch (e) {
+        // Invalid selector: fail silently, no button is rendered
+        return '';
       }
+      return extractCode(target);
     }
-    return false;
+
+    var inline = (placeholder.textContent || '').trim();
+    if (inline) return inline;
+
+    return extractCode(findPreviousHighlight(placeholder));
   }
 
-  function injectButtons() {
-    var blocks = document.querySelectorAll(
-      '.highlight-smtlib, .highlight-smt2, .highlight-smtlib2'
-    );
+  // ---------------------------------------------------------------------------
+  // Component
+  // ---------------------------------------------------------------------------
 
-    blocks.forEach(function (highlight) {
-      // Skip if a button was already added
-      var next = highlight.nextElementSibling;
-      if (next && next.classList.contains('smt-run-btn')) return;
+  /** Upgrades a single placeholder element into a Run button. */
+  function upgradePlaceholder(placeholder) {
+    // Guard against double initialization
+    if (placeholder.getAttribute('data-smt-run-initialized') === 'true') return;
 
-      // Skip output blocks
-      if (isOutputBlock(highlight)) return;
+    var code = resolveCode(placeholder);
+    if (!code) return;
 
-      var code = extractCode(highlight);
-      if (!code) return;
-      if (code.indexOf('check-sat') === -1) return;
+    var solverUrl =
+      placeholder.getAttribute('data-solver-url') ||
+      window.SMT_SOLVER_URL ||
+      DEFAULT_SOLVER_URL;
 
-      // Encode the code into the URL hash so the solver page can read it
-      var url = SMT_SOLVER_URL + '#smt=' + encodeURIComponent(code);
+    var link = document.createElement('a');
+    link.className = 'smt-run-btn';
+    link.href = solverUrl + '#smt=' + encodeURIComponent(code);
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.title = 'Open and run this formula in the CVC5 solver';
+    link.innerHTML = PLAY_ICON + ' Run';
 
-      // Use an <a> so middle-click / Ctrl+click also work naturally
-      var btn = document.createElement('a');
-      btn.className = 'smt-run-btn';
-      btn.href = url;
-      btn.target = '_blank';
-      btn.rel = 'noopener';
-      btn.title = 'Open and run this formula in the CVC5 solver';
-      btn.innerHTML = PLAY_ICON + ' Run';
-
-      highlight.insertAdjacentElement('afterend', btn);
-    });
+    // Replace any inline content with the button. For the selector and
+    // previous-sibling cases the placeholder is empty anyway, so this
+    // is equivalent to appending.
+    placeholder.textContent = '';
+    placeholder.appendChild(link);
+    placeholder.setAttribute('data-smt-run-initialized', 'true');
   }
+
+  /** Scans a root element for placeholders and upgrades them. */
+  function init(root) {
+    injectStyles();
+    var scope = root || document;
+    var placeholders = scope.querySelectorAll(PLACEHOLDER_SELECTOR);
+    for (var i = 0; i < placeholders.length; i++) {
+      upgradePlaceholder(placeholders[i]);
+    }
+  }
+
+  // Public API for dynamically inserted content
+  window.SmtRun = { init: init };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectButtons);
+    document.addEventListener('DOMContentLoaded', function () { init(); });
   } else {
-    injectButtons();
+    init();
   }
 })();
