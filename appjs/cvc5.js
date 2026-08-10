@@ -15,11 +15,6 @@ function locateFile(path) {
     if (Module["locateFile"]) {
         return Module["locateFile"](path, scriptDirectory)
     }
-
-    if(path.endsWith('.wasm')){
-        return 'https://buildbot-cvc5.stanford.edu/wasm/cvc5.wasm';
-    }
-
     return scriptDirectory + path
 }
 var readAsync, readBinary;
@@ -355,6 +350,11 @@ function createWasm() {
         return wasmExports
     }
     addRunDependency("wasm-instantiate");
+
+    if (Module["instantiateWasm"]) {
+        return Module["instantiateWasm"](info, receiveInstance);
+    }
+
     var trueModule = Module;
 
     function receiveInstantiationResult(result) {
@@ -3876,7 +3876,9 @@ function checkIncomingModuleAPI() {
     ignoredModuleProp("elementPointerLock");
     ignoredModuleProp("extraStackTrace");
     ignoredModuleProp("forcedAspectRatio");
-    ignoredModuleProp("instantiateWasm");
+    // InstantiateWasm is intentionally re-enabled above
+    // in createWasm(), so it must not be rejected here.
+    // ignoredModuleProp("instantiateWasm");
     ignoredModuleProp("keyboardListeningElement");
     ignoredModuleProp("freePreloadedMediaOnUse");
     ignoredModuleProp("loadSplitModule");

@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CVC5 SMT Solver</title>
     <style>
-        /* ------------------------------------------------------------------ */
-        /* Theme variables                                                     */
-        /* ------------------------------------------------------------------ */
+        /* Theme variables */
         :root {
             --bg: #f7f7f7;
             --panel-bg: #ffffff;
@@ -93,9 +91,7 @@
             position: relative;
         }
 
-        /* ------------------------------------------------------------------ */
-        /* Theme toggle                                                        */
-        /* ------------------------------------------------------------------ */
+        /* Theme toggle */
         .theme-toggle {
             position: absolute;
             top: 15px;
@@ -169,18 +165,9 @@
             color: var(--text);
         }
 
-        /* ------------------------------------------------------------------ */
-        /* Editor with syntax highlighting and line numbers                    */
-        /*                                                                     */
-        /* Layout: a fixed line-number gutter on the left, and an editor area  */
-        /* on the right using the overlay technique: a highlighted <pre> sits  */
-        /* behind a <textarea> whose text is transparent. All layers share     */
-        /* identical font metrics, and their scroll positions are kept in      */
-        /* sync, so the colored tokens and line numbers line up exactly with   */
-        /* the (invisible) typed text.                                         */
-        /* The textarea keeps its id, so the rest of the page code that reads  */
-        /* #smt-editor.value continues to work unchanged.                      */
-        /* ------------------------------------------------------------------ */
+        /* Editor with syntax highlighting and line numbers */
+        /* Layout: a fixed line-number on the left, and an editor area  */
+        /* on the right using the overlay technique */
         .editor-wrapper {
             display: flex;
             width: 100%;
@@ -319,6 +306,126 @@
             cursor: not-allowed;
         }
 
+        /* "Load Example" button */
+        .secondary-button {
+            background-color: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 11px 20px;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 16px;
+            font-family: inherit;
+            margin: 4px 0 4px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .secondary-button:hover {
+            background-color: var(--status-bg);
+        }
+
+        .secondary-button svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* Examples modal */
+        .smt-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .smt-modal-overlay[hidden] {
+            display: none;
+        }
+
+        .smt-modal {
+            background: var(--panel-bg);
+            color: var(--text);
+            width: min(90vw, 560px);
+            max-height: 80vh;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .smt-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .smt-modal-title {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .smt-modal-close {
+            background: none;
+            border: none;
+            font-size: 22px;
+            line-height: 1;
+            cursor: pointer;
+            color: var(--text);
+            border-radius: 4px;
+            padding: 0 6px;
+        }
+
+        .smt-modal-close:hover {
+            background: var(--status-bg);
+        }
+
+        .smt-modal-body {
+            overflow-y: auto;
+            padding: 8px;
+        }
+
+        .smt-example-item {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 10px 12px;
+            border: none;
+            background: none;
+            color: var(--text);
+            font-family: monospace;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .smt-example-item:hover {
+            background: var(--status-bg);
+        }
+
+        .smt-modal-status {
+            padding: 24px 20px;
+            text-align: center;
+            color: var(--syn-comment);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .smt-modal-status a {
+            color: var(--syn-keyword);
+        }
+
         #output {
             width: 100%;
             height: 300px;
@@ -442,6 +549,10 @@
             </div>
             
             <button class="run-button" id="run-button" onclick="runSolver()">Run Solver</button>
+            <button class="secondary-button" id="load-examples-button" type="button">
+                <svg viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/></svg>
+                Load Example…
+            </button>
         </div>
 
         <div class="status-area">
@@ -461,10 +572,20 @@
         </div>
     </div>
 
+    <div class="smt-modal-overlay" id="examples-overlay" hidden>
+        <div class="smt-modal" role="dialog" aria-modal="true" aria-labelledby="examples-modal-title">
+            <div class="smt-modal-header">
+                <span class="smt-modal-title" id="examples-modal-title">Load Example</span>
+                <button class="smt-modal-close" id="examples-modal-close" type="button" title="Close" aria-label="Close">&times;</button>
+            </div>
+            <div class="smt-modal-body" id="examples-modal-body"></div>
+        </div>
+    </div>
+
     <script>
-        // ------------------------------------------------------------------
+        
         // Theme toggle
-        // ------------------------------------------------------------------
+        
         (function () {
             'use strict';
             var toggle = document.getElementById('theme-toggle');
@@ -477,16 +598,10 @@
                 } catch (e) { /* storage may be unavailable */ }
             });
         })();
-
-        // ------------------------------------------------------------------
+        
         // SMT-LIB syntax highlighting (overlay technique)
-        //
         // The highlighted <pre> behind the textarea is re-rendered on every
         // input event, and its scroll position mirrors the textarea's.
-        // updateEditorHighlight() is exposed globally so code that sets the
-        // editor value programmatically (e.g. the URL-hash auto-run script)
-        // can refresh the highlight layer.
-        // ------------------------------------------------------------------
         (function () {
             'use strict';
 
@@ -595,6 +710,7 @@
 
         // Global variables
         var moduleLoaded = false;
+        var running = false; // guards against overlapping solver runs
         var captureOutput = false;
         var originalConsoleError = console.error;
         var outputBuffer = "";
@@ -602,6 +718,8 @@
         var outputUpdateInterval = 50; // milliseconds between updates
         var maxOutputSize = 1000000; // Maximum characters to keep (1MB)
         var outputMode = "buffered"; // Options: "buffered", "virtual"
+        var moduleFactory = null;
+        var compiledWasmModule = null;
         
         // Function to write to the output textarea with buffering
         function writeToOutput(text) {
@@ -655,24 +773,27 @@
             return null;
         };
         
-        // Emscripten module configuration
-        var Module = {
-            preRun: [
+        // Build a fresh emscripten module config object for one solver run.
+        function makeModuleConfig(args, smtInput, inputFile, resolve, reject) {
+            var cfg = {};
+
+            cfg.arguments = args;
+
+            cfg.preRun = [
                 function() {
                     console.log("Setting up file system and I/O...");
-                    
                     // Set up custom output functions with buffering
-                    FS.init(
+                    cfg.FS.init(
                         // stdin: We don't need custom stdin as we're using file input
                         null,
-                        
+
                         // stdout: Buffered writing
                         (function() {
                             var stdoutBuffer = "";
                             return function(c) {
                                 if (captureOutput) {
                                     stdoutBuffer += String.fromCharCode(c);
-                                    
+
                                     // Process buffer in chunks
                                     if (stdoutBuffer.length >= 1024 || c === 10) { // 10 is newline
                                         var filteredText = filterWarnings(stdoutBuffer);
@@ -684,14 +805,14 @@
                                 }
                             };
                         })(),
-                        
+
                         // stderr: Buffered writing
                         (function() {
                             var stderrBuffer = "";
                             return function(c) {
                                 if (captureOutput) {
                                     stderrBuffer += String.fromCharCode(c);
-                                    
+
                                     // Process buffer in chunks
                                     if (stderrBuffer.length >= 1024 || c === 10) { // 10 is newline
                                         var filteredText = filterWarnings(stderrBuffer);
@@ -704,46 +825,61 @@
                             };
                         })()
                     );
-                    
+
                     // Create directory if needed
                     try {
-                        FS.mkdir('/tmp');
+                        cfg.FS.mkdir('/tmp');
                     } catch(e) {
                         // Directory might already exist
                     }
+
+                    // Write the SMT input file. This has to happen here,
+                    // inside preRun: there is no FS (and no instance at
+                    // all) until the fresh module gets point, and it
+                    // must exist before main() looks for it on argv.
+                    try {
+                        cfg.FS.writeFile(inputFile, smtInput);
+                    } catch (e) {
+                        console.error("Error creating input file:", e);
+                        reject(e);
+                    }
                 }
-            ],
-            
+            ];
+
             // Text output - only capture when running solver with buffering
-            print: function(text) {
+            cfg.print = function(text) {
                 if (captureOutput) {
                     var filteredText = filterWarnings(text);
                     if (filteredText !== null) {
                         writeToOutput(filteredText + "\n");
                     }
                 }
-            },
-            
+            };
+
             // Error output - only capture when running solver with buffering
-            printErr: function(text) {
+            cfg.printErr = function(text) {
                 if (captureOutput) {
                     var filteredText = filterWarnings(text);
                     if (filteredText !== null) {
                         writeToOutput(filteredText + "\n");
                     }
                 }
-            },
-            
-            // Module is ready
-            onRuntimeInitialized: function() {
-                moduleLoaded = true;
-                document.getElementById('spinner').style.display = 'none';
-                document.getElementById('status').textContent = 'Ready';
-                console.log("Module loaded and ready");
-            },
-            
+            };
+
+            cfg.instantiateWasm = function(imports, successCallback) {
+                WebAssembly.instantiate(compiledWasmModule, imports).then(function(instance) {
+                    try {
+                        successCallback(instance, compiledWasmModule);
+                        resolve();
+                    } catch (e) {
+                        reject(e);
+                    }
+                }).catch(reject);
+                return {}; // tells emscripten instantiation is async
+            };
+
             // Error handling - always show abort messages
-            onAbort: function(what) {
+            cfg.onAbort = function(what) {
                 if (captureOutput) {
                     writeToOutput("\nAborted: " + what + "\n");
                     flushOutputBuffer(); // Make sure to flush on abort
@@ -752,9 +888,12 @@
                 document.getElementById('status').textContent = 'Aborted';
                 document.getElementById('run-button').disabled = false;
                 captureOutput = false;
-            }
-        };
-        
+                reject(new Error(String(what)));
+            };
+
+            return cfg;
+        }
+
         // Function to run the solver with the editor content
         function runSolver() {
             // Check if module is loaded
@@ -762,115 +901,109 @@
                 document.getElementById('output').value = "Error: Module not loaded yet. Please wait and try again.";
                 return;
             }
-            
+
+            // Each run gets its own wasm instance, but the UI state 
+            // (output box, captureOutput, console.error override, ...) 
+            // is shared/global, so only one run may be in flight at a time.
+            if (running) {
+                return;
+            }
+            running = true;
+
             // Enable output capture
             captureOutput = true;
-            
+
             // Disable the button while running
             document.getElementById('run-button').disabled = true;
-            
+
             // Clear output
             document.getElementById('output').value = '';
             outputBuffer = '';
-            
+
             // Get SMT input
             var smtInput = document.getElementById('smt-editor').value.trim();
             if (!smtInput.endsWith('\n')) {
                 smtInput += '\n';
             }
-            
+
             // Get arguments
             var argsInput = document.getElementById('args-input').value.trim();
             var args = [];
             if (argsInput) {
-                args = argsInput.split(/\s+/).filter(function(arg) { 
-                    return arg.length > 0; 
+                args = argsInput.split(/\s+/).filter(function(arg) {
+                    return arg.length > 0;
                 });
             }
-            
-            try {
-                // Show spinner while running
-                document.getElementById('spinner').style.display = 'inline-block';
-                document.getElementById('status').textContent = 'Running...';
-                
-                try {
-                    // Create a virtual file with the SMT input
-                    var inputFile = '/input.smt2';
-                    Module.FS.writeFile(inputFile, smtInput);
-                    
-                    // Add the file to the arguments
-                    args.push(inputFile);
-                } catch (e) {
-                    console.error("Error creating input file:", e);
-                    document.getElementById('output').value += "Error creating input file: " + e.message + "\n";
-                    document.getElementById('run-button').disabled = false;
+
+            // Add the input file to the arguments
+            var inputFile = '/input.smt2';
+            args.push(inputFile);
+
+            // Show spinner while running
+            document.getElementById('spinner').style.display = 'inline-block';
+            document.getElementById('status').textContent = 'Running...';
+
+            // Override console.error to filter syscall warnings
+            console.error = function() {
+                var errArgs = Array.prototype.slice.call(arguments);
+                var message = errArgs.join(' ');
+
+                // Forward to the original console.error
+                originalConsoleError.apply(console, errArgs);
+
+                // Add to output if it's not a syscall warning or if we're showing warnings
+                if (captureOutput) {
+                    var filteredText = filterWarnings(message);
+                    if (filteredText !== null) {
+                        writeToOutput("Error: " + filteredText + "\n");
+                    }
+                }
+            };
+
+            // Completely disable the prompt dialog
+            var originalPrompt = window.prompt;
+            window.prompt = function() { return null; };
+
+            // Execute with a small delay to update UI, same as before.
+            setTimeout(function() {
+                new Promise(function(resolve, reject) {
+                    try {
+                        // A fresh config + a fresh call into moduleFactory
+                        var cfg = makeModuleConfig(args, smtInput, inputFile, resolve, reject);
+                        moduleFactory(cfg);
+                    } catch (e) {
+                        reject(e);
+                    }
+                }).then(function() {
+                    // Restore original functions
+                    window.prompt = originalPrompt;
+                    console.error = originalConsoleError;
+
+                    // Update status
+                    document.getElementById('spinner').style.display = 'none';
+                    document.getElementById('status').textContent = 'Completed';
+                }).catch(function(e) {
+                    console.error("Error executing solver:", e);
+                    // This error will be displayed by our custom console.error
+
                     document.getElementById('spinner').style.display = 'none';
                     document.getElementById('status').textContent = 'Error';
+                    console.error = originalConsoleError;
+                    window.prompt = originalPrompt;
+                }).finally(function() {
+                    // Make sure to flush any remaining output
+                    flushOutputBuffer();
+
+                    // Re-enable the button
+                    document.getElementById('run-button').disabled = false;
+
+                    // Stop capturing output
                     captureOutput = false;
-                    return;
-                }
-                
-                // Override console.error to filter syscall warnings
-                console.error = function() {
-                    var args = Array.prototype.slice.call(arguments);
-                    var message = args.join(' ');
-                    
-                    // Forward to the original console.error
-                    originalConsoleError.apply(console, args);
-                    
-                    // Add to output if it's not a syscall warning or if we're showing warnings
-                    if (captureOutput) {
-                        var filteredText = filterWarnings(message);
-                        if (filteredText !== null) {
-                            writeToOutput("Error: " + filteredText + "\n");
-                        }
-                    }
-                };
-                
-                // Execute with a small delay to update UI
-                setTimeout(function() {
-                    try {
-                        // Completely disable the prompt dialog
-                        var originalPrompt = window.prompt;
-                        window.prompt = function() { return null; };
-                        
-                        // Run the solver
-                        Module.callMain(args);
-                        
-                        // Restore original functions
-                        window.prompt = originalPrompt;
-                        console.error = originalConsoleError;
-                        
-                        // Update status
-                        document.getElementById('spinner').style.display = 'none';
-                        document.getElementById('status').textContent = 'Completed';
-                    } catch (e) {
-                        console.error("Error executing solver:", e);
-                        // This error will be displayed by our custom console.error
-                        
-                        document.getElementById('spinner').style.display = 'none';
-                        document.getElementById('status').textContent = 'Error';
-                        console.error = originalConsoleError;
-                    } finally {
-                        // Make sure to flush any remaining output
-                        flushOutputBuffer();
-                        
-                        // Re-enable the button
-                        document.getElementById('run-button').disabled = false;
-                        
-                        // Stop capturing output
-                        captureOutput = false;
-                    }
-                }, 100);
-            } catch (e) {
-                console.error("Error setting up solver execution:", e);
-                document.getElementById('output').value += "Error: " + e.message + "\n";
-                document.getElementById('spinner').style.display = 'none';
-                document.getElementById('status').textContent = 'Error';
-                document.getElementById('run-button').disabled = false;
-                console.error = originalConsoleError;
-                captureOutput = false;
-            }
+
+                    // Allow the next run.
+                    running = false;
+                });
+            }, 100);
         }
         
         // Function to copy output content to clipboard
@@ -918,7 +1051,195 @@
             }
         }
     </script>
-    <script async src="cvc5.js"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            var EXAMPLES_API_URL =
+                'https://api.github.com/repos/cvc5/cvc5/contents/examples/api/smtlib';
+            var EXAMPLES_HTML_URL =
+                'https://github.com/cvc5/cvc5/tree/main/examples/api/smtlib';
+
+            var overlay = document.getElementById('examples-overlay');
+            var body = document.getElementById('examples-modal-body');
+            var openButton = document.getElementById('load-examples-button');
+            var closeButton = document.getElementById('examples-modal-close');
+            var cachedExamples = null;
+
+            function escapeHtml(str) {
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;');
+            }
+
+            function renderStatus(html) {
+                body.innerHTML = '<div class="smt-modal-status">' + html + '</div>';
+            }
+
+            function renderList(examples) {
+                if (examples.length === 0) {
+                    renderStatus('No .smt2 examples were found.');
+                    return;
+                }
+
+                var html = '';
+                examples.forEach(function (example, index) {
+                    html +=
+                        '<button type="button" class="smt-example-item" data-index="' +
+                        index + '">' + escapeHtml(example.name) + '</button>';
+                });
+                body.innerHTML = html;
+
+                var items = body.querySelectorAll('.smt-example-item');
+                items.forEach(function (item) {
+                    item.addEventListener('click', function () {
+                        var example = examples[Number(item.getAttribute('data-index'))];
+                        loadExample(example);
+                    });
+                });
+            }
+
+            function fetchExamples() {
+                if (cachedExamples) {
+                    renderList(cachedExamples);
+                    return;
+                }
+
+                renderStatus('Loading example list&hellip;');
+
+                fetch(EXAMPLES_API_URL)
+                    .then(function (res) {
+                        if (!res.ok) throw new Error('HTTP ' + res.status);
+                        return res.json();
+                    })
+                    .then(function (data) {
+                        var examples = data
+                            .filter(function (item) {
+                                return item.type === 'file' && /\.smt2$/i.test(item.name);
+                            })
+                            .map(function (item) {
+                                return { name: item.name, downloadUrl: item.download_url };
+                            })
+                            .sort(function (a, b) { return a.name.localeCompare(b.name); });
+
+                        cachedExamples = examples;
+                        renderList(examples);
+                    })
+                    .catch(function (err) {
+                        renderStatus(
+                            'Could not load the example list (' +
+                            escapeHtml(err.message) + ').<br>' +
+                            'You can browse the examples directly on ' +
+                            '<a href="' + EXAMPLES_HTML_URL + '" target="_blank" rel="noopener">GitHub</a>.'
+                        );
+                    });
+            }
+
+            function loadExample(example) {
+                renderStatus('Loading ' + escapeHtml(example.name) + '&hellip;');
+
+                fetch(example.downloadUrl)
+                    .then(function (res) {
+                        if (!res.ok) throw new Error('HTTP ' + res.status);
+                        return res.text();
+                    })
+                    .then(function (text) {
+                        var editor = document.getElementById('smt-editor');
+                        editor.value = text;
+                        // Programmatic value changes do not fire 'input'
+                        // events, so refresh the highlight layer explicitly.
+                        if (typeof window.updateEditorHighlight === 'function') {
+                            window.updateEditorHighlight();
+                        }
+                        closeModal();
+                    })
+                    .catch(function (err) {
+                        renderStatus(
+                            'Could not load ' + escapeHtml(example.name) +
+                            ' (' + escapeHtml(err.message) + ').'
+                        );
+                    });
+            }
+
+            function onKeydown(e) {
+                if (e.key === 'Escape') closeModal();
+            }
+
+            function openModal() {
+                overlay.hidden = false;
+                document.addEventListener('keydown', onKeydown);
+                fetchExamples();
+            }
+
+            function closeModal() {
+                overlay.hidden = true;
+                document.removeEventListener('keydown', onKeydown);
+            }
+
+            openButton.addEventListener('click', openModal);
+            closeButton.addEventListener('click', closeModal);
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) closeModal();
+            });
+        })();
+    </script>
+
+    <script>
+        (function () {
+            'use strict';
+
+            function fail(message) {
+                console.error('Failed to load solver module:', message);
+                var output = document.getElementById('output');
+                if (output) {
+                    output.value = 'Error: failed to load the solver module (' + message + ').';
+                }
+                var status = document.getElementById('status');
+                if (status) status.textContent = 'Load error';
+                var spinner = document.getElementById('spinner');
+                if (spinner) spinner.style.display = 'none';
+            }
+
+            var FETCH_OPTS = { cache: 'no-cache' };
+
+            var glueReady = fetch('cvc5.js', FETCH_OPTS)
+                .then(function (res) {
+                    if (!res.ok) throw new Error('failed to fetch cvc5.js: HTTP ' + res.status);
+                    return res.text();
+                })
+                .then(function (glueSource) {
+                    moduleFactory = new Function('Module', glueSource + '\n;return Module;');
+                });
+
+            var wasmReady = (function () {
+                var wasmFetch = fetch('cvc5.wasm', FETCH_OPTS);
+                if (typeof WebAssembly.compileStreaming === 'function') {
+                    return WebAssembly.compileStreaming(wasmFetch).catch(function (streamErr) {
+                        console.log('WebAssembly.compileStreaming failed (' + streamErr + '), falling back to ArrayBuffer compile');
+                        return fetch('cvc5.wasm', FETCH_OPTS)
+                            .then(function (res) { return res.arrayBuffer(); })
+                            .then(function (bytes) { return WebAssembly.compile(bytes); });
+                    });
+                }
+                return wasmFetch
+                    .then(function (res) { return res.arrayBuffer(); })
+                    .then(function (bytes) { return WebAssembly.compile(bytes); });
+            })().then(function (mod) {
+                compiledWasmModule = mod;
+            });
+
+            Promise.all([glueReady, wasmReady]).then(function () {
+                moduleLoaded = true;
+                document.getElementById('spinner').style.display = 'none';
+                document.getElementById('status').textContent = 'Ready';
+                console.log('Module loaded and ready');
+            }).catch(function (err) {
+                fail((err && err.message) || String(err));
+            });
+        })();
+    </script>
 
     <script>
         (function () {
