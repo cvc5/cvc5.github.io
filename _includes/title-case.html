@@ -1,0 +1,28 @@
+{%- comment -%}
+  Title-cases include.title, which pandoc emits in sentence case.
+  Only the first letter of each word (and of each hyphenated part) is
+  upcased; the rest is kept as is, so "SMT" and "Isabelle/HOL" survive.
+  Minor words stay lowercase, and words with digits ("cvc5") are untouched.
+{%- endcomment -%}
+{%- assign minor = "a,an,and,as,at,by,for,from,in,into,of,on,or,the,to,via,vs,with" | split: "," -%}
+{%- assign words = include.title | split: " " -%}
+{%- for word in words -%}
+  {%- assign first_word = forloop.first -%}
+  {%- assign parts = word | split: "-" -%}
+  {%- if parts.size == 0 -%}{{- word -}}{%- endif -%}
+  {%- for part in parts -%}
+    {%- assign digitless = part | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" -%}
+    {%- assign lead = part | slice: 0 -%}
+    {%- if digitless.size < part.size -%}
+      {{- part -}}
+    {%- elsif minor contains part -%}
+      {%- if first_word and forloop.first -%}{{- part | capitalize -}}{%- else -%}{{- part -}}{%- endif -%}
+    {%- elsif lead == "(" or lead == '"' -%}
+      {{- lead -}}{{- part | slice: 1 | upcase -}}{{- part | slice: 2, 1000 -}}
+    {%- else -%}
+      {{- lead | upcase -}}{{- part | slice: 1, 1000 -}}
+    {%- endif -%}
+    {%- unless forloop.last -%}-{%- endunless -%}
+  {%- endfor -%}
+  {%- unless forloop.last -%}{{ " " }}{%- endunless -%}
+{%- endfor -%}

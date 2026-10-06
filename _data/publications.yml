@@ -103,3 +103,1691 @@ references:
   type: paper-conference
   url: "https://doi.org/10.1007/978-3-030-94583-1_24"
   volume: 13182
+- author:
+  - family: Saccomani
+    given: Pedro
+  - family: Mohamed
+    given: Abdalrhman
+  - family: Pertseva
+    given: Elizaveta
+  - family: Kaufmann
+    given: Daniela
+  - family: Tinelli
+    given: Cesare
+  - family: Barrett
+    given: Clark
+  - family: Barbosa
+    given: Haniel
+  container-title: Proceedings of the 26<sup>th</sup> international conference
+    on formal methods in computer-aided design (FMCAD '26)
+  doi: 10.34727/2026/isbn.978-3-85448-093-8_17
+  editor:
+  - family: Dutertre
+    given: Bruno
+  - family: Könighofer
+    given: Bettina
+  id: SMP+26
+  issued:
+  - year: 2026
+    month: 9
+  pdf: https://hanielbarbosa.com/papers/2026fmcad-ffproofs.pdf
+  artifact: https://doi.org/10.5281/zenodo.20133205
+  page: 113-123
+  publisher: TU Wien Academic Press
+  title: Proof production for satisfiability modulo finite fields with
+    proof checking in Pacheck and Lean
+  type: paper-conference
+  url: "https://doi.org/10.34727/2026/isbn.978-3-85448-093-8_17"
+- author:
+  - family: Reynolds
+    given: Andrew
+  - family: Schurr
+    given: Hans-Jörg
+  - family: Soldevila
+    given: Mallku
+  - family: Barbosa
+    given: Haniel
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  collection-title: Lecture notes in computer science
+  container-title: Automated reasoning - 13th international joint
+    conference, IJCAR 2026, lisbon, portugal, july 26-29, 2026,
+    proceedings, part I
+  doi: 10.1007/978-3-032-32589-1_19
+  editor:
+  - family: Biere
+    given: Armin
+  - family: Lutz
+    given: Carsten
+  - family: Negri
+    given: Sara
+  id: "DBLP:conf/ijcar/ReynoldsSSBBT26"
+  issued:
+  - year: 2026
+    month: 7
+  pdf: https://hanielbarbosa.com/papers/2026ijcar-ethos.pdf
+  bibtex: https://dblp.org/rec/conf/ijcar/ReynoldsSSBBT26.html?view=bibtex
+  page: 305-314
+  publisher: Springer
+  title: "Ethos: A fast proof checker for the eunoia logical framework"
+  title-short: Ethos
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-032-32589-1_19"
+  volume: 16688
+- author:
+  - family: Reynolds
+    given: Andrew
+  - family: Schurr
+    given: Hans-Jörg
+  - family: Barbosa
+    given: Haniel
+  - family: Israel
+    given: Ofec
+  - family: Jakpor
+    given: Jibiana
+  - family: Lachnitt
+    given: Hanna
+  - family: Mohamed
+    given: Abdalrhman
+  - family: Niemetz
+    given: Aina
+  - family: Preiner
+    given: Mathias
+  - family: Zohar
+    given: Yoni
+  - family: Jones
+    given: Robert B.
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  collection-title: Lecture notes in computer science
+  container-title: Computer aided verification - 38th international
+    conference, CAV 2026, lisbon, portugal, july 26-29, 2026,
+    proceedings, part II
+  doi: 10.1007/978-3-032-32526-6_9
+  editor:
+  - family: Darulova
+    given: Eva
+  - family: Lin
+    given: Anthony W.
+  - family: Rümmer
+    given: Philipp
+  id: "DBLP:conf/cav/ReynoldsSBIJLMNPZJBT26"
+  issued:
+  - year: 2026
+    month: 7
+  pdf: https://hanielbarbosa.com/papers/2026cav.pdf
+  bibtex: https://dblp.org/rec/conf/cav/ReynoldsSBIJLMNPZJBT26.html?view=bibtex
+  artifact: https://doi.org/10.5281/zenodo.19867026
+  page: 188-212
+  publisher: Springer
+  title: "The cooperating proof calculus: Comprehensive proofs for an
+    SMT solver"
+  title-short: The cooperating proof calculus
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-032-32526-6_9"
+  volume: 16683
+- author:
+  - family: Reeves
+    given: Joseph E.
+  - family: Barbosa
+    given: Haniel
+  - family: Reynolds
+    given: Andrew
+  - family: Heule
+    given: Marijn J. H.
+  collection-title: Lecture notes in computer science
+  container-title: Automated reasoning - 13th international joint
+    conference, IJCAR 2026, lisbon, portugal, july 26-29, 2026,
+    proceedings, part I
+  doi: 10.1007/978-3-032-32589-1_10
+  editor:
+  - family: Biere
+    given: Armin
+  - family: Lutz
+    given: Carsten
+  - family: Negri
+    given: Sara
+  id: "DBLP:conf/ijcar/ReevesBRH26"
+  issued:
+  - year: 2026
+    month: 7
+  pdf: https://hanielbarbosa.com/papers/2026ijcar-skeletons.pdf
+  bibtex: https://dblp.org/rec/conf/ijcar/ReevesBRH26.html?view=bibtex
+  page: 156-174
+  publisher: Springer
+  title: A general approach for SMT proof skeletons
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-032-32589-1_10"
+  volume: 16688
+- author:
+  - family: Israel
+    given: Ofec
+  - family: Zohar
+    given: Yoni
+  - family: Reynolds
+    given: Andrew
+  - family: Hitarth
+    given: S.
+  - family: Dutertre
+    given: Bruno
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  collection-title: Lecture notes in computer science
+  container-title: Automated reasoning - 13th international joint
+    conference, IJCAR 2026, lisbon, portugal, july 26-29, 2026,
+    proceedings, part I
+  doi: 10.1007/978-3-032-32589-1_16
+  editor:
+  - family: Biere
+    given: Armin
+  - family: Lutz
+    given: Carsten
+  - family: Negri
+    given: Sara
+  id: "DBLP:conf/ijcar/IsraelZRHDBT26"
+  issued:
+  - year: 2026
+    month: 7
+  bibtex: https://dblp.org/rec/conf/ijcar/IsraelZRHDBT26.html?view=bibtex
+  page: 267-275
+  publisher: Springer
+  title: Checking regular expressions in cvc5 proofs
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-032-32589-1_16"
+  volume: 16688
+- author:
+  - family: Hakak
+    given: Tomer
+  - family: Zohar
+    given: Yoni
+  - family: Reynolds
+    given: Andrew
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  container-title: CoRR
+  doi: 10.48550/ARXIV.2606.30888
+  id: "DBLP:journals/corr/abs-2606-30888"
+  issued:
+  - year: 2026
+    month: 6
+  bibtex: https://dblp.org/rec/journals/corr/abs-2606-30888.html?view=bibtex
+  title: Automated reasoning with nested datatypes
+  type: article-journal
+  url: "https://doi.org/10.48550/arXiv.2606.30888"
+  volume: abs/2606.30888
+- author:
+  - family: Kondylidou
+    given: Lydia
+  - family: Reynolds
+    given: Andrew
+  - family: Blanchette
+    given: Jasmin
+  - family: Tinelli
+    given: Cesare
+  collection-title: Lecture notes in computer science
+  container-title: Tools and algorithms for the construction and
+    analysis of systems - 32nd international conference, TACAS 2026,
+    held as part of the international joint conferences on theory and
+    practice of software, ETAPS 2026, turin, italy, april 11-16, 2026,
+    proceedings, part I
+  doi: 10.1007/978-3-032-22752-2_15
+  editor:
+  - family: Junges
+    given: Sebastian
+  - family: Katz
+    given: Guy
+  id: "DBLP:conf/tacas/KondylidouRBT26"
+  issued:
+  - year: 2026
+    month: 4
+  bibtex: https://dblp.org/rec/conf/tacas/KondylidouRBT26.html?view=bibtex
+  artifact: https://doi.org/10.5281/zenodo.18304537
+  page: 295-314
+  publisher: Springer
+  title: Enumerating choice terms in model-based quantifier
+    instantiation
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-032-22752-2_15"
+  volume: 16505
+- author:
+  - family: Clune
+    given: Joshua
+  - family: Barbosa
+    given: Haniel
+  - family: Avigad
+    given: Jeremy
+  collection-title: Lecture notes in computer science
+  container-title: Tools and algorithms for the construction and
+    analysis of systems - 32nd international conference, TACAS 2026,
+    held as part of the international joint conferences on theory and
+    practice of software, ETAPS 2026, turin, italy, april 11-16, 2026,
+    proceedings, part I
+  doi: 10.1007/978-3-032-22752-2_13
+  editor:
+  - family: Junges
+    given: Sebastian
+  - family: Katz
+    given: Guy
+  id: "DBLP:conf/tacas/CluneBA26"
+  issued:
+  - year: 2026
+    month: 4
+  pdf: https://hanielbarbosa.com/papers/2026tacas.pdf
+  bibtex: https://dblp.org/rec/conf/tacas/CluneBA26.html?view=bibtex
+  page: 255-275
+  publisher: Springer
+  title: Hint-based SMT proof reconstruction
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-032-22752-2_13"
+  volume: 16505
+- author:
+  - family: Mascarenhas
+    given: Tomaz
+  - family: Khan
+    given: Harun
+  - family: Mohamed
+    given: Abdalrhman
+  - family: Reynolds
+    given: Andrew
+  - family: Barbosa
+    given: Haniel
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  container-title: Proceedings of the 15th ACM SIGPLAN international
+    conference on certified programs and proofs, CPP 2026, rennes,
+    france, january 12-13, 2026
+  doi: 10.1145/3779031.3779111
+  editor:
+  - family: Stark
+    given: Kathrin
+  - family: Zakowski
+    given: Yannick
+  - family: Swamy
+    given: Nikhil
+  - family: Tabareau
+    given: Nicolas
+  id: "DBLP:conf/cpp/Mascarenhas0M0B26"
+  issued:
+  - year: 2026
+    month: 1
+  pdf: https://hanielbarbosa.com/papers/2026cpp.pdf
+  bibtex: https://dblp.org/rec/conf/cpp/Mascarenhas0M0B26.html?view=bibtex
+  page: 216-230
+  publisher: ACM
+  title: Formalization of a proof calculus for incremental linearization
+    for satisfiability modulo nonlinear arithmetic and transcendental
+    functions
+  type: paper-conference
+  url: "https://doi.org/10.1145/3779031.3779111"
+- author:
+  - family: Andreotti
+    given: Bruno
+  - family: Barbosa
+    given: Haniel
+  collection-title: Lecture notes in computer science
+  container-title: Verification, model checking, and abstract
+    interpretation - 27th international conference, VMCAI 2026, rennes,
+    france, january 12-13, 2026, proceedings
+  doi: 10.1007/978-3-032-15700-3_1
+  editor:
+  - family: Chen
+    given: Yu-Fang
+  - family: Jensen
+    given: Thomas P.
+  - family: Lengál
+    given: Ondrej
+  id: "DBLP:conf/vmcai/AndreottiB26"
+  issued:
+  - year: 2026
+    month: 1
+  pdf: https://hanielbarbosa.com/papers/2026vmcai.pdf
+  bibtex: https://dblp.org/rec/conf/vmcai/AndreottiB26.html?view=bibtex
+  page: 1-20
+  publisher: Springer
+  title: Producing shorter congruence closure proofs in a
+    state-of-the-art SMT solver
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-032-15700-3_1"
+  volume: 16417
+- author:
+  - family: Wilson
+    given: Amalee
+  - family: Narodytska
+    given: Nina
+  - family: Barrett
+    given: Clark W.
+  - family: Wu
+    given: Haoze
+  container-title: Proceedings of the 25th conference on formal methods
+    in computer-aided design, FMCAD 2025, menlo park, CA, USA, october
+    6-10, 2025
+  doi: 10.34727/2025/ISBN.978-3-85448-084-6_15
+  editor:
+  - family: Irfan
+    given: Ahmed
+  - family: Kaufmann
+    given: Daniela
+  id: "DBLP:conf/fmcad/WilsonNB025"
+  issued:
+  - year: 2025
+    month: 10
+  bibtex: https://dblp.org/rec/conf/fmcad/WilsonNB025.html?view=bibtex
+  page: 94-103
+  publisher: TU Wien Academic Press
+  title: Per-instance subproblem generation for strategy selection in
+    SMT
+  type: paper-conference
+  url: "https://doi.org/10.34727/2025/ISBN.978-3-85448-084-6_15"
+- author:
+  - family: Mohamed
+    given: Mudathir
+  - family: Feng
+    given: Nick
+  - family: Reynolds
+    given: Andrew
+  - family: Tinelli
+    given: Cesare
+  - family: Barrett
+    given: Clark W.
+  - family: Chechik
+    given: Marsha
+  container-title: Proceedings of the 25th conference on formal methods
+    in computer-aided design, FMCAD 2025, menlo park, CA, USA, october
+    6-10, 2025
+  doi: 10.34727/2025/ISBN.978-3-85448-084-6_16
+  editor:
+  - family: Irfan
+    given: Ahmed
+  - family: Kaufmann
+    given: Daniela
+  id: "DBLP:conf/fmcad/MohamedF0TBC25"
+  issued:
+  - year: 2025
+    month: 10
+  bibtex: https://dblp.org/rec/conf/fmcad/MohamedF0TBC25.html?view=bibtex
+  arxiv: https://arxiv.org/abs/2508.08496
+  page: 104-114
+  publisher: TU Wien Academic Press
+  title: Solving set constraints with comprehensions and bounded
+    quantifiers
+  type: paper-conference
+  url: "https://doi.org/10.34727/2025/ISBN.978-3-85448-084-6_16"
+- author:
+  - family: Amrollahi
+    given: Daneshvar
+  - family: Preiner
+    given: Mathias
+  - family: Niemetz
+    given: Aina
+  - family: Reynolds
+    given: Andrew
+  - family: Charikar
+    given: Moses
+  - family: Tinelli
+    given: Cesare
+  - family: Barrett
+    given: Clark W.
+  container-title: Proceedings of the 25th conference on formal methods
+    in computer-aided design, FMCAD 2025, menlo park, CA, USA, october
+    6-10, 2025
+  doi: 10.34727/2025/ISBN.978-3-85448-084-6_14
+  editor:
+  - family: Irfan
+    given: Ahmed
+  - family: Kaufmann
+    given: Daniela
+  id: "DBLP:conf/fmcad/AmrollahiPN0CTB25"
+  issued:
+  - year: 2025
+    month: 10
+  bibtex: https://dblp.org/rec/conf/fmcad/AmrollahiPN0CTB25.html?view=bibtex
+  arxiv: https://arxiv.org/abs/2410.22419
+  artifact: https://doi.org/10.5281/zenodo.16929484
+  page: 84-93
+  publisher: TU Wien Academic Press
+  title: Towards SMT solver stability via input normalization
+  type: paper-conference
+  url: "https://doi.org/10.34727/2025/ISBN.978-3-85448-084-6_14"
+- author:
+  - family: Lachnitt
+    given: Hanna
+  - family: Fleury
+    given: Mathias
+  - family: Barbosa
+    given: Haniel
+  - family: Jakpor
+    given: Jibiana
+  - family: Andreotti
+    given: Bruno
+  - family: Reynolds
+    given: Andrew
+  - family: Schurr
+    given: Hans-Jörg
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  collection-title: LIPIcs
+  container-title: 16th international conference on interactive theorem
+    proving, ITP 2025, reykjavik, iceland, september 28 - october 1,
+    2025
+  doi: 10.4230/LIPICS.ITP.2025.26
+  editor:
+  - family: Forster
+    given: Yannick
+  - family: Keller
+    given: Chantal
+  id: "DBLP:conf/itp/LachnittFBJA0SB25"
+  issued:
+  - year: 2025
+    month: 9
+  pdf: https://hanielbarbosa.com/papers/2025itp.pdf
+  bibtex: https://dblp.org/rec/conf/itp/LachnittFBJA0SB25.html?view=bibtex
+  page: "26:1-26:22"
+  publisher: Schloss Dagstuhl - Leibniz-Zentrum für Informatik
+  title: Improving the SMT proof reconstruction pipeline in isabelle/HOL
+  type: paper-conference
+  url: "https://doi.org/10.4230/LIPICS.ITP.2025.26"
+  volume: 352
+- author:
+  - family: Berger
+    given: Zvika
+  - family: Zohar
+    given: Yoni
+  - family: Niemetz
+    given: Aina
+  - family: Preiner
+    given: Mathias
+  - family: Reynolds
+    given: Andrew
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  collection-title: LIPIcs
+  container-title: 28th international conference on theory and
+    applications of satisfiability testing, SAT 2025, glasgow, scotland,
+    august 12-15, 2025
+  doi: 10.4230/LIPICS.SAT.2025.4
+  editor:
+  - family: Berg
+    given: Jeremias
+  - family: Nordström
+    given: Jakob
+  id: "DBLP:conf/sat/BergerZNP0BT25"
+  issued:
+  - year: 2025
+    month: 8
+  bibtex: https://dblp.org/rec/conf/sat/BergerZNP0BT25.html?view=bibtex
+  page: "4:1-4:24"
+  publisher: Schloss Dagstuhl - Leibniz-Zentrum für Informatik
+  title: Bit-precise reasoning with parametric bit-vectors
+  type: paper-conference
+  url: "https://doi.org/10.4230/LIPICS.SAT.2025.4"
+  volume: 341
+- author:
+  - family: Pertseva
+    given: Elizaveta
+  - family: Ozdemir
+    given: Alex
+  - family: Pailoor
+    given: Shankara
+  - family: Bassa
+    given: Alp
+  - family: Porncharoenwase
+    given: Sorawee
+  - family: Dillig
+    given: Isil
+  - family: Barrett
+    given: Clark W.
+  collection-title: Lecture notes in computer science
+  container-title: Computer aided verification - 37th international
+    conference, CAV 2025, zagreb, croatia, july 23-25, 2025,
+    proceedings, part I
+  doi: 10.1007/978-3-031-98668-0_17
+  editor:
+  - family: Piskac
+    given: Ruzica
+  - family: Rakamaric
+    given: Zvonimir
+  id: "DBLP:conf/cav/PertsevaOPBPDB25"
+  issued:
+  - year: 2025
+    month: 7
+  bibtex: https://dblp.org/rec/conf/cav/PertsevaOPBPDB25.html?view=bibtex
+  page: 339-362
+  publisher: Springer
+  title: Integer reasoning modulo different constants in SMT
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-031-98668-0_17"
+  volume: 15931
+- author:
+  - family: Mohamed
+    given: Abdalrhman
+  - family: Mascarenhas
+    given: Tomaz
+  - family: Khan
+    given: Harun
+  - family: Barbosa
+    given: Haniel
+  - family: Reynolds
+    given: Andrew
+  - family: Qian
+    given: Yicheng
+  - family: Tinelli
+    given: Cesare
+  - family: Barrett
+    given: Clark W.
+  collection-title: Lecture notes in computer science
+  container-title: Computer aided verification - 37th international
+    conference, CAV 2025, zagreb, croatia, july 23-25, 2025,
+    proceedings, part III
+  doi: 10.1007/978-3-031-98682-6_11
+  editor:
+  - family: Piskac
+    given: Ruzica
+  - family: Rakamaric
+    given: Zvonimir
+  id: "DBLP:conf/cav/MohamedMKBRQTB25"
+  issued:
+  - year: 2025
+    month: 7
+  pdf: https://hanielbarbosa.com/papers/2025cav.pdf
+  bibtex: https://dblp.org/rec/conf/cav/MohamedMKBRQTB25.html?view=bibtex
+  arxiv: https://arxiv.org/abs/2505.15796
+  artifact: https://doi.org/10.5281/zenodo.15725222
+  page: 197-212
+  publisher: Springer
+  title: "Lean-SMT: An SMT tactic for discharging proof goals in lean"
+  title-short: Lean-SMT
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-031-98682-6_11"
+  volume: 15933
+- author:
+  - family: Kondylidou
+    given: Lydia
+  - family: Reynolds
+    given: Andrew
+  - family: Blanchette
+    given: Jasmin
+  collection-title: Lecture notes in computer science
+  container-title: Tools and algorithms for the construction and
+    analysis of systems - 31st international conference, TACAS 2025,
+    held as part of the international joint conferences on theory and
+    practice of software, ETAPS 2025, hamilton, ON, canada, may 3-8,
+    2025, proceedings, part I
+  doi: 10.1007/978-3-031-90643-5_5
+  editor:
+  - family: Gurfinkel
+    given: Arie
+  - family: Heule
+    given: Marijn
+  id: "DBLP:conf/tacas/KondylidouRB25"
+  issued:
+  - year: 2025
+    month: 5
+  bibtex: https://dblp.org/rec/conf/tacas/KondylidouRB25.html?view=bibtex
+  page: 85-103
+  publisher: Springer
+  title: Augmenting model-based instantiation with fast enumeration
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-031-90643-5_5"
+  volume: 15696
+- author:
+  - family: Barrett
+    given: Clark W.
+  - family: Chen
+    given: Pei-Wei
+  - family: Cook
+    given: Byron
+  - family: Dutertre
+    given: Bruno
+  - family: Jones
+    given: Robert B.
+  - family: Le
+    given: Nham
+  - family: Reynolds
+    given: Andrew
+  - family: Sheth
+    given: Kunal
+  - family: Stephens
+    given: Christopher
+  - family: Whalen
+    given: Michael W.
+  container-title: Formal methods in computer-aided design, FMCAD 2024,
+    prague, czech republic, october 15-18, 2024
+  doi: 10.34727/2024/ISBN.978-3-85448-065-5_10
+  editor:
+  - family: Narodytska
+    given: Nina
+  - family: Rümmer
+    given: Philipp
+  id: "DBLP:conf/fmcad/BarrettCCDJLRSSW24"
+  issued:
+  - year: 2024
+    month: 10
+  bibtex: https://dblp.org/rec/conf/fmcad/BarrettCCDJLRSSW24.html?view=bibtex
+  page: 1-10
+  publisher: IEEE
+  title: "SMT-D: New strategies for portfolio-based SMT solving"
+  title-short: SMT-D
+  type: paper-conference
+  url: "https://doi.org/10.34727/2024/ISBN.978-3-85448-065-5_10"
+- author:
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  - family: Barbosa
+    given: Haniel
+  - family: Niemetz
+    given: Aina
+  - family: Preiner
+    given: Mathias
+  - family: Reynolds
+    given: Andrew
+  - family: Zohar
+    given: Yoni
+  collection-title: Lecture notes in computer science
+  container-title: Formal methods - 26th international symposium, FM
+    2024, milan, italy, september 9-13, 2024, proceedings, part II
+  doi: 10.1007/978-3-031-71177-0_31
+  editor:
+  - family: Platzer
+    given: André
+  - family: Rozier
+    given: Kristin Yvonne
+  - family: Pradella
+    given: Matteo
+  - family: Rossi
+    given: Matteo
+  id: "DBLP:conf/fm/BarrettTBNPRZ24"
+  issued:
+  - year: 2024
+    month: 9
+  pdf: https://hanielbarbosa.com/papers/fm2024.pdf
+  bibtex: https://dblp.org/rec/conf/fm/BarrettTBNPRZ24.html?view=bibtex
+  award: Distinguished Tutorial Paper Award
+  page: 571-596
+  publisher: Springer
+  title: "Satisfiability modulo theories: A beginner's tutorial"
+  title-short: Satisfiability modulo theories
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-031-71177-0_31"
+  volume: 14934
+- author:
+  - family: Tinelli
+    given: Cesare
+  collection-title: LIPIcs
+  container-title: 27th international conference on theory and
+    applications of satisfiability testing, SAT 2024, pune, india,
+    august 21-24, 2024
+  doi: 10.4230/LIPICS.SAT.2024.2
+  editor:
+  - family: Chakraborty
+    given: Supratik
+  - family: Jiang
+    given: Jie-Hong Roland
+  id: "DBLP:conf/sat/Tinelli24"
+  issued:
+  - year: 2024
+    month: 8
+  bibtex: https://dblp.org/rec/conf/sat/Tinelli24.html?view=bibtex
+  page: "2:1-2:2"
+  publisher: Schloss Dagstuhl - Leibniz-Zentrum für Informatik
+  title: Scalable proof production and checking in SMT (invited talk)
+  type: paper-conference
+  url: "https://doi.org/10.4230/LIPIcs.SAT.2024.2"
+  volume: 305
+- author:
+  - family: Ozdemir
+    given: Alex
+  - family: Pailoor
+    given: Shankara
+  - family: Bassa
+    given: Alp
+  - family: Ferles
+    given: Kostas
+  - family: Barrett
+    given: Clark W.
+  - family: Dillig
+    given: Isil
+  collection-title: Lecture notes in computer science
+  container-title: Computer aided verification - 36th international
+    conference, CAV 2024, montreal, QC, canada, july 24-27, 2024,
+    proceedings, part I
+  doi: 10.1007/978-3-031-65627-9_1
+  editor:
+  - family: Gurfinkel
+    given: Arie
+  - family: Ganesh
+    given: Vijay
+  id: "DBLP:conf/cav/OzdemirPBFBD24"
+  issued:
+  - year: 2024
+    month: 7
+  pdf: http://theory.stanford.edu/ barrett/pubs/OPB+24.pdf
+  bibtex: https://dblp.org/rec/conf/cav/OzdemirPBFBD24.html?view=bibtex
+  page: 3-25
+  publisher: Springer
+  title: Split gröbner bases for satisfiability modulo finite fields
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-031-65627-9_1"
+  volume: 14681
+- author:
+  - family: Tsiskaridze
+    given: Nestan
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  collection-title: Lecture notes in computer science
+  container-title: Automated reasoning - 12th international joint
+    conference, IJCAR 2024, nancy, france, july 3-6, 2024, proceedings,
+    part I
+  doi: 10.1007/978-3-031-63498-7_27
+  editor:
+  - family: Benzmüller
+    given: Christoph
+  - family: Heule
+    given: Marijn J. H.
+  - family: Schmidt
+    given: Renate A.
+  id: "DBLP:conf/ijcar/TsiskaridzeBT24"
+  issued:
+  - year: 2024
+    month: 7
+  arxiv: https://arxiv.org/abs/2404.16122
+  bibtex: https://dblp.org/rec/conf/ijcar/TsiskaridzeBT24.html?view=bibtex
+  page: 458-479
+  publisher: Springer
+  title: Generalized optimization modulo theories
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-031-63498-7_27"
+  volume: 14739
+- author:
+  - family: Mohamed
+    given: Mudathir
+  - family: Reynolds
+    given: Andrew
+  - family: Tinelli
+    given: Cesare
+  - family: Barrett
+    given: Clark W.
+  collection-title: EPiC series in computing
+  container-title: "LPAR 2024: Proceedings of 25th conference on logic
+    for programming, artificial intelligence and reasoning, port louis,
+    mauritius, may 26-31, 2024"
+  doi: 10.29007/RLT7
+  editor:
+  - family: Bjørner
+    given: Nikolaj S.
+  - family: Heule
+    given: Marijn
+  - family: Voronkov
+    given: Andrei
+  id: "DBLP:conf/lpar/Mohamed0TB24"
+  issued:
+  - year: 2024
+    month: 5
+  pdf: http://theory.stanford.edu/ barrett/pubs/MRT+24.pdf
+  bibtex: https://dblp.org/rec/conf/lpar/Mohamed0TB24.html?view=bibtex
+  arxiv: https://arxiv.org/abs/2405.03057
+  page: 445-463
+  publisher: EasyChair
+  title: Verifying SQL queries using theories of tables and relations
+  type: paper-conference
+  url: "https://doi.org/10.29007/RLT7"
+  volume: 100
+- author:
+  - family: Lachnitt
+    given: Hanna
+  - family: Fleury
+    given: Mathias
+  - family: Aniva
+    given: Leni
+  - family: Reynolds
+    given: Andrew
+  - family: Barbosa
+    given: Haniel
+  - family: Nötzli
+    given: Andres
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  collection-title: Lecture notes in computer science
+  container-title: Tools and algorithms for the construction and
+    analysis of systems - 30th international conference, TACAS 2024,
+    held as part of the european joint conferences on theory and
+    practice of software, ETAPS 2024, luxembourg city, luxembourg, april
+    6-11, 2024, proceedings, part I
+  doi: 10.1007/978-3-031-57246-3_17
+  editor:
+  - family: Finkbeiner
+    given: Bernd
+  - family: Kovács
+    given: Laura
+  id: "DBLP:conf/tacas/LachnittFARBNBT24"
+  issued:
+  - year: 2024
+    month: 4
+  pdf: https://hanielbarbosa.com/papers/tacas2024.pdf
+  bibtex: https://dblp.org/rec/conf/tacas/LachnittFARBNBT24.html?view=bibtex
+  artifact: https://doi.org/10.5281/zenodo.10048664
+  page: 311-330
+  publisher: Springer
+  title: "IsaRare: Automatic verification of SMT rewrites in
+    isabelle/HOL"
+  title-short: IsaRare
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-031-57246-3_17"
+  volume: 14570
+- author:
+  - family: Wilson
+    given: Amalee
+  - family: Nötzli
+    given: Andres
+  - family: Reynolds
+    given: Andrew
+  - family: Cook
+    given: Byron
+  - family: Tinelli
+    given: Cesare
+  - family: Barrett
+    given: Clark W.
+  container-title: Formal methods in computer-aided design, FMCAD 2023,
+    ames, IA, USA, october 24-27, 2023
+  doi: 10.34727/2023/ISBN.978-3-85448-060-0_28
+  editor:
+  - family: Nadel
+    given: Alexander
+  - family: Rozier
+    given: Kristin Yvonne
+  id: "DBLP:conf/fmcad/WilsonNRCTB23"
+  issued:
+  - year: 2023
+    month: 10
+  bibtex: https://dblp.org/rec/conf/fmcad/WilsonNRCTB23.html?view=bibtex
+  arxiv: https://arxiv.org/abs/2306.05854
+  page: 199-208
+  publisher: IEEE
+  title: Partitioning strategies for distributed SMT solving
+  type: paper-conference
+  url: "https://doi.org/10.34727/2023/ISBN.978-3-85448-060-0_28"
+- author:
+  - family: Mohamed
+    given: Abdalrhman
+  - family: Reynolds
+    given: Andrew
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  container-title: Formal methods in computer-aided design, FMCAD 2023,
+    ames, IA, USA, october 24-27, 2023
+  doi: 10.34727/2023/ISBN.978-3-85448-060-0_27
+  editor:
+  - family: Nadel
+    given: Alexander
+  - family: Rozier
+    given: Kristin Yvonne
+  id: "DBLP:conf/fmcad/MohamedRBT23"
+  issued:
+  - year: 2023
+    month: 10
+  bibtex: https://dblp.org/rec/conf/fmcad/MohamedRBT23.html?view=bibtex
+  page: 189-198
+  publisher: IEEE
+  title: A procedure for SyGuS solution fitting via matching and rewrite
+    rule discovery
+  type: paper-conference
+  url: "https://doi.org/10.34727/2023/ISBN.978-3-85448-060-0_27"
+- author:
+  - family: Barbosa
+    given: Haniel
+  - family: Barrett
+    given: Clark W.
+  - family: Cook
+    given: Byron
+  - family: Dutertre
+    given: Bruno
+  - family: Kremer
+    given: Gereon
+  - family: Lachnitt
+    given: Hanna
+  - family: Niemetz
+    given: Aina
+  - family: Nötzli
+    given: Andres
+  - family: Ozdemir
+    given: Alex
+  - family: Preiner
+    given: Mathias
+  - family: Reynolds
+    given: Andrew
+  - family: Tinelli
+    given: Cesare
+  - family: Zohar
+    given: Yoni
+  container-title: Commun. ACM
+  doi: 10.1145/3587692
+  id: "DBLP:journals/cacm/BarbosaBCDKLNNOPRTZ23"
+  issue: 10
+  issued:
+  - year: 2023
+    month: 10
+  bibtex: https://dblp.org/rec/journals/cacm/BarbosaBCDKLNNOPRTZ23.html?view=bibtex
+  page: 86-95
+  title: Generating and exploiting automated reasoning proof
+    certificates
+  type: article-journal
+  url: "https://doi.org/10.1145/3587692"
+  volume: 66
+- author:
+  - family: Sheng
+    given: Ying
+  - family: Zohar
+    given: Yoni
+  - family: Ringeissen
+    given: Christophe
+  - family: Reynolds
+    given: Andrew
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  container-title: J. Autom. Reason.
+  doi: 10.1007/S10817-023-09684-0
+  id: "DBLP:journals/jar/ShengZRRBT23"
+  issue: 4
+  issued:
+  - year: 2023
+    month: 9
+  bibtex: https://dblp.org/rec/journals/jar/ShengZRRBT23.html?view=bibtex
+  page: 34
+  title: Combining stable infiniteness and (strong) politeness
+  type: article-journal
+  url: "https://doi.org/10.1007/S10817-023-09684-0"
+  volume: 67
+- author:
+  - family: Sheng
+    given: Ying
+  - family: Nötzli
+    given: Andres
+  - family: Reynolds
+    given: Andrew
+  - family: Zohar
+    given: Yoni
+  - family: Dill
+    given: David L.
+  - family: Grieskamp
+    given: Wolfgang
+  - family: Park
+    given: Junkil
+  - family: Qadeer
+    given: Shaz
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  container-title: J. Autom. Reason.
+  doi: 10.1007/S10817-023-09682-2
+  id: "DBLP:journals/jar/ShengNRZDGPQBT23"
+  issue: 3
+  issued:
+  - year: 2023
+    month: 9
+  bibtex: https://dblp.org/rec/journals/jar/ShengNRZDGPQBT23.html?view=bibtex
+  page: 32
+  title: "Reasoning about vectors: Satisfiability modulo a theory of
+    sequences"
+  title-short: Reasoning about vectors
+  type: article-journal
+  url: "https://doi.org/10.1007/S10817-023-09682-2"
+  volume: 67
+- author:
+  - family: Ekici
+    given: Burak
+  - family: Viswanathan
+    given: Arjun
+  - family: Zohar
+    given: Yoni
+  - family: Tinelli
+    given: Cesare
+  - family: Barrett
+    given: Clark W.
+  collection-title: Lecture notes in computer science
+  container-title: Frontiers of combining systems - 14th international
+    symposium, FroCoS 2023, prague, czech republic, september 20-22,
+    2023, proceedings
+  doi: 10.1007/978-3-031-43369-6_3
+  editor:
+  - family: Sattler
+    given: Uli
+  - family: Suda
+    given: Martin
+  id: "DBLP:conf/frocos/EkiciVZTB23"
+  issued:
+  - year: 2023
+    month: 9
+  bibtex: https://dblp.org/rec/conf/frocos/EkiciVZTB23.html?view=bibtex
+  page: 41-59
+  publisher: Springer
+  title: Formal verification of bit-vector invertibility conditions in
+    coq
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-031-43369-6_3"
+  volume: 14279
+- author:
+  - family: Ozdemir
+    given: Alex
+  - family: Kremer
+    given: Gereon
+  - family: Tinelli
+    given: Cesare
+  - family: Barrett
+    given: Clark W.
+  collection-title: Lecture notes in computer science
+  container-title: Computer aided verification - 35th international
+    conference, CAV 2023, paris, france, july 17-22, 2023, proceedings,
+    part II
+  doi: 10.1007/978-3-031-37703-7_8
+  editor:
+  - family: Enea
+    given: Constantin
+  - family: Lal
+    given: Akash
+  id: "DBLP:conf/cav/OzdemirKTB23"
+  issued:
+  - year: 2023
+    month: 7
+  bibtex: https://dblp.org/rec/conf/cav/OzdemirKTB23.html?view=bibtex
+  preprint: https://eprint.iacr.org/2023/091
+  page: 163-186
+  publisher: Springer
+  title: Satisfiability modulo finite fields
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-031-37703-7_8"
+  volume: 13965
+- author:
+  - family: Abate
+    given: Alessandro
+  - family: Barbosa
+    given: Haniel
+  - family: Barrett
+    given: Clark W.
+  - family: David
+    given: Cristina
+  - family: Kesseli
+    given: Pascal
+  - family: Kroening
+    given: Daniel
+  - family: Polgreen
+    given: Elizabeth
+  - family: Reynolds
+    given: Andrew
+  - family: Tinelli
+    given: Cesare
+  container-title: J. Autom. Reason.
+  doi: 10.1007/S10817-023-09664-4
+  id: "DBLP:journals/jar/AbateBBDKKPRT23"
+  issue: 2
+  issued:
+  - year: 2023
+    month: 5
+  pdf: http://theory.stanford.edu/ barrett/pubs/ABB+23.pdf
+  bibtex: https://dblp.org/rec/journals/jar/AbateBBDKKPRT23.html?view=bibtex
+  page: 19
+  title: Synthesising programs with non-trivial constants
+  type: article-journal
+  url: "https://doi.org/10.1007/S10817-023-09664-4"
+  volume: 67
+- author:
+  - family: Barbosa
+    given: Haniel
+  - family: Keller
+    given: Chantal
+  - family: Reynolds
+    given: Andrew
+  - family: Viswanathan
+    given: Arjun
+  - family: Tinelli
+    given: Cesare
+  - family: Barrett
+    given: Clark W.
+  collection-title: EPiC series in computing
+  container-title: "LPAR 2023: Proceedings of 24th international
+    conference on logic for programming, artificial intelligence and
+    reasoning, manizales, colombia, 4-9th june 2023"
+  doi: 10.29007/432M
+  editor:
+  - family: Piskac
+    given: Ruzica
+  - family: Voronkov
+    given: Andrei
+  id: "DBLP:conf/lpar/BarbosaK0VTB23"
+  issued:
+  - year: 2023
+    month: 3
+  pdf: https://hanielbarbosa.com/papers/lpar2023.pdf
+  bibtex: https://dblp.org/rec/conf/lpar/BarbosaK0VTB23.html?view=bibtex
+  page: 11-22
+  publisher: EasyChair
+  title: An interactive SMT tactic in coq using abductive reasoning
+  type: paper-conference
+  url: "https://doi.org/10.29007/432M"
+  volume: 94
+- author:
+  - family: Nötzli
+    given: Andres
+  - family: Barbosa
+    given: Haniel
+  - family: Niemetz
+    given: Aina
+  - family: Preiner
+    given: Mathias
+  - family: Reynolds
+    given: Andrew
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  container-title: 22nd formal methods in computer-aided design, FMCAD
+    2022, trento, italy, october 17-21, 2022
+  doi: 10.34727/2022/ISBN.978-3-85448-053-2_12
+  editor:
+  - family: Griggio
+    given: Alberto
+  - family: Rungta
+    given: Neha
+  id: "DBLP:conf/fmcad/NotzliBNPRBT22"
+  issued:
+  - year: 2022
+    month: 10
+  pdf: https://hanielbarbosa.com/papers/fmcad2022.pdf
+  bibtex: https://dblp.org/rec/conf/fmcad/NotzliBNPRBT22.html?view=bibtex
+  page: 65-74
+  publisher: IEEE
+  title: Reconstructing fine-grained proofs of rewrites using a
+    domain-specific language
+  type: paper-conference
+  url: "https://doi.org/10.34727/2022/ISBN.978-3-85448-053-2_12"
+- author:
+  - family: Sheng
+    given: Ying
+  - family: Zohar
+    given: Yoni
+  - family: Ringeissen
+    given: Christophe
+  - family: Lange
+    given: Jane
+  - family: Fontaine
+    given: Pascal
+  - family: Barrett
+    given: Clark W.
+  container-title: J. Autom. Reason.
+  doi: 10.1007/S10817-022-09625-3
+  id: "DBLP:journals/jar/ShengZRLFB22"
+  issue: 3
+  issued:
+  - year: 2022
+    month: 8
+  bibtex: https://dblp.org/rec/journals/jar/ShengZRLFB22.html?view=bibtex
+  page: 331-355
+  title: Polite combination of algebraic datatypes
+  type: article-journal
+  url: "https://doi.org/10.1007/S10817-022-09625-3"
+  volume: 66
+- author:
+  - family: Sheng
+    given: Ying
+  - family: Nötzli
+    given: Andres
+  - family: Reynolds
+    given: Andrew
+  - family: Zohar
+    given: Yoni
+  - family: Dill
+    given: David L.
+  - family: Grieskamp
+    given: Wolfgang
+  - family: Park
+    given: Junkil
+  - family: Qadeer
+    given: Shaz
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  collection-title: Lecture notes in computer science
+  container-title: Automated reasoning - 11th international joint
+    conference, IJCAR 2022, haifa, israel, august 8-10, 2022,
+    proceedings
+  doi: 10.1007/978-3-031-10769-6_9
+  editor:
+  - family: Blanchette
+    given: Jasmin
+  - family: Kovács
+    given: Laura
+  - family: Pattinson
+    given: Dirk
+  id: "DBLP:conf/cade/ShengNRZDGPQBT22"
+  issued:
+  - year: 2022
+    month: 8
+  pdf: http://theory.stanford.edu/ barrett/pubs/SNR+22.pdf
+  bibtex: https://dblp.org/rec/conf/cade/ShengNRZDGPQBT22.html?view=bibtex
+  arxiv: https://arxiv.org/abs/2205.08095
+  page: 125-143
+  publisher: Springer
+  title: Reasoning about vectors using an SMT theory of sequences
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-031-10769-6_9"
+  volume: 13385
+- author:
+  - family: Nötzli
+    given: Andres
+  - family: Reynolds
+    given: Andrew
+  - family: Barbosa
+    given: Haniel
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  collection-title: Lecture notes in computer science
+  container-title: Computer aided verification - 34th international
+    conference, CAV 2022, haifa, israel, august 7-10, 2022, proceedings,
+    part II
+  doi: 10.1007/978-3-031-13188-2_11
+  editor:
+  - family: Shoham
+    given: Sharon
+  - family: Vizel
+    given: Yakir
+  id: "DBLP:conf/cav/NotzliRBBT22"
+  issued:
+  - year: 2022
+    month: 8
+  pdf: https://hanielbarbosa.com/papers/cav2022.pdf
+  bibtex: https://dblp.org/rec/conf/cav/NotzliRBBT22.html?view=bibtex
+  page: 205-226
+  publisher: Springer
+  title: Even faster conflicts and lazier reductions for string solvers
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-031-13188-2_11"
+  volume: 13372
+- author:
+  - family: Kremer
+    given: Gereon
+  - family: Reynolds
+    given: Andrew
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  collection-title: Lecture notes in computer science
+  container-title: Automated reasoning - 11th international joint
+    conference, IJCAR 2022, haifa, israel, august 8-10, 2022,
+    proceedings
+  doi: 10.1007/978-3-031-10769-6_7
+  editor:
+  - family: Blanchette
+    given: Jasmin
+  - family: Kovács
+    given: Laura
+  - family: Pattinson
+    given: Dirk
+  id: "DBLP:conf/cade/KremerRBT22"
+  issued:
+  - year: 2022
+    month: 8
+  pdf: http://theory.stanford.edu/ barrett/pubs/KRB+22.pdf
+  bibtex: https://dblp.org/rec/conf/cade/KremerRBT22.html?view=bibtex
+  page: 95-105
+  publisher: Springer
+  title: Cooperating techniques for solving nonlinear real arithmetic in
+    the cvc5 SMT solver (system description)
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-031-10769-6_7"
+  volume: 13385
+- author:
+  - family: Barbosa
+    given: Haniel
+  - family: Reynolds
+    given: Andrew
+  - family: Kremer
+    given: Gereon
+  - family: Lachnitt
+    given: Hanna
+  - family: Niemetz
+    given: Aina
+  - family: Nötzli
+    given: Andres
+  - family: Ozdemir
+    given: Alex
+  - family: Preiner
+    given: Mathias
+  - family: Viswanathan
+    given: Arjun
+  - family: Viteri
+    given: Scott
+  - family: Zohar
+    given: Yoni
+  - family: Tinelli
+    given: Cesare
+  - family: Barrett
+    given: Clark W.
+  collection-title: Lecture notes in computer science
+  container-title: Automated reasoning - 11th international joint
+    conference, IJCAR 2022, haifa, israel, august 8-10, 2022,
+    proceedings
+  doi: 10.1007/978-3-031-10769-6_3
+  editor:
+  - family: Blanchette
+    given: Jasmin
+  - family: Kovács
+    given: Laura
+  - family: Pattinson
+    given: Dirk
+  id: "DBLP:conf/cade/BarbosaRKLNNOPV22"
+  issued:
+  - year: 2022
+    month: 8
+  pdf: https://hanielbarbosa.com/papers/ijcar2022.pdf
+  bibtex: https://dblp.org/rec/conf/cade/BarbosaRKLNNOPV22.html?view=bibtex
+  page: 15-35
+  publisher: Springer
+  title: Flexible proof production in an industrial-strength SMT solver
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-031-10769-6_3"
+  volume: 13385
+- author:
+  - family: Polgreen
+    given: Elizabeth
+  - family: Reynolds
+    given: Andrew
+  - family: Seshia
+    given: Sanjit A.
+  collection-title: Lecture notes in computer science
+  container-title: Verification, model checking, and abstract
+    interpretation - 23rd international conference, VMCAI 2022,
+    philadelphia, PA, USA, january 16-18, 2022, proceedings
+  doi: 10.1007/978-3-030-94583-1_13
+  editor:
+  - family: Finkbeiner
+    given: Bernd
+  - family: Wies
+    given: Thomas
+  id: "DBLP:conf/vmcai/PolgreenRS22"
+  issued:
+  - year: 2022
+    month: 1
+  bibtex: https://dblp.org/rec/conf/vmcai/PolgreenRS22.html?view=bibtex
+  page: 263-284
+  publisher: Springer
+  title: Satisfiability and synthesis modulo oracles
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-030-94583-1_13"
+  volume: 13182
+- author:
+  - family: Niemetz
+    given: Aina
+  - family: Preiner
+    given: Mathias
+  - family: Reynolds
+    given: Andrew
+  - family: Zohar
+    given: Yoni
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  container-title: J. Autom. Reason.
+  doi: 10.1007/S10817-021-09598-9
+  id: "DBLP:journals/jar/NiemetzP0ZBT21"
+  issue: 7
+  issued:
+  - year: 2021
+    month: 10
+  pdf: http://theory.stanford.edu/ barrett/pubs/NPR+21c.pdf
+  bibtex: https://dblp.org/rec/journals/jar/NiemetzP0ZBT21.html?view=bibtex
+  page: 1001-1025
+  title: Towards satisfiability modulo parametric bit-vectors
+  type: article-journal
+  url: "https://doi.org/10.1007/S10817-021-09598-9"
+  volume: 65
+- author:
+  - family: Janota
+    given: Mikolás
+  - family: Barbosa
+    given: Haniel
+  - family: Fontaine
+    given: Pascal
+  - family: Reynolds
+    given: Andrew
+  container-title: Formal methods in computer aided design, FMCAD 2021,
+    new haven, CT, USA, october 19-22, 2021
+  doi: 10.34727/2021/ISBN.978-3-85448-046-4_35
+  id: "DBLP:conf/fmcad/JanotaBFR21"
+  issued:
+  - year: 2021
+    month: 10
+  pdf: https://hanielbarbosa.com/papers/enum-strategies.pdf
+  bibtex: https://dblp.org/rec/conf/fmcad/JanotaBFR21.html?view=bibtex
+  page: 256-260
+  publisher: IEEE
+  title: Fair and adventurous enumeration of quantifier instantiations
+  type: paper-conference
+  url: "https://doi.org/10.34727/2021/ISBN.978-3-85448-046-4_35"
+- author:
+  - family: Sheng
+    given: Ying
+  - family: Zohar
+    given: Yoni
+  - family: Ringeissen
+    given: Christophe
+  - family: Reynolds
+    given: Andrew
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  collection-title: Lecture notes in computer science
+  container-title: Automated deduction - CADE 28 - 28th international
+    conference on automated deduction, virtual event, july 12-15, 2021,
+    proceedings
+  doi: 10.1007/978-3-030-79876-5_9
+  editor:
+  - family: Platzer
+    given: André
+  - family: Sutcliffe
+    given: Geoff
+  id: "DBLP:conf/cade/0007ZRRBT21"
+  issued:
+  - year: 2021
+    month: 7
+  pdf: http://theory.stanford.edu/ barrett/pubs/SZR+21.pdf
+  bibtex: https://dblp.org/rec/conf/cade/0007ZRRBT21.html?view=bibtex
+  page: 148-165
+  publisher: Springer
+  title: "Politeness and stable infiniteness: Stronger together"
+  title-short: Politeness and stable infiniteness
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-030-79876-5_9"
+  volume: 12699
+- author:
+  - family: Mann
+    given: Makai
+  - family: Wilson
+    given: Amalee
+  - family: Zohar
+    given: Yoni
+  - family: Stuntz
+    given: Lindsey
+  - family: Irfan
+    given: Ahmed
+  - family: Brown
+    given: Kristopher
+  - family: Donovick
+    given: Caleb
+  - family: Guman
+    given: Allison
+  - family: Tinelli
+    given: Cesare
+  - family: Barrett
+    given: Clark W.
+  collection-title: Lecture notes in computer science
+  container-title: Theory and applications of satisfiability testing -
+    SAT 2021 - 24th international conference, barcelona, spain, july
+    5-9, 2021, proceedings
+  doi: 10.1007/978-3-030-80223-3_26
+  editor:
+  - family: Li
+    given: Chu-Min
+  - family: Manyà
+    given: Felip
+  id: "DBLP:conf/sat/MannWZSIBDGTB21"
+  issued:
+  - year: 2021
+    month: 7
+  pdf: http://theory.stanford.edu/ barrett/pubs/MWZ+21.pdf
+  bibtex: https://dblp.org/rec/conf/sat/MannWZSIBDGTB21.html?view=bibtex
+  page: 377-386
+  publisher: Springer
+  title: "Smt-switch: A solver-agnostic c++ API for SMT solving"
+  title-short: Smt-switch
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-030-80223-3_26"
+  volume: 12831
+- author:
+  - family: Niemetz
+    given: Aina
+  - family: Preiner
+    given: Mathias
+  - family: Reynolds
+    given: Andrew
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  collection-title: Lecture notes in computer science
+  container-title: Tools and algorithms for the construction and
+    analysis of systems - 27th international conference, TACAS 2021,
+    held as part of the european joint conferences on theory and
+    practice of software, ETAPS 2021, luxembourg city, luxembourg, march
+    27 - april 1, 2021, proceedings, part II
+  doi: 10.1007/978-3-030-72013-1_8
+  editor:
+  - family: Groote
+    given: Jan Friso
+  - family: Larsen
+    given: Kim Guldstrand
+  id: "DBLP:conf/tacas/NiemetzPRBT21"
+  issued:
+  - year: 2021
+    month: 3
+  pdf: http://theory.stanford.edu/ barrett/pubs/NPR+21.pdf
+  bibtex: https://dblp.org/rec/conf/tacas/NiemetzPRBT21.html?view=bibtex
+  award: Nominated for the EATCS Best ETAPS Theory Paper Award
+  artifact: https://doi.org/10.5281/zenodo.4509301
+  page: 145-163
+  publisher: Springer
+  title: Syntax-guided quantifier instantiation
+  type: paper-conference
+  url: "https://doi.org/10.1007/978-3-030-72013-1_8"
+  volume: 12652
+- author:
+  - family: Niemetz
+    given: Aina
+  - family: Preiner
+    given: Mathias
+  - family: Reynolds
+    given: Andrew
+  - family: Barrett
+    given: Clark W.
+  - family: Tinelli
+    given: Cesare
+  container-title: Formal Methods Syst. Des.
+  doi: 10.1007/S10703-020-00359-9
+  id: "DBLP:journals/fmsd/NiemetzPRBT21"
+  issue: 1
+  issued:
+  - year: 2021
+    month: 1
+  pdf: http://theory.stanford.edu/ barrett/pubs/NPR+21b.pdf
+  bibtex: https://dblp.org/rec/journals/fmsd/NiemetzPRBT21.html?view=bibtex
+  page: 87-115
+  title: On solving quantified bit-vector constraints using
+    invertibility conditions
+  type: article-journal
+  url: "https://doi.org/10.1007/S10703-020-00359-9"
+  volume: 57
+- author:
+  - family: Fazekas
+    given: Katalin
+  - family: Niemetz
+    given: Aina
+  - family: Preiner
+    given: Mathias
+  - family: Kirchweger
+    given: Markus
+  - family: Szeider
+    given: Stefan
+  - family: Biere
+    given: Armin
+  container-title: J. Artif. Intell. Res.
+  doi: 10.1613/JAIR.1.16163
+  id: "DBLP:journals/jair/FazekasNPKSB24"
+  issued:
+  - year: 2024
+    month: 1
+  page: 989-1017
+  title: Satisfiability modulo user propagators
+  type: article-journal
+  url: "https://doi.org/10.1613/jair.1.16163"
+  volume: 81
+- author:
+  - family: Fazekas
+    given: Katalin
+  - family: Niemetz
+    given: Aina
+  - family: Preiner
+    given: Mathias
+  - family: Kirchweger
+    given: Markus
+  - family: Szeider
+    given: Stefan
+  - family: Biere
+    given: Armin
+  collection-title: LIPIcs
+  container-title: 26th international conference on theory and
+    applications of satisfiability testing, SAT 2023, alghero, italy,
+    july 4-8, 2023
+  doi: 10.4230/LIPICS.SAT.2023.8
+  editor:
+  - family: Mahajan
+    given: Meena
+  - family: Slivovsky
+    given: Friedrich
+  id: "DBLP:conf/sat/FazekasNPKSB23"
+  issued:
+  - year: 2023
+    month: 1
+  page: "8:1-8:13"
+  publisher: Schloss Dagstuhl - Leibniz-Zentrum für Informatik
+  title: "IPASIR-UP: User propagators for CDCL"
+  type: paper-conference
+  url: "https://doi.org/10.4230/LIPIcs.SAT.2023.8"
+  volume: 271
