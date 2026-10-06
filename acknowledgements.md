@@ -21,7 +21,7 @@ Support for cvc5 has been provided by the following organizations:
 - [GE Global Research](http://www.geglobalresearch.com/)
 - [Google](http://www.google.com)
 - [Intel Corporation](http://www.intel.com/)
-- [The Israel Science Foundation](http://www.isf.org.il/) (grant 619/21)
+- [The Israel Science Foundation](http://www.isf.org.il/) (grants 619/21, 209/25)
 - NASA (contract #NNL14AA06C)
 - [Meta](http://about.meta.com) Novi
 - [The National Science Foundation](http://www.nsf.gov/) (grants
@@ -43,7 +43,7 @@ Support for cvc5 has been provided by the following organizations:
 - [The Stanford SystemX Alliance](https://systemx.stanford.edu/)
 - [United Technologies Research Center](http://www.utrc.utc.com/)
 - [The US-Israel Binational Science Foundation](https://www.bsf.org.il/)
-  (grant 2020704)
+  (grants 2020704, 2024049)
 
 Any opinions, findings and conclusions or recommendations expressed in this
 site are those of the authors and do not necessarily reflect the views of the
