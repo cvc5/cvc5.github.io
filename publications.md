@@ -59,7 +59,11 @@ the following BibTex entry
 {% assign book_chapters = site.data.publications.references
   | where_exp: 'r', "r.type == 'chapter'" %}
 {% assign articles = site.data.publications.references
-  | where_exp: 'r', "r.type == 'article-journal'" %}
+  | where_exp: 'r', "r.type == 'article-journal'"
+  | where_exp: 'r', "r.container-title != 'CoRR'" %}
+{% assign preprints = site.data.publications.references
+  | where_exp: 'r', "r.type == 'article-journal'"
+  | where_exp: 'r', "r.container-title == 'CoRR'" %}
 {% assign papers = site.data.publications.references
   | where_exp: 'r', "r.type == 'paper-conference'" %}
 {% assign reports = site.data.publications.references
@@ -70,6 +74,26 @@ the following BibTex entry
 {% for year in years %}
 
 ## {{ year }}
+
+{% assign ypreprints = preprints
+  | where_exp: 'r', 'r.issued[0].year == year' %}
+{% if ypreprints.size > 0 %}
+### Preprints
+{% assign months = ypreprints
+  | map: "issued"
+  | map: "month"
+  | uniq | sort | reverse %}
+{% for month in months %}
+{% assign mpreprints = ypreprints
+  | where_exp: 'r', 'r.issued[0].month == month' %}
+{% for item in mpreprints %}
+{% capture title %}{% include title-case.html title=item.title %}{% endcapture %}
+{% for author in item.author %}{% if item.author.size > 1 %}{% if forloop.last == true %} and {% elsif forloop.first == false %}, {% endif %}{% endif %}{{ author.given }} {{ author.family }}{% endfor %}. {% if item.url %}[{{ title }}]({{ item.url }}){% else %}{{ title }} {% endif %}. arXiv:{{ item.volume | remove: 'abs/' }}. ({{ item.issued[0].year}})
+<br />
+{% if item.pdf %}<a class="btn" href="{{ item.pdf | relative_url }}">PDF</a>{% endif %} {% if item.doi %}<a class="btn" href="http://dx.doi.org/{{ item.doi }}">DOI</a>{% endif %} {% if item.preprint %}<a class="btn" href="{{ item.preprint | relative_url }}">Preprint</a>{% endif %} {% if item.extended %}<a class="btn" href="{{ item.extended | relative_url }}">Extended Version</a>{% endif %}{% if item.arxiv %}<a class="btn" href="{{ item.arxiv}}">Arxiv</a>{% endif %} {% if item.slides %}<a class="btn" href="{{ item.slides| relative_url }}">Slides</a>{% endif %} {% if item.bibtex %}<a class="btn" href="{{ item.bibtex | relative_url }}">Bibtex</a>{% endif %} {% if item.artifact %}<a class="btn" href="{{ item.artifact }}">Artifact</a>{% endif %} {% if item.talk %}{% assign t = item.talk | prepend: 'talks.html#' %}<a class="btn" href="{{ t | relative_url }}">Talk</a>{% endif %}
+{% endfor %}
+{% endfor %}
+{% endif %}
 
 {% assign ybooks = books
   | where_exp: 'r', 'r.issued[0].year == year' %}
@@ -85,8 +109,8 @@ the following BibTex entry
 {% assign mbooks = ybooks
   | where_exp: 'r', 'r.issued[0].month == month' %}
 {% for item in mbooks %}
-{% capture title %}{% assign t = item.title | split: ' ' %}{% for word in t %}{{ word | capitalize }} {% endfor %}{% endcapture %}
-{% if item.url %}[{{ title }}]({{ item.url }}){% else %}{{ title }} {% endif %}. Edited by {% for editor in item.editor %}{% if item.editor.size > 1 %}{% if forloop.last == true %} and {% elsif forloop.first == false %}, {% endif %}{% endif %}{{ editor.given }} {{ editor.family }}{% endfor %}. {% if item.collection-title %}{{ item.collection-title }},{% endif %}{% if item.volume %} vol. {{ item.volume }},{% endif %} {{ item.publisher }}. ({{ item.issued[0].year}})
+{% capture title %}{% include title-case.html title=item.title %}{% endcapture %}
+{% if item.url %}[{{ title }}]({{ item.url }}){% else %}{{ title }} {% endif %}. Edited by {% for editor in item.editor %}{% if item.editor.size > 1 %}{% if forloop.last == true %} and {% elsif forloop.first == false %}, {% endif %}{% endif %}{{ editor.given }} {{ editor.family }}{% endfor %}. {% if item.collection-title %}{% include title-case.html title=item.collection-title %},{% endif %}{% if item.volume %} vol. {{ item.volume }},{% endif %} {{ item.publisher }}. ({{ item.issued[0].year}})
 {% endfor %}
 {% endfor %}
 {% assign months = ychapters
@@ -97,8 +121,8 @@ the following BibTex entry
 {% assign mbooks = ychapters
   | where_exp: 'r', 'r.issued[0].month == month' %}
 {% for item in mbooks %}
-{% capture title %}{% assign t = item.title | split: ' ' %}{% for word in t %}{{ word | capitalize }} {% endfor %}{% endcapture %}
-{% for author in item.author %}{% if item.author.size > 1 %}{% if forloop.last == true %} and {% elsif forloop.first == false %}, {% endif %}{% endif %}{{ author.given }} {{ author.family }}{% endfor %}. {% if item.url %}[{{ title }}]({{ item.url }}){% else %}{{ title }} {% endif %}. {% if item.container-title %} In {{ item.container-title }},{% endif %}{% if item.volume %} vol. {{ item.volume }},{% endif %} {% if item.collection-title %}{{ item.collection-title }},{% endif %} {% if item.editor %}({% for editor in item.editor %}{% if item.editor.size > 1 %}{% if forloop.last == true %} and {% elsif forloop.first == false %}, {% endif %}{% endif %}{{ editor.given }} {{ editor.family }}{% endfor %}, eds.),{% endif %}{% if item.page %} pp. {{ item.page }},{% endif %} {{ item.publisher }}. ({{ item.issued[0].year}})
+{% capture title %}{% include title-case.html title=item.title %}{% endcapture %}
+{% for author in item.author %}{% if item.author.size > 1 %}{% if forloop.last == true %} and {% elsif forloop.first == false %}, {% endif %}{% endif %}{{ author.given }} {{ author.family }}{% endfor %}. {% if item.url %}[{{ title }}]({{ item.url }}){% else %}{{ title }} {% endif %}. {% if item.container-title %} In {% include title-case.html title=item.container-title %},{% endif %}{% if item.volume %} vol. {{ item.volume }},{% endif %} {% if item.collection-title %}{% include title-case.html title=item.collection-title %},{% endif %} {% if item.editor %}({% for editor in item.editor %}{% if item.editor.size > 1 %}{% if forloop.last == true %} and {% elsif forloop.first == false %}, {% endif %}{% endif %}{{ editor.given }} {{ editor.family }}{% endfor %}, eds.),{% endif %}{% if item.page %} pp. {{ item.page }}{% if item.publisher %},{% else %}.{% endif %}{% endif %}{% if item.publisher %} {{ item.publisher }}.{% endif %} ({{ item.issued[0].year}})
 <br />
 {% if item.pdf %}<a class="btn" href="{{ item.pdf | relative_url }}">PDF</a>{% endif %} {% if item.doi %}<a class="btn" href="http://dx.doi.org/{{ item.doi }}">DOI</a>{% endif %} {% if item.preprint %}<a class="btn" href="{{ item.preprint | relative_url }}">Preprint</a>{% endif %} {% if item.extended %}<a class="btn" href="{{ item.extended | relative_url }}">Extended Version</a>{% endif %}{% if item.arxiv %}<a class="btn" href="{{ item.arxiv}}">Arxiv</a>{% endif %} {% if item.slides %}<a class="btn" href="{{ item.slides| relative_url }}">Slides</a>{% endif %} {% if item.bibtex %}<a class="btn" href="{{ item.bibtex | relative_url }}">Bibtex</a>{% endif %} {% if item.artifact %}<a class="btn" href="{{ item.artifact }}">Artifact</a>{% endif %} {% if item.talk %}{% assign t = item.talk | prepend: 'talks.html#' %}<a class="btn" href="{{ t | relative_url }}">Talk</a>{% endif %} 
 {% endfor %}
@@ -117,8 +141,8 @@ the following BibTex entry
 {% assign marticles = yarticles
   | where_exp: 'r', 'r.issued[0].month == month' %}
 {% for item in marticles %}
-{% capture title %}{% assign t = item.title | split: ' ' %}{% for word in t %}{{ word | capitalize }} {% endfor %}{% endcapture %}
-{% for author in item.author %}{% if item.author.size > 1 %}{% if forloop.last == true %} and {% elsif forloop.first == false %}, {% endif %}{% endif %}{{ author.given }} {{ author.family }}{% endfor %}. {% if item.url %}[{{ title }}]({{ item.url }}){% else %}{{ title }} {% endif %}. {% if item.container-title %} In {{ item.container-title }},{% endif %}{% if item.volume %} vol. {{ item.volume }},{% endif %} {% if item.collection-title %}{{ item.collection-title }},{% endif %} {% if item.page %} pp. {{ item.page }},{% endif %} {{ item.publisher }}. ({{ item.issued[0].year}})
+{% capture title %}{% include title-case.html title=item.title %}{% endcapture %}
+{% for author in item.author %}{% if item.author.size > 1 %}{% if forloop.last == true %} and {% elsif forloop.first == false %}, {% endif %}{% endif %}{{ author.given }} {{ author.family }}{% endfor %}. {% if item.url %}[{{ title }}]({{ item.url }}){% else %}{{ title }} {% endif %}. {% if item.container-title %} In {% include title-case.html title=item.container-title %},{% endif %}{% if item.volume %} vol. {{ item.volume }},{% endif %} {% if item.collection-title %}{% include title-case.html title=item.collection-title %},{% endif %} {% if item.page %} pp. {{ item.page }}{% if item.publisher %},{% else %}.{% endif %}{% endif %}{% if item.publisher %} {{ item.publisher }}.{% endif %} ({{ item.issued[0].year}})
 <br />
 {% if item.pdf %}<a class="btn" href="{{ item.pdf | relative_url }}">PDF</a>{% endif %} {% if item.doi %}<a class="btn" href="http://dx.doi.org/{{ item.doi }}">DOI</a>{% endif %} {% if item.preprint %}<a class="btn" href="{{ item.preprint | relative_url }}">Preprint</a>{% endif %} {% if item.extended %}<a class="btn" href="{{ item.extended | relative_url }}">Extended Version</a>{% endif %}{% if item.arxiv %}<a class="btn" href="{{ item.arxiv}}">Arxiv</a>{% endif %} {% if item.slides %}<a class="btn" href="{{ item.slides| relative_url }}">Slides</a>{% endif %} {% if item.bibtex %}<a class="btn" href="{{ item.bibtex | relative_url }}">Bibtex</a>{% endif %} {% if item.artifact %}<a class="btn" href="{{ item.artifact }}">Artifact</a>{% endif %} {% if item.talk %}{% assign t = item.talk | prepend: 'talks.html#' %}<a class="btn" href="{{ t | relative_url }}">Talk</a>{% endif %} 
 {% endfor %}
@@ -137,8 +161,8 @@ the following BibTex entry
 {% assign mpapers = ypapers
   | where_exp: 'r', 'r.issued[0].month == month' %}
 {% for item in mpapers %}
-{% capture title %}{% assign t = item.title | split: ' ' %}{% for word in t %}{{ word | capitalize }} {% endfor %}{% endcapture %}
-{% for author in item.author %}{% if item.author.size > 1 %}{% if forloop.last == true %} and {% elsif forloop.first == false %}, {% endif %}{% endif %}{{ author.given }} {{ author.family }}{% endfor %}. {% if item.url %}[{{ title }}]({{ item.url }}){% else %}{{ title }} {% endif %}. {% if item.container-title %} In {{ item.container-title }},{% endif %}{% if item.volume %} vol. {{ item.volume }},{% endif %} {% if item.collection-title %}{{ item.collection-title }},{% endif %} {% if item.page %} pp. {{ item.page }},{% endif %} {{ item.publisher }}. ({{ item.issued[0].year}}){% if item.award %}<br/><span class="awards"><strong>{{ item.award }}</strong></span>{% endif %}
+{% capture title %}{% include title-case.html title=item.title %}{% endcapture %}
+{% for author in item.author %}{% if item.author.size > 1 %}{% if forloop.last == true %} and {% elsif forloop.first == false %}, {% endif %}{% endif %}{{ author.given }} {{ author.family }}{% endfor %}. {% if item.url %}[{{ title }}]({{ item.url }}){% else %}{{ title }} {% endif %}. {% if item.container-title %} In {% include title-case.html title=item.container-title %},{% endif %}{% if item.volume %} vol. {{ item.volume }},{% endif %} {% if item.collection-title %}{% include title-case.html title=item.collection-title %},{% endif %} {% if item.page %} pp. {{ item.page }}{% if item.publisher %},{% else %}.{% endif %}{% endif %}{% if item.publisher %} {{ item.publisher }}.{% endif %} ({{ item.issued[0].year}}){% if item.award %}<br/><span class="awards"><strong>{{ item.award }}</strong></span>{% endif %}
 <br />
 {% if item.pdf %}<a class="btn" href="{{ item.pdf | relative_url }}">PDF</a>{% endif %} {% if item.doi %}<a class="btn" href="http://dx.doi.org/{{ item.doi }}">DOI</a>{% endif %} {% if item.preprint %}<a class="btn" href="{{ item.preprint | relative_url }}">Preprint</a>{% endif %} {% if item.extended %}<a class="btn" href="{{ item.extended | relative_url }}">Extended Version</a>{% endif %}{% if item.arxiv %}<a class="btn" href="{{ item.arxiv}}">Arxiv</a>{% endif %} {% if item.slides %}<a class="btn" href="{{ item.slides| relative_url }}">Slides</a>{% endif %} {% if item.bibtex %}<a class="btn" href="{{ item.bibtex | relative_url }}">Bibtex</a>{% endif %} {% if item.artifact %}<a class="btn" href="{{ item.artifact }}">Artifact</a>{% endif %} {% if item.talk %}{% assign t = item.talk | prepend: 'talks.html#' %}<a class="btn" href="{{ t | relative_url }}">Talk</a>{% endif %}
 {% endfor %}
@@ -157,7 +181,7 @@ the following BibTex entry
 {% assign mreports = yreports
   | where_exp: 'r', 'r.issued[0].month == month' %}
 {% for item in mreports %}
-{% capture title %}{% assign t = item.title | split: ' ' %}{% for word in t %}{{ word | capitalize }} {% endfor %}{% endcapture %}
+{% capture title %}{% include title-case.html title=item.title %}{% endcapture %}
 {% for author in item.author %}{% if item.author.size > 1 %}{% if forloop.last == true %} and {% elsif forloop.first == false %}, {% endif %}{% endif %}{{ author.given }} {{ author.family }}{% endfor %}. {% if item.url %}[{{ title }}]({{ item.url }}){% else %}{{ title }} {% endif %}. ({{ item.issued[0].year}})
 <br />
 {% if item.pdf %}<a class="btn" href="{{ item.pdf | relative_url }}">PDF</a>{% endif %} {% if item.doi %}<a class="btn" href="http://dx.doi.org/{{ item.doi }}">DOI</a>{% endif %} {% if item.preprint %}<a class="btn" href="{{ item.preprint | relative_url }}">Preprint</a>{% endif %} {% if item.extended %}<a class="btn" href="{{ item.extended | relative_url }}">Extended Version</a>{% endif %}{% if item.arxiv %}<a class="btn" href="{{ item.arxiv}}">Arxiv</a>{% endif %} {% if item.slides %}<a class="btn" href="{{ item.slides| relative_url }}">Slides</a>{% endif %} {% if item.bibtex %}<a class="btn" href="{{ item.bibtex | relative_url }}">Bibtex</a>{% endif %} {% if item.artifact %}<a class="btn" href="{{ item.artifact }}">Artifact</a>{% endif %} {% if item.talk %}{% assign t = item.talk | prepend: 'talks.html#' %}<a class="btn" href="{{ t | relative_url }}">Talk</a>{% endif %} 
@@ -177,7 +201,7 @@ the following BibTex entry
 {% assign mtheses = ytheses
   | where_exp: 'r', 'r.issued[0].month == month' %}
 {% for item in mtheses %}
-{% capture title %}{% assign t = item.title | split: ' ' %}{% for word in t %}{{ word | capitalize }} {% endfor %}{% endcapture %}
+{% capture title %}{% include title-case.html title=item.title %}{% endcapture %}
 {% for author in item.author %}{% if item.author.size > 1 %}{% if forloop.last == true %} and {% elsif forloop.first == false %}, {% endif %}{% endif %}{{ author.given }} {{ author.family }}{% endfor %}. {% if item.url %}[{{ title }}]({{ item.url }}){% else %}{{ title }} {% endif %}. {% if item.genre %} {{ item.genre }},{% endif %} {{ item.publisher }}. ({{ item.issued[0].year}})
 <br />
 {% if item.pdf %}<a class="btn" href="{{ item.pdf | relative_url }}">PDF</a>{% endif %} {% if item.doi %}<a class="btn" href="http://dx.doi.org/{{ item.doi }}">DOI</a>{% endif %} {% if item.preprint %}<a class="btn" href="{{ item.preprint | relative_url }}">Preprint</a>{% endif %} {% if item.extended %}<a class="btn" href="{{ item.extended | relative_url }}">Extended Version</a>{% endif %}{% if item.arxiv %}<a class="btn" href="{{ item.arxiv}}">Arxiv</a>{% endif %} {% if item.slides %}<a class="btn" href="{{ item.slides| relative_url }}">Slides</a>{% endif %} {% if item.bibtex %}<a class="btn" href="{{ item.bibtex | relative_url }}">Bibtex</a>{% endif %} {% if item.artifact %}<a class="btn" href="{{ item.artifact }}">Artifact</a>{% endif %} {% if item.talk %}{% assign t = item.talk | prepend: 'talks.html#' %}<a class="btn" href="{{ t | relative_url }}">Talk</a>{% endif %} 
