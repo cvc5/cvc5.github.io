@@ -866,16 +866,29 @@
                 }
             };
 
+            // Hand the pre-compiled WebAssembly.Module to a fresh instance.
             cfg.instantiateWasm = function(imports, successCallback) {
                 WebAssembly.instantiate(compiledWasmModule, imports).then(function(instance) {
-                    try {
-                        successCallback(instance, compiledWasmModule);
-                        resolve();
-                    } catch (e) {
-                        reject(e);
+                    successCallback(instance, compiledWasmModule);
+                }).catch(function(e) {
+                    // A LinkError here means the compiled binary and cvc5.js
+                    // came from different builds: WebAssembly.compile() never
+                    // checks imports, so a mismatched pair loads fine and only
+                    // fails when the first run tries to instantiate. The raw
+                    // message ("function import requires a callable") gives no
+                    // hint of that, so say it plainly.
+                    if (e instanceof WebAssembly.LinkError) {
+                        reject(new Error(
+                            'The solver binary does not match cvc5.js - they are from ' +
+                            'different builds. cvc5.js is served from this page, while ' +
+                            'the binary comes from ' + (window.WASM_URL || "the configured URL") + '. Update the hosted ' +
+                            'binary to match, or append ?wasm=<url> to use one that does. ' +
+                            '(Original error: ' + e.message + ')'));
+                        return;
                     }
-                }).catch(reject);
-                return {}; // tells emscripten instantiation is async
+                    reject(e);
+                });
+                return {}; // unused by the async bridge; kept for the classic contract
             };
 
             // Error handling - always show abort messages
@@ -971,6 +984,38 @@
                         // A fresh config + a fresh call into moduleFactory
                         var cfg = makeModuleConfig(args, smtInput, inputFile, resolve, reject);
                         moduleFactory(cfg);
+
+                        // adaptGlueSource's T3 transform (see the module-load
+                        // script) rewrites the glue's trailing
+                        // `createWasm().then(()=>run())` into an assignment
+                        // onto Module["__cvc5Run"]. That promise resolves
+                        // only once callMain() and postRun() have both run,
+                        // which is the actual "the solver is done" signal -
+                        // unlike instantiateWasm firing, which happens long
+                        // before main() executes.
+                        if (!cfg.__cvc5Run || typeof cfg.__cvc5Run.then !== 'function') {
+                            throw new Error(
+                                'Module.__cvc5Run was not set by the adapted glue - ' +
+                                'adaptGlueSource\'s T3 transform did not apply. ' +
+                                'The glue source has likely changed shape.'
+                            );
+                        }
+
+                        cfg.__cvc5Run.then(function () {
+                            resolve();
+                        }, function (err) {
+                            // cvc5's early-exit default calls _exit(), which
+                            // callMain's handleException rethrows as an
+                            // ExitStatus - even for a normal, successful
+                            // run. Only a nonzero status is a real error.
+                            var isExitStatus = err && (err.name === 'ExitStatus' ||
+                                (err instanceof Error && /ExitStatus/.test(err.name)));
+                            if (isExitStatus && err.status === 0) {
+                                resolve();
+                            } else {
+                                reject(err);
+                            }
+                        });
                     } catch (e) {
                         reject(e);
                     }
@@ -1204,26 +1249,120 @@
 
             var FETCH_OPTS = { cache: 'no-cache' };
 
+            function adaptGlueSource(src) {
+                var out = src;
+
+                // Anchors are matched with whitespace-tolerant regexes on
+                // purpose. Emscripten emits this file minified in some
+                // builds and pretty-printed in others, and spacing shifts
+                // between versions, so an exact-string anchor breaks the
+                // moment the formatting changes - which it already did
+                // once. Match structure, not bytes.
+                function countMatches(s, re) {
+                    var rx = new RegExp(re.source, 'g');
+                    var n = 0;
+                    while (rx.exec(s) !== null) { n++; }
+                    return n;
+                }
+
+                function requireOne(s, re, label, what) {
+                    var n = countMatches(s, re);
+                    if (n === 0) {
+                        throw new Error('adaptGlueSource (' + label + '): pattern ' + re +
+                            ' not found - ' + what + '. The glue source has likely changed ' +
+                            'shape; update adaptGlueSource in appjs/index.html.');
+                    }
+                    if (n > 1) {
+                        throw new Error('adaptGlueSource (' + label + '): pattern ' + re +
+                            ' matches ' + n + ' times in cvc5.js - refusing to guess which to patch.');
+                    }
+                }
+
+                // (T1) Neutralize ignoredModuleProp("instantiateWasm"), which
+                // otherwise abort()s the moment we set Module.instantiateWasm.
+                var T1_RE = /ignoredModuleProp\(\s*["']instantiateWasm["']\s*\)\s*;/;
+                var t1Count = countMatches(out, T1_RE);
+                if (t1Count > 1) {
+                    throw new Error('adaptGlueSource (T1): pattern ' + T1_RE + ' matches ' +
+                        t1Count + ' times - refusing to guess which to patch.');
+                }
+                if (t1Count === 1) {
+                    out = out.replace(T1_RE, '');
+                }
+
+                // (T2) Inject instantiateWasm support into createWasm()
+                var NATIVE_RE = /Module\s*(\[\s*["']instantiateWasm["']\s*\]|\.\s*instantiateWasm\b)/;
+                if (!NATIVE_RE.test(out)) {
+                    var T2_RE = /var\s+info\s*=\s*getWasmImports\(\s*\)\s*;/;
+                    requireOne(out, T2_RE, 'T2',
+                        'cannot inject instantiateWasm support into createWasm()');
+                    out = out.replace(T2_RE, function (m) {
+                        return m + 'if(Module["instantiateWasm"]){return receiveInstance(' +
+                            'await new Promise((res,rej)=>{try{Module["instantiateWasm"]' +
+                            '(info,(inst,mod)=>res(inst))}catch(e){rej(e)}}));}';
+                    });
+                }
+
+                // (T3) Capture the top-level run promise on Module instead of
+                // firing-and-forgetting it. This is the page's completion
+                // signal: it resolves once callMain() and postRun() have both
+                // run, and rejects with whatever main() threw (including a
+                // rethrown ExitStatus - cvc5's early-exit default calls
+                // _exit()). It also prevents an unhandled promise rejection
+                // on solver errors, since nothing else observes this promise.
+                var T3_RE = /createWasm\(\s*\)\s*\.\s*then\(\s*\(\s*\)\s*=>\s*run\(\s*\)\s*\)\s*;/;
+                requireOne(out, T3_RE, 'T3', 'cannot capture the run() completion promise');
+                out = out.replace(T3_RE, function (m) {
+                    return 'Module["__cvc5Run"] = ' + m;
+                });
+
+                return out;
+            }
+
             var glueReady = fetch('cvc5.js', FETCH_OPTS)
                 .then(function (res) {
                     if (!res.ok) throw new Error('failed to fetch cvc5.js: HTTP ' + res.status);
                     return res.text();
                 })
                 .then(function (glueSource) {
-                    moduleFactory = new Function('Module', glueSource + '\n;return Module;');
+                    var adapted = adaptGlueSource(glueSource);
+                    moduleFactory = new Function('Module', adapted + '\n;return Module;');
                 });
 
+            // Where the solver binary comes from.
+            // To test a locally built binary without editing this file,
+            // append ?wasm=<url> to the page URL, e.g. ?wasm=cvc5.wasm
+            // to use a cvc5.wasm sitting next to index.html.
+            var DEFAULT_WASM_URL = 'https://buildbot-cvc5.stanford.edu/wasm/cvc5.wasm';
+            // Exposed on window so the run-time LinkError handler in the
+            // earlier script block can name the binary's source.
+            var WASM_URL = window.WASM_URL = (function () {
+                try {
+                    var override = new URLSearchParams(window.location.search).get('wasm');
+                    if (override) {
+                        console.log('Using wasm override: ' + override);
+                        return override;
+                    }
+                } catch (e) { /* URLSearchParams unavailable: fall through */ }
+                return DEFAULT_WASM_URL;
+            })();
+
+            // Unlike cvc5.js, the wasm is fetched with default caching.
+            // The no-cache revalidation above exists to keep the glue in
+            // lockstep with adaptGlueSource; the binary is ~20MB and
+            // cross-origin, so forcing a revalidation on every load risks
+            // re-downloading it whenever the host's conditional-request
+            // support is imperfect. Let its cache headers do their job.
             var wasmReady = (function () {
-                var wasmFetch = fetch('cvc5.wasm', FETCH_OPTS);
                 if (typeof WebAssembly.compileStreaming === 'function') {
-                    return WebAssembly.compileStreaming(wasmFetch).catch(function (streamErr) {
+                    return WebAssembly.compileStreaming(fetch(WASM_URL)).catch(function (streamErr) {
                         console.log('WebAssembly.compileStreaming failed (' + streamErr + '), falling back to ArrayBuffer compile');
-                        return fetch('cvc5.wasm', FETCH_OPTS)
+                        return fetch(WASM_URL)
                             .then(function (res) { return res.arrayBuffer(); })
                             .then(function (bytes) { return WebAssembly.compile(bytes); });
                     });
                 }
-                return wasmFetch
+                return fetch(WASM_URL)
                     .then(function (res) { return res.arrayBuffer(); })
                     .then(function (bytes) { return WebAssembly.compile(bytes); });
             })().then(function (mod) {
