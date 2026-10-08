@@ -2,7 +2,7 @@
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <script src="static/smt-runner.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ML12X2V35B"></script>
     <script>
@@ -144,6 +144,7 @@ similar to that of LISP. Below is the same example written in SMT-LIB.</p>
 <span class="linenos">11</span>(<span class="k">get-model</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div></div>
 <p>The result is:</p>
 <div class="highlight-smtlib notranslate"><div class="highlight"><pre><span></span><span class="n">sat</span>
@@ -217,6 +218,7 @@ we use the Python API in a way that more closely resembles the SMT-LIB script.</
 <span class="linenos">10</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/Example2.py">examples/Example2.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span>
@@ -287,6 +289,7 @@ Socrates be mortal?</p>
 <span class="linenos">12</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/examples/socrates.py">examples/socrates.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">S</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
@@ -355,8 +358,6 @@ topics in the future.</p>
 </aside>
 </aside>
 </section>
-
-
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">

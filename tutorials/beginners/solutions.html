@@ -2,6 +2,7 @@
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="static/smt-runner.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ML12X2V35B"></script>
@@ -125,6 +126,7 @@
 <span class="linenos">9</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise1.py">solutions/Exercise1.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos">2</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Ints</span><span class="p">(</span><span class="s1">&#39;a b&#39;</span><span class="p">)</span>
@@ -161,6 +163,7 @@ because there are no <em>integer</em> values that satisfy the constraints.</p>
 <span class="linenos">9</span>(<span class="k">get-model</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise2.py">solutions/Exercise2.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span>
@@ -218,6 +221,7 @@ In fact, any two number of applications that are not relatively prime will work.
 <span class="linenos">13</span>(<span class="k">get-model</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise3a.py">solutions/Exercise3a.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">U</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
@@ -288,6 +292,7 @@ this is to additionally require that <code class="code highlight smt smtlib docu
 <span class="linenos">16</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-6-6-1" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-1" name="6-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise3b.py">solutions/Exercise3b.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">U</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
@@ -364,6 +369,7 @@ for the original problem, 30 minutes is the best possible time.</p>
 <span class="linenos">31</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-8-8-1" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-1" name="8-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise4a.py">solutions/Exercise4a.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">max2</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
 <span class="linenos"> 2</span>  <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">:</span>
@@ -492,6 +498,7 @@ The best solution is now 25 minutes.</p>
 <span class="linenos">56</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-10-10-1" class="sphinx-tabs-panel" hidden="true" id="panel-10-10-1" name="10-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise4b.py">solutions/Exercise4b.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">max2</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
 <span class="linenos"> 2</span>  <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">:</span>
@@ -586,6 +593,7 @@ The best solution is now 25 minutes.</p>
 <span class="linenos">11</span>(<span class="k">get-model</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-12-12-1" class="sphinx-tabs-panel" hidden="true" id="panel-12-12-1" name="12-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise5.py">solutions/Exercise5.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos">2</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Reals</span><span class="p">(</span><span class="s1">&#39;a b&#39;</span><span class="p">)</span>
@@ -642,6 +650,7 @@ two assertions.</p>
 <span class="linenos">15</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-14-14-1" class="sphinx-tabs-panel" hidden="true" id="panel-14-14-1" name="14-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise6.py">solutions/Exercise6.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">I</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">)</span>
@@ -712,6 +721,7 @@ two assertions.</p>
 <span class="linenos">31</span>(<span class="k">pop</span> <span class="m">1</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-16-16-1" class="sphinx-tabs-panel" hidden="true" id="panel-16-16-1" name="16-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise7.py">solutions/Exercise7.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">x</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">BitVecSort</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
@@ -760,6 +770,7 @@ two assertions.</p>
 <span class="linenos">11</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-18-18-1" class="sphinx-tabs-panel" hidden="true" id="panel-18-18-1" name="18-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise8.py">solutions/Exercise8.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">decl</span> <span class="o">=</span> <span class="n">Datatype</span><span class="p">(</span><span class="s2">&quot;tree&quot;</span><span class="p">)</span>
@@ -807,6 +818,7 @@ two assertions.</p>
 <span class="linenos">11</span>(<span class="k">get-value</span> ((<span class="o">fp.add</span> <span class="n">rm</span> (<span class="o">fp.add</span> <span class="n">rm</span> <span class="n">a</span> <span class="n">b</span>) <span class="n">c</span>)))
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-20-20-1" class="sphinx-tabs-panel" hidden="true" id="panel-20-20-1" name="20-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise9.py">solutions/Exercise9.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span>
@@ -919,6 +931,7 @@ below.</p>
 <span class="linenos">64</span>(<span class="k">get-model</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-22-22-1" class="sphinx-tabs-panel" hidden="true" id="panel-22-22-1" name="22-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise10.py">solutions/Exercise10.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{},</span> <span class="p">{}</span>
@@ -1026,6 +1039,7 @@ The result is indeed <code class="code highlight smt smtlib docutils literal hig
 <span class="linenos">11</span>(<span class="k">check-sat</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-24-24-1" class="sphinx-tabs-panel" hidden="true" id="panel-24-24-1" name="24-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise11.py">solutions/Exercise11.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos"> 2</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Consts</span><span class="p">(</span><span class="s2">&quot;x y z&quot;</span><span class="p">,</span> <span class="n">SeqSort</span><span class="p">(</span><span class="n">IntSort</span><span class="p">()))</span>
@@ -1073,6 +1087,7 @@ The result is indeed <code class="code highlight smt smtlib docutils literal hig
 <span class="linenos">13</span>(<span class="k">get-model</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-26-26-1" class="sphinx-tabs-panel" hidden="true" id="panel-26-26-1" name="26-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise12.py">solutions/Exercise12.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos">2</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">FiniteFieldElems</span><span class="p">(</span><span class="s2">&quot;x y&quot;</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
@@ -1120,6 +1135,7 @@ The solver is able to find a counterexample for this property.</p>
 <span class="linenos">13</span>(<span class="k">get-model</span>)
 </pre></div>
 </div>
+<div class="smt-run"></div>
 </div><div aria-labelledby="tab-28-28-1" class="sphinx-tabs-panel" hidden="true" id="panel-28-28-1" name="28-1" role="tabpanel" tabindex="0"><p class="fa fa-download icon-margin"><a class="reference external" href="https://github.com/cvc5/tutorials/tree/main/beginners/solutions/Exercise13.py">solutions/Exercise13.py</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">cvc5.pythonic</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="linenos">2</span><span class="n">S</span> <span class="o">=</span> <span class="n">DeclareSort</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
