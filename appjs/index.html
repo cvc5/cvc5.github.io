@@ -1441,24 +1441,29 @@
                 compiledWasmModule = mod;
             });
 
-            Promise.all([glueReady, wasmReady]).then(function () {
+            var moduleReady = Promise.all([glueReady, wasmReady]).then(function () {
                 moduleLoaded = true;
                 document.getElementById('spinner').style.display = 'none';
                 document.getElementById('status').textContent = 'Ready';
                 console.log('Module loaded and ready');
-            }).catch(function (err) {
+            });
+
+            // Report load errors in the UI, but leave moduleReady rejected so
+            // callers can still tell success from failure.
+            moduleReady.catch(function (err) {
                 fail((err && err.message) || String(err));
             });
+
+            // Exposed so the #smt= auto-run can wait on actual readiness. The
+            // wasm is ~20MB, so download and compile can legitimately outlast
+            // any fixed cutoff, and a cutoff would silently skip the run.
+            window.cvc5ModuleReady = moduleReady;
         })();
     </script>
 
     <script>
         (function () {
             'use strict';
-
-            // Maximum time to wait for the WASM module before giving up
-            var WASM_LOAD_TIMEOUT_MS = 30000;
-            var POLL_INTERVAL_MS = 50;
 
             // Parse #smt=... from the URL hash
             var hash = window.location.hash;
@@ -1483,38 +1488,24 @@
                 }
             }
 
-            // Wait for the WASM module with a bounded timeout, then run
-            var deadline = Date.now() + WASM_LOAD_TIMEOUT_MS;
-
-            function tryRun() {
-                if (typeof moduleLoaded !== 'undefined' && moduleLoaded) {
+            // Run as soon as the module is genuinely ready, rather than
+            // polling against a wall clock: a slow connection can take longer
+            // than any fixed cutoff to fetch and compile ~20MB of wasm, and a
+            // cutoff would leave the preloaded formula silently unrun. A
+            // terminal load failure rejects the promise and has already been
+            // reported by fail(), so there is nothing to add here.
+            if (window.cvc5ModuleReady &&
+                typeof window.cvc5ModuleReady.then === 'function') {
+                window.cvc5ModuleReady.then(function () {
                     runSolver();
-                    return;
-                }
-                // A terminal load failure has already reported a specific error.
-                // Stop polling rather than waiting out the timeout and then
-                // replacing that error with a vaguer one.
-                if (typeof moduleLoadFailed !== 'undefined' && moduleLoadFailed) {
-                    return;
-                }
-                if (Date.now() >= deadline) {
-                    var output = document.getElementById('output');
-                    if (output) {
-                        output.value =
-                            'Error: the solver module did not load within ' +
-                            (WASM_LOAD_TIMEOUT_MS / 1000) +
-                            ' seconds. Please reload the page and press "Run Solver" manually.';
-                    }
-                    var status = document.getElementById('status');
-                    if (status) status.textContent = 'Load timeout';
-                    var spinner = document.getElementById('spinner');
-                    if (spinner) spinner.style.display = 'none';
-                    return;
-                }
-                setTimeout(tryRun, POLL_INTERVAL_MS);
+                }, function () {
+                    /* fail() has already shown the specific error */
+                });
+            } else {
+                console.error(
+                    'cvc5ModuleReady is not available; the module bootstrap did ' +
+                    'not run, so the #smt= formula cannot be executed automatically.');
             }
-
-            tryRun();
         })();
     </script>
 </body>
