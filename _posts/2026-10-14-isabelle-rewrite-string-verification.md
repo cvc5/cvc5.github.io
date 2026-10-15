@@ -216,5 +216,4 @@ We hope you had fun on this little journey into verifying string rewrite rules. 
 
 
 #### [Hanna Lachnitt](https://lachnitt.github.io/) is a PhD student advised by Clark Barrett in the Stanford Center for Automated Reasoning ([Centaur](https://centaur.stanford.edu/)) Lab. Her PhD work is focused on SMT proof certificates and their use in Interactive theorem provers.
-Jibiana Jakpor finished her undergraduate studies at Stanford in 2026 and is now a PhD student advised by [Adam Chlipala at MIT CSAIL](https://adam.chlipala.net/). Her PhD work is focused on X and Y.
-
+[Jibiana Jakpor](https://jjakpor.github.io/) finished her undergraduate studies at Stanford in 2026 and is now a PhD student advised by [Adam Chlipala at MIT CSAIL](https://adam.chlipala.net/). Her PhD work is focused on designing efficient proof automation.
