@@ -35,12 +35,12 @@ competitions:
   - event: SMT-COMP 2024
     event_url: http://smt-comp.github.io/2024
     year: 2024
-    entered: 72
+    entered: 68
     divisions:
-      total: 273
-      gold: 90
+      total: 263
+      gold: 94
     competition-wide:
-      total: 38
+      total: 34
       gold: 14
       silver: 4
       bronze: 3
@@ -49,9 +49,9 @@ competitions:
   - event: SMT-COMP 2023
     event_url: http://smt-comp.github.io/2023
     year: 2023
-    entered: 68
+    entered: 66
     divisions:
-      total: 177
+      total: 156
       gold: 66
     competition-wide:
       total: 20
