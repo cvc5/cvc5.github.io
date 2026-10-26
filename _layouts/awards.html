@@ -16,6 +16,7 @@ layout: default
 </ul>
 
 <h2>Divisions Entered</h2>
+{% assign division_sep = page.division_url_sep | default: "-" %}
 {% for track in page.entered %}
 {% assign results_url = page.event_url | append: "/" | append: "results/" %}
 <h3>{{ track.name }}</h3>
@@ -23,7 +24,7 @@ layout: default
 {% assign division_str = "" %}
 <ul class="awards-entered">
 {% for division in divisions %}
-{% assign division_url_str = division | replace: "_", "-" | downcase %}
+{% assign division_url_str = division | strip | replace: "_", division_sep | replace: "+", division_sep | downcase %}
 {% assign division_url = results_url | append: division_url_str | append: '-' | append: track.track %}
 <li><a href="{{ division_url}}">{{ division }}</a></li>
 {% endfor %}
@@ -52,7 +53,7 @@ layout: default
   {% if track.results.size > 1 %}
     <span style="color:red;">ERROR: missing 'division_url'</span>
   {% else %}
-    {% assign division_str = medal.division | replace: "_", "-" | replace: "+", "-" | downcase %}
+    {% assign division_str = medal.division | replace: "_", division_sep | replace: "+", division_sep | downcase %}
     {% assign division_url = results_url_base | append: division_str | append: '-' | append: track.track %}
   {% endif %}
 {% endif %}
@@ -61,7 +62,7 @@ layout: default
 {% endfor %}
 {% for mention in track.mentions %}
   <h4>Honorable Mentions</h4>
-  {% assign division_str = mention.division | replace: "_", "-" | replace: "+", "-" | downcase %}
+  {% assign division_str = mention.division | replace: "_", division_sep | replace: "+", division_sep | downcase %}
   {% assign division_url = results_url_base | append: division_str | append: '-' | append: track.track %}
   In division <a href="{{ division_url }}">{{ mention.division }}</a>:
   {% for logic in mention.logics %}
